@@ -115,20 +115,22 @@ def generate_goal(file_name):
         sys_idx = np.random.choice([i for i in range(len(sys_matrix[usr_idx]))], 1, p=sys_matrix[usr_idx])[0] \
             if usr_act_inner == "none" else np.random.choice([i for i in range(len(usr_matrix[usr_idx_inner]))], 1, p=usr_matrix[usr_idx_inner])[0]
 
-def draw_matrix(matrix, usr_acts=[], sys_acts=[], labels=[], img_name='default'):
+def draw_matrix(matrix, select_acts=[], output_acts=[], labels=[], img_name='default'):
+    
     fig, ax = plt.subplots()
-    im = ax.matshow(matrix, cmap='OrRd')
+    plt.title(img_name)
+    im = ax.imshow(matrix, cmap='OrRd')
     # Major ticks
     ax.set_xticks(np.arange(0, len(matrix[0]), 1))
     ax.set_yticks(np.arange(0, len(matrix), 1))    
 
     # Labels for major ticks
-    ax.set_xticklabels(usr_acts, rotation=270)
-    ax.set_yticklabels(sys_acts, rotation=0)    
+    ax.set_xticklabels(select_acts, rotation=90, color="red" if labels[0]!='Client' else 'blue')
+    ax.set_yticklabels(output_acts, rotation=0, color="red" if labels[1]!='Client' else 'blue')    
     ax.tick_params(axis="x", bottom=True, top=False, labelbottom=True, labeltop=False, color="red" if labels[0]!='Client' else 'blue')
     ax.tick_params(axis="y", color="red" if labels[1]!='Client' else 'blue')
-    ax.set_xlabel(labels[0], color="red" if labels[0]!='Client' else 'blue')
-    ax.set_ylabel(labels[1], color="red" if labels[1]!='Client' else 'blue')    
+    ax.set_xlabel('decide action', color="red" if labels[0]!='Client' else 'blue')
+    ax.set_ylabel('select action', color="red" if labels[1]!='Client' else 'blue')    
 
     # Minor ticks
     ax.set_xticks(np.arange(-.5, len(matrix[0]), 1), minor=True)
@@ -140,41 +142,25 @@ def draw_matrix(matrix, usr_acts=[], sys_acts=[], labels=[], img_name='default')
             c = matrix[i, j]
             if c > 0:
                 ax.text(j, i, str(c), va='center', ha='center')
-    plt.grid(which='minor', color='k', linewidth=2)
+    plt.grid(which='minor', color='k', linewidth=1)
     fig.tight_layout()
     plt.savefig(img_name)
     plt.show()
 
 if __name__ == "__main__":
     generate_goal("messagewoz_schema.json")
-    usr_matrix = np.array(usr_matrix)
-    print(usr_matrix, usr_acts[:-1])
-    draw_matrix(usr_matrix, usr_acts[:-1], sys_acts[:-1], ['Client', 'Assistant'])
+
+    '''
+    usr_matrix = np.array(usr_matrix)    
+    draw_matrix(usr_matrix, usr_acts[:-1], sys_acts[:-1], ['Client', 'Assistant'], 'Decide Assistant')
 
     sys_matrix = np.array(sys_matrix)
-    draw_matrix(sys_matrix, sys_acts[:-1], usr_acts[:-1], ['Assistant', 'Client'])
+    draw_matrix(sys_matrix, sys_acts[:-1], usr_acts[:-1], ['Assistant', 'Client'], 'Decide Client')
 
     usr_inner_matrix = np.array(usr_inner_matrix)
-    draw_matrix(usr_inner_matrix, usr_acts, usr_acts, ['Client', 'Client'])
+    draw_matrix(usr_inner_matrix, usr_acts, usr_acts, ['Client', 'Client'], 'Continue Decide Client')
 
     sys_inner_matrix = np.array(sys_inner_matrix)
-    draw_matrix(sys_inner_matrix, sys_acts, sys_acts, ['Assistant', 'Assistant'])
+    draw_matrix(sys_inner_matrix, sys_acts, sys_acts, ['Assistant', 'Assistant'], 'Continue Decide Assistant')
     '''
-    #for file_name in os.listdir("train"):
-
-        file_name = "dialogues_039.json"
-        with open(os.path.join("train", file_name)) as f:
-            for dialog in json.loads(f.read()):
-                
-                #if "Calendar_1" in dialog["services"]:
-                #    print(file_name, dialog["dialogue_id"], dialog["services"])
-                #    input()
-                
-                
-                for turn in dialog["turns"]:
-                    pprint(turn["speaker"])
-                    pprint(turn["frames"][0]["actions"])   
-                    print() 
-                print("-"*60)
-                input()
-    '''
+    
