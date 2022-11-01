@@ -62,6 +62,9 @@ usr_inner_matrix = [
     [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1.]
 ]
 
+usr_acts, sys_acts = ["INFORM", "REQUEST", "INFORM_INTENT", "THANK_YOU", "AFFIRM", "SELECT", "NEGATE", "REQUEST_ALTS", "GOOD_BYE", "NEGATE_INTENT", "AFFIRM_INTENT", "none"],\
+         ["INFORM", "REQUEST", "OFFER", "GOOD_BYE", "CONFIRM", "INFORM_COUNT", "NOTIFY_SUCCESS", "REQ_MORE", "OFFER_INTENT", "NOTIFY_FAILURE", "none"]
+
 def get_usr_act(usr_act, schemas, domain_index):    
     if usr_act != "none": 
         if usr_act == "INFORM_INTENT":
@@ -84,8 +87,6 @@ def get_sys_act(sys_act, slots=[]):
 def generate_goal(file_name):
     domain_index, usr_idx, sys_idx = 0, 3, 3
     u_act_list, s_act_list = [], []
-    usr_acts, sys_acts = ["INFORM", "REQUEST", "INFORM_INTENT", "THANK_YOU", "AFFIRM", "SELECT", "NEGATE", "REQUEST_ALTS", "GOOD_BYE", "NEGATE_INTENT", "AFFIRM_INTENT", "none"],\
-         ["INFORM", "REQUEST", "OFFER", "GOOD_BYE", "CONFIRM", "INFORM_COUNT", "NOTIFY_SUCCESS", "REQ_MORE", "OFFER_INTENT", "NOTIFY_FAILURE", "none"]
     
     MAX_GOALS, goal_counter = 5, 0
     schemas = json.loads(open(file_name, "r", encoding="utf-8").read())
@@ -114,25 +115,50 @@ def generate_goal(file_name):
         sys_idx = np.random.choice([i for i in range(len(sys_matrix[usr_idx]))], 1, p=sys_matrix[usr_idx])[0] \
             if usr_act_inner == "none" else np.random.choice([i for i in range(len(usr_matrix[usr_idx_inner]))], 1, p=usr_matrix[usr_idx_inner])[0]
 
-def draw_matrix(matrix):
+def draw_matrix(matrix, usr_acts=[], sys_acts=[], labels=[], img_name='default'):
     fig, ax = plt.subplots()
-    im = ax.pcolor(matrix, cmap='OrRd',edgecolors='k', linewidths=1)
-    plt.xticks(np.arange(0, len(matrix[0])), np.arange(1, len(matrix[0])+1))
-    plt.yticks(np.arange(0, len(matrix)), np.arange(1, len(matrix)+1))
+    im = ax.matshow(matrix, cmap='OrRd')
+    # Major ticks
+    ax.set_xticks(np.arange(0, len(matrix[0]), 1))
+    ax.set_yticks(np.arange(0, len(matrix), 1))    
+
+    # Labels for major ticks
+    ax.set_xticklabels(usr_acts, rotation=270)
+    ax.set_yticklabels(sys_acts, rotation=0)    
+    ax.tick_params(axis="x", bottom=True, top=False, labelbottom=True, labeltop=False, color="red" if labels[0]!='Client' else 'blue')
+    ax.tick_params(axis="y", color="red" if labels[1]!='Client' else 'blue')
+    ax.set_xlabel(labels[0], color="red" if labels[0]!='Client' else 'blue')
+    ax.set_ylabel(labels[1], color="red" if labels[1]!='Client' else 'blue')    
+
+    # Minor ticks
+    ax.set_xticks(np.arange(-.5, len(matrix[0]), 1), minor=True)
+    ax.set_yticks(np.arange(-.5, len(matrix), 1), minor=True)  
+
     fig.colorbar(im)
     for i in range(len(matrix)):
         for j in range(len(matrix[0])):
             c = matrix[i, j]
             if c > 0:
-                ax.text(j+0.5, i+0.5, str(c), va='center', ha='center')
+                ax.text(j, i, str(c), va='center', ha='center')
+    plt.grid(which='minor', color='k', linewidth=2)
+    fig.tight_layout()
+    plt.savefig(img_name)
     plt.show()
 
 if __name__ == "__main__":
     generate_goal("messagewoz_schema.json")
     usr_matrix = np.array(usr_matrix)
-    print(usr_matrix)
-    draw_matrix(usr_matrix)
+    print(usr_matrix, usr_acts[:-1])
+    draw_matrix(usr_matrix, usr_acts[:-1], sys_acts[:-1], ['Client', 'Assistant'])
 
+    sys_matrix = np.array(sys_matrix)
+    draw_matrix(sys_matrix, sys_acts[:-1], usr_acts[:-1], ['Assistant', 'Client'])
+
+    usr_inner_matrix = np.array(usr_inner_matrix)
+    draw_matrix(usr_inner_matrix, usr_acts, usr_acts, ['Client', 'Client'])
+
+    sys_inner_matrix = np.array(sys_inner_matrix)
+    draw_matrix(sys_inner_matrix, sys_acts, sys_acts, ['Assistant', 'Assistant'])
     '''
     #for file_name in os.listdir("train"):
 
