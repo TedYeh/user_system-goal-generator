@@ -114,17 +114,25 @@ def generate_goal(file_name):
         sys_idx = np.random.choice([i for i in range(len(sys_matrix[usr_idx]))], 1, p=sys_matrix[usr_idx])[0] \
             if usr_act_inner == "none" else np.random.choice([i for i in range(len(usr_matrix[usr_idx_inner]))], 1, p=usr_matrix[usr_idx_inner])[0]
 
+def draw_matrix(matrix):
+    fig, ax = plt.subplots()
+    im = ax.pcolor(matrix, cmap='OrRd',edgecolors='k', linewidths=1)
+    plt.xticks(np.arange(0, len(matrix[0])), np.arange(1, len(matrix[0])+1))
+    plt.yticks(np.arange(0, len(matrix)), np.arange(1, len(matrix)+1))
+    fig.colorbar(im)
+    for i in range(len(matrix)):
+        for j in range(len(matrix[0])):
+            c = matrix[i, j]
+            if c > 0:
+                ax.text(j+0.5, i+0.5, str(c), va='center', ha='center')
+    plt.show()
+
 if __name__ == "__main__":
     generate_goal("messagewoz_schema.json")
     usr_matrix = np.array(usr_matrix)
     print(usr_matrix)
-    plt.matshow(usr_matrix)
-    plt.show()
+    draw_matrix(usr_matrix)
 
-    sys_matrix = np.array(sys_matrix)
-    plt.matshow(sys_matrix)
-    plt.show()
-    print(usr_matrix)
     '''
     #for file_name in os.listdir("train"):
 
