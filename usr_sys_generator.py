@@ -9,6 +9,7 @@ domain_transition_matrix = [
         [0.4, 0.2, 0.4],
         [0.4, 0.4, 0.2]
 ]
+'''
 usr_matrix = [
     [0., 0.2, 0.3, 0.5, 0., 0., 0., 0., 0., 0., 0.],
     [1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
@@ -34,13 +35,19 @@ sys_matrix = [
     [0., 0., 0., 0.3, 0., 0., 0., 0.7, 0., 0.],
     [0., 1., 0., 0., 0., 0., 0., 0., 0., 0.]
 ]
+
+'''
+matrix_file = './matrix_weighted.npy'
+with open(matrix_file, 'rb') as f:
+        usr_matrix, sys_matrix, usr_inner_matrix, sys_inner_matrix = [np.load(f) for _ in range(4)]
+
 sys_inner_matrix = [
     [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1.],
     [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1.],
-    [0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0.],
+    [0., 0., 0.78, 0., 0., 0.19, 0., 0., 0., 0., 0.03],
     [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1.],
     [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1.],
-    [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1.],
+    [0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0.],
     [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1.],
     [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1.],
     [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1.],
@@ -51,19 +58,19 @@ usr_inner_matrix = [
     [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1.],
     [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1.],
     [0.5, 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.5],
+    [0., 0., 0., 0., 0., 0., 0., 0., 0.37, 0., 0., 0.63],
+    [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1.],
+    [0., 0., 0., 0., 0., 0., 0., 0., 0.12, 0., 0., 0.88],
+    [0., 0., 0., 0.97, 0., 0., 0., 0., 0.02, 0., 0., 0.01],
     [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1.],
     [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1.],
-    [0., 0., 0.3, 0., 0., 0., 0., 0., 0.7, 0., 0., 0.],
-    [0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0.],
-    [1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
-    [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1.],
-    [0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0.],
-    [1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+    [0., 0., 0., 0., 0., 0., 0., 0., 0.16, 0., 0., 0.84],
+    [0.5, 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.5],
     [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1.]
 ]
 
-usr_acts, sys_acts = ["INFORM", "REQUEST", "INFORM_INTENT", "THANK_YOU", "AFFIRM", "SELECT", "NEGATE", "REQUEST_ALTS", "GOOD_BYE", "NEGATE_INTENT", "AFFIRM_INTENT", "none"],\
-         ["INFORM", "REQUEST", "OFFER", "GOOD_BYE", "CONFIRM", "INFORM_COUNT", "NOTIFY_SUCCESS", "REQ_MORE", "OFFER_INTENT", "NOTIFY_FAILURE", "none"]
+usr_acts, sys_acts = ["INFORM", "REQUEST", "INFORM_INTENT", "THANK_YOU", "AFFIRM", "SELECT", "NEGATE", "REQUEST_ALTS", "GOODBYE", "NEGATE_INTENT", "AFFIRM_INTENT", "none"],\
+         ["INFORM", "REQUEST", "OFFER", "GOODBYE", "CONFIRM", "INFORM_COUNT", "NOTIFY_SUCCESS", "REQ_MORE", "OFFER_INTENT", "NOTIFY_FAILURE", "none"]
 
 def get_usr_act(usr_act, schemas, domain_index):    
     if usr_act != "none": 
@@ -98,14 +105,10 @@ def generate_goal(file_name):
     sys_idx = np.random.choice([i for i in range(len(sys_matrix[old_usr_idx]))], 1, p=sys_matrix[old_usr_idx])[0]    
     sys_idx_inner = np.random.choice([i for i in range(len(sys_inner_matrix[sys_idx]))], 1, p=sys_inner_matrix[sys_idx])[0]
     old_sys_idx = deepcopy(sys_idx_inner) if sys_acts[sys_idx_inner]!='none' else deepcopy(sys_idx)
-    #print(usr_idx, sys_idx)
-    #print(usr_idx_inner, sys_idx_inner)
-    #print(old_usr_idx, old_sys_idx)
+   
     while True:          
         usr_act, sys_act = (usr_acts[usr_idx], sys_acts[sys_idx])
         usr_act_inner, sys_act_inner = (usr_acts[usr_idx_inner], sys_acts[sys_idx_inner])        
-        #old_usr_idx, old_sys_idx = deepcopy(usr_idx_inner) if usr_act_inner!='none' else deepcopy(usr_idx), \
-        #    deepcopy(sys_idx_inner) if sys_act_inner!='none' else deepcopy(sys_idx)
 
         if usr_act != "none": 
             if usr_act == "INFORM_INTENT":
@@ -113,10 +116,7 @@ def generate_goal(file_name):
                 state_d = schemas[domain_index]                            
                 intent_i = random.choice(state_d["intents"]) #select intent from domain_i(state_d)
                 slots_i = list(intent_i["required_slots"])
-                #print(intent_i["required_slots"], intent_i["result_slots"], intent_i["optional_slots"])
-                #print('name', intent_i['name'])
-                #print('required_slots', intent_i["required_slots"])
-                #print('result_slots', intent_i["result_slots"]) 
+                
                 print("usr", f"{usr_act}(", intent_i["name"], ")")
                 
             elif usr_act == "INFORM":     
@@ -136,9 +136,7 @@ def generate_goal(file_name):
                 state_d = schemas[domain_index]                            
                 intent_i = random.choice(state_d["intents"]) #select intent from domain_i(state_d)
                 slots_i = list(intent_i["required_slots"])
-                #print('name', intent_i['name'])
-                #print('required_slots', intent_i["required_slots"])
-                #print('result_slots', intent_i["result_slots"])    
+                 
                 print("usr", f"{usr_act_inner}(", intent_i["name"], ")")
             elif usr_act_inner == "INFORM":            
                 if slots_i: print("usr", f"{usr_act_inner}(", slots_i, "=)")
@@ -163,15 +161,18 @@ def generate_goal(file_name):
                 print("sys", f"{sys_act}")
 
         if sys_act_inner != "none": 
-            print("sys", sys_act_inner)
+            if  sys_act == "REQUEST":
+                print("sys", f"{sys_act_inner}(", optional_slot, ")")
+            else:
+                print("sys", sys_act_inner)
 
-        if sys_act == "GOOD_BYE" or sys_act_inner == "GOOD_BYE":
+        if sys_act == "GOODBYE" or sys_act_inner == "GOODBYE":
             break        
         print()
         usr_idx = np.random.choice([i for i in range(len(usr_matrix[old_sys_idx]))], 1, p=usr_matrix[old_sys_idx])[0]
         usr_idx_inner = np.random.choice([i for i in range(len(usr_inner_matrix[usr_idx]))], 1, p=usr_inner_matrix[usr_idx])[0]
         old_usr_idx = deepcopy(usr_idx_inner) if usr_acts[usr_idx_inner]!='none' else deepcopy(usr_idx)
-        
+        #print(sys_matrix[old_usr_idx], old_usr_idx)
         sys_idx = np.random.choice([i for i in range(len(sys_matrix[old_usr_idx]))], 1, p=sys_matrix[old_usr_idx])[0]        
         sys_idx_inner = np.random.choice([i for i in range(len(sys_inner_matrix[sys_idx]))], 1, p=sys_inner_matrix[sys_idx])[0]
         old_sys_idx = deepcopy(sys_idx_inner) if sys_acts[sys_idx_inner]!='none' else deepcopy(sys_idx)
@@ -180,7 +181,7 @@ def draw_matrix(matrix, select_acts=[], output_acts=[], labels=[], img_name='def
     
     fig, ax = plt.subplots()
     plt.title(img_name)
-    im = ax.imshow(matrix, cmap='OrRd')
+    im = ax.imshow(matrix, cmap='OrRd', aspect='auto')
     # Major ticks
     ax.set_xticks(np.arange(0, len(matrix[0]), 1))
     ax.set_yticks(np.arange(0, len(matrix), 1))    
@@ -190,8 +191,8 @@ def draw_matrix(matrix, select_acts=[], output_acts=[], labels=[], img_name='def
     ax.set_yticklabels(select_acts, rotation=0, color="red" if labels[1]!='Client' else 'blue')    
     ax.tick_params(axis="x", bottom=True, top=False, labelbottom=True, labeltop=False, color="red" if labels[0]!='Client' else 'blue')
     ax.tick_params(axis="y", color="red" if labels[1]!='Client' else 'blue')
-    ax.set_xlabel('decide action', color="red" if labels[0]!='Client' else 'blue')
-    ax.set_ylabel('select action', color="red" if labels[1]!='Client' else 'blue')    
+    ax.set_xlabel('decide action'+f"({labels[0]})", color="red" if labels[0]!='Client' else 'blue')
+    ax.set_ylabel('select action'+f"({labels[1]})", color="red" if labels[1]!='Client' else 'blue')    
 
     # Minor ticks
     ax.set_xticks(np.arange(-.5, len(matrix[0]), 1), minor=True)
@@ -212,16 +213,16 @@ if __name__ == "__main__":
     generate_goal("messagewoz_schema.json")
 
     '''
-    usr_matrix = np.array(usr_matrix)    
+    usr_matrix = np.around(usr_matrix, decimals=2)    
     draw_matrix(usr_matrix, sys_acts[:-1], usr_acts[:-1], ['Client', 'Assistant'], 'Decide Client')
 
-    sys_matrix = np.array(sys_matrix)
+    sys_matrix = np.around(sys_matrix, decimals=2)
     draw_matrix(sys_matrix, usr_acts[:-1], sys_acts[:-1], ['Assistant', 'Client'], 'Decide Assistant')
 
-    usr_inner_matrix = np.array(usr_inner_matrix)
+    usr_inner_matrix = np.around(usr_inner_matrix, decimals=2)
     draw_matrix(usr_inner_matrix, usr_acts, usr_acts, ['Client', 'Client'], 'Continue Decide Client')
 
-    sys_inner_matrix = np.array(sys_inner_matrix)
+    sys_inner_matrix = np.around(sys_inner_matrix, decimals=2)
     draw_matrix(sys_inner_matrix, sys_acts, sys_acts, ['Assistant', 'Assistant'], 'Continue Decide Assistant')
     '''
     
