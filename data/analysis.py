@@ -87,9 +87,19 @@ def get_weighted_matrix(matrix_file):
             print(np.around(matrix, decimals=3))
             np.save(f, matrix)
                 
-            
+def analysis_ptt(path):
+    comments_amount = 0
+    file_path = os.path.join('./', path)
+    for d_file in os.listdir(file_path)[:-1]:
+        file_name = os.path.join(file_path, d_file)
+        comments = json.loads(open(file_name, encoding='utf-8').read())
+        for comment in comments:
+            comments_amount += len(comment)
+    print(comments_amount)          
 
 if __name__=="__main__":
-    paths = ['train', 'test', 'dev']
-    get_action_times(paths)
-    get_weighted_matrix("./matrix.npy")
+    #paths = ['train', 'test', 'dev']
+    #get_action_times(paths)
+    #get_weighted_matrix("./matrix.npy")
+    path = 'ptt\\data\\source_replies\\reply'
+    analysis_ptt(path)
