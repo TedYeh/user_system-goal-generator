@@ -33,36 +33,22 @@ def get_youtube_comment(url):
         
         with open('instant_messaging.txt', 'r', encoding = 'utf-8') as f:
             im_list = f.readlines()
-            
-        wait = WebDriverWait(driver,15)
-        # "https://www.youtube.com/watch?v=BLfE6a5bAX4"
-        driver.get(url)
 
-        for item in range(3): 
-            wait.until(EC.visibility_of_element_located((By.TAG_NAME, "body"))).send_keys(Keys.END)
-            time.sleep(2)
+        url_list = ['https://youtu.be/xbV_IoXo5tc', "https://youtu.be/aTMnqsvOo74"]    
+        wait = WebDriverWait(driver,150)
+        for url in url_list:
+            driver.get(url)
+
+            for item in range(20): 
+                wait.until(EC.visibility_of_element_located((By.TAG_NAME, "body"))).send_keys(Keys.END)
+                time.sleep(5)
         users = wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, "#author-text")))
         comments = wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, "#content-text")))
         for user, comment in zip(users, comments):
             data.append([user.text, random.choice(im_list).replace('\n', ''),comment.text.replace('\n', '')])
         # style-scope ytd-comment-renderer
-        list_rows = np.array(data)
-        np.savetxt("message_entityies.csv", list_rows, delimiter =",",fmt ='% s', encoding='utf-8-sig')
 
-if __name__ == "__main__":
-    #!/usr/bin/python3
 
-    with open('event_query.rq', 'r', encoding='utf-8') as query_file:
-        QUERY = query_file.read()
-
-    #wikidata_site = pywikibot.Site("wikidata", "wikidata")
-    #generator = pg.WikidataSPARQLPageGenerator(QUERY, site=wikidata_site)
-    #human_list = list(generator)
-    ##pprint(human_list)
-    #for human in human_list:
-    #    print(human, human.get()['labels']['en'])
-    #    input()
-    site = pywikibot.Site('wikidata', 'wikidata')
-    item = pywikibot.ItemPage(site, 'Q1190554')
-    data = item.get()['labels']['zh-tw']
-    print(data)
+    list_rows = np.array(data)
+    np.savetxt("message_entityies.csv", list_rows, delimiter =",",fmt ='% s', encoding='utf-8-sig')
+    

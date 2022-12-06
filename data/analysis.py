@@ -98,8 +98,8 @@ def analysis_ptt(path):
     print(comments_amount)          
 
 if __name__=="__main__":
-    #paths = ['train', 'test', 'dev']
-    #get_action_times(paths)
-    #get_weighted_matrix("./matrix.npy")
-    path = 'ptt\\data\\source_replies\\reply'
-    analysis_ptt(path)
+    paths = ['train', 'test', 'dev']
+    get_action_times(paths)
+    get_weighted_matrix("./matrix.npy")
+    #path = 'ptt\\data\\source_replies\\reply'
+    #analysis_ptt(path)
