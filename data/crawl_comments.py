@@ -30,18 +30,20 @@ with Chrome(executable_path=r'C:\Program Files\chromedriver.exe') as driver:
     
     with open('instant_messaging.txt', 'r', encoding = 'utf-8') as f:
         im_list = f.readlines()
-        
-    wait = WebDriverWait(driver,15)
-    driver.get("https://www.youtube.com/watch?v=BLfE6a5bAX4")
 
-    for item in range(3): 
-        wait.until(EC.visibility_of_element_located((By.TAG_NAME, "body"))).send_keys(Keys.END)
-        time.sleep(2)
-    users = wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, "#author-text")))
-    comments = wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, "#content-text")))
-    for user, comment in zip(users, comments):
-        data.append([user.text, random.choice(im_list).replace('\n', ''),comment.text.replace('\n', '')])
-    # style-scope ytd-comment-renderer
+    url_list = ['https://youtu.be/xbV_IoXo5tc', "https://youtu.be/aTMnqsvOo74"]    
+    wait = WebDriverWait(driver,150)
+    for url in url_list:
+        driver.get(url)
+
+        for item in range(20): 
+            wait.until(EC.visibility_of_element_located((By.TAG_NAME, "body"))).send_keys(Keys.END)
+            time.sleep(5)
+        users = wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, "#author-text")))
+        comments = wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, "#content-text")))
+        for user, comment in zip(users, comments):
+            data.append([user.text, random.choice(im_list).replace('\n', ''),comment.text.replace('\n', '')])
+        # style-scope ytd-comment-renderer
     list_rows = np.array(data)
     np.savetxt("message_entityies.csv", list_rows, delimiter =",",fmt ='% s', encoding='utf-8-sig')
     
