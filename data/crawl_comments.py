@@ -52,13 +52,14 @@ def get_youtube_comment():
     list_rows = np.array(data)
     np.savetxt("csv/message_entityies.csv", list_rows, delimiter =",",fmt ='% s', encoding='utf-8-sig')
 
-def calendar():
+def calendar(filename):
     with open('user_list.txt', 'r', encoding = 'utf-8') as f:
         usr_list = f.readlines()
-    df = pd.read_csv('csv/events.csv')
+    df = pd.read_csv(filename)
     for i in range(len(df['participant'])):
         num = random.randint(0, 3)
-        df.at[i, 'participant'] = '無' if num < 1 else '、'.join([s.replace('\n', '') for s in random.choices(usr_list, k=num)])
+        df.at[i, 'participant'] = '' if num < 1 else '、'.join([s.replace('\n', '') for s in random.choices(usr_list, k=num)])
+    df.to_csv(filename, encoding='utf-8-sig', index=False)
     
 def get_comment_to_email():
     data=[['subject', 'content', 'copy_recipient', 'recipient', 'sender']]    
@@ -184,5 +185,6 @@ if __name__ == '__main__':
     filename = 'ptt_article.csv'
     #ptt_crawler(filename)
     #get_user_list()
-    get_comment_to_email()
+    #get_comment_to_email()
     #get_user_list()
+    calendar('csv/events.csv')

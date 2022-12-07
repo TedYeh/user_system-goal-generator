@@ -59,12 +59,12 @@ def main():
                                     ); """
 
     sql_create_calendar_table = """CREATE TABLE IF NOT EXISTS Calendar_1 (
-                                    name text NOT NULL,                                    
-                                    location text,  
-                                    content text, 
+                                    event_name text NOT NULL,                                    
+                                    event_location text,  
+                                    event_content text, 
                                     participant text,
-                                    date DATE NOT NULL,
-                                    time text NOT NULL
+                                    event_date DATE NOT NULL,
+                                    event_time text NOT NULL
                                 );"""
     
     sql_create_mail_table = """CREATE TABLE IF NOT EXISTS Mail_1 (
@@ -106,14 +106,14 @@ def main():
 if __name__ == "__main__":
     conn = main()
 
-    for data in read_csv('message_entityies.csv'):
+    for data in read_csv('csv/message_entityies.csv'):
         print(data)
         insert_data(conn, 'Messaging_1', data)
 
-    for data in read_csv('events.csv'):
+    for data in read_csv('csv/events.csv'):
         print(data)
         insert_data(conn, 'Calendar_1', data)
 
-    for data in read_csv('mail_entityies.csv'):
+    for data in read_csv('csv/mail_entityies.csv'):
         print(data)
         insert_data(conn, 'Mail_1', data)
