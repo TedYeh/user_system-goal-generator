@@ -1,0 +1,290 @@
+[
+    {
+        "service_name": "Messaging_1",
+        "description": "Connect and send message to your contacts",
+        "description_cn": "連接並傳送訊息給聯絡人",
+        "slots": [
+            {
+                "name": "contact_name",
+                "description": "Name of contact to send to",
+                "description_cn": "傳送訊息的使用者",
+                "is_categorical": false,
+                "possible_values": []
+            },  
+            {
+                "name": "app_name",
+                "description": "Application of sending the message",
+                "description_cn": "傳送訊息所需用到的應用程式",
+                "is_categorical": false,
+                "possible_values": []
+            },
+            {
+                "name": "message",
+                "description": "Message to send to contact",
+                "description_cn": "需要傳送的訊息",
+                "is_categorical": false,
+                "possible_values": []
+            }
+        ],
+        "intents": [
+          {
+            "name": "SendMessage",
+            "description": "Send a message to a contact",
+            "description_cn": "傳送訊息給聯絡人",
+            "is_transactional": true,
+            "required_slots": [
+              "contact_name",
+              "application",
+              "message"
+            ],
+            "optional_slots": {},
+            "result_slots": [
+              "contact_name",
+              "application",
+              "message"
+            ]
+          },
+          {
+            "name": "FindContact",
+            "description": "Find a contact from a application",
+            "description_cn": "尋找某應用程式中的聯絡人",
+            "is_transactional": false ,
+            "required_slots": [
+              "contact_name"
+            ],
+            "optional_slots": {},
+            "result_slots": [
+              "contact_name",
+              "application"
+            ]
+          },
+          {
+            "name": "FindMessage",
+            "description": "Get list of message",
+            "description_cn": "尋找某應用程式中的訊息",
+            "is_transactional": false ,
+            "required_slots": [],
+            "optional_slots": {
+              "message": "dontcare"
+            },
+            "result_slots": [
+              "contact_name",
+              "application",
+              "message"
+            ]
+          }
+        ]
+    },
+    {
+        "service_name": "Calendar_1",
+        "description": "Calendar service to manage personal events and reservations",
+        "description_cn": "添加或管理用戶之行事曆活動",
+        "slots": [
+            {
+                "name": "event_date",
+                "description": "Date of event or for checking availability",
+                "description_cn": "活動日期",
+                "is_categorical": false,
+                "possible_values": []
+            },
+            {
+                "name": "event_time",
+                "description": "Start time of event",
+                "description_cn": "活動時間",
+                "is_categorical": false,
+                "possible_values": []
+            },
+            {
+                "name": "event_location",
+                "description": "Location of event",
+                "description_cn": "活動地點",
+                "is_categorical": false,
+                "possible_values": []
+            },
+            {
+                "name": "event_name",
+                "description": "Title of event",
+                "description_cn": "活動名稱",
+                "is_categorical": false,
+                "possible_values": []
+            },
+            {
+                "name": "event_content",
+                "description": "Content of event",
+                "description_cn": "活動內容",
+                "is_categorical": false,
+                "possible_values": []
+            },
+            {
+                "name": "participant",
+                "description": "Participant of event",
+                "description_cn": "參與活動的參加者",
+                "is_categorical": false,
+                "possible_values": []
+            },
+            {
+                "name": "available_start_time",
+                "description": "Starting time of available time slot",
+                "description_cn": "活動開始時間",
+                "is_categorical": false,
+                "possible_values": []
+            },
+            {
+                "name": "available_end_time",
+                "description": "Ending time of available time slot",
+                "description_cn": "活動結束時間",
+                "is_categorical": false,
+                "possible_values": []
+            }
+        ],
+        "intents": [
+            {
+              "name": "GetEvents",
+              "description": "Get list of all calendar events for the user on a given day",
+              "is_transactional": false,
+              "required_slots": [
+                "event_date"
+              ],
+              "optional_slots": {},
+              "result_slots": [
+                "event_date",
+                "event_time",
+                "event_location",
+                "event_name"
+              ]
+            },
+            {
+              "name": "LookupEvents",
+              "description": "Search for a event",
+              "is_transactional": false,
+              "required_slots": [],
+              "optional_slots": {
+                "event_date": "dontcare",
+                "event_time": "dontcare",
+                "event_name": "dontcare"
+              },
+              "result_slots": [
+                "event_date",
+                "event_time",
+                "event_location",
+                "event_name"
+              ]
+            },
+            {
+              "name": "GetAvailableTime",
+              "description": "Get a list of available times for the user on a given day",
+              "is_transactional": false,
+              "required_slots": [
+                "event_date"
+              ],
+              "optional_slots": {},
+              "result_slots": [
+                "event_date",
+                "available_start_time",
+                "available_end_time"
+              ]
+            },
+            {
+              "name": "AddEvent",
+              "description": "Add event to the user's calendar",
+              "is_transactional": true,
+              "required_slots": [
+                "event_name",
+                "event_date",
+                "event_location",
+                "event_time"
+              ],
+              "optional_slots": {},
+              "result_slots": [
+                "event_date",
+                "event_time",
+                "event_location",
+                "event_name"
+              ]
+            }
+        ]
+    },
+    {
+        "service_name": "Mail_1",
+        "description": "Email service to write or search mail",
+        "description_cn": "撰寫或查詢電子郵件",
+        "slots": [
+            {
+                "name": "recipient",
+                "description": "",
+                "description_cn": "收件者",
+                "is_categorical": false,
+                "possible_values": []
+            },  
+            {
+                "name": "sender",
+                "description": "",
+                "description_cn": "寄件者",
+                "is_categorical": false,
+                "possible_values": []
+            }, 
+            {
+                "name": "mail_subject",
+                "description": "",
+                "description_cn": "郵件主旨",
+                "is_categorical": false,
+                "possible_values": []
+            }, 
+            {
+                "name": "mail_content",
+                "description": "",
+                "description_cn": "郵件內容",
+                "is_categorical": false,
+                "possible_values": []
+            }, 
+            {
+                "name": "copy_recipient",
+                "description": "",
+                "description_cn": "副本收件者",
+                "is_categorical": false,
+                "possible_values": []
+            }
+        ],
+        "intents": [         
+          {
+            "name": "SendMail",
+            "description": "Send a mail",
+            "description_cn": "寄一封信",
+            "is_transactional": true,
+            "required_slots": [
+              "recipient",
+              "mail_subject",
+              "mail_content"
+            ],
+            "optional_slots": {
+              "copy_recipient": "dontcare"
+            },
+            "result_slots": [
+              "sender",
+              "recipient",
+              "mail_subject",
+              "mail_content"
+            ]
+          },
+          {
+            "name": "FindMail",
+            "description": "Search for a mail",
+            "description_cn": "依據所給條件找一封信",
+            "is_transactional": false,
+            "required_slots": [],
+            "optional_slots": {
+              "mail_subject": "dontcare",
+              "recipient": "dontcare",
+              "sender": "dontcare",
+              "mail_content": "dontcare"
+            },
+            "result_slots": [
+              "sender",
+              "recipient",
+              "mail_subject",
+              "mail_content"
+            ]
+          }
+        ]
+    }
+]
