@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from pprint import pprint
 from copy import deepcopy
+from data.analysis import is_transactional, analysis_schema
 import data.build_db as db
 
 domain_transition_matrix = [
@@ -41,6 +42,10 @@ sys_matrix = [
 matrix_file = './matrix/matrix_weighted.npy'
 with open(matrix_file, 'rb') as f:
         usr_matrix, sys_matrix, usr_inner_matrix, sys_inner_matrix = [np.load(f) for _ in range(4)]
+
+non_matrix_file = './matrix/non_matrix_weighted.npy'
+with open(non_matrix_file, 'rb') as f:
+        non_usr_matrix, non_sys_matrix, _, _ = [np.load(f) for _ in range(4)]
 
 sys_inner_matrix = [
     [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1.],
@@ -92,18 +97,46 @@ def get_sys_act(sys_act, slots=[]):
         print("sys", sys_act)
     if sys_act == "GOOD_BYE": return True
 
+def get_frame():
+    '''
+    {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": ,
+                "canonical_values": [],
+                "slot": "intent",
+                "values": []
+              }
+            ],
+            "service": ,
+            "slots": [],
+            "state": {
+              "active_intent": ,
+              "requested_slots": [],
+              "slot_values": {}
+            }
+          }
+        ],
+        "speaker": ,
+        "utterance": 
+      }
+    '''
+    
 def generate_goal(file_name):
     domain_index, usr_idx, sys_idx = 0, 3, 3
     u_act_list, s_act_list = [], []
     optional_slot = None
     MAX_GOALS, goal_counter = 5, 0
     schemas = json.loads(open(file_name, "r", encoding="utf-8").read())
+    value_list = analysis_schema(file_name)
     #initial state
-    usr_idx = np.random.choice([i for i in range(len(usr_matrix[sys_idx]))], 1, p=usr_matrix[sys_idx])[0]
+    usr_idx = np.random.choice([i for i in range(len(non_usr_matrix[sys_idx]))], 1, p=non_usr_matrix[sys_idx])[0]
     usr_idx_inner = np.random.choice([i for i in range(len(usr_inner_matrix[usr_idx]))], 1, p=usr_inner_matrix[usr_idx])[0]
     old_usr_idx = deepcopy(usr_idx_inner) if usr_acts[usr_idx_inner]!='none' else deepcopy(usr_idx)
 
-    sys_idx = np.random.choice([i for i in range(len(sys_matrix[old_usr_idx]))], 1, p=sys_matrix[old_usr_idx])[0]    
+    sys_idx = np.random.choice([i for i in range(len(non_sys_matrix[old_usr_idx]))], 1, p=non_sys_matrix[old_usr_idx])[0]    
     sys_idx_inner = np.random.choice([i for i in range(len(sys_inner_matrix[sys_idx]))], 1, p=sys_inner_matrix[sys_idx])[0]
     old_sys_idx = deepcopy(sys_idx_inner) if sys_acts[sys_idx_inner]!='none' else deepcopy(sys_idx)
    
@@ -116,6 +149,12 @@ def generate_goal(file_name):
                 domain_index = np.random.choice([i for i in range(len(schemas))], 1, p=domain_transition_matrix[domain_index])[0] 
                 state_d = schemas[domain_index]                            
                 intent_i = random.choice(state_d["intents"]) #select intent from domain_i(state_d)
+                if is_transactional(value_list, intent_i["name"]):
+                    usr_mat = usr_matrix
+                    sys_mat = sys_matrix                    
+                else: 
+                    usr_mat = non_usr_matrix
+                    sys_mat = non_sys_matrix
                 slots_i = list(intent_i["required_slots"])
                 
                 print("usr", f"{usr_act}(", intent_i["name"], ")")
@@ -133,9 +172,16 @@ def generate_goal(file_name):
 
         if usr_act_inner != "none": 
             if usr_act_inner == "INFORM_INTENT":
+                
                 domain_index = np.random.choice([i for i in range(len(schemas))], 1, p=domain_transition_matrix[domain_index])[0] 
                 state_d = schemas[domain_index]                            
                 intent_i = random.choice(state_d["intents"]) #select intent from domain_i(state_d)
+                if is_transactional(value_list, intent_i["name"]):
+                    usr_mat = usr_matrix
+                    sys_mat = sys_matrix
+                else: 
+                    usr_mat = non_usr_matrix
+                    sys_mat = non_sys_matrix
                 slots_i = list(intent_i["required_slots"])
                  
                 print("usr", f"{usr_act_inner}(", intent_i["name"], ")")
@@ -148,8 +194,6 @@ def generate_goal(file_name):
                 print("usr", f"{usr_act_inner}(", slots_i, ")")
             else:
                 print("usr", usr_act_inner)
-        #domain_index = get_usr_act(usr_act, schemas, domain_index)
-        #domain_index = get_usr_act(usr_act_inner, schemas, domain_index)
         print()
         if sys_act != "none":
             if  sys_act == "REQUEST":
@@ -170,11 +214,11 @@ def generate_goal(file_name):
         if sys_act == "GOODBYE" or sys_act_inner == "GOODBYE":
             break        
         print()
-        usr_idx = np.random.choice([i for i in range(len(usr_matrix[old_sys_idx]))], 1, p=usr_matrix[old_sys_idx])[0]
+        usr_idx = np.random.choice([i for i in range(len(usr_mat[old_sys_idx]))], 1, p=usr_mat[old_sys_idx])[0]
         usr_idx_inner = np.random.choice([i for i in range(len(usr_inner_matrix[usr_idx]))], 1, p=usr_inner_matrix[usr_idx])[0]
         old_usr_idx = deepcopy(usr_idx_inner) if usr_acts[usr_idx_inner]!='none' else deepcopy(usr_idx)
-        #print(sys_matrix[old_usr_idx], old_usr_idx)
-        sys_idx = np.random.choice([i for i in range(len(sys_matrix[old_usr_idx]))], 1, p=sys_matrix[old_usr_idx])[0]        
+        
+        sys_idx = np.random.choice([i for i in range(len(sys_mat[old_usr_idx]))], 1, p=sys_mat[old_usr_idx])[0]        
         sys_idx_inner = np.random.choice([i for i in range(len(sys_inner_matrix[sys_idx]))], 1, p=sys_inner_matrix[sys_idx])[0]
         old_sys_idx = deepcopy(sys_idx_inner) if sys_acts[sys_idx_inner]!='none' else deepcopy(sys_idx)
 
@@ -207,18 +251,26 @@ def draw_matrix(matrix, select_acts=[], output_acts=[], labels=[], img_name='def
                 ax.text(j, i, str(c), va='center', ha='center')
     plt.grid(which='minor', color='k', linewidth=1)
     fig.tight_layout()
-    plt.savefig(os.path.join('transistion matrix', img_name))
+    plt.savefig(os.path.join('../transistion matrix', img_name))
     plt.show()
 
 if __name__ == "__main__":
     generate_goal("./schema/messagewoz_schema.json")
+    #print(usr_matrix)
+    #print(sys_matrix)
 
     '''
     usr_matrix = np.around(usr_matrix, decimals=2)    
-    draw_matrix(usr_matrix, sys_acts[:-1], usr_acts[:-1], ['Client', 'Assistant'], 'Decide Client')
+    draw_matrix(usr_matrix, sys_acts[:-1], usr_acts[:-1], ['Client', 'Assistant'], 'Decide Client (transactional)')
 
     sys_matrix = np.around(sys_matrix, decimals=2)
-    draw_matrix(sys_matrix, usr_acts[:-1], sys_acts[:-1], ['Assistant', 'Client'], 'Decide Assistant')
+    draw_matrix(sys_matrix, usr_acts[:-1], sys_acts[:-1], ['Assistant', 'Client'], 'Decide Assistant (transactional)')
+
+    non_usr_matrix = np.around(non_usr_matrix, decimals=2)    
+    draw_matrix(non_usr_matrix, sys_acts[:-1], usr_acts[:-1], ['Client', 'Assistant'], 'Decide Client (non-transactional)')
+
+    non_sys_matrix = np.around(non_sys_matrix, decimals=2)
+    draw_matrix(non_sys_matrix, usr_acts[:-1], sys_acts[:-1], ['Assistant', 'Client'], 'Decide Assistant (non-transactional)')
 
     usr_inner_matrix = np.around(usr_inner_matrix, decimals=2)
     draw_matrix(usr_inner_matrix, usr_acts, usr_acts, ['Client', 'Client'], 'Continue Decide Client')
