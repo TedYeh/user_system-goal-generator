@@ -200,11 +200,11 @@ def gen_init_state(value_list, intent_i):
     usr_idx_inner = np.random.choice([i for i in range(len(usr_inner_matrix[usr_idx]))], 1, p=usr_inner_matrix[usr_idx])[0]
     old_usr_idx = deepcopy(usr_idx_inner) if usr_acts[usr_idx_inner]!='none' else deepcopy(usr_idx)
 
-    _, sys_mat = is_trans(value_list, intent_i)
+    usr_mat, sys_mat = is_trans(value_list, intent_i)
     sys_idx = np.random.choice([i for i in range(len(sys_mat[old_usr_idx]))], 1, p=sys_mat[old_usr_idx])[0]    
     sys_idx_inner = np.random.choice([i for i in range(len(sys_inner_matrix[sys_idx]))], 1, p=sys_inner_matrix[sys_idx])[0]
     old_sys_idx = deepcopy(sys_idx_inner) if sys_acts[sys_idx_inner]!='none' else deepcopy(sys_idx)
-    return (usr_idx, sys_idx), (usr_idx_inner, sys_idx_inner), (old_usr_idx, old_sys_idx)
+    return (usr_idx, sys_idx), (usr_idx_inner, sys_idx_inner), (old_usr_idx, old_sys_idx), (usr_mat, sys_mat)
 
 def is_trans(value_list, intent_i):
     if is_transactional(value_list, intent_i["name"]):
@@ -215,37 +215,46 @@ def is_trans(value_list, intent_i):
         sys_mat = non_sys_matrix
     return usr_mat, sys_mat
 
+def print_actions(u_acts, s_acts, intent_i):
+    print(u_acts[0], intent_i["name"])
+    if u_acts[1]!='none': print(u_acts[1])
+    print(s_acts[0])
+    if s_acts[1]!='none': print(s_acts[1])
+
 def generate_goal(file_name):
     domain_index = 0
-    u_act_list, s_act_list = [], []
-    optional_slot = None
-    MAX_GOALS, goal_counter = 5, 0
     schemas = json.loads(open(file_name, "r", encoding="utf-8").read())
     value_list = analysis_schema(file_name)
     domain_index = np.random.choice([i for i in range(len(schemas))], 1, p=domain_transition_matrix[domain_index])[0] 
     state_d = schemas[domain_index]                            
     intent_i = random.choice(state_d["intents"]) #select intent from domain_i(state_d)
     #initial state
-    (usr_idx, sys_idx), (usr_idx_inner, sys_idx_inner), (old_usr_idx, old_sys_idx) = gen_init_state(value_list, intent_i)
-   
-    while True:          
-        usr_act, sys_act = (usr_acts[usr_idx], sys_acts[sys_idx])
-        usr_act_inner, sys_act_inner = (usr_acts[usr_idx_inner], sys_acts[sys_idx_inner]) 
-        domain_index = np.random.choice([i for i in range(len(schemas))], 1, p=domain_transition_matrix[domain_index])[0] 
-        state_d = schemas[domain_index]                            
-        intent_i = random.choice(state_d["intents"]) #select intent from domain_i(state_d)
-        usr_mat, sys_mat = is_trans(value_list, intent_i)
-        slots_i = list(intent_i["required_slots"])      
-        if sys_act == "GOODBYE" or sys_act_inner == "GOODBYE":break 
-        print(np.around(usr_mat, decimals=3), old_sys_idx)
-        
+    (usr_idx, sys_idx), (usr_idx_inner, sys_idx_inner), (old_usr_idx, old_sys_idx), (usr_mat, sys_mat) = gen_init_state(value_list, intent_i)
+    usr_act, usr_act_inner = usr_acts[usr_idx], usr_acts[usr_idx_inner]
+    sys_act, sys_act_inner = sys_acts[sys_idx], sys_acts[sys_idx_inner]
+    while True:     
+        print_actions((usr_act, usr_act_inner), (sys_act, sys_act_inner), intent_i)
         usr_idx = np.random.choice([i for i in range(len(usr_mat[old_sys_idx]))], 1, p=usr_mat[old_sys_idx])[0]
         usr_idx_inner = np.random.choice([i for i in range(len(usr_inner_matrix[usr_idx]))], 1, p=usr_inner_matrix[usr_idx])[0]
-        #old_usr_idx = deepcopy(usr_idx_inner) if usr_acts[usr_idx_inner]!='none' else deepcopy(usr_idx)
+        old_usr_idx = deepcopy(usr_idx_inner) if usr_acts[usr_idx_inner]!='none' else deepcopy(usr_idx)
         
         sys_idx = np.random.choice([i for i in range(len(sys_mat[old_usr_idx]))], 1, p=sys_mat[old_usr_idx])[0]        
         sys_idx_inner = np.random.choice([i for i in range(len(sys_inner_matrix[sys_idx]))], 1, p=sys_inner_matrix[sys_idx])[0]
-        #old_sys_idx = deepcopy(sys_idx_inner) if sys_acts[sys_idx_inner]!='none' else deepcopy(sys_idx)
+        old_sys_idx = deepcopy(sys_idx_inner) if sys_acts[sys_idx_inner]!='none' else deepcopy(sys_idx)
+        usr_act, usr_act_inner = usr_acts[usr_idx], usr_acts[usr_idx_inner]
+        sys_act, sys_act_inner = sys_acts[sys_idx], sys_acts[sys_idx_inner]
+        
+        if usr_act == "INFORM_INTENT":
+            domain_index = np.random.choice([i for i in range(len(schemas))], 1, p=domain_transition_matrix[domain_index])[0] 
+            state_d = schemas[domain_index]                            
+            intent_i = random.choice(state_d["intents"]) #select intent from domain_i(state_d)
+            usr_mat, sys_mat = is_trans(value_list, intent_i)
+            slots_i = list(intent_i["required_slots"])      
+            
+        if sys_act == "GOODBYE" or sys_act_inner == "GOODBYE":
+            print_actions((usr_act, usr_act_inner), (sys_act, sys_act_inner), intent_i)
+            usr_mat, sys_mat = is_trans(value_list, intent_i)
+            break    
 
 def draw_matrix(matrix, select_acts=[], output_acts=[], labels=[], img_name='default'):
     
