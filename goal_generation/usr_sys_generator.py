@@ -97,6 +97,76 @@ def get_sys_act(sys_act, slots=[]):
         print("sys", sys_act)
     if sys_act == "GOOD_BYE": return True
 
+def show_act():
+    if usr_act != "none": 
+        if usr_act == "INFORM_INTENT":
+            domain_index = np.random.choice([i for i in range(len(schemas))], 1, p=domain_transition_matrix[domain_index])[0] 
+            state_d = schemas[domain_index]                            
+            intent_i = random.choice(state_d["intents"]) #select intent from domain_i(state_d)
+            if is_transactional(value_list, intent_i["name"]):
+                usr_mat = usr_matrix
+                sys_mat = sys_matrix                    
+            else: 
+                usr_mat = non_usr_matrix
+                sys_mat = non_sys_matrix
+            slots_i = list(intent_i["required_slots"])
+            
+            print("usr", f"{usr_act}(", intent_i["name"], ")")
+            
+        elif usr_act == "INFORM":     
+            if slots_i: print("usr", f"{usr_act}(", slots_i, "=)")
+            else: 
+                optional_slot = np.random.choice(list(intent_i["optional_slots"].keys()), 1)[0]
+                print("usr", f"{usr_act}(", optional_slot, "=)")
+
+        elif usr_act == "REQUEST":
+            print("usr", f"{usr_act}(", slots_i, ")")
+        else:
+            print("usr", usr_act)
+
+    if usr_act_inner != "none": 
+        if usr_act_inner == "INFORM_INTENT":
+            
+            domain_index = np.random.choice([i for i in range(len(schemas))], 1, p=domain_transition_matrix[domain_index])[0] 
+            state_d = schemas[domain_index]                            
+            intent_i = random.choice(state_d["intents"]) #select intent from domain_i(state_d)
+            if is_transactional(value_list, intent_i["name"]):
+                usr_mat = usr_matrix
+                sys_mat = sys_matrix
+            else: 
+                usr_mat = non_usr_matrix
+                sys_mat = non_sys_matrix
+            slots_i = list(intent_i["required_slots"])
+             
+            print("usr", f"{usr_act_inner}(", intent_i["name"], ")")
+        elif usr_act_inner == "INFORM":            
+            if slots_i: print("usr", f"{usr_act_inner}(", slots_i, "=)")
+            else: 
+                optional_slot = np.random.choice(list(intent_i["optional_slots"].keys()), 1)[0]
+                print("usr", f"{usr_act_inner}(", optional_slot, "=)")
+        elif usr_act_inner == "REQUEST":
+            print("usr", f"{usr_act_inner}(", slots_i, ")")
+        else:
+            print("usr", usr_act_inner)
+    print()
+    if sys_act != "none":
+        if  sys_act == "REQUEST":
+            if slots_i: print("sys", f"{sys_act}(", slots_i, ")")
+            elif optional_slot: print("sys", f"{sys_act}(", optional_slot, ")")
+            else:
+                optional_slot = np.random.choice(list(intent_i["optional_slots"].keys()), 1)[0]
+                print("sys", f"{sys_act}(", optional_slot, ")")
+        else:
+            print("sys", f"{sys_act}")
+
+    if sys_act_inner != "none": 
+        if  sys_act == "REQUEST":
+            print("sys", f"{sys_act_inner}(", optional_slot, ")")
+        else:
+            print("sys", sys_act_inner)
+
+    
+
 def get_frame():
     '''
     {
@@ -123,104 +193,59 @@ def get_frame():
         "utterance": 
       }
     '''
-    
+
+def gen_init_state(value_list, intent_i):
+    usr_idx, sys_idx = 3, 3
+    usr_idx = np.random.choice([i for i in range(len(non_usr_matrix[sys_idx]))], 1, p=non_usr_matrix[sys_idx])[0]
+    usr_idx_inner = np.random.choice([i for i in range(len(usr_inner_matrix[usr_idx]))], 1, p=usr_inner_matrix[usr_idx])[0]
+    old_usr_idx = deepcopy(usr_idx_inner) if usr_acts[usr_idx_inner]!='none' else deepcopy(usr_idx)
+
+    _, sys_mat = is_trans(value_list, intent_i)
+    sys_idx = np.random.choice([i for i in range(len(sys_mat[old_usr_idx]))], 1, p=sys_mat[old_usr_idx])[0]    
+    sys_idx_inner = np.random.choice([i for i in range(len(sys_inner_matrix[sys_idx]))], 1, p=sys_inner_matrix[sys_idx])[0]
+    old_sys_idx = deepcopy(sys_idx_inner) if sys_acts[sys_idx_inner]!='none' else deepcopy(sys_idx)
+    return (usr_idx, sys_idx), (usr_idx_inner, sys_idx_inner), (old_usr_idx, old_sys_idx)
+
+def is_trans(value_list, intent_i):
+    if is_transactional(value_list, intent_i["name"]):
+        usr_mat = usr_matrix
+        sys_mat = sys_matrix                    
+    else: 
+        usr_mat = non_usr_matrix
+        sys_mat = non_sys_matrix
+    return usr_mat, sys_mat
+
 def generate_goal(file_name):
-    domain_index, usr_idx, sys_idx = 0, 3, 3
+    domain_index = 0
     u_act_list, s_act_list = [], []
     optional_slot = None
     MAX_GOALS, goal_counter = 5, 0
     schemas = json.loads(open(file_name, "r", encoding="utf-8").read())
     value_list = analysis_schema(file_name)
+    domain_index = np.random.choice([i for i in range(len(schemas))], 1, p=domain_transition_matrix[domain_index])[0] 
+    state_d = schemas[domain_index]                            
+    intent_i = random.choice(state_d["intents"]) #select intent from domain_i(state_d)
     #initial state
-    usr_idx = np.random.choice([i for i in range(len(non_usr_matrix[sys_idx]))], 1, p=non_usr_matrix[sys_idx])[0]
-    usr_idx_inner = np.random.choice([i for i in range(len(usr_inner_matrix[usr_idx]))], 1, p=usr_inner_matrix[usr_idx])[0]
-    old_usr_idx = deepcopy(usr_idx_inner) if usr_acts[usr_idx_inner]!='none' else deepcopy(usr_idx)
-
-    sys_idx = np.random.choice([i for i in range(len(non_sys_matrix[old_usr_idx]))], 1, p=non_sys_matrix[old_usr_idx])[0]    
-    sys_idx_inner = np.random.choice([i for i in range(len(sys_inner_matrix[sys_idx]))], 1, p=sys_inner_matrix[sys_idx])[0]
-    old_sys_idx = deepcopy(sys_idx_inner) if sys_acts[sys_idx_inner]!='none' else deepcopy(sys_idx)
+    (usr_idx, sys_idx), (usr_idx_inner, sys_idx_inner), (old_usr_idx, old_sys_idx) = gen_init_state(value_list, intent_i)
    
     while True:          
         usr_act, sys_act = (usr_acts[usr_idx], sys_acts[sys_idx])
-        usr_act_inner, sys_act_inner = (usr_acts[usr_idx_inner], sys_acts[sys_idx_inner])        
-
-        if usr_act != "none": 
-            if usr_act == "INFORM_INTENT":
-                domain_index = np.random.choice([i for i in range(len(schemas))], 1, p=domain_transition_matrix[domain_index])[0] 
-                state_d = schemas[domain_index]                            
-                intent_i = random.choice(state_d["intents"]) #select intent from domain_i(state_d)
-                if is_transactional(value_list, intent_i["name"]):
-                    usr_mat = usr_matrix
-                    sys_mat = sys_matrix                    
-                else: 
-                    usr_mat = non_usr_matrix
-                    sys_mat = non_sys_matrix
-                slots_i = list(intent_i["required_slots"])
-                
-                print("usr", f"{usr_act}(", intent_i["name"], ")")
-                
-            elif usr_act == "INFORM":     
-                if slots_i: print("usr", f"{usr_act}(", slots_i, "=)")
-                else: 
-                    optional_slot = np.random.choice(list(intent_i["optional_slots"].keys()), 1)[0]
-                    print("usr", f"{usr_act}(", optional_slot, "=)")
-
-            elif usr_act == "REQUEST":
-                print("usr", f"{usr_act}(", slots_i, ")")
-            else:
-                print("usr", usr_act)
-
-        if usr_act_inner != "none": 
-            if usr_act_inner == "INFORM_INTENT":
-                
-                domain_index = np.random.choice([i for i in range(len(schemas))], 1, p=domain_transition_matrix[domain_index])[0] 
-                state_d = schemas[domain_index]                            
-                intent_i = random.choice(state_d["intents"]) #select intent from domain_i(state_d)
-                if is_transactional(value_list, intent_i["name"]):
-                    usr_mat = usr_matrix
-                    sys_mat = sys_matrix
-                else: 
-                    usr_mat = non_usr_matrix
-                    sys_mat = non_sys_matrix
-                slots_i = list(intent_i["required_slots"])
-                 
-                print("usr", f"{usr_act_inner}(", intent_i["name"], ")")
-            elif usr_act_inner == "INFORM":            
-                if slots_i: print("usr", f"{usr_act_inner}(", slots_i, "=)")
-                else: 
-                    optional_slot = np.random.choice(list(intent_i["optional_slots"].keys()), 1)[0]
-                    print("usr", f"{usr_act_inner}(", optional_slot, "=)")
-            elif usr_act_inner == "REQUEST":
-                print("usr", f"{usr_act_inner}(", slots_i, ")")
-            else:
-                print("usr", usr_act_inner)
-        print()
-        if sys_act != "none":
-            if  sys_act == "REQUEST":
-                if slots_i: print("sys", f"{sys_act}(", slots_i, ")")
-                elif optional_slot: print("sys", f"{sys_act}(", optional_slot, ")")
-                else:
-                    optional_slot = np.random.choice(list(intent_i["optional_slots"].keys()), 1)[0]
-                    print("sys", f"{sys_act}(", optional_slot, ")")
-            else:
-                print("sys", f"{sys_act}")
-
-        if sys_act_inner != "none": 
-            if  sys_act == "REQUEST":
-                print("sys", f"{sys_act_inner}(", optional_slot, ")")
-            else:
-                print("sys", sys_act_inner)
-
-        if sys_act == "GOODBYE" or sys_act_inner == "GOODBYE":
-            break        
-        print()
+        usr_act_inner, sys_act_inner = (usr_acts[usr_idx_inner], sys_acts[sys_idx_inner]) 
+        domain_index = np.random.choice([i for i in range(len(schemas))], 1, p=domain_transition_matrix[domain_index])[0] 
+        state_d = schemas[domain_index]                            
+        intent_i = random.choice(state_d["intents"]) #select intent from domain_i(state_d)
+        usr_mat, sys_mat = is_trans(value_list, intent_i)
+        slots_i = list(intent_i["required_slots"])      
+        if sys_act == "GOODBYE" or sys_act_inner == "GOODBYE":break 
+        print(np.around(usr_mat, decimals=3), old_sys_idx)
+        
         usr_idx = np.random.choice([i for i in range(len(usr_mat[old_sys_idx]))], 1, p=usr_mat[old_sys_idx])[0]
         usr_idx_inner = np.random.choice([i for i in range(len(usr_inner_matrix[usr_idx]))], 1, p=usr_inner_matrix[usr_idx])[0]
-        old_usr_idx = deepcopy(usr_idx_inner) if usr_acts[usr_idx_inner]!='none' else deepcopy(usr_idx)
+        #old_usr_idx = deepcopy(usr_idx_inner) if usr_acts[usr_idx_inner]!='none' else deepcopy(usr_idx)
         
         sys_idx = np.random.choice([i for i in range(len(sys_mat[old_usr_idx]))], 1, p=sys_mat[old_usr_idx])[0]        
         sys_idx_inner = np.random.choice([i for i in range(len(sys_inner_matrix[sys_idx]))], 1, p=sys_inner_matrix[sys_idx])[0]
-        old_sys_idx = deepcopy(sys_idx_inner) if sys_acts[sys_idx_inner]!='none' else deepcopy(sys_idx)
+        #old_sys_idx = deepcopy(sys_idx_inner) if sys_acts[sys_idx_inner]!='none' else deepcopy(sys_idx)
 
 def draw_matrix(matrix, select_acts=[], output_acts=[], labels=[], img_name='default'):
     

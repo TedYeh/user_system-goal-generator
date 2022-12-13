@@ -9,8 +9,8 @@ def get_action_times(paths, out_file):
          ["INFORM", "REQUEST", "OFFER", "GOODBYE", "CONFIRM", "INFORM_COUNT", "NOTIFY_SUCCESS", "REQ_MORE", "OFFER_INTENT", "NOTIFY_FAILURE", "none"]
     usr_index, sys_index = 0, 0 
     usr_in_index, sys_in_index = -1, -1 
-    usr_matrix = np.zeros((len(sys_acts)-1, len(usr_acts)-1))
-    sys_matrix = np.zeros((len(usr_acts)-1, len(sys_acts)-1))
+    usr_matrix, tmp_usr_matrix = np.zeros((len(sys_acts)-1, len(usr_acts)-1)), np.zeros((len(sys_acts)-1, len(usr_acts)-1))
+    sys_matrix, tmp_sys_matrix = np.zeros((len(usr_acts)-1, len(sys_acts)-1)), np.zeros((len(usr_acts)-1, len(sys_acts)-1))
 
     usr_inner_matrix = np.zeros((len(usr_acts), len(usr_acts)))
     sys_inner_matrix = np.zeros((len(sys_acts), len(sys_acts)))
@@ -22,27 +22,36 @@ def get_action_times(paths, out_file):
             file_name = os.path.join(file_path, d_file)
             dialogs = json.loads(open(file_name, encoding='utf-8').read())
             for dialog in dialogs:
-                tran_bool = is_transactional(value_list, dialog["turns"][0]["frames"][0]["actions"][0]["canonical_values"][-1]) or \
-                     is_transactional(value_list, dialog["turns"][0]["frames"][0]["actions"][-1]["canonical_values"][-1])
-                if not tran_bool: continue      
+                tmp_usr_matrix = np.zeros((len(sys_acts)-1, len(usr_acts)-1))
+                tmp_sys_matrix = np.zeros((len(usr_acts)-1, len(sys_acts)-1))
+                tran_bool = is_transactional(value_list, dialog["turns"][0]["frames"][0]["actions"][0]["values"][-1]) or \
+                     is_transactional(value_list, dialog["turns"][0]["frames"][0]["actions"][-1]["values"][-1])
+                if tran_bool: continue      
                 for turn in dialog["turns"]:
                     for frame in turn["frames"]:                                                 
-                        act = frame["actions"][-1] 
+                        act = frame["actions"][-1]
+                        for a in frame["actions"]:
+                            if a["act"] == "INFORM_INTENT":
+                                tran_bool = is_transactional(value_list, a["values"][-1])
+                                if tran_bool: break  
+                        if tran_bool: continue
                         #print(act['act'], act["values"])  
                         #input()
                         if not is_start: 
-                            if act["act"] == "INFORM_INTENT" and not is_transactional(value_list, act["values"][-1]):continue
+                            if act["act"] == "INFORM_INTENT" and is_transactional(value_list, act["values"][-1]):continue
                             is_start = True
                             if turn['speaker'] == 'USER':usr_index = usr_acts.index(act['act'])
                             else:sys_index = sys_acts.index(act['act'])
                         else:                            
-                            if act["act"] == "INFORM_INTENT" and not is_transactional(value_list, act["values"][-1]):continue
+                            if act["act"] == "INFORM_INTENT" and is_transactional(value_list, act["values"][-1]):continue
                             if turn['speaker'] == 'USER':
                                 usr_index = usr_acts.index(act['act'])
-                                usr_matrix[sys_index, usr_index] += 1
+                                tmp_usr_matrix[sys_index, usr_index] += 1
                             else:
                                 sys_index = sys_acts.index(act['act'])
-                                sys_matrix[usr_index, sys_index] += 1                            
+                                tmp_sys_matrix[usr_index, sys_index] += 1   
+                usr_matrix += np.copy(tmp_usr_matrix)
+                sys_matrix += np.copy(tmp_sys_matrix)
                 is_start = False
 
     pprint(action_times)
@@ -113,8 +122,8 @@ if __name__=="__main__":
     paths = ['train', 'test', 'dev']
     #value_list = analysis_schema('schema.json')
     #print(value_list)
-    time_matrix = '../matrix/matrix.npy'
+    time_matrix = '../matrix/matrix_non.npy'
     get_action_times(paths, time_matrix)
-    get_weighted_matrix(time_matrix, '../matrix/matrix_weighted.npy')
+    get_weighted_matrix(time_matrix, '../matrix/non_matrix_weighted.npy')
     #path = 'ptt\\data\\source_replies\\reply'
     #analysis_ptt(path)
