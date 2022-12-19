@@ -72,6 +72,65 @@ def get_action_times(paths, out_file):
         np.save(f, usr_inner_matrix)
         np.save(f, sys_inner_matrix)
 
+def get_inner_action_times(paths):
+    is_start, is_in_start = False, False
+    usr_acts, sys_acts = ["INFORM", "REQUEST", "INFORM_INTENT", "THANK_YOU", "AFFIRM", "SELECT", "NEGATE", "REQUEST_ALTS", "GOODBYE", "NEGATE_INTENT", "AFFIRM_INTENT", "none"],\
+         ["INFORM", "REQUEST", "OFFER", "GOODBYE", "CONFIRM", "INFORM_COUNT", "NOTIFY_SUCCESS", "REQ_MORE", "OFFER_INTENT", "NOTIFY_FAILURE", "none"]
+    usr_index, sys_index = 0, 0 
+    usr_in_index, sys_in_index = -1, -1 
+    usr_inner_matrix = np.zeros((len(usr_acts), len(usr_acts)))
+    sys_inner_matrix = np.zeros((len(sys_acts), len(sys_acts)))
+    for path in paths:
+        file_path = os.path.join('./sgd', path)
+        for d_file in os.listdir(file_path)[:-1]:
+            file_name = os.path.join(file_path, d_file)
+            dialogs = json.loads(open(file_name, encoding='utf-8').read())
+            for dialog in dialogs:    
+                for turn in dialog["turns"]:
+                    for frame in turn["frames"]: 
+                        '''
+                        if len(frame["actions"]) == 1:
+                            if turn['speaker'] == 'USER':
+                                usr_index = usr_acts.index(frame["actions"][0]['act'])
+                                usr_inner_matrix[usr_index, -1] += 1
+                            else:
+                                sys_index = sys_acts.index(frame["actions"][0]['act'])
+                                sys_inner_matrix[sys_index, -1] += 1
+                        '''        
+
+                        for act_idx in range(len(frame["actions"])):
+                            if not is_start: 
+                                is_start = True
+                                if turn['speaker'] == 'USER':usr_index = usr_acts.index(frame["actions"][act_idx]['act'])
+                                else:sys_index = sys_acts.index(frame["actions"][act_idx]['act'])
+                            else:                            
+                                if turn['speaker'] == 'USER':                                    
+                                    if act_idx == len(frame["actions"])-1:
+                                        usr_index = usr_acts.index(frame["actions"][act_idx]['act'])
+                                        usr_inner_matrix[usr_index, -1] += 1
+                                    else:
+                                        usr_inner_matrix[usr_index, usr_acts.index(frame["actions"][act_idx]['act'])] += 1
+                                        usr_index = usr_acts.index(frame["actions"][act_idx]['act'])
+                                else:
+                                    if act_idx == len(frame["actions"])-1:
+                                        sys_index = sys_acts.index(frame["actions"][act_idx]['act'])
+                                        sys_inner_matrix[sys_index, -1] += 1
+                                    else:
+                                        sys_inner_matrix[sys_index, sys_acts.index(frame["actions"][act_idx]['act'])] += 1
+                                        sys_index = sys_acts.index(frame["actions"][act_idx]['act'])
+                    is_start = False
+
+    for matrix in [usr_inner_matrix, sys_inner_matrix]:
+        for i in range(matrix.shape[0]):
+            if not sum(matrix[i])==0:
+                matrix[i] /= sum(matrix[i])
+            else: matrix[i][-1] = 1.
+        print(np.around(matrix, decimals=3))
+    #print("usr inner")
+    #print(np.around(usr_inner_matrix, decimals=3))
+    #print("sys inner")
+    #print(np.around(sys_inner_matrix, decimals=3))
+
 def get_weighted_matrix(matrix_file, out_file):   
     with open(matrix_file, 'rb') as f:
         usr_matrix, sys_matrix, usr_inner_matrix, sys_inner_matrix = [np.load(f) for _ in range(4)]
@@ -124,6 +183,7 @@ if __name__=="__main__":
     #print(value_list)
     time_matrix = '../matrix/matrix_non.npy'
     get_action_times(paths, time_matrix)
+    #get_inner_action_times(paths)
     get_weighted_matrix(time_matrix, '../matrix/non_matrix_weighted.npy')
     #path = 'ptt\\data\\source_replies\\reply'
     #analysis_ptt(path)

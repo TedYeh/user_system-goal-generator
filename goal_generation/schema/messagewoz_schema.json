@@ -34,13 +34,13 @@
             "description_cn": "傳送訊息給聯絡人",
             "required_slots": [
               "contact_name",
-              "application",
+              "app_name",
               "message"
             ],
             "optional_slots": {},
             "result_slots": [
               "contact_name",
-              "application",
+              "app_name",
               "message"
             ]
           },
@@ -55,7 +55,7 @@
             "optional_slots": {},
             "result_slots": [
               "contact_name",
-              "application"
+              "app_name"
             ]
           },
           {
@@ -63,13 +63,11 @@
             "description": "Get list of message",
             "is_transactional": false ,
             "description_cn": "尋找某應用程式中的訊息",
-            "required_slots": [],
-            "optional_slots": {
-              "message": "dontcare"
-            },
+            "required_slots": ["message"],
+            "optional_slots": {},
             "result_slots": [
               "contact_name",
-              "application",
+              "app_name",
               "message"
             ]
           }
@@ -224,14 +222,14 @@
                 "possible_values": []
             }, 
             {
-                "name": "mail_subject",
+                "name": "subject",
                 "description": "",
                 "description_cn": "郵件主旨",
                 "is_categorical": false,
                 "possible_values": []
             }, 
             {
-                "name": "mail_content",
+                "name": "content",
                 "description": "",
                 "description_cn": "郵件內容",
                 "is_categorical": false,
@@ -253,8 +251,8 @@
             "description_cn": "寄一封信",
             "required_slots": [
               "recipient",
-              "mail_subject",
-              "mail_content"
+              "subject",
+              "content"
             ],
             "optional_slots": {
               "copy_recipient": "dontcare"
@@ -262,8 +260,8 @@
             "result_slots": [
               "sender",
               "recipient",
-              "mail_subject",
-              "mail_content"
+              "subject",
+              "content"
             ]
           },
           {
@@ -273,16 +271,16 @@
             "description_cn": "依據所給條件找一封信",
             "required_slots": [],
             "optional_slots": {
-              "mail_subject": "dontcare",
+              "subject": "dontcare",
               "recipient": "dontcare",
               "sender": "dontcare",
-              "mail_content": "dontcare"
+              "content": "dontcare"
             },
             "result_slots": [
               "sender",
               "recipient",
-              "mail_subject",
-              "mail_content"
+              "subject",
+              "content"
             ]
           }
         ]
