@@ -26,24 +26,24 @@ def get_action_times(paths, out_file):
                 tmp_sys_matrix = np.zeros((len(usr_acts)-1, len(sys_acts)-1))
                 tran_bool = is_transactional(value_list, dialog["turns"][0]["frames"][0]["actions"][0]["values"][-1]) or \
                      is_transactional(value_list, dialog["turns"][0]["frames"][0]["actions"][-1]["values"][-1])
-                if tran_bool: continue      
+                if not tran_bool: continue      
                 for turn in dialog["turns"]:
                     for frame in turn["frames"]:                                                 
-                        act = frame["actions"][-1]
+                        act = frame["actions"][0]
                         for a in frame["actions"]:
                             if a["act"] == "INFORM_INTENT":
                                 tran_bool = is_transactional(value_list, a["values"][-1])
-                                if tran_bool: break  
+                                if not tran_bool: break  
                         if tran_bool: continue
                         #print(act['act'], act["values"])  
                         #input()
                         if not is_start: 
-                            if act["act"] == "INFORM_INTENT" and is_transactional(value_list, act["values"][-1]):continue
+                            if act["act"] == "INFORM_INTENT" and not is_transactional(value_list, act["values"][-1]):continue
                             is_start = True
                             if turn['speaker'] == 'USER':usr_index = usr_acts.index(act['act'])
                             else:sys_index = sys_acts.index(act['act'])
                         else:                            
-                            if act["act"] == "INFORM_INTENT" and is_transactional(value_list, act["values"][-1]):continue
+                            if act["act"] == "INFORM_INTENT" and not is_transactional(value_list, act["values"][-1]):continue
                             if turn['speaker'] == 'USER':
                                 usr_index = usr_acts.index(act['act'])
                                 tmp_usr_matrix[sys_index, usr_index] += 1
@@ -181,9 +181,9 @@ if __name__=="__main__":
     paths = ['train', 'test', 'dev']
     #value_list = analysis_schema('schema.json')
     #print(value_list)
-    time_matrix = '../matrix/matrix_non.npy'
+    time_matrix = '../matrix/matrix.npy'
     get_action_times(paths, time_matrix)
     #get_inner_action_times(paths)
-    get_weighted_matrix(time_matrix, '../matrix/non_matrix_weighted.npy')
+    get_weighted_matrix(time_matrix, '../matrix/matrix_weighted.npy')
     #path = 'ptt\\data\\source_replies\\reply'
     #analysis_ptt(path)
