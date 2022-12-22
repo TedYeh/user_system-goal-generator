@@ -1,14 +1,45 @@
-﻿"Multi-Domain: (Messaging, Mail)",,
-Annotation(Actions),Template utterances,ChatGPT
-U: INFORM_INTENT(FindContact),我想要找聯絡人。,嗨，我想要找聯絡人。你能幫我嗎？
-S: REQUEST(contact_name),請問聯絡人。,可以的，你有什麼聯絡人的資訊可以提供給我？
-U: INFORM(contact_name),資訊如下:聯絡人:嗨你好。,"聯絡人的名字是 ""嗨你好""。"
-"S: OFFER(contact_name,app_name,message)",這是依據條件所找到的聯絡人、應用程式、訊息。,很抱歉，你提供的資訊不足以讓我精確地識別你要找的聯絡人。你能提供更多的資訊嗎，像是聯絡人的全名和其他相關資訊？
-U: REQUEST(contact_name),我想知道聯絡人。,"聯絡人的全名是 ""嗨你好""，我相信他們可能有關聯到某個應用程式或訊息。"
-"S: INFORM(contact_name) OFFER(contact_name,app_name,message)",資訊如下:聯絡人:嗨你好，聯絡人、應用程式、訊息。,"根據你提供的資訊，我找到了一個名為 ""嗨你好"" 的聯絡人，他們可能有關聯到某個應用程式或訊息。你想要知道這個聯絡人的其他資訊嗎？"
-U: SELECT(),好的,不用了，我已經知道我想知道的。謝謝你的幫忙。
-S: OFFER_INTENT(FindMail),您會想要找一封信嗎？,不客氣。那麼，你還有其他需要我幫忙的嗎？比如找一封信？
-"U: INFORM(recipient,subject)",資訊如下:收件者:Wan Chris，主旨: 為什麼台灣電價可以凍漲？。,"實際上，我想知道能否找到一封信。收件者是 ""Wan Chris""，主旨是 ""為什麼台灣電價可以凍漲？""。"
-"S: OFFER(subject,content,copy_recipient,recipient,sender)",這是依據條件所找到的主旨、內容、副本收件者、收件者、寄件者。,"根據你提供的信息，我已經找到一封信，主旨是 ""為什麼台灣電價可以凍漲？""，收件者是 ""Wan Chris""。這封信還包括寄件者人和副本收件者。你還想知道這封信的其他信息吗？"
-U: GOODBYE(),再見,不用了，我已經知道我想知道的。再見。
-S: GOODBYE(),再會,不用謝，很高興能幫到你。再見！
+﻿Annotation(Actions),Template utterances
+INFORM_INTENT(GetAvailableTime),我想要有空的時間。
+REQUEST(event_date),請問活動日期。
+INFORM(event_date),資訊如下:活動日期:2022/9/25。
+"OFFER(event_name,event_location,event_content,participant,event_date,event_time)",這是依據條件所找到的活動名稱、活動地點、活動內容、參加者、活動日期、活動時間。
+REQUEST(event_date),我想知道活動日期。
+INFORM(event_date),資訊如下:活動日期:2022/9/25。
+REQUEST_ALTS(),還有其他的嗎
+"OFFER(event_name,event_location,event_content,participant,event_date,event_time)",這是依據條件所找到的活動名稱、活動地點、活動內容、參加者、活動日期、活動時間。
+REQUEST_ALTS(),還有其他的嗎
+"OFFER(event_name,event_location,event_content,participant,event_date,event_time)",這是依據條件所找到的活動名稱、活動地點、活動內容、參加者、活動日期、活動時間。
+SELECT(),好的
+OFFER_INTENT(SendMail),您會想要寄一封信嗎？
+"INFORM(recipient,copy_recipient,content,subject)",資訊如下:收件者:信浅野，副本收件者:For Lee，內容:江澤民應該算是支那裡面有讀一點書的了  以他的能力  應該很清楚明白他選的接班人只有小學畢業  為什麼還要選小學生呢？  有沒有八卦？   ，主旨: 江澤民為什麼要選小學生當接班人？。
+"CONFIRM(subject,content,copy_recipient,recipient,sender)",請確認以下資訊是否正確？主旨: 江澤民為什麼要選小學生當接班人？，內容:江澤民應該算是支那裡面有讀一點書的了  以他的能力  應該很清楚明白他選的接班人只有小學畢業  為什麼還要選小學生呢？  有沒有八卦？   ，寄件者:neko fake，副本收件者:For Lee，收件者:信浅野。
+NEGATE(),不
+"CONFIRM(subject,content,copy_recipient,recipient,sender)",請確認以下資訊是否正確？主旨: 江澤民為什麼要選小學生當接班人？，內容:江澤民應該算是支那裡面有讀一點書的了  以他的能力  應該很清楚明白他選的接班人只有小學畢業  為什麼還要選小學生呢？  有沒有八卦？   ，寄件者:neko fake，副本收件者:For Lee，收件者:信浅野。
+AFFIRM(),是的，沒有問題
+NOTIFY_SUCCESS(),已達成需求
+THANK_YOU(),謝謝!
+REQ_MORE(),需要其他服務嗎？
+INFORM_INTENT(FindContact),我想要找聯絡人。
+REQUEST(contact_name),請問聯絡人。
+INFORM(contact_name),資訊如下:聯絡人:把我放在你猩裡。
+INFORM_COUNT(1),總共有以下1的結果
+INFORM_INTENT(FindMail),我想要找一封信。
+"REQUEST(subject,recipient)",請問主旨、收件者。
+"INFORM(subject,recipient)",資訊如下:主旨: 江澤民為什麼要選小學生當接班人？，收件者:信浅野。
+"OFFER(subject,content,copy_recipient,recipient,sender)",這是依據條件所找到的主旨、內容、副本收件者、收件者、寄件者。
+"INFORM(subject,recipient) SELECT()",資訊如下:主旨: 江澤民為什麼要選小學生當接班人？，收件者:信浅野，好的
+INFORM_COUNT(0),總共有以下0的結果
+SELECT(),好的
+OFFER_INTENT(GetAvailableTime),您會想要有空的時間嗎？
+INFORM(event_date),資訊如下:活動日期:2022/9/25。
+INFORM_COUNT(1),總共有以下1的結果
+INFORM_INTENT(FindMail),我想要找一封信。
+"REQUEST(subject,content)",請問主旨、內容。
+"INFORM(subject,content)",資訊如下:主旨: 台北市要準備發大財了嗎？，內容:目前看來 曾經在高雄發大財的團隊 已經慢慢進駐在台北市 台北市是不是要準備去挖石油、路平燈亮水溝通 到最後台北市發大財了呢？   。
+INFORM_COUNT(0),總共有以下0的結果
+REQUEST(subject),我想知道主旨。
+INFORM(subject),資訊如下:主旨: 台北市要準備發大財了嗎？。
+SELECT(),好的
+REQ_MORE(),需要其他服務嗎？
+THANK_YOU(),謝謝!
+GOODBYE(),再會

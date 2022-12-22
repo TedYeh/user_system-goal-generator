@@ -42,7 +42,7 @@ def insert_data(conn, table, data):
 
 
 def read_csv(file_name):
-    with open(file_name, newline = '', encoding = 'utf-8') as csvfile:
+    with open(file_name, newline = '', encoding = 'utf-8-sig') as csvfile:
         n = 0
         rows = csv.reader(csvfile)
         for row in rows:
@@ -59,7 +59,7 @@ def find_result(domain, slot_values):
     query = f'SELECT * FROM {domain} WHERE'
     for k, v in slot_values.items():
         cond.append(f' "{k}" LIKE "%{v}%" ')
-    query += 'AND'.join(cond)
+    query += 'OR'.join(cond)
     for row in c.execute(query):
         results.append(row)
     conn.close()
@@ -125,7 +125,7 @@ def main():
 
 if __name__ == "__main__":
     conn = main()
-    '''
+    ''''''
     for data in read_csv('csv/message_entityies.csv'):
         print(data)
         insert_data(conn, 'Messaging_1', data)
@@ -137,4 +137,4 @@ if __name__ == "__main__":
     for data in read_csv('csv/mail_entityies.csv'):
         print(data)
         insert_data(conn, 'Mail_1', data)
-    '''
+    

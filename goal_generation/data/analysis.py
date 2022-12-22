@@ -181,9 +181,17 @@ if __name__=="__main__":
     paths = ['train', 'test', 'dev']
     #value_list = analysis_schema('schema.json')
     #print(value_list)
-    time_matrix = '../matrix/matrix.npy'
-    get_action_times(paths, time_matrix)
+    #time_matrix = '../matrix/matrix.npy'
+    #get_action_times(paths, time_matrix)
     #get_inner_action_times(paths)
-    get_weighted_matrix(time_matrix, '../matrix/matrix_weighted.npy')
+    #get_weighted_matrix(time_matrix, '../matrix/matrix_weighted.npy')
     #path = 'ptt\\data\\source_replies\\reply'
     #analysis_ptt(path)
+    tmp = json.loads(open('sgd/train/dialogues_010.json', 'r').read())
+    for i in tmp:
+        for turn in i['turns']:
+            for frames in turn['frames']:
+                pprint(frames)
+                print(len(frames))
+                input()
+                
