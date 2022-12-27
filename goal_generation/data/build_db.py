@@ -51,15 +51,30 @@ def read_csv(file_name):
                 continue
             yield row
 
-def find_result(domain, slot_values):
+def find_result(domain, slot_values, slots=[]):
     conn = create_connection(DB)
     c = conn.cursor()
     results = []
     cond = []
-    query = f'SELECT * FROM {domain} WHERE'
+    if len(slots) == 0: query = f'SELECT * FROM {domain} WHERE'
+    else: query = f'SELECT {",".join(slots)} FROM {domain} WHERE'
     for k, v in slot_values.items():
         cond.append(f' "{k}" LIKE "%{v}%" ')
     query += 'OR'.join(cond)
+    for row in c.execute(query):
+        results.append(row)
+    conn.close()
+    return results
+
+def find_result_slot(domain, slot_values, slots):
+    conn = create_connection(DB)
+    c = conn.cursor()
+    results = []
+    cond = []
+    query = f'SELECT {",".join(slots)} FROM {domain} WHERE'
+    for k, v in slot_values.items():
+        cond.append(f' "{k}" LIKE "%{v}%" ')
+    query += 'AND'.join(cond)
     for row in c.execute(query):
         results.append(row)
     conn.close()
