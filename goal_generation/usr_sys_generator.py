@@ -362,7 +362,7 @@ def usr_act2robot_utt(usr_actions, intent, domain):
         'event_date': '活動日期', 'event_time': '活動時間', 'event_location':'活動地點', 'event_name':'活動名稱', 'event_content':'活動內容',\
         'participant':'參加活動的人', 'available_start_time':'開始時間', 'available_end_time':'結束時間', 'messaging':'訊息',\
         'getevents':'知道相關的活動', 'lookupevents':'依據日期去找活動', 'getavailabletime':'我什麼時候有空', 'addevent':'添加一個活動',\
-        'recipient':'收件者', 'sender':'寄件者', 'subject':'主旨', 'content':'內容', 'copy_recipient':'副本收件者', 'mail':'信', 'calendar':'行事曆活動' \
+        'recipient':'收件者', 'sender':'寄件者', 'subject':'主旨', 'content':'內容', 'copy_recipient':'副本收件者', 'mail':'信', 'calendar':'行事曆活動', \
         'sendmail':'寄一封信', 'findmail':'找一封信', 'REQUEST':'我想知道', 'THANK_YOU':'謝謝，已經達到我想要的事了。', 'INFORM_INTENT':'我想要', 'INFORM':'好的，',\
         'AFFIRM':'', 'SELECT':'', 'NEGATE':'', 'REQUEST_ALTS':'還有其他的嗎。', 'GOODBYE':'再見。', 'NEGATE_INTENT':'目前不需要。', 'AFFIRM_INTENT':'好的，麻煩你了。'}
         
@@ -407,9 +407,9 @@ def sys_act2robot_utt(sys_actions, intent, domain):
     template, n = "", 0
     vocab = {'findcontact': '找聯絡人', 'findmessage': '找訊息', 'sendmessage': '傳送訊息', 'message': '訊息', 'contact_name': '聯絡人', 'app_name': '應用程式',\
         'event_date': '活動日期', 'event_time': '活動時間', 'event_location':'活動地點', 'event_name':'活動名稱', 'event_content':'活動內容',\
-        'participant':'參加者', 'available_start_time':'開始時間', 'available_end_time':'結束時間',\
+        'participant':'參加者', 'available_start_time':'開始時間', 'available_end_time':'結束時間', 'messaging':'訊息',\
         'getevents':'知道相關的活動', 'lookupevents':'找活動', 'getavailabletime':'有空的時間', 'addevent':'添加一個活動',\
-        'recipient':'收件者', 'sender':'寄件者', 'subject':'主旨', 'content':'內容', 'copy_recipient':'副本收件者', \
+        'recipient':'收件者', 'sender':'寄件者', 'subject':'主旨', 'content':'內容', 'copy_recipient':'副本收件者', 'mail':'信件的', 'calendar':'行事曆活動', \
         'sendmail':'寄一封信', 'findmail':'找一封信', 'REQUEST':'請給我一些資訊，比如', 'INFORM_COUNT':'總共有以下', 'INFORM':'好的，',\
         'OFFER':'這是依據條件所找到的', 'CONFIRM':'請確認以下資訊是否正確？', 'NOTIFY_SUCCESS':'已達成', 'REQ_MORE':'還需要其他服務嗎？', 'GOODBYE':'再會，掰掰。', 'OFFER_INTENT':'您會想要', \
         'NOTIFY_FAILURE': '不好意思，無法達成'}
