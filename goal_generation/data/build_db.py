@@ -59,7 +59,7 @@ def find_result(domain, slot_values, slots=[]):
     if len(slots) == 0: query = f'SELECT * FROM {domain} WHERE'
     else: query = f'SELECT {",".join(slots)} FROM {domain} WHERE'
     for k, v in slot_values.items():
-        cond.append(f' "{k}" LIKE "%{v}%" ')
+        cond.append(f' "{k}" LIKE "%{v[0]}%" ')
     query += 'OR'.join(cond)
     for row in c.execute(query):
         results.append(row)
@@ -73,7 +73,7 @@ def find_result_slot(domain, slot_values, slots):
     cond = []
     query = f'SELECT {",".join(slots)} FROM {domain} WHERE'
     for k, v in slot_values.items():
-        cond.append(f' "{k}" LIKE "%{v}%" ')
+        cond.append(f' "{k}" LIKE "%{v[0]}%" ')
     query += 'AND'.join(cond)
     for row in c.execute(query):
         results.append(row)

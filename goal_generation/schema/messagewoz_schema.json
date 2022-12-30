@@ -45,19 +45,6 @@
             ]
           },
           {
-            "name": "FindContact",
-            "description": "Find a contact from a application",
-            "is_transactional": false ,
-            "description_cn": "尋找某應用程式中的聯絡人",
-            "required_slots": [
-              "contact_name"
-            ],
-            "optional_slots": {},
-            "result_slots": [
-              "app_name"
-            ]
-          },
-          {
             "name": "FindMessage",
             "description": "Get list of message",
             "is_transactional": false ,
@@ -134,30 +121,18 @@
                 "possible_values": []
             }
         ],
-        "intents": [
-            {
-              "name": "GetEvents",
-              "description": "Get list of all calendar events for the user on a given day",
-              "is_transactional": false,
-              "required_slots": [
-                "event_date"
-              ],
-              "optional_slots": {},
-              "result_slots": [
-                "event_date",
-                "event_time",
-                "event_location",
-                "event_name"
-              ]
-            },
+        "intents": [            
             {
               "name": "LookupEvents",
               "description": "Search for a event",
               "is_transactional": false,
-              "required_slots": ["event_date"],
+              "required_slots": ["event_name"],
               "optional_slots": {
                 "event_time": "dontcare",
-                "event_name": "dontcare"
+                "event_date": "dontcare",
+                "event_content": "dontcare",
+                "event_location": "dontcare",
+                "participant": "dontcare"
               },
               "result_slots": [
                 "event_date",
@@ -167,34 +142,22 @@
               ]
             },
             {
-              "name": "GetAvailableTime",
-              "description": "Get a list of available times for the user on a given day",
-              "is_transactional": false,
-              "required_slots": [
-                "event_date"
-              ],
-              "optional_slots": {},
-              "result_slots": [
-                "event_date",
-                "available_start_time",
-                "available_end_time"
-              ]
-            },
-            {
               "name": "AddEvent",
               "description": "Add event to the user's calendar",
               "is_transactional": true,
               "required_slots": [
                 "event_name",
                 "event_date",
-                "event_location",
                 "event_time"
               ],
-              "optional_slots": {},
+              "optional_slots": {
+                "event_content": "dontcare",
+                "event_location": "dontcare",
+                "participant": "dontcare"
+              },
               "result_slots": [
                 "event_date",
                 "event_time",
-                "event_location",
                 "event_name"
               ]
             }
