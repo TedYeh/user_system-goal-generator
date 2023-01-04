@@ -6,21 +6,24 @@
         "slots": [
             {
                 "name": "contact_name",
+                "type": "name",
                 "description": "Name of contact to send to",
                 "description_cn": "傳送訊息的使用者",
                 "is_categorical": false,
                 "possible_values": []
             },  
             {
-                "name": "app_name",
-                "description": "Application of sending the message",
-                "description_cn": "傳送訊息所需用到的應用程式",
+                "name": "group_name",
+                "type": "name",
+                "description": "name of group to send to",
+                "description_cn": "社團名稱",
                 "is_categorical": false,
                 "possible_values": []
             },
             {
                 "name": "message",
-                "description": "Message to send to contact",
+                "type": "keyword",
+                "description": "Message to send to contact or group",
                 "description_cn": "需要傳送的訊息",
                 "is_categorical": false,
                 "possible_values": []
@@ -33,14 +36,15 @@
             "is_transactional": true,
             "description_cn": "傳送訊息給聯絡人",
             "required_slots": [
-              "contact_name",
-              "app_name",
               "message"
             ],
-            "optional_slots": {},
+            "optional_slots": {
+              "group_name": "dontcare",
+              "contact_name": "dontcare"
+            },
             "result_slots": [
               "contact_name",
-              "app_name",
+              "group_name", 
               "message"
             ]
           },
@@ -48,12 +52,16 @@
             "name": "FindMessage",
             "description": "Get list of message",
             "is_transactional": false ,
-            "description_cn": "尋找某應用程式中的訊息",
-            "required_slots": ["message"],
-            "optional_slots": {},
+            "description_cn": "尋找訊息",
+            "required_slots": [],
+            "optional_slots": {
+              "contact_name": "dontcare", 
+              "group_name": "dontcare", 
+              "message": "dontcare"
+            },
             "result_slots": [
               "contact_name",
-              "app_name",
+              "group_name",
               "message"
             ]
           }
@@ -66,6 +74,7 @@
         "slots": [
             {
                 "name": "event_date",
+                "type": "time",
                 "description": "Date of event or for checking availability",
                 "description_cn": "活動日期",
                 "is_categorical": false,
@@ -73,6 +82,7 @@
             },
             {
                 "name": "event_time",
+                "type": "time",
                 "description": "Start time of event",
                 "description_cn": "活動時間",
                 "is_categorical": false,
@@ -80,6 +90,7 @@
             },
             {
                 "name": "event_location",
+                "type": "name",
                 "description": "Location of event",
                 "description_cn": "活動地點",
                 "is_categorical": false,
@@ -87,6 +98,7 @@
             },
             {
                 "name": "event_name",
+                "type": "keyword",
                 "description": "Title of event",
                 "description_cn": "活動名稱",
                 "is_categorical": false,
@@ -94,6 +106,7 @@
             },
             {
                 "name": "event_content",
+                "type": "keyword",
                 "description": "Content of event",
                 "description_cn": "活動內容",
                 "is_categorical": false,
@@ -101,22 +114,9 @@
             },
             {
                 "name": "participant",
+                "type": "name",
                 "description": "Participant of event",
                 "description_cn": "參與活動的參加者",
-                "is_categorical": false,
-                "possible_values": []
-            },
-            {
-                "name": "available_start_time",
-                "description": "Starting time of available time slot",
-                "description_cn": "活動開始時間",
-                "is_categorical": false,
-                "possible_values": []
-            },
-            {
-                "name": "available_end_time",
-                "description": "Ending time of available time slot",
-                "description_cn": "活動結束時間",
                 "is_categorical": false,
                 "possible_values": []
             }
@@ -170,6 +170,7 @@
         "slots": [
             {
                 "name": "recipient",
+                "type": "name",
                 "description": "",
                 "description_cn": "收件者",
                 "is_categorical": false,
@@ -177,6 +178,7 @@
             },  
             {
                 "name": "sender",
+                "type": "name",
                 "description": "",
                 "description_cn": "寄件者",
                 "is_categorical": false,
@@ -184,6 +186,7 @@
             }, 
             {
                 "name": "subject",
+                "type": "keyword",
                 "description": "",
                 "description_cn": "郵件主旨",
                 "is_categorical": false,
@@ -191,6 +194,7 @@
             }, 
             {
                 "name": "content",
+                "type": "keyword",
                 "description": "",
                 "description_cn": "郵件內容",
                 "is_categorical": false,
@@ -198,6 +202,7 @@
             }, 
             {
                 "name": "copy_recipient",
+                "type": "name",
                 "description": "",
                 "description_cn": "副本收件者",
                 "is_categorical": false,
