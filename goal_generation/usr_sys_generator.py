@@ -14,60 +14,7 @@ domain_transition_matrix = [
         [0.4, 0.2, 0.4],
         [0.4, 0.4, 0.2]
 ]
-'''
-usr_matrix = [
-    [0., 0.2, 0.3, 0.5, 0., 0., 0., 0., 0., 0., 0.],
-    [1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
-    [0., 0., 0., 0., 0., 0.5, 0.5, 0., 0., 0., 0.], 
-    [0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0.],
-    [0., 0., 0., 0., 0.8, 0., 0.2, 0., 0., 0., 0.],
-    [0., 0., 0., 0.5, 0., 0., 0., 0.5, 0., 0., 0.],
-    [0., 0., 0., 0.5, 0., 0., 0., 0., 0.5, 0., 0.],
-    [0., 0., 0.2, 0., 0., 0., 0.8, 0., 0., 0., 0.],
-    [0., 0., 0., 0., 0., 0., 0., 0., 0., 0.8, 0.2],
-    [1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.]
-]
-sys_matrix = [
-    [0., 0., 1., 0., 0., 0., 0., 0., 0., 0.],
-    [1., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
-    [0., 1., 0., 0., 0., 0., 0., 0., 0., 0.],
-    [0., 0., 0., 1., 0., 0., 0., 0., 0., 0.],
-    [0., 0., 0., 0., 0., 0., 0.7, 0., 0., 0.3],
-    [0., 0., 0., 0.6, 0., 0.2, 0., 0.2, 0., 0.],
-    [0., 0., 0., 1., 0., 0., 0., 0., 0., 0.],
-    [0., 0., 1., 0., 0., 0., 0., 0., 0., 0.],
-    [0., 0., 0., 1., 0., 0., 0., 0., 0., 0.],
-    [0., 0., 0., 0.3, 0., 0., 0., 0.7, 0., 0.],
-    [0., 1., 0., 0., 0., 0., 0., 0., 0., 0.]
-]
-usr_inner_matrix = np.array([
-    [0.529, 0.   , 0.067, 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.404],
-    [0.   , 0.312, 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.688],
-    [0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 1.   ],
-    [0.089, 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.911],
-    [0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 1.   ],
-    [0.149, 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.851],
-    [0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 1.   ],
-    [0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 1.   ],
-    [0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 1.   ],
-    [0.28 , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.72 ],
-    [1.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   ],
-    [0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 1.   ]
-])
-sys_inner_matrix = np.array([
-    [0.278, 0.   , 0.059, 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.663],
-    [0.   , 0.198, 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.802],
-    [0.   , 0.   , 0.664, 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.336],
-    [0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 1.   ],
-    [0.   , 0.   , 0.   , 0.   , 0.638, 0.   , 0.   , 0.   , 0.   , 0.   , 0.362],
-    [0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 1.   ],
-    [0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 1.   ],
-    [0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 1.   ],
-    [0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 1.   ],
-    [0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 1.   ],
-    [0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 1.   ]
-])
-'''
+
 tagger_path = './tagger'
 if not os.path.isdir(tagger_path):
     from ckiptagger import data_utils
@@ -204,9 +151,9 @@ def get_usr_actions(acts, slots_, intent, data):
             ann_str = ''                   
             for slot in slots:  
                 #if data[slot].values[0] == "無":continue
-                if not is_transactional(value_list, intent["name"]): 
-                    if slot in ['message', 'event_content', 'subject', 'content']:     
-                        data[slot].values[0] = get_query_text(data[slot].values[0])
+                #if not is_transactional(value_list, intent["name"]): 
+                #    if slot in ['message', 'event_content', 'subject', 'content']:     
+                #        data[slot].values[0] = get_query_text(data[slot].values[0])
                 act_dict = {"act": act, "canonical_values": [], "slot": slot, "values": []} 
                 act_dict["canonical_values"].append(data[slot].values[0])
                 act_dict["values"].append(data[slot].values[0])   
@@ -243,9 +190,9 @@ def get_usr_actions(acts, slots_, intent, data):
             annotations.append(f"{act}(" + f"{intent['name']})")
             for slot in slots:  
                 #if data[slot].values[0] == "無":continue
-                if not is_transactional(value_list, intent["name"]): 
-                    if slot in ['message', 'event_content', 'subject', 'content']:     
-                        data[slot].values[0] = get_query_text(data[slot].values[0])
+                #if not is_transactional(value_list, intent["name"]): 
+                #    if slot in ['message', 'event_content', 'subject', 'content']:     
+                #        data[slot].values[0] = get_query_text(data[slot].values[0])
                 slot_values[slot] = [data[slot].values[0]]
         elif act=="AFFIRM_INTENT":
             act_dict = {"act": act, "canonical_values": [], "slot": "", "values": []}
@@ -253,9 +200,9 @@ def get_usr_actions(acts, slots_, intent, data):
             annotations.append(f"{act}()")
             for slot in slots:  
                 #if data[slot].values[0] == "無":continue
-                if not is_transactional(value_list, intent["name"]): 
-                    if slot in ['message', 'event_content', 'subject', 'content']:     
-                        data[slot].values[0] = get_query_text(data[slot].values[0])
+                #if not is_transactional(value_list, intent["name"]): 
+                #    if slot in ['message', 'event_content', 'subject', 'content']:     
+                #        data[slot].values[0] = get_query_text(data[slot].values[0])
                 slot_values[slot] = [data[slot].values[0]]
         else: 
             act_dict = {"act": act, "canonical_values": [], "slot": "", "values": []}
@@ -266,11 +213,6 @@ def get_usr_actions(acts, slots_, intent, data):
         elif act == "NEGATE":
             for slot in slots: slot_values[slot] = [data[slot].values[0]]
         actions += tmp_acts
-        #print(act_dict, slots)
-        #if act!='none': print(act, intent["name"])
-    #print('usr', actions)
-    #print('usr', slot_values, act)
-    #input()
     return actions, slot_values, slots, 'U: ' + ' '.join(annotations), requested_slots
 
 def get_sys_actions(acts, slots, slot_values, domain, intent, df):
@@ -361,56 +303,6 @@ def print_actions(u_acts, s_acts, intent_i):
     print(s_acts[0])
     if s_acts[1]!='none': print(s_acts[1])
 
-def usr_act2robot_utt(usr_actions, intent, domain):
-    template, n = "", 0
-    vocab = {'findmessage': '找一則訊息', 'sendmessage': '傳送一則訊息', 'message': '內容', 'contact_name': '聯絡人全名', 'app_name': '應用程式',\
-        'event_date': '日期', 'event_time': '時間', 'event_location':'地點', 'event_name':'名稱', 'event_content':'內容',\
-        'participant':'參加的人', 'available_start_time':'開始時間', 'available_end_time':'結束時間', 'messaging':'訊息',\
-        'lookupevents':'找一個活動', 'getavailabletime':'找我什麼時候有空', 'addevent':'添加一個活動',\
-        'recipient':'收件者', 'sender':'寄件者', 'subject':'主旨', 'content':'內容', 'copy_recipient':'副本收件者', 'mail':'信', 'calendar':'活動', \
-        'sendmail':'寄一封信', 'findmail':'找一封信', 'REQUEST':'我想知道', 'THANK_YOU':'謝謝，已經達到我想要的事了。', 'INFORM_INTENT':'請幫我', 'INFORM':'好的，',\
-        'AFFIRM':'對於這個', 'SELECT':'', 'NEGATE':'先這樣吧。', 'REQUEST_ALTS':'還有其他相關', 'GOODBYE':'', 'NEGATE_INTENT':'目前不需要。', 'AFFIRM_INTENT':'好的，麻煩你'}
-    value_list = analysis_schema("./schema/messagewoz_schema.json")    
-    #print(usr_actions)
-    slots_pos = []
-    for u_act in usr_actions:
-        act, _, slot, value = list(u_act.values())
-        #print(act)
-        #if value == "無":continue
-        if n==0:
-            if act == "INFORM":
-                if is_transactional(value_list, intent["name"]):
-                    template += vocab[act]
-                else: template += vocab[act]+f"請用關鍵字詞查詢，"
-            elif act == "REQUEST": template += f"{vocab[act]}這個{vocab[domain.replace('_1', '').lower()]}的"
-            elif act=="REQUEST_ALTS":template += f"{vocab[act]}的{vocab[domain.replace('_1', '').lower()]}嗎？"
-            else: template += vocab[act]
-        
-        if act == "INFORM_INTENT": template += f"{vocab[value[0].lower()]}。"
-        elif act == "INFORM":
-            if value[0] == "無":
-                if is_transactional(value_list, intent["name"]): template += f"不需要添加{vocab[slot.lower()]}，"
-                else: template += f"沒有{vocab[slot.lower()]}，"
-            else: template += f"{vocab[slot.lower()]}是「{value[0]}」，"
-        elif act == "REQUEST": template += f"{vocab[slot.lower()]}、"
-        elif act == "THANK_YOU": template += f"謝謝。"
-        elif act == "AFFIRM": template += f"的資訊，我沒有任何問題。"
-        elif act == "SELECT": template += f"好的。"
-        elif act == "NEGATE": pass
-        elif act == "REQUEST_ALTS": pass
-        elif act == "GOODBYE": template += f"再會。"
-        elif act == "NEGATE_INTENT": pass        
-        elif act == "AFFIRM_INTENT": template += f"{vocab[intent['name'].lower()]}了。"
-        n += 1
-    template = list(template)
-    if template[-1] == '，':template[-1] = '。'
-    if template[-1] == '、':template[-1] = '。'
-    template = ''.join(template)
-    #print(template)
-    slots_pos = find_slot(template, usr_actions)
-    print("使用者:", template, '\n')
-    return template, slots_pos
-
 def find_slot(uttrance, acts):
     slots = []    
     for a in acts:        
@@ -421,57 +313,70 @@ def find_slot(uttrance, acts):
                     slots.append({"exclusive_end": match.end(), "slot": slot, "start": match.start()})
     return slots
 
-def sys_act2robot_utt(sys_actions, intent, domain):
-    template, n = "", 0
-    vocab = {'findmessage': '找', 'sendmessage': '送出', 'message': '內容', 'contact_name': '聯絡人', 'app_name': '應用程式',\
-        'event_date': '日期', 'event_time': '時間', 'event_location':'地點', 'event_name':'名稱', 'event_content':'內容',\
-        'participant':'參加者', 'available_start_time':'開始時間', 'available_end_time':'結束時間', 'messaging':'訊息',\
-        'getevents':'知道相關的活動', 'lookupevents':'找活動', 'getavailabletime':'有空的時間', 'addevent':'添加活動',\
-        'recipient':'收件者', 'sender':'寄件者', 'subject':'主旨', 'content':'內容', 'copy_recipient':'副本收件者', 'mail':'信件', 'calendar':'活動', \
-        'sendmail':'寄出', 'findmail':'找', 'REQUEST':'能告訴我這個', 'INFORM_COUNT':'我找到相關的', 'INFORM':'好的，',\
-        'OFFER':'這是依據', 'CONFIRM':'請確認', 'NOTIFY_SUCCESS':'', 'REQ_MORE':'', 'GOODBYE':'', 'OFFER_INTENT':'您會想要', \
-        'NOTIFY_FAILURE': '不好意思，無法達成您對於'}
-    #print(sys_actions)
-    slots_pos = []
-    value_list = analysis_schema("./schema/messagewoz_schema.json")    
+def usr_act2robot_utt(usr_actions, domain, uttr_template):
+    print('usr', usr_actions)
+    slots, slot_dict = [], {}
+    templates = json.loads(open(uttr_template, 'r', encoding='utf-8').read())
+    for u_act in usr_actions:        
+        act, _, slot, value = list(u_act.values())        
+        if act == "INFORM_INTENT":
+            slots.append(value[0])
+            slot_dict[value[0]] = value[0]
+        else:
+            if '無' in value: slot += '*無'                
+            slots.append(slot)            
+            slot_dict[slot] = value[0] if value else ''
+    
+    if len(slots) == 1 and slots[0]=='' :
+        slots[0]='none'
+        slot_dict[slots[0]] = ''
+    print(slots, slot_dict)
+    uttr_templates = []
+    for temp in sorted(list(templates[domain][act].keys()), key=len, reverse=True):
+        if all(elem in slots for elem in temp.split('+')) and slots and len(slots)>=len(temp.split('+')): 
+            print('usr', slots, temp)
+            for s in temp.split('+'): 
+                if act=="INFORM":uttr = random.choice(templates[domain][act][temp]).replace(f'[{s}]', slot_dict[s])
+                else:uttr = random.choice(templates[domain][act][temp])
+                slots.remove(s)  
+            uttr_templates.append(uttr)       
+            
+    template = '，'.join(uttr_templates)
+    slots_pos = find_slot(template, usr_actions)
+    print('使用者：', template)
+    input()
+    return template, slots_pos
+
+def sys_act2robot_utt(sys_actions, domain, uttr_template):
+    print('sys', sys_actions)
+    slots, slot_dict = [], {}
+    templates = json.loads(open(uttr_template, 'r', encoding='utf-8').read())
     for s_act in sys_actions:        
         act, _, slot, value = list(s_act.values())
-        #print(act)
-        #if value == "無":continue
-        if n==0:
-            if act == "OFFER_INTENT": template += f"{vocab[act]}{vocab[value[0].lower()]}"
-            elif (act == "INFORM" or act == "REQUEST"):template += vocab[act]+vocab[domain.replace('_1', '').lower()]+'的'
-            elif act != "GOODBYE" and act != "NOTIFY_FAILURE" and act != "INFORM" and act != "REQUEST" and act != "REQ_MORE": template += vocab[act]+vocab[domain.replace('_1', '').lower()]
-            else: template += vocab[act]
-
-        if act == "INFORM": 
-            if value[0] == "無": 
-                if is_transactional(value_list, intent["name"]): template += f"不需要添加{vocab[slot.lower()]}，"
-                else: template += f"沒有{vocab[slot.lower()]}，"
-            else: template += f"{vocab[slot.lower()]}是「{value[0]}」，"
-        elif act == "REQUEST": template += f"{vocab[slot.lower()]}、"
-        elif act == "OFFER": template += f"{vocab[slot.lower()]}、"
-        elif act == "CONFIRM": 
-            if value[0] == "無": 
-                if is_transactional(value_list, intent["name"]): template += f"不需要添加{vocab[slot.lower()]}，"
-                else: template += f"沒有{vocab[slot.lower()]}，"
-            else: template += f"{vocab[slot.lower()]}是{value[0]}，"
-        elif act == "INFORM_COUNT": template += f"共有{str(value[0])}筆。"
-        elif act == "NOTIFY_SUCCESS": template += f"已成功{vocab[intent['name'].lower()]}。"
-        elif act == "REQ_MORE": template += f"還需要其他服務嗎？"
-        elif act == "GOODBYE": template += f"再會，掰掰。"
-        elif act == "OFFER_INTENT": template += f"{vocab[domain.replace('_1', '').lower()]}嗎？"        
-        elif act == "NOTIFY_FAILURE": template += f"{vocab[intent['name'].lower()]}需求。"  
-        n += 1  
-    template = list(template)
-    if template[-1] == '、' and act == "REQUEST":template[-1] = '嗎？'
-    elif template[-1] == '、' and act == 'OFFER':template[-1] = f"所找到的相關{vocab[domain.replace('_1', '').lower()]}，結果如下："
-    elif template[-1] == '，':template[-1] = '。'
-    elif template[-1] == '、':template[-1] = '。'
-    
-    template = ''.join(template)
+        if act=="OFFER_INTENT" or act=="NOTIFY_SUCCESS" or act=="NOTIFY_FAILURE":
+            slots.append(value[0])
+            slot_dict[value[0]] = value[0]
+        else:
+            if '無' in value: slot += '*無'
+            slots.append(slot)
+            slot_dict[slot] = value[0] if value else ''
+    if len(slots) == 1 and slots[0]=='' :
+        slots[0]='none'
+        slot_dict[slots[0]] = ''
+    print(slots, slot_dict)
+    uttr_templates = []
+    for temp in sorted(list(templates[domain][act].keys()), key=len, reverse=True):
+        if all(elem in temp.split('+') for elem in slots) and slots and len(slots)>=len(temp.split('+')): 
+            print('sys', slots, temp)
+            for s in temp.split('+'): 
+                if act=="INFORM":uttr = random.choice(templates[domain][act][temp]).replace(f'[{s}]', slot_dict[s])
+                else:uttr = random.choice(templates[domain][act][temp])
+                slots.remove(s)  
+            uttr_templates.append(uttr)          
+            input()
+    template = '，'.join(uttr_templates)
     slots_pos = find_slot(template, sys_actions)
-    print("助理:",template, '\n')
+    print('助理：', template)
     return template, slots_pos
 
 def generate_goal(file_name, file_idx):
@@ -481,7 +386,7 @@ def generate_goal(file_name, file_idx):
     schemas = json.loads(open(file_name, "r", encoding="utf-8-sig").read())
     usr_dialog_state_his, sys_dialog_state_his = [], []
     value_list = analysis_schema(file_name)
-    domain_index = np.random.choice([i for i in range(len(schemas))], 1, p=domain_transition_matrix[domain_index])[0]     
+    while domain_index==0:domain_index = np.random.choice([i for i in range(len(schemas))], 1, p=domain_transition_matrix[domain_index])[0]     
     state_d = schemas[domain_index]     
     df = pd.read_csv(service_dict[state_d['service_name']])
     data = df.sample(replace=False, random_state=round(time.time()))
@@ -504,7 +409,7 @@ def generate_goal(file_name, file_idx):
         if ("REQUEST" in [sys_act, sys_act_inner]):
             usr_actions, slot_values, slots, usr_annotations, requested_slots = get_usr_actions([usr_act, usr_act_inner], [req_slot_i, opt_slot_i, result_slots], intent_i, data)
             for u_action in usr_actions: usr_dialog_state_his.append(list(u_action.keys())[0:2])
-            u_uttr, u_slots_pos = usr_act2robot_utt(usr_actions, intent_i, state_d['service_name'])
+            u_uttr, u_slots_pos = usr_act2robot_utt(usr_actions, state_d['service_name'], './template/usr_template.json')
             usr_frames['state']['active_intent'] = deepcopy(intent_i['name'])
             usr_frames['state']['requested_slots'] = deepcopy(requested_slots)
             usr_frames['state']['slot_values'] = {}
@@ -515,7 +420,6 @@ def generate_goal(file_name, file_idx):
             dialogues["turns"].append(deepcopy(usr_turn))
             dialogs['Annotation(Actions)'].append(usr_annotations); dialogs['Template utterances'].append(u_uttr)
             tmp_slot_values = deepcopy(slot_values)
-            print(tmp_slot_values)
             usr_idx = np.random.choice([i for i in range(len(usr_mat[old_sys_idx]))], 1, p=usr_mat[old_sys_idx])[0]
             usr_idx_inner = np.random.choice([i for i in range(len(usr_inner_matrix[usr_idx]))], 1, p=usr_inner_matrix[usr_idx])[0]
             usr_act, usr_act_inner = usr_acts[usr_idx], usr_acts[usr_idx_inner]  
@@ -528,12 +432,8 @@ def generate_goal(file_name, file_idx):
                 for s_action in sys_actions: sys_dialog_state_his.append(list(s_action.keys())[0:2])
                 usr_actions, slot_values, _, usr_annotations, requested_slots = get_usr_actions([usr_act, usr_act_inner], [select_slot, select_slot, result_slots], intent_i, data)
                 for u_action in usr_actions: usr_dialog_state_his.append(list(u_action.keys())[0:2])
-                print([sys_act, sys_act_inner])
-                print([usr_act, usr_act_inner])
-                pprint(sys_actions)
-                pprint(usr_actions)
-                s_uttr, s_slots_pos = sys_act2robot_utt(sys_actions, intent_i, state_d['service_name'])
-                u_uttr, u_slots_pos = usr_act2robot_utt(usr_actions, intent_i, state_d['service_name'])
+                s_uttr, s_slots_pos = sys_act2robot_utt(sys_actions, state_d['service_name'], './template/sys_template.json')
+                u_uttr, u_slots_pos = usr_act2robot_utt(usr_actions, state_d['service_name'], './template/usr_template.json')               
 
                 sys_frames["actions"] = deepcopy(list(sys_actions))
                 if service_call: sys_frames['service_call'] = service_call
@@ -564,7 +464,7 @@ def generate_goal(file_name, file_idx):
             old_sys_idx = deepcopy(sys_idx_inner) if sys_acts[sys_idx_inner]!='none' else deepcopy(sys_idx)            
             sys_act, sys_act_inner = sys_acts[sys_idx], sys_acts[sys_idx_inner] 
             sys_actions, sys_annotations, service_call, service_results = get_sys_actions([sys_act, sys_act_inner], [list(set(req_slot_i+opt_slot_i)), result_slots], tmp_slot_values, state_d['service_name'], intent_i, df)
-            s_uttr, s_slots_pos = sys_act2robot_utt(sys_actions, intent_i, state_d['service_name'])
+            s_uttr, s_slots_pos = sys_act2robot_utt(sys_actions, state_d['service_name'], './template/sys_template.json')
             sys_frames["actions"] = deepcopy(list(sys_actions))
             if service_call: sys_frames['service_call'] = service_call
             if service_results: sys_frames['service_results'] = service_results
@@ -622,8 +522,8 @@ def generate_goal(file_name, file_idx):
         sys_frames["actions"] = deepcopy(list(sys_actions))
         if service_call: sys_frames['service_call'] = service_call
         if service_results: sys_frames['service_results'] = service_results
-        u_uttr, u_slots_pos = usr_act2robot_utt(usr_actions, intent_i, state_d['service_name'])
-        s_uttr, s_slots_pos = sys_act2robot_utt(sys_actions, intent_i, state_d['service_name'])
+        u_uttr, u_slots_pos = usr_act2robot_utt(usr_actions, state_d['service_name'], './template/usr_template.json')
+        s_uttr, s_slots_pos = sys_act2robot_utt(sys_actions, state_d['service_name'], './template/sys_template.json')
         usr_turn["utterance"] = deepcopy(u_uttr)
         sys_turn["utterance"] = deepcopy(s_uttr)
 
@@ -650,7 +550,7 @@ def generate_goal(file_name, file_idx):
         sys_act, sys_act_inner = sys_acts[sys_idx], sys_acts[sys_idx_inner]
             
         if usr_act == "INFORM_INTENT":
-            domain_index = np.random.choice([i for i in range(len(schemas))], 1, p=domain_transition_matrix[domain_index])[0]             
+            while domain_index==0:domain_index = np.random.choice([i for i in range(len(schemas))], 1, p=domain_transition_matrix[domain_index])[0]             
             state_d = schemas[domain_index] 
             df = pd.read_csv(service_dict[state_d['service_name']])
             data = df.sample(replace=False, random_state=round(time.time())) 
@@ -668,7 +568,7 @@ def generate_goal(file_name, file_idx):
             sys_act, sys_act_inner = sys_acts[sys_idx], sys_acts[sys_idx_inner]
             
         if sys_act == "OFFER_INTENT":   
-            domain_index = np.random.choice([i for i in range(len(schemas))], 1, p=domain_transition_matrix[domain_index])[0] 
+            while domain_index==0:domain_index = np.random.choice([i for i in range(len(schemas))], 1, p=domain_transition_matrix[domain_index])[0] 
             state_d = schemas[domain_index] 
             if not state_d['service_name'] in dialogues["services"]: dialogues["services"].append(state_d['service_name'])                     
             intent_i = random.choice(state_d["intents"]) #select intent from domain_i(state_d)
@@ -701,8 +601,8 @@ def generate_goal(file_name, file_idx):
             if service_results: sys_frames['service_results'] = service_results
             
             #print(usr_actions, slot_values)
-            u_uttr, u_slots_pos = usr_act2robot_utt(usr_actions, intent_i, state_d['service_name'])
-            s_uttr, s_slots_pos = sys_act2robot_utt(sys_actions, intent_i, state_d['service_name'])
+            u_uttr, u_slots_pos = usr_act2robot_utt(usr_actions, state_d['service_name'], './template/usr_template.json')
+            s_uttr, s_slots_pos = sys_act2robot_utt(sys_actions, state_d['service_name'], './template/sys_template.json')
             usr_turn["utterance"] = deepcopy(u_uttr)
             sys_turn["utterance"] = deepcopy(s_uttr)
 
@@ -753,13 +653,46 @@ def draw_matrix(matrix, select_acts=[], output_acts=[], labels=[], img_name='def
     plt.savefig(os.path.join('../transistion matrix', img_name))
     plt.show()
 
+def generate_acts(schema_file, file_idx):
+    service_dict = {"Mail_1": 'data/csv/mail_entityies.csv', "Calendar_1": 'data/csv/events.csv', "Messaging_1": 'data/csv/message_entityies.csv'}
+    domain_index = 0
+    schemas = json.loads(open(schema_file, "r", encoding="utf-8-sig").read())
+    value_list = analysis_schema(schema_file)
+    domain_index = np.random.choice([i for i in range(len(schemas))], 1, p=domain_transition_matrix[domain_index])[0]     
+    state_d = schemas[domain_index]                 
+    intent_i = random.choice(state_d["intents"]) #select intent from domain_i(state_d)
+    req_slot_i = list(intent_i["required_slots"])
+    opt_slot_i = random.choices(list(intent_i["optional_slots"].keys()), k=random.randint(1, len(list(intent_i["optional_slots"].keys()))))\
+        if len(list(intent_i["optional_slots"].keys()))!=0 else []
+    result_slots = list(intent_i["result_slots"])
+    
+    #initial state
+    (usr_idx, sys_idx), (usr_idx_inner, sys_idx_inner), (old_usr_idx, old_sys_idx), (usr_mat, sys_mat) = gen_init_state(value_list, intent_i)
+    usr_act, usr_act_inner = usr_acts[usr_idx], usr_acts[usr_idx_inner]
+    sys_act, sys_act_inner = sys_acts[sys_idx], sys_acts[sys_idx_inner]
+    while True: 
+        usr_idx = np.random.choice([i for i in range(len(usr_mat[old_sys_idx]))], 1, p=usr_mat[old_sys_idx])[0]
+        usr_idx_inner = np.random.choice([i for i in range(len(usr_inner_matrix[usr_idx]))], 1, p=usr_inner_matrix[usr_idx])[0]
+        old_usr_idx = deepcopy(usr_idx_inner) if usr_acts[usr_idx_inner]!='none' else deepcopy(usr_idx)
+            
+        sys_idx = np.random.choice([i for i in range(len(sys_mat[old_usr_idx]))], 1, p=sys_mat[old_usr_idx])[0]        
+        sys_idx_inner = np.random.choice([i for i in range(len(sys_inner_matrix[sys_idx]))], 1, p=sys_inner_matrix[sys_idx])[0]
+        old_sys_idx = deepcopy(sys_idx_inner) if sys_acts[sys_idx_inner]!='none' else deepcopy(sys_idx)
+        usr_act, usr_act_inner = usr_acts[usr_idx], usr_acts[usr_idx_inner]
+        sys_act, sys_act_inner = sys_acts[sys_idx], sys_acts[sys_idx_inner]            
+        
+        if sys_act == "GOODBYE" or sys_act_inner == "GOODBYE":            
+            break    
+
+
 if __name__ == "__main__":
-    '''get_action_seq("./schema/messagewoz_schema.json")
     '''
+    get_action_seq("./schema/messagewoz_schema.json")'''    
     for idx in range(1000):
         generate_goal("./schema/messagewoz_schema.json", idx)
         input()
         
+
     #print(usr_matrix)
     #print(sys_matrix)
 
