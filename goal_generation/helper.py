@@ -9,4 +9,52 @@ def get_query_text(text):
     e = random.randint(s, len(ws_results))
     return ''.join(ws_results[s:e+1])
 
-#def change
+# APIS
+def FindMessage(message='', contact='', group=''):
+    return [
+              "contact_name",
+              "group_name",
+              "message"
+            ]
+
+def SendMessage(message, contact='', group=''):
+    return [
+              "contact_name",
+              "group_name", 
+              "message"
+            ]
+
+def FindMail(subject='', recipient='', sender='', content='', copy_recipient=''):
+    return [
+              "sender",
+              "recipient",
+              "subject",
+              "content",
+              "copy_recipient"
+            ]
+
+def SendMail(subject, recipient, content, copy_recipient=''):
+    return [
+              "recipient",
+              "copy_recipient",
+              "subject",
+              "content"
+            ]
+
+def LookupEvents(event_name, event_time='', event_date='', event_content='', event_location='', participant=''):
+    return [
+                "event_date",
+                "event_time",
+                "event_location",
+                "event_name"
+            ]
+
+def AddEvent(event_name, event_time, event_date, event_content='', event_location='', participant=''):
+    return [
+                "event_date",
+                "event_time",
+                "event_name",
+                "event_content",
+                "event_location",
+                "participant"
+            ]

@@ -1,0 +1,523 @@
+﻿Fri, 15/07/2022
+15:31	Lucian	資料153筆很少耶(假設你欄位也不多)
+為何不用sklearn的任一回歸模型就好~
+15:33	CKs😁😁😁	只是想測試100多筆資料有沒有機會用深度學習train出東西OAO
+15:33	CKs😁😁😁	1000多筆有train出東西😂
+15:34	Lucian	你可以用model.summary()印出給大家幫你看
+15:34	CKs😁😁😁	[Photo]
+15:35	Lucian	單元測試，從只用一層dense+dropout開始
+15:35	Lucian	看是哪出nan
+15:37	CKs😁😁😁	了解
+15:39	CKs😁😁😁	[Photo]
+15:39	CKs😁😁😁	只有一層也是nan 還是根本問題是資料量太少train不出東西
+15:48	純情火稚雞	你的dropout太多了吧⋯⋯
+15:53	CKs😁😁😁	通常設多少比較合理OAO
+15:54	純情火稚雞	我先猜你的nan跟loss function 或learning rate 有關
+15:55	純情火稚雞	如果你有用log sqrt 之類的很容易nan 
+15:55	神隱	我之前有類似的問題，
+
+我是把Train資料另外存成CSV觀看，發現有欄位經處理過後，變成空值。
+loss才會變nan。
+後來針對空值另外處理，才有loss數值出現。
+15:56	純情火稚雞	有道理
+15:57	Lucian	先做火雞大講的
+不行才檢查你的output
+(若都小數就太為難dense了)
+16:07	CKs😁😁😁	我的learining rate 和 loss function
+16:07	CKs😁😁😁	[Photo]
+16:07	CKs😁😁😁	資料集的樣子是這樣
+16:07	CKs😁😁😁	[Photo]
+16:08	CKs😁😁😁	預測depth那列
+16:08	CKs😁😁😁	所以跟小數有關嗎?
+16:09	#this#is#kota	由於loss 是MSE（沒有log就沒有log 0的問題），所以建議檢查預測或是output ground truth 是否有NaN
+16:14	純情火稚雞	你的資料有做normalized 嗎
+22:28	CKs😁😁😁	有的
+
+Sat, 16/07/2022
+23:30	gggghhuuu joined the chat.
+
+Sun, 17/07/2022
+21:29	LOS joined the chat.
+
+Mon, 18/07/2022
+07:30	貓貓蟲 joined the chat.
+
+Tue, 19/07/2022
+15:19	#this#is#kota	[Photo]
+
+Wed, 20/07/2022
+18:24	Jessi joined the chat.
+
+Fri, 22/07/2022
+14:14	我喜歡吃巧克力	[Photo]
+14:14	我喜歡吃巧克力	[Photo]
+14:14	我喜歡吃巧克力	[Photo]
+14:14	我喜歡吃巧克力	請問這題要怎麼做
+14:14	我喜歡吃巧克力	[Photo]
+14:14	我喜歡吃巧克力	[Photo]
+14:22	Viser	推勇者
+14:35	離散傅立葉	這是哪裡的題目呀？好有趣
+14:39	LW	你是不是問錯社群了啊 XD 這個是程式解題吧
+14:39	Viser	所以推勇者
+14:40	LW	用太鼓達人當題目看起來是蠻有趣的啦 XD 
+
+Sat, 23/07/2022
+09:51	孤獨一隻鯊魚 joined the chat.
+
+Mon, 25/07/2022
+12:51	Cloud joined the chat.
+
+Tue, 26/07/2022
+16:11	路過碩士生	各位好 最近在研究YOLOv5的workers參數
+在找資料有查到Pytorch的dataloader workers
+想確認一下這兩個是一樣的嗎?
+21:22	yes	Macbook M2pro好用嗎
+21:39	不知火	沒錢買mac
+21:40	不知火	所以不好用
+21:44	不知火	@孤獨一隻鯊魚 好眼熟
+21:45	孤獨一隻鯊魚	同一隻野生鯊魚，矽谷不知火安安 😳
+
+Thu, 28/07/2022
+15:24	gggghhuuu	請問這啥?
+15:25	孤獨一隻鯊魚	深度學習的鯊魚
+15:27	gggghhuuu	喔～會如何進化?
+15:27	gggghhuuu	會長翅膀嗎？
+17:29	純情火稚雞	有魚翅
+19:18	孤獨一隻鯊魚	權重不斷疊加之後，化為人形手拿三叉戟🔱
+
+Wed, 10/08/2022
+23:40	JHX joined the chat.
+
+Tue, 16/08/2022
+21:46	AllenLin	https://www.facebook.com/100044365242123/posts/pfbid0N9eSbpVzDSB2tq1aHHF55S4TLUHCmFRT1FUGQECNXXULb5ctwc5yeJZRV517Vprtl/?sfnsn=mo&extid=a&mibextid=7htlnv
+
+Wed, 17/08/2022
+15:09	water joined the chat.
+
+Fri, 19/08/2022
+00:47	HardDay joined the chat.
+
+Sat, 20/08/2022
+11:56	趙阿妹 joined the chat.
+
+Wed, 24/08/2022
+13:55	晴	不好意思!我想請教一下
+最近使用Python sklearn.cluster 中的KMeans
+得出多個cluster，但未必每個都是好的cluster
+不知道如何做post-processing的部分，
+想將較小的cluster合併至鄰近的centroids，
+不知道有沒有人知道後處理的部分。謝謝
+13:56	Viser	這有一個叫deep cluster
+13:57	Viser	可以解決
+
+Thu, 25/08/2022
+22:16	一個人	m2 有pro了？
+22:17	一個人	目前不是只有m2嗎
+
+Fri, 26/08/2022
+01:46	#this#is#kota	幾個可能的思路供你參考：
+1、數據經過適當的前處理（例如standardization, log)，特徵分佈較為鐘型，分出來的群一般會較為平均
+2、若要用後處理，k-means的原理是每個點分配到「最近的cluster」，可考慮把不想要的群裡的點，重新分配到最近的群就好
+01:48	#this#is#kota	不過這樣的後處理，一旦重新分配群之後，centroid就改變了，所以得到的群很可能不是收斂後的結果。因此，如果一開始就選取適合數據的number of clusters，會比後處理來得妥當。
+18:15	GoGo狗	[Photo]
+
+Fri, 02/09/2022
+17:17	Byca joined the chat.
+
+Sat, 03/09/2022
+16:47	貓貓蟲	大家好
+16:48	貓貓蟲	我最近在實作一篇論文，關於AANet，對方有公開原始碼
+16:49	貓貓蟲	我把原始碼下載下來想在windows上面建置，卻發現怎麼做都沒辦法完成，搜尋了各種資料以後感覺無解
+16:49	貓貓蟲	請問這時候各位會怎麼找其他解法呢
+22:01	Hina	去Linux試試看
+22:39	Atom	一般ai都在linux下跑
+22:39	Atom	要去仔細看下repo內對使用環境的說明
+22:40	Atom	還有issue
+22:41	Atom	最糟情況是code使用的套件都是舊的，而他又沒揭露原本套件使用的版本
+22:42	Atom	就只是見招拆招看要退版還是進版改code
+22:44	Atom	Windows常會遇到套件不支持的問題 ，直接避開吧
+23:30	EJ joined the chat.
+
+Sun, 04/09/2022
+12:29	貓貓蟲	感謝，我嘗試在colab上面用linux的方式進行，確實遇到了很多版本衝突，目前正在想辦法一個一個排除
+13:47	Viser	[Sticker]
+16:43	貓貓蟲	[Sticker]
+16:44	貓貓蟲	各位大概每天都花多少時間在深度學習的領域呢？
+16:52	Hina	10幾小時吧
+20:27	EJ	2~3小時
+
+Mon, 05/09/2022
+08:04	Viser	4小時
+09:42	貓貓蟲	感謝
+
+Wed, 07/09/2022
+09:59	Freesia joined the chat.
+15:48	Freesia	跟大家分享NVIDIA開發者大會，有300多場免費線上演講，免費報名就可以聽Google、Meta副總裁等專家分享最新AI趨勢應用→ https://pse.is/4fnpkm
+15:48	Freesia	社團上看到還有人很貼心幫忙做圖文版報名流程😂 https://supr.link/yFWPu
+
+Thu, 08/09/2022
+22:06	Ke joined the chat.
+
+Mon, 12/09/2022
+22:05	勇者	大大都用哪一個 distribution 的 Linux OS？
+23:15	貓貓蟲	是colab上的ubuntu18.04
+
+Tue, 13/09/2022
+07:44	勇者	那應該不難補 缺檔，但是要注意軟體源的部份。
+09:48	貓貓蟲	謝謝，我試試看
+14:04	勇者	deb-src 開頭的軟體源 要記得開。
+14:04	勇者	那是原始碼
+
+Sat, 17/09/2022
+07:01	HaooooYuan joined the chat.
+23:13	Shiann	不好意思~想請問如果要判斷一篇程式碼使用的是tensorflow 1.x 或2.x 通常是由語法去判斷嗎( ･᷄ὢ･᷅ ) 
+23:38	CKs😁😁😁	不好意思 想請問keras能不能針對已經訓練好的模型，再進行model的內部架構進行修改?
+23:38	CKs😁😁😁	[Photo]
+23:38	CKs😁😁😁	[Photo]
+23:38	CKs😁😁😁	想多加幾層
+23:39	Viser	加啊
+23:40	CKs😁😁😁	找不太到語法怎麼寫🥲
+23:40	CKs😁😁😁	是凍結嗎？
+23:53	Hina	加了參數也不會fit資料啊
+
+Tue, 20/09/2022
+08:52	John joined the chat.
+
+Fri, 23/09/2022
+16:28	Dimas joined the chat.
+16:32	Dimas	先取的輸入及輸出層，然後使用functionAPI的方式再添加新的連結層，最後用keras.Model封裝
+取得該層輸出或輸入
+model.layers[<layer_index>].input
+16:34	Dimas	但如果有模型的原始代碼的話，個人建議先將權重儲存成.h5，在後建立新的model，只要前面的layer_name一致，model.load_weights('weights.h5', by_name=True)
+就可以繼承原先訓練的權重
+16:36	Dimas	之前有過魔改DenseNet預訓練的模型，成FCN影像語意分割模型
+20:30	Dimas	可以詢問一下大家是做什麼領域嗎？
+影像辨識（classification、Segmentation),自然語言出來(NLP)還是其他領域
+20:45	Viser	封測業
+20:45	Viser	Aoi影像辨識
+20:48	HaooooYuan	我產學做影像瑕疵檢測，研究是做對抗例攻擊方面
+20:49	CKs😁😁😁	請問是對抗樣本攻擊方面的嗎？
+20:58	HaooooYuan	對XD但才剛開始研究這方面，還是個新手小白(smile)
+20:59	CKs😁😁😁	我也是🥲
+20:59	CKs😁😁😁	一起加油
+21:13	HaooooYuan	[Sticker]
+
+Sat, 24/09/2022
+11:55	John	Good
+
+Mon, 26/09/2022
+11:05	Perry joined the chat.
+12:00	超級BG	不好意思想問一下各位大大
+12:02	超級BG	有支援一張 gpu 同時處理多個processing 的套件嗎 主要是用 keras
+12:02	超級BG	想說有沒有除了 batch input 以外的方法
+12:12	Jason.張	如果有的話~我也很想知道與了解一下
+
+但是我所知道的~如果是單機GPU的運算資源沒有用完(例如用5G/資源共8G)，就可以再多跑其他運算
+
+而如果你願意嘗試建立虛擬化環境的話，你只要建立兩台虛擬電腦，將分給虛擬電腦的運算資源設定好，然後分別在兩台虛擬電腦裡面跑不同的運算~應該會是可行的方法
+12:20	Dimas	Docker 建立虛擬容器(VM)就可以了
+12:20	Dimas	Windows環境下tensorflow沒辦法共用同一個GPU
+12:25	Dimas	如果只是臨時需要使用的話 
+Kaggle也是一個替代方案
+一週免費40hr使用時間
+GPU: Tesla P100
+12:29	Dimas	之前的經驗是tensorflow會佔據GPU的使用權限
+第二個process想調用GPU資源就會報錯
+12:32	超級BG	好的 謝謝大大們的回覆 我再統整思考一下
+
+Wed, 28/09/2022
+14:14	baojuice joined the chat.
+
+Fri, 30/09/2022
+11:34	QQ joined the chat.
+23:00	閱讀	兄弟們頂起來！讓我們一起見證特斯拉AI day 2022！ https://www.youtube.com/watch?v=3Pg2rh4fx24
+
+Wed, 05/10/2022
+20:03	五不老 joined the chat.
+
+Fri, 07/10/2022
+10:58	C.K joined the chat.
+14:02	謝皇廷 joined the chat.
+14:17	Tim謝	NLP
+14:18	Tim謝	如果有用set_memory_growth好像就不會有這個問題🤔
+
+Sat, 08/10/2022
+10:26	賤死	請問大大做NLP主要程式語言是什麼？Python Java?
+10:27	Tim謝	我是用python，不過我碰NLP我覺得還蠻侷限的，目前只碰文本😅
+10:30	賤死	了解 謝謝
+10:30	賤死	那你覺得這條路好走嗎？
+10:48	Tim謝	感覺好像外面比較多做影像跟音訊😅，你的路是指就業機會嗎
+12:08	賤死	對呀
+12:08	賤死	同感
+18:07	離散傅立葉	請教各位大大，有人使用過NNI嗎？
+18:20	Jason.張	https://en.m.wikipedia.org/wiki/Neural_Network_Intelligence
+18:21	Jason.張	剛查了一下，上面的連結有介紹，但我沒使用經驗~
+18:22	離散傅立葉	對的，是這個沒錯，主要想使用遠端超參數搜索，目前local端可以正常使用，而實現remote卻遇到些問題
+
+Mon, 10/10/2022
+14:40	Eric joined the chat.
+
+Tue, 11/10/2022
+01:17	Sam-NIU joined the chat.
+
+Thu, 13/10/2022
+12:54	Jeremy joined the chat.
+
+Mon, 17/10/2022
+15:13	陸瑜 joined the chat.
+15:14	陸瑜 was banned from the OpenChat by Jason.張.
+
+Fri, 21/10/2022
+12:44	Jack joined the chat.
+18:13	Jonny Lee	哈囉～有人玩過meta learning嗎
+20:03	閱讀	李鴻毅的課程有幾段是講這個的
+20:12	Jonny Lee	有推薦的github嗎
+22:01	Tim謝	@Jonny Lee 要不要一起來上這個https://www.cupoy.com/event-content/00000183D5521B48000000016375706F795F72656C6561736553747564794576656E74?fbclid=IwAR11GgCBxAAc5QKUKXZm_VTkR7VYp474CdhRdaOR7uDC38iTfYEkj1VINko
+22:01	Tim謝	不確定對你幫助大不大
+22:07	Jonny Lee	好像可以欸感謝
+22:20	Tim謝	不會不會，裡面好像有交流時間 儘量問問題，我也想聽😆😆😆
+
+Sun, 23/10/2022
+19:01	喵🐱貓 joined the chat.
+19:01	dodo joined the chat.
+
+Mon, 24/10/2022
+18:21	Jack	原要價 12,000 元的 Google Cloud 核心基礎架構課程，現在限額免費！
+  
+相信大家不難發現，近年企業對於雲端人才的需求以及雲端技能的要求日漸提升，是時候趁年底前點滿雲端技能、提升職場競爭力了～
+  
+透過下方頁面報名，就有機會「免費」參加 11/11 的線上課程、並獲得 Google Cloud 原廠認證結業證書，趕緊手刀報名報起來！
+
+❗️本課程名額有限，採資格審核制，填寫公司網域 mail 即有機會獲得資格！
+https://buzzorange.com/techorange/forum/2022-cloudmile/ 
+
+Tue, 25/10/2022
+18:52	瑞 joined the chat.
+
+Wed, 26/10/2022
+13:20	Ting En joined the chat.
+
+Tue, 08/11/2022
+08:26	LW	大家早～ 想請問群裡有人目前嘗試過台灣口音的TTS嗎？有沒有哪一個是感覺最自然比較像真人的？
+08:30	閱讀	Meta 不是有個英語台語的翻譯，雖然是翻譯，不過發音根本聽不出不是真人 XD
+09:00	LW	啊，台灣口音國語就行了…不用台語或台灣狗以 😆 
+
+Fri, 11/11/2022
+23:09	台中33	大家好～我想問一下，目前可以設定NLP Model有特定回答 或是 人設嗎？
+
+Sat, 12/11/2022
+06:36	離散傅立葉	你要的是這種嗎？
+https://cloud.google.com/dialogflow?hl=zh-tw
+13:27	Jack	人工智慧、雲端平台正轉動商業核心引擎，科技人才該怎麼掌握機器學習、程式開發的快速變化，做好雲端技能的前線部署？
+
+即刻報名 11/16 「Google Cloud Next Recap 大會」，為你解密雲端運算新技能，輕鬆把核心知識融入商業策略，有效開創技術轉型新方案！
+https://supr.link/MuyI1
+
+Tue, 15/11/2022
+14:57	Leo	請問 什麼是權重
+15:38	Tim謝	Model weight?
+15:41	Leo	Yes
+19:14	Hina	你可以想像成重要程度 我認為訊號這樣的形狀比較接近我要的 就賦予比較大的係數
+19:15	Hina	就像以前國高中 普遍認為國英數比較重要 所以加權數比其他科還大
+
+Fri, 18/11/2022
+20:35	信娟 joined the chat.
+
+Sun, 20/11/2022
+18:28	坑坑洞洞	想請問一下，訓練模型時資料不平衡和資料平衡的利與弊？
+
+小弟現在是用不平衡的資料訓練模型，整體f1 有0.79，遠高於隨即猜測；不過放unlabeled 資料時，有預測不出來情形。
+所以在想說training data時改成balanced sampling？
+
+還請各位高手開示
+21:13	純情火稚雞	你的訓練集大小跟母體差異越大時，不平衡的資料分佈跟母體的資料分佈差異越大，就像拿張飛訓練預測岳飛
+21:17	純情火稚雞	另外一種想法是 當你的考卷D分佈特別多的時候，你不知道答案是什麼就猜D都會對，那你還辛苦學習幹嘛
+21:47	坑坑洞洞	我有想過類似問題，就選擇有所偏好；那我training dataset做balanced sample 看看！
+21:48	坑坑洞洞	@純情火稚雞 不過請問有比較學術上的paper討論過嗎？
+我還沒review paper，先問大神答案一下XD 感謝
+21:54	純情火稚雞	不知道有沒有paper討論但是我猜沒有，因為按照機率統計 樣本分佈很重要，按照我的實務經驗不管母體分佈如何通常都要平衡，因為你希望的是近似顯解，也就是找出特徵規律，而不是機率估計，對於沒有預先訓練過的模型來說，資料的影響更大
+21:58	坑坑洞洞	原來如此！從機率分佈下手！
+21:58	純情火稚雞	以上的說明都是對於類神經網路，如果是基於決策樹或隨機森林有沒有平衡可能會沒有影響 個人猜測
+22:00	坑坑洞洞	XDD 我的model主要都樹，以前讀paper ，同個議題dl 有得不作balance，有的ml則做balance。
+之前沒做是因為有few shot 問題，現在沒有，所以想說新增功能做看看
+22:08	純情火稚雞	DL不做平衡那就是訓練集夠大或者模型有預訓練過，現在新的技術突破都有應用負類平衡的想法
+22:29	坑坑洞洞	那兩篇DL和一篇ML用的的dataset 資料大概16GB的ram 就可以跑，只是一個是在GPU，後者在CPU。都沒有做pretrain。
+ML做balanced (2015發表）
+DL 沒做balanced （2016 2020發表）
+
+我有repeat 他們的研究過，逃到實驗室data上，ML再現性好，DL再現性非常差
+22:30	坑坑洞洞	剛剛想到⋯反正把現在研究的data同時都做balance 和imbalance 的訓練，之後比較差異，看看有沒有影響
+22:30	坑坑洞洞	XDD
+22:31	純情火稚雞	DL就是煉丹還會藏一手，基本上我複現從來沒跟paper一致過
+22:37	坑坑洞洞	我repeat 的每天被罵技術有問題 哈哈哈
+22:37	坑坑洞洞	現在新實驗室沒錢做DL就做ml 
+22:39	純情火稚雞	我之前跟過一個數學系的教授對dl 的paper酸到爆，不能復現公式還亂七八糟的東西能算paper嗎
+22:40	坑坑洞洞	生資類就code 疊疊樂XD
+22:41	坑坑洞洞	我只是覺得dl 炒過頭
+22:41	純情火稚雞	最近教育部資源都往dl傾斜
+22:41	坑坑洞洞	GPU燒錢啊⋯⋯
+22:42	純情火稚雞	學校還特聘幾個教授做無人機的
+22:42	坑坑洞洞	好強！
+22:43	坑坑洞洞	不過我還在想這個產值是什麼XD 至少生醫生資我想不透有什麼產價值
+22:43	坑坑洞洞	但是現在畢業要找工作，普遍都要dl 技能的人XD
+22:44	純情火稚雞	等之後的量子電腦吧，聽說量子電腦也是用機率運算
+22:44	純情火稚雞	到時候生醫生資應該模型上會有大突破
+23:18	坑坑洞洞	不知道耶？像alphafold 在生物背景的老師去年跟我說只是噱頭，我最近才確定那個只是噱頭。
+感覺還也很長一條路要走
+
+Fri, 25/11/2022
+12:39	Jack	【 下載 NVIDIA 企業導入 AI 實戰秘笈】
+ 
+企業導入 AI 進行數位轉型已勢在必行 ，但該如何最大化 AI 的商業價值，並釋放開發者完整生產力？
+ 
+下載取得 NVIDIA「企業轉型 | AI  導入實戰秘笈」，找到對的技術策略，讓組織變得更有彈性、更善於分析數據！
+https://supr.link/RzQkk
+
+17:49	Jack	【AWS 雲端職涯探索日】如何以雲端為起點，開創不同面向的職涯之路？躋身高薪人才，絕不可錯過的一大盛會！
+ ​ ​  ​ ​ 
+不可錯過的活動 4 大亮點：
+➢ 知名企業現身媒合，找到職涯跑道新定位
+➢ 雲端產業工作者現場諮詢與工作心法分享
+➢ 獲得 AWS 認證免費考照限量名額
+➢ AWS官方輔考服務 ，帶您三個月內衝刺考照
+https://supr.link/M7Cft
+
+
+Sun, 27/11/2022
+00:47	蛋蛋 joined the chat.
+20:44	₱₳ł₦ joined the chat.
+
+Mon, 28/11/2022
+23:05	Jonny Lee	想問一下有人在用Ubuntu22.04嗎？我在筆電裝後不知道為啥無法雙螢幕，但是桌機是正常的
+
+Thu, 01/12/2022
+11:58	Jack	【 免費下載 NVIDIA 企業導入 AI 實戰秘笈】
+ 
+對 IT 團隊來說，數位轉型可能是一大痛點。企業的數位革新不僅將增加許多繁重的工作，還需額外花時間進行系統整合、軟體工程或故障排除。不僅無法提升開發者生產效益，反而增添更多繁雜工作，降低工作效益。
+ 
+下載取得 NVIDIA「企業轉型 | AI  導入實戰秘笈」，找到對的技術策略，讓組織變得更有彈性、更善於分析數據
+https://supr.link/pRnr6 
+17:05	w	請問大家~ 有人知道要如何在server(Ubuntu 20.04)上跑code，但不必上傳code到sever 的作法嗎，查google沒看到相關文件，有經驗的大大可以提個關鍵字要如何查，謝謝~
+17:19	我愛Ai	你是用本機跑還是 sever?
+17:27	路過看看	跑py 的話直接在路徑開終端機打python3 檔名？
+17:32	Jeremy	./檔名 ？
+17:35	w	用server跑，但code在本機
+17:36	我愛Ai	那 ssh 過去 
+18:44	純情火稚雞	Pycharm 有功能是code在本地 每次執行的時候會把code拷貝到server保存位置執行
+18:53	w	請問這功能是?  如果在本地改code，會同步更新sever上嗎? 因要調參數和改前處理
+20:37	純情火稚雞	直接ide 選項改ssh interpreter
+20:38	坑坑洞洞	Jupiter lab可以嗎
+20:40	純情火稚雞	我沒用過jupyter lab
+20:41	純情火稚雞	我之前是用conda 建立環境 ssh指定該環境產生的Python.exe 
+20:44	純情火稚雞	他會實時同步但有時候怪怪的，通常按run它會做一次同步再把執行結果回傳
+20:47	坑坑洞洞	是用哪個ide ？
+20:48	純情火稚雞	Pycharm 
+21:56	坑坑洞洞	嗚嗚 太貴了
+22:30	路過碩士生	Pycharm專業版可以用學生證申請免費
+22:37	XiaoYu	想請問out of memory可以怎麼解決
+設備是3060 12G
+22:37	XiaoYu	目前已將模型調小
+22:38	Hina	Batch size調低
+22:53	Tim謝	Accumulation gradient
+22:54	Tim謝	混合精度計算好像也可以省一點，但我沒有比較過
+
+Fri, 02/12/2022
+07:55	純情火稚雞	降低batch size後用梯度疊加可以等同原batch訓練結果
+08:53	John	笨問題，梯度疊加是什麼？
+08:55	Viser	[Photo]
+08:56	HaooooYuan	https://www.cnblogs.com/sddai/p/14598018.html
+09:18	XiaoYu	這個我也試過了
+目前已經1
+09:18	XiaoYu	梯度疊加嗎
+好 我試試看
+09:18	XiaoYu	謝謝大家幫忙
+16:42	w	感謝建議，我現在下載pycharm,之前沒用覺得太肥，但用conda env其實也很肥，用spyder輕量，只是不確定有沒有支援ssh
+16:57	Viser	[Sticker]
+
+Sat, 03/12/2022
+16:15	John	Trying, too
+
+Tue, 06/12/2022
+11:06	航 joined the chat.
+19:32	Jack	填寫「洞察資安邊界威脅」問卷，立即下載「新世代 SASE 企業安全防護策略」，還可抽按摩眼罩等多項好禮！
+ 
+當資安攻擊面擴大，企業該如何整合多項網路與資安功能，並簡化網路遷移過程與提升管理效能？
+https://supr.link/KlgFI 
+
+Fri, 09/12/2022
+00:02	阿嘎 joined the chat.
+19:09	海貝 joined the chat.
+
+Mon, 12/12/2022
+12:10	Jason.張	免費免報名「解密AI黑盒子」2023 2/6~2/10的 08:30-12:00、13:00-17:00共40小時 線上課程~
+免費免報名 邱崑山 老師~
+國教署高中新興科技推廣中心(高雄女中)，負責推廣高中的AI課程，
+及高中教師的增能，寒假辦理「解密AI黑盒子」南區實體研習，同步線上直播課程，
+歡迎有興趣老師報名參加(教師進修網課埕代碼：3647271)，
+上課時間：2023 2/6~2/10的 08:30-12:00、13:00-17:00共40小時，
+上課線上網址：https://meet.google.com/net-kmpi-pqs
+課程綱要如下，請參考：
+第一天早上：Python初階課程-選擇及迴圈，函式、類別、物件
+第一天下午：Python進接課程-資料可視化及矩陣操作
+第二天早上：線性回歸實作和機器學習理論
+第二天下午：邏輯回歸和感知器實作
+第三天早上：pytorch套件介紹
+第三天下午：深度學習神經網路DNN實作
+第四天早上：卷積神經網路CNN影像辨識理論和實作
+第四天下午：遷移式學習的應用和實作
+第五天早上：生成對抗網路GA…… 顯示更多
+Meet
+MEET.GOOGLE.COM
+Meet
+Real-time meetings by Google. Using your browser, share your video, desktop, and presentations with teammates and customers.
+
+12:15	Jason.張	我知道上面這個資訊對我們這個群的大多數人都不需要，但如果有想要溫故知新的，或有因興趣自學想補充基礎的，到時可以考慮看看~^^
+
+Tue, 13/12/2022
+17:25	Jack	【填問卷下載資安防護策略，還可抽按摩眼罩等好禮】
+
+公司 IT 人員好難為，即便是外部約聘員工被駭，都有可能一口氣影響多種公司重要系統與內網權限！
+
+如何制止內部員工將時間多耗在低效率事項？企業資金資源有限又該如何輔助網路系統人員在工作上的多面向挑戰？
+https://supr.link/NriJW
+
+17:34	svm joined the chat.
+19:52	離散傅立葉	這裡有大大有使用過BentoML的經驗嗎？
+https://github.com/bentoml/BentoML
+21:21	Tim謝	看起來好像很猛😆
+
+Thu, 15/12/2022
+00:39	Qunter joined the chat.
+15:21	貓貓 joined the chat.
+
+Fri, 16/12/2022
+09:58	000 joined the chat.
+20:55	王旭東 joined the chat.
+
+Sun, 18/12/2022
+02:47	H.Chung joined the chat.
+08:24	Viser	飆？
+22:21	SImonYu joined the chat.
+
+Tue, 20/12/2022
+20:01	鯊鯊 joined the chat.
+23:54	Cheney Liao joined the chat.
+
+Fri, 23/12/2022
+14:05	yccy joined the chat.
+
+Sun, 25/12/2022
+15:25	Jason.張	[Photo]
+15:26	Jason.張 unsent a message.
+
+Sat, 31/12/2022
+06:57	AMG joined the chat.
+
+Wed, 04/01/2023
+23:12	小寶寶 joined the chat.
+
+Fri, 06/01/2023
+19:55	Commaaaa joined the chat.
+
+Wed, 11/01/2023
+22:42	hao joined the chat.

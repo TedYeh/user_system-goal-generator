@@ -1,0 +1,3520 @@
+﻿Fri, 15/07/2022
+14:39	喵電感應	居然有影片存檔，我來研究看看
+coscup有點想衝，不用錢去看看別人在玩甚麼
+14:39	zlib	coscup 唯一缺點就是平行議程軌太雜，建議先安排自己想聽的議程，到時候比較好搶位子
+14:40	zlib	因為都是學校教室 位子有限
+14:40	Ted 顥天（國二）	Summit兩年一次，今年沒有人跳坑總召，所以停辦一屆
+14:40	zlib	大大豪猛 你在肚子裡面就入資訊坑了嗎 (x
+14:41	Ted 顥天（國二）	蛤為什麼突然這麼說
+14:42	zlib	推算回去感覺你國小就有涉獵相關討論了w
+14:42	zlib	我國小還在推卡車看底下有沒有夢幻
+14:50	pan	請問大家  要把一串數值分三組的迴圈是這樣算嗎
+14:50	pan	[Photo]
+14:53	zlib	你是要平分嗎
+14:53	pan	不是  例如 小於14一組  14-15間一組  其於一組
+14:54	zlib	你是有寫錯嗎 不然照你分這樣有什麼問題
+14:54	pan	然後在第二個環圈這樣
+14:54	pan	[Photo]
+14:55	nitekat	我總覺得這需求用三層迴圈是不是怪怪的？
+14:55	pan	因為我要算LOG RANK TEST
+14:56	pan	第一組跟第二組比  第二組跟第三組比  第三組在跟第二組比 算出P值 
+14:58	zlib	這和n大的問題沒什麼關係，你重點放在分組就好XD
+15:05	zlib	我能想到最無腦的分組方法是這樣
+你要試試看嗎
+15:05	zlib	`import random`
+`from collections import defaultdict`
+
+`data = random.sample(range(100), 100)`
+
+`cond_list = [(0,14), (15, 20), (21, 100)]`
+`group = defaultdict(list)`
+`for n in data:`
+    `for group_idx, cond in enumerate(cond_list):`
+        `gt, lt = cond`
+        `if gt <= n <= lt:`
+            `group[group_idx].append(n)`
+            `break`
+
+`print(group)`
+15:49	Yu left the chat.
+20:47	大班畢業	請問Tensorflow跟 pytorch要挑一個學
+哪個比較好啊
+20:54	zlib	認真要學應該是pytorch
+20:56	Ted 顥天（國二）	我覺得不一定耶
+20:56	Ted 顥天（國二）	Tensorflow的source code相對多
+20:56	Ted 顥天（國二）	Keras也爆炸多
+20:56	Ted 顥天（國二）	但PyTorch真的好用
+20:58	zlib	國內經典課程教材都是用torch
+20:58	zlib	tf2的keras比較偏自學玩玩 學不到精髓
+20:59	zlib	但我認識的高手兩個都會啦～
+20:59	zlib	我自己也是學完pytorch還是只會用keras的廢廢
+21:00	Ted 顥天（國二）	但看GitHub和Kaggle就大多是tf
+21:01	Ted 顥天（國二）	我是沒有文檔就寫不出一些xD
+21:01	Ted 顥天（國二）	如果有文檔能看，我torch, tf, keras都會
+_(:з」∠)_
+21:02	zlib	要跟課的話 我覺得用pytorch比較能找到作業抄ㄎㄎ
+21:02	Ted 顥天（國二）	這倒是真的
+21:03	Ted 顥天（國二）	澄清：我只抄過一個code
+21:04	DD	pytorch感覺比較好懂欸程式碼
+21:04	菜雞	果然是高手 我每天工作的內容就是google code來抄
+21:04	DD	爾且比起tf.keras還要明確
+21:05	zlib	好像比較能和數學公式搭配
+21:10	阿福	兩個都學就沒問題了
+21:12	大班畢業	https://buzzorange.com/techorange/2022/07/14/deep-learning-framework/
+剛被推這篇
+感覺現在是torch佔上風？
+21:12	andrew left the chat.
+23:05	Jasper	Jax 我有try過 核心是functional programming+numpy GPU XLA加速
+23:07	Jasper	雖然是說functional programming 但像是deep mind有一個haiku的project有把他寫成class
+https://github.com/deepmind/dm-haiku/blob/main/haiku/_src/attention.py
+23:10	Jasper	裡面有CNN, Transformer, self attention, Gan
+23:12	Jasper	由於算是numpy-based的 如果專案中同時包含ML+DL的話可以考慮看看 畢竟Xgboost, Catboost等等模型在分類效果還是不錯
+23:13	Jasper	屌打torch的地方應該就是自動掛Google Cloud TPU和自動pareller training 吧 
+torch的話要用torch_xla 個人覺得很難用
+
+Sat, 16/07/2022
+16:51	d	想請問用NVIDIA Tesla V100顯卡 跑深度學習 好用嗎？
+16:56	Jasper	你控制好不要讓memory爆掉就好
+16:57	d	我之前用2080ΤI跑深度學習 跑不動
+16:58	Jasper	什麼task?
+16:58	大班畢業	好奇問一下處理大數據時
+記憶體不夠問題該如何處理
+16:58	Jasper	大概率就是cuda out of memory吧
+16:59	Jasper	Batch size 小一點 通用的想法
+16:59	d	Yolov7 我圖片size是640但跑不動
+16:59	d	調整到160才跑的動
+16:59	Jasper	你圖片size是指batch size嗎
+16:59	d	不是
+16:59	Jasper	長寬縮小一下看看？
+16:59	d	圖片大小
+17:00	Jasper	啊你batch就一個！
+17:00	Jasper	？
+17:00	Jasper	還是一次1000
+17:00	Jasper	可以看看別人論文參數怎麼調整的吧
+17:01	Jasper	Yolov7只是框架 你看你的model是第幾版本 會去看他論文的image size和batch size
+17:01	TL	降低input size 降低batch size 用小型的先跑
+17:01	Jasper	回去看論文
+17:01	d	好 
+17:01	d	謝謝
+17:23	Alex	經驗上cfg裡的 width 跟height調小一些有很大的幫助！應該只有32的倍數都能試試！
+17:26	Alex	batch_size跟subdivisions我剛開始都調2哈哈 不然memory真的不夠(blue)
+17:42	d	記憶體要多少才合適呀
+17:42	d	我是16GB
+17:46	Alex	我之前在Ubuntu 上訓練 有32G哈哈
+17:46	Alex	只是完整版會練比較久 不知道v7有沒有tiny版的
+17:48	Alex	[Photo]
+17:49	Alex	完整版跑不完 tiny的應該也可以試試
+17:50	Alex	但16G應該也有辦法(hahaha)
+17:50	Alex	可能這邊其他大神們會更瞭解(ok)
+20:00	小嫩嫩 left the chat.
+
+Mon, 18/07/2022
+16:39	Timmmm joined the chat.
+16:39	資料分析 joined the chat.
+16:39	QQQQQQQQQ joined the chat.
+16:39	Yu77777 joined the chat.
+16:39	LOS joined the chat.
+16:39	Mandy joined the chat.
+16:39	Auto-reply	歡迎加入Python資料科學交流社群👋
+可以先查看記事本or公告的版規，也鼓勵大家踴躍詢問和分享有關「資料科學」的問題、職涯、競賽跟知識🙏
+
+Tue, 19/07/2022
+12:45	nagi	nagi shared an OpenChat note.
+
+Sun, 24/07/2022
+20:30	Sophia	請問一下你們平常下班會練leetcode 嗎？資料科學領域的工作會不會很需要呢？
+20:38	喵a	感覺不太需要吧, 統計學比較重要
+20:40	nagi	資料分析師的話會考Python、SQL 居多，資料工程師、資料科學家除了Python、SQL，可能還會考一些程式題（不一定是類似leetcode的考題，看公司）
+20:41	nagi	但資料分析師也要看公司😂有些可能只看作品集，或是Tableau、PowerBI、DataStudio 等 BI 軟體的操作熟練程度
+20:44	阿福	擔任資料領域3年了 沒碰過leetcode
+反而是練Pytorch 跟 TF 居多
+20:47	大班畢業	請問大大有推薦什麼資料作品方向嗎
+想找資料工程類的💪
+20:48	大班畢業	統計好難😿
+20:50	阿福	看你的作品是打算要用什麼的？
+20:56	Fighting grape	想問SQL怎麼練啊qq
+Leetcode的SQL題都刷完了
+不知道下一步怎麼走
+20:58	TL	Hackerrank好像也有一些
+20:58	nagi	刷完了的話，大概就是練解題速度了🤔
+21:00	nagi	看目標放在什麼公司，昨天去Google，他們 HR 說面試題目只要發現外洩，基本上就會直接從程式題中刪除，所以leetcode 上的題目是不會出現在真正的面試中的~
+21:01	nagi	[Photo]
+21:01	nagi	[Photo]
+21:02	大班畢業	就符合資料工程技能的的作品
+21:03	大班畢業	天哪 是101那個活動嗎
+來不及報名
+21:06	nagi	對~昨天 HR 講完就打算要走了，結果被大家包圍😂
+21:08	Fighting grape	謝謝建議～～
+確實有些題目需要寫滿久的🤔
+21:11	nagi	之後如果看到其他活動也會分享在社群👍
+21:12	nagi	嗯嗯，而且如果以 Google 為例的話，是面試官當場看著自己解題，據說題目是要用「問的」
+21:12	nagi	其他公司我就不太確定，是不是模式都是這樣
+21:13	nagi	然後IDE是分2種，一種是Google 自己開發的面試環境，另一種就是直接開Google document 😂
+21:14	Fighting grape	題目用問的是什麼意思@@
+聽起來很可怕
+21:14	nagi	所以就不會有Vscode 的auto-complete 功能
+21:16	nagi	昨天聽到是說，leetcode 是題目都是直接在上面，但Google 是面試官用講的，然後面試者可以藉由問問題來更加了解需要解決的問題跟目的
+21:21	nagi	Btw昨天有人問到內轉制度，回答是說內轉就不需要再面試一次了
+21:22	Fighting grape	了解～～ 
+感覺有點像在模擬職場日常耶😮
+要跟需求者確認到底要撈出什麼樣的資料
+21:30	TL	可以去YouTube看mock interview的形式
+21:33	TL	AWS最近有找DS 好想直接BQ關，沒先考程式
+21:33	TL	好像*
+21:40	Fighting grape	謝謝～
+21:50	阿福	那就把這個打到銅牌吧
+https://www.kaggle.com/competitions/hubmap-organ-segmentation
+
+Mon, 25/07/2022
+07:53	茶	對，谷歌的題庫都是自己的，不過刷leetcode 還是有一點幫助，其實leetcode 就只是資結演算法的題庫而已
+07:57	茶	不過非谷歌的公司我自己面試這幾年的公司很少會考leetcode，反而一堆會給作業 類似給你一個推薦系統的開放題目要你一個禮拜給他報告你的成果 (XD)
+11:02	Rams	感謝分享~
+
+Tue, 26/07/2022
+14:27	大班畢業	靠北 這招根本是偷方法給內部人員參考吧
+14:37	鮭魚	話說 Google 不是可以自己訂面試時間嗎？
+14:37	鮭魚	歪個樓 那位人資我知道 哈哈哈
+
+Wed, 27/07/2022
+20:25	nagi	nagi shared an OpenChat note.
+
+Fri, 29/07/2022
+11:31	大班畢業	請問各位，如果工作遇到 performance warning of disk space, memory consumption 這該怎麼處理
+11:45	阿福	把一些不必要的檔案刪一刪  
+不要一次開太多程式
+以上兩者都做還是不行 可以考慮升級電腦
+11:48	大班畢業	所以還是常規操作 或直接硬體升級
+我以為會有什麼特別方法可以處理
+17:46	林彥承 left the chat.
+
+Sat, 30/07/2022
+15:38	nagi	[Photo]
+15:38	nagi	[Photo]
+
+Mon, 01/08/2022
+15:12	d	https://buzzorange.com/techorange/2021/03/15/engineer_imposter_syndrome_2021/
+15:12	d	AI工程師
+15:15	魯蛇飯	我就爛ＱＱ
+16:03	青檸 joined the chat.
+16:03	J_L joined the chat.
+16:03	Sha joined the chat.
+16:03	白光 joined the chat.
+16:03	Louise joined the chat.
+16:03	tttg joined the chat.
+16:03	Morgan joined the chat.
+16:03	艾倫 joined the chat.
+16:03	ZY00964王皓渝 joined the chat.
+16:03	Auto-reply	歡迎加入Python資料科學交流社群👋
+可以先查看記事本or公告的版規，也鼓勵大家踴躍詢問和分享有關「資料科學」的問題、職涯、競賽跟知識🙏
+20:41	Kai	大家晚安，想請問一個因果推論的問題
+假設一個影音平台（例如 Youtube ）發現了觀看時間與用戶留存率呈正相關，這時候可以如何設計實驗去驗證「觀看時間越長，會讓用戶的留存率越高」的因果關係，目前想不通的點是觀看時間是由用戶決定，不知道要怎麼控制觀看時間這個變數。
+21:46	zhzkk	correlation between 觀看時間and 用戶的留存率
+21:51	nagi	「觀看時間與用戶留存率呈正相關」這句話不是本身就表示觀看時間越長 用戶留存率越高了嗎?
+22:03	Kai	相關性不等於因果關係
+這裡觀察到的正相關，可能有兩種情境。第一種是用戶對影片內容感興趣，會有越長的觀看時間，同時也因為他對影片內容感興趣，有更高的用戶留存率，對影片感興趣是因，觀看時間和留存率是果；第二種情境是，用戶看越多影片，會造成他有更高的留存率，觀看時間是因，留存率是果。
+這兩者的差異最主要在於，第一種情境下，假設產品推出一個新功能成功讓用戶增加觀看時間，但並不會改變用戶對影片內容感興趣的程度，所以不會增加留存率。第二種情境下，才有可能透過增加用戶觀看時間，提升留存率。
+22:13	nagi	了解, 所以這邊的觀看時間並非是一個影片的觀看時間, 而是整體頻道影片的觀看時間~
+22:15	小文	正相關不代表具有因果關係
+例如可以觀察到沙灘穿比基尼的人多和溺斃的人數呈現正相關
+22:17	Kai	是的，是某個用戶在該影音平台的累計觀看時間
+22:19	TL	以前是用PSM 資料不夠應該不夠準
+22:19	zhzkk	mediation or moderation analysis
+22:20	Jasper	Cause of inference 蠻難處理的   
+不知道可不可以用A/B testing的方式 抽樣一批人 使用一種推薦長影片演算法去主動增加他的瀏覽時間 然後看看留存率
+22:21	Jasper	我之前聽過部門內的人在看相關論文 最後都不了了之
+22:21	TL	大題目
+22:22	Zaza	第一種情境已經認為是因為對內容感興趣導致觀看時間越長，好奇怎麼會有增加一個新功能這個選項？新功能跟提供令用戶感興趣的內容有關係嗎？@@ 
+22:23	Zaza unsent a message.
+22:26	Jasper	兩種可能情境都想一種優化方法 做完A/B testing後 把cause of inference丟掉 結案
+22:29	Jasper unsent a message.
+22:30	Jasper	先射箭再畫靶 發現哪個準度高之後再回頭唬爛說為什麼這個方法好 就跟深度學習的論文一樣
+22:36	Kai	這邊因果關係是從上帝視角看出來的ＸＤ
+實務上通常只會找到關聯性，例如前面說到的「觀看時間與留存率的正相關」，這時候很可能就會提出假設「觀看時間越長，會讓留存率增加」，基於這樣的假設進行產品開發。
+但前面說的兩種不同的因果關係的情境會導致這個功能成功或失敗，所以終究還是要找個方法驗證因果關係
+22:41	Kai	我一開始的直覺也是用 A/B testing，但是要怎麼讓 A 組的觀看時間低，B 組的觀看時間高，這件事讓我有點困擾。如果設計一個 A/B testing 實驗，以留存率作為實驗的成功指標，並使用了 X 方法（例如你提到的演算法）增加某一組用戶的觀看時間，這樣得到的結論會是： X 方法會增加用戶的留存率（X 方法也會增加用戶的觀看時間），好像還是無法證明觀看時間和留存率的因果關係
+23:01	Jasper	懂你的意思
+23:04	Jasper	我記得有人使用過條件機率
+23:04	Jasper	就是有沒有這個factor 某件事發生的機率
+23:05	Jasper	有點像logit 啦 但感覺還是跟你要的因果不一樣
+23:41	Forrest	應該是指透過功能的改動讓用戶提升使用時間
+但這個改動不會使用戶對產品更有興趣
+
+Tue, 02/08/2022
+00:16	Forrest	用戶觀看的時間越長，有可能會增加留存的'機率'
+不確定能不能用希爾準則的一致性原則 (Consistency)
+如果這個因果關係存在
+用戶觀看每一部影片或不同類型的影片的時間越長 他留存的機率應該都要越高
+00:30	TL	傾向分數配對是找兩個很像的人，只有觀看時間長短的差異，來觀察哪一群人存留機率較高
+00:30	TL	但是假設不太好成立
+00:41	TL	https://researchrepository.rmit.edu.au/esploro/outputs/journalArticle/The-effect-of-customers-social-media-participation-on-customer-visit-frequency-and-profitability-An-empirical-investigation/9921886352501341
+
+Wed, 03/08/2022
+16:52	cientifica	https://data.motcmpb.gov.tw/MPB_BigData/index.html
+
+Thu, 04/08/2022
+11:44	d	[Photo]
+11:44	d	想請問我想訓練 yolov7 可是我是分開圖片訓練 這樣子我要怎麼合再一起  還是可以分開訓練呢?
+11:48	TL	我是寫一隻程式把資料整理成他的格式
+
+Sat, 06/08/2022
+15:53	小樹	不是手動建個資料夾拉一拉就好了嗎？🤔
+我之前修課時上Yolov5是這樣子做的，如果沒有誤會你問的意思的話
+
+Sun, 07/08/2022
+14:46	J_L	大家好我想詢問一下決策樹的問題
+14:47	J_L	假設我今天是想判斷這個動物是不是哺乳類動物，我可以利用決策樹去分類
+14:47	J_L	但是哺乳類的分類是已經有既定的標準去判斷，那是不是其實應該用if else去篩，而不是用決策樹讓他自己找規則去篩
+14:48	TL	有rule base就直接用了
+14:48	J_L	想請問是甚麼意思
+14:49	J_L	是直接用if 條件嗎？
+14:59	魯蛇飯	對
+15:01	J_L	了解了感謝～
+
+Mon, 08/08/2022
+14:29	TL	請教目前XAI落地應用盛行嗎？還是只有在賣產品的廠商比較常拿來當賣點呢？謝謝🙏
+15:14	Biofuck	學界和生醫重視模型可解釋性
+15:50	小文	https://arxiv.org/abs/2204.12822
+15:53	TL	是想了解業界情況，因為有pm拿著xai的報導來壓工程師要給出文件(Capoo has no words)
+15:53	小文	XAI發展起源自軍工, 後來像是航太、金融、生醫等領域都有在用
+15:53	小文	https://youtu.be/07hifxAsXjc
+15:54	小文	這是今年年初的研討會 可參考2:35有提到
+16:01	TL	晚上再仔細聽，印度腔沒辦法一邊上班一邊聽😆 感謝
+16:01	小文	https://mp.weixin.qq.com/s/3hdCT_3sOkBhI3cTQWbQng
+16:54	Biofuck	除了shap 和lime ，請問有沒有推薦的model agnostic explanation 方法？
+17:15	小文	https://explainable-ai-tutorial.github.io/
+17:16	小文	其實看不太懂你的問題
+17:16	小文	[Photo]
+17:17	小文	截圖來自於
+Part 2 - Feature Based Explanations
+Slides 
+17:44	小文	例如說想知道資料特性
+常用的有計算平均跟標準差
+這兩個方法都很好，不過不建議只看單一指標，因為看的東西不一樣
+17:46	小文	shap跟lime也是 
+除非很確定就是要看模型的某者偏向
+最好不要只單用某個方法
+17:55	小文	如果是要問還有哪些方法，可以用連結介紹的，然後根據需求去選，之後關鍵字搜索可以查到一堆方法變種
+
+Tue, 09/08/2022
+01:38	Biofuck	感謝！這個我第一次看到⋯
+Feature explanation困擾我很久
+01:38	Biofuck	基本上我是ensemble models 所以有點尷尬
+01:40	Biofuck	只想到用shap 不過擔心運算上有np問題，想看看今年有沒有其他好用的
+01:40	Biofuck	感謝感謝
+10:31	小文	哇 這塊我沒做過 不確定這些XAI方法適不適用 期待有機會能聽你分享經驗
+10:33	小文 unsent a message.
+10:34	pan left the chat.
+10:36	小文	像最近很流行的Transformers用LIME或SHAP都不能很好的work(原理上), 所以就會延伸出一些新方法
+https://arxiv.org/abs/2208.01575
+12:31	鮭魚	這大陸的吧
+12:34	Berry joined the chat.
+12:34	秀秀 joined the chat.
+12:34	Vii joined the chat.
+12:34	想想可樂果 joined the chat.
+12:34	m joined the chat.
+12:34	EJ joined the chat.
+12:34	青眼白龍 joined the chat.
+12:34	Kaka_777 joined the chat.
+12:34	ThisisV joined the chat.
+12:34	伽利略 joined the chat.
+12:34	Auto-reply	歡迎加入Python資料科學交流社群👋
+可以先查看記事本or公告的版規，也鼓勵大家踴躍詢問和分享有關「資料科學」的問題、職涯、競賽跟知識🙏
+12:35	Jasper	ICLR今年有一篇用Language model判斷某個neuron在CV task裡的作用來解釋模型
+12:35	Jasper	推薦大家看一下https://openreview.net/forum?id=NudBMY-tzDr
+12:37	Jasper	在XAI領域是蠻有創意的嘗試 用black box 解釋black box
+12:38	Jasper	而且還拿了oral presentation
+12:49	Biofuck	蠻有趣的XDD 謝啦~~~
+15:02	好想學程式 left the chat.
+
+Wed, 10/08/2022
+13:47	Kev unsent a message.
+13:50	Kev	大家午安，想詢問一下各前處理順序的問題。
+目前資料集 有100多個特徵欄位，是希望依據產品別"ProductType" 分開建置約20個模型。
+資料筆數約1000筆，個產品別筆數差距很大，預測目標是數值型的 Y。
+13:51	Kev	現階段資料輸入後進行步驟如下:
+1. 全資料分成train跟test
+2. train中的各產品別分開進行前處理(包含target encoding)
+3. train裡面的ProductType使用ADASYN進行oversampling
+4. 對 train 和 test 篩選本次要進行訓練的產品別
+5. 對oversampling後的train，依照預測目標Y的分級(第10百分位距以下/第90百分位距以上/其餘資料) 進行分層抽樣，再分成 train_2 和 valid
+6. 對於train_2和valid使用optuna優化 XGBoost和 RandomForest的超參數
+7. 優化後之超參數輸入模型進行 Sequential Feature Selection，選擇特徵數量為 0.15的總特徵數(做實驗評估r2後選出的數值)
+8. 將兩模型選出的特徵進行聯集，成為 Feature list
+9. 重新使用 train_2 和valid 配合新的 Feature list 配合optuna找出新的模型超參數 
+10. 使用優化之超參數配合 原本的 train 訓練模型
+11. 對 test 進行一樣的前處理
+12. 預測 test的 Y
+13:52	Kev	想詢問的是 target encoding 應該放在 oversampling 之前或後呢? 或是上述步驟有什麼奇怪的部分QQ
+15:38	青眼白龍	請教各前輩，我現在是軟體公司的SQL資料分析師（依客戶需求寫stored procedure)做快一年了，正在思考下份工作，能給我一些方向嗎？感恩
+15:40	zlib	新竹隨便挑一間當 IT
+15:41	青眼白龍	暫時想在台北發展
+15:43	zlib	找一間新竹在台北也有 branch 的XD
+15:46	青眼白龍	這一年狂寫SQL寫到快吐了
+15:46	青眼白龍	想換口味
+15:47	zlib	當 IT 可以接觸各種業務
+15:47	魯蛇飯	後端工程師？
+15:47	zlib	同時有更多的SQL要你寫XD
+15:48	青眼白龍	沒碰過，只玩過flask
+15:48	nitekat	IT 要寫 SQL喔？
+15:48	青眼白龍	有點想跳sales看看
+15:48	魯蛇飯	也是可以的
+15:48	青眼白龍	還是先把技術磨全面呢
+15:49	zlib	基本能力
+15:49	魯蛇飯	Sales差距比較多，願意降薪應該有人願意收
+15:49	青眼白龍	我現在薪水也沒很高
+15:49	zlib	sales好像等於歸零了
+15:50	zlib	起碼要做過product吧
+15:50	kaka	pm呢？
+15:50	青眼白龍	我現在在想要磨技術還是多接觸不同面向的工作
+15:50	zlib	flask都玩過了前後端隨便你跳阿
+15:50	青眼白龍 unsent a message.
+15:50	kaka	看你想做哪種吧
+15:50	青眼白龍	就只有網路資源看一看的程度
+15:50	nitekat	我還以為IT就是管機器的這樣
+15:51	魯蛇飯	IT 這個涵蓋範圍太廣，我知道掛IT的都不會SQL
+15:51	青眼白龍	工作上沒操作過
+15:51	kaka	我們都要欸
+15:51	kaka	IT太廣+1
+15:51	青眼白龍	應該是說處理資料流的IT都要會
+15:52	TL	我聽過國泰的數據分析師自介說精通SQL，應該也是一條路
+15:53	青眼白龍	國泰聽說薪水不高
+15:53	zlib	管機器的比較偏helpdesk那邊
+15:53	kaka	要很擅長做簡報和報告喔
+15:53	魯蛇飯	資料分析比較需要domain knowledge 
+15:53	zlib	小公司的IT就要自己開發內部系統+管機器啦
+15:53	TL	跑不少人應該比較好進去，適合轉跑道的跳板 噗
+15:54	青眼白龍	數數發嗎
+15:54	青眼白龍	去年好像很缺人
+15:54	青眼白龍	一直徵
+15:54	kaka	不好說 聽說長期缺人，永遠補不滿？
+15:54	kaka	就雙方都很挑
+15:54	zlib	國泰給面子面過把我趕出來w
+15:55	青眼白龍	年薪大概落在哪
+15:55	TL	今年銀行的缺算是食物鏈最底層
+15:55	kaka	@@
+15:55	kaka	想聽故事～～
+15:55	青眼白龍	說說說
+15:55	青眼白龍	反正暱名😆
+15:56	zlib	就他們問我的問題我都答很快，然後最後面完給我評價是太浮躁
+15:56	kaka	…
+15:56	青眼白龍	薪水談多少
+15:56	青眼白龍	我覺得是打槍的爛理由欸
+15:56	kaka	大樹通常年薪/18 = 月薪
+15:56	zlib	大概請不起我 我是想說hunter是我學妹去露個臉
+15:57	zlib	超低底薪 高年終
+15:57	TL	銀行就要演戲
+15:57	zlib	但國泰還算自由啦
+15:57	青眼白龍	高年終是綁你的方法
+15:57	zlib	中信好像要穿西裝
+15:58	青眼白龍	分子是100嗎
+15:58	zlib	每個人談出來不一樣吧
+15:58	TL	對方買單的期望薪資 😆
+15:59	青眼白龍	應該還是有個差不多的
+15:59	青眼白龍	不至于落差很大
+15:59	zlib	不過先進去再到研討會刷臉也比較容易被挖
+15:59	zlib	他們前幾年蠻愛當贊助商的
+15:59	kaka	進去聽說在分子看每個人的背景
+16:00	zlib	反正投個幾間拿offer比一下就知道自己現在市場價值如何了XD
+16:00	魯蛇飯	樹樹發電話訪談就沒結果(nom nom)
+16:01	TL	最近剛寫完他給的適性測驗 哈哈
+16:01	kaka	不好說XDD
+16:01	青眼白龍	你們大概都幾歲壓
+16:01	魯蛇飯	3x
+16:01	青眼白龍	他們是想找新人還是即戰
+16:02	kaka	都找
+16:02	青眼白龍	這麼缺
+16:02	zlib	90後
+16:02	青眼白龍	好可怕的fu
+16:02	魯蛇飯	有即戰力的新人
+16:02	kaka	朋友帶2年年資進去
+16:02	青眼白龍	乾這是大家都想要的吧
+16:02	青眼白龍	完美
+16:02	kaka	主管對他說…你是有經驗的，我們對你期望很高
+16:03	阿福	沒這麼完美 還要便宜
+16:03	青眼白龍	標准屁話
+16:03	青眼白龍	意思就是你不能犯錯
+16:03	kaka	這聽起來感覺…
+16:03	kaka	而且他降月薪進去
+16:04	TL	錢少事多
+16:05	青眼白龍	大家會想從資料分析師轉後端工程師嗎
+16:05	青眼白龍	還是轉pm
+16:06	kaka	後端工程師的具體內容是？
+16:06	kaka	&為何想轉呢？
+16:06	青眼白龍	想趁30歲前嚐試不同類型的工作
+16:07	kaka	多摸索？
+16:07	青眼白龍	對
+16:08	kaka	如果想摸，我會找多少有一點關聯的轉
+16:08	kaka	這樣比較能累積
+16:08	TL	你可以試著幫自己的分析結果作成系統，前後端都能碰到
+16:08	kaka	實際看你喜歡哪種、哪種做得下
+16:09	青眼白龍	所以要多做不同面向的工作
+16:09	青眼白龍	不然哪之道什麼喜歡不喜歡
+16:09	zlib	萬一發現喜歡外送怎麼辦XD
+16:09	kaka	XD
+16:09	青眼白龍	應該不至于
+16:10	kaka	找相關的人聊聊，多少有一點想法
+16:10	zlib	linkedin開起來，看誰找你
+16:10	青眼白龍	沒在經營
+16:10	zlib	是時候了
+16:11	zlib	快30了
+16:11	青眼白龍	我朋友沒在經營linkedln只開104現在也在世界工作😆
+16:12	d	柬埔寨好像蠻缺工程師的
+16:12	青眼白龍	割腎工程師
+16:12	zlib	用拳頭那種嗎
+16:12	zlib	湯姆熊歡樂世界嗎
+16:12	TL	[Photo]
+16:13	TL	其他群看到的
+16:14	aellen	擔心她的安全了
+16:14	青眼白龍	她正嗎
+16:14	青眼白龍	不正就比較安全
+16:14	zlib	明年就回來台灣recruit了
+16:15	kaka	[Sticker]
+16:17	kaka	沒在經營+1，但若下次換工作應該會使用
+16:18	青眼白龍	很多剛畢業的裝逼用
+16:18	kaka	目前感覺linkedin上面很多外商和HH？
+16:18	kaka	沒沒…上面的工作和104的很不ㄧ樣fu
+16:18	青眼白龍	英文對話不行
+16:19	青眼白龍	我比較local一點
+16:19	kaka	好吧～
+16:19	TL	外商的話感覺直接去官網比較快
+16:19	青眼白龍	對阿
+16:19	kaka	都是呀 就不同管道
+16:20	青眼白龍	好懶😆
+16:20	青眼白龍	人生好難
+16:21	TL	最近印度的軟體接案公司也在台灣撈工程師，tata跟infosys
+16:21	青眼白龍	英文對話我不行
+16:21	青眼白龍	還是習慣用台語駡髒話😆
+16:32	zlib	你去外商更要用臺語罵髒話 因為他們聽不懂
+16:32	zlib	還可以教老外幹你娘是我愛你的意思
+16:33	青眼白龍	操你媽的逼是母親節快樂的意思
+20:52	Jasper	為何不把產品當作dummy x輸入就好
+20:53	Jasper unsent a message.
+20:59	Jasper	跟IBM差不多吧
+20:59	Jasper	少一點
+20:59	Jasper	但兩個都沒到GG Appier 趨勢的感覺
+21:14	kaka	IBM多少呀
+21:18	Jasper	104
+21:18	Jasper	Campus hire
+21:18	Jasper	Check it
+21:20	Kev	因為有些欄位的類別種類很多 怕做成dummy後會讓整體維度太大 另外就是有試跑模型比對後 做target encoding的也確實比較好 
+21:21	Jasper	XGB可以直接放吧
+21:21	Jasper	也不用dummy
+21:22	Jasper	Ok
+21:28	Jasper	Target encoding放在前面是合理的 如果你應用沒有model size限制也許你可以ensemble model 然後放進去所有變數 也不太需要feature selection
+21:29	Jasper	當然最好就是兩種做法但做做看 用那個validation最好的方法
+21:29	Jasper	然後把script留下來 以後就不用重新幹
+21:41	Kev	了解！ 真的超級感謝🥲🥲 其實最後預測 model 那塊有在考慮 Stacking 或是一些深度學習的方法
+21:41	Kev	另外有點好奇為什麼不用做 feature selection哇
+21:52	Aaron	我自己是資料分析師出來的 自己是寫個爬蟲 然後用flask 架個前端 然後再挑一個關聯或非關聯資料庫存，或許你可以嘗試看看這樣有沒有興趣？
+21:52	Zaza	會
+21:54	Aaron	不過我目前的公司幾乎通包，資料分析 爬蟲 後端都要會，也有建模，我不確定這樣好不好就是了，以前的工作也比較單純在資料分析
+21:54	Zaza	我覺得這樣很好欸其實
+21:54	Aaron	壞處就是沒辦法都很精通
+21:54	Zaza	你可以看看以後比較想往哪裡
+21:55	Zaza	都碰的好處是這樣
+21:55	Aaron	我比較喜歡da 著重一些，然後架個bi 輔以分析這樣，頂多用一些模型
+21:56	Aaron	我覺得真的要搞後端 要熟java 等其他語言，python 在台灣優勢比較少
+21:59	TL	我跟你差不多，不過web是給內部使用，不用像一般產品那麼成熟😆
+23:16	阿汪	scala嗎 ?
+23:21	Jasper	Scala學的動力大概就是apache spark等等開源專案吧
+23:21	Jasper	對我來說啦
+23:21	Jasper	But life shorts, use python
+23:21	阿汪	人生苦短 我用拍森
+23:23	麥特戴蒙	問題
+（業務單位裡做資料非Data Team）想請教有沒有人遇過想跟其他業務單位要資料做進一步驗證分析但被否決的經驗？怎麼說服或是就放棄了😅
+23:24	維	想請問各位知道有什麼使用啟發式演算法尋找最佳化的封包嗎? 比如GA、PSO等等
+23:24	TL	挺常見的，他們會覺得你要去割韭菜
+23:24	維	https://github.com/ljvmiranda921/pyswarms
+23:24	維	我自己只有找到類似這個可以應用 不知道各位有沒有什麼資源可以分享(hands put together)
+23:24	麥特戴蒙	有種覺得在業務單位做資料都只受限在自己單位的資料，有很多想法但最後事與願違
+23:25	nagi	可能要提出具體的驗證方向跟預期效益再談看看，畢竟是內部驗證，不是跟外部公司要資料，應該還是有妥協、商量的空間
+23:25	Aaron	看對方有沒有必要 一定要幫你，若必要，請主管去協調吧 ，不然就是要套好交情
+23:26	Aaron	這要看公司有沒有資料層級的權限管理，類似資料治理的架構
+23:27	麥特戴蒙	主管有幫去要的但還是被打槍(Goosebumps)
+23:27	Aaron	資料的owner，共用的層級有沒有規範
+23:28	Aaron	不過 我也遇過 不給就是不給 因為資料owner 是另外的單位，也沒轍
+23:34	TL	跨單位真的不好搞，除非上頭很挺
+23:46	Zaza	公司沒有數據中心統一管理很麻煩
+
+Thu, 11/08/2022
+08:21	kaka	感覺是主管需要解決的事欸？
+08:23	kaka	我們都會定期有一個大型會議，各部門大頭都在，會說有沒有什麼卡關，在會議上溝通協調
+08:24	kaka	如果要不到資料，看上層是不是夠重視，夠重視理論上會跳出來協調
+08:25	kaka	或否決應該會有原因，如果是政策法規面的話…
+08:26	kaka	就要想有沒有繞道可能，或下下策pass這個議題
+08:46	Jasper	好
+08:46	Jasper	聯邦學習
+08:46	Jasper	XD
+14:26	d	 想請問訓練yolov7 時訓練完後的權重後完的名字為best.pt，如果想再繼續訓練，就把原本yolov7.pt改成best.pt繼續訓練是這樣嗎？
+16:08	小樹	對啊
+18:02	茶	我前公司有做，但是你跨單位一樣要喬，唯一優點就是接水管過來很快
+18:15	Zaza	如果不是一開始就有資料中心概念 都要橋 但對 USER 來說還是方便很多 部會變成 喬^喬^喬 的狀況 XD
+
+Fri, 12/08/2022
+21:01	tttg	[Photo]
+21:01	tttg	想請問各位大神 為什麼已經輸入了中文套組 卻出現這個錯誤呢
+剛開始接觸NLP 有很多不懂的地方 請各位多多指教 謝謝
+21:07	zlib	nlp變數不是dict或list型態吧
+你看看type(nlp)
+21:19	godo	[] 跟 () 不一樣欸
+21:19	godo	你要不要先確定一下是用哪個
+21:21	tttg	好!
+21:38	tttg	確定是() 但出現extra data 的錯誤@@
+21:42	TL	你印一下a 跟範例比較一下就知道差在哪裡
+21:42	TL	[Photo]
+21:43	tttg	好的 感謝
+
+Sun, 14/08/2022
+20:38	Philip Chang joined the chat.
+20:38	JHX joined the chat.
+20:38	Amin joined the chat.
+20:38	Yu joined the chat.
+20:38	2022 joined the chat.
+20:38	Flying 🐎 joined the chat.
+20:38	嘎揪 joined the chat.
+20:38	Auto-reply	歡迎加入Python資料科學交流社群👋
+可以先查看記事本or公告的版規，也鼓勵大家踴躍詢問和分享有關「資料科學」的問題、職涯、競賽跟知識🙏
+
+Mon, 15/08/2022
+00:28	TL	https://careers.linecorp.com/jobs/1229
+00:28	TL	Line找ML的人
+14:58	青眼白龍	這裡有人做過資料庫轉換語法的專案ㄇ
+14:58	青眼白龍	資料驗證做到快死掉
+14:59	kaka	？
+14:59	青眼白龍	公司的資料庫要從oracle換成sql server
+15:00	kaka	自己轉code嗎？
+15:01	青眼白龍	對
+15:01	青眼白龍	stored procedure
+15:01	青眼白龍	全部
+15:01	青眼白龍	重寫
+15:01	青眼白龍	封掉
+15:01	zlib	兩個都極端冷門欸
+15:01	青眼白龍	慘
+15:01	zlib	倒成csv再import有沒有搞頭
+15:02	青眼白龍	語法過了  但資料面不對
+15:02	青眼白龍	分段測到哭
+15:03	小文	是沒到冷門啦
+15:03	小文	只是大概會做到哭
+15:03	青眼白龍	我們公司是把業務邏輯全部寫在sp內
+15:04	青眼白龍	判斷
+15:04	zlib	it日常
+15:04	青眼白龍	真的災難
+15:05	青眼白龍	https://ithelp.ithome.com.tw/articles/10205801
+15:13	kaka	天啊這超崩潰
+15:13	kaka	我們那時請廠商幫忙…
+15:15	kaka	抓案例找原因？
+15:16	kaka	我現在也在對倉儲開發的變數，和線上開發的變數，兩者邏輯一致性，也是快崩潰…
+15:18	青眼白龍	每天都快死了
+15:18	青眼白龍	專案的時間壓力又很趕
+15:18	青眼白龍	對
+15:18	青眼白龍	正在抓戰犯
+15:19	nitekat	幾年前做過一個從使用 UnixODBC 的國產老牌 database 轉換到 MySQL 的案子...  
+雖然應該是比 Oracle -> SQL Server 簡單啦，但實在不是會想再做一次的事  😱
+15:20	青眼白龍	把這個寫在履歷上  會加分ㄇ xd
+15:20	青眼白龍	耐操的證明
+15:23	zlib	sqlserver像柬埔寨一樣 進得去出不來
+15:31	青眼白龍	我是新人
+15:31	青眼白龍	被叫去接這苦事
+15:32	zlib	阿現在就七月阿
+15:32	zlib	抓交替盛行
+15:32	青眼白龍	早知道早點離職
+15:33	青眼白龍	坑都跳下去了
+15:35	kaka	我們不是新人也會經歷呀 拍拍
+15:39	阿汪	寫成ORM?
+15:41	青眼白龍	公司不是採用這ㄍ技術
+15:43	阿汪	那真的要當程式翻譯師了
+15:44	青眼白龍	打上深厚的程式基礎
+15:44	青眼白龍	打下
+15:44	青眼白龍	sql的翻譯更麻煩
+15:44	青眼白龍	語法都對  資料gg
+15:46	阿汪	我以為業界都是用程式控制DB
+15:47	zlib	sql阿
+15:48	阿汪	https://medium.com/@steph.c/5-%E5%80%8B%E4%BD%A0%E4%B8%8D%E8%A9%B2%E4%BD%BF%E7%94%A8-stored-procedure-%E7%9A%84%E5%8E%9F%E5%9B%A0-9ac524fe37ba
+15:48	阿汪	之前有一間工作內容就是這個
+15:48	阿汪	還好我沒投
+15:48	阿汪	幹
+15:48	阿汪	想到我就吐了
+15:50	青眼白龍	我正在水深火熱
+15:50	青眼白龍	該跳槽了
+15:50	青眼白龍	做個一年就打算閃人
+15:51	Aaron	各家公司都有 類似的
+15:51	阿汪	當水鬼抓墊背ㄇQQ
+15:51	Aaron	我的話 是公司有部分的人堅持用SAS  但SAS 太貴 上面想廢掉，也要轉語法
+15:52	青眼白龍	sas不是開源
+15:52	青眼白龍	但生醫界都再用
+15:52	Aaron	新人只能被抓去 當交替 研究怎麼轉成python 支援的資料庫 例如sqlite 
+15:52	青眼白龍	銀行好像也是
+15:53	青眼白龍	python至少很多套件可以用
+15:53	青眼白龍	sql沒有
+15:53	Aaron	對呀 沒錯
+15:53	Aaron	但銀行會卡資安問題
+15:53	青眼白龍	資安真的mdfk
+15:53	Aaron	這時候 就是要搬你去溝通了🥲
+15:53	阿汪	直接寫離職信了
+15:55	Aaron	我的話是同時有其他的專案要開發 只是轉資料庫或系統這種事 我不大接受就是了 分享給大家參考
+15:55	Aaron	我們公司分工很粗 新人要做很多事情
+15:56	青眼白龍	我們也是
+15:56	青眼白龍	小公司
+15:56	青眼白龍	沒有甚麼制度
+15:56	阿汪	蹲久了 就習慣了
+15:56	阿汪	QAQ
+15:57	Aaron	我是前份和這份都在大公司
+15:57	青眼白龍	我們部門連GIT都不用
+15:57	青眼白龍	這份真的做經驗
+15:57	青眼白龍	不宜久待
+15:57	Aaron	但這份的工作分工很怪 沒前份那麼好
+15:57	青眼白龍	你這份也是大公司嗎
+15:58	青眼白龍	但我是轉行仔  第一份 也不能要求這麼多
+15:58	Aaron	對呀 但我在某個傳統的產業😂
+15:58	Aaron	可能沒有科技或軟體那麼先境
+15:59	青眼白龍	還是去軟體好點
+15:59	青眼白龍	進步比較快
+16:00	青眼白龍	我們公司也沒啥教育訓練
+16:00	青眼白龍	沒制度
+16:00	青眼白龍	反正進去就分工作給你
+16:00	青眼白龍	撐不住你自己就會走
+16:01	kaka	我們sas轉py了
+16:02	Aaron	公司使用sas 多嗎
+16:02	青眼白龍	現在應該都是用PYTHON控制DB吧
+16:02	kaka	一個一個廢掉XD
+16:02	Aaron	不過 python 似乎也可以用saspy 控制sas 就是了
+16:02	青眼白龍	複雜的業務邏輯
+16:02	kaka unsent a message.
+16:02	青眼白龍	不是核寫再sp
+16:03	kaka unsent a message.
+16:03	Aaron	我們是有些人不想廢掉（不想學python 
+16:03	Aaron	頭痛中
+16:04	kaka unsent a message.
+16:04	青眼白龍	python很好學吧
+16:04	kaka unsent a message.
+16:04	Aaron	心態問題😂
+16:04	Aaron	沒辦法 每個人想法不同
+16:04	kaka	專案建了就會有進度了
+16:04	青眼白龍	找年輕人近來啊
+16:05	青眼白龍	python八年級生  應該沒有人不會吧
+16:05	kaka	XD
+16:06	Aaron	資深的頗多 我話語權沒那麼強🤔
+16:06	kaka	這個太地圖砲
+16:06	青眼白龍	現在國小都有程式班補習
+16:06	青眼白龍	都在教大數據了
+16:07	kaka	我那時也是上面專案建了，每週我要開會報告進度..
+16:07	kaka	八年級最大的31歲了…當年應該沒有吧XD
+16:08	Aaron	你是在大公司嗎
+16:08	青眼白龍	py我記得不算很新的語言
+16:09	青眼白龍	很久以前就有了
+16:09	zlib	1990 生
+16:09	青眼白龍	只是當時硬體沒˙跟上所以不留行
+16:09	kaka	怎麼樣叫大@@
+16:09	青眼白龍	上市櫃
+16:09	kaka unsent a message.
+16:10	kaka	但近年才變紅@@
+16:10	Aaron	起專案是不錯 不過大公司要牽涉的部門太多
+16:11	kaka	我們上線也是要跨部門..QQ
+16:23	nitekat	python 在台灣應該是 2000年出頭左右就開始有一些公司用它來做網站，不太多就是了
+16:23	維元	2000 年？還是 2010 年？
+16:24	nitekat	2000 ，我自己知道的網站大概是 2005還是2006 ，但是在他之前應該就有了，所以我說2000年出頭
+16:25	維元	那個時候是用什麼框架？www
+16:26	nitekat	我知道的那個印象中是用 django
+16:26	維元	我剛剛查了一下 django 比較多人使用是 08 年以後
+16:27	維元	再加上當時前後端的生態
+16:27	維元	2000 年初用 Python 做網站沒什麼優勢
+16:28	nitekat	那麼有可能是後面再轉成 django，太久了忘記了，哈
+16:28	維元	那個時代還是 PHP/JSP 的時代吧
+16:28	維元	jQuery 也是 08 年之後的事吧？
+16:28	nitekat	但我是記得當時我在聽長輩們討論，他們就會拿 python 的 solution 一起談
+16:29	茶	2.7的年代大概就是做爬蟲主流，也沒什麼框架，全部用Selenium 跟BS4刻
+16:29	維元	才有 RWD 什麼技術慢慢普及
+16:29	維元	我當時還在背 99 乘法表
+16:29	青眼白龍	我當時還在學珠心算
+16:30	維元	難以想像 2000年出頭左右 用 Python 做網站是什麼體驗www
+16:30	茶	我那個時代寫C++突然某天被老闆叫去寫Python 給一個禮拜學，字串Unicode UTF-8很奇葩會報錯，以前寫C++完全不敢想像這什麼奇葩語言
+16:33	阿汪	2000 我都還沒上學
+16:33	nitekat	我也不知道，我的 python 也是這一兩年才學的，但我知道我小時候有聽大人在討論
+16:33	茶	我們那個時候是用Java刻在竄Python爬蟲寫入DB，再用Spring 撈DB資料
+16:34	茶	很陽春的
+16:37	魯蛇飯	python2  處理 unicode 體驗真的不好
+16:38	zlib	小時候 decode encode 得很爽
+16:38	zlib	趁機認識一些編碼
+16:39	魯蛇飯	計算機概論-認識編碼
+16:39	nitekat	每次看到這些就感恩「還好我跳過了 python 2 的年代」
+16:39	青眼白龍	沒學過的轉職仔
+16:39	青眼白龍	從工作中 補洞中好辛苦
+16:40	茶	那個年代還沒有Docker Python 很難有優勢，主流是Java掛載Tomcat server 在放在Apache 做Loading Balance，然後部署也沒有甚麼CICD，部署就是載著十幾台主機去對方公司人工部署
+16:41	魯蛇飯	我也是轉職仔，不過以前數學系還是會上計概而且用cpp起家，算是基礎比較好一點
+16:41	zlib	我以前還因為print不用括號推廣過python2 ww
+16:42	青眼白龍	寫python 不用宣告
+16:42	青眼白龍	舒服
+16:46	菜雞	團隊合作開發的時候這是很大的一個缺點
+16:46	TL	如果在函數那邊先定義好呢
+16:46	魯蛇飯	現在想想以前數學系有自己的計概中心和圖書館也是蠻得天獨厚的
+16:47	阿汪	python可以硬要宣告阿
+16:47	阿汪	很沒意義而已
+16:49	魯蛇飯	python 要宣告變數，只是不用宣告型別，現在有type hint 配合 IDE 舒服多了
+16:51	阿汪	也可以用dataclass自定義type
+16:52	nitekat	我念的那家數學系也是有計算中心跟圖書館，也開計概跟教CPP... 該不會... XD   
+你們有開資料結構嗎 XD
+16:53	青眼白龍	認親大會
+16:53	魯蛇飯	台灣很多數學系都有，來說一下我老師自稱子由，這提示有沒有很明顯
+16:54	魯蛇飯	google應該就能查到是哪一間
+16:54	nitekat	哎呦   系友您好
+16:54	zlib	央大喔
+16:55	魯蛇飯	[Sticker]
+16:55	nitekat	正式其實是叫中大
+16:55	zlib	笑死
+16:55	zlib	以前最喜歡酸央大
+16:55	zlib	因為中大可以reference到太多間
+16:55	nitekat	我知道，反正我們註冊了
+16:56	TL	惹怒央大人
+16:56	魯蛇飯	從簡稱就知道是不是校友
+16:56	nitekat	[Sticker]
+16:56	zlib	我高中也差點考到中央機械
+16:56	zlib	還好沒去
+16:56	zlib	不然晚上不知道要吃什麼
+16:57	阿汪	麥當勞嗎?
+16:58	魯蛇飯	我認識很多人都是畢業後福氣就變多
+17:38	維元	不過我看很多專案都建議變數要定義 typing 
+17:43	Antonio	typing 是正常的不是嗎 
+17:45	nitekat	有寫 type hint 的話是可以配合 IDE 提示，不過就只是提示而已他沒檢查
+17:45	阿汪	可以用套件
+17:45	阿汪	或者是自己assert check 參數的type
+17:46	nitekat	嗯，是可以，mypy 那類的吧
+17:49	維元	所以我看到兩派說法，一派是覺得不用寫；一派是覺得要寫
+17:49	阿汪	我會寫
+17:49	阿汪	有的時候 我真的會忘記我裡面塞什麼
+17:49	zlib	<—-會動就好
+17:49	維元	我看大部分的套件都有規定要寫（？
+17:50	維元	不過大部分坊間的書，都沒有特別寫（？
+17:50	阿汪	忘記之後就要print長什麼樣子
+17:50	菜雞	<- 改用go
+17:50	阿汪	直接寫TS了
+17:50	阿汪	每個參數都要宣告
+17:50	維元	同一個問題很像 JS vs TS 的討論XD
+17:52	nitekat unsent a message.
+17:53	nitekat	如果現在寫的東西只有我自己要用，大部分的時候我不會寫
+17:54	茶	typing的好處除了讓IDE可以讀讓後續使用你的套件的人方便外，就是docstring在簡易的範例可以不用寫或寫single line，主要還是站在團隊開發的優點上，更加Clean Code
+17:55	Antonio	很多人連測試都不會寫 不知道在幹嘛
+17:55	維元	原則上是這樣沒錯XD
+17:56	魯蛇飯	對他們而言寫測試浪費時間
+17:56	魯蛇飯	但是遇到需要重構又沒測試就是聽天由命
+17:57	Antonio	號稱很會建模的一堆 但很多觀念很弱
+17:58	Antonio	習慣不好 滿煩的
+17:58	阿汪	[Photo]
+17:58	阿汪	請祈禱
+17:58	魯蛇飯	還有 data driven 的測試不好寫也是一個原因
+17:58	維元	這個蠻同意的
+17:58	Antonio	連協作什麼的都不會 只會自己寫一個腳本 
+17:59	Antonio	習慣好 大家合作起來很愉快
+17:59	茶	我之前用公司某位同事的Function 跑直接在跑到一百萬筆報錯，結果小子準點一到人就消失，主管急著要，那天直接熬夜加班幫他Debug
+18:00	茶	[Sticker]
+18:00	維元	很多會為了模型優化，弄出很多很難 scale up 的方法
+18:00	茶	他誇口說沒Bug，太大意相信他
+18:00	維元	模型準也沒用，根本不能上線
+18:01	Antonio	真的是很糟糕。
+18:04	小文	你大意了 沒有閃
+18:05	魯蛇飯	個人有測試也只能減少一點點bug而已，因為bug會發生就是超出個人的意識之外，所以很難避免，但是會寫測試的code架構和可讀性會比沒有的好上很多
+
+Tue, 16/08/2022
+12:21	Tim	錯過任親大會了XD後面有不少可以吃的啊（以新竹人的標準來說的話⋯⋯）
+12:27	TL	之前去中央上sap的課，住在後門那條還蠻不錯的，如果超過一個月應該也是會膩
+12:28	Tim	所以說，土生土長的新竹人蠻好養的（誤）
+12:38	TL	https://www.yourator.co/articles/309 看到一個分享，看完發現他是放棄聯發科去新創
+13:51	青眼白龍	還在改寫語法的苦海中
+13:51	青眼白龍	每天壓力山大
+13:51	青眼白龍	到底該不該離職0..0
+13:52	阿汪	要召喚兩隻青眼白龍
+13:52	青眼白龍	程式翻譯師
+13:52	青眼白龍	哭
+13:52	青眼白龍	召喚三芝
+13:52	青眼白龍	青眼就及隆
+13:52	阿汪	融合成青眼究極龍ㄇ
+13:52	青眼白龍	要
+13:52	zlib	青光眼白龍
+13:52	青眼白龍	還要有黑魔導
+13:52	青眼白龍	是黑摩導ㄇ
+13:52	阿汪	布魯斯艾斗多拉貢
+13:53	青眼白龍	騎在三隻隆上面的那個
+13:53	阿汪	84
+13:53	青眼白龍	ㄅ然ㄋ
+13:53	青眼白龍	那隻是三小
+13:53	zlib	黑磨搗女孩
+13:53	青眼白龍	讚
+13:53	zlib	孔雀舞 阿嘶
+13:53	阿汪	渾沌戰士
+13:53	zlib	媽的知道這個有夠老
+13:54	阿汪	之內的愛卡
+13:54	zlib	現在小孩不都看5dx
+13:54	青眼白龍	ㄅ會ㄅ
+13:54	青眼白龍	八年級ㄉ回憶
+13:54	青眼白龍	孔雀舞
+13:54	青眼白龍	極品
+13:54	阿汪	阿斯
+13:55	青眼白龍	之內的下巴
+13:57	TL	Howhow
+13:57	青眼白龍	鄧弗如
+13:58	阿汪	離職海闊天空
+13:59	青眼白龍	不行
+13:59	青眼白龍	要騎驢找馬
+13:59	青眼白龍	不然房租繳不出來
+14:02	阿汪	房東是女生ㄇ
+14:02	青眼白龍	已婚
+14:02	青眼白龍	媽媽樣
+14:02	阿汪	好 差點犯法惹
+14:02	青眼白龍	你不會有興趣ㄉ
+14:02	青眼白龍	長得就媽媽的樣子
+14:03	阿汪	先不用
+14:03	阿汪	你就慢慢投ㄅ
+14:03	青眼白龍	通姦除罪化
+18:49	小文	[Photo]
+21:06	茶	左擁C，右擁C#
+21:08	茶	[Photo]
+21:08	茶	[Photo]
+21:08	茶	[Photo]
+21:09	茶	我喜歡C，老人喜歡熟女系
+21:09	茶	[Sticker]
+21:10	茶	[Photo]
+21:15	魯蛇飯	我懷疑有人在開車
+21:45	青眼白龍	資料科學列車啟動
+23:38	阿汪	用程式玩遊戲?
+23:39	阿汪	我就想到有人開發交友軟體
+23:39	阿汪	把程式當主題
+23:39	阿汪	自介是CODE
+
+Wed, 17/08/2022
+09:31	ChuChu left the chat.
+09:31	ChuChu left the chat.
+
+Thu, 18/08/2022
+15:27	小文	[Photo]
+15:36	Ted 顥天（國二）	VSinder?
+15:41	阿汪	對 哈哈哈
+
+Sun, 21/08/2022
+14:48	nagi	nagi shared an OpenChat note.
+14:53	Jerry.f joined the chat.
+14:53	Jerry.f joined the chat.
+14:53	Nick YH joined the chat.
+14:53	Nick YH joined the chat.
+14:53	學習程式的小白 joined the chat.
+14:53	學習程式的小白 joined the chat.
+14:53	小林 joined the chat.
+14:53	小林 joined the chat.
+14:53	Chun joined the chat.
+14:53	Chun joined the chat.
+14:53	Auto-reply	歡迎加入Python資料科學交流社群👋
+可以先查看記事本or公告的版規，也鼓勵大家踴躍詢問和分享有關「資料科學」的問題、職涯、競賽跟知識🙏
+
+Mon, 22/08/2022
+08:04	Yuuu🐠 left the chat.
+08:04	Yuuu🐠 left the chat.
+11:28	luca joined the chat.
+11:28	小菜 joined the chat.
+11:28	luca joined the chat.
+11:28	小菜 joined the chat.
+11:28	鮭魚卵 joined the chat.
+11:28	鮭魚卵 joined the chat.
+11:28	Sylvia joined the chat.
+11:28	Sylvia joined the chat.
+11:28	Auto-reply	歡迎加入Python資料科學交流社群👋
+可以先查看記事本or公告的版規，也鼓勵大家踴躍詢問和分享有關「資料科學」的問題、職涯、競賽跟知識🙏
+
+Wed, 24/08/2022
+22:15	芋頭 left the chat.
+22:15	芋頭 left the chat.
+
+Thu, 25/08/2022
+08:21	Jasper	之前我在板上有po過一個叫Yolov7的GitHub 那時候說他是一個library 沒想到真的來了一個真正的Yolov7 還是台灣人發的paper 分享給大家
+https://arxiv.org/abs/2207.02696
+08:26	Jasper	Yolo系列一直都很亂啦 不停有人想要搶頭香註冊新版本
+08:29	TL	[Photo]
+08:32	TL	v7存模型的方式會踩雷
+08:33	Jasper	笑死
+08:33	Jasper	比IPhone更新還快
+08:34	Jasper	還沒試過 估計看論文還有跑之前的baseline會先浪費我一段時間 之後有空再來試試
+
+Fri, 26/08/2022
+15:51	賓士貓 joined the chat.
+15:51	HuangYT joined the chat.
+15:51	賤死 joined the chat.
+15:51	Blazor joined the chat.
+15:51	Auto-reply	歡迎加入Python資料科學交流社群👋
+可以先查看記事本or公告的版規，也鼓勵大家踴躍詢問和分享有關「資料科學」的問題、職涯、競賽跟知識🙏
+17:56	d	想請問
+17:56	d	Yolov7  detect.py 的--source 
+17:57	d	在TX2上要叫攝影機 要怎麽使用 我打 0 也不行
+17:57	d	我改打 /dev/video1 也不行
+17:58	d	這個 我在video capture 是可以叫出來的 但在detect.py卻不行
+17:59	d	所以攝影機應該是沒問題
+17:59	d	[Photo]
+18:01	d	這個可以叫得出來攝影機 /dev/video1
+但在detect.py中的--source
+/dev/video1卻不行
+
+Sat, 27/08/2022
+14:09	饅頭	不好意思，想請問這是什麼問題，試了好久開不了，但是權限我都有
+14:09	饅頭	[Photo]
+15:05	zlib	前面路徑怪怪的
+15:06	zlib	要不要改放home底下
+15:06	zlib	或你先sudo mkdir幫他把資料夾開好
+16:11	饅頭	我原本是放在home 那邊結果移到這裡就變成這樣了
+16:11	饅頭	我剛剛把它移回home 了
+16:12	饅頭	[Photo]
+16:13	饅頭	但是變這樣 我沒有辦法把目錄預設改為home 就一直開不了😭😭
+16:24	zlib	重新找方法灌pycharm好了 感覺正常不會裝在那邊耶
+17:16	饅頭	再研究一下不行的話可能真的只能那樣了 感謝~
+
+19:38	饅頭	結果是在移動資料的時候就要改預設目錄為home，移動過後就不能用指令改要進系統裡面改，總算用好了，在這邊分享一下作法～
+
+Sun, 28/08/2022
+14:21	Lulutina left the chat.
+
+Mon, 29/08/2022
+17:18	Amin	python程式設計，測驗題參考https://forms.gle/EqggLakZdDrMwoq67
+17:18	Amin unsent a message.
+17:18	Amin	個資資料可隨意填，可以不用真實資料
+17:19	Amin	各位可測測自己的程度
+17:26	Amin	管理員 如覺得對這部分的測驗有疑慮可以提出，我再刪除
+17:27	zlib	題目有問題ㄅ
+17:27	zlib	[Photo]
+17:28	Amin	哪部分
+17:28	zlib	你看阿
+17:28	nitekat	5 的話 選項2跟3應該都可以
+17:28	zlib	第四題除了3都行吧
+17:29	nitekat	但我覺得他題目是  查詢已安裝套件  我會支持選項1
+17:29	Amin	恩
+17:29	zlib	這不算測程度 應該是測年資XD
+17:29	Amin	別誤會
+17:29	Amin	不是測年資
+17:29	zlib	純屬有趣還行
+17:29	Amin	地5題我再調整
+17:30	nitekat	我也是錯第四題 XD 
+17:30	Amin	第4題是以上皆是
+17:31	nitekat	嗯，單純不認同選項二、三的用途是主要拿來查詢系統目前已安裝的套件
+17:31	zlib	所以你 import 不到東西報錯 有東西沒output 
+17:31	zlib	這樣拿來查 也是奇葩
+17:32	zlib	然後 python -m 也不是這樣用就是了，請多看官方文件XD
+17:32	Amin	沒有套件時，確實會錯誤
+17:32	zlib	雖然我也是都拿 python -m 救新手啦
+17:32	Amin	 python -m是很好用
+17:33	Amin	早期版本pip 無法更新自己
+17:33	Jasper	我還以爲會有 classmethod staticmethod mixin 之類的
+17:33	zlib	多早
+17:33	Jasper	感覺很像在考八股文XD
+17:33	nitekat	因為我在想所謂「查詢目前已安裝的套件」不應該在查詢時牽涉套件名稱
+17:33	zlib	所以說測年資呀，年資夠深上面問的都不是問題，但可以看出作者對 command 的理解
+17:33	Amin	3.X初左右
+17:34	zlib	長知識了
+17:34	zlib	我出身到現在都是看著 pip 用 pip install pip --upgrade 叫我趕快更新
+17:35	nitekat	有聽說以前會出問題所以會建議用 python -m pip install -U pip
+17:35	zlib	https://stackoverflow.com/a/15223296
+17:35	Amin unsent a message.
+17:35	zlib	起碼十年前
+17:36	Jasper	Zen of python裡都說越乾淨越好 結果題目考很多boilerplate 
+17:36	nitekat	不過直接用 pip install 也沒出過問題就是了
+17:36	Amin	你有安裝在系統上到見就能被import成功
+17:36	zlib	[Photo]
+17:36	Jasper	不然大家一起來寫Java public static void main string args 
+17:37	zlib	System.out.println("閉嘴辣")
+17:37	Jasper	哭
+17:37	nitekat	但我的意思是，題目是【用來查詢系統目前已安裝的套件】，如果我要查100個套件不就要跑 100 次 import XD 
+17:37	Jasper	太兇了吧
+17:38	zlib	其實 if __name__ == "__main__" 也還蠻鬧的
+17:38	nitekat	老實說這就一副 work around 感
+17:39	zlib	因為人家當初設計就是萬 py 皆可 import
+17:39	Jasper	至少方便用vim看哪裡開始跑code吧
+17:39	Jasper	J個還能接受
+17:39	zlib	是 import 的時候確保沒有髒東西偷跑
+17:39	Jasper	嘿啊
+17:40	Jasper	所以還是必要的吧
+17:40	Jasper	還是你覺得要更簡潔
+17:41	zlib	我都不加 main 阿
+17:41	zlib	然後被老闆罵
+
+Tue, 30/08/2022
+08:49	Amin	@zlib 補充說明一下，昨天你問的pip 從何時開始支援自我更新而不是透過python -m更，他是從python v3.8版開始才支援，對照Anaconda是在 2020.07的那一版開始才有支援
+09:04	zlib	能分享你查到的資料嗎
+09:12	Amin	你要自己安裝去試
+09:13	Amin	網路上可能會沒有這部分的文件
+09:14	zlib	[Sticker]
+09:14	Amin	[Photo]
+09:17	zlib	https://stackoverflow.com/questions/4379970/any-idea-how-to-update-python-pip-on-a-windows-box
+09:21	zlib	https://askubuntu.com/a/712345
+大家來考古~
+09:22	zlib	題目換成這個還比較有趣w
+09:25	Amin	或許有另一種可能pip 要 v22 以上才支援自我更新
+09:26	zlib	[Photo]
+09:26	zlib	已知最古
+09:39	nitekat	pip install -U pip 這個應該很古早就傳下來了不太可能 3.8 之後才有
+09:52	Amin	https://pip.pypa.io/en/stable/news/#v20-0
+09:53	Amin	[Photo]
+09:54	Amin	20版前確實無法使用 pip install -U pip 
+09:59	Amin	[Photo]
+09:59	Amin	[Photo]
+10:12	Fighting grape	想問各位大大
+實務上GCP的BigQuery ML會常用嗎？🤔
+10:12	zlib	https://github.com/pypa/pip/issues/7376
+是修復，不是無法使用
+10:14	Amin	講是這樣講，如果要修早就修了，何必等到20版
+10:15	Amin	不過這樣是他們官方丟出來的訊息，至於真相是要修復還是新增就無所謂
+10:15	Amin	只要現在能用就好
+10:18	zlib	XD
+10:23	Amin	就好像 pandas  在 concat 做sort，在 1.0.0之前有做，1.0.0之後就改變了，官方也是稱為修復
+10:24	zlib	https://github.com/pypa/pip/blob/1.5.5/docs/installing.rst
+幫你考到最古了 不用謝
+10:24	zlib	2014/05/03 偉大的紀念日
+10:25	Amin	有線上文件可以查到相關變更就好，至於他們愛怎麼形容就無所謂，我們只要能用的順，不要讓資料出錯就好
+10:25	zlib	而且他們早在 2013 11月就發現 windows 的問題並且找到 workaround，社群真是厲害
+
+Wed, 31/08/2022
+18:30	茶	我也蠻少寫的，但是在windows跑multiproccess還是要寫蠻麻煩的，win的鍋
+
+Fri, 02/09/2022
+15:13	SY joined the chat.
+15:13	Frank joined the chat.
+15:13	Auto-reply	歡迎加入Python資料科學交流社群👋
+可以先查看記事本or公告的版規，也鼓勵大家踴躍詢問和分享有關「資料科學」的問題、職涯、競賽跟知識🙏
+15:17	nitekat	Hi  @nagi 問一下喔～ 現在這個社群的人數上限設定是 500 嗎？今天我有核准一些人進來（印象中是大約7個）但是上面只看到2個，是不是碰到人數上限了？
+18:49	檸檬	我看其他群組有到五千人ㄟ，應該沒有上限吧?
+19:58	nitekat	那個是可以調整的，選項從 100 到 5000 不等
+21:17	nagi set the chat's max participants to 700.
+21:17	nagi	謝謝提醒🙏不知不覺社群已經500人了👍
+
+Sat, 03/09/2022
+00:05	茶	大家早點睡，有參加pycon的明早線上見 XD 
+00:06	zlib	[Sticker]
+
+Tue, 06/09/2022
+16:44	coney joined the chat.
+16:44	May joined the chat.
+16:44	Auto-reply	歡迎加入Python資料科學交流社群👋
+可以先查看記事本or公告的版規，也鼓勵大家踴躍詢問和分享有關「資料科學」的問題、職涯、競賽跟知識🙏
+18:53	SY	想說可能會有人對生物統計和教育有興趣，所以把等一下直播演講連結放這邊
+https://youtu.be/ygTlhF_LQeo
+
+Wed, 07/09/2022
+20:11	羊肉爐 joined the chat.
+20:11	丁丁 joined the chat.
+20:11	新手-羅 joined the chat.
+20:11	Auto-reply	歡迎加入Python資料科學交流社群👋
+可以先查看記事本or公告的版規，也鼓勵大家踴躍詢問和分享有關「資料科學」的問題、職涯、競賽跟知識🙏
+
+Thu, 08/09/2022
+22:44	An left the chat.
+
+Fri, 09/09/2022
+15:34	nagi	[Photo]
+15:34	nagi	nagi shared an OpenChat note.
+15:34	nagi	[Sticker]
+15:40	Wayne joined the chat.
+15:40	Auto-reply	歡迎加入Python資料科學交流社群👋
+可以先查看記事本or公告的版規，也鼓勵大家踴躍詢問和分享有關「資料科學」的問題、職涯、競賽跟知識🙏
+
+Mon, 12/09/2022
+19:22	萌新-很笨那種	最近看到很可愛的科技業貼圖 可以超前部署
+19:22	萌新-很笨那種	[Sticker]
+19:23	萌新-很笨那種	[Sticker]
+19:23	萌新-很笨那種	[Sticker]
+19:23	萌新-很笨那種	[Sticker]
+19:23	萌新-很笨那種	[Sticker]
+19:23	萌新-很笨那種	[Sticker]
+19:34	zlib	業味十足
+19:42	Kassssy	[Sticker]
+20:09	SY	[Sticker]
+20:10	SY	那我推這個剛學程式時買的貼圖
+20:12	阿福 unsent a message.
+20:12	阿福	工作多年後會買的貼圖我也來推薦一下
+20:12	阿福	[Sticker]
+20:12	阿福	[Sticker]
+20:12	阿福	[Sticker]
+20:13	菜雞	[Sticker]
+20:13	菜雞	[Sticker]
+20:13	菜雞	[Sticker]
+20:14	TL	[Sticker]
+20:14	TL	[Sticker]
+20:14	TL	[Sticker]
+20:14	TL	[Sticker]
+20:14	維 left the chat.
+
+Fri, 16/09/2022
+10:35	jim杰 joined the chat.
+10:35	Zennis joined the chat.
+10:35	kalp joined the chat.
+10:35	小J媽 joined the chat.
+10:35	Auto-reply	歡迎加入Python資料科學交流社群👋
+可以先查看記事本or公告的版規，也鼓勵大家踴躍詢問和分享有關「資料科學」的問題、職涯、競賽跟知識🙏
+10:36	青眼白龍	想弄熟PANDAS
+10:36	青眼白龍	有實務方面的課程嗎
+10:36	青眼白龍	我已經是資料分析師了
+10:36	青眼白龍	只是很少用PY
+10:37	青眼白龍	想學一下 以利下份工作
+10:37	Agnes.	那應該可以直接拿工作上做實務應用就好（嗎？）
+10:40	aellen	@青眼白龍 那你現在會用到哪些工具或軟體？
+10:40	aellen	之後也想往這方面斜槓
+10:41	青眼白龍	我的工作是機敏性資料
+10:41	青眼白龍	資料庫
+10:41	青眼白龍	寫stored procedure 
+10:42	aellen	這個倒不知道，我再找找
+11:07	kaka	偏DE嗎
+11:07	kaka	把現況用SQL寫的code，全部改用py寫，應該就會進步了
+11:14	阿汪	Sqlachemy?
+11:15	JC	@阿汪 他指這個吧
+11:15	阿汪	哦哦哦
+11:16	阿汪	我記得有一本書專門寫numpy 跟pandas
+11:16	阿汪	還是獨立忘了
+11:16	阿汪	你可以去天瓏找找看
+11:17	JC	本身都在寫store procedure ，確實直接找pandas對應語法，就能搞出大多需求了
+11:17	JC	剩的…遇到再上來問🤣
+11:17	阿汪	碰到就知道問題到哪裡了
+11:56	zlib	把excel砍了 恭喜你會用pandas了
+11:58	DD	你是說
+NumPy 高速運算徹底解說    
+Python資料分析必備套件
+嗎 XD
+12:11	茶	官方文件是好朋友，不然有些不常用的太久沒有用也會忘，像explode這種太少用了，必要還是要查一下
+14:04	鮭魚	應該很多書都有吧 
+14:16	學習程式的小白	好奇發問，資料分析的職缺不是一般都要會python才能進得去？
+14:17	TL	工具很多，職稱只是參考，要看實際做的事情
+14:18	nagi	不一定~R也可以，看公司的 JD 
+14:18	學習程式的小白	了解
+14:23	阿福	看職位 資料分析這個範圍還是蠻廣的
+有些缺搞不好Excel就夠用了
+14:25	zlib	最常見的情況是 你想當工程師結果進去叫你用excel, 你當分析師的時候進去都在寫code
+14:27	TL	應徵AI工程師 結果進去是當PM XD
+14:48	Aaron	上面2個我都有遇到 現在的工作是AI工程師 然後什麼都要弄 分析 建模 數據工程
+14:49	鮭魚卵	我也是🥲
+14:49	Aaron	都不知道是好是壞😂 台灣很多公司都這樣
+14:49	鮭魚卵	你算好了
+14:50	鮭魚卵	我之前甚至網路沒通都打來我這
+14:50	鮭魚卵	我？？？
+14:51	Aaron	我還有在公司當過兼職總務 馬桶壞掉要幫忙報修
+14:51	TL	分析跟建模還有點類似，工程那塊就差太多了，linkedin很多獵頭拿著資料工程缺到處問(Capoo rolling eyes)
+14:51	鮭魚卵	[Sticker]
+14:58	學習程式的小白	這個也太離譜了吧～
+14:59	學習程式的小白	我是看過一些公司掛資料分析，但進去就是做企劃～真的只用excel弄一些簡單的數據
+15:00	Aaron	這很多啊 而且現在企劃兼作分析的愈來愈多
+15:00	Aaron	或是內部訓練一下 企劃就可以兼做分析 不用在撈資料給他們
+15:35	茶	我是有遇過完全小白，數學系那種計算能力很強會BI但程式經驗零，就看公司收不收
+15:39	茶	不過我覺得自己的合作經驗就是最好要有點基礎，不然遇過寫一個function一千行不原子化的，我很怕
+15:41	TL	數學系有的matlab用很多，改用其他語言不難
+15:42	學習程式的小白	這感覺到後面會很強，數學、統計穩穩的都可以往更深的發展
+15:46	茶	要有人帶或是他願意在額外多學一些CS的東西了，願意學的都好說，不然別人整合他的東西就很痛苦了
+16:10	zlib	數學都吞得下去程式應該不會怕
+16:10	zlib	除非英文爆爛
+17:12	阿汪	工具很多 就端看公司要什麼
+17:12	阿汪	反正數據分析 看你是偏數學 便學術 還是偏程式
+
+Sun, 18/09/2022
+19:30	Zennis	[Photo]
+19:31	Zennis	不好意思 請問有人知道為什麼output 的shape沒有東西嗎
+19:41	阿福	因為你的運算過程沒有向量 只有純量
+19:46	Zennis	了解🫡謝謝
+
+Wed, 21/09/2022
+10:14	青眼白龍	大給後   我是資料分析師
+10:14	青眼白龍	想提升自己的程式能力
+10:14	青眼白龍	有哪些進修管道
+10:14	青眼白龍	感恩
+10:15	青眼白龍	工作後發現自己的寫作習慣不好
+10:16	zlib	https://google.github.io/styleguide/pyguide.html
+10:16	zlib	好習慣從學大佬開始
+10:17	阿福	Tensorflow PyTorch官網
+10:19	阿福	或是這網站資源也不錯
+10:19	阿福	https://www.tenlong.com.tw
+11:38	小文	https://www.chinatimes.com/realtimenews/20220921000081-263101?chdtv
+18:29	茶	我以為我看錯 原來不是鋼珠...
+18:32	nitekat	感覺這作弊好累，還要訓練括約肌
+20:16	nagi	https://m.youtube.com/watch?v=556ZGiRGc5U
+20:17	nagi	很棒的影片，推薦給大家👍
+
+Fri, 23/09/2022
+10:54	麥特戴蒙	「SQL問題請教」
+我有一份大量名單資料要查詢但不想將資料直接放在where條件
+
+所以創了一個#temp(temp table)裡面放我要查詢的資料
+
+寫Query時用where(select * from #temp)
+被告知#temp為無效的物件名稱
+
+請教板友有無推薦做法，謝謝🙏
+10:55	麻雀	用Hashtable?
+10:56	麥特戴蒙	好，我google查查
+10:59	麻雀	將每個資料轉成對應Bucket
+可以將資料簡單保密 也能加快搜尋速度
+11:00	麻雀	在database裡面另外加一個column
+11:39	麥特戴蒙	釐清一下需求是從另一個已存在的table 取符合temp table的值。
+ex:
+select
+from A
+where ( select * from #temp)
+—————-—————-—————-
+我剛將#temp改成tempdb.#temp
+也有紅底顯示物件名稱tempdb.#temp無效但有正確結果@@
+11:45	麻雀	所以你是產生一個暫存?
+11:48	麥特戴蒙	對，從頭產生一個暫存
+11:51	麥特戴蒙	因為會用到幾個select取名單資料最後再合併起來，想說用取暫存表資料，不然每個select都要貼一次名單篩選條件
+11:53	麻雀	可以理解成 table intersection with temp table?
+11:53	麥特戴蒙	我是SQL菜鳥，暫且想到這個方法不知道有沒有更適合的方式。btw因為欲查詢的資料散落在不同table，所以無法直接用一個where條件join其他table
+11:54	麥特戴蒙	對
+11:56	麻雀	那你有直接用交集?
+11:57	麻雀	我沒捨麼再用暫存 但我記得 # 跟 ## 一個區域一個全域
+你有check過你查詢的位置屬於同一個叢集嗎
+11:57	麥特戴蒙	我用UNION
+11:58	麻雀	如果你是把temp table 當成條件式來新建的話 應該是intersection吧
+11:59	麥特戴蒙	intersection 是兩個查詢都符合才print result，我要的是符合其一即可
+12:00	麥特戴蒙	我的情況是有的資料在table a，有的在table b，只要符合其中一個table就取出
+12:01	麥特戴蒙	我最後寫成類似這樣
+select
+from A
+where ( select * from tempdb.#temp)
+UNION
+select
+from B
+where ( select * from tempdb.#temp)
+12:02	麻雀	用Cartesian Product將兩個弄再一起?
+12:03	麥特戴蒙	我google查查，感謝
+18:41	kaka	要試試寫CTE嗎
+19:05	JTS	本群管理員 nagi 大大的期末報告直播~
+https://youtu.be/BhaEWMou7gE 
+19:06	zlib	真猛
+19:09	nagi	這其實是上學期產物了(?)
+19:10	nagi	之後各組之間有互相提問, 也有發現蠻多盲點的
+19:16	nitekat	真猛～
+19:17	nagi	學生的期末報告應該跟業界還是有段差距, 畢竟是老師都設定好門檻的狀況下了
+19:18	TL	比很多在職的人優秀了
+19:21	nagi	應該是沒有這回事😂學生還是缺乏經驗, 所以蠻多學生會盡量去實習更早進入業界
+19:34	TL	有看過幾個大三就很積極 可怕😌
+19:35	nagi	上次去參加GDG的活動也有一些高中生,真的嚇到😂
+20:01	阿喵	https://www.ithome.com.tw/news/153215
+
+Sat, 24/09/2022
+00:43	May left the chat.
+23:59	Glenn joined the chat.
+23:59	楊杰淮 joined the chat.
+23:59	RJ joined the chat.
+23:59	Chih joined the chat.
+23:59	Auto-reply	歡迎加入Python資料科學交流社群👋
+可以先查看記事本or公告的版規，也鼓勵大家踴躍詢問和分享有關「資料科學」的問題、職涯、競賽跟知識🙏
+
+Mon, 26/09/2022
+16:30	青眼白龍	 大三都在瘋球類運動  蠻後悔的
+16:31	青眼白龍	應該多找實習
+16:31	caca left the chat.
+
+Tue, 27/09/2022
+17:06	學習程式的小白	請問有哪位知道這裡要怎樣修正嗎？是括號出錯？
+17:06	學習程式的小白	[Photo]
+17:08	學習程式的小白	SQL語法
+17:08	Yuri	後面加;
+17:20	學習程式的小白	[Photo]
+17:20	學習程式的小白	是這樣加？我試了還是不行～
+
+17:20	學習程式的小白	[Photo]
+17:23	麥特戴蒙	with function 拿掉後應該就可以跑了
+17:25	Agnes.	同上，只要留第4行到13行就好
+
+或者再下面多寫一個select * from longest_used_bike
+17:51	學習程式的小白	解決了，原來WITH function 不能單獨執行，謝謝大家
+
+Thu, 29/09/2022
+09:52	Sophia	[Photo]
+09:52	Sophia	請問有人看過這本嗎？
+09:52	Sophia	推薦嗎？
+10:01	zlib	機率講一小章的東西可以寫成一本書好猛
+10:02	TL	Youtube有人介紹這本書 可以先看看
+10:03	Sophia	你說的應該是他們出版社自己介紹這本的影片吧
+10:07	麻雀	你有用才要買吧
+10:08	麻雀	貝氏可以用在很多地方
+10:08	zlib	讀了不吃虧啦，的確處理完 data 第一招都是先用 Naive Bayes Classifier
+10:08	zlib	條件機率很基本低
+10:08	zlib	(雖然我沒學好
+10:10	青眼白龍	這ㄅ是就樹狀圖ㄉ蓋念ㄇ
+10:14	喵a	很多科學研究都會用到貝氏，之前看一些期刊也偶爾看到，算外星人的存在機率也會用到
+13:56	茶	用到的地方很多啦~像是大家熟知的HMM也是一種特殊的貝氏網路，基於馬可夫性假設而已。然後在擴充像是kalman filter就是HMM的應用。然後擴充到變分推理VAE裡面用到MCMC跟Gibbs Samplng也是滿滿貝氏推論，舉不完
+14:55	lowannann left the chat.
+
+Fri, 30/09/2022
+04:10	帥哥 unsent a message.
+04:10	帥哥 unsent a message.
+04:10	帥哥 unsent a message.
+04:11	帥哥 unsent a message.
+
+Sat, 01/10/2022
+16:27	d	想請問TX2機台好像因為儲存空間不足 而無法順利開機
+16:27	d	可以怎麼解決?
+16:30	紅色的雲	增加虛擬記憶體容量讓它先開機?
+16:31	d	怎麼增加
+16:35	紅色的雲	https://www.leadtek.com/cht/products/AI_HPC(37)/Tesla_Data_Center_Accelerator(138)
+16:36	紅色的雲	砸錢，要不土炮解焊，焊一個更大的上去
+21:57	青眼白龍	https://tw.alphacamp.co/blog/how-to-choice-analysis-tools
+21:57	青眼白龍	大家對這議題的看法是神ㄇ?
+21:59	TL	習慣啥就用啥 人生苦短 不用鄙視鏈(Capoo has no words)
+22:00	青眼白龍	有的資料分析師只用sql來開發
+22:00	青眼白龍	不過還是要看公司
+22:00	青眼白龍	看公司用啥就用啥
+22:02	青眼白龍	pandas 跟  dplyr  本質上就是sqlㄇ\
+22:03	青眼白龍	我自己再用這兩個套件 感覺跟在寫sql
+22:03	青眼白龍	超像ㄉ
+22:03	zlib	excel鄙視所有人
+22:03	青眼白龍	這很難ㄟ
+22:07	學習程式的小白	之前也有看到外國圈在討論這件事
+22:07	學習程式的小白	[Photo]
+22:08	TL	第四點蠻有感的
+22:09	zlib	統計系瑟瑟發抖
+22:11	TL	統計的人做一些數據分析相關的工作應該還不錯？
+22:13	青眼白龍	SQL最重要?
+22:13	青眼白龍	我ㄉ看法啦
+22:13	青眼白龍	最基礎的最重要
+22:14	青眼白龍	r好像就研究助理在用而已?
+22:14	學習程式的小白	但我覺得他的看法太武斷，我認識一些統計高手的薪水都很好
+22:14	青眼白龍	重點是高手XD
+22:14	青眼白龍	要看中位數那陀人的薪水來比
+22:15	青眼白龍	比較有意義
+22:15	Aaron	統計的應用場景太多了 這些高手應該底子很好
+22:15	TL	這比較難統計，各系所會發問卷給畢業生追蹤五年的樣子，每次都有回的比例應該不高
+22:15	青眼白龍	統計的範疇太廣泛
+22:16	青眼白龍	我都略過系辦電話
+22:16	Aaron	舉個例子 A/B Test 我覺得統計學的概念要夠
+22:16	青眼白龍	這我工作上用不到QQ
+22:17	青眼白龍	難ㄇ
+22:17	青眼白龍	要學嗎
+22:17	麥特戴蒙	好奇DA 會越來越注重A/B Testing嗎
+22:17	Aaron	我也不是專家XD 問我可能不準
+22:17	麥特戴蒙	感覺A/B Testing 是個觀念
+22:17	TL	Big tech的DS都要會ab testing 
+22:17	青眼白龍	我的工作只是應客戶需求開發而已
+22:17	青眼白龍	沒有甚麼AB TEST
+22:18	麥特戴蒙	成效統計比較少相關資料可參考
+22:18	TL	經濟系看因果關係就很常用
+22:18	Aaron	因為我曾看過ab test做很深的分析師 才知道高手真的很多
+22:18	麥特戴蒙	https://medium.com/3pm-lab/ab-testing-faq-9589b0657c4c
+22:19	麥特戴蒙	之前看到這篇討論A/B Testing覺得蠻讚的
+22:19	Aaron	實務上 很難有時間可以做完美 我覺得啦
+22:19	麥特戴蒙	實驗失敗了，還是可以上線嗎？
+若以正常的 A/B Testing 流程進行，失敗率高是正常的，畢竟我們都只是凡人（笑）但是我認為 A/B Testing 成功與否、跟是否要將改動上線其實是兩件事
+22:19	麥特戴蒙	這句話蠻有感
+22:19	TL	看來要去修實驗設計
+22:20	Aaron	為了弄到成功 我覺得專案可能也趕不及上線XD
+22:26	麥特戴蒙	常常看到很多JD要求A/B Testing，都不知道怎麼證明具備A/B Testing 能力了(Haha)
+22:27	TL	Show一些優化案例？
+22:28	麥特戴蒙	只做過content A/B Testing，老實說效果也普普😅
+22:30	TL	感覺要找個時間看一下ab testing的mock interview，我也沒商用案例(Capoo has no words)
+22:44	茶	pandas底層應該不是基於b+ tree的，內容讀取我之前看源碼是一個FSM有做context switch 的優化可以做到讀取很快，又透過C加速，然後其他功能很多依賴numpy的樣子
+22:51	茶	接下來做ML或是DL應該會有比較多系統性的議題，尤其是現在單領域算是上限了，大公司開始朝across domain開始做，要做到大型稀疏應該架構會開始複雜化、系統問題包含DB那種分散式問題會蠻吃重的
+22:56	茶	應該說單一domain被玩膩了，再搞下去也不好出paper
+23:01	TL	MS的form recognizer蠻好用的，可是公司需要一個完整流程的平台，他就被篩掉了
+
+Sun, 02/10/2022
+00:41	Stacy	想問2, 3 大家的看法
+熟SQL真的很好找工作嗎
+00:45	菜雞	熟sql不會比較好找工作
+但是不懂sql一定比較難找工作
+01:27	青眼白龍	SQL必備ㄌ
+02:37	LionGodHao left the chat.
+07:43	茶	應該說傳統軟工的東西最好都要懂才能比較好找工作，畢竟很多最終需要面向的是工程化問題，不熟SQL變成數據都要下載下來透過Excel操作多很多計算時間了。
+07:45	茶	不過我目前看過DS應該很少會需要做很高端的SQL操作，至少跟傳統Backend比較
+11:29	Stacy	我也是覺得怪怪的
+我之前的經驗
+熟SQL其他都不太熟的話
+也很難找工作
+覺得學Python好像比學SQL有用
+11:48	學習程式的小白	還是要看要應徵什麼職缺，如果是做資料分析，我是覺得每樣都要懂會比較好找工作～
+11:54	TL	我這邊有個案例是DS用r或python清理資料做模型後，把清理邏輯塞給IT，讓他們用ETL工具做掉
+11:54	TL	阿門
+12:10	Neo	有沒有SQL大神可以幫我解個問題
+12:10	Neo	之前去面試 明明我覺得我寫對
+12:10	Neo	但主管說我寫得很差
+12:15	小菜	想看是什麼題目
+12:15	小菜	😂
+12:21	Neo	我記得是
+欄位A B C 表單是Table A
+把欄位A改成E 並用 新的顯示
+這樣
+12:22	Neo	不是
+Select A as E from Table A 嗎？
+12:24	TL	想問這種狀況讓主管給正確答案會很失禮嗎
+12:26	小菜	不會吧 可是我看不懂問題在考啥哈哈 😅
+12:27	Neo	他當時是直接說
+你SQL考的不是很好
+12:27	nitekat	所以其實也有一種可能就是你題目理解的不是很完全
+12:27	Neo	單純改欄位名稱這樣
+12:28	Neo	或許可能我表達的不夠明確
+12:41	小菜	還是他其實想看你 alter 那個表.. 考完問他一下啊 搞不好有什麼誤會
+12:45	Neo	這有可能
+但之後都是這樣延伸題
+會有可能嗎
+12:46	小菜	你是說 那一系列題目 都是基於前面幾題 alter 那個資料表之後的結果嗎
+12:47	Neo	是的
+12:47	小菜	哇 那難怪 誤會大了啊 xD
+12:47	小菜	登愣 幫你 QQ
+12:48	Neo	像以算sum ave等
+並用欄位A 算 欄位名稱改成 欄位E
+這樣
+12:52	小菜	如果是剛作完 aggregation 的確很像是要取 alias..
+12:52	小菜	但沒看到題目就不知道 QQ.. 但 嗚嗚 拍拍
+12:58	Neo	所以這樣寫是不對的？
+14:42	Vii unsent a message.
+14:42	Vii unsent a message.
+14:46	TL unsent a message.
+14:48	TL	收收😌
+
+Mon, 03/10/2022
+13:14	茶	也沒有不對，alias只是在最後return 回來mysql會把該欄位以alias name回傳給你，如果是變更後要做其他使用這樣每次alias等於要一直包查詢語句，會變很複雜
+13:16	nitekat	其實有點難說對不對，因為不太清楚他整個系列的題目是什麼
+13:19	茶	我覺得面試可以多問，我自己之前面試別人蠻喜歡有來有回的，我去面試也會一直問，不然直接給答案有時候會跟考官想得差很多
+13:20	茶	有很多解法不只一種就是了
+13:57	Omohyoid joined the chat.
+13:57	聖誕樹 joined the chat.
+13:57	PJ joined the chat.
+13:57	Auto-reply	歡迎加入Python資料科學交流社群👋
+可以先查看記事本or公告的版規，也鼓勵大家踴躍詢問和分享有關「資料科學」的問題、職涯、競賽跟知識🙏
+14:10	L left the chat.
+
+Tue, 04/10/2022
+12:52	raspberry	請問Google Maps Place API的每月200鎂免費額度用完後，是不是還有另一個額外的300鎂新手優惠？
+12:53	raspberry	我自己找不到，但有人跟我說有額外的一次性300鎂額度這件事
+12:55	zlib	那個期限一個月 沒用就沒了吧
+13:39	raspberry	哦哦哦
+13:39	raspberry	是嗎
+13:39	raspberry	那我應該可以看看
+13:39	raspberry	我大概9月中啟用的
+
+Thu, 06/10/2022
+09:33	Omohyoid	用pytorch做deep reinforcement learning的話 推薦買colab pro還是買有RTX 30系列獨顯的筆電訓練模型
+09:33	zlib	買筆電很重欸
+09:34	阿汪	買完後 身強體壯
+09:34	阿汪	二頭肌特別明顯
+09:34	Omohyoid	不會常攜帶外出
+09:34	阿汪	那怎麼不買好桌機
+09:35	Omohyoid	空間不夠
+09:35	zlib	花別人家電費
+09:35	阿汪	不然跟我一樣租桌機啊
+09:35	阿汪	一個月1000
+09:35	zlib	自己買卡感覺一下就覺得 outdated 了，會不爽
+09:35	阿汪	還不用付電費跟網路費
+09:36	阿汪	光這些就賺回來了
+09:36	Omohyoid	租桌機的管道有哪些呢
+09:37	阿汪	我在蝦皮找到的
+09:38	Omohyoid	https://www.wudang.com.tw/%E5%8F%B0%E5%8C%97%E6%96%B0%E5%8C%97%E6%A1%83%E5%9C%92%E7%A7%9F%E9%9B%BB%E8%85%A6%E6%8E%A8%E8%96%A6/?https://www.wudang.com.tw/&gclid=Cj0KCQjw1vSZBhDuARIsAKZlijQrbwClnDmgoLVtqSLQ5kgGJwijiXaTQnCdHl-FZ8QAbWj6sGN-1W4aAmYAEALw_wcB
+09:38	Omohyoid	像是這個嗎
+09:48	菜雞	用這個不如直接上aws或gcp開機器就好了？
+09:50	菜雞	Colab先玩玩 了解一下到時候的效能瓶頸在哪然後你就知道該怎麼做了
+09:53	信娟 joined the chat.
+09:53	BT joined the chat.
+09:53	派三木 joined the chat.
+09:53	按鈕 joined the chat.
+09:53	Auto-reply	歡迎加入Python資料科學交流社群👋
+可以先查看記事本or公告的版規，也鼓勵大家踴躍詢問和分享有關「資料科學」的問題、職涯、競賽跟知識🙏
+10:20	Omohyoid	意思是說到時候如果colab的RAM不夠用了就知道要買多少RAM了 速度太慢的話 就檢查是卡在哪邊 可能要改用別的演算法或是去買更高階的顯卡來用嗎
+10:25	菜雞	我覺得更有可能的狀況是
+1. RL的問題其實通常比起gpu更吃cpu 筆電就比較不夠
+2. 可能只是想玩一下 試過之後發現問題太大了 所以move on 到下一個project 所以買機器就有點浪費
+10:51	阿汪	我是要架網站
+10:51	阿汪	還有爬蟲
+10:51	阿汪	不想用自己電腦
+10:51	阿汪	才租的
+10:51	阿汪	一般24小時開著就900
+10:52	阿汪	不包含網路費跟機器的折舊
+11:01	nitekat	架網站的話沒考慮過像是 linode 那種的 vps 嗎
+11:04	阿汪	我那台還要做兼職的東西
+11:04	阿汪	臨時那種
+11:05	阿汪	所以我還是需要一台電腦
+11:08	菜雞	我還是沒看懂不用vps的原因
+11:20	阿汪	我有用過虛機 跑不起來
+11:21	阿汪	同價位 我租用的機器 規格還比較好
+11:21	阿汪	所以我直接用租用的
+11:31	文文 left the chat.
+
+Fri, 07/10/2022
+23:31	TL	https://pub.towardsai.net/jobs-in-data-what-the-data-tells-us-about-skills-and-salaries-fc2c030ef7cb
+23:31	青眼白龍	[Sticker]
+23:31	TL	圖沒rwd 用手機看會擠在一起..
+
+Sun, 09/10/2022
+17:10	🧽🧽 joined the chat.
+17:10	可菲 joined the chat.
+17:10	Li joined the chat.
+17:10	Alexander joined the chat.
+17:10	廷 joined the chat.
+17:10	Auto-reply	歡迎加入Python資料科學交流社群👋
+可以先查看記事本or公告的版規，也鼓勵大家踴躍詢問和分享有關「資料科學」的問題、職涯、競賽跟知識🙏
+
+Mon, 10/10/2022
+20:27	JTS	https://www.instagram.com/reel/Cjc59rVJVi9/?igshid=YmMyMTA2M2Y=
+20:49	青眼白龍	跟資料科學有關的工作是不是都在台北
+20:50	TL	竹科不少
+20:53	青眼白龍	30歲想回中部了
+20:53	青眼白龍	在台北好幾年了
+20:53	青眼白龍	有點類
+20:53	青眼白龍	累
+20:54	阿汪	你可以找遠端阿
+20:54	阿汪	你現在的工作不是很奇葩
+20:54	阿汪	我沒記錯的話
+20:55	青眼白龍	還好啦
+20:55	青眼白龍	算正常
+20:56	阿汪	我真的忘了
+20:56	青眼白龍	不至於做不下去
+20:56	青眼白龍	只是
+20:56	阿汪	只是？
+20:56	青眼白龍	每次回家都會想離父母近一點
+20:56	阿汪	要找另外兩張青眼白龍
+20:56	阿汪	融合
+20:56	青眼白龍	快30了
+20:56	阿汪	沒
+20:57	阿汪	總有一天會要有自己家庭的
+20:57	青眼白龍	還要找混盾騎士
+20:57	阿汪	就算沒有家庭
+20:57	青眼白龍	真ㄉ
+20:57	阿汪	總是要過自己的生活
+20:57	青眼白龍	難道要一輩子在台北ㄇ
+20:57	阿汪	小心被罵媽寶
+20:57	青眼白龍	最近一直在想
+20:58	阿汪	媽寶^U^
+20:58	青眼白龍	今天從北車下車
+20:58	青眼白龍	ㄇㄉ
+20:58	青眼白龍	人好多
+20:58	阿汪	看你取捨阿
+20:58	阿汪	不然你拿著台北的薪水
+20:58	阿汪	中部除了博弈
+20:58	阿汪	還剩什麼
+20:58	青眼白龍	我看公司一半以上都不是台北人
+20:59	青眼白龍	之前有找data相關的
+20:59	青眼白龍	台中
+20:59	青眼白龍	好多博亦
+20:59	TL	台中美光呢？雖然最近美光很慘
+21:00	阿汪	不然你找外商遠端阿
+21:00	阿汪	只是你上班時間都很奇怪而已
+21:00	青眼白龍	秋天感觸多
+21:01	阿汪	不然找個妹子
+21:01	TL	氣溫降低都會有這狀況 很正常
+21:01	阿汪	多了妹子
+21:01	青眼白龍	問ㄉ好
+21:01	阿汪	就沒有其他想法了
+21:01	青眼白龍	中部住起來舒適
+21:01	阿汪	我在台北習慣了
+21:02	阿汪	除了台中 其他縣市 我跟白癡一樣
+21:02	青眼白龍	衣服都曬不乾
+21:02	青眼白龍	煩@@
+21:02	青眼白龍	濕度都90趴
+21:02	阿汪	可以拿電風扇吹阿
+21:02	阿汪	你是住淡水逆
+21:03	青眼白龍	我就是這樣
+21:03	阿汪	那買除濕機阿
+21:03	青眼白龍	來台北都變生活智慧王
+21:03	青眼白龍	洗衣精要買可以陰曬ㄉ
+21:03	阿汪	你還要找data的工作喔？
+21:04	青眼白龍	不然要打掉從練😱
+21:05	阿汪	蹲台中傳產阿
+21:05	青眼白龍	廖老大ㄇ
+21:05	阿汪	可以喔
+21:05	阿汪	至少可以不會懷孕
+21:05	阿汪	不會被搞
+21:05	青眼白龍	他好像台中ㄉ
+21:05	阿汪	至少不會
+21:06	阿汪	你data會的技能有什麼啊
+21:07	青眼白龍	還很junior 
+21:07	青眼白龍	不會後端的
+21:07	阿汪	API呢？
+21:08	青眼白龍	都不太會
+21:08	阿汪	Sql捏
+21:08	阿汪	...
+21:08	青眼白龍	熟
+21:08	阿汪	豪
+21:08	阿汪	可是怎麼一般後端都不會
+21:08	阿汪	演算法捏
+21:08	青眼白龍	不會
+21:08	阿汪	資結呢
+21:09	阿汪	Data不會碰到嗎？
+21:09	青眼白龍	有的只適網路教學看過的程度而已
+21:09	阿汪	Etl?
+21:09	阿汪	Kafka?
+21:10	青眼白龍	這會
+21:10	阿汪	你要不要學一下一般的後端
+21:10	阿汪	你技能點的很突兀耶
+21:11	青眼白龍	對阿
+21:11	青眼白龍	Flask
+21:11	青眼白龍	有學過
+21:11	青眼白龍	但蠻皮毛
+21:11	阿汪	Pandas超熟ㄇ
+21:11	青眼白龍	用過
+21:11	青眼白龍	好問題
+21:12	青眼白龍	最近想搞熟
+21:12	阿汪	Data不用用到？
+21:12	青眼白龍	Pandas
+21:12	阿汪	我已經突破我對做資料科學的人
+21:12	阿汪	的想像了
+21:12	青眼白龍	🥹😭😭
+21:12	阿汪	雖然我知道有模組仔
+21:12	阿汪	但是至少懂得怎麼套
+21:13	阿汪	沒事啦 我是套件仔
+21:13	JC	套件仔路過
+21:13	Sophia	我都用Ariel ，能烘就烘
+21:13	TL	套起來
+21:14	青眼白龍	起秋感觸多
+21:14	青眼白龍	說不定睡一覺醒來又好了
+21:14	阿汪	這樣好像會寫python的類dba仔
+21:15	青眼白龍	好想回到玩遊戲王卡ㄉ童年
+21:15	阿汪	所以資料你自己撈嗎？
+21:15	阿汪	還是後端給你？
+21:15	青眼白龍	自己撈倉儲ㄉ
+21:16	青眼白龍	然後自己串一堆檔
+21:16	青眼白龍	依照業務邏輯寫一寫
+21:16	青眼白龍	Stored procedure 
+21:16	青眼白龍	大概4john
+21:16	阿汪	這我有被嘴過
+21:16	阿汪	那你邏輯是誰想的
+21:17	阿汪	我說是顧問
+21:17	阿汪	那你不就是不會
+21:17	阿汪	嘻嘻
+21:17	阿汪	不只一間這樣嘴
+21:17	JC	[Photo]
+21:17	青眼白龍	誰那ㄇㄎㄅ
+21:17	阿汪	應該有3 4間
+21:17	JC	這張圖好用🤣
+21:17	TL	好奇問一下，一個機器學習問題，直接用xgboost catboost這種算是套件仔嗎？還是大多數玩資料的人都是自己刻一個
+21:18	阿汪	別這樣啦
+21:18	青眼白龍	@阿汪 今年貴庚
+21:18	阿汪	碰到資料科學
+21:18	阿汪	都比我厲害
+21:18	阿汪	我28阿
+21:18	青眼白龍	跟我差不多欸
+21:18	阿汪	所以我放棄找數據
+21:19	阿汪	找一間寫內部的
+21:19	阿汪	舒服
+21:19	阿汪	躺起來
+21:19	阿汪	我現在閒來沒事學寫app
+21:19	JC	技能點很廣
+21:20	青眼白龍	都很分散
+21:20	阿汪	剛好碰到 就用
+21:20	青眼白龍	很多都只是網路教學刻過一遍ㄉ程度
+21:20	阿汪	我想學app單純覺得現在工作會被插單
+21:20	阿汪	所以想做一個TodoList 
+21:20	阿汪	我知道網路很多現成的
+21:20	青眼白龍	感覺要多換幾次工作
+21:21	阿汪	但是還是想寫一個出來
+21:21	青眼白龍	把技能點起來
+21:21	阿汪	你可以學行銷學阿
+21:21	阿汪	這樣就不會被嘴了
+21:21	阿汪	嘻嘻
+21:21	青眼白龍	我看很多電商也都在徵data
+21:22	阿汪	你去91看看啊
+21:22	青眼白龍	很偏行銷部那種
+21:22	青眼白龍	91是啥咪
+21:22	Sophia	這種也要會NLp 
+21:22	阿汪	91app
+21:22	阿汪	做架電商
+21:23	JC	大家找工作都很純！？
+21:23	JC	純Data or backend 
+21:23	阿汪	不然你去竹科找純軟的
+21:24	JC	我廢物，在台北做政府計劃
+21:24	青眼白龍	感覺也可
+21:24	青眼白龍	這很難賺ㄅ
+21:24	阿汪	做政府案子
+21:24	青眼白龍	政府的記劃
+21:24	阿汪	會不會做到很安逸
+21:24	青眼白龍	沒啥利潤
+21:24	JC	一個領薪水的...管他利潤！？（誤
+21:25	青眼白龍	大概多少
+21:25	阿汪	之前我有在ptt有人分享他在資策會待到37還38
+21:25	青眼白龍	政府委外計畫那種ㄇ
+21:25	阿汪	他會很多技能
+21:25	JC	月？年？還做沒多久ＸＤ
+21:26	青眼白龍	年
+21:26	阿汪	K8S python kotlin 出來好像拿一百初頭
+21:26	JC	底薪７０初頭，其他看績效
+21:27	青眼白龍	還ok
+21:27	青眼白龍	台北ㄇ
+21:27	JC	以前畢業幹接案，不好找工作ＱＱ
+21:27	JC	對啊～台北市
+21:27	青眼白龍	這薪水在台北以外
+21:27	青眼白龍	好過ㄌ
+21:27	阿汪	比我高QQ
+21:28	阿汪	在這裡每個人 年薪都比我高
+21:28	青眼白龍	資拓那種ㄇ
+21:28	青眼白龍	睿陽之類ㄉ
+21:28	JC	不是，地理資訊相關
+21:28	阿汪	好熟悉喔
+21:28	JC	我介於ＡＩ和後端之間
+21:28	JC	[Sticker]
+21:28	青眼白龍	我在104好像有看過類似ㄉ
+21:28	阿汪	我記得有一間是地理資訊的
+21:29	青眼白龍	對
+21:29	JC	對啊～哈哈
+21:29	JC	好奇 純Data好找工作！？
+21:29	青眼白龍	中部的我刷104
+21:29	青眼白龍	都蠻慘ㄉ
+21:29	阿汪	數學系仔阿
+21:30	阿汪	一堆公式
+21:30	青眼白龍	台北應該還行
+21:30	阿汪	理論
+21:30	阿汪	電爆面試官
+21:30	青眼白龍	之前面過那個遊戲公司
+21:30	青眼白龍	叫啥有點忘了
+21:31	阿汪	我覺得data還是可以學一下資結跟演算法
+21:31	JC	我已經離ＤＡＴＡ好遠，但我要準備跳回去了 哈
+21:31	阿汪	內湖的老博弈嗎
+21:31	青眼白龍	神來也麻將那間
+21:31	阿汪	你要離職喔？
+21:31	JC	我認為 要學
+21:31	阿汪	這間有找過我
+21:32	JC	沒，是當時進公司就有準備要往Data走一點，我之前一年半都在做後端
+21:32	青眼白龍	那裏可以系統性學
+21:32	阿汪	真的 我就只是寫內部系統
+21:32	青眼白龍	我都是片片斷斷的
+21:32	阿汪	想要更順一點 就要想一下怎麼樣才可以變快
+21:32	JC	我認為是 學想法，前輩的經驗很好用
+21:33	青眼白龍	我聽到的都是純data要轉後端
+21:33	阿汪	之前的舊系統跑15分鐘都跑不出來
+21:33	阿汪	我寫個演算法就60秒就出來了
+21:33	阿汪	比我還快
+21:33	JC	我碩班畢業前是純Data，後來學後端 接案都搞後端和雲端，現在想回來做些Data相關。於似乎我現在處於AI和後端之間
+21:33	阿汪	趁年輕多學啦
+21:33	阿汪	就算沒用到
+21:34	阿汪	還是可以寫興趣
+21:34	青眼白龍	你自己也是年輕人：）
+21:34	青眼白龍	下班後好累
+21:34	青眼白龍	已癱
+21:34	阿汪	我也很累阿
+21:34	阿汪	7點起來
+21:34	阿汪	下班做兼職
+21:34	青眼白龍	沒時間交女友
+21:34	阿汪	做完要看書
+21:34	JC	賺很兇喔
+21:35	阿汪	但是我還是有女友
+21:35	阿汪	嘻嘻
+21:35	青眼白龍	你做啥兼職
+21:35	阿汪	跑圖的
+21:35	青眼白龍	[Photo]
+21:35	阿汪	我也是模組仔
+21:35	阿汪	模組套一套
+21:35	JC	羨慕有兼職ＱＱ
+21:35	阿汪	就給別人了
+21:35	JC	我下禮拜要來誤人子弟了
+21:35	青眼白龍	哪里找ㄉ缺？
+21:35	阿汪	運氣好啦
+21:36	阿汪	我親戚待的公司
+21:36	阿汪	竹科
+21:36	青眼白龍	我也想兼職
+21:36	阿汪	他做視覺辨識
+21:36	青眼白龍	練手感
+21:36	阿汪	你現在就打開104
+21:36	JC	找side project做不行！？
+21:36	阿汪	LinkedIn 
+21:36	青眼白龍	順便賺點錢
+21:36	阿汪	慢慢做side project 
+21:37	阿汪	一直持續丟到github上
+21:37	青眼白龍	說ㄉ也是
+21:37	JC	有賺錢因素就...上網找吧 哈哈
+21:37	阿汪	等人看到
+21:37	青眼白龍	拖延仔
+21:37	阿汪	沒事啦
+21:37	阿汪	人要脫離舒適圈本來就很難
+21:37	JC	舒適圈在哪！？我需要（誤
+21:37	阿汪	我兼職薪水之前高過本薪 又不用花太多時間
+21:38	青眼白龍	好爽
+21:38	阿汪	我前一份本職又很閒
+21:38	阿汪	整個舒適圈起來
+21:38	青眼白龍	是什ㄇ
+21:38	JC	羨慕ＱＱ
+21:38	阿汪	電腦仔
+21:38	青眼白龍	我現在累ㄉ要死
+21:38	阿汪	上班不都8小時
+21:38	阿汪	我跟你不都一樣
+21:38	青眼白龍	年底pm一直趕
+21:39	青眼白龍	跟在催生沒兩樣
+21:39	阿汪	離了啦
+21:39	JC	上下班時間 中午休息時間都不用算！？
+21:39	阿汪	哪次不離
+21:39	青眼白龍	我最近三ㄍ月都在加班
+21:39	阿汪	幫哭哭
+21:39	阿汪	我在傳產
+21:39	阿汪	也是一個安逸
+21:39	青眼白龍	懷疑人生中
+21:39	阿汪	我想先蹲一年
+21:40	青眼白龍	看到PM就反胃
+21:40	阿汪	蹲完繼續找我家附近的工作
+21:40	青眼白龍	一直開會追進度
+21:40	青眼白龍	台北？
+21:40	阿汪	新北
+21:40	阿汪	我家附近有科學園區
+21:41	青眼白龍	我現在可以體會一堆人考公職ㄉ心境
+21:41	阿汪	想要10分鐘到公司
+21:41	阿汪	就像安逸啊
+21:41	青眼白龍	考前面一點分發回家鄉
+21:41	阿汪	但是我年紀還沒到要安逸的年紀
+21:41	學習程式的小白	想問有找過金融業的經驗嗎？看過年薪都破百
+21:41	阿汪	而且炸薯條不是比公職高嗎
+21:42	青眼白龍	我下份想找金融
+21:42	阿汪	我是不喜歡去金融
+21:42	青眼白龍	之前有被產險問過要不要去面試
+21:42	阿汪	不喜歡被制式化
+21:42	青眼白龍	可惜已幾經找到工作ㄌ
+21:42	TL	如果對未來有期望別來金融，來金融就是躺到退休
+21:43	阿汪	觸
+21:43	阿汪	我人生還沒有要安逸的時候
+21:43	青眼白龍	找竹科純軟唯一解ㄇ
+21:43	TL	啊～應該改成是銀行 哈哈 quant那種太神了
+21:43	阿汪	可以啊
+21:43	學習程式的小白	之後想聽分享
+21:43	青眼白龍	新竹沒住過
+21:43	阿汪	可以吃麥當勞
+21:44	阿汪	新竹美食
+21:44	青眼白龍	有遊戲王卡可玩ㄇ
+21:44	學習程式的小白	如果薪水高就不怕躺了 
+21:45	阿汪	只是你技能點的很奇特
+21:45	阿汪	你軟體經驗多久了
+21:45	zlib	長春街有
+21:46	青眼白龍	一年多
+21:46	青眼白龍	笑鼠
+21:46	青眼白龍	還很菜
+21:46	青眼白龍	還在摸索階段
+21:46	阿汪	你現在每天刷leetcode五題
+21:47	阿汪	100天就500題了
+21:47	青眼白龍	想買戰鬥盤
+21:47	阿汪	刷著刷著就知道自己缺什麼了
+21:48	TL	軟工版最近熱烈討論刷題
+21:48	青眼白龍	想轉職賣遊戲王卡💜🤎
+21:49	青眼白龍	很少看
+21:50	阿汪	跟他說 我想找我的partner 
+21:51	青眼白龍	昨天夢到城之內
+23:17	青眼白龍	[Photo]
+23:17	青眼白龍	馬上來刷題
+
+Tue, 11/10/2022
+00:04	阿福	夢到三次可以融合嗎？
+00:10	青眼白龍	要有渾鈍騎士
+00:10	青眼白龍	四隻融合
+00:10	青眼白龍	才對
+00:37	阿汪	@青眼白龍 我想到你可以做什麼了
+00:38	阿汪	你可以把你現在做的 都自動化
+00:38	阿汪	東西來了 沒差 讓他跑
+00:38	阿汪	我玩apex
+00:38	阿汪	嘻嘻
+00:41	阿汪	我這想法怎麼樣 
+00:42	阿汪	同事給你東西 跟他說 呼叫這個api就好了
+00:42	青眼白龍	[心得] 文組Data Analyst工作6年分享
+http://www.ptt.cc/bbs/Salary/M.1661094627.A.939.html
+00:44	青眼白龍	還不錯ㄛ
+00:45	阿汪	Apex的部分ㄇ
+00:45	青眼白龍	對ㄉ
+00:45	青眼白龍	乾頭好痛
+00:45	青眼白龍	想躺平
+00:46	阿汪	你把你流程寫下來
+00:46	阿汪	做成python 
+00:46	阿汪	你就當作在寫測試
+00:47	阿汪	只是 摳api呼叫他而已
+00:47	阿汪	感覺有在做事
+00:48	青眼白龍	歐給
+00:49	青眼白龍	我同事
+00:49	zlib	[Sticker]
+00:49	青眼白龍	好像有在做你說ㄉ這些
+00:49	青眼白龍	不同部門ㄉ
+00:50	青眼白龍	我再另外想side project來弄熟pandas好ㄌ
+01:04	阿汪	要變成pandas小王子ㄇ
+01:06	青眼白龍	Pandas 白龍
+01:06	青眼白龍	攻：3000
+01:06	青眼白龍	守：2500
+01:11	阿汪	不然你寫載入100萬筆資料且轉至需要的格式 需要1分鐘 之後改寫程式 演算法 推進到1秒完成
+01:14	青眼白龍	@阿汪 根本我ㄉ小老師🥹🥹🥹
+01:14	阿汪	你真的要學一般的api實作方法
+01:14	阿汪	不然你不會套模組
+01:15	阿汪	不懂理論
+01:15	阿汪	你跟大學畢業學生差在哪
+01:15	阿汪	差在年齡ㄅ
+01:18	青眼白龍	[Sticker]
+01:18	青眼白龍	歐給
+06:20	Kaka_777 left the chat.
+10:23	茶	竹科南科今年工廠端蠻多在徵才的，就是要適應工廠環境
+10:28	鮭魚卵	好像我的pipeline 🤪
+10:28	鮭魚卵	唯一功用就是顯得我好像很忙（X
+10:34	許小查 unsent a message.
+10:35	茶	大部分都是套模組，除了一些部分可能會需要一些算法修改實作而已，但是工程化技能還是讓你跟學界分開的重要know how，業界即使你只用 logistic regression剩下特徵抽取全部專家系統，只要你能證明未來好維護就是好的solution
+10:39	學習程式的小白	弱弱問一下，我想請問實際工作上面，用到統計學或各種regression的情況多嗎？（我才剛開始在這條路上，不知道要投入多少～
+10:40	青眼白龍	在學ㄉ畫 盡量都碰ㄅ
+10:44	TL	你會發現碰到的問題很多都沒符合假設XD
+10:46	鮭魚卵	或是資料品質好億點點，就覺得開心
+10:47	zlib	論文會先用到 至少 paper 要看得懂吧XD
+11:15	阿福	Regression 蠻常用的 即便是我在視覺領域
+也是用不少
+11:18	學習程式的小白	了解，謝謝你
+21:04	紅色的雲	有人知道圖片中的w和b(bias)分別為什麼嗎?
+21:04	紅色的雲	[Photo]
+21:04	zlib	weight
+21:04	zlib	ax+b = y
+21:05	紅色的雲	謝謝，懂了!
+22:14	Biofuck	請問有人使用過joblib 進行平行運算的經驗嗎？
+22:28	JTS unsent a message.
+22:29	Biofuck	[Photo]
+22:30	JTS	請問 是要訓練模型 還是要做資料處理 想用平行運算呢?
+
+如果是訓練模型
+
+(1) sklearn 裡面有常會有引數 n_jobs 指定開幾個平行處理 (Joblib-based parallelism) [1]
+
+(2) tensorflow 或 pytorch 沒有用過平行運算
+
+如果是做資料處理
+
+* 資料處理會用 Dask 這個套件來做平行加速喔 [2]
+
+Ref:
+[1] https://scikit-learn.org/stable/computing/parallelism.html
+[2] https://docs.dask.org/en/stable/
+
+
+
+22:32	Biofuck	獻醜了，目前只是做feature selection
+singleColsingleLabelDiscriminationColIndex 只針對1個LABEL和1個feauture
+singleLabelDiscriminationColIndex針對1個Label和多個feature
+multiLabelDiscriminationColIndex針對多個LABEL和多個feature
+22:32	JTS	沒有自己刻過直接用 joblib 來平行耶 XDD (俺就是套件仔俺就爛)
+22:32	Biofuck	我查他們是用Parallel(n_jobs=n_jobs, prefer="threading")
+22:33	Biofuck	原本嘗試過自己克，發現JOBLIB比較好用XDDDD
+22:34	Biofuck	我正在想如何提升運算效能
+22:35	Biofuck	但目前確定LOKY比較慢，常常SWITCH，CPU沒用到100%
+23:51	🍋 Lemon left the chat.
+23:56	Glenn left the chat.
+
+Wed, 12/10/2022
+13:39	小明	想請問有人分類問題 產出機率嗎
+例如玉米 現價50
+預測下一期 價格為40 50 60的機率
+各為多少
+過去沒有碰過評估機率的
+想問問大家有什麼推薦的方法
+13:44	Rams	把實數性質的 output 切割成幾個分類，再用分類問題去實作?
+13:49	阿福	三分類問題 然後用softmax輸出機率？
+13:52	小明	但這樣產出的 會變明確的而非機率嗎？
+13:54	小明	我也有在想用深度學習 然後用softmax 函數產出
+但中間過程感覺會像黑盒子
+比較難有數學的推導驗證
+13:55	Rams	我的意思也是 變成分類問題後，用 softmax 去算機率
+13:57	小明	瞭解 我目前也有查到 用sklearn中svm 的predict_proba 也能有機率
+14:01	Fighting grape	NB也可以（？
+如果比較喜歡有數學的推導
+14:02	Fighting grape	雖然準確度可能不優
+14:03	小明	那我想請問一下
+要驗證機率模型的精準度
+我可以先看成普通的分類問題
+預測然後檢查準確度後
+假設準確度高
+在print 出模型給的機率
+這樣能證明這個機率是準的嗎？
+14:04	小明	我在想 這個驗證方法有個盲點
+因為他只能驗證 機率最高的那個準
+其他不一定準
+14:04	小明	貝氏定理嗎 我也會試試看 謝謝
+
+Fri, 14/10/2022
+07:45	茶	我印象中sklearn SVM的predict_proba是先有結果再做logistic regression轉換的，所以有可能跟你的單純predict 輸出不一致，要用可能要注意
+13:38	小明	了解 謝謝!
+13:40	小明	那這樣 是不是沒有甚麼方法 可以做機率的驗證
+13:49	茶	可以畫圖做機率校準線來看看圖符合理想校準線或是做可解釋驗證結果
+13:49	茶	關鍵字 plot calibration 
+13:52	茶	如果沒有Imbalance data的狀況，predict_prob轉換都蠻準的啦~
+13:54	茶	就是可能概念上要注意，我們會以為那個predict_proba是svm的boundary距離但實際上不是，所以不能用predict_proba直接描述SVM
+13:56	小明	了解  收穫良多 謝謝!
+14:04	小明	想請問為什麼Imbalance 效果會不佳
+是會遇到和一般做分類模型一樣狀況嗎(準確率失效)?
+因為目前我資料是屬於Imbalance 打算透過SMOTE平衡
+18:23	茶	對，因為你數據是有偏的，最後一層某種意義就是logistic regression，所以可能會需要擔心校準會失效
+18:27	阿福	因為某種資料特別多 
+模型就會傾向該分類
+18:27	阿福	就像說人類遇到選擇題 不會就選C
+18:29	許小查 unsent a message.
+18:29	茶	還有一點就是SVM對於決策邊界距離的大小不太關心，也就是說如果採樣後標籤先驗分佈較往中心靠齊其實就會發現predict跟predict_proba可能存在差異的問題
+22:09	小明	感謝大家
+
+Sat, 15/10/2022
+11:02	~ left the chat.
+13:41	阿汪	https://www.facebook.com/groups/pythontw/permalink/10162402330318438/
+17:19	KsjL joined the chat.
+17:19	橘子 joined the chat.
+17:19	Lucifer joined the chat.
+17:19	Zip joined the chat.
+17:19	Auto-reply	歡迎加入Python資料科學交流社群👋
+可以先查看記事本or公告的版規，也鼓勵大家踴躍詢問和分享有關「資料科學」的問題、職涯、競賽跟知識🙏
+
+Sun, 16/10/2022
+15:17	ppc	[Photo]
+15:17	ppc	[Photo]
+15:18	ppc	請問大家知道BitLocker這要怎麼解決嗎？
+15:18	ppc	請問大家知道BitLocker這要怎麼解決嗎？
+
+Mon, 17/10/2022
+20:16	ppc	請問有在Microsoft 裡面的工程師嗎？有一些帳號驗證的問題希望請教，感謝
+22:24	Yuri	要不要去其他Python 群問問 這裡人比較少
+22:27	JC	先確認 哪個協議(服務)
+22:28	ppc	[Photo]
+22:28	ppc	請問遇到這個問題就真的要等一個月了嗎
+22:30	JC	我以為是登入協議XD
+這個真沒看過
+22:30	JC	這你問客服吧
+22:50	Jcup	這就是你用了不是在原本的帳號裡的資訊
+
+Tue, 18/10/2022
+13:54	Aaron	想請教版上大神，如果有二組資料，一組是實價登錄的資料（包含地址 經緯度座標），另外一組是社區資料（包含社區名稱，地址 經緯度座標），如果要把社區名稱資料比進實價登錄資料，python 有沒有什麼方法比較快？
+15:32	阿汪	你把兩個資料show出來看看
+15:52	JC	標記實價登錄資料在哪個社區中嗎？
+15:53	JC	同是shp file的話，geopandas應該有polygon判斷include的功能
+15:53	JC	或是看看rasterio
+15:53	Aaron	對的～
+15:53	Aaron	[Photo]
+15:53	Aaron	[Photo]
+15:54	Aaron	我的資料是像上面圖片所示
+15:55	JC	拿實價登錄經緯度去判斷有沒有在社區範圍中，有polygon應該能直接找到相關功能
+15:58	Aaron	感謝建議 我研究看看！！
+17:19	魯蛇飯	沒要用資料庫 GeoPandas
+用資料庫 PostGIS
+17:24	魯蛇飯 unsent a message.
+17:27	魯蛇飯	然後注意座標系統，看上去一個是WGS84，另一個是TWD97
+
+Wed, 19/10/2022
+00:49	nagi	nagi shared an OpenChat note.
+09:09	Sophia	請問這裡有轉職到資料科學的新人嗎？第一年的薪資落點大概是在哪裡啊？
+09:19	TL	產業跟公司影響很大
+10:47	Jasper	看你在什麼產業吧
+10:47	Jasper	而且要看你的資料科學是什麼職稱 Machine learning engineer 還是 data scientist
+10:48	Jasper	基本上薪資ML engineer >> data scientist 
+10:50	zlib	台灣的話看你 kaggle 幾面金牌，多一面加個100萬不是問題
+10:51	青眼白龍	我只有kkbox金牌
+10:51	zlib	我只有台啤金牌
+10:51	Jasper unsent a message.
+10:52	zlib	新人不確定 但有年資的 GG > IC
+10:52	Jasper	不考慮什麼特殊獎牌的話
+純軟外商、IC設計 > GG > ASML = Appier、趨勢 > IBM、金融 > 四大管顧
+10:52	zlib	GG 高薪挖附近資深很常見
+10:52	Jasper	他是問新人吧
+10:53	Jasper	有年資就很難討論了
+10:53	zlib	新人也波動蠻大的啦 我還有聽過實習不給薪的 (望
+10:53	Jasper	太狠了
+10:53	zlib	@Jasper 你認識
+10:53	TL	加年資要額外討論機運了😆
+10:54	zlib	我等主角自己出來認親w
+10:54	Jasper	版主喔哈哈
+10:54	青眼白龍	騏麟
+10:54	Aaron	原來IBM跟金融可以排一起
+10:54	Jasper	我覺得差不多欸
+10:54	Jasper	IBM給100萬吧 我記得
+10:54	Aaron	金融起薪沒那麼好
+10:54	Jasper	而且職稱基本上掛Data scientist
+10:55	zlib	ASML 和 Appier 應該是 100w 分水嶺
+10:55	TL	[Photo]
+10:55	TL	IBM
+10:55	zlib	左邊破百 右邊指數下降
+10:55	Jasper	笑死
+10:55	Aaron	新人去IBM 相比金融可能好一點
+10:55	Aaron	金融都快請不到人了
+10:55	Jasper	練技術的話IBM不錯啊 以後要跳外商也容易
+10:55	TL	Data別來金融XD
+10:56	Aaron	在金融的路過
+10:56	Jasper	但我聽過IBM連SQL都不會寫的
+10:56	zlib	怎麼我認識的 IBM 都在養老
+10:56	zlib	IBM 目前身邊沒有強的
+10:56	Jasper	笑死 年齡層不同吧
+10:56	zlib	大概同溫層太厚
+10:56	Jasper	我認識的都去一下就跳走了
+10:56	Aaron	IBM聽到的都是很操
+10:56	青眼白龍	我還在玩青眼白龍
+10:56	Jasper	IBM就是你可以報加班
+10:57	Jasper	但最後年終績效不好給你扣掉 有沒有報都沒差
+10:57	Jasper	我是覺得這點蠻機車的
+10:57	zlib	靠北勞基法加班費不是這樣的吧XDD
+10:57	zlib	自己玩法喔
+10:57	Jasper	時間不夠=能力不足=絕對不是專案管理的問題
+10:57	Jasper	是你的問題XD
+10:58	Jasper	合法啊 沒毛病
+10:58	Jasper	年終不一定要給你
+10:58	zlib	喔喔我以為加班費
+10:58	zlib	想說加班費通常都免稅月給
+10:58	Jasper	加班費會給啦
+10:58	zlib	OK 我懂 我就是過來人
+10:58	zlib	之後怒跳月薪高的
+10:58	Jasper	但年終算一算就說啊你績效差 年終沒了
+10:58	Jasper	XD
+10:58	Aaron	不過好奇 四大管顧 那麼不堪？
+10:58	Jasper	4.5*14
+10:58	zlib	就很靠北 老闆不爽你過去一年全做白工
+10:58	zlib	低能台商
+10:59	Jasper	年薪63而已
+10:59	Aaron	太低了吧
+10:59	Jasper	畜
+10:59	zlib	工時動輒12
+11:00	Jasper	那個應該是審計啦
+11:00	Jasper	管顧正常上下班
+11:00	zlib	看他們假日還要帶電腦出遊 感覺就很畜
+11:00	Jasper	可能跟IBM一樣 會扣年終吧
+11:00	Jasper	但進辦公室沒有管很嚴的樣子
+11:01	Jasper	就WFH比例偏高 我同學在那邊實習是這樣感覺
+11:02	TL	幾年前去pwc開一百被砍價 資料科學相關的缺
+11:02	Antonio	.
+11:02	Jasper	Pwc 怎麼可能給100
+11:02	Jasper	哈哈哈哈
+11:02	Jasper	[Sticker]
+11:02	zlib	該逃了
+11:03	Jasper	塊陶啊
+11:03	zlib	我去趨勢的時候他還說新竹分紅太高不正常 嘻嘻
+11:03	Jasper	嘻嘻
+11:03	zlib	說 我們有別的東西 社團和blabla 
+11:03	Jasper	但半導體的分紅也不知道能好幾年老實說
+11:03	zlib	給我錢阿 B嘴
+11:04	Jasper	要不是中美對立 華為倒了 聯發科估計還是賺不到錢 股息都發不出來
+11:04	zlib	領完沒炒房的現在都在公園
+11:04	zlib	被新竹的物價房價東砍西砍其實沒剩多少啦
+11:04	Jasper	應該這一兩年進竹科的都覺得分紅這麼高才是正常的吧
+11:05	zlib	墊一下 total package 回台北才是正解
+11:05	Jasper	但我是覺得不太正常
+11:05	zlib	會貼的都是PR99以上的
+11:05	Jasper	還是要做自己喜歡的事啦
+11:05	zlib	剩下98% 苦命人如我
+11:05	zlib	之前有一個螃蟹台大機械的不是貼到低能卡
+11:06	zlib	他明年那包掰了
+11:06	Jasper	哈哈哈哈哈哈
+11:06	zlib	小朋友愛現 笑死
+11:06	Jasper	一下就抓出來了
+11:06	Jasper	還敢po啊
+11:06	Jasper	還不閉嘴乖乖買房
+11:07	Jasper	結論還是出國啦
+11:07	Jasper	美國目前DS起薪都是11萬美金起跳
+11:08	Jasper	SWE大廠都開14～17萬美金
+11:08	Jasper	而且不是卡年終這種以後有可能會跳票的
+11:10	Jasper	如果你跟我一樣非本科 怕申請不到好的 可以邊工作邊考試 累積產業經驗然後一兩年後申請program
+11:11	Jasper	當然前提是要出得了700萬台幣啦 不然就是要去德州這種偏鄉
+11:12	zlib	所以你要去哪州
+11:12	Jasper	想去西雅圖或加州
+11:12	zlib	真好 我只能搭火車到中州
+11:12	Jasper	但怕考不上哈哈哈哈
+11:12	Jasper	靠北
+11:12	Jasper	鋪梗
+11:13	Jasper	考太爛就不要出國浪費錢了
+11:13	zlib	西雅圖不錯
+11:13	zlib	加州好像很多智障法規
+11:13	Jasper	等台股諜完買0050
+11:13	Jasper	都比付錢讓紈褲子弟出國好
+11:14	Jasper	不能當SWE還能去賣咖啡
+11:14	Jasper	多棒的產業鍊
+11:14	zlib	在 costco 請人試喝嗎
+11:14	Jasper	星巴克啊哈哈
+11:15	Jasper	西雅圖有1/3人在Amazon上班 1/3人在Microsoft 剩下1/3人都躲在星巴克喝咖啡
+11:17	Jasper	金融真的起薪低 如果是你學士更低
+11:18	菜雞	appier跟趨勢同等級嗎 0_0?
+11:18	青眼白龍	我還是乖乖的玩真紅眼黑龍好了
+11:18	Jasper	我記得趨勢最近幾年有調薪喔 聽風聲
+11:18	Aaron	碩士除非MA 不然也是要2-3年才有機會破百
+11:19	TL	會有人說銀行業比氣長 
+11:19	Jasper	台灣金融業=人壽+投資
+11:19	Jasper	懂的都懂
+11:19	Jasper	其他都只是裝飾品而已
+11:21	Jasper	當然以網路上查的到的資料 趨勢感覺像是100萬左右而已
+11:21	TL	人壽蠻多在弄nlp
+11:21	Jasper	0
+11:21	Jasper	銀行還想搞Graph勒
+11:21	菜雞	所以appier應該更高一點?
+11:21	Jasper	都是在畫餅充飢
+11:21	zlib	銀行先被規定氣死 再被老人氣瘋
+11:22	Jasper	上面一堆人 很難動起來
+11:22	zlib	最近幾年看到各大 conf 充滿銀行的講者
+11:22	Jasper	他們那個跟做行銷一樣 你看廣告砸這麼多
+11:22	zlib	那些都是對外面說「快來招我，我想逃阿」
+11:23	Jasper	還不如搞一個部門 可以偶爾做點事 還可以上週刊或版面
+11:23	Jasper	這樣想一想就覺得上面的管理者真的挺聰明
+11:23	Jasper	免費的流量
+11:23	Jasper	比買廣告便宜多了
+11:23	TL	🌳叔叔發的lab嗎
+11:23	Jasper	哈哈哈哈哈
+11:23	Aaron	我也是想到叔叔發
+11:24	Jasper	叔叔發
+11:24	Jasper	買廣告啦買廣告 問就是血賺不虧
+11:26	Jasper	本科或相關科系還是直接出國吧 如果家裡允許 塊陶啊
+11:26	Jasper	新加坡的大學也不錯 可以考慮看看
+11:34	Antonio	@Jasper 你國外畢業的嗎？
+11:34	Jasper	No 正在準備去國外洗碩士
+11:35	Antonio	加油
+11:35	Jasper	薪資是問最近在國外找SWE工作的學長知道的
+11:35	zlib	TOEFL 考完了嗎
+11:35	Jasper	考完了 第一次跟垃圾一樣
+11:36	Jasper	90分
+11:36	zlib	[Sticker]
+11:36	Jasper	106才夠吧
+11:36	Antonio	90還差蠻多的
+11:36	Jasper	壓力偏大
+11:36	zlib	怎麼念
+11:36	Jasper	嘿啊 我的寫作17分
+11:36	Jasper	快笑死
+11:36	Jasper	要去補習了
+11:36	zlib	我看了一下 kmf 就半放棄了
+11:36	Antonio	多拼吧 100保底 
+11:36	zlib	只能先每天聽英文 podcast
+11:36	Jasper	閱讀跟聽力吧
+11:36	Jasper	聽力上次考太爛23
+11:37	Jasper	如果聽力可以拉到27應該就很有機會
+11:37	Antonio	托福就是狂刷題 熟悉題型 
+11:37	Jasper	然後寫作口說真的還是要請外師對練
+11:38	Jasper	目前還在當兵啦 
+11:38	Jasper	先完成國軍online再說
+11:44	Jasper	我覺得多的論文對閱讀有幫助欸 我第一次就閱讀就29了 當時剛好在lab實習 讀很多論文
+11:45	Jasper	欸不對 那時候好像沒有在lab 反正那時候有讀很多論文 感覺對托福的閱讀蠻有幫助的
+11:45	zlib	我六年錢多益閱讀只錯一題 這樣可以考高分嗎w
+11:45	zlib	還是說多益是小學生在考的
+11:45	Jasper	多益不準吧我覺得
+11:45	zlib	QQ
+11:45	Jasper	我裸考890
+11:45	zlib	我裸考低你五分 gg
+11:45	Jasper	而且題型差很多 
+11:46	Jasper	多益是簡答 
+11:46	菜雞	我裸考865 該去檢討了…
+11:46	Jasper	托福是跟論文很像的感覺
+11:46	Jasper	學術性文章
+11:46	zlib	[Sticker]
+11:47	Jasper	閱讀靠讀論文 聽力靠英文podcast
+11:47	Jasper	寫作和口說等我考得上去後再來分享怎麼樣會比較有效QAQ
+11:47	zlib	英文 podcast 英國腔好重
+11:48	Jasper	托福還有印度腔的欸
+11:48	zlib	悲劇喔
+11:48	Jasper	一堆奇奇怪怪的口音
+11:48	Li	有推薦的嗎 我英文極廢XD
+11:48	Jasper	就 你上yt也可以 把字幕全部關掉
+11:49	Jasper	不懂的話再打開yt的自動中文翻譯
+11:49	zlib	[Photo]
+11:49	Jasper	其實現在要學真的挺方便的 感謝Google 感謝LM model
+11:49	Jasper	LM
+11:51	Li	感謝 我晚點搜一下看看XD
+11:55	Jasper	[Photo]
+11:55	Jasper	這個頻道很托福 
+11:55	Jasper	可以看
+11:56	菜雞	這個超讚的!
+11:56	Jasper	有歷史 生物學 物理 化學 等等不同topic
+11:56	Jasper	完全就是托福鎖定的 學術性題目
+11:56	Jasper	但就是口音很標準啦 沒有辦法壓力測試口音的部分
+11:56	Jasper	要關字幕
+12:37	茶	我都聽有口音的
+12:37	茶	葛拉夫=Graph，泰森=Tensor 
+12:38	茶	最近在聽歐洲人講英文會抖來抖去
+12:38	茶	打舌音
+13:07	SY	托福90應該夠了, 但口說要練好, 才能視訊面試或phone interview
+13:26	Jasper	泰森太屌了吧
+13:27	Jasper	還以爲在叫同事
+13:27	Jasper	欸那個泰森
+
+Fri, 21/10/2022
+12:37	菜鳥 joined the chat.
+12:37	Ting En joined the chat.
+12:37	3 joined the chat.
+12:37	Transformer joined the chat.
+12:37	Jaycee joined the chat.
+12:37	Auto-reply	歡迎加入Python資料科學交流社群👋
+可以先查看記事本or公告的版規，也鼓勵大家踴躍詢問和分享有關「資料科學」的問題、職涯、競賽跟知識🙏
+23:24	ly left the chat.
+
+Sun, 23/10/2022
+16:50	Omohyoid	我在kaggle遇到一個問題 我上傳了新版的dataset 但kaggle上執行的程式卻還是用舊版的 
+16:50	Omohyoid	請問有人知道要怎麼讓程式用新版的資料訓練嗎 網路上只有教人如何上傳新版dataset 卻沒有提到這個問題 
+
+Tue, 25/10/2022
+08:30	NeoH left the chat.
+09:34	Omohyoid	喔喔我發現把程式restart就可以了
+09:39	🧽🧽 left the chat.
+20:24	ZJ joined the chat.
+20:24	卡門門 joined the chat.
+20:24	皮皮 joined the chat.
+20:24	moka joined the chat.
+20:24	Auto-reply	歡迎加入Python資料科學交流社群👋
+可以先查看記事本or公告的版規，也鼓勵大家踴躍詢問和分享有關「資料科學」的問題、職涯、競賽跟知識🙏
+
+Thu, 27/10/2022
+00:05	JTS	https://www.instagram.com/p/CFDycHnBKYn/?igshid=YmMyMTA2M2Y=
+00:06	nitekat	氣死 😂
+11:28	彬	請問jupyter Notebook 需要有網路才可以使用嗎，不確定上機考可不可以也用這個環境去寫（會斷網）
+11:30	zlib	localhost 可以自己開，但是上機考你也不確定環境有沒有裝
+11:30	zlib	問老師助教吧
+11:30	彬	好的
+11:30	彬	感謝
+13:24	茶	import numy as numpy
+13:34	nagi	可以喔，不過建議先 install 好需要用到的 modules 
+13:45	茶	現在考試上機不曉得能不能用module，脫離學生太久了 (XD)
+13:47	茶	我印象中以前都要自己刻，雖然老師大部分不會給你很難的題目，不過我那個年代只有C++跟Java
+13:51	青眼白龍	[Sticker]
+13:58	彬	乾蝦
+14:24	TL	請問刻一個隨機森林大概要多久呢？
+14:26	zlib	上百年
+14:27	青眼白龍	千年龍
+14:27	青眼白龍	千年
+15:00	Tim	看你要神木林還是南洋杉XD
+16:10	我愛163	可以要神木麗嗎（？？
+16:23	zlib	8000就有了
+16:25	nitekat	為什麼是8000
+16:25	zlib	他來台灣吃飯的價碼是8000
+16:26	nitekat	握手只要1000 😂
+18:37	freedom	b zs3z5
+
+Fri, 28/10/2022
+00:33	小菜 left the chat.
+
+Sun, 30/10/2022
+17:47	Miriam joined the chat.
+17:47	Gummy bears joined the chat.
+17:47	Toby joined the chat.
+17:47	Auto-reply	歡迎加入Python資料科學交流社群👋
+可以先查看記事本or公告的版規，也鼓勵大家踴躍詢問和分享有關「資料科學」的問題、職涯、競賽跟知識🙏
+
+Mon, 07/11/2022
+01:06	青眼白龍	大家找資料分析相關工作
+01:06	青眼白龍	除了
+01:06	青眼白龍	104
+01:06	青眼白龍	Cakeresume
+01:07	青眼白龍	還有哪些平台
+01:07	青眼白龍	Yurator
+01:16	zlib	linkedin
+01:18	菜雞	Reddit, hackernews 
+01:20	zlib	dev.to
+10:56	Jodie left the chat.
+13:11	茶	國外的公司的話，LinkedIn比較多，國內就104最大宗了吧
+13:12	茶	只是可能要注意國外美國最近h1b1都凍結，大環境不太好，有機會上車要趕緊把握
+13:12	茶	晚了就不要了(emoji)
+13:13	茶	沒機會的看看明年不要急著跳車
+13:39	青眼白龍	大家會把只有摸過但工作上不會使用的
+13:40	青眼白龍	寫進技能嗎
+13:41	麥特戴蒙	看職缺有沒有該技能需求。有的話摸過or了解一定程度我會加在skill
+13:42	菜雞	剛出社會的時候會 不然我的履歷就是一張白紙
+13:42	nitekat	可以啊，但就看摸到什麼程度吧。如果有辦法做一個side project之類的最好
+13:44	zlib	寫了就要有準備被問，問了答不出來反而扣分
+13:47	Aaron	不建議把不熟的寫出來，專精在自己的強項比較好
+13:49	Aaron	不過以台灣的數據分析來說，真的是包山包海，每個候選人的強項差異都不大一樣，我自己的感覺是這樣
+13:56	青眼白龍	那這樣超少
+13:56	青眼白龍	工作上用到的
+13:57	青眼白龍	比較專一
+13:59	Aaron	個人感覺 數據分析師 SQL+任一BI 工具就很夠了
+13:59	Aaron	側重在怎麼端出insight 影響決策，帶來什麼成效
+14:00	青眼白龍	這沒有
+14:00	青眼白龍	目前算是接案
+14:00	青眼白龍	公司接需求
+14:00	青眼白龍	決策都是顧客
+14:01	青眼白龍	負責幫他們撈資料
+14:01	青眼白龍	業務邏輯都是以他們說了算
+14:01	麥特戴蒙	優勢是知道各行業care的指標及使用什麼樣的資料？
+14:02	TL	推敲或直接問他們選擇指標的原因，之後都是很好的故事
+14:02	青眼白龍	顧客的需求單是啥 就要想辦法寫程式來滿足他們這樣
+14:02	麥特戴蒙	可以提及資料量多大
+14:02	青眼白龍	好ㄉ
+14:02	青眼白龍	超大
+14:02	青眼白龍	幾千萬
+14:02	Aaron	我覺得有處理過大資料 會加分 
+14:03	麥特戴蒙	確認需求都是數據分析的第一步，HM應該也會想看到這個
+14:04	青眼白龍	之前的工作內容就是依使用者要求，去倉儲串各大檔
+14:04	青眼白龍	依他們的邏輯
+14:05	青眼白龍	清資料
+14:05	青眼白龍	把業務邏輯寫進去程式
+14:05	青眼白龍	這樣要怎麼包裝比較好
+14:05	青眼白龍	沒有自己下決策那種
+14:06	麥特戴蒙	怕是這樣會變成SQL ATM提款機，使用者想要什麼你就完成什麼，在影響決策程度較少
+14:06	青眼白龍	對
+14:06	麥特戴蒙	可以想些故事包裝，比如剛剛提到怎麼解決與使用者溝通需求等等
+14:07	青眼白龍	算是練基本功🫠
+14:07	TL	試試用STAR包成故事，然後稍作修飾
+14:07	麥特戴蒙	未能直接影響決策也可以列為你換工作的動機
+14:07	青眼白龍 unsent a message.
+14:08	青眼白龍 unsent a message.
+14:09	TL	這句我就不會這樣寫，要改改說法(Capoo has no words)
+14:43	丁丁	我會跟客戶我闡述我認為怎麼做比較好，並且提出我如此認為的原因，但還是會尊重客戶的選擇，改這樣可以嗎><
+
+Tue, 08/11/2022
+09:24	Omohyoid left the chat.
+11:15	鄧 joined the chat.
+11:15	菸酒生 joined the chat.
+11:15	panda joined the chat.
+11:15	ian joined the chat.
+11:15	米糠醬菜 joined the chat.
+11:15	菜鳥菸酒生 joined the chat.
+11:15	蘑菇 joined the chat.
+11:15	Auto-reply	歡迎加入Python資料科學交流社群👋
+可以先查看記事本or公告的版規，也鼓勵大家踴躍詢問和分享有關「資料科學」的問題、職涯、競賽跟知識🙏
+12:11	9543 left the chat.
+
+Wed, 09/11/2022
+21:01	cientifica	[Photo]
+
+Thu, 10/11/2022
+17:25	Yuchi left the chat.
+
+Mon, 14/11/2022
+17:01	草草	請問有什麼方式可以讓第一張圖的突波更明顯，想要呈現第二張圖的樣子 謝謝
+17:01	草草	[Photo]
+17:01	草草	[Photo]
+17:01	zlib	y axis
+17:02	草草	傅利葉轉換適合嗎
+17:04	TL	移動平均刷看看喜不喜歡
+18:19	草草	謝謝，有出來了，但突波方向不太對（左邊要很直 右邊要平滑）
+18:19	草草	[Photo]
+
+Tue, 15/11/2022
+05:07	12345上山打老虎 left the chat.
+10:51	小鳥新手 joined the chat.
+10:51	K joined the chat.
+10:51	可可 joined the chat.
+10:51	Titanium joined the chat.
+10:51	yamar joined the chat.
+10:51	kai-01 joined the chat.
+10:51	Eric Chang joined the chat.
+10:51	軟軟 joined the chat.
+10:51	Auto-reply	歡迎加入Python資料科學交流社群👋
+可以先查看記事本or公告的版規，也鼓勵大家踴躍詢問和分享有關「資料科學」的問題、職涯、競賽跟知識🙏
+
+Thu, 17/11/2022
+11:15	kai-01 left the chat.
+
+Fri, 18/11/2022
+10:03	學習程式的小白	我想請問有人用DbVisualizer跑SQL，容量不夠直接break嗎？想請問如何解救～～我有上官網找，但解決不了
+10:03	學習程式的小白	[Photo]
+16:41	YC joined the chat.
+16:41	阿淇 joined the chat.
+16:41	Jayu joined the chat.
+16:41	阿麥 joined the chat.
+16:41	Auto-reply	歡迎加入Python資料科學交流社群👋
+可以先查看記事本or公告的版規，也鼓勵大家踴躍詢問和分享有關「資料科學」的問題、職涯、競賽跟知識🙏
+16:45	TL left the chat.
+
+Tue, 22/11/2022
+14:05	小小菜鳥 left the chat.
+20:26	Pei. joined the chat.
+20:26	Oscarr joined the chat.
+20:26	🍀🟣 joined the chat.
+20:26	yingchi joined the chat.
+20:26	Auto-reply	歡迎加入Python資料科學交流社群👋
+可以先查看記事本or公告的版規，也鼓勵大家踴躍詢問和分享有關「資料科學」的問題、職涯、競賽跟知識🙏
+
+Thu, 24/11/2022
+20:17	紫露	請教 pandas .loc 的一個問題
+20:17	紫露	[Photo]
+20:17	紫露	為何 上表不行 (全為數字)，
+下表可以(要加一列非數字)
+20:17	紫露	ff.loc[key_in] ，
+例如 key_in 為6時，得3.96
+20:17	紫露	下表就可以，上表不行
+20:17	紫露	[Photo]
+20:28	zlib	你不是剛問過XD
+20:40	jwl left the chat.
+21:23	紫露 unsent a message.
+21:24	紫露	程式怎麼改寫 都沒能解決，
+最後可能只好在資料加上最後那一非數字項...
+21:24	zlib	老話一句 先check df
+21:25	紫露	當成是 Pandas的Bug...
+21:25	紫露	印出來檢查了，print出來正常
+21:31	紫露	補充一下，
+資料是從.csv檔讀進來的
+21:31	zlib	怎樣正常
+21:35	nitekat	我看那個截圖就不正常，一般來說在 excel 畫面應該要看不到那個逗號吧
+21:49	紫露	以excel讀檔就看不到，
+.csv檔的原始碼是長這樣
+.csv 的 c
+21:49	紫露	以excel讀檔就看不到 逗點
+.csv檔的原始碼是長這樣
+.csv 的 c
+21:50	阿鈞 left the chat.
+21:53	阿汪	你readline看看
+21:53	阿汪	 csv正常分割的逗號
+21:53	阿汪	是不會看到的
+21:57	紫露	截圖 是以文字編輯器讀的，
+若以支援.csv檔的工具讀 (像是excel) 才會看不到逗點
+21:59	紫露	若有錯，
+不會因為加最後一列 A項 就變正常
+22:00	紫露	然後 再刪掉A項 又不正常
+22:05	阿汪	我覺得你先讀讀看
+22:06	zlib	你output csv出來見真章
+22:06	zlib	這邊有500個人都有裝pandas能幫你看
+22:09	茶	read_csv是可以自定義split方式，csv原始就是文本定義表格式，你可以看一下用記事本打開的原始format就知道哪邊有問題了
+22:10	茶	可以看一下官方Document 
+22:11	茶	[Photo]
+22:13	zhzkk	哪一種編輯器？
+22:14	茶	看一下官方有說明，你沒給Python engine會自動幫你parsing，不過如果你的格式有問題肯定要自己檢查的
+22:16	seed() left the chat.
+22:17	紫露	為了比對兩個檔案的差異性，
+使用WinMerge,
+使用notepad ++ 也看得到逗點
+22:23	紫露	希望有人寫個程式幫忙試看看結果是否一樣...
+22:25	阿汪	你丟檔看看
+22:27	紫露	若無最後的A項（非數字項），
+try：
+     answer = ff.loc[key_in] [0]
+會失敗，跑進 except
+22:27	zlib	你data source要先上傳啊XD
+22:27	紫露	若有最後的A項（非數字項），
+try：
+     answer = ff.loc[key_in] [0]
+會成功，不會跑進 except
+22:28	菜雞	[Sticker]
+22:28	菜雞	[Sticker]
+22:30	nitekat	你的 csv 檔直接丟上來吧
+22:30	紫露	[File]
+22:42	紫露	utf8 編碼, 
+B11原稿為中文[未定義]
+這一列任意改為 非數字項都正常，刪除就異常
+22:43	nitekat	[Photo]
+22:43	nitekat	[Photo]
+22:48	紫露	請再幫我測一下：
+user_input=6
+answer=df.loc[user_input]
+print(answer)
+謝謝你
+22:49	紫露	然後 請再幫我測一下：
+user_input="6"
+answer=df.loc[user_input]
+print(answer)
+謝謝你
+22:52	紫露	我大概知道原因了...
+22:57	zlib	請說
+22:58	紫露 unsent a message.
+22:59	紫露	我的user_input 是字串擷取，
+有 非數字項的 csv：
+ user_input 可以為字串？
+沒有 非數字項的 csv：
+ user_input 必須為數值？
+23:02	nitekat	你可以指定
+23:02	nitekat	[Photo]
+23:06	紫露 unsent a message.
+23:07	紫露	問題是:
+有很多個 .csv檔要解析，
+有的有非數字項，有的沒有
+
+但是我想 可以使用try解決，
+先試user_input （原為字串）
+再試 int(user_input)
+23:08	紫露	謝謝大家！
+23:09	nitekat unsent a message.
+23:10	nitekat	所以我說你可以指定 Pitch 欄位保持是字串格式不要變成數字就可以維持一致了
+23:11	紫露 unsent a message.
+23:12	紫露	各個.csv欄名也不一定是"Pitch"
+每個.csv檔欄名都不相同
+23:30	Fighting grape	可以把要當index 的column 固定放在第一欄？
+然後用df.columns[0] 取得欄位名稱
+23:31	Fighting grape	之類的..
+23:48	紫露	先 pd.read_csv()一次 將欄名讀出來，再依照nitekat的提示，
+再指定以str第二次pd.read_csv()
+23:49	紫露	謝謝你們
+
+Fri, 25/11/2022
+08:49	茶	不確定你的欄位跟欄位的型別你可以讀進來以後再檢查，然後用glob遍歷你的folder，pandas算是蠻靈活的，不然就是剛剛 @nitekat 的方法你直接改寫成pd.read_csv(..., dtype=str)，這樣就可以確保你全部每個column下的row都是str，就是你如果有數值就要自己轉換
+10:07	中山物理野生海豹 left the chat.
+
+Sat, 26/11/2022
+19:40	12333 left the chat.
+
+Sun, 27/11/2022
+19:53	Biofuck	想問一下，碩畢起薪能開多少？
+20:00	zlib	it depends
+20:05	Jasper	看公司 看職稱
+20:05	阿福	還有看你哪間學碩士
+20:08	Biofuck unsent a message.
+20:08	Biofuck	四大非電資呢？
+20:10	Jasper	那看公司 職稱就好了吧
+20:10	Jasper	沒加分的感覺？
+20:12	Biofuck	應該就看資料學家或AI工程師而已XD
+20:12	Biofuck	可能還扣分
+20:12	Jasper	兩個差很多
+20:13	Biofuck	為啥？
+20:14	Jasper	台灣的資料科學家有些公司偏DA  有些偏ML engineer 
+20:14	Jasper	AI 工程師 應該就是ML engineer吧
+20:15	Jasper	產業勒？
+20:15	Jasper	感覺還是看產業最準 有錢的產業給的就多
+20:15	Jasper	反正AI也很難賺大錢 大概率都是附加價值 本業賺得就會願意給多一點
+20:15	Biofuck	產業喔 希望錢多的 不過應該進不去熱門半導公司
+20:16	Biofuck	AL和資料科學是不是都不賺大錢？
+20:16	Biofuck	AI 
+20:17	zlib	看公司和部門
+20:17	zlib	面了再來挑 碩畢都新人價
+20:17	Jasper	台灣吧 國外願意給的也很多 但不是偏科生碰的到的 基本上都本科博士
+20:17	Jasper	真正的AI人才
+20:17	Jasper	其他都是API仔
+20:18	zlib	還要看論文有沒有上頂會
+20:18	zlib	都沒有就乖乖丟履歷別想太多
+20:18	Jasper	哈哈哈哈 台灣要上不容易
+20:18	Biofuck	呵呵 不可能
+20:18	Jasper	國外碩士都生4 5篇論文 
+20:18	Biofuck	碩論還不知道能不能發表
+20:18	Jasper	台灣生沒幾個 要怎麼上
+20:19	Biofuck	我到現在才知道，發表還要給出版社錢
+20:20	zlib	要丟快丟 不然國外被layoff的tier1 要回台灣了
+20:20	zlib	到時候更難找
+20:20	Zip	有時候找人校稿 還要校稿費 🥹
+20:21	zlib	通常和實驗室報帳啦
+20:21	Biofuck	碩論結果還在等老闆同意，基本上script和方法學都定案了
+20:21	zlib	教授自己也會找editor 那個小事
+20:22	Biofuck	可以跟老師提要發表嗎？
+因為我現在這老闆只想讓我趕快畢業
+20:26	zlib	這樣就是沒機會了
+20:28	zlib	不一定要all in ML, 還有很多有手有腳就可以擔任的role
+20:45	Biofuck	有在看智慧製造XD
+20:46	Biofuck	不過還是有要求就是了
+20:48	zlib	GG製造課長嗎XD
+20:49	Biofuck	對啊
+20:49	Biofuck	要不然我還真不知道我會什麼⋯感覺碩班什麼都沒學到
+20:49	zlib	那個就純打工了XD
+20:50	zlib	工作再學吧
+20:50	Biofuck	哈哈 也得願意收我
+20:50	Biofuck	只是學界和業界的需求差好多
+20:50	zlib	of course
+20:51	Jasper	業界不同公司要求都差很多了
+20:51	Jasper	(emoji)
+20:51	zlib	不然怎麼一堆部門被學界大老搞臭 (望向aics
+20:51	啊啊啊 joined the chat.
+20:51	ds joined the chat.
+20:51	JORee joined the chat.
+20:51	lyn joined the chat.
+20:51	990 joined the chat.
+20:51	Auto-reply	歡迎加入Python資料科學交流社群👋
+可以先查看記事本or公告的版規，也鼓勵大家踴躍詢問和分享有關「資料科學」的問題、職涯、競賽跟知識🙏
+20:57	Biofuck	AICS不好？
+20:58	Biofuck	蠻想去，可惜在北部
+21:02	Jasper	北部比較多機會吧
+21:02	zlib	蠻吃背景的
+21:02	Jasper	南科可能只有ASML 杜邦這種的
+21:02	zlib	北部無法的話 剩GG和光光了
+21:02	Jasper	其他大概都很低薪
+21:02	Jasper	就科學園區
+21:03	Jasper	所以你是成大的吧
+21:03	Jasper	四大+南部
+21:03	Biofuck	哈哈 對啊
+21:03	Biofuck	日月光嗎
+21:03	zlib	GG沒去lab搶人嗎
+21:03	zlib	micron
+21:03	Jasper	美光
+21:04	Biofuck	沒⋯我投智慧製造預聘沒下文
+21:04	Biofuck	連面試通知都沒有
+21:04	aellen	哪家可以知道嗎
+21:04	Jasper	GG不是嗎..
+21:04	aellen	喔喔
+21:04	Biofuck	GG喔 @aellen 
+21:04	Jasper	…XD
+21:04	aellen	好喔剛看到抱歉
+21:05	Biofuck	沒關係 我也常這樣
+21:05	Jasper	大凍招時代
+21:05	Jasper	大lay off時代
+21:05	Jasper	準備迎接海龜集體返鄉潮
+21:05	zlib	預聘要當完兵
+21:06	Biofuck	不用當兵 免役 嘻嘻 近視太深
+21:06	zlib	爽欸
+21:06	Biofuck	真的 有感
+21:06	Jasper	已檢舉
+21:06	Biofuck	嚴重懷疑儀器壞掉
+21:07	yamar left the chat.
+21:07	Jasper	去年非本科四中都能進發哥了
+21:07	Jasper	今年真的太慘烈
+21:09	Rams	[Photo]
+21:09	zlib	私立科大都行 還正職
+21:09	Jasper	太狠了
+21:09	zlib	我學弟表示難帶
+21:09	Biofuck	哎 看來徵才回歸科系了
+21:09	Jasper	回歸常態
+21:10	zlib	現在他老闆派那個私科仔去寫文件
+21:10	Jasper	什麼時候換發哥lay off
+21:10	zlib	不讓他摸code，會搞爛
+21:10	Jasper	笑死
+21:10	Jasper	感覺不遠了
+21:10	Biofuck	我可以補上去 哈哈
+21:10	zlib	metaverse部門關了
+21:10	Jasper	本來就想太多
+21:10	Jasper	Metaverse還要等10年吧
+21:11	zlib	關了就關了 沒有補人這回事
+21:11	Jasper	對啊
+21:11	Jasper	該去哪去哪
+21:11	zlib	補也是補老的 年輕人too much
+21:11	Jasper	不要幻想
+21:11	Jasper	就像有人還在幻想航海王一樣
+21:11	Jasper	回不去的股價
+21:11	Jasper	錢多的時候什麼奇蹟都會發生
+21:12	Jasper	至少先等到Fed開始QE再來談如何越級打怪
+21:14	Biofuck	我還在幻想換產業QQ
+
+Mon, 28/11/2022
+09:07	JTS	想請教各位大大
+請問台北還有哪邊有賣 jetson nano 的現貨呢?
+10:14	Fighting grape	請問年底是不是職缺會比較少.. 非本科生想找資料分析實習都找不到...QQ
+10:14	青眼白龍	我也覺得比較少
+10:15	菜雞	我覺得不是年底 是景氣不太好
+10:18	zlib	實習本來就是 headcount 有餘力才開的，現在這時局找約聘可能比較容易w
+10:19	菜雞	沒看到是實習 實習應該跟景氣沒關係了
+10:23	Fighting grape	好 那我再找找兼職的
+謝謝qwq
+10:37	青眼白龍	我刷104
+10:37	青眼白龍	看來看去
+10:37	青眼白龍	也都納些缺
+10:38	青眼白龍	那些缺感覺不是要徵人的  掛著半年以上
+10:40	Aaron	現在掛的缺 感覺多是屎缺？或沒要找人的
+10:40	kaka	實習本身就很少呀？
+10:46	青眼白龍	我是想年後轉職😆😆😆
+10:48	Laura left the chat.
+10:52	Zip	我也想 😆
+10:53	JTS	我家最近有開 AI 實習的缺耶～有需要的朋友請在私訊喔
+10:54	JTS	話說，我覺得，非本科生因為有跨領域，似乎比較能接受「要去學習不知道的東西」，反而本科生比較會排斥「未知的工作」
+10:55	JTS	我們現在接到 AI 的專案，一開始也不是很確定做不做得出來，就需要一點冒險犯難的精神惹
+10:55	KsjL left the chat.
+10:57	青眼白龍	目前的策略是打開104
+10:57	青眼白龍	然後每天看一點缺
+10:57	菜雞	甚麼樣的專案 能分享一下嗎
+11:31	JTS	舉例說：
+設備故障的預防診斷
+機台與生產製造的領域知識要先去學（現場專家會教），感測資料要怎麼搜集（現場的師傅也不太知道），用哪種演算法，最後正確率會多好，這些都比較難事先知道
+11:33	Zip	很適合我耶 我原本在工廠上班 😆 但我還在上data camp
+11:34	zlib	看來這個群組要 spinoff 了
+11:34	JTS	XDDD
+11:36	JTS	我覺得我們遇過的非本科生，比較能接受挑戰（可以就是被騙進來也不知道情況），反而本科生比較會挑工作（我們團隊已經有兩個轉檯去做後端惹...orz）
+11:37	JTS	話說，如果各位大大有興趣做虛擬容器跟
+11:37	JTS	k8s 也歡迎私訊我喔
+11:38	青眼白龍	幹你太精闢
+11:38	青眼白龍	我也是被騙進去做了快一年的
+11:38	青眼白龍	還被凹加班
+11:38	青眼白龍	吃苦當吃補
+11:38	青眼白龍	哀
+11:38	JTS	辛苦惹
+11:39	青眼白龍	所以打算年後逃
+11:54	阿汪	你可以寫爬蟲
+11:54	阿汪	自動幫你投履歷
+11:54	學習程式的小白	可以請教目前剛進去的話，年薪50萬左右OK嗎？
+11:56	青眼白龍	看你條件
+11:57	青眼白龍	非四大學士
+11:57	青眼白龍	差不多這個價
+11:57	青眼白龍	如果你是中字輩以上本科碩
+11:57	青眼白龍	可能還要再找找
+11:58	青眼白龍	以上都是以0經驗來說
+11:59	青眼白龍	我爬文章不是說都要客制化ㄇ
+11:59	青眼白龍	ㄎㄎ
+12:01	阿汪	抱歉
+12:01	阿汪	我是低薪28仔
+12:01	阿汪	救救我
+12:01	阿汪	啥客製化
+12:03	阿福	若是50起跳不成問題 (月薪約4W) 
+但前提是找得到
+12:05	阿福	簡單的說就是 如果你廢到連4W都沒有 
+就是直接找不到工作
+12:08	青眼白龍	但我看104有不少data job
+12:08	青眼白龍	3.4萬
+12:08	青眼白龍	慘
+12:09	青眼白龍	那種缺不知道誰會去
+12:09	阿汪	抱歉
+12:09	zlib	還是有吧，有手有腳的就有機會
+12:09	阿汪	我是渣渣
+12:09	阿汪	就是我QQ
+12:09	青眼白龍	@阿汪 我記得是大神
+12:09	阿汪	我啦 都我啦
+12:10	阿汪	有哪一家公司要救我
+12:10	阿汪	收留可憐的我
+12:10	阿汪	我前面的職稱就不對了
+12:10	阿汪	怎麼可能會高QQ
+12:10	阿汪	這家也是看我可憐收留我的
+12:10	zlib	這裡才500人你喊的地方不對
+12:11	阿汪	有喊有機會
+12:11	zlib	去 linkedin 或 cakeresume 更新一下比較有機會
+12:25	JTS	如果是我們家的話，最高學歷大學應該可以
+12:27	阿福	這.. 可能是我太武斷了.. 還是會有些工作3開頭
+12:30	林恩 joined the chat.
+12:30	伊比鴨鴨 joined the chat.
+12:30	Auto-reply	歡迎加入Python資料科學交流社群👋
+可以先查看記事本or公告的版規，也鼓勵大家踴躍詢問和分享有關「資料科學」的問題、職涯、競賽跟知識🙏
+12:31	Fighting grape unsent a message.
+12:31	nitekat	[Photo]
+12:32	nitekat	Hi  @伊比鴨鴨 
+我知道你不是廣告，所以先放你進來，但是你的答案是錯的
+再麻煩補一下正確答案喔
+12:32	阿汪	只是怎麼想寫程式
+12:32	阿汪	蠻好奇的
+12:33	阿福 unsent a message.
+12:39	伊比鴨鴨	好喔 (好喔) 雖然我也不知道正確答案是什麼
+12:39	伊比鴨鴨	😂
+12:39	伊比鴨鴨	目前接下來要學 pandas的小菜鳥
+12:40	Fighting grape	碩班題目做ML應用 滿有興趣就想轉了
+12:40	阿汪	方便問 什麼碩嗎？
+12:41	阿汪	生科？
+12:41	Fighting grape	對 類似
+12:41	阿汪	那你去生技公司阿
+12:41	阿汪	我有看過幾間
+12:41	Fighting grape	但我不喜歡生科🥲
+12:41	阿汪	只是你的程式程度到哪
+12:41	Tim	生資嗎？ 不建議來🤣
+12:42	阿汪	那怎麼想去讀生科碩...
+12:42	阿汪	總不是父母說要讀的ㄅ
+12:42	Fighting grape	我修資管之類的課發現比較有興趣
+12:42	Fighting grape	痾..說來話長😂可能沒辦法這裡說
+12:43	阿汪	沒事
+12:43	阿汪	我之前也有跟一個ml的業師聊過天
+12:43	阿汪	我感覺得出來他ML很厲害
+12:44	阿汪	但是其他技能真的很普
+12:44	Tim	有時候是命運造化，因錯陽差….
+12:44	阿汪	總歸一句 你程式程度到哪
+12:44	阿汪	不管你是不是要去做ML
+12:45	Fighting grape	比較具體的是SQL leetcode免費題全刷完
+12:45	Fighting grape	Python R都會
+12:45	阿汪	那python呢
+12:45	阿汪	會有很多種
+12:45	阿汪	我也會c++
+12:46	Fighting grape	Pandas numpy sklearn 這些比較常用
+12:46	阿汪	print hello world 
+12:46	Fighting grape	Matplotlib 
+12:46	阿汪	還是你貼你的github 
+12:46	阿汪	不然你主題是什麼
+12:51	Fighting grape	Random forest 用在regression task😅
+12:51	阿汪	那你去找生科相關的ML 
+12:52	阿汪	你只有點ML技能？
+12:54	Fighting grape	一點NLP 
+前端一點點 還在學js框架
+12:55	阿汪	之後有特別想走什麼
+12:56	Fighting grape	DA🥺
+13:08	Tim	以前同學大多跑去半導體或資訊業，腦袋撞到留在生科的反而少(X)
+13:08	Tim	我就是撞到的那個XD
+13:09	青眼白龍	產業？
+13:27	Jasper	聽起來像每個都碰一點點 感覺適合當PM?
+13:30	Fighting grape	不排斥
+但個性可能不適合
+（很怕麻煩別人
+13:30	Aaron	以技能看起來 不大像DA的感覺
+13:31	Fighting grape	DA目前技能是SQL Python google data studio 
+13:31	Aaron	不過DA也蠻需要一些溝通 合作能力 
+13:32	Aaron	目前主流是這樣
+13:33	Fighting grape	還有缺什麼嗎🥺
+13:33	Fighting grape	A/B testing 不知道怎麼學？
+13:34	Fighting grape	有推薦的資源嗎🙏🏻
+13:36	青眼白龍	可能free codecamp看看？
+13:36	青眼白龍	但我覺得還是直接找公司進去做中學
+13:36	青眼白龍	比較快？
+13:38	青眼白龍	pm不是都要有技術底嗎?
+13:40	zlib	看哪種 product 還是 project
+13:41	青眼白龍	project
+13:49	學習程式的小白	但我看到很多電腦產品相關的都沒有什麼技術底
+13:50	青眼白龍	但軟體的一定要?
+13:50	學習程式的小白	這個就不清楚
+13:58	JTS	不過，私以為 AI 專案的 PM 其實都沒有很懂 AI，簡單的說他們的角色就是鬧鐘，照著當初的專案規劃叫你交出東西而已。最後大概都是工程師自己上耶（也要跟客戶溝通）
+13:59	JTS	其實我也不知道這樣算不算正常
+14:00	JTS	但有一天看到 @nagi 大大 IG 上的分享...
+14:00	JTS	[Photo]
+14:01	青眼白龍	以我的經驗  pm如果技術很爛  開會容易被工程師電
+14:01	JTS	連 intern 都被訓練要去瞭解客戶的需求（不同於其他的軟體專案是由 PM 去了解就好）
+14:02	JTS	所以  AI 的  PM 角色比較弱
+14:02	JTS	也會被工程師騙說這個 feature 做不到，不然只要花一週的工作會被誆成藥一年才可以
+14:09	Aaron	這段敘述很中肯～不過通常都是看PM 話語權有沒有很強，有遇過什麼都不懂的，狂催進度，還開了一堆難以實現的需求…
+14:09	Aaron	反過來溝通 還會被他和主管盯進度
+14:10	維元	剛好我昨天有跟另外一個大大聊 Data PM 的議題，大家有興趣可以聽聽看
+14:14	nagi	是 PM 先了解然後轉達給我們🤣
+14:18	維元	https://www.youtube.com/watch?v=DqLwQN-j3F4
+14:20	JTS	之前的專案 看得出我家 PM 已經很努力在了解客戶需求，但轉達給我們的時候還是零零落落。
+
+光是只聽 PM 說的資訊，我們連是該用監督式還是非監督式方法都決定不了
+
+再請 PM 回去了解，來回了好幾次都還有很多不清楚，最後就自己去問了
+14:23	青眼白龍	為甚麼可以理解xd
+14:24	Jasper	其實應該是PM的問題吧 不知道目前AI技術可以解決什麼問題 就像顧問公司不知道用什麼管理方法可以解決企業的問題一樣 就是核心職能不夠
+14:24	青眼白龍	我們pm好像太菜  導致專案進度大落後  年底大家狂加班
+14:24	青眼白龍	趕到快吐
+14:49	啊啊啊	請問有人的公司IaC是用python 實作的嗎
+15:00	阿汪	PM 有被圍毆ㄇ
+15:00	青眼白龍	沒有
+15:00	青眼白龍	大家都狠奴
+15:00	阿汪	可惜
+15:00	青眼白龍	乖乖吞
+15:00	阿汪	唉
+15:00	阿汪	下次記得蓋布袋
+15:00	阿汪	這樣就不知道是誰了
+15:18	伊比鴨鴨	AI的產品很難找啦，畢竟在台灣pm低薪 願意再多學Ml出來找工作一樣低薪。 自然就會變成這樣。 還蠻哀傷的
+15:30	學習程式的小白	如果英文好，應該很多都去外商了
+15:35	伊比鴨鴨	嗯，不過英文好 也不代表就會ML . 因為ML的門檻有點高。 
+15:37	學習程式的小白	對
+18:01	啊啊啊	康寧面試完沒下文www
+18:03	志豪	台灣康寧？
+18:18	Fighting grape	我也碰到二面完沒下文
+無聲卡很不尊重…
+18:20	啊啊啊	對
+18:20	啊啊啊	應該是英文太破，完全沒準備人資就突然說要用英文面試w
+18:20	志豪	如果是台中廠，那缺還開著
+18:20	啊啊啊	台北
+18:21	志豪	喔喔好
+18:21	啊啊啊	非工廠端的
+18:21	啊啊啊	讀寫沒問題, 聽跟說真的要多講
+18:24	Biofuck	跟我一樣耶
+18:25	Biofuck	@Fighting grape 你碩論也是基因體方面的預測嗎？
+18:29	Fighting grape	不是 是偏藥動化學的～
+18:29	Biofuck	請問還有那些技能樹要點？
+18:30	Biofuck	好酷！至少比我也出路
+18:30	青眼白龍	工作用到就點
+18:30	阿汪	你是做什麼
+18:31	Biofuck	生物資訊的ML、資料分析為主，DL為輔 @阿汪 
+18:31	阿汪	你現在沒有在工作喔？
+18:31	Biofuck	沒有啊 論文還在跑
+18:33	阿汪	那就先做論文阿
+18:33	阿汪	還有這麼久
+18:33	阿汪	所以你也是生科碩？
+18:34	Biofuck	是由弄出個自動化腳本，大概明年初畢業。
+目前就做好預測和可解釋，motif 那些好像不用弄
+18:34	Biofuck	對啊
+18:35	阿汪	我還是蠻好奇 生科碩 為什麼要來寫程式
+18:36	阿汪	直接資工碩不就好了
+18:36	Tim	’生物資訊‘
+18:36	Biofuck	我當初是為了走生物資訊才來生科的，不過現在才知道很多電資也在做生物資訊，只是角度不同
+18:38	Biofuck	目前看生物資訊paper感覺電資實驗室主要專注在工具開發，生物生醫實驗室多數在應用工具和解釋現象
+19:34	茶	生物資訊電資要做分析應該蠻困難的，光是要弄清楚domain蛋白序列就不好理解，自然切入點可能會是從工具優化，有些可以從數理方面切入，畢竟領域耕耘程度還是有差
+19:52	Biofuck	想法上有差，像我老闆在特徵工程上，是用他對蛋白質的了解讓抽特徵。
+但我自己review蛋白質抽特徵的文獻，找出大多數是序列分析和similarity。
+如果不是對蛋白質有基本了解，我還想不出我老闆的方法
+19:52	Biofuck	畢竟我大學文組科系，感受得到common sense 的差異
+20:16	聖誕樹	想請問大學文組科系是怎麼跨到生物資訊的ㄋ><
+20:17	Jasper	Domain knowledge很重要啊 不然autoML工具一堆 抽特徵也不需要寫軟體了
+20:52	Biofuck	@聖誕樹 推甄上的，剛好會點統計和程式XDD
+20:52	Biofuck	ㄓ @Jasper 對啊 特徵篩選也是 很多學問要做
+22:03	聖誕樹	想請問這有需要很多生醫方面的背景嗎~謝謝！
+22:06	Biofuck	其實⋯要有三類背景和天份XD，要不然念得真的很累。
+22:08	聖誕樹	好吧 我只有上過普生而已 謝謝你(baobao lol)
+22:08	Biofuck	如果考試入學的話，我看好像考生化、分生等等之類的
+22:09	Biofuck	你有想讀生科？
+22:09	聖誕樹	這些我沒學過 太難了(Crying With Laughter Guy)
+22:09	聖誕樹	我是對生物資訊有點興趣！
+22:14	Biofuck	我同學統研、流病也有做，以分析為主；我們學校電資學院也不少生物資訊的論文。
+就進來再學吧！
+我之前連中心法則也不知道
+22:15	Tim	不過要想清楚是為興趣而念還是職涯規劃喔⋯⋯
+22:16	聖誕樹	了解 感謝你們！
+22:20	Biofuck	真的⋯念興趣可以，職涯就不好說
+23:01	青眼白龍	公衛？
+23:19	Biofuck	對啊 他們是公衛的
+23:29	青眼白龍	慘系
+23:29	Biofuck	對啊
+23:29	Biofuck	不過我比較慘
+23:38	青眼白龍	公衛也是在比慘的
+23:38	青眼白龍	我朋友公衛的
+23:38	青眼白龍	全部轉行
+23:40	Fighting grape	可是公衛出來的統計學感覺很強
+23:47	Tim	但跟生資一樣 轉行的比較強XD
+23:59	青眼白龍	一定沒統計系的強....
+23:59	青眼白龍	公衛的微積分都亂教
+23:59	青眼白龍	他們學的是應用型統計
+
+Tue, 29/11/2022
+00:00	青眼白龍	建構在生統之上那種
+01:11	Jcup left the chat.
+07:38	鮭魚	無聲卡 很正常啊 
+07:38	鮭魚	一堆這樣的
+10:31	Zote left the chat.
+16:01	青眼白龍	104上搜尋da職缺
+16:01	青眼白龍	有甚麼小技巧嗎
+16:05	麥特戴蒙	開放履歷，希望的職稱key in 資料分析師/數據分析師/商業分析師
+16:06	青眼白龍	好
+16:06	zlib	改用 linkedin / cakeresume / Yourator 
+16:06	麥特戴蒙	這個方法可以讓公司HR/用人單位來搜尋你並主動邀約你
+16:06	青眼白龍	後兩者是不是偏新創
+16:06	zlib	不一定 現在很難劃分了
+16:07	zlib	而且 recruiter 也是年輕人，比較不愛用舊系統了
+16:08	麥特戴蒙	我有一次經驗是我用yourator投沒消息，後來同一家HR透過104主動邀約我面同一個職位
+16:09	青眼白龍	[Photo]
+16:10	青眼白龍	中間要有分隔符號嗎
+16:10	青眼白龍	還是不用
+16:10	麥特戴蒙 unsent a message.
+16:11	麥特戴蒙	我有用分號分開
+16:11	麥特戴蒙	也有加英文職稱，給你參考
+16:11	麥特戴蒙	Data Analyst; Business Analyst; 資料分析師; 商業分析師
+16:11	麥特戴蒙	類似這樣
+16:12	青眼白龍	好ㄉ  感恩
+16:13	麥特戴蒙	開放的好處是104會通知你xxx公司瀏覽過你的資料，通常看N次也代表那家公司對你有興趣，一方面也可順便檢視履歷能見度（我的看法
+16:14	DD	垃圾公司先封鎖
+16:14	DD	實習薪資0元
+16:14	DD	還敢一直發
+16:15	青眼白龍	希望職稱
+16:15	青眼白龍	填軟體設計工程師嗎
+16:15	青眼白龍	他那個好像只能填制式
+16:16	麥特戴蒙	我有勾這個
+16:16	青眼白龍	對
+16:16	青眼白龍	我也有勾
+16:16	青眼白龍	然後統計學研就員也勾
+16:17	青眼白龍	我最近也去yurator, cakeresume登陸看看
+16:17	青眼白龍	linkdln不太敢用
+16:17	青眼白龍	用了背同事看到
+16:17	青眼白龍	就挫賽
+16:19	麥特戴蒙	另外，越活躍好像比較容易搜尋的到，比如最近投的職缺比較多or近日更新履歷，潛在公司會更易搜尋的你
+16:20	麥特戴蒙	Linkedin投了同事不會知道
+16:20	麥特戴蒙	Linkedin easy apply 比較少，大多還是會請求職者去公司官網投遞
+16:21	麥特戴蒙	Linkedin gogoro投了是馬上接到HR電話🤣
+16:21	麥特戴蒙	效率十足
+16:23	青眼白龍	這可以放中文嗎
+16:23	青眼白龍	還是一丁要英文寫bio
+16:23	麥特戴蒙	補充一下head hunter也會透過104找人，所以有機會知道一些沒開放出來的缺
+16:24	麥特戴蒙	我全部放英文
+16:24	青眼白龍	104是主力ㄅ
+16:24	麥特戴蒙	對，畢竟還是最大的平台
+16:29	青眼白龍	我發現有大公司人資亂發面試通知
+16:29	青眼白龍	那個缺開的要求
+16:29	青眼白龍	明顯跟我不同
+16:29	青眼白龍	工作經驗還有5年以上
+16:30	青眼白龍	感覺是要幫人資做業績的
+16:30	麥特戴蒙	一定會有那種不相干的找你，但同時也會有認真看過的
+16:31	青眼白龍	我要找da
+16:31	青眼白龍	他發etl缺給我
+16:31	青眼白龍	問號
+16:32	青眼白龍	而且那個缺還要senior
+16:32	麥特戴蒙	是說看你履歷的也會知道你投遞了哪些公司
+16:32	青眼白龍	我目前主動投的很少
+16:32	青眼白龍	兩家
+16:32	青眼白龍	都沒回應
+16:32	青眼白龍	公司也沒打開
+16:32	麥特戴蒙	最無奈的應該是那種已投對方讀還更新職缺的
+16:33	麥特戴蒙	我遇到的蠻多會馬上讀欸
+16:33	麥特戴蒙	多投看看
+16:33	青眼白龍	我覺得我頭的缺應該是沒有要徵人
+16:33	青眼白龍	掛爽的
+16:33	青眼白龍	好
+16:33	青眼白龍	預計12月中才會開始狂投
+16:33	麥特戴蒙	對方*沒讀
+16:33	青眼白龍	現在先開放
+16:33	麥特戴蒙	年後要換現在差不多
+16:34	青眼白龍	有可能是系統
+16:34	青眼白龍	自動更新職缺?
+16:34	麥特戴蒙	還要算上process時間跟預留離謢日
+16:34	麥特戴蒙	離*職
+16:34	麥特戴蒙	有可能
+17:00	阿汪	怎麼不開發幫投履歷機器人
+17:01	青眼白龍	能力差
+17:01	青眼白龍	你比較厲害
+17:01	阿汪	沒 我廢物
+20:16	Vicky yeh left the chat.
+
+Thu, 01/12/2022
+12:26	Biofuck	請問agoda 風評如何
+12:33	阿汪	我有訂過飯店
+12:35	小明	我也有
+12:36	茶	應該是要問求職吧？
+12:37	茶	https://openai.com/blog/chatgpt/
+12:38	茶	OpenAI今天釋出的，我剛剛問他CodeJam 2022的打字機他解出來了
+12:39	茶	回測Code還是對的，以後應該會比賽禁止才對
+12:39	zlib	是因為有人丟過吧?
+12:40	zlib	題目變形一下試試?
+12:40	茶	要看他的模型有沒有吃到這個數據，但是我丟一些Python Bug問題他還真的解答的出來
+12:42	茶	金魚腦的問題這個應該沒解掉，我重複問幾個他上上個階段會忘記
+12:42	茶	但是上一輪的還是可以
+16:31	Sara joined the chat.
+16:31	半甲鐵板燒師傅 joined the chat.
+16:31	Hsiao joined the chat.
+16:31	Auto-reply	歡迎加入Python資料科學交流社群👋
+可以先查看記事本or公告的版規，也鼓勵大家踴躍詢問和分享有關「資料科學」的問題、職涯、競賽跟知識🙏
+17:41	青眼白龍	我開放履歷
+17:41	青眼白龍	有一些
+17:41	青眼白龍	公司發我的職缺
+17:41	青眼白龍	是後端工程師
+17:41	青眼白龍	要去面看看嗎
+17:42	青眼白龍	或etl工程師
+17:42	青眼白龍	但我目前的能力只能做DA
+17:42	zlib	你心裡其實很想去
+17:42	zlib	follow your heart
+17:43	青眼白龍	恩恩
+17:43	青眼白龍	我想想
+17:45	青眼白龍	我是抱持著  如果要轉做這方面   或許出路會更寬
+17:45	青眼白龍	但就是真的要忍受那個超級陣痛期
+17:45	zlib	還好啦 上了再說
+17:45	青眼白龍	跟屎缺
+17:45	zlib	痛的地方可能面試的時候就被電爆了
+17:45	青眼白龍	高機率屎缺
+17:46	zlib	沒有賣身都是自由身
+17:46	青眼白龍	這我倒是不在意
+17:46	青眼白龍	工作時被電爆比較慘.........
+18:11	阿汪	你要去就去啊
+18:11	阿汪	當作去聊天
+18:16	青眼白龍	特修很珍貴ㄉ
+18:18	阿汪	沒事啦
+18:18	阿汪	還是要練面試技巧啊
+18:40	PySay left the chat.
+20:29	茶	我怎麼覺得一堆小公司後端都是屎缺啊？
+20:31	Biofuck	你什麼所畢業的啊？
+20:31	Biofuck	為什麼DA是屎缺？
+20:32	青眼白龍	Yes
+20:33	大班畢業	新人練功場 新手村
+20:33	Biofuck	104開放履歷？
+20:54	阿福	[Photo]
+20:54	阿福	這AI畫圖出問題啦
+
+Fri, 02/12/2022
+08:54	Tim	這AI真可怕，可以讀心 （X）
+
+Sat, 03/12/2022
+21:55	IreneLai joined the chat.
+21:55	Neil joined the chat.
+21:55	00 joined the chat.
+21:55	Auto-reply	歡迎加入Python資料科學交流社群👋
+可以先查看記事本or公告的版規，也鼓勵大家踴躍詢問和分享有關「資料科學」的問題、職涯、競賽跟知識🙏
+
+Sun, 04/12/2022
+15:41	Jayu	[Photo]
+15:42	Jayu	請教各位一下就是我想將字點的 key修改，我查網路可以用 dict [newkey] = dict.pop[oldkey] 可是一直錯誤 T.T
+15:55	Rams	change_bom 不是字典型態， error 顯示為 int 
+15:56	Rams	你的字典應該是  total  嗎
+15:58	Jayu	是的 T.T 
+15:59	Jayu	[Photo]
+15:59	Jayu	我應該是要修改我從Total字典取出的a字典 
+16:00	Jayu	然後將取出的a字典的key修改成我要的名稱
+16:01	Jayu	[Photo]
+16:01	Jayu	改成這樣還是跳錯 
+16:05	Jayu	[Photo]
+16:09	zlib	total是list
+16:09	zlib	用type檢查個
+16:13	Jayu	對 total是list
+16:14	Jayu	但裡面元素是 dict
+16:16	Jayu	[Photo]
+16:17	Jayu	我想把 x 字典的 key  "c" 改成 使用者輸入的 a
+16:17	Jayu	要怎麼做才行?
+16:18	zlib	x[“a”] = x.pop(“c”)
+16:18	zlib	我不知道你一直用keys幹嘛
+16:18	zlib	你查一下keys用法
+16:19	zlib	dict所有builtin function都查一下
+16:20	Jayu	那假如 c 要自動在pop裡面可以嗎?
+16:24	Jayu	使用者會看到'c': {'eee': 9, 'eas': 5} 他想修改key的名稱 所以我請他輸入新名稱 a ,
+16:26	Jayu	所以我才想說將 'c'取出來放到pop裡面
+16:27	zlib	pop 裡面什麼意思
+16:27	zlib	你想要 list(x.keys())[0] 嗎
+16:33	Jayu	我是想要將x 裡面的鍵直(c)修改成使用者輸入的名稱，所以我查到這個 
+16:33	Jayu	[Photo]
+16:36	zlib	你不熟可以分解動作
+16:37	zlib	new_key = input()
+old_value = x.pop(old_key)
+x[new_key] = old_value
+
+這樣是不是清楚多了
+16:38	Jayu	x = {'w': {'eee': 9, 'eas': 5}}
+y = input()
+x[y] = x.pop('w')
+print(x)
+16:39	zlib	你這樣也對
+16:39	Jayu	我想要達成上方那個功能 
+16:39	Jayu	可是 "w"
+16:39	Jayu	要系統自動放上去
+16:40	Jayu	所以我就要使用字典取key的功能
+16:40	Jayu	可是會跳錯
+16:41	Jayu	[Photo]
+16:41	zlib	這不是自動取key
+16:41	zlib	先查吧
+16:42	zlib	我也示範給你了
+16:42	Jayu	謝拉~~
+16:42	Jayu	[Sticker]
+16:43	Jayu	可以了
+16:43	Jayu	[Photo]
+16:43	Jayu	就是要先改成List再用list方始取直
+16:43	Jayu	謝謝你~~
+16:47	Jayu	@zlib ok了~~~哈哈 謝謝你!!  
+16:47	zlib	ok 多練習查文件和範例就會了
+16:48	zlib	然後隨時注意變數的type
+16:49	Jayu	[Sticker]
+21:06	PH left the chat.
+
+Tue, 06/12/2022
+12:26	d	請教TX2空間不足 可以透過什麼方式增加空間嗎？
+15:45	魯蛇飯	插SD卡
+16:31	Merlin joined the chat.
+16:31	Fang joined the chat.
+16:31	Bob joined the chat.
+16:31	Basil joined the chat.
+16:31	Auto-reply	歡迎加入Python資料科學交流社群👋
+可以先查看記事本or公告的版規，也鼓勵大家踴躍詢問和分享有關「資料科學」的問題、職涯、競賽跟知識🙏
+16:32	Bob	@zlib 怎麼這邊也有你
+16:32	zlib	[Sticker]
+16:32	nitekat	他是 python 社群 bot
+16:33	zlib	[Sticker]
+16:33	Bob	我是大軍拉 @nitekat @zlib 
+16:34	nitekat	報名字上來就是要踢  (X
+16:34	zlib	從以前到現在已經出了好幾個大軍
+16:34	Bob	但我不是得到 5272票 還落選的大軍
+16:34	zlib	你知道 我知道 獨眼龍也知道
+16:34	Bob	開鍘喔
+16:57	我的毛很多 left the chat.
+21:08	茶	[Sticker]
+21:49	Bob left the chat.
+
+Wed, 07/12/2022
+14:37	Jayu	[Photo]
+14:37	Jayu	[Photo]
+14:39	Jayu	請問各位就是我用 try except 想去除使用者輸入上的錯誤，可是indexerror 一直過不去T.T 
+14:40	Jayu	會出現錯誤訊息 為del total[del_bom-1]這行 是不是因為我那個else離開了迴圈的關西? 但是不知道怎麼改 再請大家幫幫忙 謝謝!
+14:43	zlib	我覺得你自己加一點 print 就知道問題了
+14:45	Jayu	好的 謝謝回覆 我想想看 試試看 (dog laugh)
+14:47	Today	你可以先不要➖1
+14:47	Today	看看印出來的值是什麼
+14:48	Today	或者先把del 改成print看看呢
+14:50	Jayu	好喔 謝謝 Today
+14:51	Today	加油(sparkle)
+14:52	Jayu	我大概知道原因了
+14:52	Jayu	謝謝兩位的提醒~~~~~
+14:52	Jayu	[Sticker]
+15:14	Morgana left the chat.
+15:15	Today	[Sticker]
+
+Fri, 09/12/2022
+08:36	Wen joined the chat.
+08:36	Yyyy joined the chat.
+08:36	Auto-reply	歡迎加入Python資料科學交流社群👋
+可以先查看記事本or公告的版規，也鼓勵大家踴躍詢問和分享有關「資料科學」的問題、職涯、競賽跟知識🙏
+11:44	d	Sd卡什麼卡都可以嗎
+11:44	d	對於TX2而言
+
+Sun, 11/12/2022
+15:25	Biofuck	請問KERAS的MODEL summary後，發現model trainable params: 0，是代表什麼意思???
+15:32	阿福	模型可以訓練的參數總數是0
+15:39	Biofuck	字面上意思我能理解，可是不知道為何會這樣
+15:40	Biofuck	是有看stack overflow ，普遍建議要做batch normalization ？
+15:40	Biofuck	但我想不透為什麼是0
+15:43	Yeyeye	請問你後來有去嗎~我最近也想試試看後端工程師的工作
+15:50	阿福	其實你沒有前後文 我們能幫你做的解釋就這樣而已
+15:51	阿福	你至少要提供一下code 這樣我們才能幫你啊...
+15:52	Biofuck	喔喔喔 要貼code喔
+15:56	Biofuck	[Photo]
+15:56	Biofuck	[Photo]
+15:56	Biofuck	[Photo]
+15:56	Biofuck	[Photo]
+15:56	Biofuck	[Photo]
+15:56	Biofuck	[Photo]
+15:56	Biofuck	[Photo]
+15:56	茶	又不是通靈，至少要貼code讓大家知道你的設計架構
+15:56	Biofuck	獻醜了，抱歉
+15:57	Biofuck	抱歉，以為這是常見問題
+15:58	Biofuck	因為我主要條參數，想說順便把模型存下來，但感覺好像沒存到模型的樣子
+16:01	阿福 unsent a message.
+16:01	阿福	應該是Discriminator在訓練GAN過程中被凍結 所以trainable 才會顯示為0
+16:04	阿福	[Photo]
+16:04	阿福	關鍵應該就是這一行
+16:04	茶	GAN的訓練過程我印象中需要在discriminator跟generator之間交互，你要predict要凍結一個吧？
+16:05	茶	理論上freeze住還是可以儲存的，所以最好看一下你的模型參數
+16:06	Biofuck	semi gan照書上說，要unsupervised discrimator==Fasle
+16:07	Biofuck	剛剛在想supervised discrimator.trainable ==True
+16:07	Biofuck	unsupervised discrimator.trainale ==Fasle 要放在 compile 前面還是後面 ????
+16:08	Biofuck	請問FREEZE是指模型內的PARAMS嗎??
+16:13	Biofuck	喔對 unsupervised dicrimator 是分辨真假
+supervised dicrimator是分辨類型
+16:16	Biofuck	現在想到問題是，第一個我存模型方式錯誤，畢竟官網上也沒有為存取模型背書，基本上只有回傳想要TUNE的地放而已。
+所以我在想下下策是，如果找到我想要TUNE的NN結構後，我把這些NN結構結果重TRAIN
+17:48	Biofuck	[Photo]
+17:48	Biofuck	[Photo]
+17:48	Biofuck	[Photo]
+17:48	Biofuck	真的會通靈
+17:50	茶	是，你的.trainable=False，在keras裡面我印象中就是把反向傳播關掉，這樣你模型就會凍結，不然你的discriminator unsupervised去做梯度求導更新參數，這樣你又同時更新Generator 就會沒辦法收斂
+17:51	茶	我這邊看到你的discriminator supervised跟discriminator unsupervised 其實是共用參數的吧？
+17:53	Biofuck	是的，我完全照書
+17:54	Biofuck	因為其實我目標是要找好的discriminator
+那我詔書上寫法應該沒問題吧???
+17:56	Biofuck	印為目標是要找好的discriminator，loss部分要步要考慮GAN loss，還是我單單看兩個discriminator的loss
+17:57	茶	理論上是可以，但是我自己寫習慣torch，torch可以不用這樣寫 XD，這樣寫我覺得蠻醜的
+18:00	茶	你直接存應該frozen的也可以存起來才對，可以看看你的儲存檔案大小或是loading是不是正常的，我看你summary non-tranable也是有參數的
+18:01	Biofuck	我一開始也寫TORCH，但書用KERAS，就想說先跑看看XDDD
+18:02	Biofuck	其實我查過OPTUNA官網文件，沒有提到存取模型
+18:02	茶	或是你直接在最後加上trainable=True那些non-trainable就會跑去trainable param了
+18:03	Biofuck	只有把超參數結果放數入模型重跑，因為存模型方式我是抄stack overflow上XD，可能晚點重試看看
+18:04	Biofuck	剛剛有在supervised discrimator 加了~~
+18:04	Biofuck	感謝 嗚嗚
+18:05	Biofuck	然後剛剛CHATGPT也給回復了我的能不能存模型的疑問，整個傻眼XD
+18:06	茶	Optuna只是幫你優化超參，儲存應該還是叫你用torch或是keras的框架存吧
+18:11	Biofuck	對啊 只是我還不太熟悉套件 現在還在學
+18:18	茶	大招pickle dump
+18:24	Biofuck	我scikit 都這樣搞
+18:24	Biofuck	哈啊哈
+22:23	moka left the chat.
+
+Mon, 12/12/2022
+14:55	小明 unsent a message.
+
+Tue, 13/12/2022
+13:12	Aaron	大家好，想請教如果今天有2個list 各有1億多筆的資料，將2個list 透過pd.DataFrame 轉成dataframe 會花很久的時間，想問有沒有比較快的方式？
+13:20	菜雞	Spark?
+13:21	zlib	vaex
+13:21	zlib	不過一億的量級大概不會變list
+13:21	zlib	記憶體會先炸
+
+Wed, 14/12/2022
+08:42	Cynthia joined the chat.
+08:42	svm joined the chat.
+08:42	萊斯 joined the chat.
+08:42	Auto-reply	歡迎加入Python資料科學交流社群👋
+可以先查看記事本or公告的版規，也鼓勵大家踴躍詢問和分享有關「資料科學」的問題、職涯、競賽跟知識🙏
+
+Sat, 17/12/2022
+23:08	阿牛 joined the chat.
+23:08	Skye joined the chat.
+23:08	喵喵 joined the chat.
+23:08	Auto-reply	歡迎加入Python資料科學交流社群👋
+可以先查看記事本or公告的版規，也鼓勵大家踴躍詢問和分享有關「資料科學」的問題、職涯、競賽跟知識🙏
+
+Sun, 18/12/2022
+17:12	UL left the chat.
+
+Thu, 22/12/2022
+17:50	阿牛 left the chat.
+
+Fri, 23/12/2022
+21:17	Hao Hsu left the chat.
+23:01	LY.H joined the chat.
+23:01	Vv joined the chat.
+23:01	1T joined the chat.
+23:01	Regina joined the chat.
+23:01	Auto-reply	歡迎加入Python資料科學交流社群👋
+可以先查看記事本or公告的版規，也鼓勵大家踴躍詢問和分享有關「資料科學」的問題、職涯、競賽跟知識🙏
+
+Sun, 25/12/2022
+23:23	Jacky left the chat.
+23:56	Kevin joined the chat.
+23:56	Louis joined the chat.
+23:56	Pike joined the chat.
+23:57	Auto-reply	歡迎加入Python資料科學交流社群👋
+可以先查看記事本or公告的版規，也鼓勵大家踴躍詢問和分享有關「資料科學」的問題、職涯、競賽跟知識🙏
+23:58	Pike left the chat.
+
+Mon, 26/12/2022
+07:18	Ethan Jhuang left the chat.
+10:36	萊斯 left the chat.
+
+Wed, 28/12/2022
+11:00	三七分小哥 joined the chat.
+11:00	三二九 joined the chat.
+11:00	Andylllll joined the chat.
+11:00	Auto-reply	歡迎加入Python資料科學交流社群👋
+可以先查看記事本or公告的版規，也鼓勵大家踴躍詢問和分享有關「資料科學」的問題、職涯、競賽跟知識🙏
+
+Thu, 29/12/2022
+07:57	Yu left the chat.
+
+Fri, 30/12/2022
+09:55	Ted 顥天（國二） left the chat.
+
+Sun, 01/01/2023
+17:02	丁丁	大家安安，請問要怎麼知道CharGPT的python套件版本?
+
+這是我的問題：
+my origin column is "value", i want column "result"
+what's your pandas version?
+value	result
+1	2
+0	0
+0	0
+1	3
+0	0
+0	0
+0	0
+1	4
+0	0
+0	0
+0	0
+0	0
+
+他的回答，可是他的回答顯示出的結果跟我要的結果不同，我再想可能是版本問題?
+import pandas as pd
+
+# Create a sample dataframe
+df = pd.DataFrame({'value': [1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0]})
+
+# Add a new column that counts the number of zeros in the row
+df['result'] = df.apply(lambda row: sum(1 for x in row if x == 0), axis=1)
+
+print(df)
+
+
+17:02	丁丁	[Photo]
+17:02	丁丁	[Photo]
+17:03	丁丁	[Photo]
+17:03	丁丁	[Photo]
+17:12	zlib	他只是生成回答你的字句 應該沒有基於任何版本環境給你答案
+17:14	菜雞	你可以問他他用哪個版本啊 (X
+17:15	丁丁	好窩謝謝~
+17:16	丁丁	有ㄚXD 我問what's your pandas version 他不跟我說
+17:17	zlib	你可以試試假設版本給他 做一個情境描述你的環境之類的
+17:47	丁丁	請問是像加一句這樣嗎?
+Pandas version == 1.5.2
+
+17:59	zlib	可以再直白一點 反正他大概聽得懂
+18:43	丁丁	這個問題我加了版本他還是答錯QQ 以後問他其它問題我再加版本看看 謝謝~
+18:54	小寶寶 joined the chat.
+18:54	明 joined the chat.
+18:54	Auto-reply	歡迎加入Python資料科學交流社群👋
+可以先查看記事本or公告的版規，也鼓勵大家踴躍詢問和分享有關「資料科學」的問題、職涯、競賽跟知識🙏
+
+Wed, 04/01/2023
+23:27	維元	嗨，我是資料科學家的工作日常小編維元，持續舉辦開箱 #第一線資料科學工作者 系列活動。最新一場邀請到現職資料分析師的承彥分享「資料分析切入量化交易」主題。目前活動已經開放報名囉，有興趣的朋友歡迎一起來聊聊 (๑¯◡¯๑)
+
+❑ 活動主題： 從資料分析切入量化交易自動化投資
+❑ 活動時間： 2022/01/05（四）21:00 - 22:30​​​​​​
+❑ 活動方式： Youtube 線上直播
+❑ 報名網址： https://pse.is/4lbzyg
+23:28	維元	沒看到板規有說不能分享免費活動，如果有誤踩請告知 ><
+
+Thu, 05/01/2023
+08:18	YES left the chat.
+
+Sat, 07/01/2023
+14:50	蛋糕 joined the chat.
+14:50	魚 joined the chat.
+14:50	Auto-reply	歡迎加入Python資料科學交流社群👋
+可以先查看記事本or公告的版規，也鼓勵大家踴躍詢問和分享有關「資料科學」的問題、職涯、競賽跟知識🙏
+
+Sun, 08/01/2023
+14:00	小明	請問當遇到 時間序列資料 要用lstm 做分類時 但資料不平衡怎麼解決嗎？
+如果做上採樣或下採樣 會打亂資料的順序性
+是否有更好的方法？
+請高人指點
+14:02	青眼白龍	[Photo]
+14:02	青眼白龍	有沒有人要一起去
+14:03	Rams	這個我也有報名😆
+14:04	青眼白龍	一起逛
+14:04	青眼白龍	要一起的約個時間匯合
+14:05	Rams	可以呀 討論看看什麼時間方便
+14:07	青眼白龍	等等我開記事本要的加一
+14:22	青眼白龍	@Rams 我先加你ID
+14:27	Rams	這裡是不是不能丟自己的個人 ID呢
+14:28	Rams	我丟我的 linkedIn 連結可以嗎
+14:32	青眼白龍	好
+14:32	青眼白龍	但我沒LINKDLN
+14:32	青眼白龍	丟ID要中間加.
+14:32	Rams	https://www.linkedin.com/in/dprams/
+14:33	Rams	001.1622
+16:55	茶	一樣可以做上下採樣吧？你的序列資料也不是整個一萬長度的series都不切，可以檢查某段序列如果全是負樣本就先拿掉，還有損失函數可以加上class weight或是換上focal 這種對不平衡類有抵抗能力的損失函數
+16:56	茶	也可以把某些片段當作增量重複生成
+16:57	小明	好 我試試看 謝謝您
+
+Mon, 09/01/2023
+10:35	Jayu	hi!請問一下就是 Pandas 跟 numpy是不是很像的兩個套件? 比較推薦哪個先學會比較好呢? 
+10:36	zlib	[Sticker]
+10:36	Antonio	資料處理用 pandas 
+10:38	Jayu	恩恩就是資料分析 處理用pandas比較方便是嗎? 那Numpy的? 
+10:38	zlib	https://numpy.org/learn/
+可以查一下
+10:40	Jayu	好的
+10:56	茶	我都先學stackoverflow，一生受用 真心不騙
+10:56	茶	[Photo]
+10:57	維元	推薦 chatGPT ，有用有推
+10:58	維元	自從有了 chatGPT 我再也不用開 google & stackoverflow （誤
+10:59	nitekat	如果對要查的東西完全不了解的話，chatGPT還是斟酌使用，以免被騙
+11:07	學習程式的小白	你可以去誠品逛一圈，找相關的書掃一下，就有答案了
+11:17	JTS	Numpy 是矩陣運算的套件，提供大量陣列運算的數學函式庫。基本上有在算東西的一定會用到它喔
+Pandas 資料處理和分析的套件，有在做數據分析幾乎都會用到
+
+我覺得 numpy 比較像計算機，手邊會放上一台，很好用又快速。然後 pandas 像是 Excel 這樣，可以做有關數據分析之類的東西
+11:18	茶	stackoverflow 的準確度還是比chatGPT高的，像我之前要做多執行緒，他給的都是通解，但是我的問題就是通解很慢，然後他給我只是換一種寫法的通解，最後我還是自己寫了一個解法
+11:21	菜雞 unsent a message.
+11:21	菜雞	做data science的應該更清楚目前語言模型的實作方式 更該了解到語言模型出來的答案不一定是正確的
+11:22	Jayu	感謝您的回覆 
+11:26	茶	當輔助工具還是很好用啦，有些東西就是自己懶惰懶得多打那幾行code或是你知道正解然後要他直接生出來你改個兩行就好
+11:27	小寒 unsent a message.
+11:29	小寒 unsent a message.
+15:28	nagi	@小寒 請問圖片是? 如果傳錯我可以幫忙刪除喔~
+15:28	小寒	麻煩您幫我刪了 謝謝><
+
+15:28	nagi	OK
+
+Tue, 10/01/2023
+08:27	Aaaa joined the chat.
+08:27	si joined the chat.
+08:27	Bear joined the chat.
+08:27	Auto-reply	歡迎加入Python資料科學交流社群👋
+可以先查看記事本or公告的版規，也鼓勵大家踴躍詢問和分享有關「資料科學」的問題、職涯、競賽跟知識🙏
+17:30	賤死	請問這裏大大有規劃過real time的data streaming嗎
+17:31	菜雞	量很小的算嗎
+17:32	菜雞	就開一個websocket丟資料
+17:47	賤死	主要是公司網站資訊，要即時整理使用者瀏覽行為 
+1. 假如網站架在雲端是會建議在運算也在雲端執行嗎？ 還是回傳到地端在運算
+17:48	賤死	量的話 平均每分鐘大概5000筆而已
+18:04	魯蛇飯	這種量丟MQ/Kafka後面批次處理
+計算看資料存在哪裡，存雲端雲端算，
+如果也要 real time analytic 就要想一下資料怎麼設計
+18:13	賤死	那大大會推薦這自己架設比較划算還是使用雲端服務
+18:25	你的隔壁老王 left the chat.
+18:48	茶	看你的預算，自己搭就是省成本但是增加維護人力，走AWS就花大錢省力，如果你的資料沒機敏走雲硬體問題也不用思考
+18:51	賤死	了解 謝謝我在斟酌 
+
+Wed, 11/01/2023
+12:20	婷婷 joined the chat.
+12:20	Chase joined the chat.
+12:20	Elaine joined the chat.
+12:20	Sun joined the chat.
+12:20	Auto-reply	歡迎加入Python資料科學交流社群👋
+可以先查看記事本or公告的版規，也鼓勵大家踴躍詢問和分享有關「資料科學」的問題、職涯、競賽跟知識🙏

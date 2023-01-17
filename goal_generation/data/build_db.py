@@ -84,8 +84,8 @@ def main():
     database = r".\db\messagesqlite.db"
 
     sql_create_message_table = """ CREATE TABLE IF NOT EXISTS Messaging_1 (
-                                        contact_name text NOT NULL,
-                                        app_name text NOT NULL,
+                                        group_name text NOT NULL,
+                                        contact_name text NOT NULL,                                        
                                         message text NOT NULL
                                     ); """
 
@@ -141,7 +141,7 @@ def main():
 if __name__ == "__main__":
     conn = main()
     ''''''
-    for data in read_csv('csv/message_entityies.csv'):
+    for data in read_csv('csv/message_entityies_line.csv'):
         print(data)
         insert_data(conn, 'Messaging_1', data)
 

@@ -276,7 +276,7 @@ def get_sys_actions(acts, slots, slot_values, domain, intent, df):
             service_call = {"method":intent["name"], "parameters":{}}  
             results = db.find_result(domain, slot_values) 
             for slot, value in slot_values.items(): service_call["parameters"][slot] = value[0]
-            act_dict = {"act": act, "canonical_values": [len(results)], "slot": "count", "values": [len(results)]}
+            act_dict = {"act": act, "canonical_values": [str(len(results))], "slot": "count", "values": [str(len(results))]}
             tmp_acts.append(act_dict)
             annotations.append(f"{act}(" + f"{len(results)})")
         elif act == "OFFER_INTENT":
@@ -313,80 +313,94 @@ def find_slot(uttrance, acts):
                     slots.append({"exclusive_end": match.end(), "slot": slot, "start": match.start()})
     return slots
 
-def usr_act2robot_utt(usr_actions, domain, uttr_template):
-    print('usr', usr_actions)
-    slots, slot_dict = [], {}
+def find_slot_weight(slot_dicts, slot):
+    for slot_dict in slot_dicts:
+        if slot_dict['name'] == slot:
+            return slot_dict['weight']
+    return 0
+
+def get_usr_uttr_list(slot_act_dict, state, template_list):
+    uttr_templates = []
+    for act in slot_act_dict.keys():
+        slots = sorted(list(slot_act_dict[act].keys()), key=lambda x:find_slot_weight(state['slots'], x), reverse=True)
+        for temp in sorted(list(template_list[act].keys()), key=len, reverse=True):
+            if all(elem in slots for elem in temp.split('+')) and slots and len(slots)>=len(temp.split('+')): 
+                for s in temp.split('+'): 
+                    if act=="INFORM":uttr = random.choice(template_list[act][temp]).replace(f'[{s}]', slot_act_dict[act][s])
+                    else:uttr = random.choice(template_list[act][temp])
+                    slots.remove(s)  
+                uttr_templates.append(uttr)
+    return uttr_templates 
+
+def get_uttr_list(slot_act_dict, state, template_list):
+    uttr_templates = []
+    for act in slot_act_dict.keys():
+        slots = sorted(list(slot_act_dict[act].keys()), key=lambda x:find_slot_weight(state['slots'], x), reverse=True)
+        for temp in sorted(list(template_list[act].keys()), key=len, reverse=True):
+            if all(elem in slots for elem in temp.split('+')) and slots and len(slots)>=len(temp.split('+')): 
+                select_uttr = random.choice(template_list[act][temp])
+                for s in temp.split('+'): 
+                    print(slot_act_dict)
+                    if act=="INFORM" or act=="CONFIRM" or act=="INFORM_COUNT" or act=="OFFER":uttr = select_uttr.replace(f'[{s}]', slot_act_dict[act][s])
+                    else:uttr = random.choice(template_list[act][temp])
+                    slots.remove(s)  
+                uttr_templates.append(uttr)  
+    return uttr_templates 
+
+def usr_act2robot_utt(usr_actions, state, uttr_template):
+    if list(usr_actions[-1].values())[0]=="INFORM_INTENT":
+        usr_actions[0], usr_actions[-1] = usr_actions[-1], usr_actions[0]
+    #print('usr', usr_actions)
+    domain = state['service_name']
+    slots, slot_act_dict = [], {}
     templates = json.loads(open(uttr_template, 'r', encoding='utf-8').read())
     for u_act in usr_actions:        
-        act, _, slot, value = list(u_act.values())        
+        act, _, slot, value = list(u_act.values()) 
+        if not act in slot_act_dict: slot_act_dict[act]={}       
         if act == "INFORM_INTENT":
-            slots.append(value[0])
-            slot_dict[value[0]] = value[0]
+            slot_act_dict[act][value[0]] = value[0]
         else:
-            if '無' in value: slot += '*無'                
-            slots.append(slot)            
-            slot_dict[slot] = value[0] if value else ''
-    
-    if len(slots) == 1 and slots[0]=='' :
-        slots[0]='none'
-        slot_dict[slots[0]] = ''
-    print(slots, slot_dict)
-    uttr_templates = []
-    for temp in sorted(list(templates[domain][act].keys()), key=len, reverse=True):
-        if all(elem in slots for elem in temp.split('+')) and slots and len(slots)>=len(temp.split('+')): 
-            print('usr', slots, temp)
-            for s in temp.split('+'): 
-                if act=="INFORM":uttr = random.choice(templates[domain][act][temp]).replace(f'[{s}]', slot_dict[s])
-                else:uttr = random.choice(templates[domain][act][temp])
-                slots.remove(s)  
-            uttr_templates.append(uttr)       
-            
+            if '無' in value: slot += '*無'  
+            if slot == '': slot='none' 
+            slot_act_dict[act][slot] = value[0] if value else 'none'   
+    uttr_templates = get_uttr_list(slot_act_dict, state, templates[domain])
     template = '，'.join(uttr_templates)
     slots_pos = find_slot(template, usr_actions)
     print('使用者：', template)
     input()
     return template, slots_pos
 
-def sys_act2robot_utt(sys_actions, domain, uttr_template):
-    print('sys', sys_actions)
-    slots, slot_dict = [], {}
+def sys_act2robot_utt(sys_actions, state, uttr_template):
+    #print('sys', sys_actions)
+    domain = state['service_name']
+    slots, slot_act_dict = [], {}
     templates = json.loads(open(uttr_template, 'r', encoding='utf-8').read())
     for s_act in sys_actions:        
         act, _, slot, value = list(s_act.values())
-        if act=="OFFER_INTENT" or act=="NOTIFY_SUCCESS" or act=="NOTIFY_FAILURE":
-            slots.append(value[0])
-            slot_dict[value[0]] = value[0]
+        if not act in slot_act_dict: slot_act_dict[act]={}  
+        if act=="OFFER_INTENT":
+            slot_act_dict[act][value[0]] = value[0]
         else:
             if '無' in value: slot += '*無'
-            slots.append(slot)
-            slot_dict[slot] = value[0] if value else ''
-    if len(slots) == 1 and slots[0]=='' :
-        slots[0]='none'
-        slot_dict[slots[0]] = ''
-    print(slots, slot_dict)
-    uttr_templates = []
-    for temp in sorted(list(templates[domain][act].keys()), key=len, reverse=True):
-        if all(elem in temp.split('+') for elem in slots) and slots and len(slots)>=len(temp.split('+')): 
-            print('sys', slots, temp)
-            for s in temp.split('+'): 
-                if act=="INFORM":uttr = random.choice(templates[domain][act][temp]).replace(f'[{s}]', slot_dict[s])
-                else:uttr = random.choice(templates[domain][act][temp])
-                slots.remove(s)  
-            uttr_templates.append(uttr)          
-            input()
+            if slot == '': slot='none'
+            slot_act_dict[act][slot] = value[0] if value else 'none' 
+    
+    uttr_templates = get_uttr_list(slot_act_dict, state, templates[domain])
     template = '，'.join(uttr_templates)
     slots_pos = find_slot(template, sys_actions)
     print('助理：', template)
+    input()
     return template, slots_pos
 
 def generate_goal(file_name, file_idx):
-    service_dict = {"Mail_1": 'data/csv/mail_entityies.csv', "Calendar_1": 'data/csv/events.csv', "Messaging_1": 'data/csv/message_entityies.csv'}
+    service_dict = {"Mail_1": 'data/csv/mail_entityies.csv', "Calendar_1": 'data/csv/events.csv', "Messaging_1": 'data/csv/message_entityies_line.csv'}
     dialogues = {"dialogue_id": file_idx, "services": [], "turns": []}
     domain_index, dialogs = 0, {'Annotation(Actions)':[], 'Template utterances':[]}
     schemas = json.loads(open(file_name, "r", encoding="utf-8-sig").read())
     usr_dialog_state_his, sys_dialog_state_his = [], []
     value_list = analysis_schema(file_name)
-    while domain_index==0:domain_index = np.random.choice([i for i in range(len(schemas))], 1, p=domain_transition_matrix[domain_index])[0]     
+    #while domain_index==0:
+    domain_index = np.random.choice([i for i in range(len(schemas))], 1, p=domain_transition_matrix[domain_index])[0]     
     state_d = schemas[domain_index]     
     df = pd.read_csv(service_dict[state_d['service_name']])
     data = df.sample(replace=False, random_state=round(time.time()))
@@ -409,7 +423,7 @@ def generate_goal(file_name, file_idx):
         if ("REQUEST" in [sys_act, sys_act_inner]):
             usr_actions, slot_values, slots, usr_annotations, requested_slots = get_usr_actions([usr_act, usr_act_inner], [req_slot_i, opt_slot_i, result_slots], intent_i, data)
             for u_action in usr_actions: usr_dialog_state_his.append(list(u_action.keys())[0:2])
-            u_uttr, u_slots_pos = usr_act2robot_utt(usr_actions, state_d['service_name'], './template/usr_template.json')
+            u_uttr, u_slots_pos = usr_act2robot_utt(usr_actions, state_d, './template/usr_template.json')
             usr_frames['state']['active_intent'] = deepcopy(intent_i['name'])
             usr_frames['state']['requested_slots'] = deepcopy(requested_slots)
             usr_frames['state']['slot_values'] = {}
@@ -432,8 +446,8 @@ def generate_goal(file_name, file_idx):
                 for s_action in sys_actions: sys_dialog_state_his.append(list(s_action.keys())[0:2])
                 usr_actions, slot_values, _, usr_annotations, requested_slots = get_usr_actions([usr_act, usr_act_inner], [select_slot, select_slot, result_slots], intent_i, data)
                 for u_action in usr_actions: usr_dialog_state_his.append(list(u_action.keys())[0:2])
-                s_uttr, s_slots_pos = sys_act2robot_utt(sys_actions, state_d['service_name'], './template/sys_template.json')
-                u_uttr, u_slots_pos = usr_act2robot_utt(usr_actions, state_d['service_name'], './template/usr_template.json')               
+                s_uttr, s_slots_pos = sys_act2robot_utt(sys_actions, state_d, './template/sys_template.json')
+                u_uttr, u_slots_pos = usr_act2robot_utt(usr_actions, state_d, './template/usr_template.json')               
 
                 sys_frames["actions"] = deepcopy(list(sys_actions))
                 if service_call: sys_frames['service_call'] = service_call
@@ -464,7 +478,7 @@ def generate_goal(file_name, file_idx):
             old_sys_idx = deepcopy(sys_idx_inner) if sys_acts[sys_idx_inner]!='none' else deepcopy(sys_idx)            
             sys_act, sys_act_inner = sys_acts[sys_idx], sys_acts[sys_idx_inner] 
             sys_actions, sys_annotations, service_call, service_results = get_sys_actions([sys_act, sys_act_inner], [list(set(req_slot_i+opt_slot_i)), result_slots], tmp_slot_values, state_d['service_name'], intent_i, df)
-            s_uttr, s_slots_pos = sys_act2robot_utt(sys_actions, state_d['service_name'], './template/sys_template.json')
+            s_uttr, s_slots_pos = sys_act2robot_utt(sys_actions, state_d, './template/sys_template.json')
             sys_frames["actions"] = deepcopy(list(sys_actions))
             if service_call: sys_frames['service_call'] = service_call
             if service_results: sys_frames['service_results'] = service_results
@@ -522,8 +536,8 @@ def generate_goal(file_name, file_idx):
         sys_frames["actions"] = deepcopy(list(sys_actions))
         if service_call: sys_frames['service_call'] = service_call
         if service_results: sys_frames['service_results'] = service_results
-        u_uttr, u_slots_pos = usr_act2robot_utt(usr_actions, state_d['service_name'], './template/usr_template.json')
-        s_uttr, s_slots_pos = sys_act2robot_utt(sys_actions, state_d['service_name'], './template/sys_template.json')
+        u_uttr, u_slots_pos = usr_act2robot_utt(usr_actions, state_d, './template/usr_template.json')
+        s_uttr, s_slots_pos = sys_act2robot_utt(sys_actions, state_d, './template/sys_template.json')
         usr_turn["utterance"] = deepcopy(u_uttr)
         sys_turn["utterance"] = deepcopy(s_uttr)
 
@@ -550,7 +564,8 @@ def generate_goal(file_name, file_idx):
         sys_act, sys_act_inner = sys_acts[sys_idx], sys_acts[sys_idx_inner]
             
         if usr_act == "INFORM_INTENT":
-            while domain_index==0:domain_index = np.random.choice([i for i in range(len(schemas))], 1, p=domain_transition_matrix[domain_index])[0]             
+            #while domain_index==0:
+            domain_index = np.random.choice([i for i in range(len(schemas))], 1, p=domain_transition_matrix[domain_index])[0]             
             state_d = schemas[domain_index] 
             df = pd.read_csv(service_dict[state_d['service_name']])
             data = df.sample(replace=False, random_state=round(time.time())) 
@@ -568,7 +583,8 @@ def generate_goal(file_name, file_idx):
             sys_act, sys_act_inner = sys_acts[sys_idx], sys_acts[sys_idx_inner]
             
         if sys_act == "OFFER_INTENT":   
-            while domain_index==0:domain_index = np.random.choice([i for i in range(len(schemas))], 1, p=domain_transition_matrix[domain_index])[0] 
+            #while domain_index==0:
+            domain_index = np.random.choice([i for i in range(len(schemas))], 1, p=domain_transition_matrix[domain_index])[0] 
             state_d = schemas[domain_index] 
             if not state_d['service_name'] in dialogues["services"]: dialogues["services"].append(state_d['service_name'])                     
             intent_i = random.choice(state_d["intents"]) #select intent from domain_i(state_d)
@@ -601,8 +617,8 @@ def generate_goal(file_name, file_idx):
             if service_results: sys_frames['service_results'] = service_results
             
             #print(usr_actions, slot_values)
-            u_uttr, u_slots_pos = usr_act2robot_utt(usr_actions, state_d['service_name'], './template/usr_template.json')
-            s_uttr, s_slots_pos = sys_act2robot_utt(sys_actions, state_d['service_name'], './template/sys_template.json')
+            u_uttr, u_slots_pos = usr_act2robot_utt(usr_actions, state_d, './template/usr_template.json')
+            s_uttr, s_slots_pos = sys_act2robot_utt(sys_actions, state_d, './template/sys_template.json')
             usr_turn["utterance"] = deepcopy(u_uttr)
             sys_turn["utterance"] = deepcopy(s_uttr)
 
@@ -654,7 +670,7 @@ def draw_matrix(matrix, select_acts=[], output_acts=[], labels=[], img_name='def
     plt.show()
 
 def generate_acts(schema_file, file_idx):
-    service_dict = {"Mail_1": 'data/csv/mail_entityies.csv', "Calendar_1": 'data/csv/events.csv', "Messaging_1": 'data/csv/message_entityies.csv'}
+    service_dict = {"Mail_1": 'data/csv/mail_entityies.csv', "Calendar_1": 'data/csv/events.csv', "Messaging_1": 'data/csv/message_entityies_line.csv'}
     domain_index = 0
     schemas = json.loads(open(schema_file, "r", encoding="utf-8-sig").read())
     value_list = analysis_schema(schema_file)
