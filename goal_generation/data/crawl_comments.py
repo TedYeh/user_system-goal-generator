@@ -111,6 +111,7 @@ def get_comment_to_email():
     try:
         while True:
             subject, content = next(ptt_gen)
+            if len(content)>=300:continue
             num = random.randint(0, 1)
             cp_r = '無' if num < 1 else '、'.join([s.replace('\n', '') for s in random.choices(usr_list, k=num)])
             rp = random.choice(usr_list).replace('\n', '')            
@@ -183,15 +184,14 @@ def parse_article(link, article_id):
     #print(title)
     main_cons = []
     for main_content in main_contents.find_all(text=True, recursive=False)[0].split('\n'):
-        if len(main_content.strip().replace(' ', ''))>1:main_cons.append(main_content.strip())
-    article = re.sub(r"( +)", '', "，".join(main_cons))
-    
+        if len(main_content.strip())>1:main_cons.append(main_content.strip().strip('，').strip('？'))
+    article = re.sub(r"( +)", '', "，".join(main_cons)).strip().replace('--', '').strip('，')
     data = {
         'article_title': title,
         'article': article
     }
     #print(data, '\n')
-    return [title.replace(',', '，').replace('[問卦]', '').replace('Re: ', '').replace('Fw: ', '').replace('[新聞]', ''), re.sub(r"[ -- a-zA-Z0-9]", '', article)]
+    return [title.replace(',', '，').replace('[問卦]', '').replace('Re: ', '').replace('Fw: ', '').replace('[新聞]', ''), re.sub(r"[ -- a-zA-Z0-9.]", '', article).strip('，')]
 
 if __name__ == '__main__':
     PTT_URL = 'https://www.ptt.cc'
