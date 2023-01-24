@@ -218,7 +218,7 @@ EMOJI = re.compile("["
                         "]+", re.UNICODE)
 
 def preprocess_line_chat(text_path):
-    data=[['Group', 'users', 'Comments']]
+    data=[['group_name', 'contact_name', 'message']]
     with open('user_list.txt', 'r', encoding = 'utf-8') as f:
         usr_list = f.readlines()
     text_list = os.listdir(text_path)
@@ -233,7 +233,7 @@ def preprocess_line_chat(text_path):
                      or ('[Sticker]'in chat_content[-1]) or ('[Photo]'in chat_content[-1]) or ('[Video]'in chat_content[-1]):continue
                 user = random.choices(usr_list, k=1)[0].replace('\n', '')
                 chat_content[1] = EMOJI.sub(r'', chat_content[1]).replace(',', '').replace(' ', '')
-                if random.choices([True, False], weights=[5, 5], k=1)[0]: data.append([text_file.replace('.txt', ''), '無', chat_content[-1]])
+                if random.choices([True, False], weights=[5, 5], k=1)[0]: data.append([text_file.replace('.txt', ''), user, chat_content[-1]])
                 else:data.append(['無', user, chat_content[-1]])
                 print(data[-1])
                 #input()

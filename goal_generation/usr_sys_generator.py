@@ -15,6 +15,8 @@ domain_transition_matrix = [
         [0.5 , 0.45, 0.05]
 ]
 
+MAX_GOAL = 3
+
 tagger_path = './tagger'
 if not os.path.isdir(tagger_path):
     from ckiptagger import data_utils
@@ -87,7 +89,7 @@ non_sys_matrix = np.array([
 usr_inner_matrix = np.array([
     [0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 1.   ],
     [0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 1.   ],
-    [0.232, 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.768],
+    [0.332, 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.668],
     [0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 1.   ],
     [0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 1.   ],
     [0.   , 0.   , 0.05 , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.95 ],
@@ -152,7 +154,10 @@ def change_slot(slot, slot_value):
     elif slot == "event_time":
         time_format = {}
         hour, minute = [int(t) for t in slot_value.split(':')]
-        tw_clk = "上午" if hour < 12 else "下午"
+        if hour < 12: tw_clk = "上午" 
+        else: 
+            hour = hour - 12 if hour != 12 else 12 
+            tw_clk = "下午"
         time_format["hour"] = hour; time_format["minute"] = minute; time_format["tw_clk"] = tw_clk
         slot_value = random.choice(slot_templates[slot])
         for time_slot, time_value in time_format.items():
@@ -160,10 +165,10 @@ def change_slot(slot, slot_value):
         return slot_value
     else: return slot_value    
 
-def get_usr_actions(acts, slots_, intent, data):
+def get_usr_actions(acts, slots_, intent, data, state={}):
     slot_values = {}
     requested_slots = []
-    slots = list(set(slots_[0] + slots_[1]))
+    slots = sorted(list(set(slots_[0] + slots_[1])), key=lambda x:find_slot_weight(state['slots'], x), reverse=True)
     actions, annotations = [], []    
     for act in list(set(acts)):
         tmp_acts = []       
@@ -190,7 +195,7 @@ def get_usr_actions(acts, slots_, intent, data):
                 slot_values[slot] = [data[slot].values[0]]
                 tmp_acts.append(act_dict)  
                 ann_str += f"{act}({slot}) "
-                slots_[2].remove(slot)
+                if slot in slots_[2]: slots_[2].remove(slot)
             annotations.append(ann_str)
             requested_slots = list(slots)
         elif act == "INFORM_INTENT":
@@ -224,7 +229,8 @@ def get_usr_actions(acts, slots_, intent, data):
         actions += tmp_acts
     return actions, slot_values, slots, 'U: ' + ' '.join(annotations), requested_slots
 
-def get_sys_actions(acts, slots, slot_values, domain, intent, df):
+def get_sys_actions(acts, slots, slot_values, state, intent, df):
+    domain = state['service_name']
     service_call = None
     service_results = []  
     columns = list(df.columns)              
@@ -244,7 +250,7 @@ def get_sys_actions(acts, slots, slot_values, domain, intent, df):
             annotations.append(ann_str)        
         elif act == "REQUEST":
             ann_str = ''
-            for slot in slots[0]:
+            for slot in sorted(slots[0], key=lambda x:find_slot_weight(state['slots'], x), reverse=True):
                 act_dict = {"act": act, "canonical_values": [], "slot": slot, "values": []}
                 tmp_acts.append(act_dict) 
                 ann_str += f"{act}({slot}) "
@@ -329,18 +335,18 @@ def get_uttr_list(slot_act_dict, state, template_list):
     uttr_templates = []
     for act in slot_act_dict.keys():
         slots = sorted(list(slot_act_dict[act].keys()), key=lambda x:find_slot_weight(state['slots'], x), reverse=True)
-        for temp in sorted(list(template_list[act].keys()), key=len, reverse=True):
+        for temp in sorted(list(template_list[act].keys()), key=len, reverse=False):
             if all(elem in slots for elem in temp.split('+')) and slots and len(slots)>=len(temp.split('+')):
                 uttr = random.choice(template_list[act][temp])                 
                 for s in temp.split('+'):
-                    if act=="INFORM" or act=="CONFIRM" or act=="INFORM_COUNT" or act=="OFFER":uttr = uttr.replace(f'[{s}]', str(slot_act_dict[act][s]).lower())
+                    if act=="INFORM" or act=="CONFIRM" or act=="INFORM_COUNT" or act=="OFFER":uttr = uttr.replace(f'[{s}]', str(slot_act_dict[act][s]))
                     else:uttr = random.choice(template_list[act][temp])
                     slots.remove(s)  
                 uttr_templates.append(uttr)  
     return uttr_templates 
 
 def usr_act2robot_utt(usr_actions, state, uttr_template):
-    if list(usr_actions[-1].values())[0] in ["INFORM_INTENT", "NEGATE", "SELECT"] and list(usr_actions[-1].values())[0] != "SELECT":
+    if list(usr_actions[-1].values())[0] in ["INFORM_INTENT", "NEGATE", "SELECT"]:
         usr_actions[0], usr_actions[-1] = usr_actions[-1], usr_actions[0]
     #print('usr', usr_actions)
     domain = state['service_name']
@@ -359,7 +365,6 @@ def usr_act2robot_utt(usr_actions, state, uttr_template):
     template = '，'.join(uttr_templates)
     slots_pos = find_slot(template, usr_actions)
     print('使用者：', template)
-    input()
     return template, slots_pos
 
 def sys_act2robot_utt(sys_actions, state, uttr_template, active_intent=''):
@@ -382,27 +387,28 @@ def sys_act2robot_utt(sys_actions, state, uttr_template, active_intent=''):
     template = '，'.join(uttr_templates)
     slots_pos = find_slot(template, sys_actions)
     print('助理：', template)
-    input()
     return template, slots_pos
 
 def generate_goal(file_name, file_idx):
     service_dict = {"Mail_1": 'data/csv/mail_entityies.csv', "Calendar_1": 'data/csv/events.csv', "Messaging_1": 'data/csv/message_entityies_line.csv'}
     dialogues = {"dialogue_id": file_idx, "services": [], "turns": []}
-    domain_index, dialogs = 0, {'Annotation(Actions)':[], 'Template utterances':[]}
+    domain_index, dialogs, goal_count = 0, {'Annotation(Actions)':[], 'Template utterances':[]}, 0
     schemas = json.loads(open(file_name, "r", encoding="utf-8-sig").read())
     usr_dialog_state_his, sys_dialog_state_his = [], []
     value_list = analysis_schema(file_name)
-    #while domain_index==0:
     domain_index = np.random.choice([i for i in range(len(schemas))], 1, p=domain_transition_matrix[domain_index])[0]     
     state_d = schemas[domain_index]     
-    df = pd.read_csv(service_dict[state_d['service_name']])
-    data = df.sample(replace=False, random_state=round(time.time()))
     dialogues["services"].append(state_d['service_name'])                       
     intent_i = random.choice(state_d["intents"]) #select intent from domain_i(state_d)
     req_slot_i = list(intent_i["required_slots"])
     opt_slot_i = random.choices(list(intent_i["optional_slots"].keys()), k=random.randint(1, len(list(intent_i["optional_slots"].keys()))))\
         if len(list(intent_i["optional_slots"].keys()))!=0 else []
     result_slots = list(intent_i["result_slots"])
+    df = pd.read_csv(service_dict[state_d['service_name']], encoding='utf-8-sig')
+    if state_d['service_name']=="Messaging_1":
+        for slot in opt_slot_i: data = df.loc[df[slot] != '無'].sample(replace=False, random_state=round(time.time()))
+    else:
+        data = df.sample(replace=False, random_state=round(time.time()))
     
     #initial state
     (usr_idx, sys_idx), (usr_idx_inner, sys_idx_inner), (old_usr_idx, old_sys_idx), (usr_mat, sys_mat) = gen_init_state(value_list, intent_i)
@@ -414,7 +420,7 @@ def generate_goal(file_name, file_idx):
         #print_actions((usr_act, usr_act_inner), (sys_act, sys_act_inner), intent_i)
         #print([usr_act, usr_act_inner])
         if ("REQUEST" in [sys_act, sys_act_inner]):
-            usr_actions, slot_values, slots, usr_annotations, requested_slots = get_usr_actions([usr_act, usr_act_inner], [req_slot_i, opt_slot_i, result_slots], intent_i, data)
+            usr_actions, slot_values, slots, usr_annotations, requested_slots = get_usr_actions([usr_act, usr_act_inner], [req_slot_i, opt_slot_i, result_slots], intent_i, data, state_d)
             for u_action in usr_actions: usr_dialog_state_his.append(list(u_action.keys())[0:2])
             u_uttr, u_slots_pos = usr_act2robot_utt(usr_actions, state_d, './template/usr_template.json')
             usr_frames['state']['active_intent'] = deepcopy(intent_i['name'])
@@ -435,9 +441,9 @@ def generate_goal(file_name, file_idx):
                 usr_turn, sys_turn = {"frames":[], "speaker": "USER", "utterance":""}, {"frames":[], "speaker": "SYSTEM", "utterance":""}  
                 usr_frames, sys_frames = {"actions":[], 'service':state_d['service_name'], 'slots': [], 'state':{}}, {"actions":[], 'service':state_d['service_name'], 'slots': []}
                 select_slot = list(set(random.choices(slots_, k=random.randint(1, 3)))) #最多詢問三項資訊
-                sys_actions, sys_annotations, service_call, service_results = get_sys_actions([sys_act, sys_act_inner], [select_slot, result_slots], slot_values, state_d['service_name'], intent_i, df)
+                sys_actions, sys_annotations, service_call, service_results = get_sys_actions([sys_act, sys_act_inner], [select_slot, result_slots], slot_values, state_d, intent_i, df)
                 for s_action in sys_actions: sys_dialog_state_his.append(list(s_action.keys())[0:2])
-                usr_actions, slot_values, _, usr_annotations, requested_slots = get_usr_actions([usr_act, usr_act_inner], [select_slot, select_slot, result_slots], intent_i, data)
+                usr_actions, slot_values, _, usr_annotations, requested_slots = get_usr_actions([usr_act, usr_act_inner], [select_slot, select_slot, result_slots], intent_i, data, state_d)
                 for u_action in usr_actions: usr_dialog_state_his.append(list(u_action.keys())[0:2])
                 s_uttr, s_slots_pos = sys_act2robot_utt(sys_actions, state_d, './template/sys_template.json', deepcopy(intent_i['name']))
                 u_uttr, u_slots_pos = usr_act2robot_utt(usr_actions, state_d, './template/usr_template.json')               
@@ -470,7 +476,7 @@ def generate_goal(file_name, file_idx):
             sys_idx_inner = np.random.choice([i for i in range(len(sys_inner_matrix[sys_idx]))], 1, p=sys_inner_matrix[sys_idx])[0]
             old_sys_idx = deepcopy(sys_idx_inner) if sys_acts[sys_idx_inner]!='none' else deepcopy(sys_idx)            
             sys_act, sys_act_inner = sys_acts[sys_idx], sys_acts[sys_idx_inner] 
-            sys_actions, sys_annotations, service_call, service_results = get_sys_actions([sys_act, sys_act_inner], [list(set(req_slot_i+opt_slot_i)), result_slots], tmp_slot_values, state_d['service_name'], intent_i, df)
+            sys_actions, sys_annotations, service_call, service_results = get_sys_actions([sys_act, sys_act_inner], [list(set(req_slot_i+opt_slot_i)), result_slots], tmp_slot_values, state_d, intent_i, df)
             s_uttr, s_slots_pos = sys_act2robot_utt(sys_actions, state_d, './template/sys_template.json', deepcopy(intent_i['name']))
             sys_frames["actions"] = deepcopy(list(sys_actions))
             if service_call: sys_frames['service_call'] = service_call
@@ -494,26 +500,26 @@ def generate_goal(file_name, file_idx):
             old_sys_idx = deepcopy(sys_idx_inner) if sys_acts[sys_idx_inner]!='none' else deepcopy(sys_idx)                                   
             sys_act, sys_act_inner = sys_acts[sys_idx], sys_acts[sys_idx_inner] 
             
-        usr_actions, slot_values, slots, usr_annotations, requested_slots = get_usr_actions([usr_act, usr_act_inner], [req_slot_i, opt_slot_i, result_slots], intent_i, data)
+        usr_actions, slot_values, slots, usr_annotations, requested_slots = get_usr_actions([usr_act, usr_act_inner], [req_slot_i, opt_slot_i, result_slots], intent_i, data, state_d)
         for u_action in usr_actions: 
             if list(u_action.keys())[0:2] in [usr_dialog_state_his]:
                 usr_idx = np.random.choice([i for i in range(len(usr_mat[old_sys_idx]))], 1, p=usr_mat[old_sys_idx])[0]
                 usr_idx_inner = np.random.choice([i for i in range(len(usr_inner_matrix[usr_idx]))], 1, p=usr_inner_matrix[usr_idx])[0]
                 old_usr_idx = deepcopy(usr_idx_inner) if usr_acts[usr_idx_inner]!='none' else deepcopy(usr_idx) 
                 usr_act, usr_act_inner = usr_acts[usr_idx], usr_acts[usr_idx_inner]
-                usr_actions, slot_values, slots, usr_annotations, requested_slots = get_usr_actions([usr_act, usr_act_inner], [req_slot_i, opt_slot_i, result_slots], intent_i, data)
+                usr_actions, slot_values, slots, usr_annotations, requested_slots = get_usr_actions([usr_act, usr_act_inner], [req_slot_i, opt_slot_i, result_slots], intent_i, data, state_d)
                 for u_action_ in usr_actions: usr_dialog_state_his.append(list(u_action_.keys())[0:2])
                 break
         for u_action in usr_actions: usr_dialog_state_his.append(list(u_action.keys())[0:2])
 
-        sys_actions, sys_annotations, service_call, service_results = get_sys_actions([sys_act, sys_act_inner], [slots, result_slots], slot_values, state_d['service_name'], intent_i, df)
+        sys_actions, sys_annotations, service_call, service_results = get_sys_actions([sys_act, sys_act_inner], [slots, result_slots], slot_values, state_d, intent_i, df)
         for s_action in sys_actions: 
             if list(s_action.keys())[0:2] in [sys_dialog_state_his]:
                 sys_idx = np.random.choice([i for i in range(len(sys_mat[old_usr_idx]))], 1, p=sys_mat[old_usr_idx])[0]        
                 sys_idx_inner = np.random.choice([i for i in range(len(sys_inner_matrix[sys_idx]))], 1, p=sys_inner_matrix[sys_idx])[0] 
                 old_sys_idx = deepcopy(sys_idx_inner) if sys_acts[sys_idx_inner]!='none' else deepcopy(sys_idx)                                   
                 sys_act, sys_act_inner = sys_acts[sys_idx], sys_acts[sys_idx_inner]
-                sys_actions, sys_annotations, service_call, service_results = get_sys_actions([sys_act, sys_act_inner], [slots, result_slots], slot_values, state_d['service_name'], intent_i, df)
+                sys_actions, sys_annotations, service_call, service_results = get_sys_actions([sys_act, sys_act_inner], [slots, result_slots], slot_values, state_d, intent_i, df)
                 for s_action_ in sys_actions: sys_dialog_state_his.append(list(s_action_.keys())[0:2])
                 break
         for s_action in sys_actions: sys_dialog_state_his.append(list(s_action.keys())[0:2])                
@@ -547,9 +553,12 @@ def generate_goal(file_name, file_idx):
         dialogs['Annotation(Actions)'].append(usr_annotations); dialogs['Template utterances'].append(u_uttr)
         dialogs['Annotation(Actions)'].append(sys_annotations); dialogs['Template utterances'].append(s_uttr)
         usr_idx = np.random.choice([i for i in range(len(usr_mat[old_sys_idx]))], 1, p=usr_mat[old_sys_idx])[0]
+        if goal_count >=3:
+            if usr_idx == 2: usr_idx = 6
+            elif usr_idx == 10: usr_idx = 9
         usr_idx_inner = np.random.choice([i for i in range(len(usr_inner_matrix[usr_idx]))], 1, p=usr_inner_matrix[usr_idx])[0]
         old_usr_idx = deepcopy(usr_idx_inner) if usr_acts[usr_idx_inner]!='none' else deepcopy(usr_idx)
-            
+         
         sys_idx = np.random.choice([i for i in range(len(sys_mat[old_usr_idx]))], 1, p=sys_mat[old_usr_idx])[0]        
         sys_idx_inner = np.random.choice([i for i in range(len(sys_inner_matrix[sys_idx]))], 1, p=sys_inner_matrix[sys_idx])[0]
         old_sys_idx = deepcopy(sys_idx_inner) if sys_acts[sys_idx_inner]!='none' else deepcopy(sys_idx)
@@ -557,20 +566,25 @@ def generate_goal(file_name, file_idx):
         sys_act, sys_act_inner = sys_acts[sys_idx], sys_acts[sys_idx_inner]
             
         if "REQUEST_ALTS" in [usr_act, usr_act_inner]:
+            df = pd.read_csv(service_dict[state_d['service_name']], encoding='utf-8-sig')
             data = df.sample(replace=False, random_state=round(time.time()))
 
         if "INFORM_INTENT" in [usr_act, usr_act_inner]:
-            #while domain_index==0:
+            goal_count += 1
             domain_index = np.random.choice([i for i in range(len(schemas))], 1, p=domain_transition_matrix[domain_index])[0]             
             state_d = schemas[domain_index] 
-            df = pd.read_csv(service_dict[state_d['service_name']])
-            data = df.sample(replace=False, random_state=round(time.time())) 
+            
             if not state_d['service_name'] in dialogues["services"]: dialogues["services"].append(state_d['service_name'])                
             intent_i = random.choice(state_d["intents"]) #select intent from domain_i(state_d)
             req_slot_i = list(intent_i["required_slots"])
             opt_slot_i = random.choices(list(intent_i["optional_slots"].keys()), k=random.randint(1, len(list(intent_i["optional_slots"].keys()))))\
                 if len(list(intent_i["optional_slots"].keys()))!=0 else []  
             result_slots = list(intent_i["result_slots"]) 
+            df = pd.read_csv(service_dict[state_d['service_name']], encoding='utf-8-sig')
+            if state_d['service_name']=="Messaging_1":
+                for slot in opt_slot_i: data = df.loc[df[slot] != '無'].sample(replace=False, random_state=round(time.time()))
+            else:
+                data = df.sample(replace=False, random_state=round(time.time()))
             #(old_usr_idx, old_sys_idx) = tuple([usr_idx, sys_idx])         
             (usr_mat, sys_mat) = is_trans(value_list, intent_i)
             sys_idx = np.random.choice([i for i in range(len(sys_mat[old_usr_idx]))], 1, p=sys_mat[old_usr_idx])[0]        
@@ -587,19 +601,23 @@ def generate_goal(file_name, file_idx):
             (usr_mat, sys_mat) = is_trans(value_list, intent_i)
             
         if "AFFIRM_INTENT" in [usr_act, usr_act_inner]:
-            df = pd.read_csv(service_dict[state_d['service_name']])
-            data = df.sample(replace=False, random_state=round(time.time()))   
+            goal_count += 1              
             req_slot_i = list(intent_i["required_slots"])
             opt_slot_i = random.choices(list(intent_i["optional_slots"].keys()), k=random.randint(1, len(list(intent_i["optional_slots"].keys()))))\
                 if len(list(intent_i["optional_slots"].keys()))!=0 else []
             result_slots = list(intent_i["result_slots"])
+            df = pd.read_csv(service_dict[state_d['service_name']], encoding='utf-8-sig')
+            if state_d['service_name']=="Messaging_1":
+                for slot in opt_slot_i: data = df.loc[df[slot] != '無'].sample(replace=False, random_state=round(time.time()))
+            else:
+                data = df.sample(replace=False, random_state=round(time.time())) 
             (old_usr_idx, old_sys_idx) = tuple([usr_idx, sys_idx])
             #(usr_mat, sys_mat) = is_trans(value_list, intent_i)
 
         if sys_act == "GOODBYE" or sys_act_inner == "GOODBYE":
             #usr_frames, sys_frames = {"actions":[], 'service':state_d['service_name'], 'slots': [], 'state':{}}, {"actions":[], 'service':state_d['service_name'], 'slots': []}
-            usr_actions, slot_values, slots, usr_annotations, requested_slots = get_usr_actions([usr_act, usr_act_inner], [req_slot_i, opt_slot_i, result_slots], intent_i, data)
-            sys_actions, sys_annotations, service_call, service_results = get_sys_actions([sys_act, sys_act_inner], [slots, result_slots], slot_values, state_d['service_name'], intent_i, df)
+            usr_actions, slot_values, slots, usr_annotations, requested_slots = get_usr_actions([usr_act, usr_act_inner], [req_slot_i, opt_slot_i, result_slots], intent_i, data, state_d)
+            sys_actions, sys_annotations, service_call, service_results = get_sys_actions([sys_act, sys_act_inner], [slots, result_slots], slot_values, state_d, intent_i, df)
             #------------------------------Record data------------------------------
             if  "NEGATE" in [usr_act, usr_act_inner] or "NEGATE_INTENT" in [usr_act, usr_act_inner]:
                 usr_frames['state']['active_intent'] = "NONE"
@@ -633,6 +651,7 @@ def generate_goal(file_name, file_idx):
     df.to_csv(f'need_labeled/csv/{file_idx}.csv' ,index=False, encoding='utf-8-sig')
     with open(f'need_labeled/json/{file_idx}.json', 'w', encoding='utf-8-sig') as f:
         json.dump([dialogues], f, ensure_ascii=False, indent=5)
+    return goal_count
 
 def draw_matrix(matrix, select_acts=[], output_acts=[], labels=[], img_name='default'):    
     fig, ax = plt.subplots()
@@ -667,11 +686,14 @@ def draw_matrix(matrix, select_acts=[], output_acts=[], labels=[], img_name='def
 
 if __name__ == "__main__":
     '''
-    get_action_seq("./schema/messagewoz_schema.json")'''    
+    get_action_seq("./schema/messagewoz_schema.json")'''   
+    num_multidomain = 0 
     for idx in range(1000):
-        generate_goal("./schema/messagewoz_schema.json", idx)
-        input()
-        
+        goal_count = generate_goal("./schema/messagewoz_schema.json", idx)
+        if goal_count>1: num_multidomain += 1
+        if num_multidomain%10==0:print(num_multidomain)
+        #input()
+    print(num_multidomain)    
 
     #print(usr_matrix)
     #print(sys_matrix)
