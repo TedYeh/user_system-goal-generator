@@ -9,7 +9,9 @@ from copy import deepcopy
 from data.analysis import is_transactional, analysis_schema
 import data.build_db as db
 import pandas as pd
-random.seed(datetime.now().timestamp())
+
+#random.seed(datetime.now().timestamp())
+
 DOMAIN = [
         [0.05, 0.5 , 0.45],
         [0.45, 0.05, 0.5 ],
@@ -107,7 +109,7 @@ sys_acts = ["INFORM", "REQUEST", "OFFER", "GOODBYE", "CONFIRM", "INFORM_COUNT", 
 class messageSGD(object):
     def __init__(self, schema_file) -> None:
         self.service_dict = {"Mail_1": 'data/csv/mail_entityies.csv', "Calendar_1": 'data/csv/events.csv', "Messaging_1": 'data/csv/message_entityies_line.csv'}
-        self.dial_idx = 0        
+        self.dial_idx, self.data_pos = 0, 0        
         self.schemas = json.loads(open(schema_file, "r", encoding="utf-8-sig").read())
         self.usr_templates = json.loads(open('./template/usr_template.json', 'r', encoding='utf-8').read())
         self.sys_templates = json.loads(open('./template/sys_template.json', 'r', encoding='utf-8').read())
@@ -193,7 +195,7 @@ class messageSGD(object):
     def record_sys_dialog(self):
         self.sys_frames["actions"] = deepcopy(list(self.sys_actions))
         if self.service_call: self.sys_frames['service_call'] = self.service_call
-        if self.service_results: self.sys_frames['service_results'] = self.service_results
+        self.sys_frames['service_results'] = self.service_results
         self.sys_frames['slots'] = deepcopy(self.s_slots_pos)
         self.sys_turn["frames"] = [deepcopy(self.sys_frames)]
         self.sys_turn["utterance"] = deepcopy(self.s_uttr)
@@ -207,15 +209,15 @@ class messageSGD(object):
         self.opt_slot = random.choices(list(self.intent["optional_slots"].keys()), k=random.randint(1, len(list(self.intent["optional_slots"].keys()))))\
             if len(list(self.intent["optional_slots"].keys()))!=0 else []
         self.result_slots = list(self.intent["result_slots"])
+        self.slot_values, self.data_pos = {}, 0
 
     def sample_data(self):
         self.df = pd.read_csv(self.service_dict[self.state_d['service_name']], encoding='utf-8-sig')
         if self.state_d['service_name']=="Messaging_1":
-            for slot in self.opt_slot: self.data = self.df.loc[self.df[slot] != '無'].sample(replace=False, random_state=round(time.time())).reset_index(drop=True)
-        else: self.data = self.df.sample(replace=False, random_state=round(time.time())).reset_index(drop=True)#round(time.time())
+            for slot in self.opt_slot: self.data = self.df.loc[self.df[slot] != '無'].sample(replace=False).reset_index(drop=True)
+        else: self.data = self.df.sample(replace=False).reset_index(drop=True)#round(time.time())
 
     def get_usr_actions(self, acts, slots_):
-        self.slot_values = {}
         self.requested_slots = []
         slots = sorted(list(set(slots_[0] + slots_[1])), key=lambda x:find_slot_weight(self.state_d['slots'], x), reverse=True)
         self.usr_actions, self.usr_annotations = [], []    
@@ -241,7 +243,7 @@ class messageSGD(object):
                 ann_str = ''
                 for slot in slots:
                     act_dict = {"act": act, "canonical_values": [], "slot": slot, "values": []}
-                    self.slot_values[slot] = [self.data[slot].values[0]]
+                    #self.slot_values[slot] = [self.data[slot].values[0]]
                     tmp_acts.append(act_dict)  
                     ann_str += f"{act}({slot}) "
                     if slot in slots_[2]: slots_[2].remove(slot)
@@ -253,37 +255,38 @@ class messageSGD(object):
                 act_dict["values"].append(self.intent["name"])
                 tmp_acts.append(act_dict)
                 self.usr_annotations.append(f"{act}(" + f"{self.intent['name']})")
-                for slot in slots:  
-                    self.slot_values[slot] = [self.data[slot].values[0]]
+                #for slot in slots:  
+                #    self.slot_values[slot] = [self.data[slot].values[0]]
             elif act=="AFFIRM_INTENT":
                 act_dict = {"act": act, "canonical_values": [], "slot": "", "values": []}
                 tmp_acts.append(act_dict)
                 self.usr_annotations.append(f"{act}()")
-                for slot in slots:  
-                    self.slot_values[slot] = [self.data[slot].values[0]]
+                #for slot in slots:  
+                #    self.slot_values[slot] = [self.data[slot].values[0]]
             elif act=="AFFIRM":
                 act_dict = {"act": act, "canonical_values": [], "slot": "", "values": []}
                 tmp_acts.append(act_dict)
                 self.usr_annotations.append(f"{act}()")
-                for slot in slots:  
-                    self.slot_values[slot] = [self.data[slot].values[0]]
+                #for slot in slots:  
+                #    self.slot_values[slot] = [self.data[slot].values[0]]
             else: 
                 act_dict = {"act": act, "canonical_values": [], "slot": "", "values": []}
                 tmp_acts.append(act_dict)
                 self.usr_annotations.append(f"{act}()")
-            if act == "REQUEST_ALTS":
-                for slot in slots: self.slot_values[slot] = [self.data[slot].values[0]]
-            elif act == "NEGATE":
-                for slot in slots: self.slot_values[slot] = [self.data[slot].values[0]]
-            self.usr_actions += tmp_acts
+            #if act == "REQUEST_ALTS":
+            #    for slot in slots: self.slot_values[slot] = [self.data[slot].values[0]]
+            #elif act == "NEGATE":
+            #    for slot in slots: self.slot_values[slot] = [self.data[slot].values[0]]
+            self.usr_actions += deepcopy(tmp_acts)
         self.usr_annotations = 'U: ' + ' '.join(self.usr_annotations)
         return slots
 
     def is_in_log(self, results):
         for result in results:
-            if result in self.results_log: 
+            if not result:continue
+            if list(result.values()) in self.results_log:
                 return True
-            self.results_log.append(results)
+            self.results_log.append(list(result.values()))
         return False
 
     def get_sys_actions(self, acts, slots):
@@ -291,7 +294,7 @@ class messageSGD(object):
         self.service_call = None
         self.service_results = []  
         columns = list(self.df.columns)              
-        self.sys_actions, self.sys_annotations = [], []    
+        self.sys_actions, self.sys_annotations = [], []  
         for act in list(set(acts)):  
             tmp_acts = []  
             if act == "none":continue          
@@ -318,29 +321,30 @@ class messageSGD(object):
                     if self.is_in_result(): self.sys_idx = 9 
                 '''    
                 ann_str = ''
-                #print('sys', slot_values, act)
-                service_call = {"method":self.intent["name"], "parameters":{}}
-                results = db.find_result(domain, self.slot_values) #, slots[0]
+                self.service_call = {"method":self.intent["name"], "parameters":{}}
+                results = db.find_result(domain, self.slot_values)[self.data_pos:self.data_pos+5] #, slots[0]
                 if self.slot_values:                 
                     tmp_dict = {}
                     for res in results:
                         for k, v in zip(list(columns), res):
                             tmp_dict[k] = v
-                    self.service_results.append(deepcopy(tmp_dict))
-                if not self.is_in_log(self.service_results):
+                    if tmp_dict:self.service_results.append(deepcopy(tmp_dict))
+                if (not self.is_in_log(self.service_results)) and len(results)>=1:
                     for slot, value in self.slot_values.items():
                         act_dict = {"act": act, "canonical_values": [], "slot": slot, "values": []}
                         act_dict["canonical_values"].append(value[0])
                         act_dict["values"].append(value[0])     
-                        service_call["parameters"][slot] = value
+                        self.service_call["parameters"][slot] = value
                         if not act_dict in tmp_acts: tmp_acts.append(act_dict)
                         ann_str += f"{act}({slot}=〔{value[0]}〕) "
                     self.sys_annotations.append(ann_str)
                 else:
                     act = "NOTIFY_FAILURE"
                     act_dict = {"act": act, "canonical_values": [], "slot": "", "values": []}
-                    tmp_acts.append(act_dict)
-                    self.sys_annotations.append(f"{act}()")                
+                    if not f"{act}()" in self.sys_annotations: tmp_acts.append(act_dict)
+                    self.sys_annotations.append(f"{act}()")   
+                    self.old_sys_idx = sys_acts.index(act) 
+                    self.sys_act = "NOTIFY_FAILURE"           
             elif act == "CONFIRM": 
                 ann_str = ''
                 for slot, value in list(self.slot_values.items()):
@@ -352,18 +356,20 @@ class messageSGD(object):
                     ann_str += f"{act}({slot}=〔{value[0]}〕) "
                 self.sys_annotations.append(ann_str)
             elif act == "INFORM_COUNT":  
-                service_call = {"method":self.intent["name"], "parameters":{}}  
+                self.service_call = {"method":self.intent["name"], "parameters":{}}  
                 results = db.find_result(domain, self.slot_values) 
-                if not self.is_in_log(self.service_results):
-                    for slot, value in self.slot_values.items(): service_call["parameters"][slot] = value[0]
+                if len(results)>0:
+                    for slot, value in self.slot_values.items(): self.service_call["parameters"][slot] = value[0]
                     act_dict = {"act": act, "canonical_values": [str(len(results))], "slot": "count", "values": [str(len(results))]}
                     tmp_acts.append(act_dict)
                     self.sys_annotations.append(f"{act}(" + f"{len(results)})")
                 else:
                     act = "NOTIFY_FAILURE"
                     act_dict = {"act": act, "canonical_values": [], "slot": "", "values": []}
-                    tmp_acts.append(act_dict)
+                    if not f"{act}()" in self.sys_annotations: tmp_acts.append(act_dict)
                     self.sys_annotations.append(f"{act}()")   
+                    self.old_sys_idx = sys_acts.index(act)
+                    self.sys_act = "NOTIFY_FAILURE"
             elif act == "OFFER_INTENT":
                 act_dict = {"act": act, "canonical_values": [], "slot": "intent", "values": []}
                 act_dict["canonical_values"].append(self.intent["name"])
@@ -375,9 +381,9 @@ class messageSGD(object):
                 tmp_acts.append(act_dict)
                 self.sys_annotations.append(f"{act}()")
             if act == "NOTIFY_SUCCESS" or act == "NOTIFY_FAILURE":
-                service_call = {"method":self.intent["name"], "parameters":{}}
-                for slot, value in list(self.slot_values.items()): service_call["parameters"][slot] = value[0]
-            self.sys_actions += tmp_acts
+                self.service_call = {"method":self.intent["name"], "parameters":{}}
+                for slot, value in list(self.slot_values.items()): self.service_call["parameters"][slot] = value[0]
+            self.sys_actions += deepcopy(tmp_acts)
         self.sys_annotations = 'S: ' + ' '.join(self.sys_annotations)
 
     def usr_act2robot_utt(self):
@@ -400,6 +406,7 @@ class messageSGD(object):
         print('使用者：', self.u_uttr)
 
     def sys_act2robot_utt(self, active_intent=''):
+        if len(self.sys_actions) == 0:print(self.sys_actions)
         if list(self.sys_actions[-1].values())[0] in ["NOTIFY_FAILURE"]:
             self.usr_actions[0], self.usr_actions[-1] = self.usr_actions[-1], self.usr_actions[0]
         domain = self.state_d['service_name']
@@ -410,7 +417,7 @@ class messageSGD(object):
             if act=="OFFER_INTENT":
                 slot_act_dict[act][value[0]] = value[0]
             elif act in ["NOTIFY_SUCCESS", "NOTIFY_FAILURE"]:
-                slot_act_dict[act][active_intent] = active_intent
+                slot_act_dict[act][self.intent["name"]] = active_intent if not active_intent=="" else "none"#
             else:
                 if '無' in value: slot += '*無'
                 if slot == '': slot='none'
@@ -418,6 +425,9 @@ class messageSGD(object):
         uttr_templates = get_uttr_list(slot_act_dict, self.state_d, self.sys_templates[domain])
         self.s_uttr = '，'.join(uttr_templates)
         self.s_slots_pos = find_slot(self.s_uttr, self.sys_actions)
+        if self.s_uttr == '':
+            print(self.sys_actions, slot_act_dict)
+            input()
         print('助理：', self.s_uttr)
 
     def generate_goal(self):
@@ -435,7 +445,6 @@ class messageSGD(object):
                 for u_action in self.usr_actions: self.usr_dialog_state_his.append(list(u_action.keys())[0:2])
                 self.usr_act2robot_utt()
                 self.record_usr_dialog()
-                tmp_slot_values = deepcopy(self.slot_values)
                 self.get_usr_act()  
                 slots_ = list(set(self.req_slot + self.opt_slot))
                 while len(slots_)!=0:
@@ -451,14 +460,13 @@ class messageSGD(object):
                     self.sys_act2robot_utt(deepcopy(self.intent['name']))
                     self.usr_act2robot_utt()    
                     self.record_sys_dialog()
-                    self.usr_state = dict(self.slot_values)
+                    self.usr_state = deepcopy(self.slot_values)
                     self.record_usr_dialog()
                     for s in select_slot: slots_.remove(s)
                 self.set_sys_init_turn()
                 self.old_usr_idx = deepcopy(self.usr_idx_c) if usr_acts[self.usr_idx_c]!='none' else deepcopy(self.usr_idx)
                 self.get_sys_act()
                 s_acts, s_slots = [self.sys_act, self.sys_act_c], [list(set(self.req_slot+self.opt_slot)), self.result_slots]
-                self.slot_values = deepcopy(tmp_slot_values)
                 self.get_sys_actions(s_acts, s_slots)    
                 self.sys_act2robot_utt()
                 self.record_sys_dialog()
@@ -474,13 +482,17 @@ class messageSGD(object):
                 self.usr_frames['state']['active_intent'] = "NONE"
             self.usr_act2robot_utt()
             self.sys_act2robot_utt(deepcopy(self.intent['name']))   
-            self.usr_state = dict(self.slot_values)
+            self.usr_state = deepcopy(self.slot_values)
             self.record_usr_dialog()             
             self.record_sys_dialog()
             self.get_usr_act()
             self.get_sys_act()
-            if "REQUEST_ALTS" in [self.usr_act, self.usr_act_c]:self.sample_data()
+            if "REQUEST_ALTS" in [self.usr_act, self.usr_act_c]:
+                self.data_pos += 5
+                self.sample_data()
             if "INFORM_INTENT" in [self.usr_act, self.usr_act_c]:
+                self.usr_state = {}
+                self.slot_values = {}
                 self.goal_count += 1
                 self.domain_index = np.random.choice([i for i in range(len(self.schemas))]\
                     , 1, p=DOMAIN[self.domain_index])[0]             
@@ -500,21 +512,21 @@ class messageSGD(object):
             if self.sys_act == "OFFER_INTENT":   
                 self.domain_index = np.random.choice([i for i in range(len(self.schemas))]\
                     , 1, p=DOMAIN[self.domain_index])[0]             
-                self.state_d = self.schemas[self.domain_index]                 
-                if not self.state_d['service_name'] in self.dialogues["services"]: 
-                    self.dialogues["services"].append(self.state_d['service_name'])                
+                self.state_d = self.schemas[self.domain_index]       
                 self.intent = random.choice(self.state_d["intents"]) #select intent from domain_i(state_d)
                 self.set_trans_mat()
                 
             if "AFFIRM_INTENT" in [self.usr_act, self.usr_act_c]:
                 self.goal_count += 1           
+                if not self.state_d['service_name'] in self.dialogues["services"]: 
+                    self.dialogues["services"].append(self.state_d['service_name'])  
                 self.req_slot = list(self.intent["required_slots"])
                 self.opt_slot = random.choices(list(self.intent["optional_slots"].keys())\
                     , k=random.randint(1, len(list(self.intent["optional_slots"].keys()))))\
                     if len(list(self.intent["optional_slots"].keys()))!=0 else []  
                 self.result_slots = list(self.intent["result_slots"]) 
                 self.sample_data()
-                (self.old_usr_idx, self.old_sys_idx) = tuple([self.usr_idx, self.sys_idx])
+                (self.old_usr_idx, self.old_sys_idx) = tuple([self.usr_idx, self.sys_idx]) 
 
             if self.sys_act == "GOODBYE" or self.sys_act_c == "GOODBYE":
                 if self.goal_count > 1: self.dialog_type['multi']+=1
@@ -528,10 +540,11 @@ class messageSGD(object):
                     self.usr_frames['state']['active_intent'] = "NONE"
                 self.usr_act2robot_utt()
                 self.sys_act2robot_utt(deepcopy(self.intent['name']))  
-                self.usr_state = dict(self.slot_values)
+                self.usr_state = deepcopy(self.slot_values)
                 self.record_usr_dialog()                  
                 self.record_sys_dialog()   
-                self.goal_count = 0             
+                self.goal_count = 0    
+                self.usr_state = {}         
                 break  
     
     def run(self):
@@ -540,6 +553,7 @@ class messageSGD(object):
             self.generate_goal()
             with open(f'need_labeled/new_json/{file_idx}.json', 'w', encoding='utf-8-sig') as f:
                 json.dump([self.dialogues], f, ensure_ascii=False, indent=5)
+            #self.slot_values = {}    
             print()
         print(self.dialog_type)
 
