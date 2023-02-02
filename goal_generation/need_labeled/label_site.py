@@ -1,11 +1,22 @@
 from bs4 import BeautifulSoup
 import requests, json, random
-import os, time
+import os, time, re
 from datetime import datetime
 from pprint import pprint
 from flask import Flask, flash, request, redirect, url_for, render_template, session
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = b'>\x89k\xff.t{\xed\xc0\x8c^E\x81A\xe7\xb6'
+
+def find_slot(uttrance, acts):
+    slots = []    
+    for a in acts:        
+        act, _, slot, value = list(a.values())
+        if act in ["INFORM", "OFFER", "CONFIRM"]: 
+            if value[0]:
+                for match in re.finditer(re.escape(value[0]), uttrance):
+                    slots.append({"exclusive_end": match.end(), "slot": slot, "start": match.start()})
+    return slots
 
 def get_act_anntation_format(actions):
     annotations = []
@@ -36,6 +47,8 @@ def rewrite_dialogue(template_file, uttrs, label_time):
     for dialog in dialogs:
         for turn, par_uttr in zip(dialog["turns"], uttrs):
             turn["utterance"] = par_uttr[1]
+            for frame in turn["frames"]:
+                frame["slots"] = find_slot(par_uttr[1], frame["actions"])
     print(os.path.split(template_file)[1])
     with open('./labeled_time.txt', "a+") as ltf: ltf.write(os.path.split(template_file)[1]+' '+str(label_time)+'\n')
     with open(os.path.join('./labeled_dialog', os.path.split(template_file)[1]), 'w', encoding='utf-8') as f:
