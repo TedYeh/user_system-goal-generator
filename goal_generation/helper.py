@@ -32,7 +32,7 @@ def find_slot(uttrance, acts):
     slots = []    
     for a in acts:        
         act, _, slot, value = list(a.values())
-        if act == "INFORM": 
+        if act in ["INFORM", "OFFER", "CONFIRM"]: 
             if value[0]:
                 for match in re.finditer(re.escape(value[0]), uttrance):
                     slots.append({"exclusive_end": match.end(), "slot": slot, "start": match.start()})
