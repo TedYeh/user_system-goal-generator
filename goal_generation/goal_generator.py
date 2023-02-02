@@ -553,7 +553,7 @@ class messageSGD(object):
                 break  
     
     def run(self):
-        for file_idx in range(1000):
+        for file_idx in range(500):
             self.dial_idx = int(file_idx)
             self.generate_goal()
             with open(f'need_labeled/new_json/{file_idx}.json', 'w', encoding='utf-8-sig') as f:
