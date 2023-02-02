@@ -698,6 +698,13 @@ if __name__ == "__main__":
     #print(usr_matrix)
     #print(sys_matrix)
 
+    matrix_file = './matrix/matrix_weighted.npy'
+    with open(matrix_file, 'rb') as f:
+        usr_matrix, sys_matrix, usr_inner_matrix, sys_inner_matrix = [np.load(f) for _ in range(4)]
+
+    non_matrix_file = './matrix/non_matrix_weighted.npy'
+    with open(non_matrix_file, 'rb') as f:
+        non_usr_matrix, non_sys_matrix, _, _ = [np.load(f) for _ in range(4)]
     '''
     usr_matrix = np.around(usr_matrix, decimals=2)    
     draw_matrix(usr_matrix, sys_acts[:-1], usr_acts[:-1], ['Client', 'Assistant'], 'Decide Client (transactional)')

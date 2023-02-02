@@ -19,7 +19,6 @@ DOMAIN = [
 ]
 
 MAX_GOAL = 3
-
 U_MATRIX = np.array([
     [0.   , 0.126, 0.045, 0.486, 0.   , 0.138, 0.   , 0.   , 0.205, 0.   , 0.   ],
     [1.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   ],
@@ -340,10 +339,13 @@ class messageSGD(object):
                     self.sys_annotations.append(ann_str)
                 else:
                     act = "NOTIFY_FAILURE"
+                    acts[-1] = "REQ_MORE"
                     act_dict = {"act": act, "canonical_values": [], "slot": "", "values": []}
-                    if not f"{act}()" in self.sys_annotations: tmp_acts.append(act_dict)
+                    if not f"{act}()" in self.sys_annotations: 
+                        tmp_acts.append(act_dict)
+                        #tmp_acts.append({"act": "REQ_MORE", "canonical_values": [], "slot": "", "values": []})
                     self.sys_annotations.append(f"{act}()")   
-                    self.old_sys_idx = sys_acts.index(act) 
+                    self.old_sys_idx = 7
                     self.sys_act = "NOTIFY_FAILURE"           
             elif act == "CONFIRM": 
                 ann_str = ''
@@ -365,10 +367,13 @@ class messageSGD(object):
                     self.sys_annotations.append(f"{act}(" + f"{len(results)})")
                 else:
                     act = "NOTIFY_FAILURE"
+                    acts[-1] = "REQ_MORE"
                     act_dict = {"act": act, "canonical_values": [], "slot": "", "values": []}
-                    if not f"{act}()" in self.sys_annotations: tmp_acts.append(act_dict)
+                    if not f"{act}()" in self.sys_annotations: 
+                        tmp_acts.append(act_dict)
+                        #tmp_acts.append({"act": "REQ_MORE", "canonical_values": [], "slot": "", "values": []})
                     self.sys_annotations.append(f"{act}()")   
-                    self.old_sys_idx = sys_acts.index(act)
+                    self.old_sys_idx = 7
                     self.sys_act = "NOTIFY_FAILURE"
             elif act == "OFFER_INTENT":
                 act_dict = {"act": act, "canonical_values": [], "slot": "intent", "values": []}
