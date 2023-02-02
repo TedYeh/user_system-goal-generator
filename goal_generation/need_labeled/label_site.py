@@ -63,6 +63,6 @@ def index():
     return render_template('label_system.html', items=items, d_id=d_id)
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0', port=3171, debug=True)
     #get_dialogue('./new_json/915.json')
     
