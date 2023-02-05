@@ -20,22 +20,17 @@
         <div class="container">
             <div class="demo-headline">
                 <h1 class="demo-logo">
-                    messageSGD 
-                    <small>Paraphrasing System</small>
+                    <small>Dialogue-{{d_id}}</small>
                 </h1>
-            </div>   
-            <span id="Check_Txt" class="float-left">Paraphrasing Time：<span id="Check_i">0小時0分0秒</span></span>
-            <span class="float-right">Dialogue-{{d_id}}</span>         
+            </div>        
             <div align="center">
                 <form method=post action="/">
-                    <input type="hidden" id="coherence" name="coherence"> 
                     <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th scope="col">Role</th>
                                 <th scope="col" class="col-6 col-md-4">Labels</th>
-                                <th scope="col" class="col-5 col-md-3">Utterance</th>
-                                <th scope="col" class="col-6 col-md-4">Rewrite</th>
+                                <th scope="col" class="col-6 col-md-4">Rewrited Utterance</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -47,38 +42,15 @@
                                     <p class="align-middle">{{label}}</p>
                                 {% endfor %}
                                 </td>
-                                <!--<td class="c3">{{item.speaker}}</td>-->
-                                <td class="align-middle">{{item.uttr}}</td>
-                                <td class="align-middle"><textarea type="text" name="{{item.uttr}}" class="form-control" placeholder="重寫欄位" aria-label="重寫欄位" aria-describedby="basic-addon1" required></textarea></td>
+                                <td class="align-middle"><textarea type="text" name="{{item.uttr}}" class="form-control" placeholder="重寫欄位" aria-label="重寫欄位" aria-describedby="basic-addon1" required>{{item.uttr}}</textarea></td>
                                 <!--<input type="text" class="form-control" placeholder="重寫欄位" aria-label="重寫欄位" aria-describedby="basic-addon1">-->
                             </tr>
                             {% endfor %}
                         </tbody>
                     </table>
-                    <input type="submit" value="完成改寫" class="btn btn-block btn-lg btn-primary" onclick="evaluation()" />
+                    <!--<input type="submit" value="完成改寫" class="btn btn-block btn-lg btn-primary" onclick="evaluation()" />-->
                 </form>  
             </div>            
         </div>
     </body>
-    <script type="text/javascript">
-        var SetMinute = 0;
-        function Check_Time() {
-            SetMinute += 1;
-            var Check_i = document.getElementById("Check_i");
-    
-            var Cal_Hour = Math.floor(SetMinute / 3600);
-            var Cal_Minute = Math.floor(Math.floor(SetMinute % 3600) / 60);
-            var Cal_Second = SetMinute % 60;
-    
-            Check_i.innerHTML = Cal_Hour + "小時" + Cal_Minute + "分" + Cal_Second + "秒";
-    
-        }
-        var mm = window.setInterval("Check_Time()", 1000);
-    
-        function evaluation(elem) {
-            var coherence = prompt('你覺得這組對話連貫性如何?(1~5分)');
-            document.getElementById("coherence").value = coherence;
-                   
-        }
-    </script>
 </html>
