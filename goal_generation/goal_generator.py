@@ -98,7 +98,7 @@ S_C_MATRIX = np.array([
     [0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 1.   ],
     [0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 1.   ],
     [0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 1.   ],
-    [0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 1.   , 0.   , 0.   , 0.   ],
+    [0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.818, 0.182, 0.   , 0.   ],
     [0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 0.   , 1.   ]
 ])
 
@@ -327,7 +327,7 @@ class messageSGD(object):
                     for res in results:
                         for k, v in zip(list(columns), res):
                             tmp_dict[k] = v
-                    if tmp_dict:self.service_results.append(deepcopy(tmp_dict))
+                        if tmp_dict not in self.service_results:self.service_results.append(deepcopy(tmp_dict))
                 if (not self.is_in_log(self.service_results)) and len(results)>=1:
                     for slot, value in self.slot_values.items():
                         act_dict = {"act": act, "canonical_values": [], "slot": slot, "values": []}
@@ -359,11 +359,17 @@ class messageSGD(object):
                 self.sys_annotations.append(ann_str)
             elif act == "INFORM_COUNT":  
                 self.service_call = {"method":self.intent["name"], "parameters":{}}  
-                results = db.find_result(domain, self.slot_values) 
+                results = db.find_result(domain, self.slot_values)[self.data_pos:self.data_pos+5] 
                 if len(results)>0:
                     for slot, value in self.slot_values.items(): self.service_call["parameters"][slot] = value[0]
                     act_dict = {"act": act, "canonical_values": [str(len(results))], "slot": "count", "values": [str(len(results))]}
                     tmp_acts.append(act_dict)
+                    tmp_dict = {}
+                    for res in results:
+                        for k, v in zip(list(columns), res):
+                            tmp_dict[k] = v
+                        if tmp_dict not in self.service_results:self.service_results.append(deepcopy(tmp_dict))
+                                        
                     self.sys_annotations.append(f"{act}(" + f"{len(results)})")
                 else:
                     act = "NOTIFY_FAILURE"

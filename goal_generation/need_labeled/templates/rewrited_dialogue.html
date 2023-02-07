@@ -24,7 +24,7 @@
                 </h1>
             </div>        
             <div align="center">
-                <form method=post action="/">
+                <form method=post action="/{{d_id}}/modify/{{std_id}}">
                     <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
@@ -35,20 +35,24 @@
                         </thead>
                         <tbody>
                             {% for item in items %}
-                            <tr>
+                            {% if item.speaker=='USER' %}
+                            <tr class="table-primary">
+                            {% else %}    
+                            <tr class="table-danger">
+                            {% endif %}
                                 <td class="align-middle">{{item.speaker}}</td>
                                 <td class="align-middle">
                                 {% for label in item.labels %}
                                     <p class="align-middle">{{label}}</p>
                                 {% endfor %}
                                 </td>
-                                <td class="align-middle"><textarea type="text" name="{{item.uttr}}" class="form-control" placeholder="重寫欄位" aria-label="重寫欄位" aria-describedby="basic-addon1" required>{{item.uttr}}</textarea></td>
+                                <td class="align-middle"><textarea style="font-size: 12pt" type="text" name="{{item.uttr}}" class="form-control" placeholder="重寫欄位" aria-label="重寫欄位" aria-describedby="basic-addon1" required>{{item.uttr}}</textarea></td>
                                 <!--<input type="text" class="form-control" placeholder="重寫欄位" aria-label="重寫欄位" aria-describedby="basic-addon1">-->
                             </tr>
                             {% endfor %}
                         </tbody>
                     </table>
-                    <!--<input type="submit" value="完成改寫" class="btn btn-block btn-lg btn-primary" onclick="evaluation()" />-->
+                    <input type="submit" value="完成改寫" class="btn btn-block btn-lg btn-primary"/>
                 </form>  
             </div>            
         </div>

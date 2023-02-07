@@ -43,7 +43,7 @@ def get_dialogue(file_name):
             items.append(an_item)
     return items, d_id
 
-def rewrite_dialogue(template_file, uttrs, label_time):
+def rewrite_dialogue(template_file, uttrs, label_time, std_id):
     dialogs = json.loads(open(template_file, encoding='utf-8-sig').read())
     coherence_score = deepcopy(uttrs[0])
     for dialog in dialogs:
@@ -55,47 +55,68 @@ def rewrite_dialogue(template_file, uttrs, label_time):
     now = datetime.now()
     dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
     elements = [os.path.split(template_file)[1], str(label_time), coherence_score[1], dt_string]
-    with open('./labeled_elements.txt', "a+") as ltf: ltf.write(','.join(elements)+'\n')
-    with open(os.path.join('./labeled_dialog', os.path.split(template_file)[1]), 'w', encoding='utf-8') as f:
+    with open(f'./labeled_elements_{std_id}.txt', "a+") as ltf: ltf.write(','.join(elements)+'\n')
+    with open(os.path.join(f'./labeled_dialog_{std_id}', os.path.split(template_file)[1]), 'w', encoding='utf-8') as f:
         json.dump(dialogs, f, ensure_ascii=False, indent=4)
 
-@app.route('/', methods=['GET', 'POST'])
-def index():
+@app.route('/rewrite/<std_id>', methods=['GET', 'POST'])
+def rewrite(std_id):
     dialogue_path = './new_json'
     dialogue_file = random.choice(os.listdir(dialogue_path))
     if request.method == 'POST':
-       if not os.path.isdir('./labeled_dialog'): os.mkdir('./labeled_dialog')
-       with open('./labeled_dialogue.txt', "r") as ldf:
+       if not os.path.isdir(f'./labeled_dialog_{std_id}'): os.mkdir(f'./labeled_dialog_{std_id}')
+       with open(f'./labeled_dialogue_{std_id}.txt', "r") as ldf:
         dialogue_file = [line.rstrip('\n') for line in ldf.readlines()]
         label_time = datetime.now().timestamp() - session['start_time']
-       rewrite_dialogue(os.path.join(dialogue_path, dialogue_file[-1]), list(dict(request.form).items()), label_time)
-       with open('./labeled_dialogue.txt', "w") as lf:
-           for d_file in os.listdir('./labeled_dialog'):
+       rewrite_dialogue(os.path.join(dialogue_path, dialogue_file[-1]), list(dict(request.form).items()), label_time, std_id)
+       with open(f'./labeled_dialogue_{std_id}.txt', "w") as lf:
+           for d_file in os.listdir(f'./labeled_dialog_{std_id}'):
             lf.write(d_file+'\n')    
-       return redirect(url_for('index'))
+       return redirect(url_for('rewrite', std_id=std_id))
        
     session['start_time'] = datetime.now().timestamp()
-    with open('./labeled_dialogue.txt', "a+") as lf:
+    with open(f'./labeled_dialogue_{std_id}.txt', "a+") as lf:
         labeled_files = [line.rstrip('\n') for line in lf.readlines()]
         while str(dialogue_file) in labeled_files:
             dialogue_file = random.choice(os.listdir(dialogue_path)) 
         lf.write(dialogue_file+'\n')        
     items, d_id = get_dialogue(os.path.join(dialogue_path, dialogue_file))
-    return render_template('label_system.html', items=items, d_id=d_id)
+    return render_template('label_system.html', items=items, d_id=d_id, std_id=std_id)
 
-@app.route('/history')
-def history():
+@app.route('/history/<std_id>')
+def history(std_id):
     items = []
-    for label_dialog in os.listdir('labeled_dialog'):
+    for label_dialog in os.listdir(f'labeled_dialog_{std_id}'):
         an_item = dict(d_id=label_dialog.replace('.json', ''))
         items.append(an_item)
-    return render_template('history.html', items=items)
+    return render_template('history.html', items=items, std_id=std_id)
 
-@app.route('/<file_name>')
-def load_labeled_dialog(file_name):
-    dialogue_path = './labeled_dialog'
+@app.route('/<std_id>/<file_name>')
+def load_labeled_dialog(std_id, file_name):
+    dialogue_path = f'./labeled_dialog_{std_id}'
     items, d_id = get_dialogue(os.path.join(dialogue_path, file_name+'.json'))
-    return render_template('rewrited_dialogue.html', items=items, d_id=d_id)
+    return render_template('rewrited_dialogue.html', items=items, d_id=d_id, std_id=std_id)
+
+@app.route('/<file_name>/modify/<std_id>', methods=['GET', 'POST'])
+def modify(file_name, std_id):
+    if request.method == 'POST':
+        uttrs = list(dict(request.form).items())
+        dialogs = json.loads(open(os.path.join(f'./labeled_dialog_{std_id}', file_name+'.json'), encoding='utf-8-sig').read())
+        for dialog in dialogs:
+            for turn, par_uttr in zip(dialog["turns"], uttrs):
+                turn["utterance"] = par_uttr[1]
+                for frame in turn["frames"]:
+                    frame["slots"] = find_slot(par_uttr[1], frame["actions"])
+        with open(os.path.join(f'./labeled_dialog_{std_id}', file_name+'.json'), 'w', encoding='utf-8') as f:
+            json.dump(dialogs, f, ensure_ascii=False, indent=4)  
+    return redirect(url_for('history', std_id=std_id))
+
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    if request.method == 'POST':
+        std_id = list(dict(request.form).items())[0][1]
+        return redirect(url_for('rewrite', std_id=std_id))
+    return render_template('login.html')
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=3171, debug=True)

@@ -19,23 +19,18 @@
     <body>
         <div class="container">     
             <div align="center">
-                <table class="table table-bordered table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col" class="col-6 col-md-4">Dialogue ID</th>
-                            <!--<th scope="col" class="col-6 col-md-4">Rewrite Time</th>-->
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for item in items %}
-                        <tr>
-                            <td class="align-middle"><a href="http://project.widm.csie.ncu.edu.tw:3171/{{std_id}}/{{item.d_id}}">{{item.d_id}}</a></td>
-                            <!--<td class="align-middle">{{item.rewrite_time}}</td>-->
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                <form method=post action="/" name="login_form">
+                    <input type="hidden" id="std_id" name="std_id">
+                    <input type="submit" value="完成改寫" class="btn btn-block btn-lg btn-primary" />
+                </form>
             </div>            
         </div>
     </body>
+    <script type="text/javascript">
+        window.onload=function(){
+            var std_id = prompt('輸入你的學號:');
+            document.getElementById("std_id").value = std_id;
+            document.forms["login_form"].submit();
+        }        
+    </script>
 </html>
