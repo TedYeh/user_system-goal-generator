@@ -62,6 +62,10 @@ def rewrite_dialogue(template_file, uttrs, label_time, std_id):
 @app.route('/rewrite/<std_id>', methods=['GET', 'POST'])
 def rewrite(std_id):
     dialogue_path = './new_json'
+    labeled_files = []
+    for dirs in os.listdir('./'):
+        if 'labeled_dialog' in dirs and os.path.isdir(dirs): labeled_files += os.listdir(dirs)
+    print(labeled_files)
     dialogue_file = random.choice(os.listdir(dialogue_path))
     if request.method == 'POST':
        if not os.path.isdir(f'./labeled_dialog_{std_id}'): os.mkdir(f'./labeled_dialog_{std_id}')
@@ -76,8 +80,8 @@ def rewrite(std_id):
        
     session['start_time'] = datetime.now().timestamp()
     with open(f'./labeled_dialogue_{std_id}.txt', "a+") as lf:
-        labeled_files = [line.rstrip('\n') for line in lf.readlines()]
-        while str(dialogue_file) in labeled_files:
+        #labeled_files = [line.rstrip('\n') for line in lf.readlines()]
+        while str(dialogue_file) in list(set(labeled_files)):
             dialogue_file = random.choice(os.listdir(dialogue_path)) 
         lf.write(dialogue_file+'\n')        
     items, d_id = get_dialogue(os.path.join(dialogue_path, dialogue_file))
