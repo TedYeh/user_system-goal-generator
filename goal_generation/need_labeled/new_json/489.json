@@ -2,6 +2,7 @@
      {
           "dialogue_id": 489,
           "services": [
+               "Calendar_1",
                "Messaging_1"
           ],
           "turns": [
@@ -10,197 +11,167 @@
                          {
                               "actions": [
                                    {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "2022/7/12"
+                                        ],
+                                        "slot": "event_date",
+                                        "values": [
+                                             "7月12號"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "03:12"
+                                        ],
+                                        "slot": "event_time",
+                                        "values": [
+                                             "上午3時12分"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "大溪大禧"
+                                        ],
+                                        "slot": "event_name",
+                                        "values": [
+                                             "大溪大禧"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "participant",
+                                        "values": [
+                                             "無"
+                                        ]
+                                   },
+                                   {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "FindMessage"
+                                             "LookupEvents"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "FindMessage"
+                                             "LookupEvents"
                                         ]
                                    }
                               ],
-                              "service": "Messaging_1",
-                              "slots": [],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 38,
+                                        "slot": "event_time",
+                                        "start": 31
+                                   },
+                                   {
+                                        "exclusive_end": 18,
+                                        "slot": "event_name",
+                                        "start": 14
+                                   },
+                                   {
+                                        "exclusive_end": 27,
+                                        "slot": "event_date",
+                                        "start": 22
+                                   }
+                              ],
                               "state": {
-                                   "active_intent": "FindMessage",
+                                   "active_intent": "LookupEvents",
                                    "requested_slots": [],
-                                   "slot_values": {}
+                                   "slot_values": {
+                                        "event_date": [
+                                             "7月12號"
+                                        ],
+                                        "event_time": [
+                                             "上午3時12分"
+                                        ],
+                                        "event_name": [
+                                             "大溪大禧"
+                                        ],
+                                        "participant": [
+                                             "無"
+                                        ]
+                                   }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "請幫我找一則訊息"
+                    "utterance": "請幫我找一個活動，活動名稱為大溪大禧，日期為7月12號，活動在上午3時12分開始，這個活動不需設定參加者"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "REQUEST",
+                                        "act": "NOTIFY_FAILURE",
                                         "canonical_values": [],
-                                        "slot": "contact_name",
+                                        "slot": "",
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "我想知道這則訊息是誰寄的？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "以翔旋風"
-                                        ],
-                                        "slot": "contact_name",
-                                        "values": [
-                                             "以翔旋風"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 7,
-                                        "slot": "contact_name",
-                                        "start": 3
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "FindMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "contact_name": [
-                                             "以翔旋風"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "用戶為以翔旋風"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM_COUNT",
-                                        "canonical_values": [
-                                             "5"
-                                        ],
-                                        "slot": "count",
-                                        "values": [
-                                             "5"
-                                        ]
-                                   },
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "以翔旋風"
-                                        ],
-                                        "slot": "contact_name",
-                                        "values": [
-                                             "以翔旋風"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 15,
-                                        "slot": "contact_name",
-                                        "start": 11
-                                   }
-                              ],
                               "service_call": {
-                                   "method": "FindMessage",
+                                   "method": "LookupEvents",
                                    "parameters": {
-                                        "contact_name": [
-                                             "以翔旋風"
-                                        ]
+                                        "event_date": "7月12號",
+                                        "event_time": "上午3時12分",
+                                        "event_name": "大溪大禧",
+                                        "participant": "無"
                                    }
                               },
-                              "service_results": [
-                                   {
-                                        "group_name": "無",
-                                        "contact_name": "以翔旋風",
-                                        "message": "[File]"
-                                   },
-                                   {
-                                        "group_name": "AI 人工智慧",
-                                        "contact_name": "以翔旋風",
-                                        "message": "很多都有SOTA的指標的，可以放上去"
-                                   },
-                                   {
-                                        "group_name": "Python資料科學交流社群",
-                                        "contact_name": "以翔旋風",
-                                        "message": "excel鄙視所有人"
-                                   },
-                                   {
-                                        "group_name": "Python資料科學交流社群",
-                                        "contact_name": "以翔旋風",
-                                        "message": "就像說人類遇到選擇題 不會就選C"
-                                   },
-                                   {
-                                        "group_name": "無",
-                                        "contact_name": "以翔旋風",
-                                        "message": "這裡才500人你喊的地方不對"
-                                   }
-                              ]
+                              "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "總共有5個結果，找到與以翔旋風聊天的訊息"
+                    "utterance": "不好意思，在行事曆上沒辦法找到符合您要求的活動，請用其他條件查詢"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "SELECT",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "SendMessage"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "SendMessage"
+                                        ]
                                    }
                               ],
                               "service": "Messaging_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "FindMessage",
+                                   "active_intent": "SendMessage",
                                    "requested_slots": [],
-                                   "slot_values": {
-                                        "contact_name": [
-                                             "以翔旋風"
-                                        ]
-                                   }
+                                   "slot_values": {}
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "好的，我知道了"
+                    "utterance": "我想要寄則訊息，可以請你幫忙嗎？"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "OFFER_INTENT",
-                                        "canonical_values": [
-                                             "FindMessage"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "FindMessage"
-                                        ]
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "message",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "contact_name",
+                                        "values": []
                                    }
                               ],
                               "service": "Messaging_1",
@@ -209,30 +180,62 @@
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "您會想要找一則訊息嗎？"
+                    "utterance": "所以這則訊息講了什麼？，我想知道這則訊息是誰寄的？"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "AFFIRM_INTENT",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "i指的是你做probing的次數"
+                                        ],
+                                        "slot": "message",
+                                        "values": [
+                                             "i指的是你做probing的次數"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "27嚴承翰"
+                                        ],
+                                        "slot": "contact_name",
+                                        "values": [
+                                             "27嚴承翰"
+                                        ]
                                    }
                               ],
                               "service": "Messaging_1",
-                              "slots": [],
+                              "slots": [
+                                   {
+                                        "exclusive_end": 19,
+                                        "slot": "message",
+                                        "start": 3
+                                   },
+                                   {
+                                        "exclusive_end": 28,
+                                        "slot": "contact_name",
+                                        "start": 23
+                                   }
+                              ],
                               "state": {
-                                   "active_intent": "FindMessage",
+                                   "active_intent": "SendMessage",
                                    "requested_slots": [],
-                                   "slot_values": {}
+                                   "slot_values": {
+                                        "message": [
+                                             "i指的是你做probing的次數"
+                                        ],
+                                        "contact_name": [
+                                             "27嚴承翰"
+                                        ]
+                                   }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "好的，麻煩你了"
+                    "utterance": "訊息為i指的是你做probing的次數，用戶為27嚴承翰"
                },
                {
                     "frames": [
@@ -251,7 +254,7 @@
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "我想知道這則訊息在哪個群組？"
+                    "utterance": "群組名稱為何？"
                },
                {
                     "frames": [
@@ -271,11 +274,14 @@
                               "service": "Messaging_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "FindMessage",
+                                   "active_intent": "SendMessage",
                                    "requested_slots": [],
                                    "slot_values": {
+                                        "message": [
+                                             "i指的是你做probing的次數"
+                                        ],
                                         "contact_name": [
-                                             "以翔旋風"
+                                             "27嚴承翰"
                                         ],
                                         "group_name": [
                                              "無"
@@ -292,191 +298,77 @@
                          {
                               "actions": [
                                    {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "i指的是你做probing的次數"
+                                        ],
+                                        "slot": "message",
+                                        "values": [
+                                             "i指的是你做probing的次數"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "27嚴承翰"
+                                        ],
                                         "slot": "contact_name",
-                                        "values": []
+                                        "values": [
+                                             "27嚴承翰"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "group_name",
+                                        "values": [
+                                             "無"
+                                        ]
                                    }
                               ],
                               "service": "Messaging_1",
-                              "slots": [],
+                              "slots": [
+                                   {
+                                        "exclusive_end": 23,
+                                        "slot": "message",
+                                        "start": 7
+                                   },
+                                   {
+                                        "exclusive_end": 39,
+                                        "slot": "contact_name",
+                                        "start": 34
+                                   }
+                              ],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "我想知道這則訊息是誰寄的？"
+                    "utterance": "確認要傳送訊息i指的是你做probing的次數嗎？，確認要傳送訊息給27嚴承翰嗎？"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "Wan Chris"
-                                        ],
-                                        "slot": "contact_name",
-                                        "values": [
-                                             "Wan Chris"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 12,
-                                        "slot": "contact_name",
-                                        "start": 3
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "FindMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "contact_name": [
-                                             "Wan Chris"
-                                        ],
-                                        "group_name": [
-                                             "無"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "用戶為Wan Chris"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM_COUNT",
-                                        "canonical_values": [
-                                             "5"
-                                        ],
-                                        "slot": "count",
-                                        "values": [
-                                             "5"
-                                        ]
-                                   },
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "Wan Chris"
-                                        ],
-                                        "slot": "contact_name",
-                                        "values": [
-                                             "Wan Chris"
-                                        ]
-                                   },
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "無"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "無"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 20,
-                                        "slot": "contact_name",
-                                        "start": 11
-                                   }
-                              ],
-                              "service_call": {
-                                   "method": "FindMessage",
-                                   "parameters": {
-                                        "contact_name": [
-                                             "Wan Chris"
-                                        ],
-                                        "group_name": [
-                                             "無"
-                                        ]
-                                   }
-                              },
-                              "service_results": [
-                                   {
-                                        "group_name": "無",
-                                        "contact_name": "Wan Chris",
-                                        "message": "很多做不出來的狀況 資料質檢的品質 選取資料的合適性"
-                                   },
-                                   {
-                                        "group_name": "無",
-                                        "contact_name": "Wan Chris",
-                                        "message": "我只有實作過arduino一些簡單的微控制，溫度感測之類的，本來有修過物聯網，但當時講的實在太理論了，所以也沒有記到太多東西"
-                                   },
-                                   {
-                                        "group_name": "無",
-                                        "contact_name": "Wan Chris",
-                                        "message": "ICLR今年有一篇用Language model判斷某個neuron在CV task裡的作用來解釋模型"
-                                   },
-                                   {
-                                        "group_name": "無",
-                                        "contact_name": "Wan Chris",
-                                        "message": "年底pm一直趕"
-                                   },
-                                   {
-                                        "group_name": "無",
-                                        "contact_name": "Wan Chris",
-                                        "message": "建議你養成排版習慣"
-                                   }
-                              ]
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "總共有5個結果，找到與Wan Chris聊天的訊息"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST_ALTS",
+                                        "act": "AFFIRM",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "無"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "無"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "Wan Chris"
-                                        ],
-                                        "slot": "contact_name",
-                                        "values": [
-                                             "Wan Chris"
-                                        ]
                                    }
                               ],
                               "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 12,
-                                        "slot": "contact_name",
-                                        "start": 3
-                                   }
-                              ],
+                              "slots": [],
                               "state": {
-                                   "active_intent": "FindMessage",
+                                   "active_intent": "SendMessage",
                                    "requested_slots": [],
                                    "slot_values": {
+                                        "message": [
+                                             "i指的是你做probing的次數"
+                                        ],
                                         "contact_name": [
-                                             "Wan Chris"
+                                             "27嚴承翰"
                                         ],
                                         "group_name": [
                                              "無"
@@ -486,24 +378,14 @@
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "用戶為Wan Chris，這則訊息應該是傳送給某個使用者的訊息，能提供更多類似的訊息嗎？"
+                    "utterance": "我對以上資訊沒問題"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "INFORM_COUNT",
-                                        "canonical_values": [
-                                             "5"
-                                        ],
-                                        "slot": "count",
-                                        "values": [
-                                             "5"
-                                        ]
-                                   },
-                                   {
-                                        "act": "NOTIFY_FAILURE",
+                                        "act": "NOTIFY_SUCCESS",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
@@ -512,54 +394,23 @@
                               "service": "Messaging_1",
                               "slots": [],
                               "service_call": {
-                                   "method": "FindMessage",
+                                   "method": "SendMessage",
                                    "parameters": {
-                                        "contact_name": "Wan Chris",
+                                        "message": "i指的是你做probing的次數",
+                                        "contact_name": "27嚴承翰",
                                         "group_name": "無"
                                    }
                               },
-                              "service_results": [
-                                   {
-                                        "group_name": "無",
-                                        "contact_name": "Wan Chris",
-                                        "message": "很多做不出來的狀況 資料質檢的品質 選取資料的合適性"
-                                   },
-                                   {
-                                        "group_name": "無",
-                                        "contact_name": "Wan Chris",
-                                        "message": "我只有實作過arduino一些簡單的微控制，溫度感測之類的，本來有修過物聯網，但當時講的實在太理論了，所以也沒有記到太多東西"
-                                   },
-                                   {
-                                        "group_name": "無",
-                                        "contact_name": "Wan Chris",
-                                        "message": "ICLR今年有一篇用Language model判斷某個neuron在CV task裡的作用來解釋模型"
-                                   },
-                                   {
-                                        "group_name": "無",
-                                        "contact_name": "Wan Chris",
-                                        "message": "年底pm一直趕"
-                                   },
-                                   {
-                                        "group_name": "無",
-                                        "contact_name": "Wan Chris",
-                                        "message": "建議你養成排版習慣"
-                                   }
-                              ]
+                              "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "總共有5個結果，不好意思，沒辦法找到符合您要求的訊息"
+                    "utterance": "多虧有您的配合，訊息已成功傳送"
                },
                {
                     "frames": [
                          {
                               "actions": [
-                                   {
-                                        "act": "NEGATE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   },
                                    {
                                         "act": "GOODBYE",
                                         "canonical_values": [],
@@ -570,11 +421,14 @@
                               "service": "Messaging_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "FindMessage",
+                                   "active_intent": "SendMessage",
                                    "requested_slots": [],
                                    "slot_values": {
+                                        "message": [
+                                             "i指的是你做probing的次數"
+                                        ],
                                         "contact_name": [
-                                             "Wan Chris"
+                                             "27嚴承翰"
                                         ],
                                         "group_name": [
                                              "無"
@@ -584,7 +438,7 @@
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "沒關係，先這樣吧，沒有問題了，再見！"
+                    "utterance": "再見"
                },
                {
                     "frames": [
@@ -600,9 +454,10 @@
                               "service": "Messaging_1",
                               "slots": [],
                               "service_call": {
-                                   "method": "FindMessage",
+                                   "method": "SendMessage",
                                    "parameters": {
-                                        "contact_name": "Wan Chris",
+                                        "message": "i指的是你做probing的次數",
+                                        "contact_name": "27嚴承翰",
                                         "group_name": "無"
                                    }
                               },
@@ -610,7 +465,7 @@
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "再見！祝您生活愉快！"
+                    "utterance": "好的，祝您生活愉快，再見"
                }
           ]
      }

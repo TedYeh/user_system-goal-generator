@@ -2,7 +2,8 @@
      {
           "dialogue_id": 590,
           "services": [
-               "Messaging_1"
+               "Calendar_1",
+               "Mail_1"
           ],
           "turns": [
                {
@@ -12,25 +13,25 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "SendMessage"
+                                             "AddEvent"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "SendMessage"
+                                             "AddEvent"
                                         ]
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {}
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我想要寄則訊息，可以請你幫忙嗎？"
+                    "utterance": "請幫我在行事曆添加一個活動"
                },
                {
                     "frames": [
@@ -39,23 +40,23 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "message",
+                                        "slot": "event_time",
                                         "values": []
                                    },
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "contact_name",
+                                        "slot": "event_name",
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "所以這則訊息講了什麼？，我想知道這則訊息是誰寄的？"
+                    "utterance": "那這個活動叫甚麼呢？，我想知道活動在當天何時開始"
                },
                {
                     "frames": [
@@ -64,53 +65,139 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "但我覺得還是直接找公司進去做中學"
+                                             "03:05"
                                         ],
-                                        "slot": "message",
+                                        "slot": "event_time",
                                         "values": [
-                                             "但我覺得還是直接找公司進去做中學"
+                                             "上午3點5分"
                                         ]
                                    },
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "Tim謝"
+                                             "舊影食光 「舞動微醺饗宴」 「厝邊隔壁來看戲」"
                                         ],
-                                        "slot": "contact_name",
+                                        "slot": "event_name",
                                         "values": [
-                                             "Tim謝"
+                                             "舊影食光 「舞動微醺饗宴」 「厝邊隔壁來看戲」"
                                         ]
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 19,
-                                        "slot": "message",
-                                        "start": 3
+                                        "exclusive_end": 41,
+                                        "slot": "event_time",
+                                        "start": 35
                                    },
                                    {
-                                        "exclusive_end": 27,
-                                        "slot": "contact_name",
-                                        "start": 23
+                                        "exclusive_end": 29,
+                                        "slot": "event_name",
+                                        "start": 6
                                    }
                               ],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "message": [
-                                             "但我覺得還是直接找公司進去做中學"
+                                        "event_time": [
+                                             "上午3點5分"
                                         ],
-                                        "contact_name": [
-                                             "Tim謝"
+                                        "event_name": [
+                                             "舊影食光 「舞動微醺饗宴」 「厝邊隔壁來看戲」"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "跟他說但我覺得還是直接找公司進去做中學，用戶為Tim謝"
+                    "utterance": "這個活動叫做舊影食光 「舞動微醺饗宴」 「厝邊隔壁來看戲」，活動時間為上午3點5分"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_date",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_content",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道活動在何時舉行，這個活動有任何內容註記嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "2022/3/12"
+                                        ],
+                                        "slot": "event_date",
+                                        "values": [
+                                             "3月12號"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "為了讓民眾更瞭解北港歷史文化及活化在地歷史建築，雲林縣政府於農曆年間啟動一系列活動"
+                                        ],
+                                        "slot": "event_content",
+                                        "values": [
+                                             "為了讓民眾更瞭解北港歷史文化及活化在地歷史建築，雲林縣政府於農曆年間啟動一系列活動"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 10,
+                                        "slot": "event_date",
+                                        "start": 5
+                                   },
+                                   {
+                                        "exclusive_end": 66,
+                                        "slot": "event_content",
+                                        "start": 25
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "AddEvent",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_time": [
+                                             "上午3點5分"
+                                        ],
+                                        "event_name": [
+                                             "舊影食光 「舞動微醺饗宴」 「厝邊隔壁來看戲」"
+                                        ],
+                                        "event_date": [
+                                             "3月12號"
+                                        ],
+                                        "event_content": [
+                                             "為了讓民眾更瞭解北港歷史文化及活化在地歷史建築，雲林縣政府於農曆年間啟動一系列活動"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "活動日期為3月12號，詳細內容我不太記得了，應該是為了讓民眾更瞭解北港歷史文化及活化在地歷史建築，雲林縣政府於農曆年間啟動一系列活動"
                },
                {
                     "frames": [
@@ -119,42 +206,67 @@
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "但我覺得還是直接找公司進去做中學"
+                                             "上午3點5分"
                                         ],
-                                        "slot": "message",
+                                        "slot": "event_time",
                                         "values": [
-                                             "但我覺得還是直接找公司進去做中學"
+                                             "上午3點5分"
                                         ]
                                    },
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "Tim謝"
+                                             "舊影食光 「舞動微醺饗宴」 「厝邊隔壁來看戲」"
                                         ],
-                                        "slot": "contact_name",
+                                        "slot": "event_name",
                                         "values": [
-                                             "Tim謝"
+                                             "舊影食光 「舞動微醺饗宴」 「厝邊隔壁來看戲」"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "3月12號"
+                                        ],
+                                        "slot": "event_date",
+                                        "values": [
+                                             "3月12號"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "為了讓民眾更瞭解北港歷史文化及活化在地歷史建築，雲林縣政府於農曆年間啟動一系列活動"
+                                        ],
+                                        "slot": "event_content",
+                                        "values": [
+                                             "為了讓民眾更瞭解北港歷史文化及活化在地歷史建築，雲林縣政府於農曆年間啟動一系列活動"
                                         ]
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 23,
-                                        "slot": "message",
+                                        "exclusive_end": 71,
+                                        "slot": "event_time",
+                                        "start": 65
+                                   },
+                                   {
+                                        "exclusive_end": 30,
+                                        "slot": "event_name",
                                         "start": 7
                                    },
                                    {
-                                        "exclusive_end": 38,
-                                        "slot": "contact_name",
-                                        "start": 34
+                                        "exclusive_end": 49,
+                                        "slot": "event_date",
+                                        "start": 44
                                    }
                               ],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "確認要傳送訊息但我覺得還是直接找公司進去做中學嗎？，確認要傳送訊息給Tim謝嗎？"
+                    "utterance": "確認要建立名叫舊影食光 「舞動微醺饗宴」 「厝邊隔壁來看戲」的活動嗎？，確認要建立舉辦在3月12號的活動嗎？，確認要建立舉辦在當天上午3點5分的活動嗎？"
                },
                {
                     "frames": [
@@ -167,17 +279,23 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "message": [
-                                             "但我覺得還是直接找公司進去做中學"
+                                        "event_time": [
+                                             "上午3點5分"
                                         ],
-                                        "contact_name": [
-                                             "Tim謝"
+                                        "event_name": [
+                                             "舊影食光 「舞動微醺饗宴」 「厝邊隔壁來看戲」"
+                                        ],
+                                        "event_date": [
+                                             "3月12號"
+                                        ],
+                                        "event_content": [
+                                             "為了讓民眾更瞭解北港歷史文化及活化在地歷史建築，雲林縣政府於農曆年間啟動一系列活動"
                                         ]
                                    }
                               }
@@ -191,55 +309,222 @@
                          {
                               "actions": [
                                    {
-                                        "act": "REQ_MORE",
+                                        "act": "NOTIFY_SUCCESS",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
+                              "service_call": {
+                                   "method": "AddEvent",
+                                   "parameters": {
+                                        "event_time": "上午3點5分",
+                                        "event_name": "舊影食光 「舞動微醺饗宴」 「厝邊隔壁來看戲」",
+                                        "event_date": "3月12號",
+                                        "event_content": "為了讓民眾更瞭解北港歷史文化及活化在地歷史建築，雲林縣政府於農曆年間啟動一系列活動"
+                                   }
+                              },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "還有什麼能幫到您的嗎？"
+                    "utterance": "多虧有您的配合，活動已添加至行事曆"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "NEGATE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   },
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "FindMail"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "FindMail"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMail",
+                                   "requested_slots": [],
+                                   "slot_values": {}
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "請幫我找一封信件"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
                                    {
-                                        "act": "GOODBYE",
+                                        "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "",
+                                        "slot": "subject",
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "那這封信叫甚麼呢？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             " 西遊記的獅駝國完整還原是不是滿獵奇的？"
+                                        ],
+                                        "slot": "subject",
+                                        "values": [
+                                             " 西遊記的獅駝國完整還原是不是滿獵奇的？"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 25,
+                                        "slot": "subject",
+                                        "start": 5
+                                   }
+                              ],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "FindMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "message": [
-                                             "但我覺得還是直接找公司進去做中學"
-                                        ],
-                                        "contact_name": [
-                                             "Tim謝"
+                                        "subject": [
+                                             " 西遊記的獅駝國完整還原是不是滿獵奇的？"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "沒關係，先這樣吧，再見"
+                    "utterance": "這封信叫做 西遊記的獅駝國完整還原是不是滿獵奇的？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             " 西遊記的獅駝國完整還原是不是滿獵奇的？"
+                                        ],
+                                        "slot": "subject",
+                                        "values": [
+                                             " 西遊記的獅駝國完整還原是不是滿獵奇的？"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM_COUNT",
+                                        "canonical_values": [
+                                             "1"
+                                        ],
+                                        "slot": "count",
+                                        "values": [
+                                             "1"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 32,
+                                        "slot": "subject",
+                                        "start": 12
+                                   }
+                              ],
+                              "service_call": {
+                                   "method": "FindMail",
+                                   "parameters": {
+                                        "subject": " 西遊記的獅駝國完整還原是不是滿獵奇的？"
+                                   }
+                              },
+                              "service_results": [
+                                   {
+                                        "subject": " 西遊記的獅駝國完整還原是不是滿獵奇的？",
+                                        "content": "在《西遊記》原著之中，有一個被妖怪盤踞的國度，國內盡是妖怪，妖怪們還各司其職，甚至還有行政系統，三個為首的魔頭，都有神仙的背景撐腰，其中一個還是佛祖的舅舅，不過生活在這裡的普通人就沒那麼幸運了，關於獅駝嶺獅駝國曾有這樣的描寫，獅駝嶺中骷髏爲嶺，骨骸遍地，樹上纏繞的都是人類的內臟，偷偷看過去，西邊有小妖在活剮人肉，東邊有妖怪正在烹飪，幾乎是一副人間煉獄景象，西遊記裡的獅駝國完整還原，拍成電影、做成遊戲，是不是滿獵奇的，，_，，北境永不遺忘",
+                                        "copy_recipient": "Ted顥天（國二）",
+                                        "recipient": "陈和文",
+                                        "sender": "藍色小馬"
+                                   }
+                              ]
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "依據您提供的訊息，找到跟 西遊記的獅駝國完整還原是不是滿獵奇的？有關的信件，請你看看，總共有1個結果"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "recipient",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMail",
+                                   "requested_slots": [
+                                        "recipient"
+                                   ],
+                                   "slot_values": {
+                                        "subject": [
+                                             " 西遊記的獅駝國完整還原是不是滿獵奇的？"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我想知道這封信的收件者"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "陈和文"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "陈和文"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 7,
+                                        "slot": "recipient",
+                                        "start": 4
+                                   }
+                              ],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "這封信由陈和文收"
                },
                {
                     "frames": [
@@ -252,13 +537,40 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "subject": [
+                                             " 西遊記的獅駝國完整還原是不是滿獵奇的？"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "沒有問題了，再見吧！"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "GOODBYE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "有問題可以隨時聯繫我！祝您生活愉快！再見！"
+                    "utterance": "再見！祝您生活愉快！"
                }
           ]
      }

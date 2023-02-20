@@ -2,6 +2,7 @@
      {
           "dialogue_id": 441,
           "services": [
+               "Calendar_1",
                "Mail_1"
           ],
           "turns": [
@@ -12,81 +13,63 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "FindMail"
+                                             "LookupEvents"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "FindMail"
+                                             "LookupEvents"
                                         ]
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "FindMail",
-                                   "requested_slots": [],
-                                   "slot_values": {}
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "請幫我找一封信件"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "copy_recipient",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "我想知道這封信的副本收件者"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
+                                   },
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "神奇鹿"
+                                             "27日物理所1樓演講廳"
                                         ],
-                                        "slot": "copy_recipient",
+                                        "slot": "event_location",
                                         "values": [
-                                             "神奇鹿"
+                                             "27日物理所1樓演講廳"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "朱棣文院士演講"
+                                        ],
+                                        "slot": "event_name",
+                                        "values": [
+                                             "朱棣文院士演講"
                                         ]
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 13,
-                                        "slot": "copy_recipient",
-                                        "start": 10
+                                        "exclusive_end": 37,
+                                        "slot": "event_location",
+                                        "start": 26
+                                   },
+                                   {
+                                        "exclusive_end": 21,
+                                        "slot": "event_name",
+                                        "start": 14
                                    }
                               ],
                               "state": {
-                                   "active_intent": "FindMail",
+                                   "active_intent": "LookupEvents",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "copy_recipient": [
-                                             "神奇鹿"
+                                        "event_name": [
+                                             "朱棣文院士演講"
+                                        ],
+                                        "event_location": [
+                                             "27日物理所1樓演講廳"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "這封信需要以副本寄給神奇鹿"
+                    "utterance": "請幫我找一個活動，活動名稱叫朱棣文院士演講，活動辦在27日物理所1樓演講廳"
                },
                {
                     "frames": [
@@ -95,74 +78,72 @@
                                    {
                                         "act": "INFORM_COUNT",
                                         "canonical_values": [
-                                             "4"
+                                             "1"
                                         ],
                                         "slot": "count",
                                         "values": [
-                                             "4"
+                                             "1"
                                         ]
                                    },
                                    {
                                         "act": "OFFER",
                                         "canonical_values": [
-                                             "神奇鹿"
+                                             "朱棣文院士演講"
                                         ],
-                                        "slot": "copy_recipient",
+                                        "slot": "event_name",
                                         "values": [
-                                             "神奇鹿"
+                                             "朱棣文院士演講"
+                                        ]
+                                   },
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "27日物理所1樓演講廳"
+                                        ],
+                                        "slot": "event_location",
+                                        "values": [
+                                             "27日物理所1樓演講廳"
                                         ]
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 19,
-                                        "slot": "copy_recipient",
-                                        "start": 16
+                                        "exclusive_end": 30,
+                                        "slot": "event_name",
+                                        "start": 23
+                                   },
+                                   {
+                                        "exclusive_end": 60,
+                                        "slot": "event_location",
+                                        "start": 49
                                    }
                               ],
                               "service_call": {
-                                   "method": "FindMail",
+                                   "method": "LookupEvents",
                                    "parameters": {
-                                        "copy_recipient": [
-                                             "神奇鹿"
+                                        "event_name": [
+                                             "朱棣文院士演講"
+                                        ],
+                                        "event_location": [
+                                             "27日物理所1樓演講廳"
                                         ]
                                    }
                               },
                               "service_results": [
                                    {
-                                        "subject": " 我們棒球經典大賽裡面 有哪場是贏球的",
-                                        "content": "安安各位資深棒球迷，那天跟朋友吃飯，聊到一些經典的中華隊參與的大賽，什麼陳金鋒棒打上原達比修，什麼王建民主投六局封鎖日本，高志綱守護本壘，跟加拿大衝突因為封鎖他們八局，張志嘉經典三次牽制出局，以上比賽的共同特色就是中華隊出局……，為啥我們比賽這麼鍋貼",
-                                        "copy_recipient": "神奇鹿",
-                                        "recipient": "Alex-志",
-                                        "sender": "Willy"
-                                   },
-                                   {
-                                        "subject": " 講總Total的人是故意反串嗎= =??",
-                                        "content": "不知道為什麼，在現實中很常聽到總這句話，我當下聽到雖然知道他表達的意思，但會覺得你在共三毀，這個單字也不難，會講總的人是故意在反串嗎==??",
-                                        "copy_recipient": "神奇鹿",
-                                        "recipient": "gggghhuuu",
-                                        "sender": "Maruko"
-                                   },
-                                   {
-                                        "subject": " 我朋友當毒品臥底身分好像快被揭發了！",
-                                        "content": "如題啦，上層需要我從香港去泰國合作一個毒品查緝案件，原本毒品集團有我們的臥底，結果誰知道我們追蹤毒品的司機竟然是毒品集團臥底而通知毒品集團，現在集團在廢墟進，行你玩我猜？怎麼救，提示：衛視電影台",
-                                        "copy_recipient": "神奇鹿",
-                                        "recipient": "羅傑恩",
-                                        "sender": "Victor-AIA3"
-                                   },
-                                   {
-                                        "subject": " 歐美霸凌是不是比日韓輕微?",
-                                        "content": "日本韓國校園霸凌題材影片超多，都在比下限的，反觀歐美的霸凌幾乎都只是打人搶錢和丟丟東西而已，歐美的校園霸凌是不是比日韓輕微的多?",
-                                        "copy_recipient": "神奇鹿",
-                                        "recipient": "Amano Kazuhira",
-                                        "sender": "(-43)"
+                                        "event_name": "朱棣文院士演講",
+                                        "event_location": "27日物理所1樓演講廳",
+                                        "event_content": "重要國際訪賓、學術訪問 Visiting Scholars",
+                                        "participant": "龍王剡",
+                                        "event_date": "2018/2/6",
+                                        "event_time": "15:29"
                                    }
                               ]
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "總共有4個結果，我找到以副本寄給神奇鹿的信件，請你看看"
+                    "utterance": "總共有1個結果，在您的行事曆找到不同天但名稱為朱棣文院士演講的活動，在您的行事曆找到不同天但舉行在27日物理所1樓演講廳的活動"
                },
                {
                     "frames": [
@@ -178,28 +159,35 @@
                               "service": "Mail_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "FindMail",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "copy_recipient": [
-                                             "神奇鹿"
+                                        "event_name": [
+                                             "朱棣文院士演講"
+                                        ],
+                                        "event_location": [
+                                             "27日物理所1樓演講廳"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "好的"
+                    "utterance": "好的，我知道了"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "REQ_MORE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
+                                        "act": "OFFER_INTENT",
+                                        "canonical_values": [
+                                             "SendMail"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "SendMail"
+                                        ]
                                    }
                               ],
                               "service": "Mail_1",
@@ -208,20 +196,206 @@
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "還有什麼能幫到您的嗎？"
+                    "utterance": "您有寄信的需求嗎？"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "NEGATE",
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "Susie賴"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "Susie賴"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             " 日本房價跌30年現在買房還要35年貸款?!"
+                                        ],
+                                        "slot": "subject",
+                                        "values": [
+                                             " 日本房價跌30年現在買房還要35年貸款?!"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "阿伯我有件事情百思不解，那就是大家愛說日本房價跌三十年了，那照理說跌了三十年，現在房子應該超便宜，存錢存個幾年可以直接現金買斷才對，結果日本現在買房"
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "阿伯我有件事情百思不解，那就是大家愛說日本房價跌三十年了，那照理說跌了三十年，現在房子應該超便宜，存錢存個幾年可以直接現金買斷才對，結果日本現在買房"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "chiii"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "chiii"
+                                        ]
+                                   },
+                                   {
+                                        "act": "AFFIRM_INTENT",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 116,
+                                        "slot": "recipient",
+                                        "start": 110
                                    },
                                    {
-                                        "act": "GOODBYE",
+                                        "exclusive_end": 27,
+                                        "slot": "subject",
+                                        "start": 5
+                                   },
+                                   {
+                                        "exclusive_end": 105,
+                                        "slot": "content",
+                                        "start": 31
+                                   },
+                                   {
+                                        "exclusive_end": 132,
+                                        "slot": "copy_recipient",
+                                        "start": 127
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_name": [
+                                             "朱棣文院士演講"
+                                        ],
+                                        "event_location": [
+                                             "27日物理所1樓演講廳"
+                                        ],
+                                        "recipient": [
+                                             "Susie賴"
+                                        ],
+                                        "subject": [
+                                             " 日本房價跌30年現在買房還要35年貸款?!"
+                                        ],
+                                        "content": [
+                                             "阿伯我有件事情百思不解，那就是大家愛說日本房價跌三十年了，那照理說跌了三十年，現在房子應該超便宜，存錢存個幾年可以直接現金買斷才對，結果日本現在買房"
+                                        ],
+                                        "copy_recipient": [
+                                             "chiii"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "這封信叫做 日本房價跌30年現在買房還要35年貸款?!，內容為阿伯我有件事情百思不解，那就是大家愛說日本房價跌三十年了，那照理說跌了三十年，現在房子應該超便宜，存錢存個幾年可以直接現金買斷才對，結果日本現在買房，收件者為Susie賴，這封信需要以副本寄給chiii，好的，麻煩你了"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "朱棣文院士演講"
+                                        ],
+                                        "slot": "event_name",
+                                        "values": [
+                                             "朱棣文院士演講"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "27日物理所1樓演講廳"
+                                        ],
+                                        "slot": "event_location",
+                                        "values": [
+                                             "27日物理所1樓演講廳"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "Susie賴"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "Susie賴"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             " 日本房價跌30年現在買房還要35年貸款?!"
+                                        ],
+                                        "slot": "subject",
+                                        "values": [
+                                             " 日本房價跌30年現在買房還要35年貸款?!"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "阿伯我有件事情百思不解，那就是大家愛說日本房價跌三十年了，那照理說跌了三十年，現在房子應該超便宜，存錢存個幾年可以直接現金買斷才對，結果日本現在買房"
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "阿伯我有件事情百思不解，那就是大家愛說日本房價跌三十年了，那照理說跌了三十年，現在房子應該超便宜，存錢存個幾年可以直接現金買斷才對，結果日本現在買房"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "chiii"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "chiii"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 137,
+                                        "slot": "recipient",
+                                        "start": 131
+                                   },
+                                   {
+                                        "exclusive_end": 31,
+                                        "slot": "subject",
+                                        "start": 9
+                                   },
+                                   {
+                                        "exclusive_end": 123,
+                                        "slot": "content",
+                                        "start": 49
+                                   }
+                              ],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "請確認要寄出主旨為 日本房價跌30年現在買房還要35年貸款?!的信件嗎？，請確認要寄出的信件內容:阿伯我有件事情百思不解，那就是大家愛說日本房價跌三十年了，那照理說跌了三十年，現在房子應該超便宜，存錢存個幾年可以直接現金買斷才對，結果日本現在買房，確認要寄信件給Susie賴嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "AFFIRM",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
@@ -230,18 +404,105 @@
                               "service": "Mail_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "FindMail",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {
+                                        "event_name": [
+                                             "朱棣文院士演講"
+                                        ],
+                                        "event_location": [
+                                             "27日物理所1樓演講廳"
+                                        ],
+                                        "recipient": [
+                                             "Susie賴"
+                                        ],
+                                        "subject": [
+                                             " 日本房價跌30年現在買房還要35年貸款?!"
+                                        ],
+                                        "content": [
+                                             "阿伯我有件事情百思不解，那就是大家愛說日本房價跌三十年了，那照理說跌了三十年，現在房子應該超便宜，存錢存個幾年可以直接現金買斷才對，結果日本現在買房"
+                                        ],
                                         "copy_recipient": [
-                                             "神奇鹿"
+                                             "chiii"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "沒關係，先這樣吧，再見"
+                    "utterance": "我對以上資訊沒問題"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NOTIFY_SUCCESS",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_call": {
+                                   "method": "SendMail",
+                                   "parameters": {
+                                        "event_name": "朱棣文院士演講",
+                                        "event_location": "27日物理所1樓演講廳",
+                                        "recipient": "Susie賴",
+                                        "subject": " 日本房價跌30年現在買房還要35年貸款?!",
+                                        "content": "阿伯我有件事情百思不解，那就是大家愛說日本房價跌三十年了，那照理說跌了三十年，現在房子應該超便宜，存錢存個幾年可以直接現金買斷才對，結果日本現在買房",
+                                        "copy_recipient": "chiii"
+                                   }
+                              },
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "多虧有您的配合，信件已成功寄出"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "THANK_YOU",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_name": [
+                                             "朱棣文院士演講"
+                                        ],
+                                        "event_location": [
+                                             "27日物理所1樓演講廳"
+                                        ],
+                                        "recipient": [
+                                             "Susie賴"
+                                        ],
+                                        "subject": [
+                                             " 日本房價跌30年現在買房還要35年貸款?!"
+                                        ],
+                                        "content": [
+                                             "阿伯我有件事情百思不解，那就是大家愛說日本房價跌三十年了，那照理說跌了三十年，現在房子應該超便宜，存錢存個幾年可以直接現金買斷才對，結果日本現在買房"
+                                        ],
+                                        "copy_recipient": [
+                                             "chiii"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "真是太謝謝你了！"
                },
                {
                     "frames": [
@@ -256,11 +517,22 @@
                               ],
                               "service": "Mail_1",
                               "slots": [],
+                              "service_call": {
+                                   "method": "SendMail",
+                                   "parameters": {
+                                        "event_name": "朱棣文院士演講",
+                                        "event_location": "27日物理所1樓演講廳",
+                                        "recipient": "Susie賴",
+                                        "subject": " 日本房價跌30年現在買房還要35年貸款?!",
+                                        "content": "阿伯我有件事情百思不解，那就是大家愛說日本房價跌三十年了，那照理說跌了三十年，現在房子應該超便宜，存錢存個幾年可以直接現金買斷才對，結果日本現在買房",
+                                        "copy_recipient": "chiii"
+                                   }
+                              },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "祝您生活愉快！再見！"
+                    "utterance": "有問題可以隨時聯繫我！祝您生活愉快！再見！"
                }
           ]
      }

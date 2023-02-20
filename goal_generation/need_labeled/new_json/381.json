@@ -2,7 +2,8 @@
      {
           "dialogue_id": 381,
           "services": [
-               "Messaging_1"
+               "Calendar_1",
+               "Mail_1"
           ],
           "turns": [
                {
@@ -12,25 +13,25 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "SendMessage"
+                                             "LookupEvents"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "SendMessage"
+                                             "LookupEvents"
                                         ]
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "LookupEvents",
                                    "requested_slots": [],
                                    "slot_values": {}
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "請幫我寄一則訊息"
+                    "utterance": "我想要知道相關的活動，請幫幫我"
                },
                {
                     "frames": [
@@ -39,17 +40,17 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "contact_name",
+                                        "slot": "event_time",
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "我想知道這則訊息是誰寄的？"
+                    "utterance": "這個活動在幾點開始呢？"
                },
                {
                     "frames": [
@@ -58,35 +59,35 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "Happy699"
+                                             "02:31"
                                         ],
-                                        "slot": "contact_name",
+                                        "slot": "event_time",
                                         "values": [
-                                             "Happy699"
+                                             "上午2時31分"
                                         ]
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 11,
-                                        "slot": "contact_name",
-                                        "start": 3
+                                        "exclusive_end": 13,
+                                        "slot": "event_time",
+                                        "start": 6
                                    }
                               ],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "LookupEvents",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "contact_name": [
-                                             "Happy699"
+                                        "event_time": [
+                                             "上午2時31分"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "用戶為Happy699"
+                    "utterance": "時間為當天的上午2時31分"
                },
                {
                     "frames": [
@@ -95,17 +96,23 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "message",
+                                        "slot": "event_date",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_location",
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "我想知道訊息內容"
+                    "utterance": "這個活動辦在幾月幾號呢？，這個活動辦在哪裡啊？"
                },
                {
                     "frames": [
@@ -114,38 +121,393 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "跟在催生沒兩樣"
+                                             "2022/8/30"
                                         ],
-                                        "slot": "message",
+                                        "slot": "event_date",
                                         "values": [
-                                             "跟在催生沒兩樣"
+                                             "後天"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "event_location",
+                                        "values": [
+                                             "無"
                                         ]
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 10,
-                                        "slot": "message",
+                                        "exclusive_end": 5,
+                                        "slot": "event_date",
                                         "start": 3
                                    }
                               ],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "LookupEvents",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "contact_name": [
-                                             "Happy699"
+                                        "event_time": [
+                                             "上午2時31分"
                                         ],
-                                        "message": [
-                                             "跟在催生沒兩樣"
+                                        "event_date": [
+                                             "後天"
+                                        ],
+                                        "event_location": [
+                                             "無"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "跟他說跟在催生沒兩樣"
+                    "utterance": "日期為後天，不需設定地點"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_name",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道這個活動的名稱"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "專題講座：黃貞燕「城市文化治理與博物館：臺灣與日本案例分享」"
+                                        ],
+                                        "slot": "event_name",
+                                        "values": [
+                                             "專題講座：黃貞燕「城市文化治理與博物館：臺灣與日本案例分享」"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 35,
+                                        "slot": "event_name",
+                                        "start": 5
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "LookupEvents",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_time": [
+                                             "上午2時31分"
+                                        ],
+                                        "event_date": [
+                                             "後天"
+                                        ],
+                                        "event_location": [
+                                             "無"
+                                        ],
+                                        "event_name": [
+                                             "專題講座：黃貞燕「城市文化治理與博物館：臺灣與日本案例分享」"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "活動名稱叫專題講座：黃貞燕「城市文化治理與博物館：臺灣與日本案例分享」"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NOTIFY_FAILURE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_call": {
+                                   "method": "LookupEvents",
+                                   "parameters": {
+                                        "event_time": "上午2時31分",
+                                        "event_date": "後天",
+                                        "event_location": "無",
+                                        "event_name": "專題講座：黃貞燕「城市文化治理與博物館：臺灣與日本案例分享」"
+                                   }
+                              },
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "不好意思，在行事曆上沒辦法找到符合您要求的活動，請用其他條件查詢"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NEGATE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "GOODBYE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "LookupEvents",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_time": [
+                                             "上午2時31分"
+                                        ],
+                                        "event_date": [
+                                             "後天"
+                                        ],
+                                        "event_location": [
+                                             "無"
+                                        ],
+                                        "event_name": [
+                                             "專題講座：黃貞燕「城市文化治理與博物館：臺灣與日本案例分享」"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "沒關係，先這樣吧，再見"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "GOODBYE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "祝您生活愉快！再見！"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "SendMail"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "SendMail"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {}
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我想要寫一封信，可以請你幫忙嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "subject",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "content",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道這個信件的主旨，我想知道這封信的內文"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             " 50歲婦和「36歲鮮肉尪」吵架竟聯手縱火！"
+                                        ],
+                                        "slot": "subject",
+                                        "values": [
+                                             " 50歲婦和「36歲鮮肉尪」吵架竟聯手縱火！"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "媒體來源:，新聞雲，記者署名:，王佩翊，完整新聞標題:，歲婦和「歲鮮肉尪」吵架竟聯手縱火！歲兒熟睡活活燒死，年月日:"
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "媒體來源:，新聞雲，記者署名:，王佩翊，完整新聞標題:，歲婦和「歲鮮肉尪」吵架竟聯手縱火！歲兒熟睡活活燒死，年月日:"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 27,
+                                        "slot": "subject",
+                                        "start": 5
+                                   },
+                                   {
+                                        "exclusive_end": 93,
+                                        "slot": "content",
+                                        "start": 35
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "subject": [
+                                             " 50歲婦和「36歲鮮肉尪」吵架竟聯手縱火！"
+                                        ],
+                                        "content": [
+                                             "媒體來源:，新聞雲，記者署名:，王佩翊，完整新聞標題:，歲婦和「歲鮮肉尪」吵架竟聯手縱火！歲兒熟睡活活燒死，年月日:"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "這封信叫做 50歲婦和「36歲鮮肉尪」吵架竟聯手縱火！，這封信的內文為媒體來源:，新聞雲，記者署名:，王佩翊，完整新聞標題:，歲婦和「歲鮮肉尪」吵架竟聯手縱火！歲兒熟睡活活燒死，年月日:"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "recipient",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "copy_recipient",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "你知道這封信是寄給誰的嗎？，我想知道這封信的副本收件者"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "HaooooYuan"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "HaooooYuan"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "無"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 16,
+                                        "slot": "recipient",
+                                        "start": 6
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "subject": [
+                                             " 50歲婦和「36歲鮮肉尪」吵架竟聯手縱火！"
+                                        ],
+                                        "content": [
+                                             "媒體來源:，新聞雲，記者署名:，王佩翊，完整新聞標題:，歲婦和「歲鮮肉尪」吵架竟聯手縱火！歲兒熟睡活活燒死，年月日:"
+                                        ],
+                                        "recipient": [
+                                             "HaooooYuan"
+                                        ],
+                                        "copy_recipient": [
+                                             "無"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "這封信要寄給HaooooYuan，不需設定副本收件者"
                },
                {
                     "frames": [
@@ -154,42 +516,67 @@
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "Happy699"
+                                             " 50歲婦和「36歲鮮肉尪」吵架竟聯手縱火！"
                                         ],
-                                        "slot": "contact_name",
+                                        "slot": "subject",
                                         "values": [
-                                             "Happy699"
+                                             " 50歲婦和「36歲鮮肉尪」吵架竟聯手縱火！"
                                         ]
                                    },
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "跟在催生沒兩樣"
+                                             "媒體來源:，新聞雲，記者署名:，王佩翊，完整新聞標題:，歲婦和「歲鮮肉尪」吵架竟聯手縱火！歲兒熟睡活活燒死，年月日:"
                                         ],
-                                        "slot": "message",
+                                        "slot": "content",
                                         "values": [
-                                             "跟在催生沒兩樣"
+                                             "媒體來源:，新聞雲，記者署名:，王佩翊，完整新聞標題:，歲婦和「歲鮮肉尪」吵架竟聯手縱火！歲兒熟睡活活燒死，年月日:"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "HaooooYuan"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "HaooooYuan"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "無"
                                         ]
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 33,
-                                        "slot": "contact_name",
-                                        "start": 25
+                                        "exclusive_end": 31,
+                                        "slot": "subject",
+                                        "start": 9
                                    },
                                    {
-                                        "exclusive_end": 14,
-                                        "slot": "message",
-                                        "start": 7
+                                        "exclusive_end": 107,
+                                        "slot": "content",
+                                        "start": 49
+                                   },
+                                   {
+                                        "exclusive_end": 125,
+                                        "slot": "recipient",
+                                        "start": 115
                                    }
                               ],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "確認要傳送訊息跟在催生沒兩樣嗎？，確認要傳送訊息給Happy699嗎？"
+                    "utterance": "請確認要寄出主旨為 50歲婦和「36歲鮮肉尪」吵架竟聯手縱火！的信件嗎？，請確認要寄出的信件內容:媒體來源:，新聞雲，記者署名:，王佩翊，完整新聞標題:，歲婦和「歲鮮肉尪」吵架竟聯手縱火！歲兒熟睡活活燒死，年月日:，確認要寄信件給HaooooYuan嗎？"
                },
                {
                     "frames": [
@@ -202,17 +589,23 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "contact_name": [
-                                             "Happy699"
+                                        "subject": [
+                                             " 50歲婦和「36歲鮮肉尪」吵架竟聯手縱火！"
                                         ],
-                                        "message": [
-                                             "跟在催生沒兩樣"
+                                        "content": [
+                                             "媒體來源:，新聞雲，記者署名:，王佩翊，完整新聞標題:，歲婦和「歲鮮肉尪」吵架竟聯手縱火！歲兒熟睡活活燒死，年月日:"
+                                        ],
+                                        "recipient": [
+                                             "HaooooYuan"
+                                        ],
+                                        "copy_recipient": [
+                                             "無"
                                         ]
                                    }
                               }
@@ -232,20 +625,22 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "service_call": {
-                                   "method": "SendMessage",
+                                   "method": "SendMail",
                                    "parameters": {
-                                        "contact_name": "Happy699",
-                                        "message": "跟在催生沒兩樣"
+                                        "subject": " 50歲婦和「36歲鮮肉尪」吵架竟聯手縱火！",
+                                        "content": "媒體來源:，新聞雲，記者署名:，王佩翊，完整新聞標題:，歲婦和「歲鮮肉尪」吵架竟聯手縱火！歲兒熟睡活活燒死，年月日:",
+                                        "recipient": "HaooooYuan",
+                                        "copy_recipient": "無"
                                    }
                               },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "多虧有您的配合，訊息已成功傳送"
+                    "utterance": "多虧有您的配合，信件已成功寄出"
                },
                {
                     "frames": [
@@ -258,24 +653,30 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "contact_name": [
-                                             "Happy699"
+                                        "subject": [
+                                             " 50歲婦和「36歲鮮肉尪」吵架竟聯手縱火！"
                                         ],
-                                        "message": [
-                                             "跟在催生沒兩樣"
+                                        "content": [
+                                             "媒體來源:，新聞雲，記者署名:，王佩翊，完整新聞標題:，歲婦和「歲鮮肉尪」吵架竟聯手縱火！歲兒熟睡活活燒死，年月日:"
+                                        ],
+                                        "recipient": [
+                                             "HaooooYuan"
+                                        ],
+                                        "copy_recipient": [
+                                             "無"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "沒有了！再見！"
+                    "utterance": "沒有問題了，再見！"
                },
                {
                     "frames": [
@@ -288,20 +689,22 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "service_call": {
-                                   "method": "SendMessage",
+                                   "method": "SendMail",
                                    "parameters": {
-                                        "contact_name": "Happy699",
-                                        "message": "跟在催生沒兩樣"
+                                        "subject": " 50歲婦和「36歲鮮肉尪」吵架竟聯手縱火！",
+                                        "content": "媒體來源:，新聞雲，記者署名:，王佩翊，完整新聞標題:，歲婦和「歲鮮肉尪」吵架竟聯手縱火！歲兒熟睡活活燒死，年月日:",
+                                        "recipient": "HaooooYuan",
+                                        "copy_recipient": "無"
                                    }
                               },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "好的，祝您生活愉快，再見"
+                    "utterance": "再見！祝您生活愉快！"
                }
           ]
      }

@@ -559,6 +559,17 @@ class messageSGD(object):
                 break  
     
     def run(self):
+        file_count = 0
+        while True:
+            if file_count >= 650:break
+            self.dial_idx = int(file_count)
+            self.generate_goal()
+            if len(self.dialogues["services"]) > 1:
+                file_count += 1
+                with open(f'need_labeled/new_json/{self.dial_idx}.json', 'w', encoding='utf-8-sig') as f:
+                    json.dump([self.dialogues], f, ensure_ascii=False, indent=5)
+        print(self.dialog_type)
+        '''
         for file_idx in range(650):
             self.dial_idx = int(file_idx)
             self.generate_goal()
@@ -567,6 +578,7 @@ class messageSGD(object):
             #self.slot_values = {}    
             print()
         print(self.dialog_type)
+        '''
 
 if __name__ == "__main__":
     goal_agent = messageSGD("./schema/messagewoz_schema.json")

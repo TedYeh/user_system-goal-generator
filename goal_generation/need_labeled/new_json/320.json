@@ -2,7 +2,9 @@
      {
           "dialogue_id": 320,
           "services": [
-               "Calendar_1"
+               "Messaging_1",
+               "Calendar_1",
+               "Mail_1"
           ],
           "turns": [
                {
@@ -12,25 +14,25 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "AddEvent"
+                                             "SendMessage"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "AddEvent"
+                                             "SendMessage"
                                         ]
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Messaging_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "AddEvent",
+                                   "active_intent": "SendMessage",
                                    "requested_slots": [],
                                    "slot_values": {}
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我想要添加一個活動，可以請你幫忙嗎？"
+                    "utterance": "我想要寄則訊息，可以請你幫忙嗎？"
                },
                {
                     "frames": [
@@ -39,73 +41,23 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "event_time",
+                                        "slot": "message",
                                         "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "這個活動在幾點開始呢？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "01:38"
-                                        ],
-                                        "slot": "event_time",
-                                        "values": [
-                                             "1時38分"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 8,
-                                        "slot": "event_time",
-                                        "start": 3
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "AddEvent",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_time": [
-                                             "1時38分"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "時間為1時38分"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
+                                   },
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "event_date",
+                                        "slot": "contact_name",
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Messaging_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "這個活動辦在幾月幾號呢？"
+                    "utterance": "所以這則訊息講了什麼？，我想知道這則訊息是誰寄的？"
                },
                {
                     "frames": [
@@ -114,234 +66,97 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "2022/4/9"
+                                             "這個應該是對的？"
                                         ],
-                                        "slot": "event_date",
+                                        "slot": "message",
                                         "values": [
-                                             "2022年4月9日"
+                                             "這個應該是對的？"
                                         ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 12,
-                                        "slot": "event_date",
-                                        "start": 3
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "AddEvent",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_time": [
-                                             "1時38分"
-                                        ],
-                                        "event_date": [
-                                             "2022年4月9日"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "日期為2022年4月9日"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_name",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "那這個活動叫甚麼呢？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
+                                   },
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "「永恆巨星」鄧麗君歌曲歌唱比賽總決賽"
+                                             "Antonio"
                                         ],
-                                        "slot": "event_name",
+                                        "slot": "contact_name",
                                         "values": [
-                                             "「永恆巨星」鄧麗君歌曲歌唱比賽總決賽"
+                                             "Antonio"
                                         ]
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Messaging_1",
                               "slots": [
+                                   {
+                                        "exclusive_end": 13,
+                                        "slot": "message",
+                                        "start": 5
+                                   },
                                    {
                                         "exclusive_end": 24,
-                                        "slot": "event_name",
-                                        "start": 6
+                                        "slot": "contact_name",
+                                        "start": 17
                                    }
                               ],
                               "state": {
-                                   "active_intent": "AddEvent",
+                                   "active_intent": "SendMessage",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "event_time": [
-                                             "1時38分"
+                                        "message": [
+                                             "這個應該是對的？"
                                         ],
-                                        "event_date": [
-                                             "2022年4月9日"
-                                        ],
-                                        "event_name": [
-                                             "「永恆巨星」鄧麗君歌曲歌唱比賽總決賽"
+                                        "contact_name": [
+                                             "Antonio"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "這個活動叫做「永恆巨星」鄧麗君歌曲歌唱比賽總決賽"
+                    "utterance": "訊息內容為這個應該是對的？，用戶為Antonio"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_content",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "這個活動有任何內容註記嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
+                                        "act": "CONFIRM",
                                         "canonical_values": [
-                                             "#永恆巨星鄧麗君歌曲歌唱比賽20強#決賽就在雲林縣北港文化中心#111年4月9日(六)下午1點‍♂️來來來！樓上揪樓下，厝邊拉隔壁！‍♂️‍♀️「永恆巨星鄧麗君歌曲歌唱大賽」於111月4日9日(六)進行總決賽評比"
+                                             "這個應該是對的？"
                                         ],
-                                        "slot": "event_content",
+                                        "slot": "message",
                                         "values": [
-                                             "#永恆巨星鄧麗君歌曲歌唱比賽20強#決賽就在雲林縣北港文化中心#111年4月9日(六)下午1點‍♂️來來來！樓上揪樓下，厝邊拉隔壁！‍♂️‍♀️「永恆巨星鄧麗君歌曲歌唱大賽」於111月4日9日(六)進行總決賽評比"
+                                             "這個應該是對的？"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "Antonio"
+                                        ],
+                                        "slot": "contact_name",
+                                        "values": [
+                                             "Antonio"
                                         ]
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Messaging_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 120,
-                                        "slot": "event_content",
-                                        "start": 14
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "AddEvent",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_time": [
-                                             "1時38分"
-                                        ],
-                                        "event_date": [
-                                             "2022年4月9日"
-                                        ],
-                                        "event_name": [
-                                             "「永恆巨星」鄧麗君歌曲歌唱比賽總決賽"
-                                        ],
-                                        "event_content": [
-                                             "#永恆巨星鄧麗君歌曲歌唱比賽20強#決賽就在雲林縣北港文化中心#111年4月9日(六)下午1點‍♂️來來來！樓上揪樓下，厝邊拉隔壁！‍♂️‍♀️「永恆巨星鄧麗君歌曲歌唱大賽」於111月4日9日(六)進行總決賽評比"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "詳細內容我不太記得了，應該是#永恆巨星鄧麗君歌曲歌唱比賽20強#決賽就在雲林縣北港文化中心#111年4月9日(六)下午1點‍♂️來來來！樓上揪樓下，厝邊拉隔壁！‍♂️‍♀️「永恆巨星鄧麗君歌曲歌唱大賽」於111月4日9日(六)進行總決賽評比"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "1時38分"
-                                        ],
-                                        "slot": "event_time",
-                                        "values": [
-                                             "1時38分"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "2022年4月9日"
-                                        ],
-                                        "slot": "event_date",
-                                        "values": [
-                                             "2022年4月9日"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "「永恆巨星」鄧麗君歌曲歌唱比賽總決賽"
-                                        ],
-                                        "slot": "event_name",
-                                        "values": [
-                                             "「永恆巨星」鄧麗君歌曲歌唱比賽總決賽"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "#永恆巨星鄧麗君歌曲歌唱比賽20強#決賽就在雲林縣北港文化中心#111年4月9日(六)下午1點‍♂️來來來！樓上揪樓下，厝邊拉隔壁！‍♂️‍♀️「永恆巨星鄧麗君歌曲歌唱大賽」於111月4日9日(六)進行總決賽評比"
-                                        ],
-                                        "slot": "event_content",
-                                        "values": [
-                                             "#永恆巨星鄧麗君歌曲歌唱比賽20強#決賽就在雲林縣北港文化中心#111年4月9日(六)下午1點‍♂️來來來！樓上揪樓下，厝邊拉隔壁！‍♂️‍♀️「永恆巨星鄧麗君歌曲歌唱大賽」於111月4日9日(六)進行總決賽評比"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 69,
-                                        "slot": "event_time",
-                                        "start": 64
-                                   },
-                                   {
-                                        "exclusive_end": 48,
-                                        "slot": "event_date",
-                                        "start": 39
-                                   },
-                                   {
-                                        "exclusive_end": 25,
-                                        "slot": "event_name",
+                                        "exclusive_end": 15,
+                                        "slot": "message",
                                         "start": 7
+                                   },
+                                   {
+                                        "exclusive_end": 33,
+                                        "slot": "contact_name",
+                                        "start": 26
                                    }
                               ],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "確認要建立名叫「永恆巨星」鄧麗君歌曲歌唱比賽總決賽的活動嗎？，確認要建立舉辦在2022年4月9日的活動嗎？，確認要建立舉辦在當天1時38分的活動嗎？"
+                    "utterance": "確認要傳送訊息這個應該是對的？嗎？，確認要傳送訊息給Antonio嗎？"
                },
                {
                     "frames": [
@@ -354,23 +169,17 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Messaging_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "AddEvent",
+                                   "active_intent": "SendMessage",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "event_time": [
-                                             "1時38分"
+                                        "message": [
+                                             "這個應該是對的？"
                                         ],
-                                        "event_date": [
-                                             "2022年4月9日"
-                                        ],
-                                        "event_name": [
-                                             "「永恆巨星」鄧麗君歌曲歌唱比賽總決賽"
-                                        ],
-                                        "event_content": [
-                                             "#永恆巨星鄧麗君歌曲歌唱比賽20強#決賽就在雲林縣北港文化中心#111年4月9日(六)下午1點‍♂️來來來！樓上揪樓下，厝邊拉隔壁！‍♂️‍♀️「永恆巨星鄧麗君歌曲歌唱大賽」於111月4日9日(六)進行總決賽評比"
+                                        "contact_name": [
+                                             "Antonio"
                                         ]
                                    }
                               }
@@ -384,9 +193,68 @@
                          {
                               "actions": [
                                    {
-                                        "act": "REQ_MORE",
+                                        "act": "NOTIFY_SUCCESS",
                                         "canonical_values": [],
                                         "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_call": {
+                                   "method": "SendMessage",
+                                   "parameters": {
+                                        "message": "這個應該是對的？",
+                                        "contact_name": "Antonio"
+                                   }
+                              },
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "多虧有您的配合，訊息已成功傳送"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "LookupEvents"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "LookupEvents"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "LookupEvents",
+                                   "requested_slots": [],
+                                   "slot_values": {}
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "請幫我找一個活動"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_name",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "participant",
                                         "values": []
                                    }
                               ],
@@ -396,7 +264,151 @@
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "還有什麼問題嗎？"
+                    "utterance": "我想知道這個活動的名稱，這個活動有任何參加者嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "2019臺中東勢新丁粄節"
+                                        ],
+                                        "slot": "event_name",
+                                        "values": [
+                                             "2019臺中東勢新丁粄節"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "劉冠卓"
+                                        ],
+                                        "slot": "participant",
+                                        "values": [
+                                             "劉冠卓"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 17,
+                                        "slot": "event_name",
+                                        "start": 5
+                                   },
+                                   {
+                                        "exclusive_end": 22,
+                                        "slot": "participant",
+                                        "start": 19
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "LookupEvents",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_name": [
+                                             "2019臺中東勢新丁粄節"
+                                        ],
+                                        "participant": [
+                                             "劉冠卓"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "活動名稱叫2019臺中東勢新丁粄節，有劉冠卓會參加"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_time",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道活動在當天何時開始"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "10:22"
+                                        ],
+                                        "slot": "event_time",
+                                        "values": [
+                                             "10時22分"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 12,
+                                        "slot": "event_time",
+                                        "start": 6
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "LookupEvents",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_name": [
+                                             "2019臺中東勢新丁粄節"
+                                        ],
+                                        "participant": [
+                                             "劉冠卓"
+                                        ],
+                                        "event_time": [
+                                             "10時22分"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "時間為當天的10時22分"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NOTIFY_FAILURE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_call": {
+                                   "method": "LookupEvents",
+                                   "parameters": {
+                                        "event_name": "2019臺中東勢新丁粄節",
+                                        "participant": "劉冠卓",
+                                        "event_time": "10時22分"
+                                   }
+                              },
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "不好意思，在行事曆上沒辦法找到符合您要求的活動，請用其他條件查詢"
                },
                {
                     "frames": [
@@ -418,20 +430,17 @@
                               "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "AddEvent",
+                                   "active_intent": "LookupEvents",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "event_time": [
-                                             "1時38分"
-                                        ],
-                                        "event_date": [
-                                             "2022年4月9日"
-                                        ],
                                         "event_name": [
-                                             "「永恆巨星」鄧麗君歌曲歌唱比賽總決賽"
+                                             "2019臺中東勢新丁粄節"
                                         ],
-                                        "event_content": [
-                                             "#永恆巨星鄧麗君歌曲歌唱比賽20強#決賽就在雲林縣北港文化中心#111年4月9日(六)下午1點‍♂️來來來！樓上揪樓下，厝邊拉隔壁！‍♂️‍♀️「永恆巨星鄧麗君歌曲歌唱大賽」於111月4日9日(六)進行總決賽評比"
+                                        "participant": [
+                                             "劉冠卓"
+                                        ],
+                                        "event_time": [
+                                             "10時22分"
                                         ]
                                    }
                               }
@@ -457,7 +466,745 @@
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "歡迎下次諮詢，再見"
+                    "utterance": "很高興為您服務，下次再見"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "SendMail"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "SendMail"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {}
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "請幫我寄出一封信件"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "recipient",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "你知道這封信是寄給誰的嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "雷恩里歐"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "雷恩里歐"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 10,
+                                        "slot": "recipient",
+                                        "start": 6
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "雷恩里歐"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "這封信要寄給雷恩里歐"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "subject",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "那這封信叫甚麼呢？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             " 急！楊過出賣姑姑？！"
+                                        ],
+                                        "slot": "subject",
+                                        "values": [
+                                             " 急！楊過出賣姑姑？！"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 16,
+                                        "slot": "subject",
+                                        "start": 5
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "雷恩里歐"
+                                        ],
+                                        "subject": [
+                                             " 急！楊過出賣姑姑？！"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "這封信叫做 急！楊過出賣姑姑？！"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "content",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "copy_recipient",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "這封信有任何內容嗎？，我想知道這封信的副本收件者"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "剛剛，楊過這漢奸二代，居然為了出賣姑姑，還誣賴姑姑造假到襄陽的車票，請問真的有畜生會做這種事嗎，小龍女我只推范文芳"
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "剛剛，楊過這漢奸二代，居然為了出賣姑姑，還誣賴姑姑造假到襄陽的車票，請問真的有畜生會做這種事嗎，小龍女我只推范文芳"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "Iann"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "Iann"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 60,
+                                        "slot": "content",
+                                        "start": 3
+                                   },
+                                   {
+                                        "exclusive_end": 75,
+                                        "slot": "copy_recipient",
+                                        "start": 71
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "雷恩里歐"
+                                        ],
+                                        "subject": [
+                                             " 急！楊過出賣姑姑？！"
+                                        ],
+                                        "content": [
+                                             "剛剛，楊過這漢奸二代，居然為了出賣姑姑，還誣賴姑姑造假到襄陽的車票，請問真的有畜生會做這種事嗎，小龍女我只推范文芳"
+                                        ],
+                                        "copy_recipient": [
+                                             "Iann"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "內文為剛剛，楊過這漢奸二代，居然為了出賣姑姑，還誣賴姑姑造假到襄陽的車票，請問真的有畜生會做這種事嗎，小龍女我只推范文芳，這封信需要以副本寄給Iann"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "雷恩里歐"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "雷恩里歐"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             " 急！楊過出賣姑姑？！"
+                                        ],
+                                        "slot": "subject",
+                                        "values": [
+                                             " 急！楊過出賣姑姑？！"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "剛剛，楊過這漢奸二代，居然為了出賣姑姑，還誣賴姑姑造假到襄陽的車票，請問真的有畜生會做這種事嗎，小龍女我只推范文芳"
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "剛剛，楊過這漢奸二代，居然為了出賣姑姑，還誣賴姑姑造假到襄陽的車票，請問真的有畜生會做這種事嗎，小龍女我只推范文芳"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "Iann"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "Iann"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 107,
+                                        "slot": "recipient",
+                                        "start": 103
+                                   },
+                                   {
+                                        "exclusive_end": 20,
+                                        "slot": "subject",
+                                        "start": 9
+                                   },
+                                   {
+                                        "exclusive_end": 95,
+                                        "slot": "content",
+                                        "start": 38
+                                   }
+                              ],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "請確認要寄出主旨為 急！楊過出賣姑姑？！的信件嗎？，請確認要寄出的信件內容:剛剛，楊過這漢奸二代，居然為了出賣姑姑，還誣賴姑姑造假到襄陽的車票，請問真的有畜生會做這種事嗎，小龍女我只推范文芳，確認要寄信件給雷恩里歐嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "AFFIRM",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "雷恩里歐"
+                                        ],
+                                        "subject": [
+                                             " 急！楊過出賣姑姑？！"
+                                        ],
+                                        "content": [
+                                             "剛剛，楊過這漢奸二代，居然為了出賣姑姑，還誣賴姑姑造假到襄陽的車票，請問真的有畜生會做這種事嗎，小龍女我只推范文芳"
+                                        ],
+                                        "copy_recipient": [
+                                             "Iann"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我對以上資訊沒問題"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NOTIFY_SUCCESS",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_call": {
+                                   "method": "SendMail",
+                                   "parameters": {
+                                        "recipient": "雷恩里歐",
+                                        "subject": " 急！楊過出賣姑姑？！",
+                                        "content": "剛剛，楊過這漢奸二代，居然為了出賣姑姑，還誣賴姑姑造假到襄陽的車票，請問真的有畜生會做這種事嗎，小龍女我只推范文芳",
+                                        "copy_recipient": "Iann"
+                                   }
+                              },
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "多虧有您的配合，信件已成功寄出"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "FindMail"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "FindMail"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             " 袁崇煥還幫魏忠賢建生祠欸算背骨嗎？"
+                                        ],
+                                        "slot": "subject",
+                                        "values": [
+                                             " 袁崇煥還幫魏忠賢建生祠欸算背骨嗎？"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "東林黨在明朝個個治國講的頭頭是道，跟閹黨好像有不同戴天之仇，自己才是正義之師，結果東林黨的袁崇煥還幫魏忠賢建生祠，這樣袁崇煥還算忠臣嗎，應該是超級背骨仔吧，你能想像某人去幫習近平建生祠嗎，是不是有人比喻錯誤了嘻嘻"
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "東林黨在明朝個個治國講的頭頭是道，跟閹黨好像有不同戴天之仇，自己才是正義之師，結果東林黨的袁崇煥還幫魏忠賢建生祠，這樣袁崇煥還算忠臣嗎，應該是超級背骨仔吧，你能想像某人去幫習近平建生祠嗎，是不是有人比喻錯誤了嘻嘻"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "Flash"
+                                        ],
+                                        "slot": "sender",
+                                        "values": [
+                                             "Flash"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "Yumi"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "Yumi"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 49,
+                                        "slot": "subject",
+                                        "start": 31
+                                   },
+                                   {
+                                        "exclusive_end": 159,
+                                        "slot": "content",
+                                        "start": 53
+                                   },
+                                   {
+                                        "exclusive_end": 25,
+                                        "slot": "sender",
+                                        "start": 20
+                                   },
+                                   {
+                                        "exclusive_end": 170,
+                                        "slot": "recipient",
+                                        "start": 166
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "FindMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "Yumi"
+                                        ],
+                                        "subject": [
+                                             " 袁崇煥還幫魏忠賢建生祠欸算背骨嗎？"
+                                        ],
+                                        "content": [
+                                             "東林黨在明朝個個治國講的頭頭是道，跟閹黨好像有不同戴天之仇，自己才是正義之師，結果東林黨的袁崇煥還幫魏忠賢建生祠，這樣袁崇煥還算忠臣嗎，應該是超級背骨仔吧，你能想像某人去幫習近平建生祠嗎，是不是有人比喻錯誤了嘻嘻"
+                                        ],
+                                        "sender": [
+                                             "Flash"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我想要知道相關的信件，請幫幫我，寄件者為Flash，這封信叫做 袁崇煥還幫魏忠賢建生祠欸算背骨嗎？，內容為東林黨在明朝個個治國講的頭頭是道，跟閹黨好像有不同戴天之仇，自己才是正義之師，結果東林黨的袁崇煥還幫魏忠賢建生祠，這樣袁崇煥還算忠臣嗎，應該是超級背骨仔吧，你能想像某人去幫習近平建生祠嗎，是不是有人比喻錯誤了嘻嘻，這封信要寄給Yumi"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "Yumi"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "Yumi"
+                                        ]
+                                   },
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             " 袁崇煥還幫魏忠賢建生祠欸算背骨嗎？"
+                                        ],
+                                        "slot": "subject",
+                                        "values": [
+                                             " 袁崇煥還幫魏忠賢建生祠欸算背骨嗎？"
+                                        ]
+                                   },
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "東林黨在明朝個個治國講的頭頭是道，跟閹黨好像有不同戴天之仇，自己才是正義之師，結果東林黨的袁崇煥還幫魏忠賢建生祠，這樣袁崇煥還算忠臣嗎，應該是超級背骨仔吧，你能想像某人去幫習近平建生祠嗎，是不是有人比喻錯誤了嘻嘻"
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "東林黨在明朝個個治國講的頭頭是道，跟閹黨好像有不同戴天之仇，自己才是正義之師，結果東林黨的袁崇煥還幫魏忠賢建生祠，這樣袁崇煥還算忠臣嗎，應該是超級背骨仔吧，你能想像某人去幫習近平建生祠嗎，是不是有人比喻錯誤了嘻嘻"
+                                        ]
+                                   },
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "Flash"
+                                        ],
+                                        "slot": "sender",
+                                        "values": [
+                                             "Flash"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM_COUNT",
+                                        "canonical_values": [
+                                             "1"
+                                        ],
+                                        "slot": "count",
+                                        "values": [
+                                             "1"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 193,
+                                        "slot": "recipient",
+                                        "start": 189
+                                   },
+                                   {
+                                        "exclusive_end": 50,
+                                        "slot": "subject",
+                                        "start": 32
+                                   },
+                                   {
+                                        "exclusive_end": 173,
+                                        "slot": "content",
+                                        "start": 67
+                                   },
+                                   {
+                                        "exclusive_end": 9,
+                                        "slot": "sender",
+                                        "start": 4
+                                   }
+                              ],
+                              "service_call": {
+                                   "method": "FindMail",
+                                   "parameters": {
+                                        "recipient": "Yumi",
+                                        "subject": " 袁崇煥還幫魏忠賢建生祠欸算背骨嗎？",
+                                        "content": "東林黨在明朝個個治國講的頭頭是道，跟閹黨好像有不同戴天之仇，自己才是正義之師，結果東林黨的袁崇煥還幫魏忠賢建生祠，這樣袁崇煥還算忠臣嗎，應該是超級背骨仔吧，你能想像某人去幫習近平建生祠嗎，是不是有人比喻錯誤了嘻嘻",
+                                        "sender": "Flash"
+                                   }
+                              },
+                              "service_results": [
+                                   {
+                                        "subject": " 袁崇煥還幫魏忠賢建生祠欸算背骨嗎？",
+                                        "content": "東林黨在明朝個個治國講的頭頭是道，跟閹黨好像有不同戴天之仇，自己才是正義之師，結果東林黨的袁崇煥還幫魏忠賢建生祠，這樣袁崇煥還算忠臣嗎，應該是超級背骨仔吧，你能想像某人去幫習近平建生祠嗎，是不是有人比喻錯誤了嘻嘻",
+                                        "copy_recipient": "JonnyLee",
+                                        "recipient": "Yumi",
+                                        "sender": "Flash"
+                                   }
+                              ]
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我找到由Flash寄發的信件，請你看看，依據您提供的訊息，找到跟 袁崇煥還幫魏忠賢建生祠欸算背骨嗎？有關的信件，請你看看，我找到內容跟東林黨在明朝個個治國講的頭頭是道，跟閹黨好像有不同戴天之仇，自己才是正義之師，結果東林黨的袁崇煥還幫魏忠賢建生祠，這樣袁崇煥還算忠臣嗎，應該是超級背骨仔吧，你能想像某人去幫習近平建生祠嗎，是不是有人比喻錯誤了嘻嘻有關的信件，請你看看，我找到寄給Yumi的信件，請你看看，總共有1個結果"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "SELECT",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "LookupEvents",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "Yumi"
+                                        ],
+                                        "subject": [
+                                             " 袁崇煥還幫魏忠賢建生祠欸算背骨嗎？"
+                                        ],
+                                        "content": [
+                                             "東林黨在明朝個個治國講的頭頭是道，跟閹黨好像有不同戴天之仇，自己才是正義之師，結果東林黨的袁崇煥還幫魏忠賢建生祠，這樣袁崇煥還算忠臣嗎，應該是超級背骨仔吧，你能想像某人去幫習近平建生祠嗎，是不是有人比喻錯誤了嘻嘻"
+                                        ],
+                                        "sender": [
+                                             "Flash"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "好的"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "OFFER_INTENT",
+                                        "canonical_values": [
+                                             "LookupEvents"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "LookupEvents"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "您想要藉此機會順便檢查行事曆中的活動嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NEGATE_INTENT",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "LookupEvents",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "Yumi"
+                                        ],
+                                        "subject": [
+                                             " 袁崇煥還幫魏忠賢建生祠欸算背骨嗎？"
+                                        ],
+                                        "content": [
+                                             "東林黨在明朝個個治國講的頭頭是道，跟閹黨好像有不同戴天之仇，自己才是正義之師，結果東林黨的袁崇煥還幫魏忠賢建生祠，這樣袁崇煥還算忠臣嗎，應該是超級背骨仔吧，你能想像某人去幫習近平建生祠嗎，是不是有人比喻錯誤了嘻嘻"
+                                        ],
+                                        "sender": [
+                                             "Flash"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "目前不需要"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQ_MORE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "還需要什麼幫助嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NEGATE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "GOODBYE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "LookupEvents",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "Yumi"
+                                        ],
+                                        "subject": [
+                                             " 袁崇煥還幫魏忠賢建生祠欸算背骨嗎？"
+                                        ],
+                                        "content": [
+                                             "東林黨在明朝個個治國講的頭頭是道，跟閹黨好像有不同戴天之仇，自己才是正義之師，結果東林黨的袁崇煥還幫魏忠賢建生祠，這樣袁崇煥還算忠臣嗎，應該是超級背骨仔吧，你能想像某人去幫習近平建生祠嗎，是不是有人比喻錯誤了嘻嘻"
+                                        ],
+                                        "sender": [
+                                             "Flash"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "沒關係，先這樣吧，沒有了！再見！"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "GOODBYE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "再見"
                }
           ]
      }

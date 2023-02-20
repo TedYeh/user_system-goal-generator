@@ -2,7 +2,9 @@
      {
           "dialogue_id": 395,
           "services": [
-               "Mail_1"
+               "Calendar_1",
+               "Mail_1",
+               "Messaging_1"
           ],
           "turns": [
                {
@@ -12,25 +14,25 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "SendMail"
+                                             "LookupEvents"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "SendMail"
+                                             "LookupEvents"
                                         ]
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMail",
+                                   "active_intent": "LookupEvents",
                                    "requested_slots": [],
                                    "slot_values": {}
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我想要寫一封信，可以請你幫忙嗎？"
+                    "utterance": "請幫我找一個活動"
                },
                {
                     "frames": [
@@ -39,23 +41,17 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "recipient",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "copy_recipient",
+                                        "slot": "event_name",
                                         "values": []
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "我想知道這封信的收件者，我想知道這封信的副本收件者"
+                    "utterance": "那這個活動叫甚麼呢？"
                },
                {
                     "frames": [
@@ -64,53 +60,35 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "Bman"
+                                             "Observational study of evolution from formation of protostellar disks to formation of planets"
                                         ],
-                                        "slot": "recipient",
+                                        "slot": "event_name",
                                         "values": [
-                                             "Bman"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "Jayu"
-                                        ],
-                                        "slot": "copy_recipient",
-                                        "values": [
-                                             "Jayu"
+                                             "Observational study of evolution from formation of protostellar disks to formation of planets"
                                         ]
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 8,
-                                        "slot": "recipient",
-                                        "start": 4
-                                   },
-                                   {
-                                        "exclusive_end": 24,
-                                        "slot": "copy_recipient",
-                                        "start": 20
+                                        "exclusive_end": 99,
+                                        "slot": "event_name",
+                                        "start": 6
                                    }
                               ],
                               "state": {
-                                   "active_intent": "SendMail",
+                                   "active_intent": "LookupEvents",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "recipient": [
-                                             "Bman"
-                                        ],
-                                        "copy_recipient": [
-                                             "Jayu"
+                                        "event_name": [
+                                             "Observational study of evolution from formation of protostellar disks to formation of planets"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "這封信由Bman收，這封信需要以副本寄給Jayu"
+                    "utterance": "這個活動叫做Observational study of evolution from formation of protostellar disks to formation of planets"
                },
                {
                     "frames": [
@@ -119,17 +97,23 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "subject",
+                                        "slot": "event_time",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "participant",
                                         "values": []
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "那這封信叫甚麼呢？"
+                    "utterance": "這個活動在幾點開始呢？，想知道這個活動的參加者"
                },
                {
                     "frames": [
@@ -138,41 +122,237 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             " 預言神書說2025/7 肥宅們就要掛了?"
+                                             "11:00"
                                         ],
-                                        "slot": "subject",
+                                        "slot": "event_time",
                                         "values": [
-                                             " 預言神書說2025/7 肥宅們就要掛了?"
+                                             "上午11點0分"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "思辰葉"
+                                        ],
+                                        "slot": "participant",
+                                        "values": [
+                                             "思辰葉"
                                         ]
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 26,
-                                        "slot": "subject",
-                                        "start": 5
+                                        "exclusive_end": 10,
+                                        "slot": "event_time",
+                                        "start": 3
+                                   },
+                                   {
+                                        "exclusive_end": 15,
+                                        "slot": "participant",
+                                        "start": 12
                                    }
                               ],
                               "state": {
-                                   "active_intent": "SendMail",
+                                   "active_intent": "LookupEvents",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "recipient": [
-                                             "Bman"
+                                        "event_name": [
+                                             "Observational study of evolution from formation of protostellar disks to formation of planets"
                                         ],
-                                        "copy_recipient": [
-                                             "Jayu"
+                                        "event_time": [
+                                             "上午11點0分"
                                         ],
-                                        "subject": [
-                                             " 預言神書說2025/7 肥宅們就要掛了?"
+                                        "participant": [
+                                             "思辰葉"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "這封信叫做 預言神書說2025/7 肥宅們就要掛了?"
+                    "utterance": "時間為上午11點0分，有思辰葉會參加"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_date",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "這個活動辦在幾月幾號呢？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "2018/2/26"
+                                        ],
+                                        "slot": "event_date",
+                                        "values": [
+                                             "2018年2月26號"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 13,
+                                        "slot": "event_date",
+                                        "start": 3
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "LookupEvents",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_name": [
+                                             "Observational study of evolution from formation of protostellar disks to formation of planets"
+                                        ],
+                                        "event_time": [
+                                             "上午11點0分"
+                                        ],
+                                        "participant": [
+                                             "思辰葉"
+                                        ],
+                                        "event_date": [
+                                             "2018年2月26號"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "活動在2018年2月26號"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NOTIFY_FAILURE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_call": {
+                                   "method": "LookupEvents",
+                                   "parameters": {
+                                        "event_name": "Observational study of evolution from formation of protostellar disks to formation of planets",
+                                        "event_time": "上午11點0分",
+                                        "participant": "思辰葉",
+                                        "event_date": "2018年2月26號"
+                                   }
+                              },
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "不好意思，在行事曆上沒辦法找到符合您要求的活動，請用其他條件查詢"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NEGATE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "GOODBYE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "LookupEvents",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_name": [
+                                             "Observational study of evolution from formation of protostellar disks to formation of planets"
+                                        ],
+                                        "event_time": [
+                                             "上午11點0分"
+                                        ],
+                                        "participant": [
+                                             "思辰葉"
+                                        ],
+                                        "event_date": [
+                                             "2018年2月26號"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "沒關係，先這樣吧，沒有問題了，再見！"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "GOODBYE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "再見！祝您生活愉快！"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "FindMail"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "FindMail"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMail",
+                                   "requested_slots": [],
+                                   "slot_values": {}
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我想要找個信，可以請你幫忙嗎？"
                },
                {
                     "frames": [
@@ -200,177 +380,533 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "我高雄魚雁啦，最近笑不出來了啦，看到有本預言神書說//，會有大爆炸，到時候肥宅們應該會一起說再見了"
+                                             "媒體來源:，自由，記者署名:，呂伊萱，完整新聞標題:，台灣積極提升戰力吳釗燮：台海若開戰中國也會吃足苦頭，完整新聞內文:，〔記者呂伊萱／台北報導〕加拿大廣播公司（）日播出外交部長吳釗燮專訪。關，切中國威脅，吳釗燮表示，台灣積極提升戰力，但絕對不想要與中國開戰"
                                         ],
                                         "slot": "content",
                                         "values": [
-                                             "我高雄魚雁啦，最近笑不出來了啦，看到有本預言神書說//，會有大爆炸，到時候肥宅們應該會一起說再見了"
+                                             "媒體來源:，自由，記者署名:，呂伊萱，完整新聞標題:，台灣積極提升戰力吳釗燮：台海若開戰中國也會吃足苦頭，完整新聞內文:，〔記者呂伊萱／台北報導〕加拿大廣播公司（）日播出外交部長吳釗燮專訪。關，切中國威脅，吳釗燮表示，台灣積極提升戰力，但絕對不想要與中國開戰"
                                         ]
                                    }
                               ],
                               "service": "Mail_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 52,
+                                        "exclusive_end": 132,
                                         "slot": "content",
                                         "start": 3
                                    }
                               ],
                               "state": {
-                                   "active_intent": "SendMail",
+                                   "active_intent": "FindMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "recipient": [
-                                             "Bman"
-                                        ],
-                                        "copy_recipient": [
-                                             "Jayu"
-                                        ],
-                                        "subject": [
-                                             " 預言神書說2025/7 肥宅們就要掛了?"
-                                        ],
                                         "content": [
-                                             "我高雄魚雁啦，最近笑不出來了啦，看到有本預言神書說//，會有大爆炸，到時候肥宅們應該會一起說再見了"
+                                             "媒體來源:，自由，記者署名:，呂伊萱，完整新聞標題:，台灣積極提升戰力吳釗燮：台海若開戰中國也會吃足苦頭，完整新聞內文:，〔記者呂伊萱／台北報導〕加拿大廣播公司（）日播出外交部長吳釗燮專訪。關，切中國威脅，吳釗燮表示，台灣積極提升戰力，但絕對不想要與中國開戰"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "內容為我高雄魚雁啦，最近笑不出來了啦，看到有本預言神書說//，會有大爆炸，到時候肥宅們應該會一起說再見了"
+                    "utterance": "內容為媒體來源:，自由，記者署名:，呂伊萱，完整新聞標題:，台灣積極提升戰力吳釗燮：台海若開戰中國也會吃足苦頭，完整新聞內文:，〔記者呂伊萱／台北報導〕加拿大廣播公司（）日播出外交部長吳釗燮專訪。關，切中國威脅，吳釗燮表示，台灣積極提升戰力，但絕對不想要與中國開戰"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "CONFIRM",
+                                        "act": "OFFER",
                                         "canonical_values": [
-                                             "Bman"
-                                        ],
-                                        "slot": "recipient",
-                                        "values": [
-                                             "Bman"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "Jayu"
-                                        ],
-                                        "slot": "copy_recipient",
-                                        "values": [
-                                             "Jayu"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             " 預言神書說2025/7 肥宅們就要掛了?"
-                                        ],
-                                        "slot": "subject",
-                                        "values": [
-                                             " 預言神書說2025/7 肥宅們就要掛了?"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "我高雄魚雁啦，最近笑不出來了啦，看到有本預言神書說//，會有大爆炸，到時候肥宅們應該會一起說再見了"
+                                             "媒體來源:，自由，記者署名:，呂伊萱，完整新聞標題:，台灣積極提升戰力吳釗燮：台海若開戰中國也會吃足苦頭，完整新聞內文:，〔記者呂伊萱／台北報導〕加拿大廣播公司（）日播出外交部長吳釗燮專訪。關，切中國威脅，吳釗燮表示，台灣積極提升戰力，但絕對不想要與中國開戰"
                                         ],
                                         "slot": "content",
                                         "values": [
-                                             "我高雄魚雁啦，最近笑不出來了啦，看到有本預言神書說//，會有大爆炸，到時候肥宅們應該會一起說再見了"
+                                             "媒體來源:，自由，記者署名:，呂伊萱，完整新聞標題:，台灣積極提升戰力吳釗燮：台海若開戰中國也會吃足苦頭，完整新聞內文:，〔記者呂伊萱／台北報導〕加拿大廣播公司（）日播出外交部長吳釗燮專訪。關，切中國威脅，吳釗燮表示，台灣積極提升戰力，但絕對不想要與中國開戰"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM_COUNT",
+                                        "canonical_values": [
+                                             "1"
+                                        ],
+                                        "slot": "count",
+                                        "values": [
+                                             "1"
                                         ]
                                    }
                               ],
                               "service": "Mail_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 109,
-                                        "slot": "recipient",
-                                        "start": 105
-                                   },
-                                   {
-                                        "exclusive_end": 30,
-                                        "slot": "subject",
-                                        "start": 9
-                                   },
-                                   {
-                                        "exclusive_end": 97,
+                                        "exclusive_end": 135,
                                         "slot": "content",
-                                        "start": 48
+                                        "start": 6
                                    }
                               ],
-                              "service_results": []
+                              "service_call": {
+                                   "method": "FindMail",
+                                   "parameters": {
+                                        "content": "媒體來源:，自由，記者署名:，呂伊萱，完整新聞標題:，台灣積極提升戰力吳釗燮：台海若開戰中國也會吃足苦頭，完整新聞內文:，〔記者呂伊萱／台北報導〕加拿大廣播公司（）日播出外交部長吳釗燮專訪。關，切中國威脅，吳釗燮表示，台灣積極提升戰力，但絕對不想要與中國開戰"
+                                   }
+                              },
+                              "service_results": [
+                                   {
+                                        "subject": " 台灣積極提升戰力 吳釗燮：台海若開戰中",
+                                        "content": "媒體來源:，自由，記者署名:，呂伊萱，完整新聞標題:，台灣積極提升戰力吳釗燮：台海若開戰中國也會吃足苦頭，完整新聞內文:，〔記者呂伊萱／台北報導〕加拿大廣播公司（）日播出外交部長吳釗燮專訪。關，切中國威脅，吳釗燮表示，台灣積極提升戰力，但絕對不想要與中國開戰",
+                                        "copy_recipient": "無",
+                                        "recipient": "蘭雨情緣",
+                                        "sender": "planet ET"
+                                   }
+                              ]
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "請確認要寄出主旨為 預言神書說2025/7 肥宅們就要掛了?的信件嗎？，請確認要寄出的信件內容:我高雄魚雁啦，最近笑不出來了啦，看到有本預言神書說//，會有大爆炸，到時候肥宅們應該會一起說再見了，確認要寄信件給Bman嗎？"
+                    "utterance": "我找到內容跟媒體來源:，自由，記者署名:，呂伊萱，完整新聞標題:，台灣積極提升戰力吳釗燮：台海若開戰中國也會吃足苦頭，完整新聞內文:，〔記者呂伊萱／台北報導〕加拿大廣播公司（）日播出外交部長吳釗燮專訪。關，切中國威脅，吳釗燮表示，台灣積極提升戰力，但絕對不想要與中國開戰有關的信件，請你看看，總共有1個結果"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "AFFIRM",
+                                        "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "",
+                                        "slot": "recipient",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "copy_recipient",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "subject",
                                         "values": []
                                    }
                               ],
                               "service": "Mail_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMail",
-                                   "requested_slots": [],
+                                   "active_intent": "FindMail",
+                                   "requested_slots": [
+                                        "recipient",
+                                        "copy_recipient",
+                                        "subject"
+                                   ],
                                    "slot_values": {
-                                        "recipient": [
-                                             "Bman"
-                                        ],
-                                        "copy_recipient": [
-                                             "Jayu"
-                                        ],
-                                        "subject": [
-                                             " 預言神書說2025/7 肥宅們就要掛了?"
-                                        ],
                                         "content": [
-                                             "我高雄魚雁啦，最近笑不出來了啦，看到有本預言神書說//，會有大爆炸，到時候肥宅們應該會一起說再見了"
+                                             "媒體來源:，自由，記者署名:，呂伊萱，完整新聞標題:，台灣積極提升戰力吳釗燮：台海若開戰中國也會吃足苦頭，完整新聞內文:，〔記者呂伊萱／台北報導〕加拿大廣播公司（）日播出外交部長吳釗燮專訪。關，切中國威脅，吳釗燮表示，台灣積極提升戰力，但絕對不想要與中國開戰"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我對以上資訊沒問題"
+                    "utterance": "我想知道這個信件的主旨，你知道這封信是寄給誰的嗎？，我想知道這封信的副本收件者"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "NOTIFY_SUCCESS",
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "蘭雨情緣"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "蘭雨情緣"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "無"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             " 台灣積極提升戰力 吳釗燮：台海若開戰中"
+                                        ],
+                                        "slot": "subject",
+                                        "values": [
+                                             " 台灣積極提升戰力 吳釗燮：台海若開戰中"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 34,
+                                        "slot": "recipient",
+                                        "start": 30
+                                   },
+                                   {
+                                        "exclusive_end": 25,
+                                        "slot": "subject",
+                                        "start": 5
+                                   }
+                              ],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "信件主旨叫 台灣積極提升戰力 吳釗燮：台海若開戰中，收件者為蘭雨情緣，這封信不用副本收件者"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "FindMessage"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "FindMessage"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {}
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "請幫我找一則訊息"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "contact_name",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道這則訊息是誰寄的？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "K_deep"
+                                        ],
+                                        "slot": "contact_name",
+                                        "values": [
+                                             "K_deep"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 9,
+                                        "slot": "contact_name",
+                                        "start": 3
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "contact_name": [
+                                             "K_deep"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "用戶為K_deep"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "K_deep"
+                                        ],
+                                        "slot": "contact_name",
+                                        "values": [
+                                             "K_deep"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM_COUNT",
+                                        "canonical_values": [
+                                             "5"
+                                        ],
+                                        "slot": "count",
+                                        "values": [
+                                             "5"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 9,
+                                        "slot": "contact_name",
+                                        "start": 3
+                                   }
+                              ],
+                              "service_call": {
+                                   "method": "FindMessage",
+                                   "parameters": {
+                                        "contact_name": "K_deep"
+                                   }
+                              },
+                              "service_results": [
+                                   {
+                                        "group_name": "無",
+                                        "contact_name": "K_deep",
+                                        "message": "好的謝謝你"
+                                   },
+                                   {
+                                        "group_name": "AI 人工智慧",
+                                        "contact_name": "K_deep",
+                                        "message": "我只是用個放在嘴巴附近的麥克風抓看看"
+                                   },
+                                   {
+                                        "group_name": "無",
+                                        "contact_name": "K_deep",
+                                        "message": "而且說句老實話⋯台灣的學校出身的價格比較好⋯"
+                                   },
+                                   {
+                                        "group_name": "AI 人工智慧",
+                                        "contact_name": "K_deep",
+                                        "message": "2天前去拜訪AIA的校務長 聊到很多台灣AI應用跟落地的問題"
+                                   },
+                                   {
+                                        "group_name": "無",
+                                        "contact_name": "K_deep",
+                                        "message": "千萬不要這麼自責，昂。像我自己自詡詐騙終結者，今年因為工作太忙粗心，也中招了"
+                                   }
+                              ]
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "找到與K_deep聊天的訊息，總共有5個結果"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "SELECT",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "contact_name": [
+                                             "K_deep"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "好的，我知道了"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "OFFER_INTENT",
+                                        "canonical_values": [
+                                             "FindMessage"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "FindMessage"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "需要幫您找一則訊息嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "AFFIRM_INTENT",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {}
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "好的，麻煩你了"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "message",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道訊息內容"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "因為老師使用的是mxnet"
+                                        ],
+                                        "slot": "message",
+                                        "values": [
+                                             "因為老師使用的是mxnet"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 16,
+                                        "slot": "message",
+                                        "start": 3
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "contact_name": [
+                                             "K_deep"
+                                        ],
+                                        "message": [
+                                             "因為老師使用的是mxnet"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "訊息為因為老師使用的是mxnet"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NOTIFY_FAILURE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
                               "slots": [],
                               "service_call": {
-                                   "method": "SendMail",
+                                   "method": "FindMessage",
                                    "parameters": {
-                                        "recipient": "Bman",
-                                        "copy_recipient": "Jayu",
-                                        "subject": " 預言神書說2025/7 肥宅們就要掛了?",
-                                        "content": "我高雄魚雁啦，最近笑不出來了啦，看到有本預言神書說//，會有大爆炸，到時候肥宅們應該會一起說再見了"
+                                        "contact_name": "K_deep",
+                                        "message": "因為老師使用的是mxnet"
                                    }
                               },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "多虧有您的配合，信件已成功寄出"
+                    "utterance": "不好意思，沒辦法找到符合您要求的訊息"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NEGATE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "GOODBYE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "contact_name": [
+                                             "K_deep"
+                                        ],
+                                        "message": [
+                                             "因為老師使用的是mxnet"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "沒關係，先這樣吧，沒有了！再見！"
                },
                {
                     "frames": [
@@ -383,30 +919,104 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "好的，再見！"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NEGATE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "THANK_YOU",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMail",
+                                   "active_intent": "FindMessage",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "recipient": [
-                                             "Bman"
+                                        "contact_name": [
+                                             "K_deep"
                                         ],
-                                        "copy_recipient": [
-                                             "Jayu"
-                                        ],
-                                        "subject": [
-                                             " 預言神書說2025/7 肥宅們就要掛了?"
-                                        ],
-                                        "content": [
-                                             "我高雄魚雁啦，最近笑不出來了啦，看到有本預言神書說//，會有大爆炸，到時候肥宅們應該會一起說再見了"
+                                        "message": [
+                                             "因為老師使用的是mxnet"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "沒有問題了，再見！"
+                    "utterance": "沒關係，先這樣吧，謝謝"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQ_MORE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "還需要什麼幫助嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NEGATE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "GOODBYE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "contact_name": [
+                                             "K_deep"
+                                        ],
+                                        "message": [
+                                             "因為老師使用的是mxnet"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "沒關係，先這樣吧，沒有了！再見！"
                },
                {
                     "frames": [
@@ -419,22 +1029,13 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Messaging_1",
                               "slots": [],
-                              "service_call": {
-                                   "method": "SendMail",
-                                   "parameters": {
-                                        "recipient": "Bman",
-                                        "copy_recipient": "Jayu",
-                                        "subject": " 預言神書說2025/7 肥宅們就要掛了?",
-                                        "content": "我高雄魚雁啦，最近笑不出來了啦，看到有本預言神書說//，會有大爆炸，到時候肥宅們應該會一起說再見了"
-                                   }
-                              },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "再見"
+                    "utterance": "再見！祝您生活愉快！"
                }
           ]
      }

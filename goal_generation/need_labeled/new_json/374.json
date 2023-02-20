@@ -2,7 +2,8 @@
      {
           "dialogue_id": 374,
           "services": [
-               "Messaging_1"
+               "Calendar_1",
+               "Mail_1"
           ],
           "turns": [
                {
@@ -12,63 +13,251 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "SendMessage"
+                                             "AddEvent"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "SendMessage"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "AI 人工智慧"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "AI 人工智慧"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "另外問個問題"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "另外問個問題"
+                                             "AddEvent"
                                         ]
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "AddEvent",
+                                   "requested_slots": [],
+                                   "slot_values": {}
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我想要添加一個活動，可以請你幫忙嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_date",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "這個活動辦在幾月幾號呢？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "2022/10/24"
+                                        ],
+                                        "slot": "event_date",
+                                        "values": [
+                                             "2022年10月24號"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 30,
-                                        "slot": "group_name",
-                                        "start": 23
-                                   },
-                                   {
-                                        "exclusive_end": 18,
-                                        "slot": "message",
-                                        "start": 12
+                                        "exclusive_end": 14,
+                                        "slot": "event_date",
+                                        "start": 3
                                    }
                               ],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "message": [
-                                             "另外問個問題"
-                                        ],
-                                        "group_name": [
-                                             "AI 人工智慧"
+                                        "event_date": [
+                                             "2022年10月24號"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "請幫我寄一則訊息，跟他說另外問個問題，群組叫做AI 人工智慧"
+                    "utterance": "活動在2022年10月24號"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_time",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_name",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_content",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "那這個活動叫甚麼呢？，我想知道活動在當天何時開始，這個活動有任何內容備註嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "07:55"
+                                        ],
+                                        "slot": "event_time",
+                                        "values": [
+                                             "上午7時55分"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "111年度新北市原住民族聯合文化活動"
+                                        ],
+                                        "slot": "event_name",
+                                        "values": [
+                                             "111年度新北市原住民族聯合文化活動"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "event_content",
+                                        "values": [
+                                             "無"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 34,
+                                        "slot": "event_time",
+                                        "start": 27
+                                   },
+                                   {
+                                        "exclusive_end": 23,
+                                        "slot": "event_name",
+                                        "start": 5
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "AddEvent",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_date": [
+                                             "2022年10月24號"
+                                        ],
+                                        "event_time": [
+                                             "上午7時55分"
+                                        ],
+                                        "event_name": [
+                                             "111年度新北市原住民族聯合文化活動"
+                                        ],
+                                        "event_content": [
+                                             "無"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "活動名稱叫111年度新北市原住民族聯合文化活動，時間為上午7時55分，不需設定內容"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "participant",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "有人參加這個活動嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "Car碼農"
+                                        ],
+                                        "slot": "participant",
+                                        "values": [
+                                             "Car碼農"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 6,
+                                        "slot": "participant",
+                                        "start": 1
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "AddEvent",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_date": [
+                                             "2022年10月24號"
+                                        ],
+                                        "event_time": [
+                                             "上午7時55分"
+                                        ],
+                                        "event_name": [
+                                             "111年度新北市原住民族聯合文化活動"
+                                        ],
+                                        "event_content": [
+                                             "無"
+                                        ],
+                                        "participant": [
+                                             "Car碼農"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "有Car碼農會參加"
                },
                {
                     "frames": [
@@ -77,42 +266,82 @@
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "另外問個問題"
+                                             "2022年10月24號"
                                         ],
-                                        "slot": "message",
+                                        "slot": "event_date",
                                         "values": [
-                                             "另外問個問題"
+                                             "2022年10月24號"
                                         ]
                                    },
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "AI 人工智慧"
+                                             "上午7時55分"
                                         ],
-                                        "slot": "group_name",
+                                        "slot": "event_time",
                                         "values": [
-                                             "AI 人工智慧"
+                                             "上午7時55分"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "111年度新北市原住民族聯合文化活動"
+                                        ],
+                                        "slot": "event_name",
+                                        "values": [
+                                             "111年度新北市原住民族聯合文化活動"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "event_content",
+                                        "values": [
+                                             "無"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "Car碼農"
+                                        ],
+                                        "slot": "participant",
+                                        "values": [
+                                             "Car碼農"
                                         ]
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 13,
-                                        "slot": "message",
+                                        "exclusive_end": 50,
+                                        "slot": "event_date",
+                                        "start": 39
+                                   },
+                                   {
+                                        "exclusive_end": 73,
+                                        "slot": "event_time",
+                                        "start": 66
+                                   },
+                                   {
+                                        "exclusive_end": 25,
+                                        "slot": "event_name",
                                         "start": 7
                                    },
                                    {
-                                        "exclusive_end": 31,
-                                        "slot": "group_name",
-                                        "start": 24
+                                        "exclusive_end": 92,
+                                        "slot": "participant",
+                                        "start": 87
                                    }
                               ],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "確認要傳送訊息另外問個問題嗎？，確認要傳送訊息到AI 人工智慧嗎？"
+                    "utterance": "確認要建立名叫111年度新北市原住民族聯合文化活動的活動嗎？，確認要建立舉辦在2022年10月24號的活動嗎？，確認要建立舉辦在當天上午7時55分的活動嗎？，確認要建立舉辦有Car碼農參加的活動嗎？"
                },
                {
                     "frames": [
@@ -125,17 +354,26 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "message": [
-                                             "另外問個問題"
+                                        "event_date": [
+                                             "2022年10月24號"
                                         ],
-                                        "group_name": [
-                                             "AI 人工智慧"
+                                        "event_time": [
+                                             "上午7時55分"
+                                        ],
+                                        "event_name": [
+                                             "111年度新北市原住民族聯合文化活動"
+                                        ],
+                                        "event_content": [
+                                             "無"
+                                        ],
+                                        "participant": [
+                                             "Car碼農"
                                         ]
                                    }
                               }
@@ -155,105 +393,288 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_call": {
-                                   "method": "SendMessage",
+                                   "method": "AddEvent",
                                    "parameters": {
-                                        "message": "另外問個問題",
-                                        "group_name": "AI 人工智慧"
+                                        "event_date": "2022年10月24號",
+                                        "event_time": "上午7時55分",
+                                        "event_name": "111年度新北市原住民族聯合文化活動",
+                                        "event_content": "無",
+                                        "participant": "Car碼農"
                                    }
                               },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "多虧有您的配合，訊息已成功傳送"
+                    "utterance": "多虧有您的配合，活動已添加至行事曆"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "SELECT",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "SendMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "message": [
-                                             "另外問個問題"
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "SendMail"
                                         ],
-                                        "group_name": [
-                                             "AI 人工智慧"
+                                        "slot": "intent",
+                                        "values": [
+                                             "SendMail"
                                         ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "好的"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQ_MORE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "還有什麼需要幫助的嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NEGATE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
                                    },
                                    {
-                                        "act": "GOODBYE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             " 為什麼很多廣告都喜歡找吳念真？"
+                                        ],
+                                        "slot": "subject",
+                                        "values": [
+                                             " 為什麼很多廣告都喜歡找吳念真？"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "如題，很多菸酒火鍋汽車全國電子，溫情廣告都喜歡找吳念真，最好還是講台語的，很好奇是因為想要走在地化客群嗎，謝謝"
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "如題，很多菸酒火鍋汽車全國電子，溫情廣告都喜歡找吳念真，最好還是講台語的，很好奇是因為想要走在地化客群嗎，謝謝"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "無"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "我喜歡吃巧克力"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "我喜歡吃巧克力"
+                                        ]
                                    }
                               ],
-                              "service": "Messaging_1",
-                              "slots": [],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 31,
+                                        "slot": "subject",
+                                        "start": 15
+                                   },
+                                   {
+                                        "exclusive_end": 94,
+                                        "slot": "content",
+                                        "start": 39
+                                   },
+                                   {
+                                        "exclusive_end": 106,
+                                        "slot": "recipient",
+                                        "start": 99
+                                   }
+                              ],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "message": [
-                                             "另外問個問題"
+                                        "recipient": [
+                                             "我喜歡吃巧克力"
                                         ],
-                                        "group_name": [
-                                             "AI 人工智慧"
+                                        "subject": [
+                                             " 為什麼很多廣告都喜歡找吳念真？"
+                                        ],
+                                        "content": [
+                                             "如題，很多菸酒火鍋汽車全國電子，溫情廣告都喜歡找吳念真，最好還是講台語的，很好奇是因為想要走在地化客群嗎，謝謝"
+                                        ],
+                                        "copy_recipient": [
+                                             "無"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "沒關係，先這樣吧，再見"
+                    "utterance": "請幫我寄出一封信件，這封信叫做 為什麼很多廣告都喜歡找吳念真？，這封信的內文為如題，很多菸酒火鍋汽車全國電子，溫情廣告都喜歡找吳念真，最好還是講台語的，很好奇是因為想要走在地化客群嗎，謝謝，收件者為我喜歡吃巧克力，不需設定副本收件者"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "我喜歡吃巧克力"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "我喜歡吃巧克力"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             " 為什麼很多廣告都喜歡找吳念真？"
+                                        ],
+                                        "slot": "subject",
+                                        "values": [
+                                             " 為什麼很多廣告都喜歡找吳念真？"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "如題，很多菸酒火鍋汽車全國電子，溫情廣告都喜歡找吳念真，最好還是講台語的，很好奇是因為想要走在地化客群嗎，謝謝"
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "如題，很多菸酒火鍋汽車全國電子，溫情廣告都喜歡找吳念真，最好還是講台語的，很好奇是因為想要走在地化客群嗎，謝謝"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "無"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 113,
+                                        "slot": "recipient",
+                                        "start": 106
+                                   },
+                                   {
+                                        "exclusive_end": 25,
+                                        "slot": "subject",
+                                        "start": 9
+                                   },
+                                   {
+                                        "exclusive_end": 98,
+                                        "slot": "content",
+                                        "start": 43
+                                   }
+                              ],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "請確認要寄出主旨為 為什麼很多廣告都喜歡找吳念真？的信件嗎？，請確認要寄出的信件內容:如題，很多菸酒火鍋汽車全國電子，溫情廣告都喜歡找吳念真，最好還是講台語的，很好奇是因為想要走在地化客群嗎，謝謝，確認要寄信件給我喜歡吃巧克力嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "AFFIRM",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "我喜歡吃巧克力"
+                                        ],
+                                        "subject": [
+                                             " 為什麼很多廣告都喜歡找吳念真？"
+                                        ],
+                                        "content": [
+                                             "如題，很多菸酒火鍋汽車全國電子，溫情廣告都喜歡找吳念真，最好還是講台語的，很好奇是因為想要走在地化客群嗎，謝謝"
+                                        ],
+                                        "copy_recipient": [
+                                             "無"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "好的，看起來沒甚麼問題"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NOTIFY_SUCCESS",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_call": {
+                                   "method": "SendMail",
+                                   "parameters": {
+                                        "recipient": "我喜歡吃巧克力",
+                                        "subject": " 為什麼很多廣告都喜歡找吳念真？",
+                                        "content": "如題，很多菸酒火鍋汽車全國電子，溫情廣告都喜歡找吳念真，最好還是講台語的，很好奇是因為想要走在地化客群嗎，謝謝",
+                                        "copy_recipient": "無"
+                                   }
+                              },
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "多虧有您的配合，信件已成功寄出"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "THANK_YOU",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "我喜歡吃巧克力"
+                                        ],
+                                        "subject": [
+                                             " 為什麼很多廣告都喜歡找吳念真？"
+                                        ],
+                                        "content": [
+                                             "如題，很多菸酒火鍋汽車全國電子，溫情廣告都喜歡找吳念真，最好還是講台語的，很好奇是因為想要走在地化客群嗎，謝謝"
+                                        ],
+                                        "copy_recipient": [
+                                             "無"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我知道了，謝謝你啊！"
                },
                {
                     "frames": [
@@ -266,13 +687,22 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [],
+                              "service_call": {
+                                   "method": "SendMail",
+                                   "parameters": {
+                                        "recipient": "我喜歡吃巧克力",
+                                        "subject": " 為什麼很多廣告都喜歡找吳念真？",
+                                        "content": "如題，很多菸酒火鍋汽車全國電子，溫情廣告都喜歡找吳念真，最好還是講台語的，很好奇是因為想要走在地化客群嗎，謝謝",
+                                        "copy_recipient": "無"
+                                   }
+                              },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "歡迎下次諮詢，再見"
+                    "utterance": "有問題可以隨時聯繫我！祝您生活愉快！再見！"
                }
           ]
      }

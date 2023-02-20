@@ -2,7 +2,8 @@
      {
           "dialogue_id": 463,
           "services": [
-               "Mail_1"
+               "Messaging_1",
+               "Calendar_1"
           ],
           "turns": [
                {
@@ -12,25 +13,25 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "SendMail"
+                                             "FindMessage"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "SendMail"
+                                             "FindMessage"
                                         ]
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Messaging_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMail",
+                                   "active_intent": "FindMessage",
                                    "requested_slots": [],
                                    "slot_values": {}
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "請幫我寄出一封信件"
+                    "utterance": "我想要知道相關的訊息，請幫幫我"
                },
                {
                     "frames": [
@@ -39,23 +40,17 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "recipient",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "subject",
+                                        "slot": "group_name",
                                         "values": []
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Messaging_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "我想知道這個信件的主旨，我想知道這封信的收件者"
+                    "utterance": "群組名稱為何？"
                },
                {
                     "frames": [
@@ -64,349 +59,388 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "Edwin"
+                                             "AI 人工智慧"
                                         ],
-                                        "slot": "recipient",
+                                        "slot": "group_name",
                                         "values": [
-                                             "Edwin"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             " 崇禎皇帝尚方寶劍  能斬光頭嗎"
-                                        ],
-                                        "slot": "subject",
-                                        "values": [
-                                             " 崇禎皇帝尚方寶劍  能斬光頭嗎"
+                                             "AI 人工智慧"
                                         ]
                                    }
                               ],
-                              "service": "Mail_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 31,
-                                        "slot": "recipient",
-                                        "start": 26
-                                   },
-                                   {
-                                        "exclusive_end": 21,
-                                        "slot": "subject",
-                                        "start": 5
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "SendMail",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "recipient": [
-                                             "Edwin"
-                                        ],
-                                        "subject": [
-                                             " 崇禎皇帝尚方寶劍  能斬光頭嗎"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "信件主旨叫 崇禎皇帝尚方寶劍  能斬光頭嗎，這封信由Edwin收"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "content",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "這封信有任何內容嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "戲看看就可，因為尚方寶劍據我所知的是源自包青天故事，以前說書人講包青天故事時會引，用這段來表示皇帝授權給包青天來執行法條。，但真實的包拯沒有像故事那麼扯，這要詳細講解可能要請來解說會比較好"
-                                        ],
-                                        "slot": "content",
-                                        "values": [
-                                             "戲看看就可，因為尚方寶劍據我所知的是源自包青天故事，以前說書人講包青天故事時會引，用這段來表示皇帝授權給包青天來執行法條。，但真實的包拯沒有像故事那麼扯，這要詳細講解可能要請來解說會比較好"
-                                        ]
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 97,
-                                        "slot": "content",
-                                        "start": 3
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "SendMail",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "recipient": [
-                                             "Edwin"
-                                        ],
-                                        "subject": [
-                                             " 崇禎皇帝尚方寶劍  能斬光頭嗎"
-                                        ],
-                                        "content": [
-                                             "戲看看就可，因為尚方寶劍據我所知的是源自包青天故事，以前說書人講包青天故事時會引，用這段來表示皇帝授權給包青天來執行法條。，但真實的包拯沒有像故事那麼扯，這要詳細講解可能要請來解說會比較好"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "內文為戲看看就可，因為尚方寶劍據我所知的是源自包青天故事，以前說書人講包青天故事時會引，用這段來表示皇帝授權給包青天來執行法條。，但真實的包拯沒有像故事那麼扯，這要詳細講解可能要請來解說會比較好"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "copy_recipient",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "我想知道這封信的副本收件者"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "Jason"
-                                        ],
-                                        "slot": "copy_recipient",
-                                        "values": [
-                                             "Jason"
-                                        ]
-                                   }
-                              ],
-                              "service": "Mail_1",
+                              "service": "Messaging_1",
                               "slots": [
                                    {
                                         "exclusive_end": 11,
-                                        "slot": "copy_recipient",
-                                        "start": 6
+                                        "slot": "group_name",
+                                        "start": 4
                                    }
                               ],
                               "state": {
-                                   "active_intent": "SendMail",
+                                   "active_intent": "FindMessage",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "recipient": [
-                                             "Edwin"
-                                        ],
-                                        "subject": [
-                                             " 崇禎皇帝尚方寶劍  能斬光頭嗎"
-                                        ],
-                                        "content": [
-                                             "戲看看就可，因為尚方寶劍據我所知的是源自包青天故事，以前說書人講包青天故事時會引，用這段來表示皇帝授權給包青天來執行法條。，但真實的包拯沒有像故事那麼扯，這要詳細講解可能要請來解說會比較好"
-                                        ],
-                                        "copy_recipient": [
-                                             "Jason"
+                                        "group_name": [
+                                             "AI 人工智慧"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "副本收件者為Jason"
+                    "utterance": "應該是在AI 人工智慧群組中的訊息"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "CONFIRM",
+                                        "act": "OFFER",
                                         "canonical_values": [
-                                             "Edwin"
+                                             "AI 人工智慧"
                                         ],
-                                        "slot": "recipient",
+                                        "slot": "group_name",
                                         "values": [
-                                             "Edwin"
+                                             "AI 人工智慧"
                                         ]
                                    },
                                    {
-                                        "act": "CONFIRM",
+                                        "act": "INFORM_COUNT",
                                         "canonical_values": [
-                                             " 崇禎皇帝尚方寶劍  能斬光頭嗎"
+                                             "5"
                                         ],
-                                        "slot": "subject",
+                                        "slot": "count",
                                         "values": [
-                                             " 崇禎皇帝尚方寶劍  能斬光頭嗎"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "戲看看就可，因為尚方寶劍據我所知的是源自包青天故事，以前說書人講包青天故事時會引，用這段來表示皇帝授權給包青天來執行法條。，但真實的包拯沒有像故事那麼扯，這要詳細講解可能要請來解說會比較好"
-                                        ],
-                                        "slot": "content",
-                                        "values": [
-                                             "戲看看就可，因為尚方寶劍據我所知的是源自包青天故事，以前說書人講包青天故事時會引，用這段來表示皇帝授權給包青天來執行法條。，但真實的包拯沒有像故事那麼扯，這要詳細講解可能要請來解說會比較好"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "Jason"
-                                        ],
-                                        "slot": "copy_recipient",
-                                        "values": [
-                                             "Jason"
+                                             "5"
                                         ]
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Messaging_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 150,
-                                        "slot": "recipient",
-                                        "start": 145
+                                        "exclusive_end": 10,
+                                        "slot": "group_name",
+                                        "start": 3
+                                   }
+                              ],
+                              "service_call": {
+                                   "method": "FindMessage",
+                                   "parameters": {
+                                        "group_name": "AI 人工智慧"
+                                   }
+                              },
+                              "service_results": [
+                                   {
+                                        "group_name": "AI 人工智慧",
+                                        "contact_name": "Immortal",
+                                        "message": "我想請問，這個可以拿來做regression嗎？我做的領域是視線追蹤"
                                    },
                                    {
-                                        "exclusive_end": 25,
-                                        "slot": "subject",
-                                        "start": 9
+                                        "group_name": "AI 人工智慧",
+                                        "contact_name": "Seal",
+                                        "message": "我不是做這個領域"
                                    },
                                    {
-                                        "exclusive_end": 137,
-                                        "slot": "content",
-                                        "start": 43
+                                        "group_name": "AI 人工智慧",
+                                        "contact_name": "人類惡",
+                                        "message": "Learning Spatio-Temporal Transformer for Visual Tracking (ICCV2021)  你可以查查看"
+                                   },
+                                   {
+                                        "group_name": "AI 人工智慧",
+                                        "contact_name": "Kris",
+                                        "message": "算力要夠"
+                                   },
+                                   {
+                                        "group_name": "AI 人工智慧",
+                                        "contact_name": "只會寫程式的蛋",
+                                        "message": "因為我現在看到的都是做NLP或是做影響分類的"
+                                   }
+                              ]
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "找到在AI 人工智慧群組的聊天訊息，總共有5個結果"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "contact_name",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [
+                                        "contact_name"
+                                   ],
+                                   "slot_values": {
+                                        "group_name": [
+                                             "AI 人工智慧"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我想知道這則訊息是誰寄的？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "Re Re"
+                                        ],
+                                        "slot": "contact_name",
+                                        "values": [
+                                             "Re Re"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 8,
+                                        "slot": "contact_name",
+                                        "start": 3
                                    }
                               ],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "請確認要寄出主旨為 崇禎皇帝尚方寶劍  能斬光頭嗎的信件嗎？，請確認要寄出的信件內容:戲看看就可，因為尚方寶劍據我所知的是源自包青天故事，以前說書人講包青天故事時會引，用這段來表示皇帝授權給包青天來執行法條。，但真實的包拯沒有像故事那麼扯，這要詳細講解可能要請來解說會比較好，確認要寄信件給Edwin嗎？"
+                    "utterance": "用戶為Re Re"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "AFFIRM",
+                                        "act": "SELECT",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMail",
+                                   "active_intent": "LookupEvents",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "recipient": [
-                                             "Edwin"
-                                        ],
-                                        "subject": [
-                                             " 崇禎皇帝尚方寶劍  能斬光頭嗎"
-                                        ],
-                                        "content": [
-                                             "戲看看就可，因為尚方寶劍據我所知的是源自包青天故事，以前說書人講包青天故事時會引，用這段來表示皇帝授權給包青天來執行法條。，但真實的包拯沒有像故事那麼扯，這要詳細講解可能要請來解說會比較好"
-                                        ],
-                                        "copy_recipient": [
-                                             "Jason"
+                                        "group_name": [
+                                             "AI 人工智慧"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "好的，看起來沒甚麼問題"
+                    "utterance": "我知道了"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "NOTIFY_SUCCESS",
+                                        "act": "OFFER_INTENT",
+                                        "canonical_values": [
+                                             "LookupEvents"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "LookupEvents"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "您想要藉此機會順便檢查行事曆中的活動嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "AFFIRM_INTENT",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             " 北橫夜間生態觀察"
+                                        ],
+                                        "slot": "event_name",
+                                        "values": [
+                                             " 北橫夜間生態觀察"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "Aaron"
+                                        ],
+                                        "slot": "participant",
+                                        "values": [
+                                             "Aaron"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "￭活動相關細節可電洽本局風景管理處(03-3946061)本活動預計造訪北橫沿線的後慈湖、蝙蝠洞及枕頭山，探索夜間生態。 「後慈湖」為了生態繁衍及免於環境破壞"
+                                        ],
+                                        "slot": "event_content",
+                                        "values": [
+                                             "￭活動相關細節可電洽本局風景管理處(03-3946061)本活動預計造訪北橫沿線的後慈湖、蝙蝠洞及枕頭山，探索夜間生態。 「後慈湖」為了生態繁衍及免於環境破壞"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "2022/5/6"
+                                        ],
+                                        "slot": "event_date",
+                                        "values": [
+                                             "5月6日"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 22,
+                                        "slot": "event_date",
+                                        "start": 18
+                                   },
+                                   {
+                                        "exclusive_end": 14,
+                                        "slot": "event_name",
+                                        "start": 5
+                                   },
+                                   {
+                                        "exclusive_end": 29,
+                                        "slot": "participant",
+                                        "start": 24
+                                   },
+                                   {
+                                        "exclusive_end": 126,
+                                        "slot": "event_content",
+                                        "start": 47
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "LookupEvents",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "group_name": [
+                                             "AI 人工智慧"
+                                        ],
+                                        "event_date": [
+                                             "5月6日"
+                                        ],
+                                        "event_name": [
+                                             " 北橫夜間生態觀察"
+                                        ],
+                                        "participant": [
+                                             "Aaron"
+                                        ],
+                                        "event_content": [
+                                             "￭活動相關細節可電洽本局風景管理處(03-3946061)本活動預計造訪北橫沿線的後慈湖、蝙蝠洞及枕頭山，探索夜間生態。 「後慈湖」為了生態繁衍及免於環境破壞"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "活動名稱為 北橫夜間生態觀察，活動在5月6日，有Aaron會參加，詳細內容我不太記得了，應該是￭活動相關細節可電洽本局風景管理處(03-3946061)本活動預計造訪北橫沿線的後慈湖、蝙蝠洞及枕頭山，探索夜間生態。 「後慈湖」為了生態繁衍及免於環境破壞，好的，麻煩你了"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NOTIFY_FAILURE",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_call": {
-                                   "method": "SendMail",
+                                   "method": "LookupEvents",
                                    "parameters": {
-                                        "recipient": "Edwin",
-                                        "subject": " 崇禎皇帝尚方寶劍  能斬光頭嗎",
-                                        "content": "戲看看就可，因為尚方寶劍據我所知的是源自包青天故事，以前說書人講包青天故事時會引，用這段來表示皇帝授權給包青天來執行法條。，但真實的包拯沒有像故事那麼扯，這要詳細講解可能要請來解說會比較好",
-                                        "copy_recipient": "Jason"
+                                        "group_name": "AI 人工智慧",
+                                        "event_date": "5月6日",
+                                        "event_name": " 北橫夜間生態觀察",
+                                        "participant": "Aaron",
+                                        "event_content": "￭活動相關細節可電洽本局風景管理處(03-3946061)本活動預計造訪北橫沿線的後慈湖、蝙蝠洞及枕頭山，探索夜間生態。 「後慈湖」為了生態繁衍及免於環境破壞"
                                    }
                               },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "多虧有您的配合，信件已成功寄出"
+                    "utterance": "不好意思，在行事曆上沒辦法找到符合您要求的活動，請用其他條件查詢"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "THANK_YOU",
+                                        "act": "NEGATE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "GOODBYE",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMail",
+                                   "active_intent": "LookupEvents",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "recipient": [
-                                             "Edwin"
+                                        "group_name": [
+                                             "AI 人工智慧"
                                         ],
-                                        "subject": [
-                                             " 崇禎皇帝尚方寶劍  能斬光頭嗎"
+                                        "event_date": [
+                                             "5月6日"
                                         ],
-                                        "content": [
-                                             "戲看看就可，因為尚方寶劍據我所知的是源自包青天故事，以前說書人講包青天故事時會引，用這段來表示皇帝授權給包青天來執行法條。，但真實的包拯沒有像故事那麼扯，這要詳細講解可能要請來解說會比較好"
+                                        "event_name": [
+                                             " 北橫夜間生態觀察"
                                         ],
-                                        "copy_recipient": [
-                                             "Jason"
+                                        "participant": [
+                                             "Aaron"
+                                        ],
+                                        "event_content": [
+                                             "￭活動相關細節可電洽本局風景管理處(03-3946061)本活動預計造訪北橫沿線的後慈湖、蝙蝠洞及枕頭山，探索夜間生態。 「後慈湖」為了生態繁衍及免於環境破壞"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我知道了，謝謝你啊！"
+                    "utterance": "沒關係，先這樣吧，沒有問題了，再見吧！"
                },
                {
                     "frames": [
@@ -419,22 +453,23 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_call": {
-                                   "method": "SendMail",
+                                   "method": "LookupEvents",
                                    "parameters": {
-                                        "recipient": "Edwin",
-                                        "subject": " 崇禎皇帝尚方寶劍  能斬光頭嗎",
-                                        "content": "戲看看就可，因為尚方寶劍據我所知的是源自包青天故事，以前說書人講包青天故事時會引，用這段來表示皇帝授權給包青天來執行法條。，但真實的包拯沒有像故事那麼扯，這要詳細講解可能要請來解說會比較好",
-                                        "copy_recipient": "Jason"
+                                        "group_name": "AI 人工智慧",
+                                        "event_date": "5月6日",
+                                        "event_name": " 北橫夜間生態觀察",
+                                        "participant": "Aaron",
+                                        "event_content": "￭活動相關細節可電洽本局風景管理處(03-3946061)本活動預計造訪北橫沿線的後慈湖、蝙蝠洞及枕頭山，探索夜間生態。 「後慈湖」為了生態繁衍及免於環境破壞"
                                    }
                               },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "好，再見"
+                    "utterance": "再見！祝您生活愉快！"
                }
           ]
      }

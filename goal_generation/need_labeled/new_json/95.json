@@ -2,7 +2,8 @@
      {
           "dialogue_id": 95,
           "services": [
-               "Calendar_1"
+               "Mail_1",
+               "Messaging_1"
           ],
           "turns": [
                {
@@ -12,25 +13,25 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "AddEvent"
+                                             "SendMail"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "AddEvent"
+                                             "SendMail"
                                         ]
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "AddEvent",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {}
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我想要添加一個活動，可以請你幫忙嗎？"
+                    "utterance": "請幫我寄出一封信件"
                },
                {
                     "frames": [
@@ -39,23 +40,17 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "event_date",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_content",
+                                        "slot": "recipient",
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "這個活動辦在幾月幾號呢？，這個活動有任何內容備註嗎？"
+                    "utterance": "我想知道這封信的收件者"
                },
                {
                     "frames": [
@@ -64,180 +59,178 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "2018/9/5"
+                                             "lady"
                                         ],
-                                        "slot": "event_date",
+                                        "slot": "recipient",
                                         "values": [
-                                             "週三"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "藝文活動 Art Events"
-                                        ],
-                                        "slot": "event_content",
-                                        "values": [
-                                             "藝文活動 Art Events"
+                                             "lady"
                                         ]
                                    }
                               ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 7,
-                                        "slot": "event_date",
-                                        "start": 5
-                                   },
-                                   {
-                                        "exclusive_end": 26,
-                                        "slot": "event_content",
-                                        "start": 11
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "AddEvent",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_date": [
-                                             "週三"
-                                        ],
-                                        "event_content": [
-                                             "藝文活動 Art Events"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "活動日期為週三，內容為藝文活動 Art Events"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_name",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "那這個活動叫甚麼呢？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "10月份藝文活動：「焢肉，遇見你」"
-                                        ],
-                                        "slot": "event_name",
-                                        "values": [
-                                             "10月份藝文活動：「焢肉，遇見你」"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 23,
-                                        "slot": "event_name",
-                                        "start": 6
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "AddEvent",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_date": [
-                                             "週三"
-                                        ],
-                                        "event_content": [
-                                             "藝文活動 Art Events"
-                                        ],
-                                        "event_name": [
-                                             "10月份藝文活動：「焢肉，遇見你」"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "這個活動叫做10月份藝文活動：「焢肉，遇見你」"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_time",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "這個活動在幾點開始呢？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "15:25"
-                                        ],
-                                        "slot": "event_time",
-                                        "values": [
-                                             "3時25分"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
+                              "service": "Mail_1",
                               "slots": [
                                    {
                                         "exclusive_end": 8,
-                                        "slot": "event_time",
-                                        "start": 3
+                                        "slot": "recipient",
+                                        "start": 4
                                    }
                               ],
                               "state": {
-                                   "active_intent": "AddEvent",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "event_date": [
-                                             "週三"
-                                        ],
-                                        "event_content": [
-                                             "藝文活動 Art Events"
-                                        ],
-                                        "event_name": [
-                                             "10月份藝文活動：「焢肉，遇見你」"
-                                        ],
-                                        "event_time": [
-                                             "3時25分"
+                                        "recipient": [
+                                             "lady"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "活動在3時25分開始"
+                    "utterance": "收件者為lady"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "subject",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "copy_recipient",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "那這封信叫甚麼呢？，我想知道這封信的副本收件者"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             " 慌！標題有哪些首字最吸睛！？"
+                                        ],
+                                        "slot": "subject",
+                                        "values": [
+                                             " 慌！標題有哪些首字最吸睛！？"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "無"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 20,
+                                        "slot": "subject",
+                                        "start": 5
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "lady"
+                                        ],
+                                        "subject": [
+                                             " 慌！標題有哪些首字最吸睛！？"
+                                        ],
+                                        "copy_recipient": [
+                                             "無"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "這封信叫做 慌！標題有哪些首字最吸睛！？，不需設定副本收件者"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "content",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道這封信的內文"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "怒！標題第一個字要用啥才會有點擊，働！我笨想不到，求！大家快點幫忙想啊！，咦！有卦嗎"
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "怒！標題第一個字要用啥才會有點擊，働！我笨想不到，求！大家快點幫忙想啊！，咦！有卦嗎"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 49,
+                                        "slot": "content",
+                                        "start": 7
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "lady"
+                                        ],
+                                        "subject": [
+                                             " 慌！標題有哪些首字最吸睛！？"
+                                        ],
+                                        "copy_recipient": [
+                                             "無"
+                                        ],
+                                        "content": [
+                                             "怒！標題第一個字要用啥才會有點擊，働！我笨想不到，求！大家快點幫忙想啊！，咦！有卦嗎"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "這封信的內文為怒！標題第一個字要用啥才會有點擊，働！我笨想不到，求！大家快點幫忙想啊！，咦！有卦嗎"
                },
                {
                     "frames": [
@@ -246,67 +239,67 @@
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "週三"
+                                             "lady"
                                         ],
-                                        "slot": "event_date",
+                                        "slot": "recipient",
                                         "values": [
-                                             "週三"
+                                             "lady"
                                         ]
                                    },
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "藝文活動 Art Events"
+                                             " 慌！標題有哪些首字最吸睛！？"
                                         ],
-                                        "slot": "event_content",
+                                        "slot": "subject",
                                         "values": [
-                                             "藝文活動 Art Events"
+                                             " 慌！標題有哪些首字最吸睛！？"
                                         ]
                                    },
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "10月份藝文活動：「焢肉，遇見你」"
+                                             "無"
                                         ],
-                                        "slot": "event_name",
+                                        "slot": "copy_recipient",
                                         "values": [
-                                             "10月份藝文活動：「焢肉，遇見你」"
+                                             "無"
                                         ]
                                    },
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "3時25分"
+                                             "怒！標題第一個字要用啥才會有點擊，働！我笨想不到，求！大家快點幫忙想啊！，咦！有卦嗎"
                                         ],
-                                        "slot": "event_time",
+                                        "slot": "content",
                                         "values": [
-                                             "3時25分"
+                                             "怒！標題第一個字要用啥才會有點擊，働！我笨想不到，求！大家快點幫忙想啊！，咦！有卦嗎"
                                         ]
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Mail_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 40,
-                                        "slot": "event_date",
-                                        "start": 38
+                                        "exclusive_end": 96,
+                                        "slot": "recipient",
+                                        "start": 92
                                    },
                                    {
                                         "exclusive_end": 24,
-                                        "slot": "event_name",
-                                        "start": 7
+                                        "slot": "subject",
+                                        "start": 9
                                    },
                                    {
-                                        "exclusive_end": 61,
-                                        "slot": "event_time",
-                                        "start": 56
+                                        "exclusive_end": 84,
+                                        "slot": "content",
+                                        "start": 42
                                    }
                               ],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "確認要建立名叫10月份藝文活動：「焢肉，遇見你」的活動嗎？，確認要建立舉辦在週三的活動嗎？，確認要建立舉辦在當天3時25分的活動嗎？"
+                    "utterance": "請確認要寄出主旨為 慌！標題有哪些首字最吸睛！？的信件嗎？，請確認要寄出的信件內容:怒！標題第一個字要用啥才會有點擊，働！我笨想不到，求！大家快點幫忙想啊！，咦！有卦嗎，確認要寄信件給lady嗎？"
                },
                {
                     "frames": [
@@ -319,30 +312,30 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "AddEvent",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "event_date": [
-                                             "週三"
+                                        "recipient": [
+                                             "lady"
                                         ],
-                                        "event_content": [
-                                             "藝文活動 Art Events"
+                                        "subject": [
+                                             " 慌！標題有哪些首字最吸睛！？"
                                         ],
-                                        "event_name": [
-                                             "10月份藝文活動：「焢肉，遇見你」"
+                                        "copy_recipient": [
+                                             "無"
                                         ],
-                                        "event_time": [
-                                             "3時25分"
+                                        "content": [
+                                             "怒！標題第一個字要用啥才會有點擊，働！我笨想不到，求！大家快點幫忙想啊！，咦！有卦嗎"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我對以上資訊沒問題"
+                    "utterance": "好的，看起來沒甚麼問題"
                },
                {
                     "frames": [
@@ -355,55 +348,133 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "還有什麼能幫到您的嗎？"
+                    "utterance": "還有什麼需要幫助的嗎？"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "NEGATE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "FindMessage"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "FindMessage"
+                                        ]
                                    },
                                    {
-                                        "act": "GOODBYE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "海陽"
+                                        ],
+                                        "slot": "contact_name",
+                                        "values": [
+                                             "海陽"
+                                        ]
                                    }
                               ],
-                              "service": "Calendar_1",
-                              "slots": [],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 21,
+                                        "slot": "contact_name",
+                                        "start": 19
+                                   }
+                              ],
                               "state": {
-                                   "active_intent": "AddEvent",
+                                   "active_intent": "FindMessage",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "event_date": [
-                                             "週三"
-                                        ],
-                                        "event_content": [
-                                             "藝文活動 Art Events"
-                                        ],
-                                        "event_name": [
-                                             "10月份藝文活動：「焢肉，遇見你」"
-                                        ],
-                                        "event_time": [
-                                             "3時25分"
+                                        "contact_name": [
+                                             "海陽"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "沒關係，先這樣吧，沒有了！再見！"
+                    "utterance": "我想要知道相關的訊息，請幫幫我，用戶為海陽"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_COUNT",
+                                        "canonical_values": [
+                                             "5"
+                                        ],
+                                        "slot": "count",
+                                        "values": [
+                                             "5"
+                                        ]
+                                   },
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "海陽"
+                                        ],
+                                        "slot": "contact_name",
+                                        "values": [
+                                             "海陽"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 13,
+                                        "slot": "contact_name",
+                                        "start": 11
+                                   }
+                              ],
+                              "service_call": {
+                                   "method": "FindMessage",
+                                   "parameters": {
+                                        "contact_name": [
+                                             "海陽"
+                                        ]
+                                   }
+                              },
+                              "service_results": [
+                                   {
+                                        "group_name": "無",
+                                        "contact_name": "海陽",
+                                        "message": "看用途吧，還有成本"
+                                   },
+                                   {
+                                        "group_name": "AI 人工智慧",
+                                        "contact_name": "海陽",
+                                        "message": "其實只要把握一個原則：「牽涉到錢 就是假的」"
+                                   },
+                                   {
+                                        "group_name": "AI 人工智慧",
+                                        "contact_name": "海陽",
+                                        "message": "去年有想過這個，感覺現在更成熟了應該可以玩玩看。"
+                                   },
+                                   {
+                                        "group_name": "無",
+                                        "contact_name": "海陽",
+                                        "message": "昨天測試請他寫台積電的維基百科"
+                                   },
+                                   {
+                                        "group_name": "AI 人工智慧",
+                                        "contact_name": "海陽",
+                                        "message": "這樣也可以啊  "
+                                   }
+                              ]
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "總共有5個結果，找到與海陽聊天的訊息"
                },
                {
                     "frames": [
@@ -416,13 +487,48 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Messaging_1",
                               "slots": [],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "contact_name": [
+                                             "海陽"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "沒有問題了，再見吧！"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "GOODBYE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_call": {
+                                   "method": "FindMessage",
+                                   "parameters": {
+                                        "contact_name": [
+                                             "海陽"
+                                        ]
+                                   }
+                              },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "應該做的，再見！"
+                    "utterance": "再見"
                }
           ]
      }

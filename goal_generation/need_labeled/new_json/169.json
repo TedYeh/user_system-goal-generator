@@ -2,8 +2,8 @@
      {
           "dialogue_id": 169,
           "services": [
-               "Calendar_1",
-               "Messaging_1"
+               "Messaging_1",
+               "Mail_1"
           ],
           "turns": [
                {
@@ -13,122 +13,485 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "AddEvent"
+                                             "FindMessage"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "AddEvent"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "12:00"
-                                        ],
-                                        "slot": "event_time",
-                                        "values": [
-                                             "下午12時0分"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "Free to get the Labview Certified!"
-                                        ],
-                                        "slot": "event_name",
-                                        "values": [
-                                             "Free to get the Labview Certified!"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "無"
-                                        ],
-                                        "slot": "participant",
-                                        "values": [
-                                             "無"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "Free to get the Labview Certified!"
-                                        ],
-                                        "slot": "event_content",
-                                        "values": [
-                                             "Free to get the Labview Certified!"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "2018/7/4"
-                                        ],
-                                        "slot": "event_date",
-                                        "values": [
-                                             "2018年7月4號"
+                                             "FindMessage"
                                         ]
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {}
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我想要找則訊息，可以請你幫忙嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "group_name",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "群組名稱為何？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "程式資訊討論群"
+                                        ],
+                                        "slot": "group_name",
+                                        "values": [
+                                             "程式資訊討論群"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 84,
-                                        "slot": "event_time",
-                                        "start": 77
-                                   },
-                                   {
-                                        "exclusive_end": 58,
-                                        "slot": "event_name",
-                                        "start": 24
-                                   },
-                                   {
-                                        "exclusive_end": 124,
-                                        "slot": "event_name",
-                                        "start": 90
-                                   },
-                                   {
-                                        "exclusive_end": 58,
-                                        "slot": "event_content",
-                                        "start": 24
-                                   },
-                                   {
-                                        "exclusive_end": 124,
-                                        "slot": "event_content",
-                                        "start": 90
-                                   },
-                                   {
-                                        "exclusive_end": 71,
-                                        "slot": "event_date",
-                                        "start": 62
+                                        "exclusive_end": 11,
+                                        "slot": "group_name",
+                                        "start": 4
                                    }
                               ],
                               "state": {
-                                   "active_intent": "AddEvent",
+                                   "active_intent": "FindMessage",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "event_date": [
-                                             "2018年7月4號"
-                                        ],
-                                        "event_time": [
-                                             "下午12時0分"
-                                        ],
-                                        "event_name": [
-                                             "Free to get the Labview Certified!"
-                                        ],
-                                        "participant": [
-                                             "無"
-                                        ],
-                                        "event_content": [
-                                             "Free to get the Labview Certified!"
+                                        "group_name": [
+                                             "程式資訊討論群"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我想要添加一個活動，可以請你幫忙嗎？，活動名稱叫Free to get the Labview Certified!，日期為2018年7月4號，活動時間為下午12時0分，活動內容為Free to get the Labview Certified!，不需設定參加者"
+                    "utterance": "應該是在程式資訊討論群群組中的訊息"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "message",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道訊息內容"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "好的謝謝！"
+                                        ],
+                                        "slot": "message",
+                                        "values": [
+                                             "好的謝謝！"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 8,
+                                        "slot": "message",
+                                        "start": 3
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "group_name": [
+                                             "程式資訊討論群"
+                                        ],
+                                        "message": [
+                                             "好的謝謝！"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "訊息為好的謝謝！"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "程式資訊討論群"
+                                        ],
+                                        "slot": "group_name",
+                                        "values": [
+                                             "程式資訊討論群"
+                                        ]
+                                   },
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "好的謝謝！"
+                                        ],
+                                        "slot": "message",
+                                        "values": [
+                                             "好的謝謝！"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM_COUNT",
+                                        "canonical_values": [
+                                             "1"
+                                        ],
+                                        "slot": "count",
+                                        "values": [
+                                             "1"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 10,
+                                        "slot": "group_name",
+                                        "start": 3
+                                   }
+                              ],
+                              "service_call": {
+                                   "method": "FindMessage",
+                                   "parameters": {
+                                        "group_name": "程式資訊討論群",
+                                        "message": "好的謝謝！"
+                                   }
+                              },
+                              "service_results": [
+                                   {
+                                        "group_name": "程式資訊討論群",
+                                        "contact_name": "aellen",
+                                        "message": "好的謝謝！"
+                                   }
+                              ]
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "找到在程式資訊討論群群組的聊天訊息，總共有1個結果"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "SELECT",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "group_name": [
+                                             "程式資訊討論群"
+                                        ],
+                                        "message": [
+                                             "好的謝謝！"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "好的，我知道了"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQ_MORE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "還有什麼問題嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "SendMail"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "SendMail"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {}
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "請幫我寄出一封信件"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "subject",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "copy_recipient",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道這個信件的主旨，你知道這封信的副本收件者嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             " 『統一發票』這名字沒有『統戰』嫌疑嗎？"
+                                        ],
+                                        "slot": "subject",
+                                        "values": [
+                                             " 『統一發票』這名字沒有『統戰』嫌疑嗎？"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "井上清水"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "井上清水"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 25,
+                                        "slot": "subject",
+                                        "start": 5
+                                   },
+                                   {
+                                        "exclusive_end": 36,
+                                        "slot": "copy_recipient",
+                                        "start": 32
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "subject": [
+                                             " 『統一發票』這名字沒有『統戰』嫌疑嗎？"
+                                        ],
+                                        "copy_recipient": [
+                                             "井上清水"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "這封信叫做 『統一發票』這名字沒有『統戰』嫌疑嗎？，副本收件者為井上清水"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "content",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道這封信的內文"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "安安，大給賀阿，是降的啦，本肥想問問說阿，買大陸的東西有寫它們的標語是很正常的吧！，就像其它國家也會寫一樣阿，但如果是因為大陸關係恐有統戰之虞的話阿，那『統一發票』這名字就沒有『統戰』嫌疑嗎，理論上臺灣自己要先禁用這些標語吧！，不然這樣不就是雙標行為而已嗎_"
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "安安，大給賀阿，是降的啦，本肥想問問說阿，買大陸的東西有寫它們的標語是很正常的吧！，就像其它國家也會寫一樣阿，但如果是因為大陸關係恐有統戰之虞的話阿，那『統一發票』這名字就沒有『統戰』嫌疑嗎，理論上臺灣自己要先禁用這些標語吧！，不然這樣不就是雙標行為而已嗎_"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 132,
+                                        "slot": "content",
+                                        "start": 3
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "subject": [
+                                             " 『統一發票』這名字沒有『統戰』嫌疑嗎？"
+                                        ],
+                                        "copy_recipient": [
+                                             "井上清水"
+                                        ],
+                                        "content": [
+                                             "安安，大給賀阿，是降的啦，本肥想問問說阿，買大陸的東西有寫它們的標語是很正常的吧！，就像其它國家也會寫一樣阿，但如果是因為大陸關係恐有統戰之虞的話阿，那『統一發票』這名字就沒有『統戰』嫌疑嗎，理論上臺灣自己要先禁用這些標語吧！，不然這樣不就是雙標行為而已嗎_"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "內容為安安，大給賀阿，是降的啦，本肥想問問說阿，買大陸的東西有寫它們的標語是很正常的吧！，就像其它國家也會寫一樣阿，但如果是因為大陸關係恐有統戰之虞的話阿，那『統一發票』這名字就沒有『統戰』嫌疑嗎，理論上臺灣自己要先禁用這些標語吧！，不然這樣不就是雙標行為而已嗎_"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "recipient",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "你知道這封信是寄給誰的嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "assf"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "assf"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 8,
+                                        "slot": "recipient",
+                                        "start": 4
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "subject": [
+                                             " 『統一發票』這名字沒有『統戰』嫌疑嗎？"
+                                        ],
+                                        "copy_recipient": [
+                                             "井上清水"
+                                        ],
+                                        "content": [
+                                             "安安，大給賀阿，是降的啦，本肥想問問說阿，買大陸的東西有寫它們的標語是很正常的吧！，就像其它國家也會寫一樣阿，但如果是因為大陸關係恐有統戰之虞的話阿，那『統一發票』這名字就沒有『統戰』嫌疑嗎，理論上臺灣自己要先禁用這些標語吧！，不然這樣不就是雙標行為而已嗎_"
+                                        ],
+                                        "recipient": [
+                                             "assf"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "這封信由assf收"
                },
                {
                     "frames": [
@@ -137,82 +500,67 @@
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "2018年7月4號"
+                                             " 『統一發票』這名字沒有『統戰』嫌疑嗎？"
                                         ],
-                                        "slot": "event_date",
+                                        "slot": "subject",
                                         "values": [
-                                             "2018年7月4號"
+                                             " 『統一發票』這名字沒有『統戰』嫌疑嗎？"
                                         ]
                                    },
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "下午12時0分"
+                                             "井上清水"
                                         ],
-                                        "slot": "event_time",
+                                        "slot": "copy_recipient",
                                         "values": [
-                                             "下午12時0分"
+                                             "井上清水"
                                         ]
                                    },
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "Free to get the Labview Certified!"
+                                             "安安，大給賀阿，是降的啦，本肥想問問說阿，買大陸的東西有寫它們的標語是很正常的吧！，就像其它國家也會寫一樣阿，但如果是因為大陸關係恐有統戰之虞的話阿，那『統一發票』這名字就沒有『統戰』嫌疑嗎，理論上臺灣自己要先禁用這些標語吧！，不然這樣不就是雙標行為而已嗎_"
                                         ],
-                                        "slot": "event_name",
+                                        "slot": "content",
                                         "values": [
-                                             "Free to get the Labview Certified!"
+                                             "安安，大給賀阿，是降的啦，本肥想問問說阿，買大陸的東西有寫它們的標語是很正常的吧！，就像其它國家也會寫一樣阿，但如果是因為大陸關係恐有統戰之虞的話阿，那『統一發票』這名字就沒有『統戰』嫌疑嗎，理論上臺灣自己要先禁用這些標語吧！，不然這樣不就是雙標行為而已嗎_"
                                         ]
                                    },
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "無"
+                                             "assf"
                                         ],
-                                        "slot": "participant",
+                                        "slot": "recipient",
                                         "values": [
-                                             "無"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "Free to get the Labview Certified!"
-                                        ],
-                                        "slot": "event_content",
-                                        "values": [
-                                             "Free to get the Labview Certified!"
+                                             "assf"
                                         ]
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Mail_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 64,
-                                        "slot": "event_date",
-                                        "start": 55
+                                        "exclusive_end": 29,
+                                        "slot": "subject",
+                                        "start": 9
                                    },
                                    {
-                                        "exclusive_end": 87,
-                                        "slot": "event_time",
-                                        "start": 80
+                                        "exclusive_end": 176,
+                                        "slot": "content",
+                                        "start": 47
                                    },
                                    {
-                                        "exclusive_end": 41,
-                                        "slot": "event_name",
-                                        "start": 7
-                                   },
-                                   {
-                                        "exclusive_end": 41,
-                                        "slot": "event_content",
-                                        "start": 7
+                                        "exclusive_end": 188,
+                                        "slot": "recipient",
+                                        "start": 184
                                    }
                               ],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "確認要建立名叫Free to get the Labview Certified!的活動嗎？，確認要建立舉辦在2018年7月4號的活動嗎？，確認要建立舉辦在當天下午12時0分的活動嗎？"
+                    "utterance": "請確認要寄出主旨為 『統一發票』這名字沒有『統戰』嫌疑嗎？的信件嗎？，請確認要寄出的信件內容:安安，大給賀阿，是降的啦，本肥想問問說阿，買大陸的東西有寫它們的標語是很正常的吧！，就像其它國家也會寫一樣阿，但如果是因為大陸關係恐有統戰之虞的話阿，那『統一發票』這名字就沒有『統戰』嫌疑嗎，理論上臺灣自己要先禁用這些標語吧！，不然這樣不就是雙標行為而已嗎_，確認要寄信件給assf嗎？"
                },
                {
                     "frames": [
@@ -225,26 +573,23 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "AddEvent",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "event_date": [
-                                             "2018年7月4號"
+                                        "subject": [
+                                             " 『統一發票』這名字沒有『統戰』嫌疑嗎？"
                                         ],
-                                        "event_time": [
-                                             "下午12時0分"
+                                        "copy_recipient": [
+                                             "井上清水"
                                         ],
-                                        "event_name": [
-                                             "Free to get the Labview Certified!"
+                                        "content": [
+                                             "安安，大給賀阿，是降的啦，本肥想問問說阿，買大陸的東西有寫它們的標語是很正常的吧！，就像其它國家也會寫一樣阿，但如果是因為大陸關係恐有統戰之虞的話阿，那『統一發票』這名字就沒有『統戰』嫌疑嗎，理論上臺灣自己要先禁用這些標語吧！，不然這樣不就是雙標行為而已嗎_"
                                         ],
-                                        "participant": [
-                                             "無"
-                                        ],
-                                        "event_content": [
-                                             "Free to get the Labview Certified!"
+                                        "recipient": [
+                                             "assf"
                                         ]
                                    }
                               }
@@ -264,349 +609,22 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "service_call": {
-                                   "method": "AddEvent",
+                                   "method": "SendMail",
                                    "parameters": {
-                                        "event_date": "2018年7月4號",
-                                        "event_time": "下午12時0分",
-                                        "event_name": "Free to get the Labview Certified!",
-                                        "participant": "無",
-                                        "event_content": "Free to get the Labview Certified!"
+                                        "subject": " 『統一發票』這名字沒有『統戰』嫌疑嗎？",
+                                        "copy_recipient": "井上清水",
+                                        "content": "安安，大給賀阿，是降的啦，本肥想問問說阿，買大陸的東西有寫它們的標語是很正常的吧！，就像其它國家也會寫一樣阿，但如果是因為大陸關係恐有統戰之虞的話阿，那『統一發票』這名字就沒有『統戰』嫌疑嗎，理論上臺灣自己要先禁用這些標語吧！，不然這樣不就是雙標行為而已嗎_",
+                                        "recipient": "assf"
                                    }
                               },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "多虧有您的配合，活動已添加至行事曆"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM_INTENT",
-                                        "canonical_values": [
-                                             "SendMessage"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "SendMessage"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "SendMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {}
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "我想要寄則訊息，可以請你幫忙嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "group_name",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "你知道群組名稱嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "AI 人工智慧"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "AI 人工智慧"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 11,
-                                        "slot": "group_name",
-                                        "start": 4
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "SendMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "group_name": [
-                                             "AI 人工智慧"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "應該是在AI 人工智慧群組中的訊息"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "message",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "所以這則訊息講了什麼？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "買點數卡? 有匯款就去警察局凍結那個人頭戶先吧"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "買點數卡? 有匯款就去警察局凍結那個人頭戶先吧"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 28,
-                                        "slot": "message",
-                                        "start": 5
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "SendMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "group_name": [
-                                             "AI 人工智慧"
-                                        ],
-                                        "message": [
-                                             "買點數卡? 有匯款就去警察局凍結那個人頭戶先吧"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "訊息內容為買點數卡? 有匯款就去警察局凍結那個人頭戶先吧"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "AI 人工智慧"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "AI 人工智慧"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "買點數卡? 有匯款就去警察局凍結那個人頭戶先吧"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "買點數卡? 有匯款就去警察局凍結那個人頭戶先吧"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 48,
-                                        "slot": "group_name",
-                                        "start": 41
-                                   },
-                                   {
-                                        "exclusive_end": 30,
-                                        "slot": "message",
-                                        "start": 7
-                                   }
-                              ],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "確認要傳送訊息買點數卡? 有匯款就去警察局凍結那個人頭戶先吧嗎？，確認要傳送訊息到AI 人工智慧嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "AFFIRM",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "SendMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "group_name": [
-                                             "AI 人工智慧"
-                                        ],
-                                        "message": [
-                                             "買點數卡? 有匯款就去警察局凍結那個人頭戶先吧"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "我對以上資訊沒問題"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQ_MORE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "還需要什麼幫助嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NEGATE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "THANK_YOU",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "SendMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "group_name": [
-                                             "AI 人工智慧"
-                                        ],
-                                        "message": [
-                                             "買點數卡? 有匯款就去警察局凍結那個人頭戶先吧"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "沒關係，先這樣吧，謝謝了"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQ_MORE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "還需要什麼幫助嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NEGATE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "GOODBYE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "SendMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "group_name": [
-                                             "AI 人工智慧"
-                                        ],
-                                        "message": [
-                                             "買點數卡? 有匯款就去警察局凍結那個人頭戶先吧"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "沒關係，先這樣吧，沒有了！再見！"
+                    "utterance": "多虧有您的配合，信件已成功寄出"
                },
                {
                     "frames": [
@@ -619,8 +637,53 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "subject": [
+                                             " 『統一發票』這名字沒有『統戰』嫌疑嗎？"
+                                        ],
+                                        "copy_recipient": [
+                                             "井上清水"
+                                        ],
+                                        "content": [
+                                             "安安，大給賀阿，是降的啦，本肥想問問說阿，買大陸的東西有寫它們的標語是很正常的吧！，就像其它國家也會寫一樣阿，但如果是因為大陸關係恐有統戰之虞的話阿，那『統一發票』這名字就沒有『統戰』嫌疑嗎，理論上臺灣自己要先禁用這些標語吧！，不然這樣不就是雙標行為而已嗎_"
+                                        ],
+                                        "recipient": [
+                                             "assf"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "沒有了！再見！"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "GOODBYE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_call": {
+                                   "method": "SendMail",
+                                   "parameters": {
+                                        "subject": " 『統一發票』這名字沒有『統戰』嫌疑嗎？",
+                                        "copy_recipient": "井上清水",
+                                        "content": "安安，大給賀阿，是降的啦，本肥想問問說阿，買大陸的東西有寫它們的標語是很正常的吧！，就像其它國家也會寫一樣阿，但如果是因為大陸關係恐有統戰之虞的話阿，那『統一發票』這名字就沒有『統戰』嫌疑嗎，理論上臺灣自己要先禁用這些標語吧！，不然這樣不就是雙標行為而已嗎_",
+                                        "recipient": "assf"
+                                   }
+                              },
                               "service_results": []
                          }
                     ],

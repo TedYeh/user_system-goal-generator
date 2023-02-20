@@ -2,6 +2,7 @@
      {
           "dialogue_id": 433,
           "services": [
+               "Messaging_1",
                "Calendar_1"
           ],
           "turns": [
@@ -12,162 +13,222 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "AddEvent"
+                                             "FindMessage"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "AddEvent"
+                                             "FindMessage"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "程式資訊討論群"
+                                        ],
+                                        "slot": "group_name",
+                                        "values": [
+                                             "程式資訊討論群"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "許智翔"
+                                        ],
+                                        "slot": "contact_name",
+                                        "values": [
+                                             "許智翔"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 20,
+                                        "slot": "group_name",
+                                        "start": 13
+                                   },
+                                   {
+                                        "exclusive_end": 27,
+                                        "slot": "contact_name",
+                                        "start": 24
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "contact_name": [
+                                             "許智翔"
+                                        ],
+                                        "group_name": [
+                                             "程式資訊討論群"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "請幫我找一則訊息，群組叫做程式資訊討論群，用戶為許智翔"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_COUNT",
+                                        "canonical_values": [
+                                             "1"
+                                        ],
+                                        "slot": "count",
+                                        "values": [
+                                             "1"
+                                        ]
+                                   },
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "許智翔"
+                                        ],
+                                        "slot": "contact_name",
+                                        "values": [
+                                             "許智翔"
+                                        ]
+                                   },
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "程式資訊討論群"
+                                        ],
+                                        "slot": "group_name",
+                                        "values": [
+                                             "程式資訊討論群"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 32,
+                                        "slot": "contact_name",
+                                        "start": 29
+                                   },
+                                   {
+                                        "exclusive_end": 18,
+                                        "slot": "group_name",
+                                        "start": 11
+                                   }
+                              ],
+                              "service_call": {
+                                   "method": "FindMessage",
+                                   "parameters": {
+                                        "contact_name": [
+                                             "許智翔"
+                                        ],
+                                        "group_name": [
+                                             "程式資訊討論群"
+                                        ]
+                                   }
+                              },
+                              "service_results": [
+                                   {
+                                        "group_name": "程式資訊討論群",
+                                        "contact_name": "許智翔",
+                                        "message": "可以 出來了 感謝"
+                                   }
+                              ]
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "總共有1個結果，找到在程式資訊討論群群組的聊天訊息，找到與許智翔聊天的訊息"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "message",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [
+                                        "message"
+                                   ],
+                                   "slot_values": {
+                                        "contact_name": [
+                                             "許智翔"
+                                        ],
+                                        "group_name": [
+                                             "程式資訊討論群"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我想知道他說了什麼？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "可以 出來了 感謝"
+                                        ],
+                                        "slot": "message",
+                                        "values": [
+                                             "可以 出來了 感謝"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 12,
+                                        "slot": "message",
+                                        "start": 3
+                                   }
+                              ],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "跟他說可以 出來了 感謝"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "LookupEvents"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "LookupEvents"
                                         ]
                                    }
                               ],
                               "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "AddEvent",
+                                   "active_intent": "LookupEvents",
                                    "requested_slots": [],
                                    "slot_values": {}
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我想要添加一個活動，可以請你幫忙嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "participant",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_location",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "想知道這個活動的參加者，這個活動辦在哪裡啊？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "無"
-                                        ],
-                                        "slot": "participant",
-                                        "values": [
-                                             "無"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "​中央研究院 學術活動中心"
-                                        ],
-                                        "slot": "event_location",
-                                        "values": [
-                                             "​中央研究院 學術活動中心"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 28,
-                                        "slot": "event_location",
-                                        "start": 15
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "AddEvent",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "participant": [
-                                             "無"
-                                        ],
-                                        "event_location": [
-                                             "​中央研究院 學術活動中心"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "這個活動不需設定參加者，地點為​中央研究院 學術活動中心"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_content",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "這個活動有註記任何內容嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "PRDC​ 2018​"
-                                        ],
-                                        "slot": "event_content",
-                                        "values": [
-                                             "PRDC​ 2018​"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 25,
-                                        "slot": "event_content",
-                                        "start": 14
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "AddEvent",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "participant": [
-                                             "無"
-                                        ],
-                                        "event_location": [
-                                             "​中央研究院 學術活動中心"
-                                        ],
-                                        "event_content": [
-                                             "PRDC​ 2018​"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "詳細內容我不太記得了，應該是PRDC​ 2018​"
+                    "utterance": "我想要知道相關的活動，請幫幫我"
                },
                {
                     "frames": [
@@ -195,44 +256,35 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "2018 IEEE 23rd Pacific Rim International Symposium on Dependable Computing (PRDC​ 2018​ )"
+                                             "111年度百步之鄉金峰鄕-紅金寶系列活動"
                                         ],
                                         "slot": "event_name",
                                         "values": [
-                                             "2018 IEEE 23rd Pacific Rim International Symposium on Dependable Computing (PRDC​ 2018​ )"
+                                             "111年度百步之鄉金峰鄕-紅金寶系列活動"
                                         ]
                                    }
                               ],
                               "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 94,
+                                        "exclusive_end": 25,
                                         "slot": "event_name",
                                         "start": 5
                                    }
                               ],
                               "state": {
-                                   "active_intent": "AddEvent",
+                                   "active_intent": "LookupEvents",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "participant": [
-                                             "無"
-                                        ],
-                                        "event_location": [
-                                             "​中央研究院 學術活動中心"
-                                        ],
-                                        "event_content": [
-                                             "PRDC​ 2018​"
-                                        ],
                                         "event_name": [
-                                             "2018 IEEE 23rd Pacific Rim International Symposium on Dependable Computing (PRDC​ 2018​ )"
+                                             "111年度百步之鄉金峰鄕-紅金寶系列活動"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "活動名稱叫2018 IEEE 23rd Pacific Rim International Symposium on Dependable Computing (PRDC​ 2018​ )"
+                    "utterance": "活動名稱為111年度百步之鄉金峰鄕-紅金寶系列活動"
                },
                {
                     "frames": [
@@ -241,13 +293,7 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "event_date",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_time",
+                                        "slot": "event_content",
                                         "values": []
                                    }
                               ],
@@ -257,7 +303,7 @@
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "我想知道活動在何時舉行，我想知道活動在當天何時開始"
+                    "utterance": "這個活動有任何內容註記嗎？"
                },
                {
                     "frames": [
@@ -266,171 +312,188 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "2018/12/4"
+                                             "十月至十一月為洛神花盛開時節，金峰鄉公所辦理洛神花季系列活動"
                                         ],
-                                        "slot": "event_date",
+                                        "slot": "event_content",
                                         "values": [
-                                             "後天"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "09:00"
-                                        ],
-                                        "slot": "event_time",
-                                        "values": [
-                                             "9時0分"
+                                             "十月至十一月為洛神花盛開時節，金峰鄉公所辦理洛神花季系列活動"
                                         ]
                                    }
                               ],
                               "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 7,
-                                        "slot": "event_date",
-                                        "start": 5
-                                   },
-                                   {
-                                        "exclusive_end": 15,
-                                        "slot": "event_time",
-                                        "start": 11
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "AddEvent",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "participant": [
-                                             "無"
-                                        ],
-                                        "event_location": [
-                                             "​中央研究院 學術活動中心"
-                                        ],
-                                        "event_content": [
-                                             "PRDC​ 2018​"
-                                        ],
-                                        "event_name": [
-                                             "2018 IEEE 23rd Pacific Rim International Symposium on Dependable Computing (PRDC​ 2018​ )"
-                                        ],
-                                        "event_date": [
-                                             "後天"
-                                        ],
-                                        "event_time": [
-                                             "9時0分"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "活動日期為後天，時間為9時0分"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "無"
-                                        ],
-                                        "slot": "participant",
-                                        "values": [
-                                             "無"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "​中央研究院 學術活動中心"
-                                        ],
-                                        "slot": "event_location",
-                                        "values": [
-                                             "​中央研究院 學術活動中心"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "PRDC​ 2018​"
-                                        ],
+                                        "exclusive_end": 37,
                                         "slot": "event_content",
-                                        "values": [
-                                             "PRDC​ 2018​"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "2018 IEEE 23rd Pacific Rim International Symposium on Dependable Computing (PRDC​ 2018​ )"
-                                        ],
-                                        "slot": "event_name",
-                                        "values": [
-                                             "2018 IEEE 23rd Pacific Rim International Symposium on Dependable Computing (PRDC​ 2018​ )"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "後天"
-                                        ],
-                                        "slot": "event_date",
-                                        "values": [
-                                             "後天"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "9時0分"
-                                        ],
-                                        "slot": "event_time",
-                                        "values": [
-                                             "9時0分"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 159,
-                                        "slot": "event_location",
-                                        "start": 146
-                                   },
-                                   {
-                                        "exclusive_end": 94,
-                                        "slot": "event_content",
-                                        "start": 83
-                                   },
-                                   {
-                                        "exclusive_end": 96,
-                                        "slot": "event_name",
                                         "start": 7
-                                   },
-                                   {
-                                        "exclusive_end": 112,
-                                        "slot": "event_date",
-                                        "start": 110
-                                   },
-                                   {
-                                        "exclusive_end": 132,
-                                        "slot": "event_time",
-                                        "start": 128
                                    }
                               ],
-                              "service_results": []
+                              "state": {
+                                   "active_intent": "LookupEvents",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_name": [
+                                             "111年度百步之鄉金峰鄕-紅金寶系列活動"
+                                        ],
+                                        "event_content": [
+                                             "十月至十一月為洛神花盛開時節，金峰鄉公所辦理洛神花季系列活動"
+                                        ]
+                                   }
+                              }
                          }
                     ],
-                    "speaker": "SYSTEM",
-                    "utterance": "確認要建立名叫2018 IEEE 23rd Pacific Rim International Symposium on Dependable Computing (PRDC​ 2018​ )的活動嗎？，確認要建立舉辦在後天的活動嗎？，確認要建立舉辦在當天9時0分的活動嗎？，確認要建立舉辦在​中央研究院 學術活動中心的活動嗎？"
+                    "speaker": "USER",
+                    "utterance": "幫我在活動備註十月至十一月為洛神花盛開時節，金峰鄉公所辦理洛神花季系列活動"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "AFFIRM",
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_location",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "這個活動辦在哪裡啊？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "event_location",
+                                        "values": [
+                                             "無"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "LookupEvents",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_name": [
+                                             "111年度百步之鄉金峰鄕-紅金寶系列活動"
+                                        ],
+                                        "event_content": [
+                                             "十月至十一月為洛神花盛開時節，金峰鄉公所辦理洛神花季系列活動"
+                                        ],
+                                        "event_location": [
+                                             "無"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "這個活動不需設定地點"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_COUNT",
+                                        "canonical_values": [
+                                             "1"
+                                        ],
+                                        "slot": "count",
+                                        "values": [
+                                             "1"
+                                        ]
+                                   },
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "111年度百步之鄉金峰鄕-紅金寶系列活動"
+                                        ],
+                                        "slot": "event_name",
+                                        "values": [
+                                             "111年度百步之鄉金峰鄕-紅金寶系列活動"
+                                        ]
+                                   },
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "十月至十一月為洛神花盛開時節，金峰鄉公所辦理洛神花季系列活動"
+                                        ],
+                                        "slot": "event_content",
+                                        "values": [
+                                             "十月至十一月為洛神花盛開時節，金峰鄉公所辦理洛神花季系列活動"
+                                        ]
+                                   },
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "event_location",
+                                        "values": [
+                                             "無"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 33,
+                                        "slot": "event_name",
+                                        "start": 13
+                                   },
+                                   {
+                                        "exclusive_end": 72,
+                                        "slot": "event_content",
+                                        "start": 42
+                                   }
+                              ],
+                              "service_call": {
+                                   "method": "LookupEvents",
+                                   "parameters": {
+                                        "event_name": [
+                                             "111年度百步之鄉金峰鄕-紅金寶系列活動"
+                                        ],
+                                        "event_content": [
+                                             "十月至十一月為洛神花盛開時節，金峰鄉公所辦理洛神花季系列活動"
+                                        ],
+                                        "event_location": [
+                                             "無"
+                                        ]
+                                   }
+                              },
+                              "service_results": [
+                                   {
+                                        "event_name": "111年度百步之鄉金峰鄕-紅金寶系列活動",
+                                        "event_location": "無",
+                                        "event_content": "十月至十一月為洛神花盛開時節，金峰鄉公所辦理洛神花季系列活動",
+                                        "participant": "Starfish",
+                                        "event_date": "2022/10/30",
+                                        "event_time": "02:06"
+                                   }
+                              ]
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "總共有1個結果，找到名稱為111年度百步之鄉金峰鄕-紅金寶系列活動的活動，找到內容為十月至十一月為洛神花盛開時節，金峰鄉公所辦理洛神花季系列活動的活動"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST_ALTS",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
@@ -439,40 +502,83 @@
                               "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "AddEvent",
+                                   "active_intent": "LookupEvents",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "participant": [
-                                             "無"
-                                        ],
-                                        "event_location": [
-                                             "​中央研究院 學術活動中心"
+                                        "event_name": [
+                                             "111年度百步之鄉金峰鄕-紅金寶系列活動"
                                         ],
                                         "event_content": [
-                                             "PRDC​ 2018​"
+                                             "十月至十一月為洛神花盛開時節，金峰鄉公所辦理洛神花季系列活動"
                                         ],
-                                        "event_name": [
-                                             "2018 IEEE 23rd Pacific Rim International Symposium on Dependable Computing (PRDC​ 2018​ )"
-                                        ],
-                                        "event_date": [
-                                             "後天"
-                                        ],
-                                        "event_time": [
-                                             "9時0分"
+                                        "event_location": [
+                                             "無"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "好的，看起來沒甚麼問題"
+                    "utterance": "能提供更多類似的訊息嗎？"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "NOTIFY_SUCCESS",
+                                        "act": "NOTIFY_FAILURE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "INFORM_COUNT",
+                                        "canonical_values": [
+                                             "1"
+                                        ],
+                                        "slot": "count",
+                                        "values": [
+                                             "1"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_call": {
+                                   "method": "LookupEvents",
+                                   "parameters": {
+                                        "event_name": "111年度百步之鄉金峰鄕-紅金寶系列活動",
+                                        "event_content": "十月至十一月為洛神花盛開時節，金峰鄉公所辦理洛神花季系列活動",
+                                        "event_location": "無"
+                                   }
+                              },
+                              "service_results": [
+                                   {
+                                        "event_name": "111年度百步之鄉金峰鄕-紅金寶系列活動",
+                                        "event_location": "無",
+                                        "event_content": "十月至十一月為洛神花盛開時節，金峰鄉公所辦理洛神花季系列活動",
+                                        "participant": "Starfish",
+                                        "event_date": "2022/10/30",
+                                        "event_time": "02:06"
+                                   }
+                              ]
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "不好意思，在行事曆上沒辦法找到符合您要求的活動，請用其他條件查詢，總共有1個結果"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NEGATE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "GOODBYE",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
@@ -480,22 +586,25 @@
                               ],
                               "service": "Calendar_1",
                               "slots": [],
-                              "service_call": {
-                                   "method": "AddEvent",
-                                   "parameters": {
-                                        "participant": "無",
-                                        "event_location": "​中央研究院 學術活動中心",
-                                        "event_content": "PRDC​ 2018​",
-                                        "event_name": "2018 IEEE 23rd Pacific Rim International Symposium on Dependable Computing (PRDC​ 2018​ )",
-                                        "event_date": "後天",
-                                        "event_time": "9時0分"
+                              "state": {
+                                   "active_intent": "LookupEvents",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_name": [
+                                             "111年度百步之鄉金峰鄕-紅金寶系列活動"
+                                        ],
+                                        "event_content": [
+                                             "十月至十一月為洛神花盛開時節，金峰鄉公所辦理洛神花季系列活動"
+                                        ],
+                                        "event_location": [
+                                             "無"
+                                        ]
                                    }
-                              },
-                              "service_results": []
+                              }
                          }
                     ],
-                    "speaker": "SYSTEM",
-                    "utterance": "多虧有您的配合，活動已添加至行事曆"
+                    "speaker": "USER",
+                    "utterance": "沒關係，先這樣吧，再見"
                },
                {
                     "frames": [
@@ -510,64 +619,19 @@
                               ],
                               "service": "Calendar_1",
                               "slots": [],
-                              "state": {
-                                   "active_intent": "AddEvent",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "participant": [
-                                             "無"
-                                        ],
-                                        "event_location": [
-                                             "​中央研究院 學術活動中心"
-                                        ],
-                                        "event_content": [
-                                             "PRDC​ 2018​"
-                                        ],
-                                        "event_name": [
-                                             "2018 IEEE 23rd Pacific Rim International Symposium on Dependable Computing (PRDC​ 2018​ )"
-                                        ],
-                                        "event_date": [
-                                             "後天"
-                                        ],
-                                        "event_time": [
-                                             "9時0分"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "再見"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "GOODBYE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
                               "service_call": {
-                                   "method": "AddEvent",
+                                   "method": "LookupEvents",
                                    "parameters": {
-                                        "participant": "無",
-                                        "event_location": "​中央研究院 學術活動中心",
-                                        "event_content": "PRDC​ 2018​",
-                                        "event_name": "2018 IEEE 23rd Pacific Rim International Symposium on Dependable Computing (PRDC​ 2018​ )",
-                                        "event_date": "後天",
-                                        "event_time": "9時0分"
+                                        "event_name": "111年度百步之鄉金峰鄕-紅金寶系列活動",
+                                        "event_content": "十月至十一月為洛神花盛開時節，金峰鄉公所辦理洛神花季系列活動",
+                                        "event_location": "無"
                                    }
                               },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "歡迎下次諮詢，再見"
+                    "utterance": "應該做的，再見！"
                }
           ]
      }

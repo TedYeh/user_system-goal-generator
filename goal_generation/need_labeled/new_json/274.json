@@ -2,7 +2,8 @@
      {
           "dialogue_id": 274,
           "services": [
-               "Messaging_1"
+               "Mail_1",
+               "Calendar_1"
           ],
           "turns": [
                {
@@ -12,63 +13,530 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "SendMessage"
+                                             "FindMail"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "SendMessage"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "MichaelWei"
-                                        ],
-                                        "slot": "contact_name",
-                                        "values": [
-                                             "MichaelWei"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "最近深度學習好像沒幾年前那麼熱門"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "最近深度學習好像沒幾年前那麼熱門"
+                                             "FindMail"
                                         ]
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMail",
+                                   "requested_slots": [],
+                                   "slot_values": {}
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "請幫我找一封信件"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "copy_recipient",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道這封信的副本收件者"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "楊梓民"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "楊梓民"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 44,
-                                        "slot": "contact_name",
-                                        "start": 34
-                                   },
-                                   {
-                                        "exclusive_end": 30,
-                                        "slot": "message",
-                                        "start": 14
+                                        "exclusive_end": 13,
+                                        "slot": "copy_recipient",
+                                        "start": 10
                                    }
                               ],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "FindMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "message": [
-                                             "最近深度學習好像沒幾年前那麼熱門"
-                                        ],
-                                        "contact_name": [
-                                             "MichaelWei"
+                                        "copy_recipient": [
+                                             "楊梓民"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "請幫我寄一則訊息，訊息內容為最近深度學習好像沒幾年前那麼熱門，用戶為MichaelWei"
+                    "utterance": "這封信需要以副本寄給楊梓民"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_COUNT",
+                                        "canonical_values": [
+                                             "3"
+                                        ],
+                                        "slot": "count",
+                                        "values": [
+                                             "3"
+                                        ]
+                                   },
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "楊梓民"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "楊梓民"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 19,
+                                        "slot": "copy_recipient",
+                                        "start": 16
+                                   }
+                              ],
+                              "service_call": {
+                                   "method": "FindMail",
+                                   "parameters": {
+                                        "copy_recipient": [
+                                             "楊梓民"
+                                        ]
+                                   }
+                              },
+                              "service_results": [
+                                   {
+                                        "subject": " 我的心　現在瘦瘦的　很容易　就飽了",
+                                        "content": "我的心　現在瘦瘦的　很容易　就飽了，爲了搶快樂　搞得不快樂　爲什麽人總那麽傻呢，我的夢　現在瘦瘦的　一下子　就滿了，你的愛或許不是最美的　你的手卻很厚　很念舊，有沒有心瘦瘦的八卦?，，歲月是把殺豬刀也是一把豬飼料，不僅磨平了稜角也模糊了形狀，把我們從形形色色的人變成色色的人",
+                                        "copy_recipient": "楊梓民",
+                                        "recipient": "auto",
+                                        "sender": "超級BG"
+                                   },
+                                   {
+                                        "subject": " 劉德華唱歌好聽嗎",
+                                        "content": "劉德華是歌唱跟演戲兩方面都超努力的藝人可惜兩個世界都有大山在他前面，《無間道》中被梁朝偉輾壓《終極無間》算還他公道並在《阿虎》達成一百部電影成就，應該沒記錯這部窩沒看，雖同為香港四天王前有歌神張學友比舞台動感弱於郭富城，當然其他人都很努力城城的演技也是拚來的華仔的拚勁應該也算是榜樣之一",
+                                        "copy_recipient": "楊梓民",
+                                        "recipient": "大溪消防分隊桃園市政府",
+                                        "sender": "上条先生"
+                                   },
+                                   {
+                                        "subject": " 台中2死車禍｜沒酒駕卻但有毒品反應 光頭",
+                                        "content": "上次「幸福路」小貨車駕駛也是毒駕，耖你的，不是酒駕就是毒駕，每個都還能累犯，一直開車一直開車",
+                                        "copy_recipient": "楊梓民",
+                                        "recipient": "太菲鴨",
+                                        "sender": "Leo_"
+                                   }
+                              ]
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "總共有3個結果，我找到以副本寄給楊梓民的信件，請你看看"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "SELECT",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "copy_recipient": [
+                                             "楊梓民"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "好的"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "OFFER_INTENT",
+                                        "canonical_values": [
+                                             "FindMail"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "FindMail"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "您會想要找一封信嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "AFFIRM_INTENT",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMail",
+                                   "requested_slots": [],
+                                   "slot_values": {}
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "好的，麻煩你了"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "sender",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "你知道這封信是誰寄的嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "Victor-AIA3"
+                                        ],
+                                        "slot": "sender",
+                                        "values": [
+                                             "Victor-AIA3"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 15,
+                                        "slot": "sender",
+                                        "start": 4
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "FindMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "copy_recipient": [
+                                             "楊梓民"
+                                        ],
+                                        "sender": [
+                                             "Victor-AIA3"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "這封信是Victor-AIA3寄的"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "recipient",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道這封信的收件者"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "airme"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "airme"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 9,
+                                        "slot": "recipient",
+                                        "start": 4
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "FindMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "copy_recipient": [
+                                             "楊梓民"
+                                        ],
+                                        "sender": [
+                                             "Victor-AIA3"
+                                        ],
+                                        "recipient": [
+                                             "airme"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "收件者為airme"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NOTIFY_FAILURE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_call": {
+                                   "method": "FindMail",
+                                   "parameters": {
+                                        "copy_recipient": "楊梓民",
+                                        "sender": "Victor-AIA3",
+                                        "recipient": "airme"
+                                   }
+                              },
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "不好意思，沒辦法找到符合您要求的信件，請用其他條件查詢"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NEGATE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "GOODBYE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "copy_recipient": [
+                                             "楊梓民"
+                                        ],
+                                        "sender": [
+                                             "Victor-AIA3"
+                                        ],
+                                        "recipient": [
+                                             "airme"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "沒關係，先這樣吧，再見"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "GOODBYE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "好的，再見！"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "AddEvent"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "AddEvent"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "12:39"
+                                        ],
+                                        "slot": "event_time",
+                                        "values": [
+                                             "下午12點39分"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "太麻里瘋跨年迎曙光"
+                                        ],
+                                        "slot": "event_name",
+                                        "values": [
+                                             "太麻里瘋跨年迎曙光"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "Aaron"
+                                        ],
+                                        "slot": "participant",
+                                        "values": [
+                                             "Aaron"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "2022/1/1"
+                                        ],
+                                        "slot": "event_date",
+                                        "values": [
+                                             "2022年1月1號"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 64,
+                                        "slot": "event_time",
+                                        "start": 56
+                                   },
+                                   {
+                                        "exclusive_end": 34,
+                                        "slot": "event_name",
+                                        "start": 25
+                                   },
+                                   {
+                                        "exclusive_end": 71,
+                                        "slot": "participant",
+                                        "start": 66
+                                   },
+                                   {
+                                        "exclusive_end": 49,
+                                        "slot": "event_date",
+                                        "start": 40
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "AddEvent",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_date": [
+                                             "2022年1月1號"
+                                        ],
+                                        "event_time": [
+                                             "下午12點39分"
+                                        ],
+                                        "event_name": [
+                                             "太麻里瘋跨年迎曙光"
+                                        ],
+                                        "participant": [
+                                             "Aaron"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我想要添加一個活動，可以請你幫忙嗎？，這個活動叫做太麻里瘋跨年迎曙光，活動日期為2022年1月1號，時間為當天的下午12點39分，有Aaron會參加"
                },
                {
                     "frames": [
@@ -77,42 +545,72 @@
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "最近深度學習好像沒幾年前那麼熱門"
+                                             "2022年1月1號"
                                         ],
-                                        "slot": "message",
+                                        "slot": "event_date",
                                         "values": [
-                                             "最近深度學習好像沒幾年前那麼熱門"
+                                             "2022年1月1號"
                                         ]
                                    },
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "MichaelWei"
+                                             "下午12點39分"
                                         ],
-                                        "slot": "contact_name",
+                                        "slot": "event_time",
                                         "values": [
-                                             "MichaelWei"
+                                             "下午12點39分"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "太麻里瘋跨年迎曙光"
+                                        ],
+                                        "slot": "event_name",
+                                        "values": [
+                                             "太麻里瘋跨年迎曙光"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "Aaron"
+                                        ],
+                                        "slot": "participant",
+                                        "values": [
+                                             "Aaron"
                                         ]
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 23,
-                                        "slot": "message",
+                                        "exclusive_end": 39,
+                                        "slot": "event_date",
+                                        "start": 30
+                                   },
+                                   {
+                                        "exclusive_end": 63,
+                                        "slot": "event_time",
+                                        "start": 55
+                                   },
+                                   {
+                                        "exclusive_end": 16,
+                                        "slot": "event_name",
                                         "start": 7
                                    },
                                    {
-                                        "exclusive_end": 44,
-                                        "slot": "contact_name",
-                                        "start": 34
+                                        "exclusive_end": 82,
+                                        "slot": "participant",
+                                        "start": 77
                                    }
                               ],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "確認要傳送訊息最近深度學習好像沒幾年前那麼熱門嗎？，確認要傳送訊息給MichaelWei嗎？"
+                    "utterance": "確認要建立名叫太麻里瘋跨年迎曙光的活動嗎？，確認要建立舉辦在2022年1月1號的活動嗎？，確認要建立舉辦在當天下午12點39分的活動嗎？，確認要建立舉辦有Aaron參加的活動嗎？"
                },
                {
                     "frames": [
@@ -125,17 +623,23 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "message": [
-                                             "最近深度學習好像沒幾年前那麼熱門"
+                                        "event_date": [
+                                             "2022年1月1號"
                                         ],
-                                        "contact_name": [
-                                             "MichaelWei"
+                                        "event_time": [
+                                             "下午12點39分"
+                                        ],
+                                        "event_name": [
+                                             "太麻里瘋跨年迎曙光"
+                                        ],
+                                        "participant": [
+                                             "Aaron"
                                         ]
                                    }
                               }
@@ -155,20 +659,22 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_call": {
-                                   "method": "SendMessage",
+                                   "method": "AddEvent",
                                    "parameters": {
-                                        "message": "最近深度學習好像沒幾年前那麼熱門",
-                                        "contact_name": "MichaelWei"
+                                        "event_date": "2022年1月1號",
+                                        "event_time": "下午12點39分",
+                                        "event_name": "太麻里瘋跨年迎曙光",
+                                        "participant": "Aaron"
                                    }
                               },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "多虧有您的配合，訊息已成功傳送"
+                    "utterance": "多虧有您的配合，活動已添加至行事曆"
                },
                {
                     "frames": [
@@ -181,17 +687,23 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "message": [
-                                             "最近深度學習好像沒幾年前那麼熱門"
+                                        "event_date": [
+                                             "2022年1月1號"
                                         ],
-                                        "contact_name": [
-                                             "MichaelWei"
+                                        "event_time": [
+                                             "下午12點39分"
+                                        ],
+                                        "event_name": [
+                                             "太麻里瘋跨年迎曙光"
+                                        ],
+                                        "participant": [
+                                             "Aaron"
                                         ]
                                    }
                               }
@@ -211,7 +723,7 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_results": []
                          }
@@ -236,17 +748,23 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "message": [
-                                             "最近深度學習好像沒幾年前那麼熱門"
+                                        "event_date": [
+                                             "2022年1月1號"
                                         ],
-                                        "contact_name": [
-                                             "MichaelWei"
+                                        "event_time": [
+                                             "下午12點39分"
+                                        ],
+                                        "event_name": [
+                                             "太麻里瘋跨年迎曙光"
+                                        ],
+                                        "participant": [
+                                             "Aaron"
                                         ]
                                    }
                               }
@@ -266,13 +784,13 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "再見！祝您生活愉快！"
+                    "utterance": "應該做的，再見！"
                }
           ]
      }

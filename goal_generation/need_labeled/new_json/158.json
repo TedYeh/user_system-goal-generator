@@ -2,7 +2,8 @@
      {
           "dialogue_id": 158,
           "services": [
-               "Messaging_1"
+               "Calendar_1",
+               "Mail_1"
           ],
           "turns": [
                {
@@ -12,212 +13,254 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "SendMessage"
+                                             "LookupEvents"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "SendMessage"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "Python資料科學交流社群"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "Python資料科學交流社群"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "這你問客服吧"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "這你問客服吧"
+                                             "LookupEvents"
                                         ]
                                    }
                               ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 47,
-                                        "slot": "group_name",
-                                        "start": 33
-                                   },
-                                   {
-                                        "exclusive_end": 28,
-                                        "slot": "message",
-                                        "start": 22
-                                   }
-                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "LookupEvents",
                                    "requested_slots": [],
-                                   "slot_values": {
-                                        "message": [
-                                             "這你問客服吧"
-                                        ],
-                                        "group_name": [
-                                             "Python資料科學交流社群"
-                                        ]
-                                   }
+                                   "slot_values": {}
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我想要寄則訊息，可以請你幫忙嗎？，訊息內容為這你問客服吧，群組叫做Python資料科學交流社群"
+                    "utterance": "請幫我找一個活動"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "這你問客服吧"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "這你問客服吧"
-                                        ]
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_time",
+                                        "values": []
                                    },
                                    {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "Python資料科學交流社群"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "Python資料科學交流社群"
-                                        ]
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "participant",
+                                        "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 13,
-                                        "slot": "message",
-                                        "start": 7
-                                   },
-                                   {
-                                        "exclusive_end": 38,
-                                        "slot": "group_name",
-                                        "start": 24
-                                   }
-                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "確認要傳送訊息這你問客服吧嗎？，確認要傳送訊息到Python資料科學交流社群嗎？"
+                    "utterance": "我想知道活動在當天何時開始，有人參加這個活動嗎？"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "AFFIRM",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "10:29"
+                                        ],
+                                        "slot": "event_time",
+                                        "values": [
+                                             "上午10時29分"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "Fightinggrape"
+                                        ],
+                                        "slot": "participant",
+                                        "values": [
+                                             "Fightinggrape"
+                                        ]
                                    }
                               ],
-                              "service": "Messaging_1",
-                              "slots": [],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 11,
+                                        "slot": "event_time",
+                                        "start": 3
+                                   },
+                                   {
+                                        "exclusive_end": 28,
+                                        "slot": "participant",
+                                        "start": 15
+                                   }
+                              ],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "LookupEvents",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "message": [
-                                             "這你問客服吧"
+                                        "event_time": [
+                                             "上午10時29分"
                                         ],
-                                        "group_name": [
-                                             "Python資料科學交流社群"
+                                        "participant": [
+                                             "Fightinggrape"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "好的，看起來沒甚麼問題"
+                    "utterance": "活動在上午10時29分開始，有Fightinggrape會參加"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "NOTIFY_SUCCESS",
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_content",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "這個活動有任何內容註記嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "event_content",
+                                        "values": [
+                                             "無"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "LookupEvents",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_time": [
+                                             "上午10時29分"
+                                        ],
+                                        "participant": [
+                                             "Fightinggrape"
+                                        ],
+                                        "event_content": [
+                                             "無"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "這個活動不需設定內容"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_name",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "那這個活動叫甚麼呢？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "〝柚〞見〝晚崙西亞〞東河路跑"
+                                        ],
+                                        "slot": "event_name",
+                                        "values": [
+                                             "〝柚〞見〝晚崙西亞〞東河路跑"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 19,
+                                        "slot": "event_name",
+                                        "start": 5
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "LookupEvents",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_time": [
+                                             "上午10時29分"
+                                        ],
+                                        "participant": [
+                                             "Fightinggrape"
+                                        ],
+                                        "event_content": [
+                                             "無"
+                                        ],
+                                        "event_name": [
+                                             "〝柚〞見〝晚崙西亞〞東河路跑"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "活動名稱叫〝柚〞見〝晚崙西亞〞東河路跑"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NOTIFY_FAILURE",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_call": {
-                                   "method": "SendMessage",
+                                   "method": "LookupEvents",
                                    "parameters": {
-                                        "message": "這你問客服吧",
-                                        "group_name": "Python資料科學交流社群"
+                                        "event_time": "上午10時29分",
+                                        "participant": "Fightinggrape",
+                                        "event_content": "無",
+                                        "event_name": "〝柚〞見〝晚崙西亞〞東河路跑"
                                    }
                               },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "多虧有您的配合，訊息已成功傳送"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "SELECT",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "SendMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "message": [
-                                             "這你問客服吧"
-                                        ],
-                                        "group_name": [
-                                             "Python資料科學交流社群"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "好的"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQ_MORE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "還有什麼能幫到您的嗎？"
+                    "utterance": "不好意思，在行事曆上沒辦法找到符合您要求的活動，請用其他條件查詢"
                },
                {
                     "frames": [
@@ -236,24 +279,30 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "LookupEvents",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "message": [
-                                             "這你問客服吧"
+                                        "event_time": [
+                                             "上午10時29分"
                                         ],
-                                        "group_name": [
-                                             "Python資料科學交流社群"
+                                        "participant": [
+                                             "Fightinggrape"
+                                        ],
+                                        "event_content": [
+                                             "無"
+                                        ],
+                                        "event_name": [
+                                             "〝柚〞見〝晚崙西亞〞東河路跑"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "沒關係，先這樣吧，沒有問題了，再見！"
+                    "utterance": "沒關係，先這樣吧，沒有了！再見！"
                },
                {
                     "frames": [
@@ -266,13 +315,306 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "行，再見！"
+                    "utterance": "很榮幸為您服務，再見！"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "SendMail"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "SendMail"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             " 台灣各地都很瘋卡娜赫拉？"
+                                        ],
+                                        "slot": "subject",
+                                        "values": [
+                                             " 台灣各地都很瘋卡娜赫拉？"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "今天看到新聞，看到屏東有活動"
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "今天看到新聞，看到屏東有活動"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "無"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "Jack"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "Jack"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 35,
+                                        "slot": "subject",
+                                        "start": 22
+                                   },
+                                   {
+                                        "exclusive_end": 57,
+                                        "slot": "content",
+                                        "start": 43
+                                   },
+                                   {
+                                        "exclusive_end": 66,
+                                        "slot": "recipient",
+                                        "start": 62
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "Jack"
+                                        ],
+                                        "subject": [
+                                             " 台灣各地都很瘋卡娜赫拉？"
+                                        ],
+                                        "content": [
+                                             "今天看到新聞，看到屏東有活動"
+                                        ],
+                                        "copy_recipient": [
+                                             "無"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我想要寫一封信，可以請你幫忙嗎？，這封信叫做 台灣各地都很瘋卡娜赫拉？，這封信的內文為今天看到新聞，看到屏東有活動，這封信由Jack收，這封信不用副本收件者"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "Jack"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "Jack"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             " 台灣各地都很瘋卡娜赫拉？"
+                                        ],
+                                        "slot": "subject",
+                                        "values": [
+                                             " 台灣各地都很瘋卡娜赫拉？"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "今天看到新聞，看到屏東有活動"
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "今天看到新聞，看到屏東有活動"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "無"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 66,
+                                        "slot": "recipient",
+                                        "start": 62
+                                   },
+                                   {
+                                        "exclusive_end": 22,
+                                        "slot": "subject",
+                                        "start": 9
+                                   },
+                                   {
+                                        "exclusive_end": 54,
+                                        "slot": "content",
+                                        "start": 40
+                                   }
+                              ],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "請確認要寄出主旨為 台灣各地都很瘋卡娜赫拉？的信件嗎？，請確認要寄出的信件內容:今天看到新聞，看到屏東有活動，確認要寄信件給Jack嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "AFFIRM",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "Jack"
+                                        ],
+                                        "subject": [
+                                             " 台灣各地都很瘋卡娜赫拉？"
+                                        ],
+                                        "content": [
+                                             "今天看到新聞，看到屏東有活動"
+                                        ],
+                                        "copy_recipient": [
+                                             "無"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我對以上資訊沒問題"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NOTIFY_SUCCESS",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_call": {
+                                   "method": "SendMail",
+                                   "parameters": {
+                                        "recipient": "Jack",
+                                        "subject": " 台灣各地都很瘋卡娜赫拉？",
+                                        "content": "今天看到新聞，看到屏東有活動",
+                                        "copy_recipient": "無"
+                                   }
+                              },
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "多虧有您的配合，信件已成功寄出"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "SELECT",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "Jack"
+                                        ],
+                                        "subject": [
+                                             " 台灣各地都很瘋卡娜赫拉？"
+                                        ],
+                                        "content": [
+                                             "今天看到新聞，看到屏東有活動"
+                                        ],
+                                        "copy_recipient": [
+                                             "無"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "好的，我知道了"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "GOODBYE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_call": {
+                                   "method": "SendMail",
+                                   "parameters": {
+                                        "recipient": "Jack",
+                                        "subject": " 台灣各地都很瘋卡娜赫拉？",
+                                        "content": "今天看到新聞，看到屏東有活動",
+                                        "copy_recipient": "無"
+                                   }
+                              },
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "嗯，再見"
                }
           ]
      }

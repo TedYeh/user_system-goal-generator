@@ -2,9 +2,120 @@
      {
           "dialogue_id": 450,
           "services": [
+               "Calendar_1",
                "Messaging_1"
           ],
           "turns": [
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "2022/10/18"
+                                        ],
+                                        "slot": "event_date",
+                                        "values": [
+                                             "10月18號"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "「設計中島」台灣設計展史上最大萬坪展區"
+                                        ],
+                                        "slot": "event_name",
+                                        "values": [
+                                             "「設計中島」台灣設計展史上最大萬坪展區"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "Omohyoid"
+                                        ],
+                                        "slot": "participant",
+                                        "values": [
+                                             "Omohyoid"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "LookupEvents"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "LookupEvents"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 41,
+                                        "slot": "event_name",
+                                        "start": 22
+                                   },
+                                   {
+                                        "exclusive_end": 63,
+                                        "slot": "participant",
+                                        "start": 55
+                                   },
+                                   {
+                                        "exclusive_end": 53,
+                                        "slot": "event_date",
+                                        "start": 47
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "LookupEvents",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_date": [
+                                             "10月18號"
+                                        ],
+                                        "event_name": [
+                                             "「設計中島」台灣設計展史上最大萬坪展區"
+                                        ],
+                                        "participant": [
+                                             "Omohyoid"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我想要找個活動，可以請你幫忙嗎？，活動名稱為「設計中島」台灣設計展史上最大萬坪展區，活動日期為10月18號，有Omohyoid會參加"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NOTIFY_FAILURE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_call": {
+                                   "method": "LookupEvents",
+                                   "parameters": {
+                                        "event_date": "10月18號",
+                                        "event_name": "「設計中島」台灣設計展史上最大萬坪展區",
+                                        "participant": "Omohyoid"
+                                   }
+                              },
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "不好意思，在行事曆上沒辦法找到符合您要求的活動，請用其他條件查詢"
+               },
                {
                     "frames": [
                          {
@@ -30,7 +141,7 @@
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "請幫我寄一則訊息"
+                    "utterance": "我想要寄則訊息，可以請你幫忙嗎？"
                },
                {
                     "frames": [
@@ -49,7 +160,7 @@
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "群組名稱為何？"
+                    "utterance": "你知道群組名稱嗎？"
                },
                {
                     "frames": [
@@ -58,91 +169,20 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "無"
+                                             "Python資料科學交流社群"
                                         ],
                                         "slot": "group_name",
                                         "values": [
-                                             "無"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "SendMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "group_name": [
-                                             "無"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "這則訊息應該是傳送給某個使用者的訊息"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "message",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "contact_name",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "所以這則訊息講了什麼？，我想知道這則訊息是誰寄的？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "我的理解 "
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "我的理解 "
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "yctung"
-                                        ],
-                                        "slot": "contact_name",
-                                        "values": [
-                                             "yctung"
+                                             "Python資料科學交流社群"
                                         ]
                                    }
                               ],
                               "service": "Messaging_1",
                               "slots": [
-                                   {
-                                        "exclusive_end": 8,
-                                        "slot": "message",
-                                        "start": 3
-                                   },
                                    {
                                         "exclusive_end": 18,
-                                        "slot": "contact_name",
-                                        "start": 12
+                                        "slot": "group_name",
+                                        "start": 4
                                    }
                               ],
                               "state": {
@@ -150,20 +190,135 @@
                                    "requested_slots": [],
                                    "slot_values": {
                                         "group_name": [
-                                             "無"
-                                        ],
-                                        "message": [
-                                             "我的理解 "
-                                        ],
-                                        "contact_name": [
-                                             "yctung"
+                                             "Python資料科學交流社群"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "跟他說我的理解 ，用戶為yctung"
+                    "utterance": "應該是在Python資料科學交流社群群組中的訊息"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "message",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道訊息內容"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "他是問新人吧"
+                                        ],
+                                        "slot": "message",
+                                        "values": [
+                                             "他是問新人吧"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 9,
+                                        "slot": "message",
+                                        "start": 3
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "SendMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "group_name": [
+                                             "Python資料科學交流社群"
+                                        ],
+                                        "message": [
+                                             "他是問新人吧"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "跟他說他是問新人吧"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "contact_name",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道這則訊息是誰寄的？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "Kris"
+                                        ],
+                                        "slot": "contact_name",
+                                        "values": [
+                                             "Kris"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 7,
+                                        "slot": "contact_name",
+                                        "start": 3
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "SendMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "group_name": [
+                                             "Python資料科學交流社群"
+                                        ],
+                                        "message": [
+                                             "他是問新人吧"
+                                        ],
+                                        "contact_name": [
+                                             "Kris"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "用戶為Kris"
                },
                {
                     "frames": [
@@ -172,52 +327,57 @@
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "無"
+                                             "Python資料科學交流社群"
                                         ],
                                         "slot": "group_name",
                                         "values": [
-                                             "無"
+                                             "Python資料科學交流社群"
                                         ]
                                    },
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "我的理解 "
+                                             "他是問新人吧"
                                         ],
                                         "slot": "message",
                                         "values": [
-                                             "我的理解 "
+                                             "他是問新人吧"
                                         ]
                                    },
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "yctung"
+                                             "Kris"
                                         ],
                                         "slot": "contact_name",
                                         "values": [
-                                             "yctung"
+                                             "Kris"
                                         ]
                                    }
                               ],
                               "service": "Messaging_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 12,
+                                        "exclusive_end": 38,
+                                        "slot": "group_name",
+                                        "start": 24
+                                   },
+                                   {
+                                        "exclusive_end": 13,
                                         "slot": "message",
                                         "start": 7
                                    },
                                    {
-                                        "exclusive_end": 29,
+                                        "exclusive_end": 53,
                                         "slot": "contact_name",
-                                        "start": 23
+                                        "start": 49
                                    }
                               ],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "確認要傳送訊息我的理解 嗎？，確認要傳送訊息給yctung嗎？"
+                    "utterance": "確認要傳送訊息他是問新人吧嗎？，確認要傳送訊息到Python資料科學交流社群嗎？，確認要傳送訊息給Kris嗎？"
                },
                {
                     "frames": [
@@ -237,13 +397,13 @@
                                    "requested_slots": [],
                                    "slot_values": {
                                         "group_name": [
-                                             "無"
+                                             "Python資料科學交流社群"
                                         ],
                                         "message": [
-                                             "我的理解 "
+                                             "他是問新人吧"
                                         ],
                                         "contact_name": [
-                                             "yctung"
+                                             "Kris"
                                         ]
                                    }
                               }
@@ -268,9 +428,9 @@
                               "service_call": {
                                    "method": "SendMessage",
                                    "parameters": {
-                                        "group_name": "無",
-                                        "message": "我的理解 ",
-                                        "contact_name": "yctung"
+                                        "group_name": "Python資料科學交流社群",
+                                        "message": "他是問新人吧",
+                                        "contact_name": "Kris"
                                    }
                               },
                               "service_results": []
@@ -283,6 +443,64 @@
                     "frames": [
                          {
                               "actions": [
+                                   {
+                                        "act": "SELECT",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "group_name": [
+                                             "Python資料科學交流社群"
+                                        ],
+                                        "message": [
+                                             "他是問新人吧"
+                                        ],
+                                        "contact_name": [
+                                             "Kris"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "好的"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQ_MORE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "還有什麼能幫到您的嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NEGATE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   },
                                    {
                                         "act": "THANK_YOU",
                                         "canonical_values": [],
@@ -297,20 +515,20 @@
                                    "requested_slots": [],
                                    "slot_values": {
                                         "group_name": [
-                                             "無"
+                                             "Python資料科學交流社群"
                                         ],
                                         "message": [
-                                             "我的理解 "
+                                             "他是問新人吧"
                                         ],
                                         "contact_name": [
-                                             "yctung"
+                                             "Kris"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "謝謝你"
+                    "utterance": "沒關係，先這樣吧，非常感謝！"
                },
                {
                     "frames": [
@@ -325,19 +543,11 @@
                               ],
                               "service": "Messaging_1",
                               "slots": [],
-                              "service_call": {
-                                   "method": "SendMessage",
-                                   "parameters": {
-                                        "group_name": "無",
-                                        "message": "我的理解 ",
-                                        "contact_name": "yctung"
-                                   }
-                              },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "再見！祝您生活愉快！"
+                    "utterance": "嗯，再見"
                }
           ]
      }

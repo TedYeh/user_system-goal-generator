@@ -2,7 +2,8 @@
      {
           "dialogue_id": 24,
           "services": [
-               "Messaging_1"
+               "Messaging_1",
+               "Mail_1"
           ],
           "turns": [
                {
@@ -18,19 +19,189 @@
                                         "values": [
                                              "FindMessage"
                                         ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "喵一個寶"
+                                        ],
+                                        "slot": "contact_name",
+                                        "values": [
+                                             "喵一個寶"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 23,
+                                        "slot": "contact_name",
+                                        "start": 19
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "contact_name": [
+                                             "喵一個寶"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我想要知道相關的訊息，請幫幫我，用戶為喵一個寶"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "喵一個寶"
+                                        ],
+                                        "slot": "contact_name",
+                                        "values": [
+                                             "喵一個寶"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM_COUNT",
+                                        "canonical_values": [
+                                             "5"
+                                        ],
+                                        "slot": "count",
+                                        "values": [
+                                             "5"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 7,
+                                        "slot": "contact_name",
+                                        "start": 3
+                                   }
+                              ],
+                              "service_call": {
+                                   "method": "FindMessage",
+                                   "parameters": {
+                                        "contact_name": "喵一個寶"
+                                   }
+                              },
+                              "service_results": [
+                                   {
+                                        "group_name": "AI 人工智慧",
+                                        "contact_name": "喵一個寶",
+                                        "message": "現在第二個error是說你的commit跟remote origin的master內容不match"
+                                   },
+                                   {
+                                        "group_name": "無",
+                                        "contact_name": "喵一個寶",
+                                        "message": "reshape"
+                                   },
+                                   {
+                                        "group_name": "AI 人工智慧",
+                                        "contact_name": "喵一個寶",
+                                        "message": "Windows小問題很多，但好處是很難完全死掉"
+                                   },
+                                   {
+                                        "group_name": "無",
+                                        "contact_name": "喵一個寶",
+                                        "message": "台北捷運南京復興站AR 元宇宙體驗…"
+                                   },
+                                   {
+                                        "group_name": "AI 人工智慧",
+                                        "contact_name": "喵一個寶",
+                                        "message": "特斯拉的AI 團隊把最新的技術應用到FSD 的速度真的很快"
+                                   }
+                              ]
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "找到與喵一個寶聊天的訊息，總共有5個結果"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "group_name",
+                                        "values": []
                                    }
                               ],
                               "service": "Messaging_1",
                               "slots": [],
                               "state": {
                                    "active_intent": "FindMessage",
+                                   "requested_slots": [
+                                        "group_name"
+                                   ],
+                                   "slot_values": {
+                                        "contact_name": [
+                                             "喵一個寶"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我想知道這則訊息在哪個群組？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "group_name",
+                                        "values": [
+                                             "無"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "這則訊息應該是傳送給某個使用者的訊息"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "SendMail"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "SendMail"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {}
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我想要找則訊息，可以請你幫忙嗎？"
+                    "utterance": "請幫我寄出一封信件"
                },
                {
                     "frames": [
@@ -39,73 +210,23 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "contact_name",
+                                        "slot": "subject",
                                         "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "我想知道這則訊息是誰寄的？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "cjmwwuh"
-                                        ],
-                                        "slot": "contact_name",
-                                        "values": [
-                                             "cjmwwuh"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 10,
-                                        "slot": "contact_name",
-                                        "start": 3
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "FindMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "contact_name": [
-                                             "cjmwwuh"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "用戶為cjmwwuh"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
+                                   },
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "message",
+                                        "slot": "copy_recipient",
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "我想知道訊息內容"
+                    "utterance": "我想知道這個信件的主旨，你知道這封信的副本收件者嗎？"
                },
                {
                     "frames": [
@@ -114,187 +235,349 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "height = 4 的 perfect binary tree 的 longest path length 是 7 啊"
+                                             " 加洛林王朝是不是過譽了？"
                                         ],
-                                        "slot": "message",
+                                        "slot": "subject",
                                         "values": [
-                                             "height = 4 的 perfect binary tree 的 longest path length 是 7 啊"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 63,
-                                        "slot": "message",
-                                        "start": 3
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "FindMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "contact_name": [
-                                             "cjmwwuh"
-                                        ],
-                                        "message": [
-                                             "height = 4 的 perfect binary tree 的 longest path length 是 7 啊"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "跟他說height = 4 的 perfect binary tree 的 longest path length 是 7 啊"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM_COUNT",
-                                        "canonical_values": [
-                                             "1"
-                                        ],
-                                        "slot": "count",
-                                        "values": [
-                                             "1"
+                                             " 加洛林王朝是不是過譽了？"
                                         ]
                                    },
                                    {
-                                        "act": "OFFER",
+                                        "act": "INFORM",
                                         "canonical_values": [
-                                             "cjmwwuh"
+                                             "Hao He"
                                         ],
-                                        "slot": "contact_name",
+                                        "slot": "copy_recipient",
                                         "values": [
-                                             "cjmwwuh"
-                                        ]
-                                   },
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "height = 4 的 perfect binary tree 的 longest path length 是 7 啊"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "height = 4 的 perfect binary tree 的 longest path length 是 7 啊"
+                                             "Hao He"
                                         ]
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [
                                    {
                                         "exclusive_end": 18,
-                                        "slot": "contact_name",
-                                        "start": 11
+                                        "slot": "subject",
+                                        "start": 5
+                                   },
+                                   {
+                                        "exclusive_end": 35,
+                                        "slot": "copy_recipient",
+                                        "start": 29
                                    }
                               ],
-                              "service_call": {
-                                   "method": "FindMessage",
-                                   "parameters": {
-                                        "contact_name": [
-                                             "cjmwwuh"
-                                        ],
-                                        "message": [
-                                             "height = 4 的 perfect binary tree 的 longest path length 是 7 啊"
-                                        ]
-                                   }
-                              },
-                              "service_results": [
-                                   {
-                                        "group_name": "無",
-                                        "contact_name": "cjmwwuh",
-                                        "message": "height = 4 的 perfect binary tree 的 longest path length 是 7 啊"
-                                   }
-                              ]
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "總共有1個結果，找到與cjmwwuh聊天的訊息"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "SELECT",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
                               "state": {
-                                   "active_intent": "FindMessage",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "contact_name": [
-                                             "cjmwwuh"
+                                        "subject": [
+                                             " 加洛林王朝是不是過譽了？"
                                         ],
-                                        "message": [
-                                             "height = 4 的 perfect binary tree 的 longest path length 是 7 啊"
+                                        "copy_recipient": [
+                                             "Hao He"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我知道了"
+                    "utterance": "信件主旨叫 加洛林王朝是不是過譽了？，這封信需要以副本寄給Hao He"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "OFFER_INTENT",
-                                        "canonical_values": [
-                                             "FindMessage"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "FindMessage"
-                                        ]
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "content",
+                                        "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "您會想要找一則訊息嗎？"
+                    "utterance": "我想知道這封信的內文"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "NEGATE_INTENT",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "查理曼的加洛林王朝統一西歐恢復當地的經濟文化及秩序擺脫黑暗時代的陰霾，並且拯救歐，洲基督教文明，加洛林為人稱道的成就有：鐵錘查理擊退穆斯林軍隊、替教皇趕走野蠻的倫，巴底人、推動加洛林文藝復興、將正統基督教傳入日耳曼、降伏阿瓦爾人等等，以上是，高中歷史課本所教授的知識。我們不置可否加洛林對於西歐的貢獻，但要論整個歐洲與基，督教世界加洛林的貢獻顯得僥倖與微不足道，加洛林王朝不過是運氣好有個好玄孫，其後繼，者法蘭克人、德意志人恰好都是近代歐洲發達國家故而拔高其祖先的威望，真拋開當代民族，主義加持的史觀，加洛林王朝的貢獻簡直不值一提"
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "查理曼的加洛林王朝統一西歐恢復當地的經濟文化及秩序擺脫黑暗時代的陰霾，並且拯救歐，洲基督教文明，加洛林為人稱道的成就有：鐵錘查理擊退穆斯林軍隊、替教皇趕走野蠻的倫，巴底人、推動加洛林文藝復興、將正統基督教傳入日耳曼、降伏阿瓦爾人等等，以上是，高中歷史課本所教授的知識。我們不置可否加洛林對於西歐的貢獻，但要論整個歐洲與基，督教世界加洛林的貢獻顯得僥倖與微不足道，加洛林王朝不過是運氣好有個好玄孫，其後繼，者法蘭克人、德意志人恰好都是近代歐洲發達國家故而拔高其祖先的威望，真拋開當代民族，主義加持的史觀，加洛林王朝的貢獻簡直不值一提"
+                                        ]
                                    }
                               ],
-                              "service": "Messaging_1",
-                              "slots": [],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 272,
+                                        "slot": "content",
+                                        "start": 7
+                                   }
+                              ],
                               "state": {
-                                   "active_intent": "FindMessage",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "contact_name": [
-                                             "cjmwwuh"
+                                        "subject": [
+                                             " 加洛林王朝是不是過譽了？"
                                         ],
-                                        "message": [
-                                             "height = 4 的 perfect binary tree 的 longest path length 是 7 啊"
+                                        "copy_recipient": [
+                                             "Hao He"
+                                        ],
+                                        "content": [
+                                             "查理曼的加洛林王朝統一西歐恢復當地的經濟文化及秩序擺脫黑暗時代的陰霾，並且拯救歐，洲基督教文明，加洛林為人稱道的成就有：鐵錘查理擊退穆斯林軍隊、替教皇趕走野蠻的倫，巴底人、推動加洛林文藝復興、將正統基督教傳入日耳曼、降伏阿瓦爾人等等，以上是，高中歷史課本所教授的知識。我們不置可否加洛林對於西歐的貢獻，但要論整個歐洲與基，督教世界加洛林的貢獻顯得僥倖與微不足道，加洛林王朝不過是運氣好有個好玄孫，其後繼，者法蘭克人、德意志人恰好都是近代歐洲發達國家故而拔高其祖先的威望，真拋開當代民族，主義加持的史觀，加洛林王朝的貢獻簡直不值一提"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "目前不需要"
+                    "utterance": "這封信的內文為查理曼的加洛林王朝統一西歐恢復當地的經濟文化及秩序擺脫黑暗時代的陰霾，並且拯救歐，洲基督教文明，加洛林為人稱道的成就有：鐵錘查理擊退穆斯林軍隊、替教皇趕走野蠻的倫，巴底人、推動加洛林文藝復興、將正統基督教傳入日耳曼、降伏阿瓦爾人等等，以上是，高中歷史課本所教授的知識。我們不置可否加洛林對於西歐的貢獻，但要論整個歐洲與基，督教世界加洛林的貢獻顯得僥倖與微不足道，加洛林王朝不過是運氣好有個好玄孫，其後繼，者法蘭克人、德意志人恰好都是近代歐洲發達國家故而拔高其祖先的威望，真拋開當代民族，主義加持的史觀，加洛林王朝的貢獻簡直不值一提"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "recipient",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道這封信的收件者"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "嚴威"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "嚴威"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 6,
+                                        "slot": "recipient",
+                                        "start": 4
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "subject": [
+                                             " 加洛林王朝是不是過譽了？"
+                                        ],
+                                        "copy_recipient": [
+                                             "Hao He"
+                                        ],
+                                        "content": [
+                                             "查理曼的加洛林王朝統一西歐恢復當地的經濟文化及秩序擺脫黑暗時代的陰霾，並且拯救歐，洲基督教文明，加洛林為人稱道的成就有：鐵錘查理擊退穆斯林軍隊、替教皇趕走野蠻的倫，巴底人、推動加洛林文藝復興、將正統基督教傳入日耳曼、降伏阿瓦爾人等等，以上是，高中歷史課本所教授的知識。我們不置可否加洛林對於西歐的貢獻，但要論整個歐洲與基，督教世界加洛林的貢獻顯得僥倖與微不足道，加洛林王朝不過是運氣好有個好玄孫，其後繼，者法蘭克人、德意志人恰好都是近代歐洲發達國家故而拔高其祖先的威望，真拋開當代民族，主義加持的史觀，加洛林王朝的貢獻簡直不值一提"
+                                        ],
+                                        "recipient": [
+                                             "嚴威"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "收件者為嚴威"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             " 加洛林王朝是不是過譽了？"
+                                        ],
+                                        "slot": "subject",
+                                        "values": [
+                                             " 加洛林王朝是不是過譽了？"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "Hao He"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "Hao He"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "查理曼的加洛林王朝統一西歐恢復當地的經濟文化及秩序擺脫黑暗時代的陰霾，並且拯救歐，洲基督教文明，加洛林為人稱道的成就有：鐵錘查理擊退穆斯林軍隊、替教皇趕走野蠻的倫，巴底人、推動加洛林文藝復興、將正統基督教傳入日耳曼、降伏阿瓦爾人等等，以上是，高中歷史課本所教授的知識。我們不置可否加洛林對於西歐的貢獻，但要論整個歐洲與基，督教世界加洛林的貢獻顯得僥倖與微不足道，加洛林王朝不過是運氣好有個好玄孫，其後繼，者法蘭克人、德意志人恰好都是近代歐洲發達國家故而拔高其祖先的威望，真拋開當代民族，主義加持的史觀，加洛林王朝的貢獻簡直不值一提"
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "查理曼的加洛林王朝統一西歐恢復當地的經濟文化及秩序擺脫黑暗時代的陰霾，並且拯救歐，洲基督教文明，加洛林為人稱道的成就有：鐵錘查理擊退穆斯林軍隊、替教皇趕走野蠻的倫，巴底人、推動加洛林文藝復興、將正統基督教傳入日耳曼、降伏阿瓦爾人等等，以上是，高中歷史課本所教授的知識。我們不置可否加洛林對於西歐的貢獻，但要論整個歐洲與基，督教世界加洛林的貢獻顯得僥倖與微不足道，加洛林王朝不過是運氣好有個好玄孫，其後繼，者法蘭克人、德意志人恰好都是近代歐洲發達國家故而拔高其祖先的威望，真拋開當代民族，主義加持的史觀，加洛林王朝的貢獻簡直不值一提"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "嚴威"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "嚴威"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 22,
+                                        "slot": "subject",
+                                        "start": 9
+                                   },
+                                   {
+                                        "exclusive_end": 305,
+                                        "slot": "content",
+                                        "start": 40
+                                   },
+                                   {
+                                        "exclusive_end": 315,
+                                        "slot": "recipient",
+                                        "start": 313
+                                   }
+                              ],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "請確認要寄出主旨為 加洛林王朝是不是過譽了？的信件嗎？，請確認要寄出的信件內容:查理曼的加洛林王朝統一西歐恢復當地的經濟文化及秩序擺脫黑暗時代的陰霾，並且拯救歐，洲基督教文明，加洛林為人稱道的成就有：鐵錘查理擊退穆斯林軍隊、替教皇趕走野蠻的倫，巴底人、推動加洛林文藝復興、將正統基督教傳入日耳曼、降伏阿瓦爾人等等，以上是，高中歷史課本所教授的知識。我們不置可否加洛林對於西歐的貢獻，但要論整個歐洲與基，督教世界加洛林的貢獻顯得僥倖與微不足道，加洛林王朝不過是運氣好有個好玄孫，其後繼，者法蘭克人、德意志人恰好都是近代歐洲發達國家故而拔高其祖先的威望，真拋開當代民族，主義加持的史觀，加洛林王朝的貢獻簡直不值一提，確認要寄信件給嚴威嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "AFFIRM",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "subject": [
+                                             " 加洛林王朝是不是過譽了？"
+                                        ],
+                                        "copy_recipient": [
+                                             "Hao He"
+                                        ],
+                                        "content": [
+                                             "查理曼的加洛林王朝統一西歐恢復當地的經濟文化及秩序擺脫黑暗時代的陰霾，並且拯救歐，洲基督教文明，加洛林為人稱道的成就有：鐵錘查理擊退穆斯林軍隊、替教皇趕走野蠻的倫，巴底人、推動加洛林文藝復興、將正統基督教傳入日耳曼、降伏阿瓦爾人等等，以上是，高中歷史課本所教授的知識。我們不置可否加洛林對於西歐的貢獻，但要論整個歐洲與基，督教世界加洛林的貢獻顯得僥倖與微不足道，加洛林王朝不過是運氣好有個好玄孫，其後繼，者法蘭克人、德意志人恰好都是近代歐洲發達國家故而拔高其祖先的威望，真拋開當代民族，主義加持的史觀，加洛林王朝的貢獻簡直不值一提"
+                                        ],
+                                        "recipient": [
+                                             "嚴威"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "好的，看起來沒甚麼問題"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NOTIFY_SUCCESS",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_call": {
+                                   "method": "SendMail",
+                                   "parameters": {
+                                        "subject": " 加洛林王朝是不是過譽了？",
+                                        "copy_recipient": "Hao He",
+                                        "content": "查理曼的加洛林王朝統一西歐恢復當地的經濟文化及秩序擺脫黑暗時代的陰霾，並且拯救歐，洲基督教文明，加洛林為人稱道的成就有：鐵錘查理擊退穆斯林軍隊、替教皇趕走野蠻的倫，巴底人、推動加洛林文藝復興、將正統基督教傳入日耳曼、降伏阿瓦爾人等等，以上是，高中歷史課本所教授的知識。我們不置可否加洛林對於西歐的貢獻，但要論整個歐洲與基，督教世界加洛林的貢獻顯得僥倖與微不足道，加洛林王朝不過是運氣好有個好玄孫，其後繼，者法蘭克人、德意志人恰好都是近代歐洲發達國家故而拔高其祖先的威望，真拋開當代民族，主義加持的史觀，加洛林王朝的貢獻簡直不值一提",
+                                        "recipient": "嚴威"
+                                   }
+                              },
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "多虧有您的配合，信件已成功寄出"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "THANK_YOU",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "subject": [
+                                             " 加洛林王朝是不是過譽了？"
+                                        ],
+                                        "copy_recipient": [
+                                             "Hao He"
+                                        ],
+                                        "content": [
+                                             "查理曼的加洛林王朝統一西歐恢復當地的經濟文化及秩序擺脫黑暗時代的陰霾，並且拯救歐，洲基督教文明，加洛林為人稱道的成就有：鐵錘查理擊退穆斯林軍隊、替教皇趕走野蠻的倫，巴底人、推動加洛林文藝復興、將正統基督教傳入日耳曼、降伏阿瓦爾人等等，以上是，高中歷史課本所教授的知識。我們不置可否加洛林對於西歐的貢獻，但要論整個歐洲與基，督教世界加洛林的貢獻顯得僥倖與微不足道，加洛林王朝不過是運氣好有個好玄孫，其後繼，者法蘭克人、德意志人恰好都是近代歐洲發達國家故而拔高其祖先的威望，真拋開當代民族，主義加持的史觀，加洛林王朝的貢獻簡直不值一提"
+                                        ],
+                                        "recipient": [
+                                             "嚴威"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "謝謝，我沒有其他問題了"
                },
                {
                     "frames": [
@@ -307,7 +590,7 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "service_results": []
                          }
@@ -326,85 +609,36 @@
                                         "values": []
                                    },
                                    {
-                                        "act": "THANK_YOU",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "FindMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "contact_name": [
-                                             "cjmwwuh"
-                                        ],
-                                        "message": [
-                                             "height = 4 的 perfect binary tree 的 longest path length 是 7 啊"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "沒關係，先這樣吧，真是太謝謝你了！"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQ_MORE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "還有什麼能幫到您的嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NEGATE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   },
-                                   {
                                         "act": "GOODBYE",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "FindMessage",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "contact_name": [
-                                             "cjmwwuh"
+                                        "subject": [
+                                             " 加洛林王朝是不是過譽了？"
                                         ],
-                                        "message": [
-                                             "height = 4 的 perfect binary tree 的 longest path length 是 7 啊"
+                                        "copy_recipient": [
+                                             "Hao He"
+                                        ],
+                                        "content": [
+                                             "查理曼的加洛林王朝統一西歐恢復當地的經濟文化及秩序擺脫黑暗時代的陰霾，並且拯救歐，洲基督教文明，加洛林為人稱道的成就有：鐵錘查理擊退穆斯林軍隊、替教皇趕走野蠻的倫，巴底人、推動加洛林文藝復興、將正統基督教傳入日耳曼、降伏阿瓦爾人等等，以上是，高中歷史課本所教授的知識。我們不置可否加洛林對於西歐的貢獻，但要論整個歐洲與基，督教世界加洛林的貢獻顯得僥倖與微不足道，加洛林王朝不過是運氣好有個好玄孫，其後繼，者法蘭克人、德意志人恰好都是近代歐洲發達國家故而拔高其祖先的威望，真拋開當代民族，主義加持的史觀，加洛林王朝的貢獻簡直不值一提"
+                                        ],
+                                        "recipient": [
+                                             "嚴威"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "沒關係，先這樣吧，再見"
+                    "utterance": "沒關係，先這樣吧，沒有問題了，再見！"
                },
                {
                     "frames": [
@@ -417,13 +651,13 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "再見！祝您生活愉快！"
+                    "utterance": "歡迎下次諮詢，再見"
                }
           ]
      }

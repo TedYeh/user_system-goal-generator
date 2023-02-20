@@ -2,7 +2,8 @@
      {
           "dialogue_id": 277,
           "services": [
-               "Messaging_1"
+               "Mail_1",
+               "Calendar_1"
           ],
           "turns": [
                {
@@ -12,25 +13,229 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "SendMessage"
+                                             "FindMail"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "SendMessage"
+                                             "FindMail"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "雷恩里歐"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "雷恩里歐"
                                         ]
                                    }
                               ],
-                              "service": "Messaging_1",
-                              "slots": [],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 17,
+                                        "slot": "recipient",
+                                        "start": 13
+                                   }
+                              ],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "FindMail",
                                    "requested_slots": [],
-                                   "slot_values": {}
+                                   "slot_values": {
+                                        "recipient": [
+                                             "雷恩里歐"
+                                        ]
+                                   }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我想要寄則訊息，可以請你幫忙嗎？"
+                    "utterance": "請幫我找一封信件，這封信由雷恩里歐收"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_COUNT",
+                                        "canonical_values": [
+                                             "5"
+                                        ],
+                                        "slot": "count",
+                                        "values": [
+                                             "5"
+                                        ]
+                                   },
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "雷恩里歐"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "雷恩里歐"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 17,
+                                        "slot": "recipient",
+                                        "start": 13
+                                   }
+                              ],
+                              "service_call": {
+                                   "method": "FindMail",
+                                   "parameters": {
+                                        "recipient": [
+                                             "雷恩里歐"
+                                        ]
+                                   }
+                              },
+                              "service_results": [
+                                   {
+                                        "subject": " 中國人報復性旅遊 是怎麼個玩法？",
+                                        "content": "如題喇，春節即將到來，中國人即將報復性旅遊世界，是說…是怎麼個玩法，對面疫情不是還水深火熱嗎，有沒有八卦",
+                                        "copy_recipient": "無",
+                                        "recipient": "雷恩里歐",
+                                        "sender": "東海大學數位創新學程"
+                                   },
+                                   {
+                                        "subject": " 大學的家聚是不是很溫暖？",
+                                        "content": "本肥剛上大學一個人離鄉背井沒什麼朋友，這時候有個自稱是家媽的就來關心本肥了，說我是他們這家的孩子，除了可以定期和他們家聚玩活動外，平常有什麼生活上的問題，也都可以找家爸家媽協助，感覺就是個非常溫暖的大家庭呢，有沒有大學的家聚對求學在外的莘莘學子，是不是很溫暖有沒有八卦",
+                                        "copy_recipient": "秋山院桃",
+                                        "recipient": "雷恩里歐",
+                                        "sender": "Jo San"
+                                   },
+                                   {
+                                        "subject": " 急！楊過出賣姑姑？！",
+                                        "content": "剛剛，楊過這漢奸二代，居然為了出賣姑姑，還誣賴姑姑造假到襄陽的車票，請問真的有畜生會做這種事嗎，小龍女我只推范文芳",
+                                        "copy_recipient": "Iann",
+                                        "recipient": "雷恩里歐",
+                                        "sender": "Jason"
+                                   },
+                                   {
+                                        "subject": " 李鴻章如果多活幾年 能挽救清朝嗎?",
+                                        "content": "李鴻章應該算是清末最有名的大臣，他當政的時期對清朝現代化出力甚多還建立當時也算進步的北洋艦隊，雖然一直被慈禧太后扯後腿後來還賣台，但他的政治能力也是有目共睹，還被稱為是中國的俾斯麥，在他死後清朝也很快因為慈禧太后的惡搞而滅亡，如果他能多活幾年有辦法挽救清朝衰亡的命運嗎?，有沒有掛?",
+                                        "copy_recipient": "無",
+                                        "recipient": "雷恩里歐",
+                                        "sender": "Kevin Chen"
+                                   },
+                                   {
+                                        "subject": " 棒球場2.0？南寮足球場「花1億元」卻踢",
+                                        "content": "棒球場？南寮足球場「花億元」卻踢不了，記者周容萱/攝影陳世明報導，發佈時間：//:，最後更新時間：//:，這是「新竹棒球場」嗎？有議員爆料，前新竹市長林智堅，投入一億元改造的南寮公園，足球場滿地都是碎石，甚至過去還有紅火蟻，從年啟用到現在，都沒辦過一場正式比賽。新竹市長高虹安表示，會盤點預算，盡量改善、恢復到應有的功能",
+                                        "copy_recipient": "無",
+                                        "recipient": "雷恩里歐",
+                                        "sender": "赤雪羽玥"
+                                   }
+                              ]
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "總共有5個結果，我找到寄給雷恩里歐的信件，請你看看"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST_ALTS",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "雷恩里歐"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "能提供更多類似的訊息嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "雷恩里歐"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "雷恩里歐"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM_COUNT",
+                                        "canonical_values": [
+                                             "4"
+                                        ],
+                                        "slot": "count",
+                                        "values": [
+                                             "4"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 9,
+                                        "slot": "recipient",
+                                        "start": 5
+                                   }
+                              ],
+                              "service_call": {
+                                   "method": "FindMail",
+                                   "parameters": {
+                                        "recipient": "雷恩里歐"
+                                   }
+                              },
+                              "service_results": [
+                                   {
+                                        "subject": " 香港人會覺得自己是哪一國人？",
+                                        "content": "今天中午去銀行匯款，聽到行員在討論剛才有一個香港客人要他們改基本資料，說要把國籍改成，但是他們看護照，上面是寫中華人民共和國香港特別行政區，怎麼看都覺得怪怪的，但是香港客人堅持一定要把國籍改成，所以他們還在煩惱，到底要怎麼做。，我在邊聽了很想插嘴直接說香港人就是中國人有什麼好疑問的？就是中國底下的一個，特別行政區不是嗎，這樣是有什麼疑問捏",
+                                        "copy_recipient": "徐立龍",
+                                        "recipient": "雷恩里歐",
+                                        "sender": "AI顧問Dr.Simon"
+                                   },
+                                   {
+                                        "subject": " 有沒有劉玉璞 (趙敏的八卦)",
+                                        "content": "年的倚天屠龍記中，劉玉璞驚才絕艷飾演的趙敏，敢愛敢恨是金庸筆下難得出現的好演員",
+                                        "copy_recipient": "無",
+                                        "recipient": "雷恩里歐",
+                                        "sender": "Tim謝"
+                                   },
+                                   {
+                                        "subject": " 現在還沒公布年終是不是涼了",
+                                        "content": "我高雄城啦，今年八卦處男，正常喔，沒有年終沒有尾牙，然後開工紅包會發元，高雄是這樣，我不知道台北怎樣，和你分享一下，真的可憐",
+                                        "copy_recipient": "Aranlee Wu",
+                                        "recipient": "雷恩里歐",
+                                        "sender": "timwu"
+                                   },
+                                   {
+                                        "subject": " 台灣現在還有什麼沒漲？",
+                                        "content": "吃的穿的住的行的用的看的玩的，幾乎從頭到尾都輪漲一遍了，有無東西沒漲價的八卦",
+                                        "copy_recipient": "無",
+                                        "recipient": "雷恩里歐",
+                                        "sender": "AItree"
+                                   }
+                              ]
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我找到寄給雷恩里歐的信件，請你看看，總共有4個結果"
                },
                {
                     "frames": [
@@ -39,23 +244,34 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "message",
+                                        "slot": "content",
                                         "values": []
                                    },
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "group_name",
+                                        "slot": "subject",
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [],
-                              "service_results": []
+                              "state": {
+                                   "active_intent": "FindMail",
+                                   "requested_slots": [
+                                        "content",
+                                        "subject"
+                                   ],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "雷恩里歐"
+                                        ]
+                                   }
+                              }
                          }
                     ],
-                    "speaker": "SYSTEM",
-                    "utterance": "我想知道訊息內容，你知道群組名稱嗎？"
+                    "speaker": "USER",
+                    "utterance": "我想知道這個信件的主旨，這封信有任何內容嗎？"
                },
                {
                     "frames": [
@@ -64,202 +280,166 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "詐騙可以多找一些演員  以後可能用AI語音要演N個人的套路都沒問題了吧"
+                                             "吃的穿的住的行的用的看的玩的，幾乎從頭到尾都輪漲一遍了，有無東西沒漲價的八卦"
                                         ],
-                                        "slot": "message",
+                                        "slot": "content",
                                         "values": [
-                                             "詐騙可以多找一些演員  以後可能用AI語音要演N個人的套路都沒問題了吧"
+                                             "吃的穿的住的行的用的看的玩的，幾乎從頭到尾都輪漲一遍了，有無東西沒漲價的八卦"
                                         ]
                                    },
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "AI 人工智慧"
+                                             " 台灣現在還有什麼沒漲？"
                                         ],
-                                        "slot": "group_name",
+                                        "slot": "subject",
                                         "values": [
-                                             "AI 人工智慧"
+                                             " 台灣現在還有什麼沒漲？"
                                         ]
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 38,
-                                        "slot": "message",
-                                        "start": 3
+                                        "exclusive_end": 56,
+                                        "slot": "content",
+                                        "start": 18
                                    },
                                    {
-                                        "exclusive_end": 50,
-                                        "slot": "group_name",
-                                        "start": 43
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "SendMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "message": [
-                                             "詐騙可以多找一些演員  以後可能用AI語音要演N個人的套路都沒問題了吧"
-                                        ],
-                                        "group_name": [
-                                             "AI 人工智慧"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "訊息為詐騙可以多找一些演員  以後可能用AI語音要演N個人的套路都沒問題了吧，群組叫做AI 人工智慧"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "詐騙可以多找一些演員  以後可能用AI語音要演N個人的套路都沒問題了吧"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "詐騙可以多找一些演員  以後可能用AI語音要演N個人的套路都沒問題了吧"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "AI 人工智慧"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "AI 人工智慧"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 42,
-                                        "slot": "message",
-                                        "start": 7
-                                   },
-                                   {
-                                        "exclusive_end": 60,
-                                        "slot": "group_name",
-                                        "start": 53
+                                        "exclusive_end": 14,
+                                        "slot": "subject",
+                                        "start": 2
                                    }
                               ],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "確認要傳送訊息詐騙可以多找一些演員  以後可能用AI語音要演N個人的套路都沒問題了吧嗎？，確認要傳送訊息到AI 人工智慧嗎？"
+                    "utterance": "叫做 台灣現在還有什麼沒漲？，內文為吃的穿的住的行的用的看的玩的，幾乎從頭到尾都輪漲一遍了，有無東西沒漲價的八卦"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "AFFIRM",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "預演未來"
+                                        ],
+                                        "slot": "event_name",
+                                        "values": [
+                                             "預演未來"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "Jeff"
+                                        ],
+                                        "slot": "participant",
+                                        "values": [
+                                             "Jeff"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "高雄市804鼓山區金馬賓館當代美術館"
+                                        ],
+                                        "slot": "event_location",
+                                        "values": [
+                                             "高雄市804鼓山區金馬賓館當代美術館"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "event_content",
+                                        "values": [
+                                             "無"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "LookupEvents"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "LookupEvents"
+                                        ]
                                    }
                               ],
-                              "service": "Messaging_1",
-                              "slots": [],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 24,
+                                        "slot": "participant",
+                                        "start": 20
+                                   },
+                                   {
+                                        "exclusive_end": 49,
+                                        "slot": "event_location",
+                                        "start": 31
+                                   },
+                                   {
+                                        "exclusive_end": 18,
+                                        "slot": "event_name",
+                                        "start": 14
+                                   }
+                              ],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "LookupEvents",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "message": [
-                                             "詐騙可以多找一些演員  以後可能用AI語音要演N個人的套路都沒問題了吧"
+                                        "event_name": [
+                                             "預演未來"
                                         ],
-                                        "group_name": [
-                                             "AI 人工智慧"
+                                        "participant": [
+                                             "Jeff"
+                                        ],
+                                        "event_location": [
+                                             "高雄市804鼓山區金馬賓館當代美術館"
+                                        ],
+                                        "event_content": [
+                                             "無"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我對以上資訊沒問題"
+                    "utterance": "請幫我找一個活動，活動名稱叫預演未來，有Jeff會參加，地點為高雄市804鼓山區金馬賓館當代美術館，這個活動不需設定內容"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "NOTIFY_SUCCESS",
+                                        "act": "NOTIFY_FAILURE",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_call": {
-                                   "method": "SendMessage",
+                                   "method": "LookupEvents",
                                    "parameters": {
-                                        "message": "詐騙可以多找一些演員  以後可能用AI語音要演N個人的套路都沒問題了吧",
-                                        "group_name": "AI 人工智慧"
+                                        "event_name": "預演未來",
+                                        "participant": "Jeff",
+                                        "event_location": "高雄市804鼓山區金馬賓館當代美術館",
+                                        "event_content": "無"
                                    }
                               },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "多虧有您的配合，訊息已成功傳送"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "THANK_YOU",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "SendMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "message": [
-                                             "詐騙可以多找一些演員  以後可能用AI語音要演N個人的套路都沒問題了吧"
-                                        ],
-                                        "group_name": [
-                                             "AI 人工智慧"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "感謝"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQ_MORE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "還需要什麼幫助嗎？"
+                    "utterance": "不好意思，在行事曆上沒辦法找到符合您要求的活動，請用其他條件查詢"
                },
                {
                     "frames": [
@@ -278,24 +458,30 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "LookupEvents",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "message": [
-                                             "詐騙可以多找一些演員  以後可能用AI語音要演N個人的套路都沒問題了吧"
+                                        "event_name": [
+                                             "預演未來"
                                         ],
-                                        "group_name": [
-                                             "AI 人工智慧"
+                                        "participant": [
+                                             "Jeff"
+                                        ],
+                                        "event_location": [
+                                             "高雄市804鼓山區金馬賓館當代美術館"
+                                        ],
+                                        "event_content": [
+                                             "無"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "沒關係，先這樣吧，再見"
+                    "utterance": "沒關係，先這樣吧，沒有了！再見！"
                },
                {
                     "frames": [
@@ -308,13 +494,22 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
+                              "service_call": {
+                                   "method": "LookupEvents",
+                                   "parameters": {
+                                        "event_name": "預演未來",
+                                        "participant": "Jeff",
+                                        "event_location": "高雄市804鼓山區金馬賓館當代美術館",
+                                        "event_content": "無"
+                                   }
+                              },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "行，再見！"
+                    "utterance": "嗯，再見"
                }
           ]
      }

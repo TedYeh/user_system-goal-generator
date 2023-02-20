@@ -3,7 +3,8 @@
           "dialogue_id": 445,
           "services": [
                "Mail_1",
-               "Messaging_1"
+               "Messaging_1",
+               "Calendar_1"
           ],
           "turns": [
                {
@@ -13,175 +14,369 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
+                                             "FindMail"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "FindMail"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMail",
+                                   "requested_slots": [],
+                                   "slot_values": {}
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我想要知道相關的信件，請幫幫我"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "recipient",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "copy_recipient",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道這封信的收件者，我想知道這封信的副本收件者"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "Rafina"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "Rafina"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "無"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 10,
+                                        "slot": "recipient",
+                                        "start": 4
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "FindMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "Rafina"
+                                        ],
+                                        "copy_recipient": [
+                                             "無"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "收件者為Rafina，這封信不用副本收件者"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "sender",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道這封信是誰寄的"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "黃彥彰"
+                                        ],
+                                        "slot": "sender",
+                                        "values": [
+                                             "黃彥彰"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 11,
+                                        "slot": "sender",
+                                        "start": 8
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "FindMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "Rafina"
+                                        ],
+                                        "copy_recipient": [
+                                             "無"
+                                        ],
+                                        "sender": [
+                                             "黃彥彰"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "這封信的寄件者為黃彥彰"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "Rafina"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "Rafina"
+                                        ]
+                                   },
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "無"
+                                        ]
+                                   },
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "黃彥彰"
+                                        ],
+                                        "slot": "sender",
+                                        "values": [
+                                             "黃彥彰"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM_COUNT",
+                                        "canonical_values": [
+                                             "1"
+                                        ],
+                                        "slot": "count",
+                                        "values": [
+                                             "1"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 29,
+                                        "slot": "recipient",
+                                        "start": 23
+                                   },
+                                   {
+                                        "exclusive_end": 7,
+                                        "slot": "sender",
+                                        "start": 4
+                                   }
+                              ],
+                              "service_call": {
+                                   "method": "FindMail",
+                                   "parameters": {
+                                        "recipient": "Rafina",
+                                        "copy_recipient": "無",
+                                        "sender": "黃彥彰"
+                                   }
+                              },
+                              "service_results": [
+                                   {
+                                        "subject": " 美國人有想過債留子孫的議題嗎？",
+                                        "content": "美國現在債務差不多是兆新台幣，等於每個美國人欠債萬，然後台灣大概是兆多，等於每個台灣人欠債萬，美國人怎麼還敢提高債務上限，全世界的債主怎麼不殺進去搶擔保品啊",
+                                        "copy_recipient": "無",
+                                        "recipient": "Rafina",
+                                        "sender": "黃彥彰"
+                                   }
+                              ]
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我找到由黃彥彰寄發的信件，請你看看，我找到寄給Rafina的信件，請你看看，總共有1個結果"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "content",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMail",
+                                   "requested_slots": [
+                                        "content"
+                                   ],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "Rafina"
+                                        ],
+                                        "copy_recipient": [
+                                             "無"
+                                        ],
+                                        "sender": [
+                                             "黃彥彰"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "這封信有任何內容嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "是這樣的啦，小弟平常有固定修剪毛髮的習慣，例如腋毛陰毛等等，有一次把腋下的毛直接刮乾淨之後，那個生長速度是非常驚人，沒多久就長回原本的長度了，但是長度跟原本差不多之後又放慢了生長速度，甚至是不長了，下半身的毛也是，所以我很好奇人類的基因裡是有設定好每個人的毛毛的長度了嗎"
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "是這樣的啦，小弟平常有固定修剪毛髮的習慣，例如腋毛陰毛等等，有一次把腋下的毛直接刮乾淨之後，那個生長速度是非常驚人，沒多久就長回原本的長度了，但是長度跟原本差不多之後又放慢了生長速度，甚至是不長了，下半身的毛也是，所以我很好奇人類的基因裡是有設定好每個人的毛毛的長度了嗎"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 138,
+                                        "slot": "content",
+                                        "start": 3
+                                   }
+                              ],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "內容為是這樣的啦，小弟平常有固定修剪毛髮的習慣，例如腋毛陰毛等等，有一次把腋下的毛直接刮乾淨之後，那個生長速度是非常驚人，沒多久就長回原本的長度了，但是長度跟原本差不多之後又放慢了生長速度，甚至是不長了，下半身的毛也是，所以我很好奇人類的基因裡是有設定好每個人的毛毛的長度了嗎"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "SELECT",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "Rafina"
+                                        ],
+                                        "copy_recipient": [
+                                             "無"
+                                        ],
+                                        "sender": [
+                                             "黃彥彰"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "好的，我知道了"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "OFFER_INTENT",
+                                        "canonical_values": [
                                              "SendMail"
                                         ],
                                         "slot": "intent",
                                         "values": [
                                              "SendMail"
                                         ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "明年一月是國軍幾十年來的首次擴軍嗎？"
-                                        ],
-                                        "slot": "subject",
-                                        "values": [
-                                             "明年一月是國軍幾十年來的首次擴軍嗎？"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "如題，最近頒布了義務役役期改回年的政策，如果志願役士兵的數量不大幅減少的情況下，義務役士兵在營時間拉長（義務役視同現役軍人），這樣算起來現役軍人是不是會比現在還要多，這樣算不算是這幾十年來，中華民國國軍，首次現役軍人變多的時刻呢，換句話說，就是擴軍了，有掛嗎，先說小弟是役畢的一年期備役軍人啦乾"
-                                        ],
-                                        "slot": "content",
-                                        "values": [
-                                             "如題，最近頒布了義務役役期改回年的政策，如果志願役士兵的數量不大幅減少的情況下，義務役士兵在營時間拉長（義務役視同現役軍人），這樣算起來現役軍人是不是會比現在還要多，這樣算不算是這幾十年來，中華民國國軍，首次現役軍人變多的時刻呢，換句話說，就是擴軍了，有掛嗎，先說小弟是役畢的一年期備役軍人啦乾"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "thomas"
-                                        ],
-                                        "slot": "copy_recipient",
-                                        "values": [
-                                             "thomas"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "林玉琦"
-                                        ],
-                                        "slot": "recipient",
-                                        "values": [
-                                             "林玉琦"
-                                        ]
                                    }
                               ],
                               "service": "Mail_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 40,
-                                        "slot": "subject",
-                                        "start": 22
-                                   },
-                                   {
-                                        "exclusive_end": 195,
-                                        "slot": "content",
-                                        "start": 48
-                                   },
-                                   {
-                                        "exclusive_end": 217,
-                                        "slot": "copy_recipient",
-                                        "start": 211
-                                   },
-                                   {
-                                        "exclusive_end": 203,
-                                        "slot": "recipient",
-                                        "start": 200
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "SendMail",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "recipient": [
-                                             "林玉琦"
-                                        ],
-                                        "subject": [
-                                             "明年一月是國軍幾十年來的首次擴軍嗎？"
-                                        ],
-                                        "content": [
-                                             "如題，最近頒布了義務役役期改回年的政策，如果志願役士兵的數量不大幅減少的情況下，義務役士兵在營時間拉長（義務役視同現役軍人），這樣算起來現役軍人是不是會比現在還要多，這樣算不算是這幾十年來，中華民國國軍，首次現役軍人變多的時刻呢，換句話說，就是擴軍了，有掛嗎，先說小弟是役畢的一年期備役軍人啦乾"
-                                        ],
-                                        "copy_recipient": [
-                                             "thomas"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "我想要寫一封信，可以請你幫忙嗎？，這封信叫做明年一月是國軍幾十年來的首次擴軍嗎？，這封信的內文為如題，最近頒布了義務役役期改回年的政策，如果志願役士兵的數量不大幅減少的情況下，義務役士兵在營時間拉長（義務役視同現役軍人），這樣算起來現役軍人是不是會比現在還要多，這樣算不算是這幾十年來，中華民國國軍，首次現役軍人變多的時刻呢，換句話說，就是擴軍了，有掛嗎，先說小弟是役畢的一年期備役軍人啦乾，這封信由林玉琦收，副本收件者為thomas"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "林玉琦"
-                                        ],
-                                        "slot": "recipient",
-                                        "values": [
-                                             "林玉琦"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "明年一月是國軍幾十年來的首次擴軍嗎？"
-                                        ],
-                                        "slot": "subject",
-                                        "values": [
-                                             "明年一月是國軍幾十年來的首次擴軍嗎？"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "如題，最近頒布了義務役役期改回年的政策，如果志願役士兵的數量不大幅減少的情況下，義務役士兵在營時間拉長（義務役視同現役軍人），這樣算起來現役軍人是不是會比現在還要多，這樣算不算是這幾十年來，中華民國國軍，首次現役軍人變多的時刻呢，換句話說，就是擴軍了，有掛嗎，先說小弟是役畢的一年期備役軍人啦乾"
-                                        ],
-                                        "slot": "content",
-                                        "values": [
-                                             "如題，最近頒布了義務役役期改回年的政策，如果志願役士兵的數量不大幅減少的情況下，義務役士兵在營時間拉長（義務役視同現役軍人），這樣算起來現役軍人是不是會比現在還要多，這樣算不算是這幾十年來，中華民國國軍，首次現役軍人變多的時刻呢，換句話說，就是擴軍了，有掛嗎，先說小弟是役畢的一年期備役軍人啦乾"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "thomas"
-                                        ],
-                                        "slot": "copy_recipient",
-                                        "values": [
-                                             "thomas"
-                                        ]
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 203,
-                                        "slot": "recipient",
-                                        "start": 200
-                                   },
-                                   {
-                                        "exclusive_end": 27,
-                                        "slot": "subject",
-                                        "start": 9
-                                   },
-                                   {
-                                        "exclusive_end": 192,
-                                        "slot": "content",
-                                        "start": 45
-                                   }
-                              ],
+                              "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "請確認要寄出主旨為明年一月是國軍幾十年來的首次擴軍嗎？的信件嗎？，請確認要寄出的信件內容:如題，最近頒布了義務役役期改回年的政策，如果志願役士兵的數量不大幅減少的情況下，義務役士兵在營時間拉長（義務役視同現役軍人），這樣算起來現役軍人是不是會比現在還要多，這樣算不算是這幾十年來，中華民國國軍，首次現役軍人變多的時刻呢，換句話說，就是擴軍了，有掛嗎，先說小弟是役畢的一年期備役軍人啦乾，確認要寄信件給林玉琦嗎？"
+                    "utterance": "需要藉此機會幫您寄封信嗎？"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "AFFIRM",
+                                        "act": "NEGATE_INTENT",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
@@ -194,30 +389,27 @@
                                    "requested_slots": [],
                                    "slot_values": {
                                         "recipient": [
-                                             "林玉琦"
-                                        ],
-                                        "subject": [
-                                             "明年一月是國軍幾十年來的首次擴軍嗎？"
-                                        ],
-                                        "content": [
-                                             "如題，最近頒布了義務役役期改回年的政策，如果志願役士兵的數量不大幅減少的情況下，義務役士兵在營時間拉長（義務役視同現役軍人），這樣算起來現役軍人是不是會比現在還要多，這樣算不算是這幾十年來，中華民國國軍，首次現役軍人變多的時刻呢，換句話說，就是擴軍了，有掛嗎，先說小弟是役畢的一年期備役軍人啦乾"
+                                             "Rafina"
                                         ],
                                         "copy_recipient": [
-                                             "thomas"
+                                             "無"
+                                        ],
+                                        "sender": [
+                                             "黃彥彰"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我對以上資訊沒問題"
+                    "utterance": "目前不需要"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "NOTIFY_SUCCESS",
+                                        "act": "REQ_MORE",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
@@ -225,20 +417,11 @@
                               ],
                               "service": "Mail_1",
                               "slots": [],
-                              "service_call": {
-                                   "method": "SendMail",
-                                   "parameters": {
-                                        "recipient": "林玉琦",
-                                        "subject": "明年一月是國軍幾十年來的首次擴軍嗎？",
-                                        "content": "如題，最近頒布了義務役役期改回年的政策，如果志願役士兵的數量不大幅減少的情況下，義務役士兵在營時間拉長（義務役視同現役軍人），這樣算起來現役軍人是不是會比現在還要多，這樣算不算是這幾十年來，中華民國國軍，首次現役軍人變多的時刻呢，換句話說，就是擴軍了，有掛嗎，先說小弟是役畢的一年期備役軍人啦乾",
-                                        "copy_recipient": "thomas"
-                                   }
-                              },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "多虧有您的配合，信件已成功寄出"
+                    "utterance": "還有什麼需要幫助的嗎？"
                },
                {
                     "frames": [
@@ -247,186 +430,262 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "SendMessage"
+                                             "FindMessage"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "SendMessage"
+                                             "FindMessage"
                                         ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "SendMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {}
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "請幫我寄一則訊息"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "message",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "我想知道訊息內容"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
+                                   },
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "不過那張圖應該是他自己產生的吧？實際上它應該是真的沒辦法連網。我是覺得不太可能設定一個讓人講講話就能突破連網限制的機制，如果是，這樣的安全設定也太廢了。正常都不可能啦。除非OpenAI故意為之想看看有沒有人突破這一個點吧。"
+                                             "Python資料科學交流社群"
                                         ],
-                                        "slot": "message",
+                                        "slot": "group_name",
                                         "values": [
-                                             "不過那張圖應該是他自己產生的吧？實際上它應該是真的沒辦法連網。我是覺得不太可能設定一個讓人講講話就能突破連網限制的機制，如果是，這樣的安全設定也太廢了。正常都不可能啦。除非OpenAI故意為之想看看有沒有人突破這一個點吧。"
+                                             "Python資料科學交流社群"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "DoFu Lin"
+                                        ],
+                                        "slot": "contact_name",
+                                        "values": [
+                                             "DoFu Lin"
                                         ]
                                    }
                               ],
                               "service": "Messaging_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 114,
-                                        "slot": "message",
-                                        "start": 3
+                                        "exclusive_end": 35,
+                                        "slot": "group_name",
+                                        "start": 21
+                                   },
+                                   {
+                                        "exclusive_end": 47,
+                                        "slot": "contact_name",
+                                        "start": 39
                                    }
                               ],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "FindMessage",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "message": [
-                                             "不過那張圖應該是他自己產生的吧？實際上它應該是真的沒辦法連網。我是覺得不太可能設定一個讓人講講話就能突破連網限制的機制，如果是，這樣的安全設定也太廢了。正常都不可能啦。除非OpenAI故意為之想看看有沒有人突破這一個點吧。"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "跟他說不過那張圖應該是他自己產生的吧？實際上它應該是真的沒辦法連網。我是覺得不太可能設定一個讓人講講話就能突破連網限制的機制，如果是，這樣的安全設定也太廢了。正常都不可能啦。除非OpenAI故意為之想看看有沒有人突破這一個點吧。"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "contact_name",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "group_name",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "群組名稱為何？，我想知道這則訊息是誰寄的？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "WeiHeng"
-                                        ],
-                                        "slot": "contact_name",
-                                        "values": [
-                                             "WeiHeng"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "無"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "無"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 10,
-                                        "slot": "contact_name",
-                                        "start": 3
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "SendMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "message": [
-                                             "不過那張圖應該是他自己產生的吧？實際上它應該是真的沒辦法連網。我是覺得不太可能設定一個讓人講講話就能突破連網限制的機制，如果是，這樣的安全設定也太廢了。正常都不可能啦。除非OpenAI故意為之想看看有沒有人突破這一個點吧。"
-                                        ],
                                         "contact_name": [
-                                             "WeiHeng"
+                                             "DoFu Lin"
                                         ],
                                         "group_name": [
-                                             "無"
+                                             "Python資料科學交流社群"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "用戶為WeiHeng，這則訊息應該是傳送給某個使用者的訊息"
+                    "utterance": "我想要找則訊息，可以請你幫忙嗎？，群組叫做Python資料科學交流社群，用戶為DoFu Lin"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "CONFIRM",
+                                        "act": "OFFER",
                                         "canonical_values": [
-                                             "不過那張圖應該是他自己產生的吧？實際上它應該是真的沒辦法連網。我是覺得不太可能設定一個讓人講講話就能突破連網限制的機制，如果是，這樣的安全設定也太廢了。正常都不可能啦。除非OpenAI故意為之想看看有沒有人突破這一個點吧。"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "不過那張圖應該是他自己產生的吧？實際上它應該是真的沒辦法連網。我是覺得不太可能設定一個讓人講講話就能突破連網限制的機制，如果是，這樣的安全設定也太廢了。正常都不可能啦。除非OpenAI故意為之想看看有沒有人突破這一個點吧。"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "WeiHeng"
+                                             "DoFu Lin"
                                         ],
                                         "slot": "contact_name",
                                         "values": [
-                                             "WeiHeng"
+                                             "DoFu Lin"
                                         ]
                                    },
                                    {
-                                        "act": "CONFIRM",
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "Python資料科學交流社群"
+                                        ],
+                                        "slot": "group_name",
+                                        "values": [
+                                             "Python資料科學交流社群"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM_COUNT",
+                                        "canonical_values": [
+                                             "4"
+                                        ],
+                                        "slot": "count",
+                                        "values": [
+                                             "4"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 36,
+                                        "slot": "contact_name",
+                                        "start": 28
+                                   },
+                                   {
+                                        "exclusive_end": 17,
+                                        "slot": "group_name",
+                                        "start": 3
+                                   }
+                              ],
+                              "service_call": {
+                                   "method": "FindMessage",
+                                   "parameters": {
+                                        "contact_name": "DoFu Lin",
+                                        "group_name": "Python資料科學交流社群"
+                                   }
+                              },
+                              "service_results": [
+                                   {
+                                        "group_name": "Python資料科學交流社群",
+                                        "contact_name": "DoFu Lin",
+                                        "message": "壞處就是沒辦法都很精通"
+                                   },
+                                   {
+                                        "group_name": "Python資料科學交流社群",
+                                        "contact_name": "DoFu Lin",
+                                        "message": "每次看到這些就感恩「還好我跳過了 python 2 的年代」"
+                                   },
+                                   {
+                                        "group_name": "Python資料科學交流社群",
+                                        "contact_name": "DoFu Lin",
+                                        "message": "IBM聽到的都是很操"
+                                   },
+                                   {
+                                        "group_name": "Python資料科學交流社群",
+                                        "contact_name": "DoFu Lin",
+                                        "message": "若無最後的A項（非數字項），"
+                                   }
+                              ]
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "找到在Python資料科學交流社群群組的聊天訊息，找到與DoFu Lin聊天的訊息，總共有4個結果"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "message",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [
+                                        "message"
+                                   ],
+                                   "slot_values": {
+                                        "contact_name": [
+                                             "DoFu Lin"
+                                        ],
+                                        "group_name": [
+                                             "Python資料科學交流社群"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "所以這則訊息講了什麼？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "其實這種問題，應該就是用括號，括起來就好。"
+                                        ],
+                                        "slot": "message",
+                                        "values": [
+                                             "其實這種問題，應該就是用括號，括起來就好。"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 24,
+                                        "slot": "message",
+                                        "start": 3
+                                   }
+                              ],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "跟他說其實這種問題，應該就是用括號，括起來就好。"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "contact_name",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "group_name",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [
+                                        "contact_name",
+                                        "group_name"
+                                   ],
+                                   "slot_values": {
+                                        "contact_name": [
+                                             "DoFu Lin"
+                                        ],
+                                        "group_name": [
+                                             "Python資料科學交流社群"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我想知道這則訊息在哪個群組？，我想知道這則訊息是誰寄的？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "DoFu Lin"
+                                        ],
+                                        "slot": "contact_name",
+                                        "values": [
+                                             "DoFu Lin"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
                                         "canonical_values": [
                                              "無"
                                         ],
@@ -439,28 +698,23 @@
                               "service": "Messaging_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 118,
-                                        "slot": "message",
-                                        "start": 7
-                                   },
-                                   {
-                                        "exclusive_end": 136,
+                                        "exclusive_end": 11,
                                         "slot": "contact_name",
-                                        "start": 129
+                                        "start": 3
                                    }
                               ],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "確認要傳送訊息不過那張圖應該是他自己產生的吧？實際上它應該是真的沒辦法連網。我是覺得不太可能設定一個讓人講講話就能突破連網限制的機制，如果是，這樣的安全設定也太廢了。正常都不可能啦。除非OpenAI故意為之想看看有沒有人突破這一個點吧。嗎？，確認要傳送訊息給WeiHeng嗎？"
+                    "utterance": "用戶為DoFu Lin，這則訊息應該是傳送給某個使用者的訊息"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "AFFIRM",
+                                        "act": "SELECT",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
@@ -469,84 +723,211 @@
                               "service": "Messaging_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "FindMessage",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "message": [
-                                             "不過那張圖應該是他自己產生的吧？實際上它應該是真的沒辦法連網。我是覺得不太可能設定一個讓人講講話就能突破連網限制的機制，如果是，這樣的安全設定也太廢了。正常都不可能啦。除非OpenAI故意為之想看看有沒有人突破這一個點吧。"
-                                        ],
                                         "contact_name": [
-                                             "WeiHeng"
+                                             "DoFu Lin"
                                         ],
                                         "group_name": [
-                                             "無"
+                                             "Python資料科學交流社群"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我對以上資訊沒問題"
+                    "utterance": "好的，我知道了"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "NOTIFY_SUCCESS",
+                                        "act": "REQ_MORE",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
                                    }
                               ],
                               "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "還需要什麼幫助嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "2022/5/7"
+                                        ],
+                                        "slot": "event_date",
+                                        "values": [
+                                             "2022年5月7日"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "南庄花卉節-花卉下午茶(中式)"
+                                        ],
+                                        "slot": "event_name",
+                                        "values": [
+                                             "南庄花卉節-花卉下午茶(中式)"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "生牛肉"
+                                        ],
+                                        "slot": "participant",
+                                        "values": [
+                                             "生牛肉"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "活動名稱：南庄花卉節-花卉下午茶(中式下午茶)活動時間：111年5月7日(日)13:00-15:00活動地點：東村宿舍"
+                                        ],
+                                        "slot": "event_content",
+                                        "values": [
+                                             "活動名稱：南庄花卉節-花卉下午茶(中式下午茶)活動時間：111年5月7日(日)13:00-15:00活動地點：東村宿舍"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "LookupEvents"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "LookupEvents"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 30,
+                                        "slot": "event_name",
+                                        "start": 15
+                                   },
+                                   {
+                                        "exclusive_end": 50,
+                                        "slot": "participant",
+                                        "start": 47
+                                   },
+                                   {
+                                        "exclusive_end": 120,
+                                        "slot": "event_content",
+                                        "start": 61
+                                   },
+                                   {
+                                        "exclusive_end": 45,
+                                        "slot": "event_date",
+                                        "start": 36
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "LookupEvents",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_date": [
+                                             "2022年5月7日"
+                                        ],
+                                        "event_name": [
+                                             "南庄花卉節-花卉下午茶(中式)"
+                                        ],
+                                        "participant": [
+                                             "生牛肉"
+                                        ],
+                                        "event_content": [
+                                             "活動名稱：南庄花卉節-花卉下午茶(中式下午茶)活動時間：111年5月7日(日)13:00-15:00活動地點：東村宿舍"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "請幫我找一個活動，這個活動叫做南庄花卉節-花卉下午茶(中式)，活動日期為2022年5月7日，有生牛肉會參加，幫我在活動備註活動名稱：南庄花卉節-花卉下午茶(中式下午茶)活動時間：111年5月7日(日)13:00-15:00活動地點：東村宿舍"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NOTIFY_FAILURE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_call": {
-                                   "method": "SendMessage",
+                                   "method": "LookupEvents",
                                    "parameters": {
-                                        "message": "不過那張圖應該是他自己產生的吧？實際上它應該是真的沒辦法連網。我是覺得不太可能設定一個讓人講講話就能突破連網限制的機制，如果是，這樣的安全設定也太廢了。正常都不可能啦。除非OpenAI故意為之想看看有沒有人突破這一個點吧。",
-                                        "contact_name": "WeiHeng",
-                                        "group_name": "無"
+                                        "event_date": "2022年5月7日",
+                                        "event_name": "南庄花卉節-花卉下午茶(中式)",
+                                        "participant": "生牛肉",
+                                        "event_content": "活動名稱：南庄花卉節-花卉下午茶(中式下午茶)活動時間：111年5月7日(日)13:00-15:00活動地點：東村宿舍"
                                    }
                               },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "多虧有您的配合，訊息已成功傳送"
+                    "utterance": "不好意思，在行事曆上沒辦法找到符合您要求的活動，請用其他條件查詢"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "THANK_YOU",
+                                        "act": "NEGATE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "GOODBYE",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "LookupEvents",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "message": [
-                                             "不過那張圖應該是他自己產生的吧？實際上它應該是真的沒辦法連網。我是覺得不太可能設定一個讓人講講話就能突破連網限制的機制，如果是，這樣的安全設定也太廢了。正常都不可能啦。除非OpenAI故意為之想看看有沒有人突破這一個點吧。"
+                                        "event_date": [
+                                             "2022年5月7日"
                                         ],
-                                        "contact_name": [
-                                             "WeiHeng"
+                                        "event_name": [
+                                             "南庄花卉節-花卉下午茶(中式)"
                                         ],
-                                        "group_name": [
-                                             "無"
+                                        "participant": [
+                                             "生牛肉"
+                                        ],
+                                        "event_content": [
+                                             "活動名稱：南庄花卉節-花卉下午茶(中式下午茶)活動時間：111年5月7日(日)13:00-15:00活動地點：東村宿舍"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "謝謝"
+                    "utterance": "沒關係，先這樣吧，沒有問題了，再見！"
                },
                {
                     "frames": [
@@ -559,21 +940,22 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_call": {
-                                   "method": "SendMessage",
+                                   "method": "LookupEvents",
                                    "parameters": {
-                                        "message": "不過那張圖應該是他自己產生的吧？實際上它應該是真的沒辦法連網。我是覺得不太可能設定一個讓人講講話就能突破連網限制的機制，如果是，這樣的安全設定也太廢了。正常都不可能啦。除非OpenAI故意為之想看看有沒有人突破這一個點吧。",
-                                        "contact_name": "WeiHeng",
-                                        "group_name": "無"
+                                        "event_date": "2022年5月7日",
+                                        "event_name": "南庄花卉節-花卉下午茶(中式)",
+                                        "participant": "生牛肉",
+                                        "event_content": "活動名稱：南庄花卉節-花卉下午茶(中式下午茶)活動時間：111年5月7日(日)13:00-15:00活動地點：東村宿舍"
                                    }
                               },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "祝您生活愉快！再見！"
+                    "utterance": "很榮幸為您服務，再見！"
                }
           ]
      }

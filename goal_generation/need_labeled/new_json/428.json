@@ -2,6 +2,7 @@
      {
           "dialogue_id": 428,
           "services": [
+               "Messaging_1",
                "Calendar_1"
           ],
           "turns": [
@@ -12,25 +13,25 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "LookupEvents"
+                                             "FindMessage"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "LookupEvents"
+                                             "FindMessage"
                                         ]
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Messaging_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "LookupEvents",
+                                   "active_intent": "FindMessage",
                                    "requested_slots": [],
                                    "slot_values": {}
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "請幫我找一個活動"
+                    "utterance": "請幫我找一則訊息"
                },
                {
                     "frames": [
@@ -39,23 +40,17 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "event_date",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_location",
+                                        "slot": "group_name",
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Messaging_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "這個活動辦在幾月幾號呢？，這個活動辦在哪裡啊？"
+                    "utterance": "你知道群組名稱嗎？"
                },
                {
                     "frames": [
@@ -64,142 +59,198 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "2022/4/10"
+                                             "Python資料科學交流社群"
                                         ],
-                                        "slot": "event_date",
+                                        "slot": "group_name",
                                         "values": [
-                                             "這週的第日天"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "文觀處展覽館"
-                                        ],
-                                        "slot": "event_location",
-                                        "values": [
-                                             "文觀處展覽館"
+                                             "Python資料科學交流社群"
                                         ]
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Messaging_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 9,
-                                        "slot": "event_date",
+                                        "exclusive_end": 18,
+                                        "slot": "group_name",
+                                        "start": 4
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "group_name": [
+                                             "Python資料科學交流社群"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "群組叫做Python資料科學交流社群"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "Python資料科學交流社群"
+                                        ],
+                                        "slot": "group_name",
+                                        "values": [
+                                             "Python資料科學交流社群"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM_COUNT",
+                                        "canonical_values": [
+                                             "5"
+                                        ],
+                                        "slot": "count",
+                                        "values": [
+                                             "5"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 17,
+                                        "slot": "group_name",
                                         "start": 3
+                                   }
+                              ],
+                              "service_call": {
+                                   "method": "FindMessage",
+                                   "parameters": {
+                                        "group_name": "Python資料科學交流社群"
+                                   }
+                              },
+                              "service_results": [
+                                   {
+                                        "group_name": "Python資料科學交流社群",
+                                        "contact_name": "超級BG",
+                                        "message": "coscup 唯一缺點就是平行議程軌太雜，建議先安排自己想聽的議程，到時候比較好搶位子"
                                    },
                                    {
-                                        "exclusive_end": 19,
-                                        "slot": "event_location",
-                                        "start": 13
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_date": [
-                                             "這週的第日天"
-                                        ],
-                                        "event_location": [
-                                             "文觀處展覽館"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "日期為這週的第日天，地點為文觀處展覽館"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
+                                        "group_name": "Python資料科學交流社群",
+                                        "contact_name": "Draz",
+                                        "message": "因為都是學校教室 位子有限"
+                                   },
                                    {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_name",
-                                        "values": []
+                                        "group_name": "Python資料科學交流社群",
+                                        "contact_name": "Hong Fly",
+                                        "message": "推算回去感覺你國小就有涉獵相關討論了w"
+                                   },
+                                   {
+                                        "group_name": "Python資料科學交流社群",
+                                        "contact_name": "古青箭",
+                                        "message": "你是要平分嗎"
+                                   },
+                                   {
+                                        "group_name": "Python資料科學交流社群",
+                                        "contact_name": "zirean",
+                                        "message": "你是有寫錯嗎 不然照你分這樣有什麼問題"
                                    }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
+                              ]
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "那這個活動叫甚麼呢？"
+                    "utterance": "找到在Python資料科學交流社群群組的聊天訊息，總共有5個結果"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "雲林縣斗六市雲林國民小學第7屆美術班畢業暨學習成果展"
-                                        ],
-                                        "slot": "event_name",
-                                        "values": [
-                                             "雲林縣斗六市雲林國民小學第7屆美術班畢業暨學習成果展"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 31,
-                                        "slot": "event_name",
-                                        "start": 5
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_date": [
-                                             "這週的第日天"
-                                        ],
-                                        "event_location": [
-                                             "文觀處展覽館"
-                                        ],
-                                        "event_name": [
-                                             "雲林縣斗六市雲林國民小學第7屆美術班畢業暨學習成果展"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "活動名稱叫雲林縣斗六市雲林國民小學第7屆美術班畢業暨學習成果展"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NOTIFY_FAILURE",
+                                        "act": "SELECT",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Messaging_1",
                               "slots": [],
-                              "service_call": {
-                                   "method": "LookupEvents",
-                                   "parameters": {
-                                        "event_date": "這週的第日天",
-                                        "event_location": "文觀處展覽館",
-                                        "event_name": "雲林縣斗六市雲林國民小學第7屆美術班畢業暨學習成果展"
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "group_name": [
+                                             "Python資料科學交流社群"
+                                        ]
                                    }
-                              },
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我知道了"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "OFFER_INTENT",
+                                        "canonical_values": [
+                                             "FindMessage"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "FindMessage"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "不好意思，在行事曆上沒辦法找到符合您要求的活動，請用其他條件查詢"
+                    "utterance": "需要幫您找一則訊息嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "AFFIRM_INTENT",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {}
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "好的，麻煩你了"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "contact_name",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道這則訊息是誰寄的？"
                },
                {
                     "frames": [
@@ -208,33 +259,168 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "2022/4/10"
+                                             "For Lee"
                                         ],
-                                        "slot": "event_date",
+                                        "slot": "contact_name",
                                         "values": [
-                                             "4月10號"
+                                             "For Lee"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 10,
+                                        "slot": "contact_name",
+                                        "start": 3
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "group_name": [
+                                             "Python資料科學交流社群"
+                                        ],
+                                        "contact_name": [
+                                             "For Lee"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "用戶為For Lee"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_COUNT",
+                                        "canonical_values": [
+                                             "2"
+                                        ],
+                                        "slot": "count",
+                                        "values": [
+                                             "2"
                                         ]
                                    },
                                    {
-                                        "act": "INFORM",
+                                        "act": "OFFER",
                                         "canonical_values": [
-                                             "雲林縣斗六市雲林國民小學第7屆美術班畢業暨學習成果展"
+                                             "Python資料科學交流社群"
                                         ],
-                                        "slot": "event_name",
+                                        "slot": "group_name",
                                         "values": [
-                                             "雲林縣斗六市雲林國民小學第7屆美術班畢業暨學習成果展"
+                                             "Python資料科學交流社群"
                                         ]
                                    },
                                    {
-                                        "act": "INFORM",
+                                        "act": "OFFER",
                                         "canonical_values": [
-                                             "文觀處展覽館"
+                                             "For Lee"
                                         ],
-                                        "slot": "event_location",
+                                        "slot": "contact_name",
                                         "values": [
-                                             "文觀處展覽館"
+                                             "For Lee"
                                         ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 25,
+                                        "slot": "group_name",
+                                        "start": 11
                                    },
+                                   {
+                                        "exclusive_end": 43,
+                                        "slot": "contact_name",
+                                        "start": 36
+                                   }
+                              ],
+                              "service_call": {
+                                   "method": "FindMessage",
+                                   "parameters": {
+                                        "group_name": [
+                                             "Python資料科學交流社群"
+                                        ],
+                                        "contact_name": [
+                                             "For Lee"
+                                        ]
+                                   }
+                              },
+                              "service_results": [
+                                   {
+                                        "group_name": "Python資料科學交流社群",
+                                        "contact_name": "For Lee",
+                                        "message": "@Jasper 你認識"
+                                   },
+                                   {
+                                        "group_name": "Python資料科學交流社群",
+                                        "contact_name": "For Lee",
+                                        "message": "我也會c++"
+                                   }
+                              ]
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "總共有2個結果，找到在Python資料科學交流社群群組的聊天訊息，找到與For Lee聊天的訊息"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "GOODBYE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "group_name": [
+                                             "Python資料科學交流社群"
+                                        ],
+                                        "contact_name": [
+                                             "For Lee"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "沒有問題了，再見吧！"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "GOODBYE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "祝您生活愉快！再見！"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
@@ -244,52 +430,158 @@
                                         "values": [
                                              "LookupEvents"
                                         ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "participant",
+                                        "values": [
+                                             "無"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "臺東縣962長濱鄉"
+                                        ],
+                                        "slot": "event_location",
+                                        "values": [
+                                             "臺東縣962長濱鄉"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "長濱雙浪金剛馬拉松"
+                                        ],
+                                        "slot": "event_name",
+                                        "values": [
+                                             "長濱雙浪金剛馬拉松"
+                                        ]
                                    }
                               ],
                               "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 47,
-                                        "slot": "event_name",
-                                        "start": 21
-                                   },
-                                   {
-                                        "exclusive_end": 67,
+                                        "exclusive_end": 49,
                                         "slot": "event_location",
-                                        "start": 61
+                                        "start": 40
                                    },
                                    {
-                                        "exclusive_end": 56,
-                                        "slot": "event_date",
-                                        "start": 51
+                                        "exclusive_end": 23,
+                                        "slot": "event_name",
+                                        "start": 14
                                    }
                               ],
                               "state": {
                                    "active_intent": "LookupEvents",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "event_date": [
-                                             "4月10號"
+                                        "event_name": [
+                                             "長濱雙浪金剛馬拉松"
+                                        ],
+                                        "participant": [
+                                             "無"
                                         ],
                                         "event_location": [
-                                             "文觀處展覽館"
-                                        ],
-                                        "event_name": [
-                                             "雲林縣斗六市雲林國民小學第7屆美術班畢業暨學習成果展"
+                                             "臺東縣962長濱鄉"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我想要知道相關的活動，請幫幫我，活動名稱叫雲林縣斗六市雲林國民小學第7屆美術班畢業暨學習成果展，活動在4月10號，活動辦在文觀處展覽館"
+                    "utterance": "請幫我找一個活動，活動名稱叫長濱雙浪金剛馬拉松，這個活動不需設定參加者，活動辦在臺東縣962長濱鄉"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "NOTIFY_FAILURE",
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "長濱雙浪金剛馬拉松"
+                                        ],
+                                        "slot": "event_name",
+                                        "values": [
+                                             "長濱雙浪金剛馬拉松"
+                                        ]
+                                   },
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "participant",
+                                        "values": [
+                                             "無"
+                                        ]
+                                   },
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "臺東縣962長濱鄉"
+                                        ],
+                                        "slot": "event_location",
+                                        "values": [
+                                             "臺東縣962長濱鄉"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM_COUNT",
+                                        "canonical_values": [
+                                             "1"
+                                        ],
+                                        "slot": "count",
+                                        "values": [
+                                             "1"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 24,
+                                        "slot": "event_name",
+                                        "start": 15
+                                   },
+                                   {
+                                        "exclusive_end": 44,
+                                        "slot": "event_location",
+                                        "start": 35
+                                   }
+                              ],
+                              "service_call": {
+                                   "method": "LookupEvents",
+                                   "parameters": {
+                                        "event_name": "長濱雙浪金剛馬拉松",
+                                        "participant": "無",
+                                        "event_location": "臺東縣962長濱鄉"
+                                   }
+                              },
+                              "service_results": [
+                                   {
+                                        "event_name": "長濱雙浪金剛馬拉松",
+                                        "event_location": "臺東縣962長濱鄉",
+                                        "event_content": "無",
+                                        "participant": "無",
+                                        "event_date": "2022/5/1",
+                                        "event_time": "11:20"
+                                   }
+                              ]
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "在您的行事曆找到不同天但名稱為長濱雙浪金剛馬拉松的活動，找到舉行地點為臺東縣962長濱鄉的活動，總共有1個結果"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "SELECT",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
@@ -297,30 +589,288 @@
                               ],
                               "service": "Calendar_1",
                               "slots": [],
-                              "service_call": {
-                                   "method": "LookupEvents",
-                                   "parameters": {
-                                        "event_date": "4月10號",
-                                        "event_location": "文觀處展覽館",
-                                        "event_name": "雲林縣斗六市雲林國民小學第7屆美術班畢業暨學習成果展"
+                              "state": {
+                                   "active_intent": "LookupEvents",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_name": [
+                                             "長濱雙浪金剛馬拉松"
+                                        ],
+                                        "participant": [
+                                             "無"
+                                        ],
+                                        "event_location": [
+                                             "臺東縣962長濱鄉"
+                                        ]
                                    }
-                              },
-                              "service_results": []
+                              }
                          }
                     ],
-                    "speaker": "SYSTEM",
-                    "utterance": "不好意思，在行事曆上沒辦法找到符合您要求的活動，請用其他條件查詢"
+                    "speaker": "USER",
+                    "utterance": "我知道了"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "NEGATE",
+                                        "act": "REQ_MORE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "還有什麼需要幫助的嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "FindMessage"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "FindMessage"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {}
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "請幫我找一則訊息"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "group_name",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道這則訊息在哪個群組？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "Deep Learning (AI)  study and discuss"
+                                        ],
+                                        "slot": "group_name",
+                                        "values": [
+                                             "Deep Learning (AI)  study and discuss"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 41,
+                                        "slot": "group_name",
+                                        "start": 4
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "group_name": [
+                                             "Deep Learning (AI)  study and discuss"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "應該是在Deep Learning (AI)  study and discuss群組中的訊息"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_COUNT",
+                                        "canonical_values": [
+                                             "5"
+                                        ],
+                                        "slot": "count",
+                                        "values": [
+                                             "5"
+                                        ]
+                                   },
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "Deep Learning (AI)  study and discuss"
+                                        ],
+                                        "slot": "group_name",
+                                        "values": [
+                                             "Deep Learning (AI)  study and discuss"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 48,
+                                        "slot": "group_name",
+                                        "start": 11
+                                   }
+                              ],
+                              "service_call": {
+                                   "method": "FindMessage",
+                                   "parameters": {
+                                        "group_name": [
+                                             "Deep Learning (AI)  study and discuss"
+                                        ]
+                                   }
+                              },
+                              "service_results": [
+                                   {
+                                        "group_name": "Deep Learning (AI)  study and discuss",
+                                        "contact_name": "Lucifer",
+                                        "message": "只是想測試100多筆資料有沒有機會用深度學習train出東西OAO"
+                                   },
+                                   {
+                                        "group_name": "Deep Learning (AI)  study and discuss",
+                                        "contact_name": "小室盆栽",
+                                        "message": "你可以用model.summary()印出給大家幫你看"
+                                   },
+                                   {
+                                        "group_name": "Deep Learning (AI)  study and discuss",
+                                        "contact_name": "assf",
+                                        "message": "看是哪出nan"
+                                   },
+                                   {
+                                        "group_name": "Deep Learning (AI)  study and discuss",
+                                        "contact_name": "同情我的話就給我錢",
+                                        "message": "只有一層也是nan 還是根本問題是資料量太少train不出東西"
+                                   },
+                                   {
+                                        "group_name": "Deep Learning (AI)  study and discuss",
+                                        "contact_name": "威翔王",
+                                        "message": "你的dropout太多了吧⋯⋯"
+                                   }
+                              ]
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "總共有5個結果，找到在Deep Learning (AI)  study and discuss群組的聊天訊息"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "SELECT",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "group_name": [
+                                             "Deep Learning (AI)  study and discuss"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "好的，我知道了"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "OFFER_INTENT",
+                                        "canonical_values": [
+                                             "FindMessage"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "FindMessage"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "您會想要找一則訊息嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "THANK_YOU",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
                                    },
+                                   {
+                                        "act": "NEGATE_INTENT",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "group_name": [
+                                             "Deep Learning (AI)  study and discuss"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我知道了，謝謝你啊！，目前不需要"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
                                    {
                                         "act": "GOODBYE",
                                         "canonical_values": [],
@@ -328,54 +878,13 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Messaging_1",
                               "slots": [],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_date": [
-                                             "4月10號"
-                                        ],
-                                        "event_location": [
-                                             "文觀處展覽館"
-                                        ],
-                                        "event_name": [
-                                             "雲林縣斗六市雲林國民小學第7屆美術班畢業暨學習成果展"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "沒關係，先這樣吧，再見"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "GOODBYE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_call": {
-                                   "method": "LookupEvents",
-                                   "parameters": {
-                                        "event_date": "4月10號",
-                                        "event_location": "文觀處展覽館",
-                                        "event_name": "雲林縣斗六市雲林國民小學第7屆美術班畢業暨學習成果展"
-                                   }
-                              },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "好的，再見！"
+                    "utterance": "好的，祝您生活愉快，再見"
                }
           ]
      }

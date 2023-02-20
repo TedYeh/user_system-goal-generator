@@ -2,7 +2,8 @@
      {
           "dialogue_id": 286,
           "services": [
-               "Calendar_1"
+               "Messaging_1",
+               "Mail_1"
           ],
           "turns": [
                {
@@ -10,91 +11,454 @@
                          {
                               "actions": [
                                    {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "06:40"
-                                        ],
-                                        "slot": "event_time",
-                                        "values": [
-                                             "上午6點40分"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "世界閱讀日—世界閱讀日 高雄閱讀嘉年華"
-                                        ],
-                                        "slot": "event_name",
-                                        "values": [
-                                             "世界閱讀日—世界閱讀日 高雄閱讀嘉年華"
-                                        ]
-                                   },
-                                   {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "LookupEvents"
+                                             "SendMessage"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "LookupEvents"
+                                             "SendMessage"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "秋山院桃"
+                                        ],
+                                        "slot": "contact_name",
+                                        "values": [
+                                             "秋山院桃"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "請大家有空的話，參考並指導一下，謝謝："
+                                        ],
+                                        "slot": "message",
+                                        "values": [
+                                             "請大家有空的話，參考並指導一下，謝謝："
                                         ]
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Messaging_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 33,
-                                        "slot": "event_name",
-                                        "start": 14
+                                        "exclusive_end": 47,
+                                        "slot": "contact_name",
+                                        "start": 43
                                    },
                                    {
-                                        "exclusive_end": 44,
-                                        "slot": "event_time",
-                                        "start": 37
+                                        "exclusive_end": 39,
+                                        "slot": "message",
+                                        "start": 20
                                    }
                               ],
                               "state": {
-                                   "active_intent": "LookupEvents",
+                                   "active_intent": "SendMessage",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "event_time": [
-                                             "上午6點40分"
+                                        "message": [
+                                             "請大家有空的話，參考並指導一下，謝謝："
                                         ],
-                                        "event_name": [
-                                             "世界閱讀日—世界閱讀日 高雄閱讀嘉年華"
+                                        "contact_name": [
+                                             "秋山院桃"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "請幫我找一個活動，活動名稱為世界閱讀日—世界閱讀日 高雄閱讀嘉年華，時間為上午6點40分"
+                    "utterance": "我想要寄則訊息，可以請你幫忙嗎？，訊息為請大家有空的話，參考並指導一下，謝謝：，用戶為秋山院桃"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "NOTIFY_FAILURE",
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "請大家有空的話，參考並指導一下，謝謝："
+                                        ],
+                                        "slot": "message",
+                                        "values": [
+                                             "請大家有空的話，參考並指導一下，謝謝："
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "秋山院桃"
+                                        ],
+                                        "slot": "contact_name",
+                                        "values": [
+                                             "秋山院桃"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 26,
+                                        "slot": "message",
+                                        "start": 7
+                                   },
+                                   {
+                                        "exclusive_end": 41,
+                                        "slot": "contact_name",
+                                        "start": 37
+                                   }
+                              ],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "確認要傳送訊息請大家有空的話，參考並指導一下，謝謝：嗎？，確認要傳送訊息給秋山院桃嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "AFFIRM",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "message": [
+                                             "請大家有空的話，參考並指導一下，謝謝："
+                                        ],
+                                        "contact_name": [
+                                             "秋山院桃"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "好的，看起來沒甚麼問題"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NOTIFY_SUCCESS",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
                               "slots": [],
                               "service_call": {
-                                   "method": "LookupEvents",
+                                   "method": "SendMessage",
                                    "parameters": {
-                                        "event_time": "上午6點40分",
-                                        "event_name": "世界閱讀日—世界閱讀日 高雄閱讀嘉年華"
+                                        "message": "請大家有空的話，參考並指導一下，謝謝：",
+                                        "contact_name": "秋山院桃"
                                    }
                               },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "不好意思，在行事曆上沒辦法找到符合您要求的活動，請用其他條件查詢"
+                    "utterance": "多虧有您的配合，訊息已成功傳送"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "SendMail"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "SendMail"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             " 《木曜4》射箭意外現場曝！男大生「站氣"
+                                        ],
+                                        "slot": "subject",
+                                        "values": [
+                                             " 《木曜4》射箭意外現場曝！男大生「站氣"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "這篇不是要討論責任比例，只是看了報導和聲明有一點覺得蠻屌的，射人的自己都不知道射中人了，連旁邊不同視角的參加者都不知道有人中箭了，一般人不哀號至少也罵聲幹吧，所以那男大生默默中箭，然後眾人都不知道的情況，沒看到也沒聽到的情況下離開場地，真的覺得有點屌，總會側拍攝影機到畫片吧，看之後會不會有機會撥出，小腿中箭一聲不吭，這放到三國大概什麼等級?"
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "這篇不是要討論責任比例，只是看了報導和聲明有一點覺得蠻屌的，射人的自己都不知道射中人了，連旁邊不同視角的參加者都不知道有人中箭了，一般人不哀號至少也罵聲幹吧，所以那男大生默默中箭，然後眾人都不知道的情況，沒看到也沒聽到的情況下離開場地，真的覺得有點屌，總會側拍攝影機到畫片吧，看之後會不會有機會撥出，小腿中箭一聲不吭，這放到三國大概什麼等級?"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "nitekat"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "nitekat"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "sam hoo"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "sam hoo"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 42,
+                                        "slot": "subject",
+                                        "start": 22
+                                   },
+                                   {
+                                        "exclusive_end": 217,
+                                        "slot": "content",
+                                        "start": 46
+                                   },
+                                   {
+                                        "exclusive_end": 243,
+                                        "slot": "copy_recipient",
+                                        "start": 236
+                                   },
+                                   {
+                                        "exclusive_end": 229,
+                                        "slot": "recipient",
+                                        "start": 222
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "sam hoo"
+                                        ],
+                                        "subject": [
+                                             " 《木曜4》射箭意外現場曝！男大生「站氣"
+                                        ],
+                                        "content": [
+                                             "這篇不是要討論責任比例，只是看了報導和聲明有一點覺得蠻屌的，射人的自己都不知道射中人了，連旁邊不同視角的參加者都不知道有人中箭了，一般人不哀號至少也罵聲幹吧，所以那男大生默默中箭，然後眾人都不知道的情況，沒看到也沒聽到的情況下離開場地，真的覺得有點屌，總會側拍攝影機到畫片吧，看之後會不會有機會撥出，小腿中箭一聲不吭，這放到三國大概什麼等級?"
+                                        ],
+                                        "copy_recipient": [
+                                             "nitekat"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我想要寫一封信，可以請你幫忙嗎？，信件主旨叫 《木曜4》射箭意外現場曝！男大生「站氣，內文為這篇不是要討論責任比例，只是看了報導和聲明有一點覺得蠻屌的，射人的自己都不知道射中人了，連旁邊不同視角的參加者都不知道有人中箭了，一般人不哀號至少也罵聲幹吧，所以那男大生默默中箭，然後眾人都不知道的情況，沒看到也沒聽到的情況下離開場地，真的覺得有點屌，總會側拍攝影機到畫片吧，看之後會不會有機會撥出，小腿中箭一聲不吭，這放到三國大概什麼等級?，收件者為sam hoo，副本收件者為nitekat"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "sam hoo"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "sam hoo"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             " 《木曜4》射箭意外現場曝！男大生「站氣"
+                                        ],
+                                        "slot": "subject",
+                                        "values": [
+                                             " 《木曜4》射箭意外現場曝！男大生「站氣"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "這篇不是要討論責任比例，只是看了報導和聲明有一點覺得蠻屌的，射人的自己都不知道射中人了，連旁邊不同視角的參加者都不知道有人中箭了，一般人不哀號至少也罵聲幹吧，所以那男大生默默中箭，然後眾人都不知道的情況，沒看到也沒聽到的情況下離開場地，真的覺得有點屌，總會側拍攝影機到畫片吧，看之後會不會有機會撥出，小腿中箭一聲不吭，這放到三國大概什麼等級?"
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "這篇不是要討論責任比例，只是看了報導和聲明有一點覺得蠻屌的，射人的自己都不知道射中人了，連旁邊不同視角的參加者都不知道有人中箭了，一般人不哀號至少也罵聲幹吧，所以那男大生默默中箭，然後眾人都不知道的情況，沒看到也沒聽到的情況下離開場地，真的覺得有點屌，總會側拍攝影機到畫片吧，看之後會不會有機會撥出，小腿中箭一聲不吭，這放到三國大概什麼等級?"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "nitekat"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "nitekat"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 233,
+                                        "slot": "recipient",
+                                        "start": 226
+                                   },
+                                   {
+                                        "exclusive_end": 29,
+                                        "slot": "subject",
+                                        "start": 9
+                                   },
+                                   {
+                                        "exclusive_end": 218,
+                                        "slot": "content",
+                                        "start": 47
+                                   }
+                              ],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "請確認要寄出主旨為 《木曜4》射箭意外現場曝！男大生「站氣的信件嗎？，請確認要寄出的信件內容:這篇不是要討論責任比例，只是看了報導和聲明有一點覺得蠻屌的，射人的自己都不知道射中人了，連旁邊不同視角的參加者都不知道有人中箭了，一般人不哀號至少也罵聲幹吧，所以那男大生默默中箭，然後眾人都不知道的情況，沒看到也沒聽到的情況下離開場地，真的覺得有點屌，總會側拍攝影機到畫片吧，看之後會不會有機會撥出，小腿中箭一聲不吭，這放到三國大概什麼等級?，確認要寄信件給sam hoo嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "AFFIRM",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "sam hoo"
+                                        ],
+                                        "subject": [
+                                             " 《木曜4》射箭意外現場曝！男大生「站氣"
+                                        ],
+                                        "content": [
+                                             "這篇不是要討論責任比例，只是看了報導和聲明有一點覺得蠻屌的，射人的自己都不知道射中人了，連旁邊不同視角的參加者都不知道有人中箭了，一般人不哀號至少也罵聲幹吧，所以那男大生默默中箭，然後眾人都不知道的情況，沒看到也沒聽到的情況下離開場地，真的覺得有點屌，總會側拍攝影機到畫片吧，看之後會不會有機會撥出，小腿中箭一聲不吭，這放到三國大概什麼等級?"
+                                        ],
+                                        "copy_recipient": [
+                                             "nitekat"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我對以上資訊沒問題"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NOTIFY_SUCCESS",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_call": {
+                                   "method": "SendMail",
+                                   "parameters": {
+                                        "recipient": "sam hoo",
+                                        "subject": " 《木曜4》射箭意外現場曝！男大生「站氣",
+                                        "content": "這篇不是要討論責任比例，只是看了報導和聲明有一點覺得蠻屌的，射人的自己都不知道射中人了，連旁邊不同視角的參加者都不知道有人中箭了，一般人不哀號至少也罵聲幹吧，所以那男大生默默中箭，然後眾人都不知道的情況，沒看到也沒聽到的情況下離開場地，真的覺得有點屌，總會側拍攝影機到畫片吧，看之後會不會有機會撥出，小腿中箭一聲不吭，這放到三國大概什麼等級?",
+                                        "copy_recipient": "nitekat"
+                                   }
+                              },
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "多虧有您的配合，信件已成功寄出"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "SELECT",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "sam hoo"
+                                        ],
+                                        "subject": [
+                                             " 《木曜4》射箭意外現場曝！男大生「站氣"
+                                        ],
+                                        "content": [
+                                             "這篇不是要討論責任比例，只是看了報導和聲明有一點覺得蠻屌的，射人的自己都不知道射中人了，連旁邊不同視角的參加者都不知道有人中箭了，一般人不哀號至少也罵聲幹吧，所以那男大生默默中箭，然後眾人都不知道的情況，沒看到也沒聽到的情況下離開場地，真的覺得有點屌，總會側拍攝影機到畫片吧，看之後會不會有機會撥出，小腿中箭一聲不吭，這放到三國大概什麼等級?"
+                                        ],
+                                        "copy_recipient": [
+                                             "nitekat"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "好的"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQ_MORE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "還有什麼需要幫助的嗎？"
                },
                {
                     "frames": [
@@ -113,24 +477,30 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "LookupEvents",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "event_time": [
-                                             "上午6點40分"
+                                        "recipient": [
+                                             "sam hoo"
                                         ],
-                                        "event_name": [
-                                             "世界閱讀日—世界閱讀日 高雄閱讀嘉年華"
+                                        "subject": [
+                                             " 《木曜4》射箭意外現場曝！男大生「站氣"
+                                        ],
+                                        "content": [
+                                             "這篇不是要討論責任比例，只是看了報導和聲明有一點覺得蠻屌的，射人的自己都不知道射中人了，連旁邊不同視角的參加者都不知道有人中箭了，一般人不哀號至少也罵聲幹吧，所以那男大生默默中箭，然後眾人都不知道的情況，沒看到也沒聽到的情況下離開場地，真的覺得有點屌，總會側拍攝影機到畫片吧，看之後會不會有機會撥出，小腿中箭一聲不吭，這放到三國大概什麼等級?"
+                                        ],
+                                        "copy_recipient": [
+                                             "nitekat"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "沒關係，先這樣吧，沒有問題了，再見吧！"
+                    "utterance": "沒關係，先這樣吧，沒有了！再見！"
                },
                {
                     "frames": [
@@ -143,20 +513,13 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Mail_1",
                               "slots": [],
-                              "service_call": {
-                                   "method": "LookupEvents",
-                                   "parameters": {
-                                        "event_time": "上午6點40分",
-                                        "event_name": "世界閱讀日—世界閱讀日 高雄閱讀嘉年華"
-                                   }
-                              },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "再見！祝您生活愉快！"
+                    "utterance": "有問題可以隨時聯繫我！祝您生活愉快！再見！"
                }
           ]
      }

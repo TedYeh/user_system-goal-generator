@@ -2,7 +2,8 @@
      {
           "dialogue_id": 183,
           "services": [
-               "Mail_1"
+               "Mail_1",
+               "Messaging_1"
           ],
           "turns": [
                {
@@ -12,230 +13,1288 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "FindMail"
+                                             "SendMail"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "FindMail"
+                                             "SendMail"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {}
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我想要寫一封信，可以請你幫忙嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "copy_recipient",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "你知道這封信的副本收件者嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "Dore"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "Dore"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 10,
+                                        "slot": "copy_recipient",
+                                        "start": 6
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "copy_recipient": [
+                                             "Dore"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "副本收件者為Dore"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "recipient",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "subject",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "那這封信叫甚麼呢？，你知道這封信是寄給誰的嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "青眼白龍"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "青眼白龍"
                                         ]
                                    },
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "P.R."
+                                             " 鮮蝦壽司的殼都怎麼剝的"
                                         ],
-                                        "slot": "recipient",
+                                        "slot": "subject",
                                         "values": [
-                                             "P.R."
+                                             " 鮮蝦壽司的殼都怎麼剝的"
                                         ]
                                    }
                               ],
                               "service": "Mail_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 24,
+                                        "exclusive_end": 28,
                                         "slot": "recipient",
-                                        "start": 20
+                                        "start": 24
+                                   },
+                                   {
+                                        "exclusive_end": 17,
+                                        "slot": "subject",
+                                        "start": 5
                                    }
                               ],
                               "state": {
-                                   "active_intent": "FindMail",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {
+                                        "copy_recipient": [
+                                             "Dore"
+                                        ],
                                         "recipient": [
-                                             "P.R."
+                                             "青眼白龍"
+                                        ],
+                                        "subject": [
+                                             " 鮮蝦壽司的殼都怎麼剝的"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我想要找個信，可以請你幫忙嗎？，收件者為P.R."
+                    "utterance": "信件主旨叫 鮮蝦壽司的殼都怎麼剝的，這封信要寄給青眼白龍"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "INFORM_COUNT",
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "content",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道這封信的內文"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
                                         "canonical_values": [
-                                             "5"
+                                             "肥宅我在吃鮮蝦三貫喇，吃著吃著，想到這蝦的殼，不知道都誰剝的，是內場工讀生剝的，還是小精靈幫忙剝的，還是可能是正妹幫忙剝的，有卦嗎"
                                         ],
-                                        "slot": "count",
+                                        "slot": "content",
                                         "values": [
-                                             "5"
+                                             "肥宅我在吃鮮蝦三貫喇，吃著吃著，想到這蝦的殼，不知道都誰剝的，是內場工讀生剝的，還是小精靈幫忙剝的，還是可能是正妹幫忙剝的，有卦嗎"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 72,
+                                        "slot": "content",
+                                        "start": 7
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "copy_recipient": [
+                                             "Dore"
+                                        ],
+                                        "recipient": [
+                                             "青眼白龍"
+                                        ],
+                                        "subject": [
+                                             " 鮮蝦壽司的殼都怎麼剝的"
+                                        ],
+                                        "content": [
+                                             "肥宅我在吃鮮蝦三貫喇，吃著吃著，想到這蝦的殼，不知道都誰剝的，是內場工讀生剝的，還是小精靈幫忙剝的，還是可能是正妹幫忙剝的，有卦嗎"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "這封信的內文為肥宅我在吃鮮蝦三貫喇，吃著吃著，想到這蝦的殼，不知道都誰剝的，是內場工讀生剝的，還是小精靈幫忙剝的，還是可能是正妹幫忙剝的，有卦嗎"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "Dore"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "Dore"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "青眼白龍"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "青眼白龍"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             " 鮮蝦壽司的殼都怎麼剝的"
+                                        ],
+                                        "slot": "subject",
+                                        "values": [
+                                             " 鮮蝦壽司的殼都怎麼剝的"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "肥宅我在吃鮮蝦三貫喇，吃著吃著，想到這蝦的殼，不知道都誰剝的，是內場工讀生剝的，還是小精靈幫忙剝的，還是可能是正妹幫忙剝的，有卦嗎"
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "肥宅我在吃鮮蝦三貫喇，吃著吃著，想到這蝦的殼，不知道都誰剝的，是內場工讀生剝的，還是小精靈幫忙剝的，還是可能是正妹幫忙剝的，有卦嗎"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 116,
+                                        "slot": "recipient",
+                                        "start": 112
+                                   },
+                                   {
+                                        "exclusive_end": 21,
+                                        "slot": "subject",
+                                        "start": 9
+                                   },
+                                   {
+                                        "exclusive_end": 104,
+                                        "slot": "content",
+                                        "start": 39
+                                   }
+                              ],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "請確認要寄出主旨為 鮮蝦壽司的殼都怎麼剝的的信件嗎？，請確認要寄出的信件內容:肥宅我在吃鮮蝦三貫喇，吃著吃著，想到這蝦的殼，不知道都誰剝的，是內場工讀生剝的，還是小精靈幫忙剝的，還是可能是正妹幫忙剝的，有卦嗎，確認要寄信件給青眼白龍嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "AFFIRM",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "copy_recipient": [
+                                             "Dore"
+                                        ],
+                                        "recipient": [
+                                             "青眼白龍"
+                                        ],
+                                        "subject": [
+                                             " 鮮蝦壽司的殼都怎麼剝的"
+                                        ],
+                                        "content": [
+                                             "肥宅我在吃鮮蝦三貫喇，吃著吃著，想到這蝦的殼，不知道都誰剝的，是內場工讀生剝的，還是小精靈幫忙剝的，還是可能是正妹幫忙剝的，有卦嗎"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我對以上資訊沒問題"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NOTIFY_SUCCESS",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_call": {
+                                   "method": "SendMail",
+                                   "parameters": {
+                                        "copy_recipient": "Dore",
+                                        "recipient": "青眼白龍",
+                                        "subject": " 鮮蝦壽司的殼都怎麼剝的",
+                                        "content": "肥宅我在吃鮮蝦三貫喇，吃著吃著，想到這蝦的殼，不知道都誰剝的，是內場工讀生剝的，還是小精靈幫忙剝的，還是可能是正妹幫忙剝的，有卦嗎"
+                                   }
+                              },
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "多虧有您的配合，信件已成功寄出"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "SendMessage"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "SendMessage"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {}
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "請幫我寄一則訊息"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "message",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "group_name",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道訊息內容，我想知道這則訊息在哪個群組？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "Windows小問題很多，但好處是很難完全死掉"
+                                        ],
+                                        "slot": "message",
+                                        "values": [
+                                             "Windows小問題很多，但好處是很難完全死掉"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "AI 人工智慧"
+                                        ],
+                                        "slot": "group_name",
+                                        "values": [
+                                             "AI 人工智慧"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 26,
+                                        "slot": "message",
+                                        "start": 3
+                                   },
+                                   {
+                                        "exclusive_end": 38,
+                                        "slot": "group_name",
+                                        "start": 31
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "SendMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "message": [
+                                             "Windows小問題很多，但好處是很難完全死掉"
+                                        ],
+                                        "group_name": [
+                                             "AI 人工智慧"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "訊息為Windows小問題很多，但好處是很難完全死掉，應該是在AI 人工智慧群組中的訊息"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "Windows小問題很多，但好處是很難完全死掉"
+                                        ],
+                                        "slot": "message",
+                                        "values": [
+                                             "Windows小問題很多，但好處是很難完全死掉"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "AI 人工智慧"
+                                        ],
+                                        "slot": "group_name",
+                                        "values": [
+                                             "AI 人工智慧"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 30,
+                                        "slot": "message",
+                                        "start": 7
+                                   },
+                                   {
+                                        "exclusive_end": 48,
+                                        "slot": "group_name",
+                                        "start": 41
+                                   }
+                              ],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "確認要傳送訊息Windows小問題很多，但好處是很難完全死掉嗎？，確認要傳送訊息到AI 人工智慧嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "AFFIRM",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "message": [
+                                             "Windows小問題很多，但好處是很難完全死掉"
+                                        ],
+                                        "group_name": [
+                                             "AI 人工智慧"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "好的，看起來沒甚麼問題"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NOTIFY_SUCCESS",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_call": {
+                                   "method": "SendMessage",
+                                   "parameters": {
+                                        "message": "Windows小問題很多，但好處是很難完全死掉",
+                                        "group_name": "AI 人工智慧"
+                                   }
+                              },
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "多虧有您的配合，訊息已成功傳送"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "SendMail"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "SendMail"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {}
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我想要寫一封信，可以請你幫忙嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "recipient",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "content",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "這封信有任何內容嗎？，我想知道這封信的收件者"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "Hong Fly"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "Hong Fly"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "如題，藤壺是一種在海下的節肢動物，常常附著在東西上面，比如海龜，鯨魚，船隻，似乎被寄生的事主是沒辦法自行清除這些藤壺，只能被折磨到死去，現代船隻的損耗問題也是藤壺造成了很大的麻煩，有沒有藤壺有多噁心的八卦"
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "如題，藤壺是一種在海下的節肢動物，常常附著在東西上面，比如海龜，鯨魚，船隻，似乎被寄生的事主是沒辦法自行清除這些藤壺，只能被折磨到死去，現代船隻的損耗問題也是藤壺造成了很大的麻煩，有沒有藤壺有多噁心的八卦"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 120,
+                                        "slot": "recipient",
+                                        "start": 112
+                                   },
+                                   {
+                                        "exclusive_end": 105,
+                                        "slot": "content",
+                                        "start": 3
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "Hong Fly"
+                                        ],
+                                        "content": [
+                                             "如題，藤壺是一種在海下的節肢動物，常常附著在東西上面，比如海龜，鯨魚，船隻，似乎被寄生的事主是沒辦法自行清除這些藤壺，只能被折磨到死去，現代船隻的損耗問題也是藤壺造成了很大的麻煩，有沒有藤壺有多噁心的八卦"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "內文為如題，藤壺是一種在海下的節肢動物，常常附著在東西上面，比如海龜，鯨魚，船隻，似乎被寄生的事主是沒辦法自行清除這些藤壺，只能被折磨到死去，現代船隻的損耗問題也是藤壺造成了很大的麻煩，有沒有藤壺有多噁心的八卦，這封信要寄給Hong Fly"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "subject",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "那這封信叫甚麼呢？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             " 藤壺有多噁心"
+                                        ],
+                                        "slot": "subject",
+                                        "values": [
+                                             " 藤壺有多噁心"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 12,
+                                        "slot": "subject",
+                                        "start": 5
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "Hong Fly"
+                                        ],
+                                        "content": [
+                                             "如題，藤壺是一種在海下的節肢動物，常常附著在東西上面，比如海龜，鯨魚，船隻，似乎被寄生的事主是沒辦法自行清除這些藤壺，只能被折磨到死去，現代船隻的損耗問題也是藤壺造成了很大的麻煩，有沒有藤壺有多噁心的八卦"
+                                        ],
+                                        "subject": [
+                                             " 藤壺有多噁心"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "這封信叫做 藤壺有多噁心"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "copy_recipient",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道這封信的副本收件者"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "無"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "Hong Fly"
+                                        ],
+                                        "content": [
+                                             "如題，藤壺是一種在海下的節肢動物，常常附著在東西上面，比如海龜，鯨魚，船隻，似乎被寄生的事主是沒辦法自行清除這些藤壺，只能被折磨到死去，現代船隻的損耗問題也是藤壺造成了很大的麻煩，有沒有藤壺有多噁心的八卦"
+                                        ],
+                                        "subject": [
+                                             " 藤壺有多噁心"
+                                        ],
+                                        "copy_recipient": [
+                                             "無"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "不需設定副本收件者"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "Hong Fly"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "Hong Fly"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "如題，藤壺是一種在海下的節肢動物，常常附著在東西上面，比如海龜，鯨魚，船隻，似乎被寄生的事主是沒辦法自行清除這些藤壺，只能被折磨到死去，現代船隻的損耗問題也是藤壺造成了很大的麻煩，有沒有藤壺有多噁心的八卦"
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "如題，藤壺是一種在海下的節肢動物，常常附著在東西上面，比如海龜，鯨魚，船隻，似乎被寄生的事主是沒辦法自行清除這些藤壺，只能被折磨到死去，現代船隻的損耗問題也是藤壺造成了很大的麻煩，有沒有藤壺有多噁心的八卦"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             " 藤壺有多噁心"
+                                        ],
+                                        "slot": "subject",
+                                        "values": [
+                                             " 藤壺有多噁心"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "無"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 152,
+                                        "slot": "recipient",
+                                        "start": 144
+                                   },
+                                   {
+                                        "exclusive_end": 136,
+                                        "slot": "content",
+                                        "start": 34
+                                   },
+                                   {
+                                        "exclusive_end": 16,
+                                        "slot": "subject",
+                                        "start": 9
+                                   }
+                              ],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "請確認要寄出主旨為 藤壺有多噁心的信件嗎？，請確認要寄出的信件內容:如題，藤壺是一種在海下的節肢動物，常常附著在東西上面，比如海龜，鯨魚，船隻，似乎被寄生的事主是沒辦法自行清除這些藤壺，只能被折磨到死去，現代船隻的損耗問題也是藤壺造成了很大的麻煩，有沒有藤壺有多噁心的八卦，確認要寄信件給Hong Fly嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "AFFIRM",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "Hong Fly"
+                                        ],
+                                        "content": [
+                                             "如題，藤壺是一種在海下的節肢動物，常常附著在東西上面，比如海龜，鯨魚，船隻，似乎被寄生的事主是沒辦法自行清除這些藤壺，只能被折磨到死去，現代船隻的損耗問題也是藤壺造成了很大的麻煩，有沒有藤壺有多噁心的八卦"
+                                        ],
+                                        "subject": [
+                                             " 藤壺有多噁心"
+                                        ],
+                                        "copy_recipient": [
+                                             "無"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "好的，看起來沒甚麼問題"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NOTIFY_SUCCESS",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_call": {
+                                   "method": "SendMail",
+                                   "parameters": {
+                                        "recipient": "Hong Fly",
+                                        "content": "如題，藤壺是一種在海下的節肢動物，常常附著在東西上面，比如海龜，鯨魚，船隻，似乎被寄生的事主是沒辦法自行清除這些藤壺，只能被折磨到死去，現代船隻的損耗問題也是藤壺造成了很大的麻煩，有沒有藤壺有多噁心的八卦",
+                                        "subject": " 藤壺有多噁心",
+                                        "copy_recipient": "無"
+                                   }
+                              },
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "多虧有您的配合，信件已成功寄出"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "FindMessage"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "FindMessage"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {}
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "請幫我找一則訊息"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "group_name",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "你知道群組名稱嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "AI 人工智慧"
+                                        ],
+                                        "slot": "group_name",
+                                        "values": [
+                                             "AI 人工智慧"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 11,
+                                        "slot": "group_name",
+                                        "start": 4
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "group_name": [
+                                             "AI 人工智慧"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "群組叫做AI 人工智慧"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "contact_name",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道這則訊息是誰寄的？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "Aranlee Wu"
+                                        ],
+                                        "slot": "contact_name",
+                                        "values": [
+                                             "Aranlee Wu"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 13,
+                                        "slot": "contact_name",
+                                        "start": 3
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "group_name": [
+                                             "AI 人工智慧"
+                                        ],
+                                        "contact_name": [
+                                             "Aranlee Wu"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "用戶為Aranlee Wu"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "message",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道訊息內容"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "最好某種程度可以參考以前經驗修正之後"
+                                        ],
+                                        "slot": "message",
+                                        "values": [
+                                             "最好某種程度可以參考以前經驗修正之後"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 21,
+                                        "slot": "message",
+                                        "start": 3
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "group_name": [
+                                             "AI 人工智慧"
+                                        ],
+                                        "contact_name": [
+                                             "Aranlee Wu"
+                                        ],
+                                        "message": [
+                                             "最好某種程度可以參考以前經驗修正之後"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "訊息為最好某種程度可以參考以前經驗修正之後"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "AI 人工智慧"
+                                        ],
+                                        "slot": "group_name",
+                                        "values": [
+                                             "AI 人工智慧"
                                         ]
                                    },
                                    {
                                         "act": "OFFER",
                                         "canonical_values": [
-                                             "P.R."
+                                             "Aranlee Wu"
                                         ],
-                                        "slot": "recipient",
+                                        "slot": "contact_name",
                                         "values": [
-                                             "P.R."
+                                             "Aranlee Wu"
+                                        ]
+                                   },
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "最好某種程度可以參考以前經驗修正之後"
+                                        ],
+                                        "slot": "message",
+                                        "values": [
+                                             "最好某種程度可以參考以前經驗修正之後"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM_COUNT",
+                                        "canonical_values": [
+                                             "1"
+                                        ],
+                                        "slot": "count",
+                                        "values": [
+                                             "1"
                                         ]
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Messaging_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 17,
-                                        "slot": "recipient",
-                                        "start": 13
+                                        "exclusive_end": 10,
+                                        "slot": "group_name",
+                                        "start": 3
+                                   },
+                                   {
+                                        "exclusive_end": 31,
+                                        "slot": "contact_name",
+                                        "start": 21
                                    }
                               ],
                               "service_call": {
-                                   "method": "FindMail",
+                                   "method": "FindMessage",
                                    "parameters": {
-                                        "recipient": [
-                                             "P.R."
-                                        ]
+                                        "group_name": "AI 人工智慧",
+                                        "contact_name": "Aranlee Wu",
+                                        "message": "最好某種程度可以參考以前經驗修正之後"
                                    }
                               },
                               "service_results": [
                                    {
-                                        "subject": " 美國這個是性交雕像嗎？",
-                                        "content": "如題，我剛剛看到說這好像是美國一個新的雕像",
-                                        "copy_recipient": "無",
-                                        "recipient": "P.R.",
-                                        "sender": "金仔"
-                                   },
-                                   {
-                                        "subject": " 小時候受委屈都殺人 是不是悲塔男",
-                                        "content": "如題啦，阿肥我小時候搶東西搶輸人，被禁足，受不公平待遇，內心第一反應就是我要幹死對方，是真的帶有仇恨的那種，幻想手中有刀就捅死對方，但是都下不了手，長大累得跟狗一樣反而沒這種想法，只覺得自己好衰，是不是小時候狼性被壓抑，長大才當悲塔男==，好想回到國中看看班花",
-                                        "copy_recipient": "南方工人",
-                                        "recipient": "P.R.",
-                                        "sender": "仴仴"
-                                   },
-                                   {
-                                        "subject": " 知道強棒出擊王瑞玲的都幾歲了？",
-                                        "content": "最近有一位記者王瑞玲蠻有名的，但是以前還有另外一位王瑞玲，就是主持強棒出擊的王瑞玲，還是其實是同一位，有內幕",
-                                        "copy_recipient": "無",
-                                        "recipient": "P.R.",
-                                        "sender": "小布"
-                                   },
-                                   {
-                                        "subject": " 撤資台灣的台灣人是不是很可笑",
-                                        "content": "抱歉，先讓我大笑三聲，哈哈哈，每次美國宣揚大陸即將攻台論，不免有些恐慌仔狂賣股票地產，殊不知大家都忘了，美國才剛入住台灣，日本唐吉訶德也積極再擴店，日資美資都在瘋狂入駐，甚至日本人已經瘋狂在南部購地購房，身為台灣人卻瘋狂變賣台灣資產，準備逃往日本美國，台灣人從天堂模式逃往地獄模式，日本人從地獄模式逃往天堂模式，台灣人是不是很可笑",
-                                        "copy_recipient": "Christina",
-                                        "recipient": "P.R.",
-                                        "sender": "Biofuck"
-                                   },
-                                   {
-                                        "subject": " 雙修好玩嗎",
-                                        "content": "學科被當就要雙修，跟著學弟妹一起上課，如果再沒過就三修，從前三修沒過要退學，雙修好玩嗎",
-                                        "copy_recipient": "無",
-                                        "recipient": "P.R.",
-                                        "sender": "黑雅"
+                                        "group_name": "AI 人工智慧",
+                                        "contact_name": "Aranlee Wu",
+                                        "message": "最好某種程度可以參考以前經驗修正之後"
                                    }
                               ]
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "總共有5個結果，我找到寄給P.R.的信件，請你看看"
+                    "utterance": "找到在AI 人工智慧群組的聊天訊息，找到與Aranlee Wu聊天的訊息，總共有1個結果"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "SELECT",
+                                        "act": "REQUEST_ALTS",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Messaging_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "LookupEvents",
+                                   "active_intent": "FindMessage",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "recipient": [
-                                             "P.R."
+                                        "group_name": [
+                                             "AI 人工智慧"
+                                        ],
+                                        "contact_name": [
+                                             "Aranlee Wu"
+                                        ],
+                                        "message": [
+                                             "最好某種程度可以參考以前經驗修正之後"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "好的，我知道了"
+                    "utterance": "能提供更多類似的訊息嗎？"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "OFFER_INTENT",
-                                        "canonical_values": [
-                                             "LookupEvents"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "LookupEvents"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "您想要藉此機會順便檢查行事曆中的活動嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "THANK_YOU",
+                                        "act": "NOTIFY_FAILURE",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
                                    },
                                    {
-                                        "act": "NEGATE_INTENT",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "recipient": [
-                                             "P.R."
+                                        "act": "INFORM_COUNT",
+                                        "canonical_values": [
+                                             "1"
+                                        ],
+                                        "slot": "count",
+                                        "values": [
+                                             "1"
                                         ]
                                    }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "非常感謝！，目前不需要"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQ_MORE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Messaging_1",
                               "slots": [],
-                              "service_results": []
+                              "service_call": {
+                                   "method": "FindMessage",
+                                   "parameters": {
+                                        "group_name": "AI 人工智慧",
+                                        "contact_name": "Aranlee Wu",
+                                        "message": "最好某種程度可以參考以前經驗修正之後"
+                                   }
+                              },
+                              "service_results": [
+                                   {
+                                        "group_name": "AI 人工智慧",
+                                        "contact_name": "Aranlee Wu",
+                                        "message": "最好某種程度可以參考以前經驗修正之後"
+                                   }
+                              ]
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "還有什麼需要幫助的嗎？"
+                    "utterance": "不好意思，沒辦法找到符合您要求的訊息，總共有1個結果"
                },
                {
                     "frames": [
@@ -254,21 +1313,27 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Messaging_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "LookupEvents",
+                                   "active_intent": "FindMessage",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "recipient": [
-                                             "P.R."
+                                        "group_name": [
+                                             "AI 人工智慧"
+                                        ],
+                                        "contact_name": [
+                                             "Aranlee Wu"
+                                        ],
+                                        "message": [
+                                             "最好某種程度可以參考以前經驗修正之後"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "沒關係，先這樣吧，沒有了！再見！"
+                    "utterance": "沒關係，先這樣吧，沒有問題了，再見！"
                },
                {
                     "frames": [
@@ -281,13 +1346,21 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Messaging_1",
                               "slots": [],
+                              "service_call": {
+                                   "method": "FindMessage",
+                                   "parameters": {
+                                        "group_name": "AI 人工智慧",
+                                        "contact_name": "Aranlee Wu",
+                                        "message": "最好某種程度可以參考以前經驗修正之後"
+                                   }
+                              },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "好，再見"
+                    "utterance": "很榮幸為您服務，再見！"
                }
           ]
      }

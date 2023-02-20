@@ -2,7 +2,8 @@
      {
           "dialogue_id": 50,
           "services": [
-               "Messaging_1"
+               "Messaging_1",
+               "Mail_1"
           ],
           "turns": [
                {
@@ -18,34 +19,81 @@
                                         "values": [
                                              "FindMessage"
                                         ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {}
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我想要知道相關的訊息，請幫幫我"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "message",
+                                        "values": []
                                    },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "group_name",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道訊息內容，群組名稱為何？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "無"
+                                             "量的話 平均每分鐘大概5000筆而已"
                                         ],
-                                        "slot": "group_name",
+                                        "slot": "message",
                                         "values": [
-                                             "無"
+                                             "量的話 平均每分鐘大概5000筆而已"
                                         ]
                                    },
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "明顯跟我不同"
+                                             "Python資料科學交流社群"
                                         ],
-                                        "slot": "message",
+                                        "slot": "group_name",
                                         "values": [
-                                             "明顯跟我不同"
+                                             "Python資料科學交流社群"
                                         ]
                                    }
                               ],
                               "service": "Messaging_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 26,
+                                        "exclusive_end": 21,
                                         "slot": "message",
-                                        "start": 20
+                                        "start": 3
+                                   },
+                                   {
+                                        "exclusive_end": 40,
+                                        "slot": "group_name",
+                                        "start": 26
                                    }
                               ],
                               "state": {
@@ -53,17 +101,17 @@
                                    "requested_slots": [],
                                    "slot_values": {
                                         "message": [
-                                             "明顯跟我不同"
+                                             "量的話 平均每分鐘大概5000筆而已"
                                         ],
                                         "group_name": [
-                                             "無"
+                                             "Python資料科學交流社群"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我想要找則訊息，可以請你幫忙嗎？，跟他說明顯跟我不同，這則訊息應該是傳送給某個使用者的訊息"
+                    "utterance": "訊息為量的話 平均每分鐘大概5000筆而已，應該是在Python資料科學交流社群群組中的訊息"
                },
                {
                     "frames": [
@@ -82,48 +130,54 @@
                                    {
                                         "act": "OFFER",
                                         "canonical_values": [
-                                             "明顯跟我不同"
+                                             "量的話 平均每分鐘大概5000筆而已"
                                         ],
                                         "slot": "message",
                                         "values": [
-                                             "明顯跟我不同"
+                                             "量的話 平均每分鐘大概5000筆而已"
                                         ]
                                    },
                                    {
                                         "act": "OFFER",
                                         "canonical_values": [
-                                             "無"
+                                             "Python資料科學交流社群"
                                         ],
                                         "slot": "group_name",
                                         "values": [
-                                             "無"
+                                             "Python資料科學交流社群"
                                         ]
                                    }
                               ],
                               "service": "Messaging_1",
-                              "slots": [],
+                              "slots": [
+                                   {
+                                        "exclusive_end": 25,
+                                        "slot": "group_name",
+                                        "start": 11
+                                   }
+                              ],
                               "service_call": {
                                    "method": "FindMessage",
                                    "parameters": {
                                         "message": [
-                                             "明顯跟我不同"
+                                             "量的話 平均每分鐘大概5000筆而已"
                                         ],
                                         "group_name": [
-                                             "無"
+                                             "Python資料科學交流社群"
                                         ]
                                    }
                               },
                               "service_results": [
                                    {
-                                        "group_name": "無",
-                                        "contact_name": "Re Re",
-                                        "message": "明顯跟我不同"
+                                        "group_name": "Python資料科學交流社群",
+                                        "contact_name": "夜狼",
+                                        "message": "量的話 平均每分鐘大概5000筆而已"
                                    }
                               ]
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "總共有1個結果"
+                    "utterance": "總共有1個結果，找到在Python資料科學交流社群群組的聊天訊息"
                },
                {
                     "frames": [
@@ -145,10 +199,10 @@
                                    ],
                                    "slot_values": {
                                         "message": [
-                                             "明顯跟我不同"
+                                             "量的話 平均每分鐘大概5000筆而已"
                                         ],
                                         "group_name": [
-                                             "無"
+                                             "Python資料科學交流社群"
                                         ]
                                    }
                               }
@@ -164,18 +218,18 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "diamonddevil"
+                                             "cross"
                                         ],
                                         "slot": "contact_name",
                                         "values": [
-                                             "diamonddevil"
+                                             "cross"
                                         ]
                                    }
                               ],
                               "service": "Messaging_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 15,
+                                        "exclusive_end": 8,
                                         "slot": "contact_name",
                                         "start": 3
                                    }
@@ -184,7 +238,211 @@
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "用戶為diamonddevil"
+                    "utterance": "用戶為cross"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "FindMail"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "FindMail"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMail",
+                                   "requested_slots": [],
+                                   "slot_values": {}
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我想要知道相關的信件，請幫幫我"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "copy_recipient",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "你知道這封信的副本收件者嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "無"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "copy_recipient": [
+                                             "無"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "不需設定副本收件者"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "content",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道這封信的內文"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "剛看到出現的灌籃高手真人化影片"
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "剛看到出現的灌籃高手真人化影片"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 18,
+                                        "slot": "content",
+                                        "start": 3
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "FindMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "copy_recipient": [
+                                             "無"
+                                        ],
+                                        "content": [
+                                             "剛看到出現的灌籃高手真人化影片"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "內容為剛看到出現的灌籃高手真人化影片"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_COUNT",
+                                        "canonical_values": [
+                                             "1"
+                                        ],
+                                        "slot": "count",
+                                        "values": [
+                                             "1"
+                                        ]
+                                   },
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "無"
+                                        ]
+                                   },
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "剛看到出現的灌籃高手真人化影片"
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "剛看到出現的灌籃高手真人化影片"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 29,
+                                        "slot": "content",
+                                        "start": 14
+                                   }
+                              ],
+                              "service_call": {
+                                   "method": "FindMail",
+                                   "parameters": {
+                                        "copy_recipient": [
+                                             "無"
+                                        ],
+                                        "content": [
+                                             "剛看到出現的灌籃高手真人化影片"
+                                        ]
+                                   }
+                              },
+                              "service_results": [
+                                   {
+                                        "subject": " 哇靠！仙道和水戶太帥了吧..相田好正！",
+                                        "content": "剛看到出現的灌籃高手真人化影片",
+                                        "copy_recipient": "無",
+                                        "recipient": "笨蛋小葉",
+                                        "sender": "Hannibal Hsu"
+                                   }
+                              ]
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "總共有1個結果，我找到內容跟剛看到出現的灌籃高手真人化影片有關的信件，請你看看"
                },
                {
                     "frames": [
@@ -197,17 +455,17 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "LookupEvents",
+                                   "active_intent": "FindMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "message": [
-                                             "明顯跟我不同"
-                                        ],
-                                        "group_name": [
+                                        "copy_recipient": [
                                              "無"
+                                        ],
+                                        "content": [
+                                             "剛看到出現的灌籃高手真人化影片"
                                         ]
                                    }
                               }
@@ -221,72 +479,19 @@
                          {
                               "actions": [
                                    {
-                                        "act": "OFFER_INTENT",
-                                        "canonical_values": [
-                                             "LookupEvents"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "LookupEvents"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "您想要藉此機會順便檢查行事曆中的活動嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NEGATE_INTENT",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "message": [
-                                             "明顯跟我不同"
-                                        ],
-                                        "group_name": [
-                                             "無"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "目前不需要"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
                                         "act": "REQ_MORE",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "還有什麼問題嗎？"
+                    "utterance": "還有什麼能幫到您的嗎？"
                },
                {
                     "frames": [
@@ -305,24 +510,24 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "LookupEvents",
+                                   "active_intent": "FindMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "message": [
-                                             "明顯跟我不同"
-                                        ],
-                                        "group_name": [
+                                        "copy_recipient": [
                                              "無"
+                                        ],
+                                        "content": [
+                                             "剛看到出現的灌籃高手真人化影片"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "沒關係，先這樣吧，沒有問題了，再見！"
+                    "utterance": "沒關係，先這樣吧，沒有了！再見！"
                },
                {
                     "frames": [
@@ -335,13 +540,13 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "好的，祝您生活愉快，再見"
+                    "utterance": "再見！祝您生活愉快！"
                }
           ]
      }

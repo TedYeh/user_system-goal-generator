@@ -2,6 +2,7 @@
      {
           "dialogue_id": 127,
           "services": [
+               "Calendar_1",
                "Messaging_1"
           ],
           "turns": [
@@ -12,25 +13,25 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "FindMessage"
+                                             "AddEvent"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "FindMessage"
+                                             "AddEvent"
                                         ]
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "FindMessage",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {}
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我想要知道相關的訊息，請幫幫我"
+                    "utterance": "我想要添加一個活動，可以請你幫忙嗎？"
                },
                {
                     "frames": [
@@ -39,23 +40,17 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "message",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "contact_name",
+                                        "slot": "event_date",
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "我想知道訊息內容，我想知道這則訊息是誰寄的？"
+                    "utterance": "這個活動辦在幾月幾號呢？"
                },
                {
                     "frames": [
@@ -64,149 +59,481 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "真的 我就只是寫內部系統"
+                                             "2022/12/18"
                                         ],
-                                        "slot": "message",
+                                        "slot": "event_date",
                                         "values": [
-                                             "真的 我就只是寫內部系統"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "planet ET"
-                                        ],
-                                        "slot": "contact_name",
-                                        "values": [
-                                             "planet ET"
+                                             "2022年12月18日"
                                         ]
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 15,
-                                        "slot": "message",
+                                        "exclusive_end": 14,
+                                        "slot": "event_date",
                                         "start": 3
-                                   },
-                                   {
-                                        "exclusive_end": 28,
-                                        "slot": "contact_name",
-                                        "start": 19
                                    }
                               ],
                               "state": {
-                                   "active_intent": "FindMessage",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "message": [
-                                             "真的 我就只是寫內部系統"
-                                        ],
-                                        "contact_name": [
-                                             "planet ET"
+                                        "event_date": [
+                                             "2022年12月18日"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "跟他說真的 我就只是寫內部系統，用戶為planet ET"
+                    "utterance": "日期為2022年12月18日"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "INFORM_COUNT",
-                                        "canonical_values": [
-                                             "1"
-                                        ],
-                                        "slot": "count",
-                                        "values": [
-                                             "1"
-                                        ]
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_time",
+                                        "values": []
                                    },
                                    {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "真的 我就只是寫內部系統"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "真的 我就只是寫內部系統"
-                                        ]
-                                   },
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "planet ET"
-                                        ],
-                                        "slot": "contact_name",
-                                        "values": [
-                                             "planet ET"
-                                        ]
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_content",
+                                        "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 20,
-                                        "slot": "contact_name",
-                                        "start": 11
-                                   }
-                              ],
-                              "service_call": {
-                                   "method": "FindMessage",
-                                   "parameters": {
-                                        "message": [
-                                             "真的 我就只是寫內部系統"
-                                        ],
-                                        "contact_name": [
-                                             "planet ET"
-                                        ]
-                                   }
-                              },
-                              "service_results": [
-                                   {
-                                        "group_name": "Python資料科學交流社群",
-                                        "contact_name": "planet ET",
-                                        "message": "真的 我就只是寫內部系統"
-                                   }
-                              ]
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "總共有1個結果，找到與planet ET聊天的訊息"
+                    "utterance": "這個活動在幾點開始呢？，這個活動有註記任何內容嗎？"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "SELECT",
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "18:10"
+                                        ],
+                                        "slot": "event_time",
+                                        "values": [
+                                             "下午6時10分"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "每週日09:30-11:30"
+                                        ],
+                                        "slot": "event_content",
+                                        "values": [
+                                             "每週日09:30-11:30"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 12,
+                                        "slot": "event_time",
+                                        "start": 5
+                                   },
+                                   {
+                                        "exclusive_end": 32,
+                                        "slot": "event_content",
+                                        "start": 18
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "AddEvent",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_date": [
+                                             "2022年12月18日"
+                                        ],
+                                        "event_time": [
+                                             "下午6時10分"
+                                        ],
+                                        "event_content": [
+                                             "每週日09:30-11:30"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "活動時間為下午6時10分，活動內容為每週日09:30-11:30"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "participant",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_location",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "想知道這個活動的參加者，我想知道這個活動的地點"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "participant",
+                                        "values": [
+                                             "無"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "臺北市文山區新光路二段74號"
+                                        ],
+                                        "slot": "event_location",
+                                        "values": [
+                                             "臺北市文山區新光路二段74號"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 30,
+                                        "slot": "event_location",
+                                        "start": 16
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "AddEvent",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_date": [
+                                             "2022年12月18日"
+                                        ],
+                                        "event_time": [
+                                             "下午6時10分"
+                                        ],
+                                        "event_content": [
+                                             "每週日09:30-11:30"
+                                        ],
+                                        "participant": [
+                                             "無"
+                                        ],
+                                        "event_location": [
+                                             "臺北市文山區新光路二段74號"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "這個活動不需設定參加者，活動辦在臺北市文山區新光路二段74號"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_name",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道這個活動的名稱"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "三隻小豬來減碳、水來挑戰"
+                                        ],
+                                        "slot": "event_name",
+                                        "values": [
+                                             "三隻小豬來減碳、水來挑戰"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 17,
+                                        "slot": "event_name",
+                                        "start": 5
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "AddEvent",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_date": [
+                                             "2022年12月18日"
+                                        ],
+                                        "event_time": [
+                                             "下午6時10分"
+                                        ],
+                                        "event_content": [
+                                             "每週日09:30-11:30"
+                                        ],
+                                        "participant": [
+                                             "無"
+                                        ],
+                                        "event_location": [
+                                             "臺北市文山區新光路二段74號"
+                                        ],
+                                        "event_name": [
+                                             "三隻小豬來減碳、水來挑戰"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "活動名稱叫三隻小豬來減碳、水來挑戰"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "2022年12月18日"
+                                        ],
+                                        "slot": "event_date",
+                                        "values": [
+                                             "2022年12月18日"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "下午6時10分"
+                                        ],
+                                        "slot": "event_time",
+                                        "values": [
+                                             "下午6時10分"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "每週日09:30-11:30"
+                                        ],
+                                        "slot": "event_content",
+                                        "values": [
+                                             "每週日09:30-11:30"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "participant",
+                                        "values": [
+                                             "無"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "臺北市文山區新光路二段74號"
+                                        ],
+                                        "slot": "event_location",
+                                        "values": [
+                                             "臺北市文山區新光路二段74號"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "三隻小豬來減碳、水來挑戰"
+                                        ],
+                                        "slot": "event_name",
+                                        "values": [
+                                             "三隻小豬來減碳、水來挑戰"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 44,
+                                        "slot": "event_date",
+                                        "start": 33
+                                   },
+                                   {
+                                        "exclusive_end": 67,
+                                        "slot": "event_time",
+                                        "start": 60
+                                   },
+                                   {
+                                        "exclusive_end": 95,
+                                        "slot": "event_location",
+                                        "start": 81
+                                   },
+                                   {
+                                        "exclusive_end": 19,
+                                        "slot": "event_name",
+                                        "start": 7
+                                   }
+                              ],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "確認要建立名叫三隻小豬來減碳、水來挑戰的活動嗎？，確認要建立舉辦在2022年12月18日的活動嗎？，確認要建立舉辦在當天下午6時10分的活動嗎？，確認要建立舉辦在臺北市文山區新光路二段74號的活動嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "AFFIRM",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "FindMessage",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "message": [
-                                             "真的 我就只是寫內部系統"
+                                        "event_date": [
+                                             "2022年12月18日"
                                         ],
-                                        "contact_name": [
-                                             "planet ET"
+                                        "event_time": [
+                                             "下午6時10分"
+                                        ],
+                                        "event_content": [
+                                             "每週日09:30-11:30"
+                                        ],
+                                        "participant": [
+                                             "無"
+                                        ],
+                                        "event_location": [
+                                             "臺北市文山區新光路二段74號"
+                                        ],
+                                        "event_name": [
+                                             "三隻小豬來減碳、水來挑戰"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我知道了"
+                    "utterance": "我對以上資訊沒問題"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NOTIFY_SUCCESS",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_call": {
+                                   "method": "AddEvent",
+                                   "parameters": {
+                                        "event_date": "2022年12月18日",
+                                        "event_time": "下午6時10分",
+                                        "event_content": "每週日09:30-11:30",
+                                        "participant": "無",
+                                        "event_location": "臺北市文山區新光路二段74號",
+                                        "event_name": "三隻小豬來減碳、水來挑戰"
+                                   }
+                              },
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "多虧有您的配合，活動已添加至行事曆"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "THANK_YOU",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "AddEvent",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_date": [
+                                             "2022年12月18日"
+                                        ],
+                                        "event_time": [
+                                             "下午6時10分"
+                                        ],
+                                        "event_content": [
+                                             "每週日09:30-11:30"
+                                        ],
+                                        "participant": [
+                                             "無"
+                                        ],
+                                        "event_location": [
+                                             "臺北市文山區新光路二段74號"
+                                        ],
+                                        "event_name": [
+                                             "三隻小豬來減碳、水來挑戰"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "謝謝你"
                },
                {
                     "frames": [
@@ -219,7 +546,7 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_results": []
                          }
@@ -232,11 +559,212 @@
                          {
                               "actions": [
                                    {
-                                        "act": "NEGATE",
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "SendMessage"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "SendMessage"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {}
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "請幫我寄一則訊息"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "message",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "group_name",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道訊息內容，群組名稱為何？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "HI 大家。"
+                                        ],
+                                        "slot": "message",
+                                        "values": [
+                                             "HI 大家。"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "程式語言讀書會Programming Book Club"
+                                        ],
+                                        "slot": "group_name",
+                                        "values": [
+                                             "程式語言讀書會Programming Book Club"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 9,
+                                        "slot": "message",
+                                        "start": 3
+                                   },
+                                   {
+                                        "exclusive_end": 42,
+                                        "slot": "group_name",
+                                        "start": 14
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "SendMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "message": [
+                                             "HI 大家。"
+                                        ],
+                                        "group_name": [
+                                             "程式語言讀書會Programming Book Club"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "跟他說HI 大家。，應該是在程式語言讀書會Programming Book Club群組中的訊息"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "HI 大家。"
+                                        ],
+                                        "slot": "message",
+                                        "values": [
+                                             "HI 大家。"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "程式語言讀書會Programming Book Club"
+                                        ],
+                                        "slot": "group_name",
+                                        "values": [
+                                             "程式語言讀書會Programming Book Club"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 13,
+                                        "slot": "message",
+                                        "start": 7
+                                   },
+                                   {
+                                        "exclusive_end": 52,
+                                        "slot": "group_name",
+                                        "start": 24
+                                   }
+                              ],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "確認要傳送訊息HI 大家。嗎？，確認要傳送訊息到程式語言讀書會Programming Book Club嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "AFFIRM",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
-                                   },
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "message": [
+                                             "HI 大家。"
+                                        ],
+                                        "group_name": [
+                                             "程式語言讀書會Programming Book Club"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我對以上資訊沒問題"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NOTIFY_SUCCESS",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_call": {
+                                   "method": "SendMessage",
+                                   "parameters": {
+                                        "message": "HI 大家。",
+                                        "group_name": "程式語言讀書會Programming Book Club"
+                                   }
+                              },
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "多虧有您的配合，訊息已成功傳送"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
                                    {
                                         "act": "THANK_YOU",
                                         "canonical_values": [],
@@ -247,21 +775,21 @@
                               "service": "Messaging_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "FindMessage",
+                                   "active_intent": "SendMessage",
                                    "requested_slots": [],
                                    "slot_values": {
                                         "message": [
-                                             "真的 我就只是寫內部系統"
+                                             "HI 大家。"
                                         ],
-                                        "contact_name": [
-                                             "planet ET"
+                                        "group_name": [
+                                             "程式語言讀書會Programming Book Club"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "沒關係，先這樣吧，非常感謝！"
+                    "utterance": "謝謝你"
                },
                {
                     "frames": [
@@ -276,11 +804,18 @@
                               ],
                               "service": "Messaging_1",
                               "slots": [],
+                              "service_call": {
+                                   "method": "SendMessage",
+                                   "parameters": {
+                                        "message": "HI 大家。",
+                                        "group_name": "程式語言讀書會Programming Book Club"
+                                   }
+                              },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "應該做的，再見！"
+                    "utterance": "有問題您再找我哈！再見！"
                }
           ]
      }

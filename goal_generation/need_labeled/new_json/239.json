@@ -2,9 +2,8 @@
      {
           "dialogue_id": 239,
           "services": [
-               "Mail_1",
                "Messaging_1",
-               "Calendar_1"
+               "Mail_1"
           ],
           "turns": [
                {
@@ -14,25 +13,25 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "FindMail"
+                                             "FindMessage"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "FindMail"
+                                             "FindMessage"
                                         ]
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Messaging_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "FindMail",
+                                   "active_intent": "FindMessage",
                                    "requested_slots": [],
                                    "slot_values": {}
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "請幫我找一封信件"
+                    "utterance": "請幫我找一則訊息"
                },
                {
                     "frames": [
@@ -41,17 +40,17 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "copy_recipient",
+                                        "slot": "message",
                                         "values": []
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Messaging_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "你知道這封信的副本收件者嗎？"
+                    "utterance": "所以這則訊息講了什麼？"
                },
                {
                     "frames": [
@@ -60,93 +59,119 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "無"
+                                             "你圖片size是指batch size嗎"
                                         ],
-                                        "slot": "copy_recipient",
+                                        "slot": "message",
                                         "values": [
-                                             "無"
+                                             "你圖片size是指batch size嗎"
                                         ]
                                    }
                               ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "FindMail",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "copy_recipient": [
-                                             "無"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "這封信不用副本收件者"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "subject",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "我想知道這個信件的主旨"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             " 單身男子該怎麼自己煮"
-                                        ],
-                                        "slot": "subject",
-                                        "values": [
-                                             " 單身男子該怎麼自己煮"
-                                        ]
-                                   }
-                              ],
-                              "service": "Mail_1",
+                              "service": "Messaging_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 16,
-                                        "slot": "subject",
-                                        "start": 5
+                                        "exclusive_end": 23,
+                                        "slot": "message",
+                                        "start": 3
                                    }
                               ],
                               "state": {
-                                   "active_intent": "FindMail",
+                                   "active_intent": "FindMessage",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "copy_recipient": [
-                                             "無"
-                                        ],
-                                        "subject": [
-                                             " 單身男子該怎麼自己煮"
+                                        "message": [
+                                             "你圖片size是指batch size嗎"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "信件主旨叫 單身男子該怎麼自己煮"
+                    "utterance": "訊息為你圖片size是指batch size嗎"
                },
                {
                     "frames": [
                          {
                               "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "group_name",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "你知道群組名稱嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "Python資料科學交流社群"
+                                        ],
+                                        "slot": "group_name",
+                                        "values": [
+                                             "Python資料科學交流社群"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 18,
+                                        "slot": "group_name",
+                                        "start": 4
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "message": [
+                                             "你圖片size是指batch size嗎"
+                                        ],
+                                        "group_name": [
+                                             "Python資料科學交流社群"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "應該是在Python資料科學交流社群群組中的訊息"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "你圖片size是指batch size嗎"
+                                        ],
+                                        "slot": "message",
+                                        "values": [
+                                             "你圖片size是指batch size嗎"
+                                        ]
+                                   },
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "Python資料科學交流社群"
+                                        ],
+                                        "slot": "group_name",
+                                        "values": [
+                                             "Python資料科學交流社群"
+                                        ]
+                                   },
                                    {
                                         "act": "INFORM_COUNT",
                                         "canonical_values": [
@@ -156,60 +181,34 @@
                                         "values": [
                                              "1"
                                         ]
-                                   },
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "無"
-                                        ],
-                                        "slot": "copy_recipient",
-                                        "values": [
-                                             "無"
-                                        ]
-                                   },
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             " 單身男子該怎麼自己煮"
-                                        ],
-                                        "slot": "subject",
-                                        "values": [
-                                             " 單身男子該怎麼自己煮"
-                                        ]
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Messaging_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 31,
-                                        "slot": "subject",
-                                        "start": 20
+                                        "exclusive_end": 17,
+                                        "slot": "group_name",
+                                        "start": 3
                                    }
                               ],
                               "service_call": {
-                                   "method": "FindMail",
+                                   "method": "FindMessage",
                                    "parameters": {
-                                        "copy_recipient": [
-                                             "無"
-                                        ],
-                                        "subject": [
-                                             " 單身男子該怎麼自己煮"
-                                        ]
+                                        "message": "你圖片size是指batch size嗎",
+                                        "group_name": "Python資料科學交流社群"
                                    }
                               },
                               "service_results": [
                                    {
-                                        "subject": " 單身男子該怎麼自己煮",
-                                        "content": "單身男子該怎麼自己煮，現在外食好貴啊，感覺都付錢給時薪的工讀生了，讓我燃起了自己煮的念頭，有沒有該怎麼自己煮才能健康又省錢啊，有這方面的八卦嗎",
-                                        "copy_recipient": "無",
-                                        "recipient": "Aaron",
-                                        "sender": "Alice Cheng"
+                                        "group_name": "Python資料科學交流社群",
+                                        "contact_name": "WuRay",
+                                        "message": "你圖片size是指batch size嗎"
                                    }
                               ]
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "總共有1個結果，依據您提供的訊息，找到跟 單身男子該怎麼自己煮有關的信件，請你看看"
+                    "utterance": "找到在Python資料科學交流社群群組的聊天訊息，總共有1個結果"
                },
                {
                     "frames": [
@@ -222,33 +221,318 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Messaging_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "FindMail",
+                                   "active_intent": "FindMessage",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "copy_recipient": [
-                                             "無"
+                                        "message": [
+                                             "你圖片size是指batch size嗎"
                                         ],
-                                        "subject": [
-                                             " 單身男子該怎麼自己煮"
+                                        "group_name": [
+                                             "Python資料科學交流社群"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我知道了"
+                    "utterance": "好的"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "REQ_MORE",
+                                        "act": "OFFER_INTENT",
+                                        "canonical_values": [
+                                             "FindMessage"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "FindMessage"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "需要幫您找一則訊息嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "AFFIRM_INTENT",
                                         "canonical_values": [],
                                         "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {}
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "好的，麻煩你了"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "group_name",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "你知道群組名稱嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "程式語言讀書會Programming Book Club"
+                                        ],
+                                        "slot": "group_name",
+                                        "values": [
+                                             "程式語言讀書會Programming Book Club"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 32,
+                                        "slot": "group_name",
+                                        "start": 4
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "message": [
+                                             "你圖片size是指batch size嗎"
+                                        ],
+                                        "group_name": [
+                                             "程式語言讀書會Programming Book Club"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "應該是在程式語言讀書會Programming Book Club群組中的訊息"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "contact_name",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道這則訊息是誰寄的？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "nagi"
+                                        ],
+                                        "slot": "contact_name",
+                                        "values": [
+                                             "nagi"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 7,
+                                        "slot": "contact_name",
+                                        "start": 3
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "message": [
+                                             "你圖片size是指batch size嗎"
+                                        ],
+                                        "group_name": [
+                                             "程式語言讀書會Programming Book Club"
+                                        ],
+                                        "contact_name": [
+                                             "nagi"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "用戶為nagi"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NOTIFY_FAILURE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_call": {
+                                   "method": "FindMessage",
+                                   "parameters": {
+                                        "message": "你圖片size是指batch size嗎",
+                                        "group_name": "程式語言讀書會Programming Book Club",
+                                        "contact_name": "nagi"
+                                   }
+                              },
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "不好意思，沒辦法找到符合您要求的訊息"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NEGATE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "GOODBYE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "message": [
+                                             "你圖片size是指batch size嗎"
+                                        ],
+                                        "group_name": [
+                                             "程式語言讀書會Programming Book Club"
+                                        ],
+                                        "contact_name": [
+                                             "nagi"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "沒關係，先這樣吧，再見"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "GOODBYE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "有問題可以隨時聯繫我！祝您生活愉快！再見！"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "SendMail"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "SendMail"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {}
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我想要寫一封信，可以請你幫忙嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "recipient",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "copy_recipient",
                                         "values": []
                                    }
                               ],
@@ -258,7 +542,281 @@
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "還有什麼問題嗎？"
+                    "utterance": "我想知道這封信的收件者，你知道這封信的副本收件者嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "C#SASaoriさおり"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "C#SASaoriさおり"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "太菲鴨"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "太菲鴨"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 16,
+                                        "slot": "recipient",
+                                        "start": 4
+                                   },
+                                   {
+                                        "exclusive_end": 26,
+                                        "slot": "copy_recipient",
+                                        "start": 23
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "C#SASaoriさおり"
+                                        ],
+                                        "copy_recipient": [
+                                             "太菲鴨"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "收件者為C#SASaoriさおり，副本收件者為太菲鴨"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "subject",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "content",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "那這封信叫甚麼呢？，這封信有任何內容嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             " 馬力歐地產大亨是不是腳色決定勝負"
+                                        ],
+                                        "slot": "subject",
+                                        "values": [
+                                             " 馬力歐地產大亨是不是腳色決定勝負"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "是這樣啦陪小孩玩地產大亨，只要選到奇諾比奧=，可以多骰骰子的能力真的是，在不聯合搞人的狀況下，是不是沒有其他腳色可以跟奇諾比奧一決，還是有更的腳色=_="
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "是這樣啦陪小孩玩地產大亨，只要選到奇諾比奧=，可以多骰骰子的能力真的是，在不聯合搞人的狀況下，是不是沒有其他腳色可以跟奇諾比奧一決，還是有更的腳色=_="
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 22,
+                                        "slot": "subject",
+                                        "start": 5
+                                   },
+                                   {
+                                        "exclusive_end": 106,
+                                        "slot": "content",
+                                        "start": 30
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "C#SASaoriさおり"
+                                        ],
+                                        "copy_recipient": [
+                                             "太菲鴨"
+                                        ],
+                                        "subject": [
+                                             " 馬力歐地產大亨是不是腳色決定勝負"
+                                        ],
+                                        "content": [
+                                             "是這樣啦陪小孩玩地產大亨，只要選到奇諾比奧=，可以多骰骰子的能力真的是，在不聯合搞人的狀況下，是不是沒有其他腳色可以跟奇諾比奧一決，還是有更的腳色=_="
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "信件主旨叫 馬力歐地產大亨是不是腳色決定勝負，這封信的內文為是這樣啦陪小孩玩地產大亨，只要選到奇諾比奧=，可以多骰骰子的能力真的是，在不聯合搞人的狀況下，是不是沒有其他腳色可以跟奇諾比奧一決，還是有更的腳色=_="
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "C#SASaoriさおり"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "C#SASaoriさおり"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "太菲鴨"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "太菲鴨"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             " 馬力歐地產大亨是不是腳色決定勝負"
+                                        ],
+                                        "slot": "subject",
+                                        "values": [
+                                             " 馬力歐地產大亨是不是腳色決定勝負"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "是這樣啦陪小孩玩地產大亨，只要選到奇諾比奧=，可以多骰骰子的能力真的是，在不聯合搞人的狀況下，是不是沒有其他腳色可以跟奇諾比奧一決，還是有更的腳色=_="
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "是這樣啦陪小孩玩地產大亨，只要選到奇諾比奧=，可以多骰骰子的能力真的是，在不聯合搞人的狀況下，是不是沒有其他腳色可以跟奇諾比奧一決，還是有更的腳色=_="
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 140,
+                                        "slot": "recipient",
+                                        "start": 128
+                                   },
+                                   {
+                                        "exclusive_end": 26,
+                                        "slot": "subject",
+                                        "start": 9
+                                   },
+                                   {
+                                        "exclusive_end": 120,
+                                        "slot": "content",
+                                        "start": 44
+                                   }
+                              ],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "請確認要寄出主旨為 馬力歐地產大亨是不是腳色決定勝負的信件嗎？，請確認要寄出的信件內容:是這樣啦陪小孩玩地產大亨，只要選到奇諾比奧=，可以多骰骰子的能力真的是，在不聯合搞人的狀況下，是不是沒有其他腳色可以跟奇諾比奧一決，還是有更的腳色=_=，確認要寄信件給C#SASaoriさおり嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "AFFIRM",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "C#SASaoriさおり"
+                                        ],
+                                        "copy_recipient": [
+                                             "太菲鴨"
+                                        ],
+                                        "subject": [
+                                             " 馬力歐地產大亨是不是腳色決定勝負"
+                                        ],
+                                        "content": [
+                                             "是這樣啦陪小孩玩地產大亨，只要選到奇諾比奧=，可以多骰骰子的能力真的是，在不聯合搞人的狀況下，是不是沒有其他腳色可以跟奇諾比奧一決，還是有更的腳色=_="
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我對以上資訊沒問題"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NOTIFY_SUCCESS",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_call": {
+                                   "method": "SendMail",
+                                   "parameters": {
+                                        "recipient": "C#SASaoriさおり",
+                                        "copy_recipient": "太菲鴨",
+                                        "subject": " 馬力歐地產大亨是不是腳色決定勝負",
+                                        "content": "是這樣啦陪小孩玩地產大亨，只要選到奇諾比奧=，可以多骰骰子的能力真的是，在不聯合搞人的狀況下，是不是沒有其他腳色可以跟奇諾比奧一決，還是有更的腳色=_="
+                                   }
+                              },
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "多虧有您的配合，信件已成功寄出"
                },
                {
                     "frames": [
@@ -277,35 +835,20 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "蔡林翰"
-                                        ],
-                                        "slot": "contact_name",
-                                        "values": [
-                                             "蔡林翰"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "健保局不管醫生啊 ＸＤ"
+                                             "這個我也試過了"
                                         ],
                                         "slot": "message",
                                         "values": [
-                                             "健保局不管醫生啊 ＸＤ"
+                                             "這個我也試過了"
                                         ]
                                    }
                               ],
                               "service": "Messaging_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 30,
-                                        "slot": "contact_name",
-                                        "start": 27
-                                   },
-                                   {
-                                        "exclusive_end": 23,
+                                        "exclusive_end": 27,
                                         "slot": "message",
-                                        "start": 12
+                                        "start": 20
                                    }
                               ],
                               "state": {
@@ -313,22 +856,29 @@
                                    "requested_slots": [],
                                    "slot_values": {
                                         "message": [
-                                             "健保局不管醫生啊 ＸＤ"
-                                        ],
-                                        "contact_name": [
-                                             "蔡林翰"
+                                             "這個我也試過了"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "請幫我找一則訊息，跟他說健保局不管醫生啊 ＸＤ，用戶為蔡林翰"
+                    "utterance": "我想要找則訊息，可以請你幫忙嗎？，訊息為這個我也試過了"
                },
                {
                     "frames": [
                          {
                               "actions": [
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "這個我也試過了"
+                                        ],
+                                        "slot": "message",
+                                        "values": [
+                                             "這個我也試過了"
+                                        ]
+                                   },
                                    {
                                         "act": "INFORM_COUNT",
                                         "canonical_values": [
@@ -338,113 +888,27 @@
                                         "values": [
                                              "1"
                                         ]
-                                   },
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "健保局不管醫生啊 ＸＤ"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "健保局不管醫生啊 ＸＤ"
-                                        ]
-                                   },
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "蔡林翰"
-                                        ],
-                                        "slot": "contact_name",
-                                        "values": [
-                                             "蔡林翰"
-                                        ]
                                    }
                               ],
                               "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 14,
-                                        "slot": "contact_name",
-                                        "start": 11
-                                   }
-                              ],
+                              "slots": [],
                               "service_call": {
                                    "method": "FindMessage",
                                    "parameters": {
-                                        "message": [
-                                             "健保局不管醫生啊 ＸＤ"
-                                        ],
-                                        "contact_name": [
-                                             "蔡林翰"
-                                        ]
+                                        "message": "這個我也試過了"
                                    }
                               },
                               "service_results": [
                                    {
-                                        "group_name": "AI 人工智慧",
-                                        "contact_name": "蔡林翰",
-                                        "message": "健保局不管醫生啊 ＸＤ"
+                                        "group_name": "Deep Learning (AI)  study and discuss",
+                                        "contact_name": "eeycc",
+                                        "message": "這個我也試過了"
                                    }
                               ]
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "總共有1個結果，找到與蔡林翰聊天的訊息"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "group_name",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "FindMessage",
-                                   "requested_slots": [
-                                        "group_name"
-                                   ],
-                                   "slot_values": {
-                                        "message": [
-                                             "健保局不管醫生啊 ＸＤ"
-                                        ],
-                                        "contact_name": [
-                                             "蔡林翰"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "我想知道這則訊息在哪個群組？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "無"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "無"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "這則訊息應該是傳送給某個使用者的訊息"
+                    "utterance": "總共有1個結果"
                },
                {
                     "frames": [
@@ -464,17 +928,14 @@
                                    "requested_slots": [],
                                    "slot_values": {
                                         "message": [
-                                             "健保局不管醫生啊 ＸＤ"
-                                        ],
-                                        "contact_name": [
-                                             "蔡林翰"
+                                             "這個我也試過了"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "好的，我知道了"
+                    "utterance": "我知道了"
                },
                {
                     "frames": [
@@ -504,7 +965,7 @@
                          {
                               "actions": [
                                    {
-                                        "act": "AFFIRM_INTENT",
+                                        "act": "NEGATE_INTENT",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
@@ -515,146 +976,23 @@
                               "state": {
                                    "active_intent": "LookupEvents",
                                    "requested_slots": [],
-                                   "slot_values": {}
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "好的，麻煩你了"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_time",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "這個活動在幾點開始呢？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "07:00"
-                                        ],
-                                        "slot": "event_time",
-                                        "values": [
-                                             "上午7時0分"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 9,
-                                        "slot": "event_time",
-                                        "start": 3
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [],
                                    "slot_values": {
                                         "message": [
-                                             "健保局不管醫生啊 ＸＤ"
-                                        ],
-                                        "contact_name": [
-                                             "蔡林翰"
-                                        ],
-                                        "event_time": [
-                                             "上午7時0分"
+                                             "這個我也試過了"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "時間為上午7時0分"
+                    "utterance": "目前不需要"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_name",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "我想知道這個活動的名稱"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "臺東美術館聲音藝術節–7月場跨域聲音展演市集"
-                                        ],
-                                        "slot": "event_name",
-                                        "values": [
-                                             "臺東美術館聲音藝術節–7月場跨域聲音展演市集"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 27,
-                                        "slot": "event_name",
-                                        "start": 5
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "message": [
-                                             "健保局不管醫生啊 ＸＤ"
-                                        ],
-                                        "contact_name": [
-                                             "蔡林翰"
-                                        ],
-                                        "event_time": [
-                                             "上午7時0分"
-                                        ],
-                                        "event_name": [
-                                             "臺東美術館聲音藝術節–7月場跨域聲音展演市集"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "活動名稱為臺東美術館聲音藝術節–7月場跨域聲音展演市集"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NOTIFY_FAILURE",
+                                        "act": "REQ_MORE",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
@@ -662,174 +1000,11 @@
                               ],
                               "service": "Calendar_1",
                               "slots": [],
-                              "service_call": {
-                                   "method": "LookupEvents",
-                                   "parameters": {
-                                        "message": "健保局不管醫生啊 ＸＤ",
-                                        "contact_name": "蔡林翰",
-                                        "event_time": "上午7時0分",
-                                        "event_name": "臺東美術館聲音藝術節–7月場跨域聲音展演市集"
-                                   }
-                              },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "不好意思，在行事曆上沒辦法找到符合您要求的活動，請用其他條件查詢"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM_INTENT",
-                                        "canonical_values": [
-                                             "LookupEvents"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "LookupEvents"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "message": [
-                                             "健保局不管醫生啊 ＸＤ"
-                                        ],
-                                        "contact_name": [
-                                             "蔡林翰"
-                                        ],
-                                        "event_time": [
-                                             "上午7時0分"
-                                        ],
-                                        "event_name": [
-                                             "臺東美術館聲音藝術節–7月場跨域聲音展演市集"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "我想要知道相關的活動，請幫幫我"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_time",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_name",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "那這個活動叫甚麼呢？，這個活動在幾點開始呢？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "臺東美術館聲音藝術節–7月場跨域聲音展演市集"
-                                        ],
-                                        "slot": "event_name",
-                                        "values": [
-                                             "臺東美術館聲音藝術節–7月場跨域聲音展演市集"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "07:00"
-                                        ],
-                                        "slot": "event_time",
-                                        "values": [
-                                             "7時0分"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 35,
-                                        "slot": "event_time",
-                                        "start": 31
-                                   },
-                                   {
-                                        "exclusive_end": 27,
-                                        "slot": "event_name",
-                                        "start": 5
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "message": [
-                                             "健保局不管醫生啊 ＸＤ"
-                                        ],
-                                        "contact_name": [
-                                             "蔡林翰"
-                                        ],
-                                        "event_time": [
-                                             "7時0分"
-                                        ],
-                                        "event_name": [
-                                             "臺東美術館聲音藝術節–7月場跨域聲音展演市集"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "活動名稱叫臺東美術館聲音藝術節–7月場跨域聲音展演市集，活動在7時0分開始"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NOTIFY_FAILURE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_call": {
-                                   "method": "LookupEvents",
-                                   "parameters": {
-                                        "message": "健保局不管醫生啊 ＸＤ",
-                                        "contact_name": "蔡林翰",
-                                        "event_time": "7時0分",
-                                        "event_name": "臺東美術館聲音藝術節–7月場跨域聲音展演市集"
-                                   }
-                              },
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "不好意思，在行事曆上沒辦法找到符合您要求的活動，請用其他條件查詢"
+                    "utterance": "還需要什麼幫助嗎？"
                },
                {
                     "frames": [
@@ -855,23 +1030,14 @@
                                    "requested_slots": [],
                                    "slot_values": {
                                         "message": [
-                                             "健保局不管醫生啊 ＸＤ"
-                                        ],
-                                        "contact_name": [
-                                             "蔡林翰"
-                                        ],
-                                        "event_time": [
-                                             "7時0分"
-                                        ],
-                                        "event_name": [
-                                             "臺東美術館聲音藝術節–7月場跨域聲音展演市集"
+                                             "這個我也試過了"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "沒關係，先這樣吧，沒有了！再見！"
+                    "utterance": "沒關係，先這樣吧，沒有問題了，再見！"
                },
                {
                     "frames": [
@@ -886,20 +1052,11 @@
                               ],
                               "service": "Calendar_1",
                               "slots": [],
-                              "service_call": {
-                                   "method": "LookupEvents",
-                                   "parameters": {
-                                        "message": "健保局不管醫生啊 ＸＤ",
-                                        "contact_name": "蔡林翰",
-                                        "event_time": "7時0分",
-                                        "event_name": "臺東美術館聲音藝術節–7月場跨域聲音展演市集"
-                                   }
-                              },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "再見！祝您生活愉快！"
+                    "utterance": "好，再見"
                }
           ]
      }

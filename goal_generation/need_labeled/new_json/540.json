@@ -2,6 +2,7 @@
      {
           "dialogue_id": 540,
           "services": [
+               "Mail_1",
                "Messaging_1",
                "Calendar_1"
           ],
@@ -13,63 +14,223 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "SendMessage"
+                                             "SendMail"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "SendMessage"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "陳律安"
-                                        ],
-                                        "slot": "contact_name",
-                                        "values": [
-                                             "陳律安"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "請follow官網的getting started"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "請follow官網的getting started"
+                                             "SendMail"
                                         ]
                                    }
                               ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 46,
-                                        "slot": "contact_name",
-                                        "start": 43
-                                   },
-                                   {
-                                        "exclusive_end": 39,
-                                        "slot": "message",
-                                        "start": 14
-                                   }
-                              ],
+                              "service": "Mail_1",
+                              "slots": [],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {}
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "請幫我寄出一封信件"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "copy_recipient",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道這封信的副本收件者"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "無"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "message": [
-                                             "請follow官網的getting started"
-                                        ],
-                                        "contact_name": [
-                                             "陳律安"
+                                        "copy_recipient": [
+                                             "無"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "請幫我寄一則訊息，訊息內容為請follow官網的getting started，用戶為陳律安"
+                    "utterance": "這封信不用副本收件者"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "recipient",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "subject",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道這個信件的主旨，我想知道這封信的收件者"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "鄭承嘉"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "鄭承嘉"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             " 年假前最後一個週一 就別噓了吧?"
+                                        ],
+                                        "slot": "subject",
+                                        "values": [
+                                             " 年假前最後一個週一 就別噓了吧?"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 30,
+                                        "slot": "recipient",
+                                        "start": 27
+                                   },
+                                   {
+                                        "exclusive_end": 22,
+                                        "slot": "subject",
+                                        "start": 5
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "copy_recipient": [
+                                             "無"
+                                        ],
+                                        "recipient": [
+                                             "鄭承嘉"
+                                        ],
+                                        "subject": [
+                                             " 年假前最後一個週一 就別噓了吧?"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "這封信叫做 年假前最後一個週一 就別噓了吧?，這封信由鄭承嘉收"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "content",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道這封信的內文"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "是這樣的，都說藍色星期一，一週的第一個工作天，憂鬱是難免的，通常一憂鬱就會想亂噓，但是你各位啊，這一週熬過，就是春節連假了，穿新衣戴新帽，領紅包放鞭炮，感覺多麼喜悅啊，因此，春節年假前最後一個週一，，讓我們開心起來，就別落入俗套，在那邊亂噓了叭?，卦?"
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "是這樣的，都說藍色星期一，一週的第一個工作天，憂鬱是難免的，通常一憂鬱就會想亂噓，但是你各位啊，這一週熬過，就是春節連假了，穿新衣戴新帽，領紅包放鞭炮，感覺多麼喜悅啊，因此，春節年假前最後一個週一，，讓我們開心起來，就別落入俗套，在那邊亂噓了叭?，卦?"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 129,
+                                        "slot": "content",
+                                        "start": 3
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "copy_recipient": [
+                                             "無"
+                                        ],
+                                        "recipient": [
+                                             "鄭承嘉"
+                                        ],
+                                        "subject": [
+                                             " 年假前最後一個週一 就別噓了吧?"
+                                        ],
+                                        "content": [
+                                             "是這樣的，都說藍色星期一，一週的第一個工作天，憂鬱是難免的，通常一憂鬱就會想亂噓，但是你各位啊，這一週熬過，就是春節連假了，穿新衣戴新帽，領紅包放鞭炮，感覺多麼喜悅啊，因此，春節年假前最後一個週一，，讓我們開心起來，就別落入俗套，在那邊亂噓了叭?，卦?"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "內容為是這樣的，都說藍色星期一，一週的第一個工作天，憂鬱是難免的，通常一憂鬱就會想亂噓，但是你各位啊，這一週熬過，就是春節連假了，穿新衣戴新帽，領紅包放鞭炮，感覺多麼喜悅啊，因此，春節年假前最後一個週一，，讓我們開心起來，就別落入俗套，在那邊亂噓了叭?，卦?"
                },
                {
                     "frames": [
@@ -78,42 +239,67 @@
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "請follow官網的getting started"
+                                             "無"
                                         ],
-                                        "slot": "message",
+                                        "slot": "copy_recipient",
                                         "values": [
-                                             "請follow官網的getting started"
+                                             "無"
                                         ]
                                    },
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "陳律安"
+                                             "鄭承嘉"
                                         ],
-                                        "slot": "contact_name",
+                                        "slot": "recipient",
                                         "values": [
-                                             "陳律安"
+                                             "鄭承嘉"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             " 年假前最後一個週一 就別噓了吧?"
+                                        ],
+                                        "slot": "subject",
+                                        "values": [
+                                             " 年假前最後一個週一 就別噓了吧?"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "是這樣的，都說藍色星期一，一週的第一個工作天，憂鬱是難免的，通常一憂鬱就會想亂噓，但是你各位啊，這一週熬過，就是春節連假了，穿新衣戴新帽，領紅包放鞭炮，感覺多麼喜悅啊，因此，春節年假前最後一個週一，，讓我們開心起來，就別落入俗套，在那邊亂噓了叭?，卦?"
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "是這樣的，都說藍色星期一，一週的第一個工作天，憂鬱是難免的，通常一憂鬱就會想亂噓，但是你各位啊，這一週熬過，就是春節連假了，穿新衣戴新帽，領紅包放鞭炮，感覺多麼喜悅啊，因此，春節年假前最後一個週一，，讓我們開心起來，就別落入俗套，在那邊亂噓了叭?，卦?"
                                         ]
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 32,
-                                        "slot": "message",
-                                        "start": 7
+                                        "exclusive_end": 181,
+                                        "slot": "recipient",
+                                        "start": 178
                                    },
                                    {
-                                        "exclusive_end": 46,
-                                        "slot": "contact_name",
-                                        "start": 43
+                                        "exclusive_end": 26,
+                                        "slot": "subject",
+                                        "start": 9
+                                   },
+                                   {
+                                        "exclusive_end": 170,
+                                        "slot": "content",
+                                        "start": 44
                                    }
                               ],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "確認要傳送訊息請follow官網的getting started嗎？，確認要傳送訊息給陳律安嗎？"
+                    "utterance": "請確認要寄出主旨為 年假前最後一個週一 就別噓了吧?的信件嗎？，請確認要寄出的信件內容:是這樣的，都說藍色星期一，一週的第一個工作天，憂鬱是難免的，通常一憂鬱就會想亂噓，但是你各位啊，這一週熬過，就是春節連假了，穿新衣戴新帽，領紅包放鞭炮，感覺多麼喜悅啊，因此，春節年假前最後一個週一，，讓我們開心起來，就別落入俗套，在那邊亂噓了叭?，卦?，確認要寄信件給鄭承嘉嗎？"
                },
                {
                     "frames": [
@@ -126,290 +312,23 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "message": [
-                                             "請follow官網的getting started"
+                                        "copy_recipient": [
+                                             "無"
                                         ],
-                                        "contact_name": [
-                                             "陳律安"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "好的，看起來沒甚麼問題"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NOTIFY_SUCCESS",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_call": {
-                                   "method": "SendMessage",
-                                   "parameters": {
-                                        "message": "請follow官網的getting started",
-                                        "contact_name": "陳律安"
-                                   }
-                              },
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "多虧有您的配合，訊息已成功傳送"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM_INTENT",
-                                        "canonical_values": [
-                                             "AddEvent"
+                                        "recipient": [
+                                             "鄭承嘉"
                                         ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "AddEvent"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "19:30"
+                                        "subject": [
+                                             " 年假前最後一個週一 就別噓了吧?"
                                         ],
-                                        "slot": "event_time",
-                                        "values": [
-                                             "7時30分"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "環保DIY"
-                                        ],
-                                        "slot": "event_name",
-                                        "values": [
-                                             "環保DIY"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "小野原"
-                                        ],
-                                        "slot": "participant",
-                                        "values": [
-                                             "小野原"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "臺北市文山區新光路二段48號"
-                                        ],
-                                        "slot": "event_location",
-                                        "values": [
-                                             "臺北市文山區新光路二段48號"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "2022/12/3"
-                                        ],
-                                        "slot": "event_date",
-                                        "values": [
-                                             "12月3日"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 43,
-                                        "slot": "event_time",
-                                        "start": 38
-                                   },
-                                   {
-                                        "exclusive_end": 25,
-                                        "slot": "event_name",
-                                        "start": 20
-                                   },
-                                   {
-                                        "exclusive_end": 48,
-                                        "slot": "participant",
-                                        "start": 45
-                                   },
-                                   {
-                                        "exclusive_end": 69,
-                                        "slot": "event_location",
-                                        "start": 55
-                                   },
-                                   {
-                                        "exclusive_end": 34,
-                                        "slot": "event_date",
-                                        "start": 29
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "AddEvent",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_date": [
-                                             "12月3日"
-                                        ],
-                                        "event_time": [
-                                             "7時30分"
-                                        ],
-                                        "event_name": [
-                                             "環保DIY"
-                                        ],
-                                        "participant": [
-                                             "小野原"
-                                        ],
-                                        "event_location": [
-                                             "臺北市文山區新光路二段48號"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "請幫我在行事曆添加一個活動，這個活動叫做環保DIY，日期為12月3日，時間為7時30分，有小野原會參加，活動在臺北市文山區新光路二段48號舉行"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "12月3日"
-                                        ],
-                                        "slot": "event_date",
-                                        "values": [
-                                             "12月3日"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "7時30分"
-                                        ],
-                                        "slot": "event_time",
-                                        "values": [
-                                             "7時30分"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "環保DIY"
-                                        ],
-                                        "slot": "event_name",
-                                        "values": [
-                                             "環保DIY"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "小野原"
-                                        ],
-                                        "slot": "participant",
-                                        "values": [
-                                             "小野原"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "臺北市文山區新光路二段48號"
-                                        ],
-                                        "slot": "event_location",
-                                        "values": [
-                                             "臺北市文山區新光路二段48號"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 31,
-                                        "slot": "event_date",
-                                        "start": 26
-                                   },
-                                   {
-                                        "exclusive_end": 52,
-                                        "slot": "event_time",
-                                        "start": 47
-                                   },
-                                   {
-                                        "exclusive_end": 12,
-                                        "slot": "event_name",
-                                        "start": 7
-                                   },
-                                   {
-                                        "exclusive_end": 69,
-                                        "slot": "participant",
-                                        "start": 66
-                                   },
-                                   {
-                                        "exclusive_end": 99,
-                                        "slot": "event_location",
-                                        "start": 85
-                                   }
-                              ],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "確認要建立名叫環保DIY的活動嗎？，確認要建立舉辦在12月3日的活動嗎？，確認要建立舉辦在當天7時30分的活動嗎？，確認要建立舉辦有小野原參加的活動嗎？，確認要建立舉辦在臺北市文山區新光路二段48號的活動嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "AFFIRM",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "AddEvent",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_date": [
-                                             "12月3日"
-                                        ],
-                                        "event_time": [
-                                             "7時30分"
-                                        ],
-                                        "event_name": [
-                                             "環保DIY"
-                                        ],
-                                        "participant": [
-                                             "小野原"
-                                        ],
-                                        "event_location": [
-                                             "臺北市文山區新光路二段48號"
+                                        "content": [
+                                             "是這樣的，都說藍色星期一，一週的第一個工作天，憂鬱是難免的，通常一憂鬱就會想亂噓，但是你各位啊，這一週熬過，就是春節連假了，穿新衣戴新帽，領紅包放鞭炮，感覺多麼喜悅啊，因此，春節年假前最後一個週一，，讓我們開心起來，就別落入俗套，在那邊亂噓了叭?，卦?"
                                         ]
                                    }
                               }
@@ -429,16 +348,631 @@
                                         "values": []
                                    }
                               ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_call": {
+                                   "method": "SendMail",
+                                   "parameters": {
+                                        "copy_recipient": "無",
+                                        "recipient": "鄭承嘉",
+                                        "subject": " 年假前最後一個週一 就別噓了吧?",
+                                        "content": "是這樣的，都說藍色星期一，一週的第一個工作天，憂鬱是難免的，通常一憂鬱就會想亂噓，但是你各位啊，這一週熬過，就是春節連假了，穿新衣戴新帽，領紅包放鞭炮，感覺多麼喜悅啊，因此，春節年假前最後一個週一，，讓我們開心起來，就別落入俗套，在那邊亂噓了叭?，卦?"
+                                   }
+                              },
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "多虧有您的配合，信件已成功寄出"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "FindMessage"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "FindMessage"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {}
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我想要找則訊息，可以請你幫忙嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "contact_name",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道這則訊息是誰寄的？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "傑森"
+                                        ],
+                                        "slot": "contact_name",
+                                        "values": [
+                                             "傑森"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 5,
+                                        "slot": "contact_name",
+                                        "start": 3
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "contact_name": [
+                                             "傑森"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "用戶為傑森"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_COUNT",
+                                        "canonical_values": [
+                                             "5"
+                                        ],
+                                        "slot": "count",
+                                        "values": [
+                                             "5"
+                                        ]
+                                   },
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "傑森"
+                                        ],
+                                        "slot": "contact_name",
+                                        "values": [
+                                             "傑森"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 13,
+                                        "slot": "contact_name",
+                                        "start": 11
+                                   }
+                              ],
+                              "service_call": {
+                                   "method": "FindMessage",
+                                   "parameters": {
+                                        "contact_name": [
+                                             "傑森"
+                                        ]
+                                   }
+                              },
+                              "service_results": [
+                                   {
+                                        "group_name": "AI 人工智慧",
+                                        "contact_name": "傑森",
+                                        "message": "這幾天AI Day 2022在松山文創五號倉庫。 我們有得獎，歡迎來找我們。我只有今天在現場"
+                                   },
+                                   {
+                                        "group_name": "AI 人工智慧",
+                                        "contact_name": "傑森",
+                                        "message": "有人知道ChatGPT 架設在哪一家雲端平台上嗎？還是他是用自己的伺服器提供服務？"
+                                   },
+                                   {
+                                        "group_name": "無",
+                                        "contact_name": "傑森",
+                                        "message": "不過先進去再到研討會刷臉也比較容易被挖"
+                                   },
+                                   {
+                                        "group_name": "無",
+                                        "contact_name": "傑森",
+                                        "message": "資料驗證做到快死掉"
+                                   },
+                                   {
+                                        "group_name": "Python資料科學交流社群",
+                                        "contact_name": "傑森",
+                                        "message": "濕度都90趴"
+                                   }
+                              ]
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "總共有5個結果，找到與傑森聊天的訊息"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST_ALTS",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "contact_name": [
+                                             "傑森"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "能提供更多類似的訊息嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_COUNT",
+                                        "canonical_values": [
+                                             "5"
+                                        ],
+                                        "slot": "count",
+                                        "values": [
+                                             "5"
+                                        ]
+                                   },
+                                   {
+                                        "act": "NOTIFY_FAILURE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_call": {
+                                   "method": "FindMessage",
+                                   "parameters": {
+                                        "contact_name": "傑森"
+                                   }
+                              },
+                              "service_results": [
+                                   {
+                                        "group_name": "AI 人工智慧",
+                                        "contact_name": "傑森",
+                                        "message": "這幾天AI Day 2022在松山文創五號倉庫。 我們有得獎，歡迎來找我們。我只有今天在現場"
+                                   },
+                                   {
+                                        "group_name": "AI 人工智慧",
+                                        "contact_name": "傑森",
+                                        "message": "有人知道ChatGPT 架設在哪一家雲端平台上嗎？還是他是用自己的伺服器提供服務？"
+                                   },
+                                   {
+                                        "group_name": "無",
+                                        "contact_name": "傑森",
+                                        "message": "不過先進去再到研討會刷臉也比較容易被挖"
+                                   },
+                                   {
+                                        "group_name": "無",
+                                        "contact_name": "傑森",
+                                        "message": "資料驗證做到快死掉"
+                                   },
+                                   {
+                                        "group_name": "Python資料科學交流社群",
+                                        "contact_name": "傑森",
+                                        "message": "濕度都90趴"
+                                   }
+                              ]
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "總共有5個結果，不好意思，沒辦法找到符合您要求的訊息"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "AddEvent"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "AddEvent"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "AddEvent",
+                                   "requested_slots": [],
+                                   "slot_values": {}
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我想要添加一個活動，可以請你幫忙嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_date",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_name",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_content",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "那這個活動叫甚麼呢？，這個活動辦在幾月幾號呢？，這個活動有任何內容註記嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "2022/8/12"
+                                        ],
+                                        "slot": "event_date",
+                                        "values": [
+                                             "2022年8月12日"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "《人生練習題》"
+                                        ],
+                                        "slot": "event_name",
+                                        "values": [
+                                             "《人生練習題》"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "人生練習題系列講座首發場講師—林傳凱教授，任教於國立中山大學社會學系"
+                                        ],
+                                        "slot": "event_content",
+                                        "values": [
+                                             "人生練習題系列講座首發場講師—林傳凱教授，任教於國立中山大學社會學系"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 26,
+                                        "slot": "event_date",
+                                        "start": 16
+                                   },
+                                   {
+                                        "exclusive_end": 12,
+                                        "slot": "event_name",
+                                        "start": 5
+                                   },
+                                   {
+                                        "exclusive_end": 66,
+                                        "slot": "event_content",
+                                        "start": 32
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "AddEvent",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_date": [
+                                             "2022年8月12日"
+                                        ],
+                                        "event_name": [
+                                             "《人生練習題》"
+                                        ],
+                                        "event_content": [
+                                             "人生練習題系列講座首發場講師—林傳凱教授，任教於國立中山大學社會學系"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "活動名稱為《人生練習題》，活動在2022年8月12日，活動內容為人生練習題系列講座首發場講師—林傳凱教授，任教於國立中山大學社會學系"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_time",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "participant",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道活動在當天何時開始，這個活動有任何參加者嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "01:12"
+                                        ],
+                                        "slot": "event_time",
+                                        "values": [
+                                             "上午1時12分"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "吳軍"
+                                        ],
+                                        "slot": "participant",
+                                        "values": [
+                                             "吳軍"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 12,
+                                        "slot": "event_time",
+                                        "start": 5
+                                   },
+                                   {
+                                        "exclusive_end": 16,
+                                        "slot": "participant",
+                                        "start": 14
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "AddEvent",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_date": [
+                                             "2022年8月12日"
+                                        ],
+                                        "event_name": [
+                                             "《人生練習題》"
+                                        ],
+                                        "event_content": [
+                                             "人生練習題系列講座首發場講師—林傳凱教授，任教於國立中山大學社會學系"
+                                        ],
+                                        "event_time": [
+                                             "上午1時12分"
+                                        ],
+                                        "participant": [
+                                             "吳軍"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "活動時間為上午1時12分，有吳軍會參加"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "2022年8月12日"
+                                        ],
+                                        "slot": "event_date",
+                                        "values": [
+                                             "2022年8月12日"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "《人生練習題》"
+                                        ],
+                                        "slot": "event_name",
+                                        "values": [
+                                             "《人生練習題》"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "人生練習題系列講座首發場講師—林傳凱教授，任教於國立中山大學社會學系"
+                                        ],
+                                        "slot": "event_content",
+                                        "values": [
+                                             "人生練習題系列講座首發場講師—林傳凱教授，任教於國立中山大學社會學系"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "上午1時12分"
+                                        ],
+                                        "slot": "event_time",
+                                        "values": [
+                                             "上午1時12分"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "吳軍"
+                                        ],
+                                        "slot": "participant",
+                                        "values": [
+                                             "吳軍"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 38,
+                                        "slot": "event_date",
+                                        "start": 28
+                                   },
+                                   {
+                                        "exclusive_end": 14,
+                                        "slot": "event_name",
+                                        "start": 7
+                                   },
+                                   {
+                                        "exclusive_end": 61,
+                                        "slot": "event_time",
+                                        "start": 54
+                                   },
+                                   {
+                                        "exclusive_end": 77,
+                                        "slot": "participant",
+                                        "start": 75
+                                   }
+                              ],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "確認要建立名叫《人生練習題》的活動嗎？，確認要建立舉辦在2022年8月12日的活動嗎？，確認要建立舉辦在當天上午1時12分的活動嗎？，確認要建立舉辦有吳軍參加的活動嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "AFFIRM",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "AddEvent",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_date": [
+                                             "2022年8月12日"
+                                        ],
+                                        "event_name": [
+                                             "《人生練習題》"
+                                        ],
+                                        "event_content": [
+                                             "人生練習題系列講座首發場講師—林傳凱教授，任教於國立中山大學社會學系"
+                                        ],
+                                        "event_time": [
+                                             "上午1時12分"
+                                        ],
+                                        "participant": [
+                                             "吳軍"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "好的，看起來沒甚麼問題"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NOTIFY_SUCCESS",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
                               "service": "Calendar_1",
                               "slots": [],
                               "service_call": {
                                    "method": "AddEvent",
                                    "parameters": {
-                                        "event_date": "12月3日",
-                                        "event_time": "7時30分",
-                                        "event_name": "環保DIY",
-                                        "participant": "小野原",
-                                        "event_location": "臺北市文山區新光路二段48號"
+                                        "event_date": "2022年8月12日",
+                                        "event_name": "《人生練習題》",
+                                        "event_content": "人生練習題系列講座首發場講師—林傳凱教授，任教於國立中山大學社會學系",
+                                        "event_time": "上午1時12分",
+                                        "participant": "吳軍"
                                    }
                               },
                               "service_results": []
@@ -452,39 +986,321 @@
                          {
                               "actions": [
                                    {
-                                        "act": "GOODBYE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "FindMail"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "FindMail"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "堆疊式洗衣機乾衣機適合擺室外陽台嗎?，陽台空間如圖示："
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "堆疊式洗衣機乾衣機適合擺室外陽台嗎?，陽台空間如圖示："
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "AbiChang"
+                                        ],
+                                        "slot": "sender",
+                                        "values": [
+                                             "AbiChang"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "小布"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "小布"
+                                        ]
                                    }
                               ],
-                              "service": "Calendar_1",
-                              "slots": [],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 63,
+                                        "slot": "content",
+                                        "start": 36
+                                   },
+                                   {
+                                        "exclusive_end": 32,
+                                        "slot": "sender",
+                                        "start": 24
+                                   },
+                                   {
+                                        "exclusive_end": 70,
+                                        "slot": "recipient",
+                                        "start": 68
+                                   }
+                              ],
                               "state": {
-                                   "active_intent": "AddEvent",
+                                   "active_intent": "FindMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "event_date": [
-                                             "12月3日"
+                                        "recipient": [
+                                             "小布"
                                         ],
-                                        "event_time": [
-                                             "7時30分"
+                                        "content": [
+                                             "堆疊式洗衣機乾衣機適合擺室外陽台嗎?，陽台空間如圖示："
                                         ],
-                                        "event_name": [
-                                             "環保DIY"
-                                        ],
-                                        "participant": [
-                                             "小野原"
-                                        ],
-                                        "event_location": [
-                                             "臺北市文山區新光路二段48號"
+                                        "sender": [
+                                             "AbiChang"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "沒有問題了，再見吧！"
+                    "utterance": "我想要找個信，可以請你幫忙嗎？，這封信的寄件者為AbiChang，內文為堆疊式洗衣機乾衣機適合擺室外陽台嗎?，陽台空間如圖示：，這封信由小布收"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_COUNT",
+                                        "canonical_values": [
+                                             "1"
+                                        ],
+                                        "slot": "count",
+                                        "values": [
+                                             "1"
+                                        ]
+                                   },
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "小布"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "小布"
+                                        ]
+                                   },
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "堆疊式洗衣機乾衣機適合擺室外陽台嗎?，陽台空間如圖示："
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "堆疊式洗衣機乾衣機適合擺室外陽台嗎?，陽台空間如圖示："
+                                        ]
+                                   },
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "AbiChang"
+                                        ],
+                                        "slot": "sender",
+                                        "values": [
+                                             "AbiChang"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 82,
+                                        "slot": "recipient",
+                                        "start": 80
+                                   },
+                                   {
+                                        "exclusive_end": 64,
+                                        "slot": "content",
+                                        "start": 37
+                                   },
+                                   {
+                                        "exclusive_end": 20,
+                                        "slot": "sender",
+                                        "start": 12
+                                   }
+                              ],
+                              "service_call": {
+                                   "method": "FindMail",
+                                   "parameters": {
+                                        "recipient": [
+                                             "小布"
+                                        ],
+                                        "content": [
+                                             "堆疊式洗衣機乾衣機適合擺室外陽台嗎?，陽台空間如圖示："
+                                        ],
+                                        "sender": [
+                                             "AbiChang"
+                                        ]
+                                   }
+                              },
+                              "service_results": [
+                                   {
+                                        "subject": " 堆疊式洗衣機+乾衣機適合擺室外陽台嗎?",
+                                        "content": "堆疊式洗衣機乾衣機適合擺室外陽台嗎?，陽台空間如圖示：",
+                                        "copy_recipient": "無",
+                                        "recipient": "小布",
+                                        "sender": "AbiChang"
+                                   }
+                              ]
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "總共有1個結果，我找到由AbiChang寄發的信件，請你看看，我找到內容跟堆疊式洗衣機乾衣機適合擺室外陽台嗎?，陽台空間如圖示：有關的信件，請你看看，我找到寄給小布的信件，請你看看"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "SELECT",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "小布"
+                                        ],
+                                        "content": [
+                                             "堆疊式洗衣機乾衣機適合擺室外陽台嗎?，陽台空間如圖示："
+                                        ],
+                                        "sender": [
+                                             "AbiChang"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我知道了"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "OFFER_INTENT",
+                                        "canonical_values": [
+                                             "FindMessage"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "FindMessage"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "需要幫您找一則訊息嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NEGATE_INTENT",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "小布"
+                                        ],
+                                        "content": [
+                                             "堆疊式洗衣機乾衣機適合擺室外陽台嗎?，陽台空間如圖示："
+                                        ],
+                                        "sender": [
+                                             "AbiChang"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "目前不需要"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQ_MORE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "還有什麼能幫到您的嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NEGATE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "GOODBYE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "小布"
+                                        ],
+                                        "content": [
+                                             "堆疊式洗衣機乾衣機適合擺室外陽台嗎?，陽台空間如圖示："
+                                        ],
+                                        "sender": [
+                                             "AbiChang"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "沒關係，先這樣吧，沒有了！再見！"
                },
                {
                     "frames": [
@@ -497,23 +1313,13 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Messaging_1",
                               "slots": [],
-                              "service_call": {
-                                   "method": "AddEvent",
-                                   "parameters": {
-                                        "event_date": "12月3日",
-                                        "event_time": "7時30分",
-                                        "event_name": "環保DIY",
-                                        "participant": "小野原",
-                                        "event_location": "臺北市文山區新光路二段48號"
-                                   }
-                              },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "祝您生活愉快！再見！"
+                    "utterance": "好的，再見！"
                }
           ]
      }
