@@ -2,7 +2,6 @@
      {
           "dialogue_id": 176,
           "services": [
-               "Messaging_1",
                "Calendar_1"
           ],
           "turns": [
@@ -13,25 +12,25 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "SendMessage"
+                                             "AddEvent"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "SendMessage"
+                                             "AddEvent"
                                         ]
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {}
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我想要寄則訊息，可以請你幫忙嗎？"
+                    "utterance": "我想要添加一個活動，可以請你幫忙嗎？"
                },
                {
                     "frames": [
@@ -40,23 +39,17 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "message",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "group_name",
+                                        "slot": "event_time",
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "我想知道訊息內容，群組名稱為何？"
+                    "utterance": "這個活動在幾點開始呢？"
                },
                {
                     "frames": [
@@ -65,53 +58,180 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "但16G應該也有辦法(hahaha)"
+                                             "11:35"
                                         ],
-                                        "slot": "message",
+                                        "slot": "event_time",
                                         "values": [
-                                             "但16G應該也有辦法(hahaha)"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "Python資料科學交流社群"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "Python資料科學交流社群"
+                                             "上午11點35分"
                                         ]
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 21,
-                                        "slot": "message",
-                                        "start": 3
-                                   },
-                                   {
-                                        "exclusive_end": 40,
-                                        "slot": "group_name",
-                                        "start": 26
+                                        "exclusive_end": 13,
+                                        "slot": "event_time",
+                                        "start": 5
                                    }
                               ],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "message": [
-                                             "但16G應該也有辦法(hahaha)"
-                                        ],
-                                        "group_name": [
-                                             "Python資料科學交流社群"
+                                        "event_time": [
+                                             "上午11點35分"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "跟他說但16G應該也有辦法(hahaha)，群組叫做Python資料科學交流社群"
+                    "utterance": "活動時間為上午11點35分"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_content",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "這個活動有註記任何內容嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "日月潭花火音樂嘉年華系列活動自民國97年（西元2008年）起舉辦，從初期的煙火、交響樂、鼓樂、舞蹈、藝文展覽"
+                                        ],
+                                        "slot": "event_content",
+                                        "values": [
+                                             "日月潭花火音樂嘉年華系列活動自民國97年（西元2008年）起舉辦，從初期的煙火、交響樂、鼓樂、舞蹈、藝文展覽"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 61,
+                                        "slot": "event_content",
+                                        "start": 7
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "AddEvent",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_time": [
+                                             "上午11點35分"
+                                        ],
+                                        "event_content": [
+                                             "日月潭花火音樂嘉年華系列活動自民國97年（西元2008年）起舉辦，從初期的煙火、交響樂、鼓樂、舞蹈、藝文展覽"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "幫我在活動備註日月潭花火音樂嘉年華系列活動自民國97年（西元2008年）起舉辦，從初期的煙火、交響樂、鼓樂、舞蹈、藝文展覽"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_date",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_name",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道這個活動的名稱，我想知道活動在何時舉行"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "2022/10/9"
+                                        ],
+                                        "slot": "event_date",
+                                        "values": [
+                                             "今天"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "日月潭Come!BikeDay花火音樂嘉年華"
+                                        ],
+                                        "slot": "event_name",
+                                        "values": [
+                                             "日月潭Come!BikeDay花火音樂嘉年華"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 36,
+                                        "slot": "event_date",
+                                        "start": 34
+                                   },
+                                   {
+                                        "exclusive_end": 28,
+                                        "slot": "event_name",
+                                        "start": 6
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "AddEvent",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_time": [
+                                             "上午11點35分"
+                                        ],
+                                        "event_content": [
+                                             "日月潭花火音樂嘉年華系列活動自民國97年（西元2008年）起舉辦，從初期的煙火、交響樂、鼓樂、舞蹈、藝文展覽"
+                                        ],
+                                        "event_date": [
+                                             "今天"
+                                        ],
+                                        "event_name": [
+                                             "日月潭Come!BikeDay花火音樂嘉年華"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "這個活動叫做日月潭Come!BikeDay花火音樂嘉年華，活動日期為今天"
                },
                {
                     "frames": [
@@ -120,42 +240,67 @@
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "但16G應該也有辦法(hahaha)"
+                                             "上午11點35分"
                                         ],
-                                        "slot": "message",
+                                        "slot": "event_time",
                                         "values": [
-                                             "但16G應該也有辦法(hahaha)"
+                                             "上午11點35分"
                                         ]
                                    },
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "Python資料科學交流社群"
+                                             "日月潭花火音樂嘉年華系列活動自民國97年（西元2008年）起舉辦，從初期的煙火、交響樂、鼓樂、舞蹈、藝文展覽"
                                         ],
-                                        "slot": "group_name",
+                                        "slot": "event_content",
                                         "values": [
-                                             "Python資料科學交流社群"
+                                             "日月潭花火音樂嘉年華系列活動自民國97年（西元2008年）起舉辦，從初期的煙火、交響樂、鼓樂、舞蹈、藝文展覽"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "今天"
+                                        ],
+                                        "slot": "event_date",
+                                        "values": [
+                                             "今天"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "日月潭Come!BikeDay花火音樂嘉年華"
+                                        ],
+                                        "slot": "event_name",
+                                        "values": [
+                                             "日月潭Come!BikeDay花火音樂嘉年華"
                                         ]
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 25,
-                                        "slot": "message",
-                                        "start": 7
+                                        "exclusive_end": 69,
+                                        "slot": "event_time",
+                                        "start": 61
                                    },
                                    {
-                                        "exclusive_end": 50,
-                                        "slot": "group_name",
-                                        "start": 36
+                                        "exclusive_end": 45,
+                                        "slot": "event_date",
+                                        "start": 43
+                                   },
+                                   {
+                                        "exclusive_end": 29,
+                                        "slot": "event_name",
+                                        "start": 7
                                    }
                               ],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "確認要傳送訊息但16G應該也有辦法(hahaha)嗎？，確認要傳送訊息到Python資料科學交流社群嗎？"
+                    "utterance": "確認要建立名叫日月潭Come!BikeDay花火音樂嘉年華的活動嗎？，確認要建立舉辦在今天的活動嗎？，確認要建立舉辦在當天上午11點35分的活動嗎？"
                },
                {
                     "frames": [
@@ -168,17 +313,23 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "message": [
-                                             "但16G應該也有辦法(hahaha)"
+                                        "event_time": [
+                                             "上午11點35分"
                                         ],
-                                        "group_name": [
-                                             "Python資料科學交流社群"
+                                        "event_content": [
+                                             "日月潭花火音樂嘉年華系列活動自民國97年（西元2008年）起舉辦，從初期的煙火、交響樂、鼓樂、舞蹈、藝文展覽"
+                                        ],
+                                        "event_date": [
+                                             "今天"
+                                        ],
+                                        "event_name": [
+                                             "日月潭Come!BikeDay花火音樂嘉年華"
                                         ]
                                    }
                               }
@@ -198,311 +349,15 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_call": {
-                                   "method": "SendMessage",
-                                   "parameters": {
-                                        "message": "但16G應該也有辦法(hahaha)",
-                                        "group_name": "Python資料科學交流社群"
-                                   }
-                              },
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "多虧有您的配合，訊息已成功傳送"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM_INTENT",
-                                        "canonical_values": [
-                                             "AddEvent"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "AddEvent"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "18:44"
-                                        ],
-                                        "slot": "event_time",
-                                        "values": [
-                                             "6時44分"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "107年5月份知識饗宴「糖質分子與生命的關係」"
-                                        ],
-                                        "slot": "event_name",
-                                        "values": [
-                                             "107年5月份知識饗宴「糖質分子與生命的關係」"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "無"
-                                        ],
-                                        "slot": "participant",
-                                        "values": [
-                                             "無"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "學術活動中心2樓第1會議室"
-                                        ],
-                                        "slot": "event_location",
-                                        "values": [
-                                             "學術活動中心2樓第1會議室"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "演講或講座 Lectures"
-                                        ],
-                                        "slot": "event_content",
-                                        "values": [
-                                             "演講或講座 Lectures"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "2018/5/9"
-                                        ],
-                                        "slot": "event_date",
-                                        "values": [
-                                             "2018年5月9日"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 69,
-                                        "slot": "event_time",
-                                        "start": 64
-                                   },
-                                   {
-                                        "exclusive_end": 42,
-                                        "slot": "event_name",
-                                        "start": 19
-                                   },
-                                   {
-                                        "exclusive_end": 118,
-                                        "slot": "event_location",
-                                        "start": 105
-                                   },
-                                   {
-                                        "exclusive_end": 89,
-                                        "slot": "event_content",
-                                        "start": 75
-                                   },
-                                   {
-                                        "exclusive_end": 57,
-                                        "slot": "event_date",
-                                        "start": 48
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "AddEvent",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_date": [
-                                             "2018年5月9日"
-                                        ],
-                                        "event_time": [
-                                             "6時44分"
-                                        ],
-                                        "event_name": [
-                                             "107年5月份知識饗宴「糖質分子與生命的關係」"
-                                        ],
-                                        "participant": [
-                                             "無"
-                                        ],
-                                        "event_location": [
-                                             "學術活動中心2樓第1會議室"
-                                        ],
-                                        "event_content": [
-                                             "演講或講座 Lectures"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "請幫我在行事曆添加一個活動，活動名稱為107年5月份知識饗宴「糖質分子與生命的關係」，活動日期為2018年5月9日，時間為當天的6時44分，活動內容為演講或講座 Lectures，這個活動不需設定參加者，活動在學術活動中心2樓第1會議室舉行"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "2018年5月9日"
-                                        ],
-                                        "slot": "event_date",
-                                        "values": [
-                                             "2018年5月9日"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "6時44分"
-                                        ],
-                                        "slot": "event_time",
-                                        "values": [
-                                             "6時44分"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "107年5月份知識饗宴「糖質分子與生命的關係」"
-                                        ],
-                                        "slot": "event_name",
-                                        "values": [
-                                             "107年5月份知識饗宴「糖質分子與生命的關係」"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "無"
-                                        ],
-                                        "slot": "participant",
-                                        "values": [
-                                             "無"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "學術活動中心2樓第1會議室"
-                                        ],
-                                        "slot": "event_location",
-                                        "values": [
-                                             "學術活動中心2樓第1會議室"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "演講或講座 Lectures"
-                                        ],
-                                        "slot": "event_content",
-                                        "values": [
-                                             "演講或講座 Lectures"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 53,
-                                        "slot": "event_date",
-                                        "start": 44
-                                   },
-                                   {
-                                        "exclusive_end": 74,
-                                        "slot": "event_time",
-                                        "start": 69
-                                   },
-                                   {
-                                        "exclusive_end": 30,
-                                        "slot": "event_name",
-                                        "start": 7
-                                   },
-                                   {
-                                        "exclusive_end": 101,
-                                        "slot": "event_location",
-                                        "start": 88
-                                   }
-                              ],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "確認要建立名叫107年5月份知識饗宴「糖質分子與生命的關係」的活動嗎？，確認要建立舉辦在2018年5月9日的活動嗎？，確認要建立舉辦在當天6時44分的活動嗎？，確認要建立舉辦在學術活動中心2樓第1會議室的活動嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "AFFIRM",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "AddEvent",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_date": [
-                                             "2018年5月9日"
-                                        ],
-                                        "event_time": [
-                                             "6時44分"
-                                        ],
-                                        "event_name": [
-                                             "107年5月份知識饗宴「糖質分子與生命的關係」"
-                                        ],
-                                        "participant": [
-                                             "無"
-                                        ],
-                                        "event_location": [
-                                             "學術活動中心2樓第1會議室"
-                                        ],
-                                        "event_content": [
-                                             "演講或講座 Lectures"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "我對以上資訊沒問題"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NOTIFY_SUCCESS",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
                               "service": "Calendar_1",
                               "slots": [],
                               "service_call": {
                                    "method": "AddEvent",
                                    "parameters": {
-                                        "event_date": "2018年5月9日",
-                                        "event_time": "6時44分",
-                                        "event_name": "107年5月份知識饗宴「糖質分子與生命的關係」",
-                                        "participant": "無",
-                                        "event_location": "學術活動中心2樓第1會議室",
-                                        "event_content": "演講或講座 Lectures"
+                                        "event_time": "上午11點35分",
+                                        "event_content": "日月潭花火音樂嘉年華系列活動自民國97年（西元2008年）起舉辦，從初期的煙火、交響樂、鼓樂、舞蹈、藝文展覽",
+                                        "event_date": "今天",
+                                        "event_name": "日月潭Come!BikeDay花火音樂嘉年華"
                                    }
                               },
                               "service_results": []
@@ -516,7 +371,7 @@
                          {
                               "actions": [
                                    {
-                                        "act": "GOODBYE",
+                                        "act": "SELECT",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
@@ -528,30 +383,24 @@
                                    "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "event_date": [
-                                             "2018年5月9日"
-                                        ],
                                         "event_time": [
-                                             "6時44分"
-                                        ],
-                                        "event_name": [
-                                             "107年5月份知識饗宴「糖質分子與生命的關係」"
-                                        ],
-                                        "participant": [
-                                             "無"
-                                        ],
-                                        "event_location": [
-                                             "學術活動中心2樓第1會議室"
+                                             "上午11點35分"
                                         ],
                                         "event_content": [
-                                             "演講或講座 Lectures"
+                                             "日月潭花火音樂嘉年華系列活動自民國97年（西元2008年）起舉辦，從初期的煙火、交響樂、鼓樂、舞蹈、藝文展覽"
+                                        ],
+                                        "event_date": [
+                                             "今天"
+                                        ],
+                                        "event_name": [
+                                             "日月潭Come!BikeDay花火音樂嘉年華"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "沒有了！再見！"
+                    "utterance": "好的"
                },
                {
                     "frames": [
@@ -569,19 +418,17 @@
                               "service_call": {
                                    "method": "AddEvent",
                                    "parameters": {
-                                        "event_date": "2018年5月9日",
-                                        "event_time": "6時44分",
-                                        "event_name": "107年5月份知識饗宴「糖質分子與生命的關係」",
-                                        "participant": "無",
-                                        "event_location": "學術活動中心2樓第1會議室",
-                                        "event_content": "演講或講座 Lectures"
+                                        "event_time": "上午11點35分",
+                                        "event_content": "日月潭花火音樂嘉年華系列活動自民國97年（西元2008年）起舉辦，從初期的煙火、交響樂、鼓樂、舞蹈、藝文展覽",
+                                        "event_date": "今天",
+                                        "event_name": "日月潭Come!BikeDay花火音樂嘉年華"
                                    }
                               },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "再見！祝您生活愉快！"
+                    "utterance": "有問題可以隨時聯繫我！祝您生活愉快！再見！"
                }
           ]
      }

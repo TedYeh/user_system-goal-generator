@@ -2,8 +2,7 @@
      {
           "dialogue_id": 65,
           "services": [
-               "Messaging_1",
-               "Calendar_1"
+               "Messaging_1"
           ],
           "turns": [
                {
@@ -13,36 +12,30 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "SendMessage"
+                                             "FindMessage"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "SendMessage"
+                                             "FindMessage"
                                         ]
                                    }
                               ],
                               "service": "Messaging_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "FindMessage",
                                    "requested_slots": [],
                                    "slot_values": {}
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "請幫我寄一則訊息"
+                    "utterance": "我想要知道相關的訊息，請幫幫我"
                },
                {
                     "frames": [
                          {
                               "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "message",
-                                        "values": []
-                                   },
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
@@ -56,22 +49,12 @@
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "我想知道訊息內容，我想知道這則訊息在哪個群組？"
+                    "utterance": "你知道群組名稱嗎？"
                },
                {
                     "frames": [
                          {
                               "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "管顧正常上下班"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "管顧正常上下班"
-                                        ]
-                                   },
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
@@ -86,23 +69,15 @@
                               "service": "Messaging_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 10,
-                                        "slot": "message",
-                                        "start": 3
-                                   },
-                                   {
-                                        "exclusive_end": 29,
+                                        "exclusive_end": 18,
                                         "slot": "group_name",
-                                        "start": 15
+                                        "start": 4
                                    }
                               ],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "FindMessage",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "message": [
-                                             "管顧正常上下班"
-                                        ],
                                         "group_name": [
                                              "Python資料科學交流社群"
                                         ]
@@ -111,24 +86,24 @@
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "跟他說管顧正常上下班，應該是在Python資料科學交流社群群組中的訊息"
+                    "utterance": "應該是在Python資料科學交流社群群組中的訊息"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "CONFIRM",
+                                        "act": "INFORM_COUNT",
                                         "canonical_values": [
-                                             "管顧正常上下班"
+                                             "5"
                                         ],
-                                        "slot": "message",
+                                        "slot": "count",
                                         "values": [
-                                             "管顧正常上下班"
+                                             "5"
                                         ]
                                    },
                                    {
-                                        "act": "CONFIRM",
+                                        "act": "OFFER",
                                         "canonical_values": [
                                              "Python資料科學交流社群"
                                         ],
@@ -141,28 +116,57 @@
                               "service": "Messaging_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 14,
-                                        "slot": "message",
-                                        "start": 7
-                                   },
-                                   {
-                                        "exclusive_end": 39,
+                                        "exclusive_end": 25,
                                         "slot": "group_name",
-                                        "start": 25
+                                        "start": 11
                                    }
                               ],
-                              "service_results": []
+                              "service_call": {
+                                   "method": "FindMessage",
+                                   "parameters": {
+                                        "group_name": [
+                                             "Python資料科學交流社群"
+                                        ]
+                                   }
+                              },
+                              "service_results": [
+                                   {
+                                        "group_name": "Python資料科學交流社群",
+                                        "contact_name": "超級BG",
+                                        "message": "coscup 唯一缺點就是平行議程軌太雜，建議先安排自己想聽的議程，到時候比較好搶位子"
+                                   },
+                                   {
+                                        "group_name": "Python資料科學交流社群",
+                                        "contact_name": "Draz",
+                                        "message": "因為都是學校教室 位子有限"
+                                   },
+                                   {
+                                        "group_name": "Python資料科學交流社群",
+                                        "contact_name": "Hong Fly",
+                                        "message": "推算回去感覺你國小就有涉獵相關討論了w"
+                                   },
+                                   {
+                                        "group_name": "Python資料科學交流社群",
+                                        "contact_name": "古青箭",
+                                        "message": "你是要平分嗎"
+                                   },
+                                   {
+                                        "group_name": "Python資料科學交流社群",
+                                        "contact_name": "zirean",
+                                        "message": "你是有寫錯嗎 不然照你分這樣有什麼問題"
+                                   }
+                              ]
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "確認要傳送訊息管顧正常上下班嗎？，確認要傳送訊息到Python資料科學交流社群嗎？"
+                    "utterance": "總共有5個結果，找到在Python資料科學交流社群群組的聊天訊息"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "AFFIRM",
+                                        "act": "SELECT",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
@@ -171,12 +175,9 @@
                               "service": "Messaging_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "FindMessage",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "message": [
-                                             "管顧正常上下班"
-                                        ],
                                         "group_name": [
                                              "Python資料科學交流社群"
                                         ]
@@ -185,14 +186,14 @@
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我對以上資訊沒問題"
+                    "utterance": "好的，我知道了"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "NOTIFY_SUCCESS",
+                                        "act": "REQ_MORE",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
@@ -200,470 +201,44 @@
                               ],
                               "service": "Messaging_1",
                               "slots": [],
-                              "service_call": {
-                                   "method": "SendMessage",
-                                   "parameters": {
-                                        "message": "管顧正常上下班",
-                                        "group_name": "Python資料科學交流社群"
-                                   }
-                              },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "多虧有您的配合，訊息已成功傳送"
+                    "utterance": "還有什麼需要幫助的嗎？"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "INFORM_INTENT",
-                                        "canonical_values": [
-                                             "AddEvent"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "AddEvent"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "AddEvent",
-                                   "requested_slots": [],
-                                   "slot_values": {}
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "請幫我在行事曆添加一個活動"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
+                                        "act": "NEGATE",
                                         "canonical_values": [],
-                                        "slot": "event_date",
+                                        "slot": "",
                                         "values": []
                                    },
                                    {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "participant",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "這個活動辦在幾月幾號呢？，想知道這個活動的參加者"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "2022/4/2"
-                                        ],
-                                        "slot": "event_date",
-                                        "values": [
-                                             "2022年4月2日"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "Jerrytao"
-                                        ],
-                                        "slot": "participant",
-                                        "values": [
-                                             "Jerrytao"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 14,
-                                        "slot": "event_date",
-                                        "start": 5
-                                   },
-                                   {
-                                        "exclusive_end": 24,
-                                        "slot": "participant",
-                                        "start": 16
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "AddEvent",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_date": [
-                                             "2022年4月2日"
-                                        ],
-                                        "participant": [
-                                             "Jerrytao"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "活動日期為2022年4月2日，有Jerrytao會參加"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_time",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_content",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "我想知道活動在當天何時開始，這個活動有任何內容備註嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "09:54"
-                                        ],
-                                        "slot": "event_time",
-                                        "values": [
-                                             "上午9時54分"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "￭活動相關細節可電洽本府農業局 (03-3322101#5415、5416)今年「芋見愛神」除「療芋感」的推動之外，將突破以往"
-                                        ],
-                                        "slot": "event_content",
-                                        "values": [
-                                             "￭活動相關細節可電洽本府農業局 (03-3322101#5415、5416)今年「芋見愛神」除「療芋感」的推動之外，將突破以往"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 10,
-                                        "slot": "event_time",
-                                        "start": 3
-                                   },
-                                   {
-                                        "exclusive_end": 79,
-                                        "slot": "event_content",
-                                        "start": 16
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "AddEvent",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_date": [
-                                             "2022年4月2日"
-                                        ],
-                                        "participant": [
-                                             "Jerrytao"
-                                        ],
-                                        "event_time": [
-                                             "上午9時54分"
-                                        ],
-                                        "event_content": [
-                                             "￭活動相關細節可電洽本府農業局 (03-3322101#5415、5416)今年「芋見愛神」除「療芋感」的推動之外，將突破以往"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "時間為上午9時54分，活動內容為￭活動相關細節可電洽本府農業局 (03-3322101#5415、5416)今年「芋見愛神」除「療芋感」的推動之外，將突破以往"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_name",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "那這個活動叫甚麼呢？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "桃園彩色海芋季"
-                                        ],
-                                        "slot": "event_name",
-                                        "values": [
-                                             "桃園彩色海芋季"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 12,
-                                        "slot": "event_name",
-                                        "start": 5
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "AddEvent",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_date": [
-                                             "2022年4月2日"
-                                        ],
-                                        "participant": [
-                                             "Jerrytao"
-                                        ],
-                                        "event_time": [
-                                             "上午9時54分"
-                                        ],
-                                        "event_content": [
-                                             "￭活動相關細節可電洽本府農業局 (03-3322101#5415、5416)今年「芋見愛神」除「療芋感」的推動之外，將突破以往"
-                                        ],
-                                        "event_name": [
-                                             "桃園彩色海芋季"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "活動名稱叫桃園彩色海芋季"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "2022年4月2日"
-                                        ],
-                                        "slot": "event_date",
-                                        "values": [
-                                             "2022年4月2日"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "Jerrytao"
-                                        ],
-                                        "slot": "participant",
-                                        "values": [
-                                             "Jerrytao"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "上午9時54分"
-                                        ],
-                                        "slot": "event_time",
-                                        "values": [
-                                             "上午9時54分"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "￭活動相關細節可電洽本府農業局 (03-3322101#5415、5416)今年「芋見愛神」除「療芋感」的推動之外，將突破以往"
-                                        ],
-                                        "slot": "event_content",
-                                        "values": [
-                                             "￭活動相關細節可電洽本府農業局 (03-3322101#5415、5416)今年「芋見愛神」除「療芋感」的推動之外，將突破以往"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "桃園彩色海芋季"
-                                        ],
-                                        "slot": "event_name",
-                                        "values": [
-                                             "桃園彩色海芋季"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 37,
-                                        "slot": "event_date",
-                                        "start": 28
-                                   },
-                                   {
-                                        "exclusive_end": 82,
-                                        "slot": "participant",
-                                        "start": 74
-                                   },
-                                   {
-                                        "exclusive_end": 60,
-                                        "slot": "event_time",
-                                        "start": 53
-                                   },
-                                   {
-                                        "exclusive_end": 14,
-                                        "slot": "event_name",
-                                        "start": 7
-                                   }
-                              ],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "確認要建立名叫桃園彩色海芋季的活動嗎？，確認要建立舉辦在2022年4月2日的活動嗎？，確認要建立舉辦在當天上午9時54分的活動嗎？，確認要建立舉辦有Jerrytao參加的活動嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "AFFIRM",
+                                        "act": "GOODBYE",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Messaging_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "AddEvent",
+                                   "active_intent": "FindMessage",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "event_date": [
-                                             "2022年4月2日"
-                                        ],
-                                        "participant": [
-                                             "Jerrytao"
-                                        ],
-                                        "event_time": [
-                                             "上午9時54分"
-                                        ],
-                                        "event_content": [
-                                             "￭活動相關細節可電洽本府農業局 (03-3322101#5415、5416)今年「芋見愛神」除「療芋感」的推動之外，將突破以往"
-                                        ],
-                                        "event_name": [
-                                             "桃園彩色海芋季"
+                                        "group_name": [
+                                             "Python資料科學交流社群"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我對以上資訊沒問題"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NOTIFY_SUCCESS",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_call": {
-                                   "method": "AddEvent",
-                                   "parameters": {
-                                        "event_date": "2022年4月2日",
-                                        "participant": "Jerrytao",
-                                        "event_time": "上午9時54分",
-                                        "event_content": "￭活動相關細節可電洽本府農業局 (03-3322101#5415、5416)今年「芋見愛神」除「療芋感」的推動之外，將突破以往",
-                                        "event_name": "桃園彩色海芋季"
-                                   }
-                              },
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "多虧有您的配合，活動已添加至行事曆"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "THANK_YOU",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "AddEvent",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_date": [
-                                             "2022年4月2日"
-                                        ],
-                                        "participant": [
-                                             "Jerrytao"
-                                        ],
-                                        "event_time": [
-                                             "上午9時54分"
-                                        ],
-                                        "event_content": [
-                                             "￭活動相關細節可電洽本府農業局 (03-3322101#5415、5416)今年「芋見愛神」除「療芋感」的推動之外，將突破以往"
-                                        ],
-                                        "event_name": [
-                                             "桃園彩色海芋季"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "感謝"
+                    "utterance": "沒關係，先這樣吧，沒有問題了，再見吧！"
                },
                {
                     "frames": [
@@ -676,18 +251,8 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Messaging_1",
                               "slots": [],
-                              "service_call": {
-                                   "method": "AddEvent",
-                                   "parameters": {
-                                        "event_date": "2022年4月2日",
-                                        "participant": "Jerrytao",
-                                        "event_time": "上午9時54分",
-                                        "event_content": "￭活動相關細節可電洽本府農業局 (03-3322101#5415、5416)今年「芋見愛神」除「療芋感」的推動之外，將突破以往",
-                                        "event_name": "桃園彩色海芋季"
-                                   }
-                              },
                               "service_results": []
                          }
                     ],

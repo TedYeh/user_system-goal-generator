@@ -3,6 +3,7 @@
           "dialogue_id": 428,
           "services": [
                "Messaging_1",
+               "Mail_1",
                "Calendar_1"
           ],
           "turns": [
@@ -13,25 +14,25 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "FindMessage"
+                                             "SendMessage"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "FindMessage"
+                                             "SendMessage"
                                         ]
                                    }
                               ],
                               "service": "Messaging_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "FindMessage",
+                                   "active_intent": "SendMessage",
                                    "requested_slots": [],
                                    "slot_values": {}
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "請幫我找一則訊息"
+                    "utterance": "我想要寄則訊息，可以請你幫忙嗎？"
                },
                {
                     "frames": [
@@ -50,7 +51,7 @@
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "你知道群組名稱嗎？"
+                    "utterance": "群組名稱為何？"
                },
                {
                     "frames": [
@@ -76,7 +77,7 @@
                                    }
                               ],
                               "state": {
-                                   "active_intent": "FindMessage",
+                                   "active_intent": "SendMessage",
                                    "requested_slots": [],
                                    "slot_values": {
                                         "group_name": [
@@ -94,153 +95,9 @@
                          {
                               "actions": [
                                    {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "Python資料科學交流社群"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "Python資料科學交流社群"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM_COUNT",
-                                        "canonical_values": [
-                                             "5"
-                                        ],
-                                        "slot": "count",
-                                        "values": [
-                                             "5"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 17,
-                                        "slot": "group_name",
-                                        "start": 3
-                                   }
-                              ],
-                              "service_call": {
-                                   "method": "FindMessage",
-                                   "parameters": {
-                                        "group_name": "Python資料科學交流社群"
-                                   }
-                              },
-                              "service_results": [
-                                   {
-                                        "group_name": "Python資料科學交流社群",
-                                        "contact_name": "超級BG",
-                                        "message": "coscup 唯一缺點就是平行議程軌太雜，建議先安排自己想聽的議程，到時候比較好搶位子"
-                                   },
-                                   {
-                                        "group_name": "Python資料科學交流社群",
-                                        "contact_name": "Draz",
-                                        "message": "因為都是學校教室 位子有限"
-                                   },
-                                   {
-                                        "group_name": "Python資料科學交流社群",
-                                        "contact_name": "Hong Fly",
-                                        "message": "推算回去感覺你國小就有涉獵相關討論了w"
-                                   },
-                                   {
-                                        "group_name": "Python資料科學交流社群",
-                                        "contact_name": "古青箭",
-                                        "message": "你是要平分嗎"
-                                   },
-                                   {
-                                        "group_name": "Python資料科學交流社群",
-                                        "contact_name": "zirean",
-                                        "message": "你是有寫錯嗎 不然照你分這樣有什麼問題"
-                                   }
-                              ]
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "找到在Python資料科學交流社群群組的聊天訊息，總共有5個結果"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "SELECT",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "FindMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "group_name": [
-                                             "Python資料科學交流社群"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "我知道了"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "OFFER_INTENT",
-                                        "canonical_values": [
-                                             "FindMessage"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "FindMessage"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "需要幫您找一則訊息嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "AFFIRM_INTENT",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "FindMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {}
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "好的，麻煩你了"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "contact_name",
+                                        "slot": "message",
                                         "values": []
                                    }
                               ],
@@ -250,7 +107,7 @@
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "我想知道這則訊息是誰寄的？"
+                    "utterance": "我想知道訊息內容"
                },
                {
                     "frames": [
@@ -259,55 +116,45 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "For Lee"
+                                             "實務上 很難有時間可以做完美 我覺得啦"
                                         ],
-                                        "slot": "contact_name",
+                                        "slot": "message",
                                         "values": [
-                                             "For Lee"
+                                             "實務上 很難有時間可以做完美 我覺得啦"
                                         ]
                                    }
                               ],
                               "service": "Messaging_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 10,
-                                        "slot": "contact_name",
+                                        "exclusive_end": 22,
+                                        "slot": "message",
                                         "start": 3
                                    }
                               ],
                               "state": {
-                                   "active_intent": "FindMessage",
+                                   "active_intent": "SendMessage",
                                    "requested_slots": [],
                                    "slot_values": {
                                         "group_name": [
                                              "Python資料科學交流社群"
                                         ],
-                                        "contact_name": [
-                                             "For Lee"
+                                        "message": [
+                                             "實務上 很難有時間可以做完美 我覺得啦"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "用戶為For Lee"
+                    "utterance": "跟他說實務上 很難有時間可以做完美 我覺得啦"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "INFORM_COUNT",
-                                        "canonical_values": [
-                                             "2"
-                                        ],
-                                        "slot": "count",
-                                        "values": [
-                                             "2"
-                                        ]
-                                   },
-                                   {
-                                        "act": "OFFER",
+                                        "act": "CONFIRM",
                                         "canonical_values": [
                                              "Python資料科學交流社群"
                                         ],
@@ -317,297 +164,64 @@
                                         ]
                                    },
                                    {
-                                        "act": "OFFER",
+                                        "act": "CONFIRM",
                                         "canonical_values": [
-                                             "For Lee"
+                                             "實務上 很難有時間可以做完美 我覺得啦"
                                         ],
-                                        "slot": "contact_name",
+                                        "slot": "message",
                                         "values": [
-                                             "For Lee"
+                                             "實務上 很難有時間可以做完美 我覺得啦"
                                         ]
                                    }
                               ],
                               "service": "Messaging_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 25,
+                                        "exclusive_end": 51,
                                         "slot": "group_name",
-                                        "start": 11
+                                        "start": 37
                                    },
                                    {
-                                        "exclusive_end": 43,
-                                        "slot": "contact_name",
-                                        "start": 36
+                                        "exclusive_end": 26,
+                                        "slot": "message",
+                                        "start": 7
                                    }
                               ],
-                              "service_call": {
-                                   "method": "FindMessage",
-                                   "parameters": {
-                                        "group_name": [
-                                             "Python資料科學交流社群"
-                                        ],
-                                        "contact_name": [
-                                             "For Lee"
-                                        ]
-                                   }
-                              },
-                              "service_results": [
-                                   {
-                                        "group_name": "Python資料科學交流社群",
-                                        "contact_name": "For Lee",
-                                        "message": "@Jasper 你認識"
-                                   },
-                                   {
-                                        "group_name": "Python資料科學交流社群",
-                                        "contact_name": "For Lee",
-                                        "message": "我也會c++"
-                                   }
-                              ]
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "總共有2個結果，找到在Python資料科學交流社群群組的聊天訊息，找到與For Lee聊天的訊息"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "GOODBYE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "FindMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "group_name": [
-                                             "Python資料科學交流社群"
-                                        ],
-                                        "contact_name": [
-                                             "For Lee"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "沒有問題了，再見吧！"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "GOODBYE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "祝您生活愉快！再見！"
+                    "utterance": "確認要傳送訊息實務上 很難有時間可以做完美 我覺得啦嗎？，確認要傳送訊息到Python資料科學交流社群嗎？"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "INFORM_INTENT",
-                                        "canonical_values": [
-                                             "LookupEvents"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "LookupEvents"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "無"
-                                        ],
-                                        "slot": "participant",
-                                        "values": [
-                                             "無"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "臺東縣962長濱鄉"
-                                        ],
-                                        "slot": "event_location",
-                                        "values": [
-                                             "臺東縣962長濱鄉"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "長濱雙浪金剛馬拉松"
-                                        ],
-                                        "slot": "event_name",
-                                        "values": [
-                                             "長濱雙浪金剛馬拉松"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 49,
-                                        "slot": "event_location",
-                                        "start": 40
-                                   },
-                                   {
-                                        "exclusive_end": 23,
-                                        "slot": "event_name",
-                                        "start": 14
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_name": [
-                                             "長濱雙浪金剛馬拉松"
-                                        ],
-                                        "participant": [
-                                             "無"
-                                        ],
-                                        "event_location": [
-                                             "臺東縣962長濱鄉"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "請幫我找一個活動，活動名稱叫長濱雙浪金剛馬拉松，這個活動不需設定參加者，活動辦在臺東縣962長濱鄉"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "長濱雙浪金剛馬拉松"
-                                        ],
-                                        "slot": "event_name",
-                                        "values": [
-                                             "長濱雙浪金剛馬拉松"
-                                        ]
-                                   },
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "無"
-                                        ],
-                                        "slot": "participant",
-                                        "values": [
-                                             "無"
-                                        ]
-                                   },
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "臺東縣962長濱鄉"
-                                        ],
-                                        "slot": "event_location",
-                                        "values": [
-                                             "臺東縣962長濱鄉"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM_COUNT",
-                                        "canonical_values": [
-                                             "1"
-                                        ],
-                                        "slot": "count",
-                                        "values": [
-                                             "1"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 24,
-                                        "slot": "event_name",
-                                        "start": 15
-                                   },
-                                   {
-                                        "exclusive_end": 44,
-                                        "slot": "event_location",
-                                        "start": 35
-                                   }
-                              ],
-                              "service_call": {
-                                   "method": "LookupEvents",
-                                   "parameters": {
-                                        "event_name": "長濱雙浪金剛馬拉松",
-                                        "participant": "無",
-                                        "event_location": "臺東縣962長濱鄉"
-                                   }
-                              },
-                              "service_results": [
-                                   {
-                                        "event_name": "長濱雙浪金剛馬拉松",
-                                        "event_location": "臺東縣962長濱鄉",
-                                        "event_content": "無",
-                                        "participant": "無",
-                                        "event_date": "2022/5/1",
-                                        "event_time": "11:20"
-                                   }
-                              ]
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "在您的行事曆找到不同天但名稱為長濱雙浪金剛馬拉松的活動，找到舉行地點為臺東縣962長濱鄉的活動，總共有1個結果"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "SELECT",
+                                        "act": "AFFIRM",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Messaging_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "LookupEvents",
+                                   "active_intent": "SendMessage",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "event_name": [
-                                             "長濱雙浪金剛馬拉松"
+                                        "group_name": [
+                                             "Python資料科學交流社群"
                                         ],
-                                        "participant": [
-                                             "無"
-                                        ],
-                                        "event_location": [
-                                             "臺東縣962長濱鄉"
+                                        "message": [
+                                             "實務上 很難有時間可以做完美 我覺得啦"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我知道了"
+                    "utterance": "我對以上資訊沒問題"
                },
                {
                     "frames": [
@@ -620,13 +234,13 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Messaging_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "還有什麼需要幫助的嗎？"
+                    "utterance": "還有什麼問題嗎？"
                },
                {
                     "frames": [
@@ -635,25 +249,25 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "FindMessage"
+                                             "SendMail"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "FindMessage"
+                                             "SendMail"
                                         ]
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "FindMessage",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {}
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "請幫我找一則訊息"
+                    "utterance": "我想要寫一封信，可以請你幫忙嗎？"
                },
                {
                     "frames": [
@@ -662,17 +276,17 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "group_name",
+                                        "slot": "content",
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "我想知道這則訊息在哪個群組？"
+                    "utterance": "這封信有任何內容嗎？"
                },
                {
                     "frames": [
@@ -681,158 +295,714 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "Deep Learning (AI)  study and discuss"
+                                             "女同事說天氣很冷，如果本肥宅當眾回答她，你抱著本肥宅就不會冷了，這樣子本肥宅在女同事心中是不是加很多分，還是有更好的答案呢"
                                         ],
-                                        "slot": "group_name",
+                                        "slot": "content",
                                         "values": [
-                                             "Deep Learning (AI)  study and discuss"
+                                             "女同事說天氣很冷，如果本肥宅當眾回答她，你抱著本肥宅就不會冷了，這樣子本肥宅在女同事心中是不是加很多分，還是有更好的答案呢"
                                         ]
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 41,
-                                        "slot": "group_name",
-                                        "start": 4
+                                        "exclusive_end": 64,
+                                        "slot": "content",
+                                        "start": 3
                                    }
                               ],
                               "state": {
-                                   "active_intent": "FindMessage",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "group_name": [
-                                             "Deep Learning (AI)  study and discuss"
+                                        "content": [
+                                             "女同事說天氣很冷，如果本肥宅當眾回答她，你抱著本肥宅就不會冷了，這樣子本肥宅在女同事心中是不是加很多分，還是有更好的答案呢"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "應該是在Deep Learning (AI)  study and discuss群組中的訊息"
+                    "utterance": "內文為女同事說天氣很冷，如果本肥宅當眾回答她，你抱著本肥宅就不會冷了，這樣子本肥宅在女同事心中是不是加很多分，還是有更好的答案呢"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "INFORM_COUNT",
-                                        "canonical_values": [
-                                             "5"
-                                        ],
-                                        "slot": "count",
-                                        "values": [
-                                             "5"
-                                        ]
-                                   },
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "Deep Learning (AI)  study and discuss"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "Deep Learning (AI)  study and discuss"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 48,
-                                        "slot": "group_name",
-                                        "start": 11
-                                   }
-                              ],
-                              "service_call": {
-                                   "method": "FindMessage",
-                                   "parameters": {
-                                        "group_name": [
-                                             "Deep Learning (AI)  study and discuss"
-                                        ]
-                                   }
-                              },
-                              "service_results": [
-                                   {
-                                        "group_name": "Deep Learning (AI)  study and discuss",
-                                        "contact_name": "Lucifer",
-                                        "message": "只是想測試100多筆資料有沒有機會用深度學習train出東西OAO"
-                                   },
-                                   {
-                                        "group_name": "Deep Learning (AI)  study and discuss",
-                                        "contact_name": "小室盆栽",
-                                        "message": "你可以用model.summary()印出給大家幫你看"
-                                   },
-                                   {
-                                        "group_name": "Deep Learning (AI)  study and discuss",
-                                        "contact_name": "assf",
-                                        "message": "看是哪出nan"
-                                   },
-                                   {
-                                        "group_name": "Deep Learning (AI)  study and discuss",
-                                        "contact_name": "同情我的話就給我錢",
-                                        "message": "只有一層也是nan 還是根本問題是資料量太少train不出東西"
-                                   },
-                                   {
-                                        "group_name": "Deep Learning (AI)  study and discuss",
-                                        "contact_name": "威翔王",
-                                        "message": "你的dropout太多了吧⋯⋯"
-                                   }
-                              ]
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "總共有5個結果，找到在Deep Learning (AI)  study and discuss群組的聊天訊息"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "SELECT",
+                                        "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "",
+                                        "slot": "recipient",
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "FindMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "group_name": [
-                                             "Deep Learning (AI)  study and discuss"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "好的，我知道了"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "OFFER_INTENT",
-                                        "canonical_values": [
-                                             "FindMessage"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "FindMessage"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "您會想要找一則訊息嗎？"
+                    "utterance": "你知道這封信是寄給誰的嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "劉冠卓"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "劉冠卓"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 7,
+                                        "slot": "recipient",
+                                        "start": 4
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "content": [
+                                             "女同事說天氣很冷，如果本肥宅當眾回答她，你抱著本肥宅就不會冷了，這樣子本肥宅在女同事心中是不是加很多分，還是有更好的答案呢"
+                                        ],
+                                        "recipient": [
+                                             "劉冠卓"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "這封信由劉冠卓收"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "copy_recipient",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "你知道這封信的副本收件者嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "無"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "content": [
+                                             "女同事說天氣很冷，如果本肥宅當眾回答她，你抱著本肥宅就不會冷了，這樣子本肥宅在女同事心中是不是加很多分，還是有更好的答案呢"
+                                        ],
+                                        "recipient": [
+                                             "劉冠卓"
+                                        ],
+                                        "copy_recipient": [
+                                             "無"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "不需設定副本收件者"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "subject",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道這個信件的主旨"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             " 本肥宅這樣加幾分？？"
+                                        ],
+                                        "slot": "subject",
+                                        "values": [
+                                             " 本肥宅這樣加幾分？？"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 16,
+                                        "slot": "subject",
+                                        "start": 5
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "content": [
+                                             "女同事說天氣很冷，如果本肥宅當眾回答她，你抱著本肥宅就不會冷了，這樣子本肥宅在女同事心中是不是加很多分，還是有更好的答案呢"
+                                        ],
+                                        "recipient": [
+                                             "劉冠卓"
+                                        ],
+                                        "copy_recipient": [
+                                             "無"
+                                        ],
+                                        "subject": [
+                                             " 本肥宅這樣加幾分？？"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "這封信叫做 本肥宅這樣加幾分？？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "女同事說天氣很冷，如果本肥宅當眾回答她，你抱著本肥宅就不會冷了，這樣子本肥宅在女同事心中是不是加很多分，還是有更好的答案呢"
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "女同事說天氣很冷，如果本肥宅當眾回答她，你抱著本肥宅就不會冷了，這樣子本肥宅在女同事心中是不是加很多分，還是有更好的答案呢"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "劉冠卓"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "劉冠卓"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "無"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             " 本肥宅這樣加幾分？？"
+                                        ],
+                                        "slot": "subject",
+                                        "values": [
+                                             " 本肥宅這樣加幾分？？"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 99,
+                                        "slot": "content",
+                                        "start": 38
+                                   },
+                                   {
+                                        "exclusive_end": 110,
+                                        "slot": "recipient",
+                                        "start": 107
+                                   },
+                                   {
+                                        "exclusive_end": 20,
+                                        "slot": "subject",
+                                        "start": 9
+                                   }
+                              ],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "請確認要寄出主旨為 本肥宅這樣加幾分？？的信件嗎？，請確認要寄出的信件內容:女同事說天氣很冷，如果本肥宅當眾回答她，你抱著本肥宅就不會冷了，這樣子本肥宅在女同事心中是不是加很多分，還是有更好的答案呢，確認要寄信件給劉冠卓嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "AFFIRM",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "content": [
+                                             "女同事說天氣很冷，如果本肥宅當眾回答她，你抱著本肥宅就不會冷了，這樣子本肥宅在女同事心中是不是加很多分，還是有更好的答案呢"
+                                        ],
+                                        "recipient": [
+                                             "劉冠卓"
+                                        ],
+                                        "copy_recipient": [
+                                             "無"
+                                        ],
+                                        "subject": [
+                                             " 本肥宅這樣加幾分？？"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我對以上資訊沒問題"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NOTIFY_SUCCESS",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_call": {
+                                   "method": "SendMail",
+                                   "parameters": {
+                                        "content": "女同事說天氣很冷，如果本肥宅當眾回答她，你抱著本肥宅就不會冷了，這樣子本肥宅在女同事心中是不是加很多分，還是有更好的答案呢",
+                                        "recipient": "劉冠卓",
+                                        "copy_recipient": "無",
+                                        "subject": " 本肥宅這樣加幾分？？"
+                                   }
+                              },
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "多虧有您的配合，信件已成功寄出"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "AddEvent"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "AddEvent"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "AddEvent",
+                                   "requested_slots": [],
+                                   "slot_values": {}
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我想要添加一個活動，可以請你幫忙嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_location",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "這個活動辦在哪裡啊？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "桃園市楊梅區楊昇路256號"
+                                        ],
+                                        "slot": "event_location",
+                                        "values": [
+                                             "桃園市楊梅區楊昇路256號"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 17,
+                                        "slot": "event_location",
+                                        "start": 4
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "AddEvent",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_location": [
+                                             "桃園市楊梅區楊昇路256號"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "活動辦在桃園市楊梅區楊昇路256號"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_time",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道活動在當天何時開始"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "06:07"
+                                        ],
+                                        "slot": "event_time",
+                                        "values": [
+                                             "6時7分"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 9,
+                                        "slot": "event_time",
+                                        "start": 5
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "AddEvent",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_location": [
+                                             "桃園市楊梅區楊昇路256號"
+                                        ],
+                                        "event_time": [
+                                             "6時7分"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "活動時間為6時7分"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_date",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_name",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "那這個活動叫甚麼呢？，這個活動辦在幾月幾號呢？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "2022/12/14"
+                                        ],
+                                        "slot": "event_date",
+                                        "values": [
+                                             "今天"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "緯創女子公開賽"
+                                        ],
+                                        "slot": "event_name",
+                                        "values": [
+                                             "緯創女子公開賽"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 19,
+                                        "slot": "event_date",
+                                        "start": 17
+                                   },
+                                   {
+                                        "exclusive_end": 13,
+                                        "slot": "event_name",
+                                        "start": 6
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "AddEvent",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_location": [
+                                             "桃園市楊梅區楊昇路256號"
+                                        ],
+                                        "event_time": [
+                                             "6時7分"
+                                        ],
+                                        "event_date": [
+                                             "今天"
+                                        ],
+                                        "event_name": [
+                                             "緯創女子公開賽"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "這個活動叫做緯創女子公開賽，日期為今天"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "桃園市楊梅區楊昇路256號"
+                                        ],
+                                        "slot": "event_location",
+                                        "values": [
+                                             "桃園市楊梅區楊昇路256號"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "6時7分"
+                                        ],
+                                        "slot": "event_time",
+                                        "values": [
+                                             "6時7分"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "今天"
+                                        ],
+                                        "slot": "event_date",
+                                        "values": [
+                                             "今天"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "緯創女子公開賽"
+                                        ],
+                                        "slot": "event_name",
+                                        "values": [
+                                             "緯創女子公開賽"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 77,
+                                        "slot": "event_location",
+                                        "start": 64
+                                   },
+                                   {
+                                        "exclusive_end": 50,
+                                        "slot": "event_time",
+                                        "start": 46
+                                   },
+                                   {
+                                        "exclusive_end": 30,
+                                        "slot": "event_date",
+                                        "start": 28
+                                   },
+                                   {
+                                        "exclusive_end": 14,
+                                        "slot": "event_name",
+                                        "start": 7
+                                   }
+                              ],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "確認要建立名叫緯創女子公開賽的活動嗎？，確認要建立舉辦在今天的活動嗎？，確認要建立舉辦在當天6時7分的活動嗎？，確認要建立舉辦在桃園市楊梅區楊昇路256號的活動嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "AFFIRM",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "AddEvent",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_location": [
+                                             "桃園市楊梅區楊昇路256號"
+                                        ],
+                                        "event_time": [
+                                             "6時7分"
+                                        ],
+                                        "event_date": [
+                                             "今天"
+                                        ],
+                                        "event_name": [
+                                             "緯創女子公開賽"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我對以上資訊沒問題"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NOTIFY_SUCCESS",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_call": {
+                                   "method": "AddEvent",
+                                   "parameters": {
+                                        "event_location": "桃園市楊梅區楊昇路256號",
+                                        "event_time": "6時7分",
+                                        "event_date": "今天",
+                                        "event_name": "緯創女子公開賽"
+                                   }
+                              },
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "多虧有您的配合，活動已添加至行事曆"
                },
                {
                     "frames": [
@@ -843,29 +1013,32 @@
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
-                                   },
-                                   {
-                                        "act": "NEGATE_INTENT",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "FindMessage",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "group_name": [
-                                             "Deep Learning (AI)  study and discuss"
+                                        "event_location": [
+                                             "桃園市楊梅區楊昇路256號"
+                                        ],
+                                        "event_time": [
+                                             "6時7分"
+                                        ],
+                                        "event_date": [
+                                             "今天"
+                                        ],
+                                        "event_name": [
+                                             "緯創女子公開賽"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我知道了，謝謝你啊！，目前不需要"
+                    "utterance": "真是太謝謝你了！"
                },
                {
                     "frames": [
@@ -878,13 +1051,22 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
+                              "service_call": {
+                                   "method": "AddEvent",
+                                   "parameters": {
+                                        "event_location": "桃園市楊梅區楊昇路256號",
+                                        "event_time": "6時7分",
+                                        "event_date": "今天",
+                                        "event_name": "緯創女子公開賽"
+                                   }
+                              },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "好的，祝您生活愉快，再見"
+                    "utterance": "再見！祝您生活愉快！"
                }
           ]
      }

@@ -2,8 +2,7 @@
      {
           "dialogue_id": 116,
           "services": [
-               "Mail_1",
-               "Calendar_1"
+               "Mail_1"
           ],
           "turns": [
                {
@@ -13,25 +12,25 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "FindMail"
+                                             "SendMail"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "FindMail"
+                                             "SendMail"
                                         ]
                                    }
                               ],
                               "service": "Mail_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "FindMail",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {}
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我想要知道相關的信件，請幫幫我"
+                    "utterance": "請幫我寄出一封信件"
                },
                {
                     "frames": [
@@ -40,7 +39,13 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "sender",
+                                        "slot": "subject",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "copy_recipient",
                                         "values": []
                                    }
                               ],
@@ -50,7 +55,7 @@
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "你知道這封信是誰寄的嗎？"
+                    "utterance": "那這封信叫甚麼呢？，我想知道這封信的副本收件者"
                },
                {
                     "frames": [
@@ -59,118 +64,313 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "人類惡"
+                                             " 台中2死車禍｜沒酒駕卻但有毒品反應 光頭"
                                         ],
-                                        "slot": "sender",
+                                        "slot": "subject",
                                         "values": [
-                                             "人類惡"
+                                             " 台中2死車禍｜沒酒駕卻但有毒品反應 光頭"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "Ted顥天（國二）"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "Ted顥天（國二）"
                                         ]
                                    }
                               ],
                               "service": "Mail_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 7,
-                                        "slot": "sender",
-                                        "start": 4
+                                        "exclusive_end": 26,
+                                        "slot": "subject",
+                                        "start": 5
+                                   },
+                                   {
+                                        "exclusive_end": 42,
+                                        "slot": "copy_recipient",
+                                        "start": 33
                                    }
                               ],
                               "state": {
-                                   "active_intent": "FindMail",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "sender": [
-                                             "人類惡"
+                                        "subject": [
+                                             " 台中2死車禍｜沒酒駕卻但有毒品反應 光頭"
+                                        ],
+                                        "copy_recipient": [
+                                             "Ted顥天（國二）"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "這封信是人類惡寄的"
+                    "utterance": "這封信叫做 台中2死車禍｜沒酒駕卻但有毒品反應 光頭，副本收件者為Ted顥天（國二）"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "INFORM_COUNT",
-                                        "canonical_values": [
-                                             "5"
-                                        ],
-                                        "slot": "count",
-                                        "values": [
-                                             "5"
-                                        ]
-                                   },
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "recipient",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道這封信的收件者"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
                                    {
-                                        "act": "OFFER",
+                                        "act": "INFORM",
                                         "canonical_values": [
-                                             "人類惡"
+                                             "27Ian"
                                         ],
-                                        "slot": "sender",
+                                        "slot": "recipient",
                                         "values": [
-                                             "人類惡"
+                                             "27Ian"
                                         ]
                                    }
                               ],
                               "service": "Mail_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 15,
-                                        "slot": "sender",
-                                        "start": 12
+                                        "exclusive_end": 9,
+                                        "slot": "recipient",
+                                        "start": 4
                                    }
                               ],
-                              "service_call": {
-                                   "method": "FindMail",
-                                   "parameters": {
-                                        "sender": [
-                                             "人類惡"
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "subject": [
+                                             " 台中2死車禍｜沒酒駕卻但有毒品反應 光頭"
+                                        ],
+                                        "copy_recipient": [
+                                             "Ted顥天（國二）"
+                                        ],
+                                        "recipient": [
+                                             "27Ian"
                                         ]
                                    }
-                              },
-                              "service_results": [
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "這封信由27Ian收"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
                                    {
-                                        "subject": " 沒人發現京阪神奈觀光打不贏一個東京嗎！",
-                                        "content": "京阪神奈，一套行程，可穿和服、可吃神戶牛排、，可到大阪影城、可到奈良餵鹿，有山有水有人文有美女，這麼多的旅遊景點，竟然打不贏一個東京的觀光人潮，根本就整個廢到笑阿！，沒人發現京阪神奈觀光打不贏一個東京嗎！，到底為什麼會這樣啊，真是豈有此理！",
-                                        "copy_recipient": "無",
-                                        "recipient": "大班畢業",
-                                        "sender": "人類惡"
-                                   },
-                                   {
-                                        "subject": " 60歲獨居嬤控「公寓漏水」沒人理！半年後",
-                                        "content": "媒體來源:，三立，記者署名:，國際中心／蔣季容報導，完整新聞標題:，歲獨居嬤控「公寓漏水」沒人理！半年後被淹死陳屍浴室，完整新聞內文:，紐西蘭一名幾歲的獨居婦人卡羅琳（），去年就曾投訴公寓嚴重漏，水，但當時並未被重視。日前鄰居家也遭殃，大量水湧入導致浴室電燈爆炸，當局才終於，派人來處理",
-                                        "copy_recipient": "無",
-                                        "recipient": "Yueyue",
-                                        "sender": "人類惡"
-                                   },
-                                   {
-                                        "subject": " 啦啦隊女神深V透視禮服洩春光 E級渾圓弧",
-                                        "content": "啦啦隊女神深透視禮服洩春光級渾圓弧線見客萬人朝聖",
-                                        "copy_recipient": "無",
-                                        "recipient": "信浅野",
-                                        "sender": "人類惡"
-                                   },
-                                   {
-                                        "subject": " 若崇禎不自殺往南退會如何？",
-                                        "content": "若崇禎不自殺往南退會如何，假若，崇禎不自殺，先往南退，會如何，有這方面的八卦嗎",
-                                        "copy_recipient": "黑色睡蓮",
-                                        "recipient": "emily",
-                                        "sender": "人類惡"
-                                   },
-                                   {
-                                        "subject": " 快訊/雲豹破紀錄10連敗！魔獸17分13籃",
-                                        "content": "備註請放最後面違者新聞文章刪除，媒體來源:，，記者署名:，鍾東穎，完整新聞標題:，快訊/雲豹破紀錄連敗！魔獸分籃板無用狂噴垃圾話更精采，完整新聞內文:，桃園雲豹今天作客出戰高雄海神，「魔獸」霍華德領銜先發，上場分鐘，繳出分，籃板助攻，無奈雲豹只有洋將火力輸出，下半場一度被拉開分以上差距，終場以比，吞下破聯盟紀錄的連敗。，雲豹上一次贏球要追溯到月日，魔獸首秀率隊以比擊敗新北中信特攻霍華德上，場分鐘，攻下分籃板助攻",
-                                        "copy_recipient": "無",
-                                        "recipient": "大便片供應商",
-                                        "sender": "人類惡"
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "content",
+                                        "values": []
                                    }
-                              ]
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "總共有5個結果，我找到由人類惡寄發的信件，請你看看"
+                    "utterance": "我想知道這封信的內文"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "媒體來源:，壹蘋新聞網，記者署名:，記者王煌忠／台中報導，完整新聞標題:，台中死車禍｜"
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "媒體來源:，壹蘋新聞網，記者署名:，記者王煌忠／台中報導，完整新聞標題:，台中死車禍｜"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 50,
+                                        "slot": "content",
+                                        "start": 7
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "subject": [
+                                             " 台中2死車禍｜沒酒駕卻但有毒品反應 光頭"
+                                        ],
+                                        "copy_recipient": [
+                                             "Ted顥天（國二）"
+                                        ],
+                                        "recipient": [
+                                             "27Ian"
+                                        ],
+                                        "content": [
+                                             "媒體來源:，壹蘋新聞網，記者署名:，記者王煌忠／台中報導，完整新聞標題:，台中死車禍｜"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "這封信的內文為媒體來源:，壹蘋新聞網，記者署名:，記者王煌忠／台中報導，完整新聞標題:，台中死車禍｜"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             " 台中2死車禍｜沒酒駕卻但有毒品反應 光頭"
+                                        ],
+                                        "slot": "subject",
+                                        "values": [
+                                             " 台中2死車禍｜沒酒駕卻但有毒品反應 光頭"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "Ted顥天（國二）"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "Ted顥天（國二）"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "27Ian"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "27Ian"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "媒體來源:，壹蘋新聞網，記者署名:，記者王煌忠／台中報導，完整新聞標題:，台中死車禍｜"
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "媒體來源:，壹蘋新聞網，記者署名:，記者王煌忠／台中報導，完整新聞標題:，台中死車禍｜"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 30,
+                                        "slot": "subject",
+                                        "start": 9
+                                   },
+                                   {
+                                        "exclusive_end": 104,
+                                        "slot": "recipient",
+                                        "start": 99
+                                   },
+                                   {
+                                        "exclusive_end": 91,
+                                        "slot": "content",
+                                        "start": 48
+                                   }
+                              ],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "請確認要寄出主旨為 台中2死車禍｜沒酒駕卻但有毒品反應 光頭的信件嗎？，請確認要寄出的信件內容:媒體來源:，壹蘋新聞網，記者署名:，記者王煌忠／台中報導，完整新聞標題:，台中死車禍｜，確認要寄信件給27Ian嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "AFFIRM",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "subject": [
+                                             " 台中2死車禍｜沒酒駕卻但有毒品反應 光頭"
+                                        ],
+                                        "copy_recipient": [
+                                             "Ted顥天（國二）"
+                                        ],
+                                        "recipient": [
+                                             "27Ian"
+                                        ],
+                                        "content": [
+                                             "媒體來源:，壹蘋新聞網，記者署名:，記者王煌忠／台中報導，完整新聞標題:，台中死車禍｜"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我對以上資訊沒問題"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NOTIFY_SUCCESS",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_call": {
+                                   "method": "SendMail",
+                                   "parameters": {
+                                        "subject": " 台中2死車禍｜沒酒駕卻但有毒品反應 光頭",
+                                        "copy_recipient": "Ted顥天（國二）",
+                                        "recipient": "27Ian",
+                                        "content": "媒體來源:，壹蘋新聞網，記者署名:，記者王煌忠／台中報導，完整新聞標題:，台中死車禍｜"
+                                   }
+                              },
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "多虧有您的配合，信件已成功寄出"
                },
                {
                     "frames": [
@@ -186,18 +386,27 @@
                               "service": "Mail_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "FindMail",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "sender": [
-                                             "人類惡"
+                                        "subject": [
+                                             " 台中2死車禍｜沒酒駕卻但有毒品反應 光頭"
+                                        ],
+                                        "copy_recipient": [
+                                             "Ted顥天（國二）"
+                                        ],
+                                        "recipient": [
+                                             "27Ian"
+                                        ],
+                                        "content": [
+                                             "媒體來源:，壹蘋新聞網，記者署名:，記者王煌忠／台中報導，完整新聞標題:，台中死車禍｜"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我知道了"
+                    "utterance": "好的，我知道了"
                },
                {
                     "frames": [
@@ -216,122 +425,7 @@
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "還需要什麼幫助嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "02:08"
-                                        ],
-                                        "slot": "event_time",
-                                        "values": [
-                                             "上午2時8分"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "南庄花卉節-花鄉音樂會(搖曳花香輕爵士)"
-                                        ],
-                                        "slot": "event_name",
-                                        "values": [
-                                             "南庄花卉節-花鄉音樂會(搖曳花香輕爵士)"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "活動名稱：南庄花卉節-花鄉音樂會(搖曳花香輕爵士)活動時間：111年4月24日(日)11:00-15:30活動地點：南庄遊客中心"
-                                        ],
-                                        "slot": "event_content",
-                                        "values": [
-                                             "活動名稱：南庄花卉節-花鄉音樂會(搖曳花香輕爵士)活動時間：111年4月24日(日)11:00-15:30活動地點：南庄遊客中心"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM_INTENT",
-                                        "canonical_values": [
-                                             "LookupEvents"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "LookupEvents"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 43,
-                                        "slot": "event_name",
-                                        "start": 23
-                                   },
-                                   {
-                                        "exclusive_end": 82,
-                                        "slot": "event_name",
-                                        "start": 62
-                                   },
-                                   {
-                                        "exclusive_end": 121,
-                                        "slot": "event_content",
-                                        "start": 57
-                                   },
-                                   {
-                                        "exclusive_end": 53,
-                                        "slot": "event_time",
-                                        "start": 47
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_time": [
-                                             "上午2時8分"
-                                        ],
-                                        "event_name": [
-                                             "南庄花卉節-花鄉音樂會(搖曳花香輕爵士)"
-                                        ],
-                                        "event_content": [
-                                             "活動名稱：南庄花卉節-花鄉音樂會(搖曳花香輕爵士)活動時間：111年4月24日(日)11:00-15:30活動地點：南庄遊客中心"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "我想要找個活動，可以請你幫忙嗎？，這個活動叫做南庄花卉節-花鄉音樂會(搖曳花香輕爵士)，時間為上午2時8分，內容為活動名稱：南庄花卉節-花鄉音樂會(搖曳花香輕爵士)活動時間：111年4月24日(日)11:00-15:30活動地點：南庄遊客中心"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NOTIFY_FAILURE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_call": {
-                                   "method": "LookupEvents",
-                                   "parameters": {
-                                        "event_time": "上午2時8分",
-                                        "event_name": "南庄花卉節-花鄉音樂會(搖曳花香輕爵士)",
-                                        "event_content": "活動名稱：南庄花卉節-花鄉音樂會(搖曳花香輕爵士)活動時間：111年4月24日(日)11:00-15:30活動地點：南庄遊客中心"
-                                   }
-                              },
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "不好意思，在行事曆上沒辦法找到符合您要求的活動，請用其他條件查詢"
+                    "utterance": "還有什麼能幫到您的嗎？"
                },
                {
                     "frames": [
@@ -344,33 +438,97 @@
                                         "values": []
                                    },
                                    {
-                                        "act": "GOODBYE",
+                                        "act": "THANK_YOU",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "LookupEvents",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "event_time": [
-                                             "上午2時8分"
+                                        "subject": [
+                                             " 台中2死車禍｜沒酒駕卻但有毒品反應 光頭"
                                         ],
-                                        "event_name": [
-                                             "南庄花卉節-花鄉音樂會(搖曳花香輕爵士)"
+                                        "copy_recipient": [
+                                             "Ted顥天（國二）"
                                         ],
-                                        "event_content": [
-                                             "活動名稱：南庄花卉節-花鄉音樂會(搖曳花香輕爵士)活動時間：111年4月24日(日)11:00-15:30活動地點：南庄遊客中心"
+                                        "recipient": [
+                                             "27Ian"
+                                        ],
+                                        "content": [
+                                             "媒體來源:，壹蘋新聞網，記者署名:，記者王煌忠／台中報導，完整新聞標題:，台中死車禍｜"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "沒關係，先這樣吧，再見"
+                    "utterance": "沒關係，先這樣吧，真是太謝謝你了！"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQ_MORE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "還有什麼需要幫助的嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NEGATE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "THANK_YOU",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "subject": [
+                                             " 台中2死車禍｜沒酒駕卻但有毒品反應 光頭"
+                                        ],
+                                        "copy_recipient": [
+                                             "Ted顥天（國二）"
+                                        ],
+                                        "recipient": [
+                                             "27Ian"
+                                        ],
+                                        "content": [
+                                             "媒體來源:，壹蘋新聞網，記者署名:，記者王煌忠／台中報導，完整新聞標題:，台中死車禍｜"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "沒關係，先這樣吧，謝謝了"
                },
                {
                     "frames": [
@@ -383,21 +541,13 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Mail_1",
                               "slots": [],
-                              "service_call": {
-                                   "method": "LookupEvents",
-                                   "parameters": {
-                                        "event_time": "上午2時8分",
-                                        "event_name": "南庄花卉節-花鄉音樂會(搖曳花香輕爵士)",
-                                        "event_content": "活動名稱：南庄花卉節-花鄉音樂會(搖曳花香輕爵士)活動時間：111年4月24日(日)11:00-15:30活動地點：南庄遊客中心"
-                                   }
-                              },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "歡迎下次諮詢，再見"
+                    "utterance": "再見"
                }
           ]
      }

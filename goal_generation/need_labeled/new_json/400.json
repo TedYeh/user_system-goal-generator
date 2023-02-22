@@ -2,8 +2,7 @@
      {
           "dialogue_id": 400,
           "services": [
-               "Calendar_1",
-               "Messaging_1"
+               "Mail_1"
           ],
           "turns": [
                {
@@ -13,25 +12,25 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "LookupEvents"
+                                             "FindMail"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "LookupEvents"
+                                             "FindMail"
                                         ]
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "LookupEvents",
+                                   "active_intent": "FindMail",
                                    "requested_slots": [],
                                    "slot_values": {}
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我想要知道相關的活動，請幫幫我"
+                    "utterance": "請幫我找一封信件"
                },
                {
                     "frames": [
@@ -40,23 +39,17 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "event_time",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_name",
+                                        "slot": "sender",
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "那這個活動叫甚麼呢？，這個活動在幾點開始呢？"
+                    "utterance": "我想知道這封信是誰寄的"
                },
                {
                     "frames": [
@@ -65,367 +58,40 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "09:16"
+                                             "KikiWu"
                                         ],
-                                        "slot": "event_time",
+                                        "slot": "sender",
                                         "values": [
-                                             "上午9時16分"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "金門中秋博狀元餅"
-                                        ],
-                                        "slot": "event_name",
-                                        "values": [
-                                             "金門中秋博狀元餅"
+                                             "KikiWu"
                                         ]
                                    }
                               ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 28,
-                                        "slot": "event_time",
-                                        "start": 21
-                                   },
-                                   {
-                                        "exclusive_end": 14,
-                                        "slot": "event_name",
-                                        "start": 6
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_time": [
-                                             "上午9時16分"
-                                        ],
-                                        "event_name": [
-                                             "金門中秋博狀元餅"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "這個活動叫做金門中秋博狀元餅，時間為當天的上午9時16分"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_location",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "我想知道這個活動的地點"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "清金門鎮總兵署"
-                                        ],
-                                        "slot": "event_location",
-                                        "values": [
-                                             "清金門鎮總兵署"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
+                              "service": "Mail_1",
                               "slots": [
                                    {
                                         "exclusive_end": 10,
-                                        "slot": "event_location",
-                                        "start": 3
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_time": [
-                                             "上午9時16分"
-                                        ],
-                                        "event_name": [
-                                             "金門中秋博狀元餅"
-                                        ],
-                                        "event_location": [
-                                             "清金門鎮總兵署"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "活動在清金門鎮總兵署舉行"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_date",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "這個活動辦在幾月幾號呢？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "2022/8/12"
-                                        ],
-                                        "slot": "event_date",
-                                        "values": [
-                                             "8月12號"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 10,
-                                        "slot": "event_date",
-                                        "start": 5
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_time": [
-                                             "上午9時16分"
-                                        ],
-                                        "event_name": [
-                                             "金門中秋博狀元餅"
-                                        ],
-                                        "event_location": [
-                                             "清金門鎮總兵署"
-                                        ],
-                                        "event_date": [
-                                             "8月12號"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "活動日期為8月12號"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NOTIFY_FAILURE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_call": {
-                                   "method": "LookupEvents",
-                                   "parameters": {
-                                        "event_time": "上午9時16分",
-                                        "event_name": "金門中秋博狀元餅",
-                                        "event_location": "清金門鎮總兵署",
-                                        "event_date": "8月12號"
-                                   }
-                              },
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "不好意思，在行事曆上沒辦法找到符合您要求的活動，請用其他條件查詢"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NEGATE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "GOODBYE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_time": [
-                                             "上午9時16分"
-                                        ],
-                                        "event_name": [
-                                             "金門中秋博狀元餅"
-                                        ],
-                                        "event_location": [
-                                             "清金門鎮總兵署"
-                                        ],
-                                        "event_date": [
-                                             "8月12號"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "沒關係，先這樣吧，再見"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "GOODBYE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "應該做的，再見！"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM_INTENT",
-                                        "canonical_values": [
-                                             "FindMessage"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "FindMessage"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "FindMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {}
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "請幫我找一則訊息"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "group_name",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "群組名稱為何？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "AI 人工智慧"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "AI 人工智慧"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 11,
-                                        "slot": "group_name",
+                                        "slot": "sender",
                                         "start": 4
                                    }
                               ],
                               "state": {
-                                   "active_intent": "FindMessage",
+                                   "active_intent": "FindMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "group_name": [
-                                             "AI 人工智慧"
+                                        "sender": [
+                                             "KikiWu"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "應該是在AI 人工智慧群組中的訊息"
+                    "utterance": "寄件者為KikiWu"
                },
                {
                     "frames": [
                          {
                               "actions": [
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "AI 人工智慧"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "AI 人工智慧"
-                                        ]
-                                   },
                                    {
                                         "act": "INFORM_COUNT",
                                         "canonical_values": [
@@ -435,110 +101,82 @@
                                         "values": [
                                              "5"
                                         ]
+                                   },
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "KikiWu"
+                                        ],
+                                        "slot": "sender",
+                                        "values": [
+                                             "KikiWu"
+                                        ]
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 10,
-                                        "slot": "group_name",
-                                        "start": 3
+                                        "exclusive_end": 18,
+                                        "slot": "sender",
+                                        "start": 12
                                    }
                               ],
                               "service_call": {
-                                   "method": "FindMessage",
+                                   "method": "FindMail",
                                    "parameters": {
-                                        "group_name": "AI 人工智慧"
+                                        "sender": [
+                                             "KikiWu"
+                                        ]
                                    }
                               },
                               "service_results": [
                                    {
-                                        "group_name": "AI 人工智慧",
-                                        "contact_name": "Immortal",
-                                        "message": "我想請問，這個可以拿來做regression嗎？我做的領域是視線追蹤"
+                                        "subject": " 台中車禍疑闖紅燈1死2重傷 跛腳男肇逃問",
+                                        "content": "有沒有可能是酒駕，先跑再說，因為沒有酒測就不算酒駕，所以先跑比較划算",
+                                        "copy_recipient": "無",
+                                        "recipient": "Kinoko",
+                                        "sender": "KikiWu"
                                    },
                                    {
-                                        "group_name": "AI 人工智慧",
-                                        "contact_name": "Seal",
-                                        "message": "我不是做這個領域"
+                                        "subject": " 稱霸全台！《灌籃高手》票房狂飆7300萬",
+                                        "content": "灌籃高手的票房這麼好，不意外啊，因為現在是六七年級的時代，過去看這些漫畫的學生現在都已經是經濟支柱了，有錢，又有閒，看看老電影回顧過去的娛樂，這也是享受人生吧?",
+                                        "copy_recipient": "無",
+                                        "recipient": "milo",
+                                        "sender": "KikiWu"
                                    },
                                    {
-                                        "group_name": "AI 人工智慧",
-                                        "contact_name": "人類惡",
-                                        "message": "Learning Spatio-Temporal Transformer for Visual Tracking (ICCV2021)  你可以查查看"
+                                        "subject": " 復刻三角湧風華 插角國小藍染的奇幻之旅",
+                                        "content": "備註請放最後面違者新聞文章刪除，媒體來源:",
+                                        "copy_recipient": "無",
+                                        "recipient": "Slim Paint",
+                                        "sender": "KikiWu"
                                    },
                                    {
-                                        "group_name": "AI 人工智慧",
-                                        "contact_name": "Kris",
-                                        "message": "算力要夠"
+                                        "subject": " 賴士葆痛批 在台灣布雷遺害子孫",
+                                        "content": "備註請放最後面違者新聞文章刪除，媒體來源:，中時，記者署名:，邱新博，完整新聞標題:，賴士葆痛批在台灣布雷遺害子孫，完整新聞內文:",
+                                        "copy_recipient": "無",
+                                        "recipient": "廖志",
+                                        "sender": "KikiWu"
                                    },
                                    {
-                                        "group_name": "AI 人工智慧",
-                                        "contact_name": "只會寫程式的蛋",
-                                        "message": "因為我現在看到的都是做NLP或是做影響分類的"
+                                        "subject": " 收入到什麼程度，夠格在婚姻對象眼高手低?",
+                                        "content": "像加蛋人曾說",
+                                        "copy_recipient": "無",
+                                        "recipient": "Brendan Wang",
+                                        "sender": "KikiWu"
                                    }
                               ]
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "找到在AI 人工智慧群組的聊天訊息，總共有5個結果"
+                    "utterance": "總共有5個結果，我找到由KikiWu寄發的信件，請你看看"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "SELECT",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "FindMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "group_name": [
-                                             "AI 人工智慧"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "好的"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "OFFER_INTENT",
-                                        "canonical_values": [
-                                             "FindMessage"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "FindMessage"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "需要幫您找一則訊息嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "AFFIRM_INTENT",
+                                        "act": "REQUEST_ALTS",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
@@ -546,61 +184,50 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "Aranlee Wu"
+                                             "KikiWu"
                                         ],
-                                        "slot": "contact_name",
+                                        "slot": "sender",
                                         "values": [
-                                             "Aranlee Wu"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "讀書時間，先離線！"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "讀書時間，先離線！"
+                                             "KikiWu"
                                         ]
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 12,
-                                        "slot": "message",
-                                        "start": 3
-                                   },
-                                   {
-                                        "exclusive_end": 26,
-                                        "slot": "contact_name",
-                                        "start": 16
+                                        "exclusive_end": 14,
+                                        "slot": "sender",
+                                        "start": 8
                                    }
                               ],
                               "state": {
-                                   "active_intent": "FindMessage",
+                                   "active_intent": "FindMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "group_name": [
-                                             "AI 人工智慧"
-                                        ],
-                                        "message": [
-                                             "讀書時間，先離線！"
-                                        ],
-                                        "contact_name": [
-                                             "Aranlee Wu"
+                                        "sender": [
+                                             "KikiWu"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "跟他說讀書時間，先離線！，用戶為Aranlee Wu，好的，麻煩你了"
+                    "utterance": "這封信的寄件者為KikiWu，能提供更多類似的訊息嗎？"
                },
                {
                     "frames": [
                          {
                               "actions": [
+                                   {
+                                        "act": "INFORM_COUNT",
+                                        "canonical_values": [
+                                             "5"
+                                        ],
+                                        "slot": "count",
+                                        "values": [
+                                             "5"
+                                        ]
+                                   },
                                    {
                                         "act": "NOTIFY_FAILURE",
                                         "canonical_values": [],
@@ -608,21 +235,55 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "service_call": {
-                                   "method": "FindMessage",
+                                   "method": "FindMail",
                                    "parameters": {
-                                        "group_name": "AI 人工智慧",
-                                        "message": "讀書時間，先離線！",
-                                        "contact_name": "Aranlee Wu"
+                                        "sender": "KikiWu"
                                    }
                               },
-                              "service_results": []
+                              "service_results": [
+                                   {
+                                        "subject": " 台中車禍疑闖紅燈1死2重傷 跛腳男肇逃問",
+                                        "content": "有沒有可能是酒駕，先跑再說，因為沒有酒測就不算酒駕，所以先跑比較划算",
+                                        "copy_recipient": "無",
+                                        "recipient": "Kinoko",
+                                        "sender": "KikiWu"
+                                   },
+                                   {
+                                        "subject": " 稱霸全台！《灌籃高手》票房狂飆7300萬",
+                                        "content": "灌籃高手的票房這麼好，不意外啊，因為現在是六七年級的時代，過去看這些漫畫的學生現在都已經是經濟支柱了，有錢，又有閒，看看老電影回顧過去的娛樂，這也是享受人生吧?",
+                                        "copy_recipient": "無",
+                                        "recipient": "milo",
+                                        "sender": "KikiWu"
+                                   },
+                                   {
+                                        "subject": " 復刻三角湧風華 插角國小藍染的奇幻之旅",
+                                        "content": "備註請放最後面違者新聞文章刪除，媒體來源:",
+                                        "copy_recipient": "無",
+                                        "recipient": "Slim Paint",
+                                        "sender": "KikiWu"
+                                   },
+                                   {
+                                        "subject": " 賴士葆痛批 在台灣布雷遺害子孫",
+                                        "content": "備註請放最後面違者新聞文章刪除，媒體來源:，中時，記者署名:，邱新博，完整新聞標題:，賴士葆痛批在台灣布雷遺害子孫，完整新聞內文:",
+                                        "copy_recipient": "無",
+                                        "recipient": "廖志",
+                                        "sender": "KikiWu"
+                                   },
+                                   {
+                                        "subject": " 收入到什麼程度，夠格在婚姻對象眼高手低?",
+                                        "content": "像加蛋人曾說",
+                                        "copy_recipient": "無",
+                                        "recipient": "Brendan Wang",
+                                        "sender": "KikiWu"
+                                   }
+                              ]
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "不好意思，沒辦法找到符合您要求的訊息"
+                    "utterance": "總共有5個結果，不好意思，沒辦法找到符合您要求的信件，請用其他條件查詢"
                },
                {
                     "frames": [
@@ -641,27 +302,21 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "FindMessage",
+                                   "active_intent": "FindMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "group_name": [
-                                             "AI 人工智慧"
-                                        ],
-                                        "message": [
-                                             "讀書時間，先離線！"
-                                        ],
-                                        "contact_name": [
-                                             "Aranlee Wu"
+                                        "sender": [
+                                             "KikiWu"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "沒關係，先這樣吧，沒有了！再見！"
+                    "utterance": "沒關係，先這樣吧，沒有問題了，再見！"
                },
                {
                     "frames": [
@@ -674,21 +329,19 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "service_call": {
-                                   "method": "FindMessage",
+                                   "method": "FindMail",
                                    "parameters": {
-                                        "group_name": "AI 人工智慧",
-                                        "message": "讀書時間，先離線！",
-                                        "contact_name": "Aranlee Wu"
+                                        "sender": "KikiWu"
                                    }
                               },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "應該做的，再見！"
+                    "utterance": "再見"
                }
           ]
      }

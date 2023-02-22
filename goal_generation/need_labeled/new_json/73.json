@@ -2,7 +2,6 @@
      {
           "dialogue_id": 73,
           "services": [
-               "Messaging_1",
                "Calendar_1"
           ],
           "turns": [
@@ -13,126 +12,12 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "FindMessage"
+                                             "AddEvent"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "FindMessage"
+                                             "AddEvent"
                                         ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "我愛163"
-                                        ],
-                                        "slot": "contact_name",
-                                        "values": [
-                                             "我愛163"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 24,
-                                        "slot": "contact_name",
-                                        "start": 19
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "FindMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "contact_name": [
-                                             "我愛163"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "我想要知道相關的訊息，請幫幫我，用戶為我愛163"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "我愛163"
-                                        ],
-                                        "slot": "contact_name",
-                                        "values": [
-                                             "我愛163"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM_COUNT",
-                                        "canonical_values": [
-                                             "5"
-                                        ],
-                                        "slot": "count",
-                                        "values": [
-                                             "5"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 8,
-                                        "slot": "contact_name",
-                                        "start": 3
-                                   }
-                              ],
-                              "service_call": {
-                                   "method": "FindMessage",
-                                   "parameters": {
-                                        "contact_name": "我愛163"
-                                   }
-                              },
-                              "service_results": [
-                                   {
-                                        "group_name": "無",
-                                        "contact_name": "我愛163",
-                                        "message": "感覺很難啊  法令、技術、政治…  都是問題"
-                                   },
-                                   {
-                                        "group_name": "AI 人工智慧",
-                                        "contact_name": "我愛163",
-                                        "message": "我自己是這樣做耶，求諸位大佬解惑"
-                                   },
-                                   {
-                                        "group_name": "AI 人工智慧",
-                                        "contact_name": "我愛163",
-                                        "message": "打雷也會"
-                                   },
-                                   {
-                                        "group_name": "無",
-                                        "contact_name": "我愛163",
-                                        "message": "隨便選個主題 一分種內搞定的文稿提供參考"
-                                   },
-                                   {
-                                        "group_name": "無",
-                                        "contact_name": "我愛163",
-                                        "message": "如果是對A有特殊操作，那就是模型設計時input分兩路兩圖，進去模型後再concat"
-                                   }
-                              ]
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "找到與我愛163聊天的訊息，總共有5個結果"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "SELECT",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
                                    }
                               ],
                               "service": "Calendar_1",
@@ -140,30 +25,34 @@
                               "state": {
                                    "active_intent": "AddEvent",
                                    "requested_slots": [],
-                                   "slot_values": {
-                                        "contact_name": [
-                                             "我愛163"
-                                        ]
-                                   }
+                                   "slot_values": {}
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "好的，我知道了"
+                    "utterance": "我想要添加一個活動，可以請你幫忙嗎？"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "OFFER_INTENT",
-                                        "canonical_values": [
-                                             "AddEvent"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "AddEvent"
-                                        ]
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_date",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_time",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_name",
+                                        "values": []
                                    }
                               ],
                               "service": "Calendar_1",
@@ -172,7 +61,7 @@
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "需要順便添加活動或事項到行事曆嗎？"
+                    "utterance": "我想知道這個活動的名稱，我想知道活動在何時舉行，我想知道活動在當天何時開始"
                },
                {
                     "frames": [
@@ -181,116 +70,160 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "2018/3/21"
+                                             "2018/1/3"
                                         ],
                                         "slot": "event_date",
                                         "values": [
-                                             "今天"
+                                             "下週三"
                                         ]
                                    },
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "12:00"
+                                             "16:27"
                                         ],
                                         "slot": "event_time",
                                         "values": [
-                                             "下午12時0分"
+                                             "4點27分"
                                         ]
                                    },
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "Membrane Process on OMTs and Micro-lamps"
+                                             "人事業務團隊精進營"
                                         ],
                                         "slot": "event_name",
                                         "values": [
-                                             "Membrane Process on OMTs and Micro-lamps"
+                                             "人事業務團隊精進營"
                                         ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "Yeyeye"
-                                        ],
-                                        "slot": "participant",
-                                        "values": [
-                                             "Yeyeye"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "Tech. Lunch Talk"
-                                        ],
-                                        "slot": "event_content",
-                                        "values": [
-                                             "Tech. Lunch Talk"
-                                        ]
-                                   },
-                                   {
-                                        "act": "AFFIRM_INTENT",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
                                    }
                               ],
                               "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 52,
+                                        "exclusive_end": 23,
                                         "slot": "event_date",
-                                        "start": 50
+                                        "start": 20
                                    },
                                    {
-                                        "exclusive_end": 63,
+                                        "exclusive_end": 32,
                                         "slot": "event_time",
-                                        "start": 56
+                                        "start": 27
                                    },
                                    {
-                                        "exclusive_end": 46,
+                                        "exclusive_end": 14,
                                         "slot": "event_name",
-                                        "start": 6
-                                   },
-                                   {
-                                        "exclusive_end": 71,
-                                        "slot": "participant",
-                                        "start": 65
-                                   },
-                                   {
-                                        "exclusive_end": 98,
-                                        "slot": "event_content",
-                                        "start": 82
+                                        "start": 5
                                    }
                               ],
                               "state": {
                                    "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "contact_name": [
-                                             "我愛163"
-                                        ],
                                         "event_date": [
-                                             "今天"
+                                             "下週三"
                                         ],
                                         "event_time": [
-                                             "下午12時0分"
+                                             "4點27分"
                                         ],
                                         "event_name": [
-                                             "Membrane Process on OMTs and Micro-lamps"
-                                        ],
-                                        "participant": [
-                                             "Yeyeye"
-                                        ],
-                                        "event_content": [
-                                             "Tech. Lunch Talk"
+                                             "人事業務團隊精進營"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "這個活動叫做Membrane Process on OMTs and Micro-lamps，日期為今天，時間為下午12時0分，有Yeyeye會參加，幫我在活動備註Tech. Lunch Talk，好的，麻煩你了"
+                    "utterance": "活動名稱叫人事業務團隊精進營，活動日期為下週三，時間為4點27分"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_location",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_content",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "這個活動有任何內容備註嗎？，我想知道這個活動的地點"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "活動中心第1會議室"
+                                        ],
+                                        "slot": "event_location",
+                                        "values": [
+                                             "活動中心第1會議室"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "演講或講座 Lectures"
+                                        ],
+                                        "slot": "event_content",
+                                        "values": [
+                                             "演講或講座 Lectures"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 32,
+                                        "slot": "event_location",
+                                        "start": 23
+                                   },
+                                   {
+                                        "exclusive_end": 19,
+                                        "slot": "event_content",
+                                        "start": 5
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "AddEvent",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_date": [
+                                             "下週三"
+                                        ],
+                                        "event_time": [
+                                             "4點27分"
+                                        ],
+                                        "event_name": [
+                                             "人事業務團隊精進營"
+                                        ],
+                                        "event_location": [
+                                             "活動中心第1會議室"
+                                        ],
+                                        "event_content": [
+                                             "演講或講座 Lectures"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "活動內容為演講或講座 Lectures，地點為活動中心第1會議室"
                },
                {
                     "frames": [
@@ -299,92 +232,82 @@
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "我愛163"
-                                        ],
-                                        "slot": "contact_name",
-                                        "values": [
-                                             "我愛163"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "今天"
+                                             "下週三"
                                         ],
                                         "slot": "event_date",
                                         "values": [
-                                             "今天"
+                                             "下週三"
                                         ]
                                    },
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "下午12時0分"
+                                             "4點27分"
                                         ],
                                         "slot": "event_time",
                                         "values": [
-                                             "下午12時0分"
+                                             "4點27分"
                                         ]
                                    },
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "Membrane Process on OMTs and Micro-lamps"
+                                             "人事業務團隊精進營"
                                         ],
                                         "slot": "event_name",
                                         "values": [
-                                             "Membrane Process on OMTs and Micro-lamps"
+                                             "人事業務團隊精進營"
                                         ]
                                    },
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "Yeyeye"
+                                             "活動中心第1會議室"
                                         ],
-                                        "slot": "participant",
+                                        "slot": "event_location",
                                         "values": [
-                                             "Yeyeye"
+                                             "活動中心第1會議室"
                                         ]
                                    },
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "Tech. Lunch Talk"
+                                             "演講或講座 Lectures"
                                         ],
                                         "slot": "event_content",
                                         "values": [
-                                             "Tech. Lunch Talk"
+                                             "演講或講座 Lectures"
                                         ]
                                    }
                               ],
                               "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 63,
+                                        "exclusive_end": 33,
                                         "slot": "event_date",
-                                        "start": 61
+                                        "start": 30
                                    },
                                    {
-                                        "exclusive_end": 86,
+                                        "exclusive_end": 54,
                                         "slot": "event_time",
-                                        "start": 79
+                                        "start": 49
                                    },
                                    {
-                                        "exclusive_end": 47,
+                                        "exclusive_end": 16,
                                         "slot": "event_name",
                                         "start": 7
                                    },
                                    {
-                                        "exclusive_end": 106,
-                                        "slot": "participant",
-                                        "start": 100
+                                        "exclusive_end": 77,
+                                        "slot": "event_location",
+                                        "start": 68
                                    }
                               ],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "確認要建立名叫Membrane Process on OMTs and Micro-lamps的活動嗎？，確認要建立舉辦在今天的活動嗎？，確認要建立舉辦在當天下午12時0分的活動嗎？，確認要建立舉辦有Yeyeye參加的活動嗎？"
+                    "utterance": "確認要建立名叫人事業務團隊精進營的活動嗎？，確認要建立舉辦在下週三的活動嗎？，確認要建立舉辦在當天4點27分的活動嗎？，確認要建立舉辦在活動中心第1會議室的活動嗎？"
                },
                {
                     "frames": [
@@ -403,23 +326,20 @@
                                    "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "contact_name": [
-                                             "我愛163"
-                                        ],
                                         "event_date": [
-                                             "今天"
+                                             "下週三"
                                         ],
                                         "event_time": [
-                                             "下午12時0分"
+                                             "4點27分"
                                         ],
                                         "event_name": [
-                                             "Membrane Process on OMTs and Micro-lamps"
+                                             "人事業務團隊精進營"
                                         ],
-                                        "participant": [
-                                             "Yeyeye"
+                                        "event_location": [
+                                             "活動中心第1會議室"
                                         ],
                                         "event_content": [
-                                             "Tech. Lunch Talk"
+                                             "演講或講座 Lectures"
                                         ]
                                    }
                               }
@@ -444,12 +364,11 @@
                               "service_call": {
                                    "method": "AddEvent",
                                    "parameters": {
-                                        "contact_name": "我愛163",
-                                        "event_date": "今天",
-                                        "event_time": "下午12時0分",
-                                        "event_name": "Membrane Process on OMTs and Micro-lamps",
-                                        "participant": "Yeyeye",
-                                        "event_content": "Tech. Lunch Talk"
+                                        "event_date": "下週三",
+                                        "event_time": "4點27分",
+                                        "event_name": "人事業務團隊精進營",
+                                        "event_location": "活動中心第1會議室",
+                                        "event_content": "演講或講座 Lectures"
                                    }
                               },
                               "service_results": []
@@ -463,7 +382,7 @@
                          {
                               "actions": [
                                    {
-                                        "act": "SELECT",
+                                        "act": "GOODBYE",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
@@ -475,30 +394,27 @@
                                    "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "contact_name": [
-                                             "我愛163"
-                                        ],
                                         "event_date": [
-                                             "今天"
+                                             "下週三"
                                         ],
                                         "event_time": [
-                                             "下午12時0分"
+                                             "4點27分"
                                         ],
                                         "event_name": [
-                                             "Membrane Process on OMTs and Micro-lamps"
+                                             "人事業務團隊精進營"
                                         ],
-                                        "participant": [
-                                             "Yeyeye"
+                                        "event_location": [
+                                             "活動中心第1會議室"
                                         ],
                                         "event_content": [
-                                             "Tech. Lunch Talk"
+                                             "演講或講座 Lectures"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我知道了"
+                    "utterance": "再見"
                },
                {
                     "frames": [
@@ -516,19 +432,18 @@
                               "service_call": {
                                    "method": "AddEvent",
                                    "parameters": {
-                                        "contact_name": "我愛163",
-                                        "event_date": "今天",
-                                        "event_time": "下午12時0分",
-                                        "event_name": "Membrane Process on OMTs and Micro-lamps",
-                                        "participant": "Yeyeye",
-                                        "event_content": "Tech. Lunch Talk"
+                                        "event_date": "下週三",
+                                        "event_time": "4點27分",
+                                        "event_name": "人事業務團隊精進營",
+                                        "event_location": "活動中心第1會議室",
+                                        "event_content": "演講或講座 Lectures"
                                    }
                               },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "祝您生活愉快！再見！"
+                    "utterance": "有問題可以隨時聯繫我！祝您生活愉快！再見！"
                }
           ]
      }

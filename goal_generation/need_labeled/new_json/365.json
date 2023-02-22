@@ -2,8 +2,7 @@
      {
           "dialogue_id": 365,
           "services": [
-               "Calendar_1",
-               "Messaging_1"
+               "Calendar_1"
           ],
           "turns": [
                {
@@ -13,25 +12,25 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "LookupEvents"
+                                             "AddEvent"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "LookupEvents"
+                                             "AddEvent"
                                         ]
                                    }
                               ],
                               "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "LookupEvents",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {}
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我想要找個活動，可以請你幫忙嗎？"
+                    "utterance": "請幫我在行事曆添加一個活動"
                },
                {
                     "frames": [
@@ -46,81 +45,13 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "event_name",
+                                        "slot": "event_time",
                                         "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "那這個活動叫甚麼呢？，這個活動辦在幾月幾號呢？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "2022/11/13"
-                                        ],
-                                        "slot": "event_date",
-                                        "values": [
-                                             "這週的第日天"
-                                        ]
                                    },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "田中馬拉松"
-                                        ],
-                                        "slot": "event_name",
-                                        "values": [
-                                             "田中馬拉松"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 21,
-                                        "slot": "event_date",
-                                        "start": 15
-                                   },
-                                   {
-                                        "exclusive_end": 11,
-                                        "slot": "event_name",
-                                        "start": 6
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_date": [
-                                             "這週的第日天"
-                                        ],
-                                        "event_name": [
-                                             "田中馬拉松"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "這個活動叫做田中馬拉松，日期為這週的第日天"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "event_location",
+                                        "slot": "event_content",
                                         "values": []
                                    }
                               ],
@@ -130,7 +61,7 @@
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "這個活動辦在哪裡啊？"
+                    "utterance": "我想知道活動在何時舉行，這個活動在幾點開始呢？，這個活動有任何內容註記嗎？"
                },
                {
                     "frames": [
@@ -139,358 +70,71 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "景崧文化教育園區"
+                                             "2022/11/23"
                                         ],
-                                        "slot": "event_location",
+                                        "slot": "event_date",
                                         "values": [
-                                             "景崧文化教育園區"
+                                             "明天"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "11:09"
+                                        ],
+                                        "slot": "event_time",
+                                        "values": [
+                                             "11點9分"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "每週三11:00-11:15"
+                                        ],
+                                        "slot": "event_content",
+                                        "values": [
+                                             "每週三11:00-11:15"
                                         ]
                                    }
                               ],
                               "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 11,
-                                        "slot": "event_location",
+                                        "exclusive_end": 5,
+                                        "slot": "event_date",
                                         "start": 3
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_date": [
-                                             "這週的第日天"
-                                        ],
-                                        "event_name": [
-                                             "田中馬拉松"
-                                        ],
-                                        "event_location": [
-                                             "景崧文化教育園區"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "活動在景崧文化教育園區舉行"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NOTIFY_FAILURE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_call": {
-                                   "method": "LookupEvents",
-                                   "parameters": {
-                                        "event_date": "這週的第日天",
-                                        "event_name": "田中馬拉松",
-                                        "event_location": "景崧文化教育園區"
-                                   }
-                              },
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "不好意思，在行事曆上沒辦法找到符合您要求的活動，請用其他條件查詢"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NEGATE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
                                    },
                                    {
-                                        "act": "GOODBYE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_date": [
-                                             "這週的第日天"
-                                        ],
-                                        "event_name": [
-                                             "田中馬拉松"
-                                        ],
-                                        "event_location": [
-                                             "景崧文化教育園區"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "沒關係，先這樣吧，沒有問題了，再見吧！"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "GOODBYE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "祝您生活愉快！再見！"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM_INTENT",
-                                        "canonical_values": [
-                                             "FindMessage"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "FindMessage"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "Python資料科學交流社群"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "Python資料科學交流社群"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "楊正彥"
-                                        ],
-                                        "slot": "contact_name",
-                                        "values": [
-                                             "楊正彥"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 27,
-                                        "slot": "group_name",
-                                        "start": 13
+                                        "exclusive_end": 14,
+                                        "slot": "event_time",
+                                        "start": 9
                                    },
                                    {
                                         "exclusive_end": 34,
-                                        "slot": "contact_name",
-                                        "start": 31
+                                        "slot": "event_content",
+                                        "start": 20
                                    }
                               ],
                               "state": {
-                                   "active_intent": "FindMessage",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "contact_name": [
-                                             "楊正彥"
+                                        "event_date": [
+                                             "明天"
                                         ],
-                                        "group_name": [
-                                             "Python資料科學交流社群"
+                                        "event_time": [
+                                             "11點9分"
+                                        ],
+                                        "event_content": [
+                                             "每週三11:00-11:15"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "請幫我找一則訊息，群組叫做Python資料科學交流社群，用戶為楊正彥"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM_COUNT",
-                                        "canonical_values": [
-                                             "5"
-                                        ],
-                                        "slot": "count",
-                                        "values": [
-                                             "5"
-                                        ]
-                                   },
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "楊正彥"
-                                        ],
-                                        "slot": "contact_name",
-                                        "values": [
-                                             "楊正彥"
-                                        ]
-                                   },
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "Python資料科學交流社群"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "Python資料科學交流社群"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 39,
-                                        "slot": "contact_name",
-                                        "start": 36
-                                   },
-                                   {
-                                        "exclusive_end": 25,
-                                        "slot": "group_name",
-                                        "start": 11
-                                   }
-                              ],
-                              "service_call": {
-                                   "method": "FindMessage",
-                                   "parameters": {
-                                        "contact_name": [
-                                             "楊正彥"
-                                        ],
-                                        "group_name": [
-                                             "Python資料科學交流社群"
-                                        ]
-                                   }
-                              },
-                              "service_results": [
-                                   {
-                                        "group_name": "Python資料科學交流社群",
-                                        "contact_name": "楊正彥",
-                                        "message": "我現在薪水也沒很高"
-                                   },
-                                   {
-                                        "group_name": "Python資料科學交流社群",
-                                        "contact_name": "楊正彥",
-                                        "message": "要召喚兩隻青眼白龍"
-                                   },
-                                   {
-                                        "group_name": "Python資料科學交流社群",
-                                        "contact_name": "楊正彥",
-                                        "message": "嗯，單純不認同選項二、三的用途是主要拿來查詢系統目前已安裝的套件"
-                                   },
-                                   {
-                                        "group_name": "Python資料科學交流社群",
-                                        "contact_name": "楊正彥",
-                                        "message": "有人知道圖片中的w和b(bias)分別為什麼嗎?"
-                                   },
-                                   {
-                                        "group_name": "Python資料科學交流社群",
-                                        "contact_name": "楊正彥",
-                                        "message": "原來IBM跟金融可以排一起"
-                                   }
-                              ]
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "總共有5個結果，找到在Python資料科學交流社群群組的聊天訊息，找到與楊正彥聊天的訊息"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "SELECT",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "contact_name": [
-                                             "楊正彥"
-                                        ],
-                                        "group_name": [
-                                             "Python資料科學交流社群"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "我知道了"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "OFFER_INTENT",
-                                        "canonical_values": [
-                                             "LookupEvents"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "LookupEvents"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "您想要藉此機會順便檢查行事曆中的活動嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "AFFIRM_INTENT",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [],
-                                   "slot_values": {}
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "好的，麻煩你了"
+                    "utterance": "日期為明天，活動在11點9分開始，內容為每週三11:00-11:15"
                },
                {
                     "frames": [
@@ -518,113 +162,120 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "桃園國際風箏節"
+                                             "無尾熊與牠們的食物"
                                         ],
                                         "slot": "event_name",
                                         "values": [
-                                             "桃園國際風箏節"
+                                             "無尾熊與牠們的食物"
                                         ]
                                    }
                               ],
                               "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 12,
+                                        "exclusive_end": 14,
                                         "slot": "event_name",
                                         "start": 5
                                    }
                               ],
                               "state": {
-                                   "active_intent": "LookupEvents",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "contact_name": [
-                                             "楊正彥"
+                                        "event_date": [
+                                             "明天"
                                         ],
-                                        "group_name": [
-                                             "Python資料科學交流社群"
+                                        "event_time": [
+                                             "11點9分"
+                                        ],
+                                        "event_content": [
+                                             "每週三11:00-11:15"
                                         ],
                                         "event_name": [
-                                             "桃園國際風箏節"
+                                             "無尾熊與牠們的食物"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "活動名稱為桃園國際風箏節"
+                    "utterance": "活動名稱為無尾熊與牠們的食物"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_date",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "我想知道活動在何時舉行"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
+                                        "act": "CONFIRM",
                                         "canonical_values": [
-                                             "2022/4/9"
+                                             "明天"
                                         ],
                                         "slot": "event_date",
                                         "values": [
-                                             "下週六"
+                                             "明天"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "11點9分"
+                                        ],
+                                        "slot": "event_time",
+                                        "values": [
+                                             "11點9分"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "每週三11:00-11:15"
+                                        ],
+                                        "slot": "event_content",
+                                        "values": [
+                                             "每週三11:00-11:15"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "無尾熊與牠們的食物"
+                                        ],
+                                        "slot": "event_name",
+                                        "values": [
+                                             "無尾熊與牠們的食物"
                                         ]
                                    }
                               ],
                               "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 6,
+                                        "exclusive_end": 32,
                                         "slot": "event_date",
-                                        "start": 3
+                                        "start": 30
+                                   },
+                                   {
+                                        "exclusive_end": 53,
+                                        "slot": "event_time",
+                                        "start": 48
+                                   },
+                                   {
+                                        "exclusive_end": 16,
+                                        "slot": "event_name",
+                                        "start": 7
                                    }
                               ],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "contact_name": [
-                                             "楊正彥"
-                                        ],
-                                        "group_name": [
-                                             "Python資料科學交流社群"
-                                        ],
-                                        "event_name": [
-                                             "桃園國際風箏節"
-                                        ],
-                                        "event_date": [
-                                             "下週六"
-                                        ]
-                                   }
-                              }
+                              "service_results": []
                          }
                     ],
-                    "speaker": "USER",
-                    "utterance": "活動在下週六"
+                    "speaker": "SYSTEM",
+                    "utterance": "確認要建立名叫無尾熊與牠們的食物的活動嗎？，確認要建立舉辦在明天的活動嗎？，確認要建立舉辦在當天11點9分的活動嗎？"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "NOTIFY_FAILURE",
+                                        "act": "AFFIRM",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
@@ -632,153 +283,35 @@
                               ],
                               "service": "Calendar_1",
                               "slots": [],
-                              "service_call": {
-                                   "method": "LookupEvents",
-                                   "parameters": {
-                                        "contact_name": "楊正彥",
-                                        "group_name": "Python資料科學交流社群",
-                                        "event_name": "桃園國際風箏節",
-                                        "event_date": "下週六"
-                                   }
-                              },
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "不好意思，在行事曆上沒辦法找到符合您要求的活動，請用其他條件查詢"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM_INTENT",
-                                        "canonical_values": [
-                                             "LookupEvents"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "LookupEvents"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
                               "state": {
-                                   "active_intent": "LookupEvents",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "contact_name": [
-                                             "楊正彥"
+                                        "event_date": [
+                                             "明天"
                                         ],
-                                        "group_name": [
-                                             "Python資料科學交流社群"
+                                        "event_time": [
+                                             "11點9分"
+                                        ],
+                                        "event_content": [
+                                             "每週三11:00-11:15"
                                         ],
                                         "event_name": [
-                                             "桃園國際風箏節"
-                                        ],
-                                        "event_date": [
-                                             "下週六"
+                                             "無尾熊與牠們的食物"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "請幫我找一個活動"
+                    "utterance": "我對以上資訊沒問題"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_date",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_name",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "那這個活動叫甚麼呢？，這個活動辦在幾月幾號呢？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "桃園國際風箏節"
-                                        ],
-                                        "slot": "event_name",
-                                        "values": [
-                                             "桃園國際風箏節"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "2022/4/9"
-                                        ],
-                                        "slot": "event_date",
-                                        "values": [
-                                             "今天"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 18,
-                                        "slot": "event_date",
-                                        "start": 16
-                                   },
-                                   {
-                                        "exclusive_end": 12,
-                                        "slot": "event_name",
-                                        "start": 5
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "contact_name": [
-                                             "楊正彥"
-                                        ],
-                                        "group_name": [
-                                             "Python資料科學交流社群"
-                                        ],
-                                        "event_name": [
-                                             "桃園國際風箏節"
-                                        ],
-                                        "event_date": [
-                                             "今天"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "活動名稱為桃園國際風箏節，活動在今天"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NOTIFY_FAILURE",
+                                        "act": "REQ_MORE",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
@@ -786,20 +319,11 @@
                               ],
                               "service": "Calendar_1",
                               "slots": [],
-                              "service_call": {
-                                   "method": "LookupEvents",
-                                   "parameters": {
-                                        "contact_name": "楊正彥",
-                                        "group_name": "Python資料科學交流社群",
-                                        "event_name": "桃園國際風箏節",
-                                        "event_date": "今天"
-                                   }
-                              },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "不好意思，在行事曆上沒辦法找到符合您要求的活動，請用其他條件查詢"
+                    "utterance": "還有什麼需要幫助的嗎？"
                },
                {
                     "frames": [
@@ -821,20 +345,20 @@
                               "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "LookupEvents",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "contact_name": [
-                                             "楊正彥"
+                                        "event_date": [
+                                             "明天"
                                         ],
-                                        "group_name": [
-                                             "Python資料科學交流社群"
+                                        "event_time": [
+                                             "11點9分"
+                                        ],
+                                        "event_content": [
+                                             "每週三11:00-11:15"
                                         ],
                                         "event_name": [
-                                             "桃園國際風箏節"
-                                        ],
-                                        "event_date": [
-                                             "今天"
+                                             "無尾熊與牠們的食物"
                                         ]
                                    }
                               }
@@ -856,20 +380,11 @@
                               ],
                               "service": "Calendar_1",
                               "slots": [],
-                              "service_call": {
-                                   "method": "LookupEvents",
-                                   "parameters": {
-                                        "contact_name": "楊正彥",
-                                        "group_name": "Python資料科學交流社群",
-                                        "event_name": "桃園國際風箏節",
-                                        "event_date": "今天"
-                                   }
-                              },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "有問題可以隨時聯繫我！祝您生活愉快！再見！"
+                    "utterance": "再見"
                }
           ]
      }

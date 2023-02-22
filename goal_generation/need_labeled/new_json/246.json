@@ -2,10 +2,541 @@
      {
           "dialogue_id": 246,
           "services": [
-               "Mail_1",
-               "Messaging_1"
+               "Messaging_1",
+               "Calendar_1",
+               "Mail_1"
           ],
           "turns": [
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "FindMessage"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "FindMessage"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {}
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "請幫我找一則訊息"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "message",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道訊息內容"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "黑磨搗女孩"
+                                        ],
+                                        "slot": "message",
+                                        "values": [
+                                             "黑磨搗女孩"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 10,
+                                        "slot": "message",
+                                        "start": 5
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "message": [
+                                             "黑磨搗女孩"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "訊息內容為黑磨搗女孩"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_COUNT",
+                                        "canonical_values": [
+                                             "1"
+                                        ],
+                                        "slot": "count",
+                                        "values": [
+                                             "1"
+                                        ]
+                                   },
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "黑磨搗女孩"
+                                        ],
+                                        "slot": "message",
+                                        "values": [
+                                             "黑磨搗女孩"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_call": {
+                                   "method": "FindMessage",
+                                   "parameters": {
+                                        "message": [
+                                             "黑磨搗女孩"
+                                        ]
+                                   }
+                              },
+                              "service_results": [
+                                   {
+                                        "group_name": "無",
+                                        "contact_name": "楊正彥",
+                                        "message": "黑磨搗女孩"
+                                   }
+                              ]
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "總共有1個結果"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "contact_name",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [
+                                        "contact_name"
+                                   ],
+                                   "slot_values": {
+                                        "message": [
+                                             "黑磨搗女孩"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我想知道這則訊息是誰寄的？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "楊正彥"
+                                        ],
+                                        "slot": "contact_name",
+                                        "values": [
+                                             "楊正彥"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 6,
+                                        "slot": "contact_name",
+                                        "start": 3
+                                   }
+                              ],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "用戶為楊正彥"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "SELECT",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "LookupEvents",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "message": [
+                                             "黑磨搗女孩"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "好的，我知道了"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "OFFER_INTENT",
+                                        "canonical_values": [
+                                             "LookupEvents"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "LookupEvents"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "您想要藉此機會順便檢查行事曆中的活動嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "AFFIRM_INTENT",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "LookupEvents",
+                                   "requested_slots": [],
+                                   "slot_values": {}
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "好的，麻煩你了"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_date",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道活動在何時舉行"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "2022/5/19"
+                                        ],
+                                        "slot": "event_date",
+                                        "values": [
+                                             "後天"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 7,
+                                        "slot": "event_date",
+                                        "start": 5
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "LookupEvents",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "message": [
+                                             "黑磨搗女孩"
+                                        ],
+                                        "event_date": [
+                                             "後天"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "活動日期為後天"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_name",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道這個活動的名稱"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "新北市客家桐花祭"
+                                        ],
+                                        "slot": "event_name",
+                                        "values": [
+                                             "新北市客家桐花祭"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 13,
+                                        "slot": "event_name",
+                                        "start": 5
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "LookupEvents",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "message": [
+                                             "黑磨搗女孩"
+                                        ],
+                                        "event_date": [
+                                             "後天"
+                                        ],
+                                        "event_name": [
+                                             "新北市客家桐花祭"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "活動名稱叫新北市客家桐花祭"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_content",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "這個活動有任何內容備註嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "event_content",
+                                        "values": [
+                                             "無"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "LookupEvents",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "message": [
+                                             "黑磨搗女孩"
+                                        ],
+                                        "event_date": [
+                                             "後天"
+                                        ],
+                                        "event_name": [
+                                             "新北市客家桐花祭"
+                                        ],
+                                        "event_content": [
+                                             "無"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "不需設定內容"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NOTIFY_FAILURE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_call": {
+                                   "method": "LookupEvents",
+                                   "parameters": {
+                                        "message": "黑磨搗女孩",
+                                        "event_date": "後天",
+                                        "event_name": "新北市客家桐花祭",
+                                        "event_content": "無"
+                                   }
+                              },
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "不好意思，在行事曆上沒辦法找到符合您要求的活動，請用其他條件查詢"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NEGATE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "GOODBYE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "LookupEvents",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "message": [
+                                             "黑磨搗女孩"
+                                        ],
+                                        "event_date": [
+                                             "後天"
+                                        ],
+                                        "event_name": [
+                                             "新北市客家桐花祭"
+                                        ],
+                                        "event_content": [
+                                             "無"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "沒關係，先這樣吧，沒有問題了，再見！"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "GOODBYE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "歡迎下次諮詢，再見"
+               },
                {
                     "frames": [
                          {
@@ -19,110 +550,201 @@
                                         "values": [
                                              "FindMail"
                                         ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             " 112學測國綜／白話文也難讀！補教評考題"
-                                        ],
-                                        "slot": "subject",
-                                        "values": [
-                                             " 112學測國綜／白話文也難讀！補教評考題"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "Paul Chen"
-                                        ],
-                                        "slot": "sender",
-                                        "values": [
-                                             "Paul Chen"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "Seal"
-                                        ],
-                                        "slot": "recipient",
-                                        "values": [
-                                             "Seal"
-                                        ]
                                    }
                               ],
                               "service": "Mail_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 56,
-                                        "slot": "subject",
-                                        "start": 35
-                                   },
-                                   {
-                                        "exclusive_end": 29,
-                                        "slot": "sender",
-                                        "start": 20
-                                   },
-                                   {
-                                        "exclusive_end": 67,
-                                        "slot": "recipient",
-                                        "start": 63
-                                   }
-                              ],
+                              "slots": [],
                               "state": {
                                    "active_intent": "FindMail",
                                    "requested_slots": [],
-                                   "slot_values": {
-                                        "recipient": [
-                                             "Seal"
-                                        ],
-                                        "subject": [
-                                             " 112學測國綜／白話文也難讀！補教評考題"
-                                        ],
-                                        "sender": [
-                                             "Paul Chen"
-                                        ]
-                                   }
+                                   "slot_values": {}
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我想要找個信，可以請你幫忙嗎？，寄件者為Paul Chen，這封信叫做 112學測國綜／白話文也難讀！補教評考題，這封信要寄給Seal"
+                    "utterance": "我想要知道相關的信件，請幫幫我"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "OFFER",
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "copy_recipient",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "你知道這封信的副本收件者嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
                                         "canonical_values": [
-                                             "Seal"
+                                             "Sousuke"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "Sousuke"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 17,
+                                        "slot": "copy_recipient",
+                                        "start": 10
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "FindMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "copy_recipient": [
+                                             "Sousuke"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "這封信需要以副本寄給Sousuke"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "recipient",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "你知道這封信是寄給誰的嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "海陽"
                                         ],
                                         "slot": "recipient",
                                         "values": [
-                                             "Seal"
+                                             "海陽"
                                         ]
-                                   },
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
                                    {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             " 112學測國綜／白話文也難讀！補教評考題"
+                                        "exclusive_end": 6,
+                                        "slot": "recipient",
+                                        "start": 4
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "FindMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "copy_recipient": [
+                                             "Sousuke"
                                         ],
-                                        "slot": "subject",
-                                        "values": [
-                                             " 112學測國綜／白話文也難讀！補教評考題"
+                                        "recipient": [
+                                             "海陽"
                                         ]
-                                   },
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "收件者為海陽"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
                                    {
-                                        "act": "OFFER",
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "content",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "這封信有任何內容嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
                                         "canonical_values": [
-                                             "Paul Chen"
+                                             "是這樣，小弟一直很想找城鎮戰、近身距離作戰、握槍姿勢、槍械知識相關的書籍，中文書都找不到半本，我國是不是極度缺乏這方面的書籍?，才會造成部隊內部知識提升速度很緩慢?，只能看軍中的準則，紙本的很多都沒更新，軍中網路的又整天卡頓或登不進去，沒有外界知識可以比較，擇優，改變，嘗試，想自學嘗試也完全沒有路徑追尋「正確」的先賢經驗，還是這類知識書籍國家有在有意的管制?，有卦?"
                                         ],
-                                        "slot": "sender",
+                                        "slot": "content",
                                         "values": [
-                                             "Paul Chen"
+                                             "是這樣，小弟一直很想找城鎮戰、近身距離作戰、握槍姿勢、槍械知識相關的書籍，中文書都找不到半本，我國是不是極度缺乏這方面的書籍?，才會造成部隊內部知識提升速度很緩慢?，只能看軍中的準則，紙本的很多都沒更新，軍中網路的又整天卡頓或登不進去，沒有外界知識可以比較，擇優，改變，嘗試，想自學嘗試也完全沒有路徑追尋「正確」的先賢經驗，還是這類知識書籍國家有在有意的管制?，有卦?"
                                         ]
-                                   },
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 187,
+                                        "slot": "content",
+                                        "start": 3
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "FindMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "copy_recipient": [
+                                             "Sousuke"
+                                        ],
+                                        "recipient": [
+                                             "海陽"
+                                        ],
+                                        "content": [
+                                             "是這樣，小弟一直很想找城鎮戰、近身距離作戰、握槍姿勢、槍械知識相關的書籍，中文書都找不到半本，我國是不是極度缺乏這方面的書籍?，才會造成部隊內部知識提升速度很緩慢?，只能看軍中的準則，紙本的很多都沒更新，軍中網路的又整天卡頓或登不進去，沒有外界知識可以比較，擇優，改變，嘗試，想自學嘗試也完全沒有路徑追尋「正確」的先賢經驗，還是這類知識書籍國家有在有意的管制?，有卦?"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "內文為是這樣，小弟一直很想找城鎮戰、近身距離作戰、握槍姿勢、槍械知識相關的書籍，中文書都找不到半本，我國是不是極度缺乏這方面的書籍?，才會造成部隊內部知識提升速度很緩慢?，只能看軍中的準則，紙本的很多都沒更新，軍中網路的又整天卡頓或登不進去，沒有外界知識可以比較，擇優，改變，嘗試，想自學嘗試也完全沒有路徑追尋「正確」的先賢經驗，還是這類知識書籍國家有在有意的管制?，有卦?"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
                                    {
                                         "act": "INFORM_COUNT",
                                         "canonical_values": [
@@ -132,47 +754,83 @@
                                         "values": [
                                              "1"
                                         ]
+                                   },
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "Sousuke"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "Sousuke"
+                                        ]
+                                   },
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "海陽"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "海陽"
+                                        ]
+                                   },
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "是這樣，小弟一直很想找城鎮戰、近身距離作戰、握槍姿勢、槍械知識相關的書籍，中文書都找不到半本，我國是不是極度缺乏這方面的書籍?，才會造成部隊內部知識提升速度很緩慢?，只能看軍中的準則，紙本的很多都沒更新，軍中網路的又整天卡頓或登不進去，沒有外界知識可以比較，擇優，改變，嘗試，想自學嘗試也完全沒有路徑追尋「正確」的先賢經驗，還是這類知識書籍國家有在有意的管制?，有卦?"
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "是這樣，小弟一直很想找城鎮戰、近身距離作戰、握槍姿勢、槍械知識相關的書籍，中文書都找不到半本，我國是不是極度缺乏這方面的書籍?，才會造成部隊內部知識提升速度很緩慢?，只能看軍中的準則，紙本的很多都沒更新，軍中網路的又整天卡頓或登不進去，沒有外界知識可以比較，擇優，改變，嘗試，想自學嘗試也完全沒有路徑追尋「正確」的先賢經驗，還是這類知識書籍國家有在有意的管制?，有卦?"
+                                        ]
                                    }
                               ],
                               "service": "Mail_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 77,
+                                        "exclusive_end": 240,
+                                        "slot": "copy_recipient",
+                                        "start": 233
+                                   },
+                                   {
+                                        "exclusive_end": 216,
                                         "slot": "recipient",
-                                        "start": 73
+                                        "start": 214
                                    },
                                    {
-                                        "exclusive_end": 57,
-                                        "slot": "subject",
-                                        "start": 36
-                                   },
-                                   {
-                                        "exclusive_end": 13,
-                                        "slot": "sender",
-                                        "start": 4
+                                        "exclusive_end": 198,
+                                        "slot": "content",
+                                        "start": 14
                                    }
                               ],
                               "service_call": {
                                    "method": "FindMail",
                                    "parameters": {
-                                        "recipient": "Seal",
-                                        "subject": " 112學測國綜／白話文也難讀！補教評考題",
-                                        "sender": "Paul Chen"
+                                        "copy_recipient": [
+                                             "Sousuke"
+                                        ],
+                                        "recipient": [
+                                             "海陽"
+                                        ],
+                                        "content": [
+                                             "是這樣，小弟一直很想找城鎮戰、近身距離作戰、握槍姿勢、槍械知識相關的書籍，中文書都找不到半本，我國是不是極度缺乏這方面的書籍?，才會造成部隊內部知識提升速度很緩慢?，只能看軍中的準則，紙本的很多都沒更新，軍中網路的又整天卡頓或登不進去，沒有外界知識可以比較，擇優，改變，嘗試，想自學嘗試也完全沒有路徑追尋「正確」的先賢經驗，還是這類知識書籍國家有在有意的管制?，有卦?"
+                                        ]
                                    }
                               },
                               "service_results": [
                                    {
-                                        "subject": " 112學測國綜／白話文也難讀！補教評考題",
-                                        "content": "媒體來源:，聯合報，記者署名:，趙宥寧，完整新聞標題:，學測國綜／白話文也難讀！補教評考題「分科化」點多選這題有爭議，完整新聞內文:，學年大學學測第二天，第二節考國語文綜合能力測驗，考生對難易度反應兩極。得勝，者文教國文科解題團隊表示，今年全份考卷偏難，跨域閱讀發揮得淋漓盡致，光是文本閱，讀就不容易，白話文也不易讀，「有指考（分科測驗）化的趨勢」，部分題組更出現二至，三篇「對讀」文章，相當考驗考生耐心",
-                                        "copy_recipient": "無",
-                                        "recipient": "Seal",
-                                        "sender": "Paul Chen"
+                                        "subject": " 中文書有關於軍事知識的是不是太少?",
+                                        "content": "是這樣，小弟一直很想找城鎮戰、近身距離作戰、握槍姿勢、槍械知識相關的書籍，中文書都找不到半本，我國是不是極度缺乏這方面的書籍?，才會造成部隊內部知識提升速度很緩慢?，只能看軍中的準則，紙本的很多都沒更新，軍中網路的又整天卡頓或登不進去，沒有外界知識可以比較，擇優，改變，嘗試，想自學嘗試也完全沒有路徑追尋「正確」的先賢經驗，還是這類知識書籍國家有在有意的管制?，有卦?",
+                                        "copy_recipient": "Sousuke",
+                                        "recipient": "海陽",
+                                        "sender": "加入迷彩人生精彩"
                                    }
                               ]
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "我找到由Paul Chen寄發的信件，請你看看，依據您提供的訊息，找到跟 112學測國綜／白話文也難讀！補教評考題有關的信件，請你看看，我找到寄給Seal的信件，請你看看，總共有1個結果"
+                    "utterance": "總共有1個結果，我找到內容跟是這樣，小弟一直很想找城鎮戰、近身距離作戰、握槍姿勢、槍械知識相關的書籍，中文書都找不到半本，我國是不是極度缺乏這方面的書籍?，才會造成部隊內部知識提升速度很緩慢?，只能看軍中的準則，紙本的很多都沒更新，軍中網路的又整天卡頓或登不進去，沒有外界知識可以比較，擇優，改變，嘗試，想自學嘗試也完全沒有路徑追尋「正確」的先賢經驗，還是這類知識書籍國家有在有意的管制?，有卦?有關的信件，請你看看，我找到寄給海陽的信件，請你看看，我找到以副本寄給Sousuke的信件，請你看看"
                },
                {
                     "frames": [
@@ -191,14 +849,14 @@
                                    "active_intent": "FindMail",
                                    "requested_slots": [],
                                    "slot_values": {
+                                        "copy_recipient": [
+                                             "Sousuke"
+                                        ],
                                         "recipient": [
-                                             "Seal"
+                                             "海陽"
                                         ],
-                                        "subject": [
-                                             " 112學測國綜／白話文也難讀！補教評考題"
-                                        ],
-                                        "sender": [
-                                             "Paul Chen"
+                                        "content": [
+                                             "是這樣，小弟一直很想找城鎮戰、近身距離作戰、握槍姿勢、槍械知識相關的書籍，中文書都找不到半本，我國是不是極度缺乏這方面的書籍?，才會造成部隊內部知識提升速度很緩慢?，只能看軍中的準則，紙本的很多都沒更新，軍中網路的又整天卡頓或登不進去，沒有外界知識可以比較，擇優，改變，嘗試，想自學嘗試也完全沒有路徑追尋「正確」的先賢經驗，還是這類知識書籍國家有在有意的管制?，有卦?"
                                         ]
                                    }
                               }
@@ -231,207 +889,11 @@
                          {
                               "actions": [
                                    {
-                                        "act": "INFORM_INTENT",
-                                        "canonical_values": [
-                                             "SendMessage"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "SendMessage"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "ShawnLee"
-                                        ],
-                                        "slot": "contact_name",
-                                        "values": [
-                                             "ShawnLee"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "程式語言讀書會Programming Book Club"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "程式語言讀書會Programming Book Club"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "想問這個有人知道嗎"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "想問這個有人知道嗎"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 72,
-                                        "slot": "contact_name",
-                                        "start": 64
-                                   },
-                                   {
-                                        "exclusive_end": 54,
-                                        "slot": "group_name",
-                                        "start": 26
-                                   },
-                                   {
-                                        "exclusive_end": 21,
-                                        "slot": "message",
-                                        "start": 12
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "SendMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "message": [
-                                             "想問這個有人知道嗎"
-                                        ],
-                                        "contact_name": [
-                                             "ShawnLee"
-                                        ],
-                                        "group_name": [
-                                             "程式語言讀書會Programming Book Club"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "請幫我寄一則訊息，跟他說想問這個有人知道嗎，應該是在程式語言讀書會Programming Book Club群組中的訊息，用戶為ShawnLee"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "想問這個有人知道嗎"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "想問這個有人知道嗎"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "ShawnLee"
-                                        ],
-                                        "slot": "contact_name",
-                                        "values": [
-                                             "ShawnLee"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "程式語言讀書會Programming Book Club"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "程式語言讀書會Programming Book Club"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 16,
-                                        "slot": "message",
-                                        "start": 7
-                                   },
-                                   {
-                                        "exclusive_end": 74,
-                                        "slot": "contact_name",
-                                        "start": 66
-                                   },
-                                   {
-                                        "exclusive_end": 55,
-                                        "slot": "group_name",
-                                        "start": 27
-                                   }
-                              ],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "確認要傳送訊息想問這個有人知道嗎嗎？，確認要傳送訊息到程式語言讀書會Programming Book Club嗎？，確認要傳送訊息給ShawnLee嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "AFFIRM",
+                                        "act": "NEGATE",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "SendMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "message": [
-                                             "想問這個有人知道嗎"
-                                        ],
-                                        "contact_name": [
-                                             "ShawnLee"
-                                        ],
-                                        "group_name": [
-                                             "程式語言讀書會Programming Book Club"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "好的，看起來沒甚麼問題"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NOTIFY_SUCCESS",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_call": {
-                                   "method": "SendMessage",
-                                   "parameters": {
-                                        "message": "想問這個有人知道嗎",
-                                        "contact_name": "ShawnLee",
-                                        "group_name": "程式語言讀書會Programming Book Club"
-                                   }
-                              },
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "多虧有您的配合，訊息已成功傳送"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
+                                   },
                                    {
                                         "act": "THANK_YOU",
                                         "canonical_values": [],
@@ -439,85 +901,27 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "FindMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "message": [
-                                             "想問這個有人知道嗎"
+                                        "copy_recipient": [
+                                             "Sousuke"
                                         ],
-                                        "contact_name": [
-                                             "ShawnLee"
+                                        "recipient": [
+                                             "海陽"
                                         ],
-                                        "group_name": [
-                                             "程式語言讀書會Programming Book Club"
+                                        "content": [
+                                             "是這樣，小弟一直很想找城鎮戰、近身距離作戰、握槍姿勢、槍械知識相關的書籍，中文書都找不到半本，我國是不是極度缺乏這方面的書籍?，才會造成部隊內部知識提升速度很緩慢?，只能看軍中的準則，紙本的很多都沒更新，軍中網路的又整天卡頓或登不進去，沒有外界知識可以比較，擇優，改變，嘗試，想自學嘗試也完全沒有路徑追尋「正確」的先賢經驗，還是這類知識書籍國家有在有意的管制?，有卦?"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "謝謝，我沒有其他問題了"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQ_MORE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "還有什麼需要幫助的嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NEGATE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "GOODBYE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "SendMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "message": [
-                                             "想問這個有人知道嗎"
-                                        ],
-                                        "contact_name": [
-                                             "ShawnLee"
-                                        ],
-                                        "group_name": [
-                                             "程式語言讀書會Programming Book Club"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "沒關係，先這樣吧，沒有了！再見！"
+                    "utterance": "沒關係，先這樣吧，真是太謝謝你了！"
                },
                {
                     "frames": [
@@ -530,13 +934,13 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "有問題您再找我哈！再見！"
+                    "utterance": "好的，再見！"
                }
           ]
      }

@@ -3,7 +3,7 @@
           "dialogue_id": 208,
           "services": [
                "Mail_1",
-               "Calendar_1"
+               "Messaging_1"
           ],
           "turns": [
                {
@@ -13,25 +13,25 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "FindMail"
+                                             "SendMail"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "FindMail"
+                                             "SendMail"
                                         ]
                                    }
                               ],
                               "service": "Mail_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "FindMail",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {}
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我想要知道相關的信件，請幫幫我"
+                    "utterance": "請幫我寄出一封信件"
                },
                {
                     "frames": [
@@ -40,7 +40,13 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "content",
+                                        "slot": "recipient",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "copy_recipient",
                                         "values": []
                                    }
                               ],
@@ -50,7 +56,7 @@
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "這封信有任何內容嗎？"
+                    "utterance": "我想知道這封信的收件者，你知道這封信的副本收件者嗎？"
                },
                {
                     "frames": [
@@ -59,393 +65,134 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "備註請放最後面違者新聞文章刪除，媒體來源:"
+                                             "pocket355170"
                                         ],
-                                        "slot": "content",
+                                        "slot": "recipient",
                                         "values": [
-                                             "備註請放最後面違者新聞文章刪除，媒體來源:"
+                                             "pocket355170"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "無"
                                         ]
                                    }
                               ],
                               "service": "Mail_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 24,
-                                        "slot": "content",
-                                        "start": 3
+                                        "exclusive_end": 16,
+                                        "slot": "recipient",
+                                        "start": 4
                                    }
                               ],
                               "state": {
-                                   "active_intent": "FindMail",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "content": [
-                                             "備註請放最後面違者新聞文章刪除，媒體來源:"
+                                        "recipient": [
+                                             "pocket355170"
+                                        ],
+                                        "copy_recipient": [
+                                             "無"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "內容為備註請放最後面違者新聞文章刪除，媒體來源:"
+                    "utterance": "收件者為pocket355170，不需設定副本收件者"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "OFFER",
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "subject",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "content",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道這個信件的主旨，這封信有任何內容嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
                                         "canonical_values": [
-                                             "備註請放最後面違者新聞文章刪除，媒體來源:"
+                                             " 找不到認同感"
+                                        ],
+                                        "slot": "subject",
+                                        "values": [
+                                             " 找不到認同感"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "明明是在團體裡，卻總是覺得自己格格不入，覺得自己就像轉學生或插班生，就算表現的在好在融入，卻一點歸屬感都沒有，明明很多朋友，禮拜天的夜晚總是一個人度過，雖然會有想要自己空閒的時間，但是跟人相處的時間卻好像不是很真實，這種寂寞感只能用工作和與人相處填滿，卻怎麼填也填不滿，呵呵"
                                         ],
                                         "slot": "content",
                                         "values": [
-                                             "備註請放最後面違者新聞文章刪除，媒體來源:"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM_COUNT",
-                                        "canonical_values": [
-                                             "5"
-                                        ],
-                                        "slot": "count",
-                                        "values": [
-                                             "5"
+                                             "明明是在團體裡，卻總是覺得自己格格不入，覺得自己就像轉學生或插班生，就算表現的在好在融入，卻一點歸屬感都沒有，明明很多朋友，禮拜天的夜晚總是一個人度過，雖然會有想要自己空閒的時間，但是跟人相處的時間卻好像不是很真實，這種寂寞感只能用工作和與人相處填滿，卻怎麼填也填不滿，呵呵"
                                         ]
                                    }
                               ],
                               "service": "Mail_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 27,
-                                        "slot": "content",
-                                        "start": 6
-                                   }
-                              ],
-                              "service_call": {
-                                   "method": "FindMail",
-                                   "parameters": {
-                                        "content": "備註請放最後面違者新聞文章刪除，媒體來源:"
-                                   }
-                              },
-                              "service_results": [
-                                   {
-                                        "subject": " 余皓然愛女獲封「最美星二代」出道 吐多",
-                                        "content": "備註請放最後面違者新聞文章刪除，媒體來源:",
-                                        "copy_recipient": "井上清水",
-                                        "recipient": "太菲鴨",
-                                        "sender": "Willy"
-                                   },
-                                   {
-                                        "subject": "美媒：打造日本軍事強權 拜岸會ㄧ大議程",
-                                        "content": "備註請放最後面違者新聞文章刪除，媒體來源:，中央社，記者署名:，陳亦偉，完整新聞標題:，美媒：打造日本軍事強權拜岸會ㄧ大議程，完整新聞內文:，日相岸田文雄出訪歐美，今天與美國總統拜登會談，議題涵蓋與俄、中、北韓緊張，計劃和美軍共同加強在亞洲的嚇阻力。美媒解讀會談一大，要點是將日本建成軍事強權",
-                                        "copy_recipient": "阿契爾",
-                                        "recipient": "Antonio",
-                                        "sender": "Edwin"
-                                   },
-                                   {
-                                        "subject": " 酸林智堅「市政都靠美圖堆疊」　黃暐瀚爆",
-                                        "content": "備註請放最後面違者新聞文章刪除，媒體來源:",
-                                        "copy_recipient": "無",
-                                        "recipient": "啊傑、這",
-                                        "sender": "傑森"
-                                   },
-                                   {
-                                        "subject": "中國意圖從內部癱瘓台灣 曹興誠籲內除台奸",
-                                        "content": "備註請放最後面違者新聞文章刪除，媒體來源:",
-                                        "copy_recipient": "無",
-                                        "recipient": "林資堯",
-                                        "sender": "Boris"
-                                   },
-                                   {
-                                        "subject": " 國民黨花縣前副議長潘月霞 詐領助理費起",
-                                        "content": "備註請放最後面違者新聞文章刪除，媒體來源:",
-                                        "copy_recipient": "無",
-                                        "recipient": "J maximator",
-                                        "sender": "啊傑、這"
-                                   }
-                              ]
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "我找到內容跟備註請放最後面違者新聞文章刪除，媒體來源:有關的信件，請你看看，總共有5個結果"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "GOODBYE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "FindMail",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "content": [
-                                             "備註請放最後面違者新聞文章刪除，媒體來源:"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "沒有問題了，再見！"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "GOODBYE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "再見！祝您生活愉快！"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM_INTENT",
-                                        "canonical_values": [
-                                             "AddEvent"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "AddEvent"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "AddEvent",
-                                   "requested_slots": [],
-                                   "slot_values": {}
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "我想要添加一個活動，可以請你幫忙嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_date",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "這個活動辦在幾月幾號呢？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "2022/4/4"
-                                        ],
-                                        "slot": "event_date",
-                                        "values": [
-                                             "今天"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 5,
-                                        "slot": "event_date",
-                                        "start": 3
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "AddEvent",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_date": [
-                                             "今天"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "日期為今天"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_time",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_content",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "這個活動在幾點開始呢？，這個活動有任何內容註記嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "07:57"
-                                        ],
-                                        "slot": "event_time",
-                                        "values": [
-                                             "7點57分"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "講者: 池沛玲老師(2020大雪山賞鳥大賽社會組冠軍)大自然的飛羽精靈，存在於我們生活當中"
-                                        ],
-                                        "slot": "event_content",
-                                        "values": [
-                                             "講者: 池沛玲老師(2020大雪山賞鳥大賽社會組冠軍)大自然的飛羽精靈，存在於我們生活當中"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 11,
-                                        "slot": "event_time",
-                                        "start": 6
-                                   },
-                                   {
-                                        "exclusive_end": 71,
-                                        "slot": "event_content",
-                                        "start": 26
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "AddEvent",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_date": [
-                                             "今天"
-                                        ],
-                                        "event_time": [
-                                             "7點57分"
-                                        ],
-                                        "event_content": [
-                                             "講者: 池沛玲老師(2020大雪山賞鳥大賽社會組冠軍)大自然的飛羽精靈，存在於我們生活當中"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "時間為當天的7點57分，詳細內容我不太記得了，應該是講者: 池沛玲老師(2020大雪山賞鳥大賽社會組冠軍)大自然的飛羽精靈，存在於我們生活當中"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_name",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "那這個活動叫甚麼呢？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "《一同賞鳥趣》文觀處走讀"
-                                        ],
-                                        "slot": "event_name",
-                                        "values": [
-                                             "《一同賞鳥趣》文觀處走讀"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 17,
-                                        "slot": "event_name",
+                                        "exclusive_end": 12,
+                                        "slot": "subject",
                                         "start": 5
+                                   },
+                                   {
+                                        "exclusive_end": 157,
+                                        "slot": "content",
+                                        "start": 20
                                    }
                               ],
                               "state": {
-                                   "active_intent": "AddEvent",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "event_date": [
-                                             "今天"
+                                        "recipient": [
+                                             "pocket355170"
                                         ],
-                                        "event_time": [
-                                             "7點57分"
+                                        "copy_recipient": [
+                                             "無"
                                         ],
-                                        "event_content": [
-                                             "講者: 池沛玲老師(2020大雪山賞鳥大賽社會組冠軍)大自然的飛羽精靈，存在於我們生活當中"
+                                        "subject": [
+                                             " 找不到認同感"
                                         ],
-                                        "event_name": [
-                                             "《一同賞鳥趣》文觀處走讀"
+                                        "content": [
+                                             "明明是在團體裡，卻總是覺得自己格格不入，覺得自己就像轉學生或插班生，就算表現的在好在融入，卻一點歸屬感都沒有，明明很多朋友，禮拜天的夜晚總是一個人度過，雖然會有想要自己空閒的時間，但是跟人相處的時間卻好像不是很真實，這種寂寞感只能用工作和與人相處填滿，卻怎麼填也填不滿，呵呵"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "活動名稱為《一同賞鳥趣》文觀處走讀"
+                    "utterance": "這封信叫做 找不到認同感，這封信的內文為明明是在團體裡，卻總是覺得自己格格不入，覺得自己就像轉學生或插班生，就算表現的在好在融入，卻一點歸屬感都沒有，明明很多朋友，禮拜天的夜晚總是一個人度過，雖然會有想要自己空閒的時間，但是跟人相處的時間卻好像不是很真實，這種寂寞感只能用工作和與人相處填滿，卻怎麼填也填不滿，呵呵"
                },
                {
                     "frames": [
@@ -454,67 +201,67 @@
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "今天"
+                                             "pocket355170"
                                         ],
-                                        "slot": "event_date",
+                                        "slot": "recipient",
                                         "values": [
-                                             "今天"
+                                             "pocket355170"
                                         ]
                                    },
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "7點57分"
+                                             "無"
                                         ],
-                                        "slot": "event_time",
+                                        "slot": "copy_recipient",
                                         "values": [
-                                             "7點57分"
+                                             "無"
                                         ]
                                    },
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "講者: 池沛玲老師(2020大雪山賞鳥大賽社會組冠軍)大自然的飛羽精靈，存在於我們生活當中"
+                                             " 找不到認同感"
                                         ],
-                                        "slot": "event_content",
+                                        "slot": "subject",
                                         "values": [
-                                             "講者: 池沛玲老師(2020大雪山賞鳥大賽社會組冠軍)大自然的飛羽精靈，存在於我們生活當中"
+                                             " 找不到認同感"
                                         ]
                                    },
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "《一同賞鳥趣》文觀處走讀"
+                                             "明明是在團體裡，卻總是覺得自己格格不入，覺得自己就像轉學生或插班生，就算表現的在好在融入，卻一點歸屬感都沒有，明明很多朋友，禮拜天的夜晚總是一個人度過，雖然會有想要自己空閒的時間，但是跟人相處的時間卻好像不是很真實，這種寂寞感只能用工作和與人相處填滿，卻怎麼填也填不滿，呵呵"
                                         ],
-                                        "slot": "event_name",
+                                        "slot": "content",
                                         "values": [
-                                             "《一同賞鳥趣》文觀處走讀"
+                                             "明明是在團體裡，卻總是覺得自己格格不入，覺得自己就像轉學生或插班生，就算表現的在好在融入，卻一點歸屬感都沒有，明明很多朋友，禮拜天的夜晚總是一個人度過，雖然會有想要自己空閒的時間，但是跟人相處的時間卻好像不是很真實，這種寂寞感只能用工作和與人相處填滿，卻怎麼填也填不滿，呵呵"
                                         ]
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Mail_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 35,
-                                        "slot": "event_date",
-                                        "start": 33
+                                        "exclusive_end": 191,
+                                        "slot": "recipient",
+                                        "start": 179
                                    },
                                    {
-                                        "exclusive_end": 56,
-                                        "slot": "event_time",
-                                        "start": 51
+                                        "exclusive_end": 16,
+                                        "slot": "subject",
+                                        "start": 9
                                    },
                                    {
-                                        "exclusive_end": 19,
-                                        "slot": "event_name",
-                                        "start": 7
+                                        "exclusive_end": 171,
+                                        "slot": "content",
+                                        "start": 34
                                    }
                               ],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "確認要建立名叫《一同賞鳥趣》文觀處走讀的活動嗎？，確認要建立舉辦在今天的活動嗎？，確認要建立舉辦在當天7點57分的活動嗎？"
+                    "utterance": "請確認要寄出主旨為 找不到認同感的信件嗎？，請確認要寄出的信件內容:明明是在團體裡，卻總是覺得自己格格不入，覺得自己就像轉學生或插班生，就算表現的在好在融入，卻一點歸屬感都沒有，明明很多朋友，禮拜天的夜晚總是一個人度過，雖然會有想要自己空閒的時間，但是跟人相處的時間卻好像不是很真實，這種寂寞感只能用工作和與人相處填滿，卻怎麼填也填不滿，呵呵，確認要寄信件給pocket355170嗎？"
                },
                {
                     "frames": [
@@ -527,23 +274,181 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "AddEvent",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "event_date": [
-                                             "今天"
+                                        "recipient": [
+                                             "pocket355170"
                                         ],
-                                        "event_time": [
-                                             "7點57分"
+                                        "copy_recipient": [
+                                             "無"
                                         ],
-                                        "event_content": [
-                                             "講者: 池沛玲老師(2020大雪山賞鳥大賽社會組冠軍)大自然的飛羽精靈，存在於我們生活當中"
+                                        "subject": [
+                                             " 找不到認同感"
                                         ],
-                                        "event_name": [
-                                             "《一同賞鳥趣》文觀處走讀"
+                                        "content": [
+                                             "明明是在團體裡，卻總是覺得自己格格不入，覺得自己就像轉學生或插班生，就算表現的在好在融入，卻一點歸屬感都沒有，明明很多朋友，禮拜天的夜晚總是一個人度過，雖然會有想要自己空閒的時間，但是跟人相處的時間卻好像不是很真實，這種寂寞感只能用工作和與人相處填滿，卻怎麼填也填不滿，呵呵"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我對以上資訊沒問題"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQ_MORE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "還需要什麼幫助嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "SendMessage"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "SendMessage"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "Kobe"
+                                        ],
+                                        "slot": "contact_name",
+                                        "values": [
+                                             "Kobe"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "屌打torch的地方應該就是自動掛Google Cloud TPU和自動pareller training 吧 "
+                                        ],
+                                        "slot": "message",
+                                        "values": [
+                                             "屌打torch的地方應該就是自動掛Google Cloud TPU和自動pareller training 吧 "
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 78,
+                                        "slot": "contact_name",
+                                        "start": 74
+                                   },
+                                   {
+                                        "exclusive_end": 70,
+                                        "slot": "message",
+                                        "start": 14
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "SendMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "message": [
+                                             "屌打torch的地方應該就是自動掛Google Cloud TPU和自動pareller training 吧 "
+                                        ],
+                                        "contact_name": [
+                                             "Kobe"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "請幫我寄一則訊息，訊息內容為屌打torch的地方應該就是自動掛Google Cloud TPU和自動pareller training 吧 ，用戶為Kobe"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "屌打torch的地方應該就是自動掛Google Cloud TPU和自動pareller training 吧 "
+                                        ],
+                                        "slot": "message",
+                                        "values": [
+                                             "屌打torch的地方應該就是自動掛Google Cloud TPU和自動pareller training 吧 "
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "Kobe"
+                                        ],
+                                        "slot": "contact_name",
+                                        "values": [
+                                             "Kobe"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 63,
+                                        "slot": "message",
+                                        "start": 7
+                                   },
+                                   {
+                                        "exclusive_end": 78,
+                                        "slot": "contact_name",
+                                        "start": 74
+                                   }
+                              ],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "確認要傳送訊息屌打torch的地方應該就是自動掛Google Cloud TPU和自動pareller training 吧 嗎？，確認要傳送訊息給Kobe嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "AFFIRM",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "message": [
+                                             "屌打torch的地方應該就是自動掛Google Cloud TPU和自動pareller training 吧 "
+                                        ],
+                                        "contact_name": [
+                                             "Kobe"
                                         ]
                                    }
                               }
@@ -563,58 +468,50 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Messaging_1",
                               "slots": [],
                               "service_call": {
-                                   "method": "AddEvent",
+                                   "method": "SendMessage",
                                    "parameters": {
-                                        "event_date": "今天",
-                                        "event_time": "7點57分",
-                                        "event_content": "講者: 池沛玲老師(2020大雪山賞鳥大賽社會組冠軍)大自然的飛羽精靈，存在於我們生活當中",
-                                        "event_name": "《一同賞鳥趣》文觀處走讀"
+                                        "message": "屌打torch的地方應該就是自動掛Google Cloud TPU和自動pareller training 吧 ",
+                                        "contact_name": "Kobe"
                                    }
                               },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "多虧有您的配合，活動已添加至行事曆"
+                    "utterance": "多虧有您的配合，訊息已成功傳送"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "GOODBYE",
+                                        "act": "THANK_YOU",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Messaging_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "AddEvent",
+                                   "active_intent": "SendMessage",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "event_date": [
-                                             "今天"
+                                        "message": [
+                                             "屌打torch的地方應該就是自動掛Google Cloud TPU和自動pareller training 吧 "
                                         ],
-                                        "event_time": [
-                                             "7點57分"
-                                        ],
-                                        "event_content": [
-                                             "講者: 池沛玲老師(2020大雪山賞鳥大賽社會組冠軍)大自然的飛羽精靈，存在於我們生活當中"
-                                        ],
-                                        "event_name": [
-                                             "《一同賞鳥趣》文觀處走讀"
+                                        "contact_name": [
+                                             "Kobe"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "再見"
+                    "utterance": "謝謝"
                },
                {
                     "frames": [
@@ -627,22 +524,20 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Messaging_1",
                               "slots": [],
                               "service_call": {
-                                   "method": "AddEvent",
+                                   "method": "SendMessage",
                                    "parameters": {
-                                        "event_date": "今天",
-                                        "event_time": "7點57分",
-                                        "event_content": "講者: 池沛玲老師(2020大雪山賞鳥大賽社會組冠軍)大自然的飛羽精靈，存在於我們生活當中",
-                                        "event_name": "《一同賞鳥趣》文觀處走讀"
+                                        "message": "屌打torch的地方應該就是自動掛Google Cloud TPU和自動pareller training 吧 ",
+                                        "contact_name": "Kobe"
                                    }
                               },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "行，再見！"
+                    "utterance": "歡迎下次諮詢，再見"
                }
           ]
      }

@@ -2,8 +2,7 @@
      {
           "dialogue_id": 534,
           "services": [
-               "Mail_1",
-               "Messaging_1"
+               "Mail_1"
           ],
           "turns": [
                {
@@ -13,308 +12,143 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "SendMail"
+                                             "FindMail"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "SendMail"
-                                        ]
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "SendMail",
-                                   "requested_slots": [],
-                                   "slot_values": {}
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "請幫我寄出一封信件"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "content",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "copy_recipient",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "這封信有任何內容嗎？，我想知道這封信的副本收件者"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "備註請放最後面違者新聞文章刪除，媒體來源:"
-                                        ],
-                                        "slot": "content",
-                                        "values": [
-                                             "備註請放最後面違者新聞文章刪除，媒體來源:"
+                                             "FindMail"
                                         ]
                                    },
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "Pony"
+                                             "Kumoki雲希"
                                         ],
                                         "slot": "copy_recipient",
                                         "values": [
-                                             "Pony"
+                                             "Kumoki雲希"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "Yuri"
+                                        ],
+                                        "slot": "sender",
+                                        "values": [
+                                             "Yuri"
                                         ]
                                    }
                               ],
                               "service": "Mail_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 24,
-                                        "slot": "content",
-                                        "start": 3
+                                        "exclusive_end": 38,
+                                        "slot": "copy_recipient",
+                                        "start": 30
                                    },
                                    {
-                                        "exclusive_end": 39,
+                                        "exclusive_end": 17,
+                                        "slot": "sender",
+                                        "start": 13
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "FindMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "sender": [
+                                             "Yuri"
+                                        ],
+                                        "copy_recipient": [
+                                             "Kumoki雲希"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "請幫我找一封信件，這封信是Yuri寄的，這封信需要以副本寄給Kumoki雲希"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_COUNT",
+                                        "canonical_values": [
+                                             "1"
+                                        ],
+                                        "slot": "count",
+                                        "values": [
+                                             "1"
+                                        ]
+                                   },
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "Yuri"
+                                        ],
+                                        "slot": "sender",
+                                        "values": [
+                                             "Yuri"
+                                        ]
+                                   },
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "Kumoki雲希"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "Kumoki雲希"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 16,
+                                        "slot": "sender",
+                                        "start": 12
+                                   },
+                                   {
+                                        "exclusive_end": 43,
                                         "slot": "copy_recipient",
                                         "start": 35
                                    }
                               ],
-                              "state": {
-                                   "active_intent": "SendMail",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "content": [
-                                             "備註請放最後面違者新聞文章刪除，媒體來源:"
+                              "service_call": {
+                                   "method": "FindMail",
+                                   "parameters": {
+                                        "sender": [
+                                             "Yuri"
                                         ],
                                         "copy_recipient": [
-                                             "Pony"
+                                             "Kumoki雲希"
                                         ]
                                    }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "內文為備註請放最後面違者新聞文章刪除，媒體來源:，這封信需要以副本寄給Pony"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
+                              },
+                              "service_results": [
                                    {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "subject",
-                                        "values": []
+                                        "subject": " 德州建造美國首個3D打印的兩層房屋",
+                                        "content": "媒體來源:新唐人，記者署名:安德魯‧托馬斯，完整新聞標題:，德州建造美國首個打印的兩層房屋，完整新聞內文:",
+                                        "copy_recipient": "Kumoki雲希",
+                                        "recipient": "Omohyoid",
+                                        "sender": "Yuri"
                                    }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "service_results": []
+                              ]
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "我想知道這個信件的主旨"
+                    "utterance": "總共有1個結果，我找到由Yuri寄發的信件，請你看看，我找到以副本寄給Kumoki雲希的信件，請你看看"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             " 台灣會變地雷島？ 趙天麟：唯一不道德是"
-                                        ],
-                                        "slot": "subject",
-                                        "values": [
-                                             " 台灣會變地雷島？ 趙天麟：唯一不道德是"
-                                        ]
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 25,
-                                        "slot": "subject",
-                                        "start": 5
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "SendMail",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "content": [
-                                             "備註請放最後面違者新聞文章刪除，媒體來源:"
-                                        ],
-                                        "copy_recipient": [
-                                             "Pony"
-                                        ],
-                                        "subject": [
-                                             " 台灣會變地雷島？ 趙天麟：唯一不道德是"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "信件主旨叫 台灣會變地雷島？ 趙天麟：唯一不道德是"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "recipient",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "你知道這封信是寄給誰的嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "nagi"
-                                        ],
-                                        "slot": "recipient",
-                                        "values": [
-                                             "nagi"
-                                        ]
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 8,
-                                        "slot": "recipient",
-                                        "start": 4
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "SendMail",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "content": [
-                                             "備註請放最後面違者新聞文章刪除，媒體來源:"
-                                        ],
-                                        "copy_recipient": [
-                                             "Pony"
-                                        ],
-                                        "subject": [
-                                             " 台灣會變地雷島？ 趙天麟：唯一不道德是"
-                                        ],
-                                        "recipient": [
-                                             "nagi"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "這封信由nagi收"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "備註請放最後面違者新聞文章刪除，媒體來源:"
-                                        ],
-                                        "slot": "content",
-                                        "values": [
-                                             "備註請放最後面違者新聞文章刪除，媒體來源:"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "Pony"
-                                        ],
-                                        "slot": "copy_recipient",
-                                        "values": [
-                                             "Pony"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             " 台灣會變地雷島？ 趙天麟：唯一不道德是"
-                                        ],
-                                        "slot": "subject",
-                                        "values": [
-                                             " 台灣會變地雷島？ 趙天麟：唯一不道德是"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "nagi"
-                                        ],
-                                        "slot": "recipient",
-                                        "values": [
-                                             "nagi"
-                                        ]
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 68,
-                                        "slot": "content",
-                                        "start": 47
-                                   },
-                                   {
-                                        "exclusive_end": 29,
-                                        "slot": "subject",
-                                        "start": 9
-                                   },
-                                   {
-                                        "exclusive_end": 80,
-                                        "slot": "recipient",
-                                        "start": 76
-                                   }
-                              ],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "請確認要寄出主旨為 台灣會變地雷島？ 趙天麟：唯一不道德是的信件嗎？，請確認要寄出的信件內容:備註請放最後面違者新聞文章刪除，媒體來源:，確認要寄信件給nagi嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "AFFIRM",
+                                        "act": "SELECT",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
@@ -323,27 +157,21 @@
                               "service": "Mail_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMail",
+                                   "active_intent": "FindMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "content": [
-                                             "備註請放最後面違者新聞文章刪除，媒體來源:"
+                                        "sender": [
+                                             "Yuri"
                                         ],
                                         "copy_recipient": [
-                                             "Pony"
-                                        ],
-                                        "subject": [
-                                             " 台灣會變地雷島？ 趙天麟：唯一不道德是"
-                                        ],
-                                        "recipient": [
-                                             "nagi"
+                                             "Kumoki雲希"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "好的，看起來沒甚麼問題"
+                    "utterance": "我知道了"
                },
                {
                     "frames": [
@@ -362,202 +190,43 @@
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "還有什麼問題嗎？"
+                    "utterance": "還有什麼能幫到您的嗎？"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "INFORM_INTENT",
-                                        "canonical_values": [
-                                             "SendMessage"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "SendMessage"
-                                        ]
+                                        "act": "NEGATE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
                                    },
                                    {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "程式語言讀書會Programming Book Club"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "程式語言讀書會Programming Book Club"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "在算未休完假"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "在算未休完假"
-                                        ]
+                                        "act": "GOODBYE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 59,
-                                        "slot": "group_name",
-                                        "start": 31
-                                   },
-                                   {
-                                        "exclusive_end": 26,
-                                        "slot": "message",
-                                        "start": 20
-                                   }
-                              ],
+                              "service": "Mail_1",
+                              "slots": [],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "FindMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "message": [
-                                             "在算未休完假"
+                                        "sender": [
+                                             "Yuri"
                                         ],
-                                        "group_name": [
-                                             "程式語言讀書會Programming Book Club"
+                                        "copy_recipient": [
+                                             "Kumoki雲希"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我想要寄則訊息，可以請你幫忙嗎？，訊息為在算未休完假，應該是在程式語言讀書會Programming Book Club群組中的訊息"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "在算未休完假"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "在算未休完假"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "程式語言讀書會Programming Book Club"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "程式語言讀書會Programming Book Club"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 13,
-                                        "slot": "message",
-                                        "start": 7
-                                   },
-                                   {
-                                        "exclusive_end": 52,
-                                        "slot": "group_name",
-                                        "start": 24
-                                   }
-                              ],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "確認要傳送訊息在算未休完假嗎？，確認要傳送訊息到程式語言讀書會Programming Book Club嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "AFFIRM",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "SendMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "message": [
-                                             "在算未休完假"
-                                        ],
-                                        "group_name": [
-                                             "程式語言讀書會Programming Book Club"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "我對以上資訊沒問題"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NOTIFY_SUCCESS",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_call": {
-                                   "method": "SendMessage",
-                                   "parameters": {
-                                        "message": "在算未休完假",
-                                        "group_name": "程式語言讀書會Programming Book Club"
-                                   }
-                              },
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "多虧有您的配合，訊息已成功傳送"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "THANK_YOU",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "SendMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "message": [
-                                             "在算未休完假"
-                                        ],
-                                        "group_name": [
-                                             "程式語言讀書會Programming Book Club"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "真是太謝謝你了！"
+                    "utterance": "沒關係，先這樣吧，沒有問題了，再見吧！"
                },
                {
                     "frames": [
@@ -570,20 +239,13 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [],
-                              "service_call": {
-                                   "method": "SendMessage",
-                                   "parameters": {
-                                        "message": "在算未休完假",
-                                        "group_name": "程式語言讀書會Programming Book Club"
-                                   }
-                              },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "好，再見"
+                    "utterance": "應該做的，再見！"
                }
           ]
      }

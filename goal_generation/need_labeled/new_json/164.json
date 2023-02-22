@@ -2,9 +2,7 @@
      {
           "dialogue_id": 164,
           "services": [
-               "Mail_1",
-               "Calendar_1",
-               "Messaging_1"
+               "Mail_1"
           ],
           "turns": [
                {
@@ -14,25 +12,81 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "FindMail"
+                                             "SendMail"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "FindMail"
+                                             "SendMail"
                                         ]
                                    }
                               ],
                               "service": "Mail_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "FindMail",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {}
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我想要找個信，可以請你幫忙嗎？"
+                    "utterance": "請幫我寄出一封信件"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "subject",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道這個信件的主旨"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             " 給雍正當30年皇帝會怎樣？"
+                                        ],
+                                        "slot": "subject",
+                                        "values": [
+                                             " 給雍正當30年皇帝會怎樣？"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 19,
+                                        "slot": "subject",
+                                        "start": 5
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "subject": [
+                                             " 給雍正當30年皇帝會怎樣？"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "信件主旨叫 給雍正當30年皇帝會怎樣？"
                },
                {
                     "frames": [
@@ -60,35 +114,38 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "Derong Hong"
+                                             "婠兒"
                                         ],
                                         "slot": "recipient",
                                         "values": [
-                                             "Derong Hong"
+                                             "婠兒"
                                         ]
                                    }
                               ],
                               "service": "Mail_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 17,
+                                        "exclusive_end": 6,
                                         "slot": "recipient",
-                                        "start": 6
+                                        "start": 4
                                    }
                               ],
                               "state": {
-                                   "active_intent": "FindMail",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {
+                                        "subject": [
+                                             " 給雍正當30年皇帝會怎樣？"
+                                        ],
                                         "recipient": [
-                                             "Derong Hong"
+                                             "婠兒"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "這封信要寄給Derong Hong"
+                    "utterance": "收件者為婠兒"
                },
                {
                     "frames": [
@@ -107,7 +164,7 @@
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "我想知道這封信的內文"
+                    "utterance": "這封信有任何內容嗎？"
                },
                {
                     "frames": [
@@ -116,771 +173,106 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "統神電台復活啦，之前統神如果沒空，都會找陌生人代班，這次復活之後如果統神想翹班，該找誰代班比較好呢，晨晨可以接這個重責大任嗎，有沒有八卦"
+                                             "雍正才當了年皇帝，就把康熙虧空的萬兩銀子全部還清，還爽存萬兩，而且別忘了雍正頭兩年遇到羅布藏丹津，與策妄阿拉布坦聯合叛亂，大清花了幾百萬軍餉，所以保守估計雍正賺了可能超過萬，這些錢一路到他龜兒子末年被徹底花光，連打白蓮教那群廢物都差點打輸，雍正做每件事都極有遠見，要是當年皇帝，會不會連大英帝國都滅惹"
                                         ],
                                         "slot": "content",
                                         "values": [
-                                             "統神電台復活啦，之前統神如果沒空，都會找陌生人代班，這次復活之後如果統神想翹班，該找誰代班比較好呢，晨晨可以接這個重責大任嗎，有沒有八卦"
+                                             "雍正才當了年皇帝，就把康熙虧空的萬兩銀子全部還清，還爽存萬兩，而且別忘了雍正頭兩年遇到羅布藏丹津，與策妄阿拉布坦聯合叛亂，大清花了幾百萬軍餉，所以保守估計雍正賺了可能超過萬，這些錢一路到他龜兒子末年被徹底花光，連打白蓮教那群廢物都差點打輸，雍正做每件事都極有遠見，要是當年皇帝，會不會連大英帝國都滅惹"
                                         ]
                                    }
                               ],
                               "service": "Mail_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 71,
+                                        "exclusive_end": 153,
                                         "slot": "content",
                                         "start": 3
                                    }
                               ],
                               "state": {
-                                   "active_intent": "FindMail",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {
+                                        "subject": [
+                                             " 給雍正當30年皇帝會怎樣？"
+                                        ],
                                         "recipient": [
-                                             "Derong Hong"
+                                             "婠兒"
                                         ],
                                         "content": [
-                                             "統神電台復活啦，之前統神如果沒空，都會找陌生人代班，這次復活之後如果統神想翹班，該找誰代班比較好呢，晨晨可以接這個重責大任嗎，有沒有八卦"
+                                             "雍正才當了年皇帝，就把康熙虧空的萬兩銀子全部還清，還爽存萬兩，而且別忘了雍正頭兩年遇到羅布藏丹津，與策妄阿拉布坦聯合叛亂，大清花了幾百萬軍餉，所以保守估計雍正賺了可能超過萬，這些錢一路到他龜兒子末年被徹底花光，連打白蓮教那群廢物都差點打輸，雍正做每件事都極有遠見，要是當年皇帝，會不會連大英帝國都滅惹"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "內容為統神電台復活啦，之前統神如果沒空，都會找陌生人代班，這次復活之後如果統神想翹班，該找誰代班比較好呢，晨晨可以接這個重責大任嗎，有沒有八卦"
+                    "utterance": "內文為雍正才當了年皇帝，就把康熙虧空的萬兩銀子全部還清，還爽存萬兩，而且別忘了雍正頭兩年遇到羅布藏丹津，與策妄阿拉布坦聯合叛亂，大清花了幾百萬軍餉，所以保守估計雍正賺了可能超過萬，這些錢一路到他龜兒子末年被徹底花光，連打白蓮教那群廢物都差點打輸，雍正做每件事都極有遠見，要是當年皇帝，會不會連大英帝國都滅惹"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "Derong Hong"
-                                        ],
-                                        "slot": "recipient",
-                                        "values": [
-                                             "Derong Hong"
-                                        ]
-                                   },
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "copy_recipient",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道這封信的副本收件者"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
                                    {
-                                        "act": "OFFER",
+                                        "act": "INFORM",
                                         "canonical_values": [
-                                             "統神電台復活啦，之前統神如果沒空，都會找陌生人代班，這次復活之後如果統神想翹班，該找誰代班比較好呢，晨晨可以接這個重責大任嗎，有沒有八卦"
+                                             "chiii"
                                         ],
-                                        "slot": "content",
+                                        "slot": "copy_recipient",
                                         "values": [
-                                             "統神電台復活啦，之前統神如果沒空，都會找陌生人代班，這次復活之後如果統神想翹班，該找誰代班比較好呢，晨晨可以接這個重責大任嗎，有沒有八卦"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM_COUNT",
-                                        "canonical_values": [
-                                             "1"
-                                        ],
-                                        "slot": "count",
-                                        "values": [
-                                             "1"
+                                             "chiii"
                                         ]
                                    }
                               ],
                               "service": "Mail_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 101,
-                                        "slot": "recipient",
-                                        "start": 90
-                                   },
-                                   {
-                                        "exclusive_end": 74,
-                                        "slot": "content",
-                                        "start": 6
+                                        "exclusive_end": 15,
+                                        "slot": "copy_recipient",
+                                        "start": 10
                                    }
                               ],
-                              "service_call": {
-                                   "method": "FindMail",
-                                   "parameters": {
-                                        "recipient": "Derong Hong",
-                                        "content": "統神電台復活啦，之前統神如果沒空，都會找陌生人代班，這次復活之後如果統神想翹班，該找誰代班比較好呢，晨晨可以接這個重責大任嗎，有沒有八卦"
-                                   }
-                              },
-                              "service_results": [
-                                   {
-                                        "subject": " 統神電台如果要請代班主持人要找誰？",
-                                        "content": "統神電台復活啦，之前統神如果沒空，都會找陌生人代班，這次復活之後如果統神想翹班，該找誰代班比較好呢，晨晨可以接這個重責大任嗎，有沒有八卦",
-                                        "copy_recipient": "無",
-                                        "recipient": "Derong Hong",
-                                        "sender": "Amin"
-                                   }
-                              ]
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "我找到內容跟統神電台復活啦，之前統神如果沒空，都會找陌生人代班，這次復活之後如果統神想翹班，該找誰代班比較好呢，晨晨可以接這個重責大任嗎，有沒有八卦有關的信件，請你看看，我找到寄給Derong Hong的信件，請你看看，總共有1個結果"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "SELECT",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
                               "state": {
-                                   "active_intent": "FindMail",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {
+                                        "subject": [
+                                             " 給雍正當30年皇帝會怎樣？"
+                                        ],
                                         "recipient": [
-                                             "Derong Hong"
+                                             "婠兒"
                                         ],
                                         "content": [
-                                             "統神電台復活啦，之前統神如果沒空，都會找陌生人代班，這次復活之後如果統神想翹班，該找誰代班比較好呢，晨晨可以接這個重責大任嗎，有沒有八卦"
+                                             "雍正才當了年皇帝，就把康熙虧空的萬兩銀子全部還清，還爽存萬兩，而且別忘了雍正頭兩年遇到羅布藏丹津，與策妄阿拉布坦聯合叛亂，大清花了幾百萬軍餉，所以保守估計雍正賺了可能超過萬，這些錢一路到他龜兒子末年被徹底花光，連打白蓮教那群廢物都差點打輸，雍正做每件事都極有遠見，要是當年皇帝，會不會連大英帝國都滅惹"
+                                        ],
+                                        "copy_recipient": [
+                                             "chiii"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "好的，我知道了"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "OFFER_INTENT",
-                                        "canonical_values": [
-                                             "FindMail"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "FindMail"
-                                        ]
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "需要幫您找一封信嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "AFFIRM_INTENT",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "FindMail",
-                                   "requested_slots": [],
-                                   "slot_values": {}
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "好的，麻煩你了"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "recipient",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "我想知道這封信的收件者"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "Jack"
-                                        ],
-                                        "slot": "recipient",
-                                        "values": [
-                                             "Jack"
-                                        ]
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 8,
-                                        "slot": "recipient",
-                                        "start": 4
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "FindMail",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "recipient": [
-                                             "Jack"
-                                        ],
-                                        "content": [
-                                             "統神電台復活啦，之前統神如果沒空，都會找陌生人代班，這次復活之後如果統神想翹班，該找誰代班比較好呢，晨晨可以接這個重責大任嗎，有沒有八卦"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "這封信由Jack收"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NOTIFY_FAILURE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "service_call": {
-                                   "method": "FindMail",
-                                   "parameters": {
-                                        "recipient": "Jack",
-                                        "content": "統神電台復活啦，之前統神如果沒空，都會找陌生人代班，這次復活之後如果統神想翹班，該找誰代班比較好呢，晨晨可以接這個重責大任嗎，有沒有八卦"
-                                   }
-                              },
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "不好意思，沒辦法找到符合您要求的信件，請用其他條件查詢"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NEGATE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "GOODBYE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "FindMail",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "recipient": [
-                                             "Jack"
-                                        ],
-                                        "content": [
-                                             "統神電台復活啦，之前統神如果沒空，都會找陌生人代班，這次復活之後如果統神想翹班，該找誰代班比較好呢，晨晨可以接這個重責大任嗎，有沒有八卦"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "沒關係，先這樣吧，沒有了！再見！"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "GOODBYE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "嗯，再見"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM_INTENT",
-                                        "canonical_values": [
-                                             "LookupEvents"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "LookupEvents"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [],
-                                   "slot_values": {}
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "我想要找個活動，可以請你幫忙嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_date",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_name",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "我想知道這個活動的名稱，我想知道活動在何時舉行"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "2022/8/5"
-                                        ],
-                                        "slot": "event_date",
-                                        "values": [
-                                             "8月5日"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "臺灣文化創意設計博覽會"
-                                        ],
-                                        "slot": "event_name",
-                                        "values": [
-                                             "臺灣文化創意設計博覽會"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 24,
-                                        "slot": "event_date",
-                                        "start": 20
-                                   },
-                                   {
-                                        "exclusive_end": 16,
-                                        "slot": "event_name",
-                                        "start": 5
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_date": [
-                                             "8月5日"
-                                        ],
-                                        "event_name": [
-                                             "臺灣文化創意設計博覽會"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "活動名稱叫臺灣文化創意設計博覽會，活動在8月5日"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_time",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "這個活動在幾點開始呢？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "06:34"
-                                        ],
-                                        "slot": "event_time",
-                                        "values": [
-                                             "6時34分"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 10,
-                                        "slot": "event_time",
-                                        "start": 5
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_date": [
-                                             "8月5日"
-                                        ],
-                                        "event_name": [
-                                             "臺灣文化創意設計博覽會"
-                                        ],
-                                        "event_time": [
-                                             "6時34分"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "活動時間為6時34分"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NOTIFY_FAILURE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_call": {
-                                   "method": "LookupEvents",
-                                   "parameters": {
-                                        "event_date": "8月5日",
-                                        "event_name": "臺灣文化創意設計博覽會",
-                                        "event_time": "6時34分"
-                                   }
-                              },
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "不好意思，在行事曆上沒辦法找到符合您要求的活動，請用其他條件查詢"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "2022/8/5"
-                                        ],
-                                        "slot": "event_date",
-                                        "values": [
-                                             "明天"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "06:34"
-                                        ],
-                                        "slot": "event_time",
-                                        "values": [
-                                             "上午6點34分"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "臺灣文化創意設計博覽會"
-                                        ],
-                                        "slot": "event_name",
-                                        "values": [
-                                             "臺灣文化創意設計博覽會"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM_INTENT",
-                                        "canonical_values": [
-                                             "LookupEvents"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "LookupEvents"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 52,
-                                        "slot": "event_time",
-                                        "start": 45
-                                   },
-                                   {
-                                        "exclusive_end": 32,
-                                        "slot": "event_name",
-                                        "start": 21
-                                   },
-                                   {
-                                        "exclusive_end": 38,
-                                        "slot": "event_date",
-                                        "start": 36
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_date": [
-                                             "明天"
-                                        ],
-                                        "event_name": [
-                                             "臺灣文化創意設計博覽會"
-                                        ],
-                                        "event_time": [
-                                             "上午6點34分"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "我想要知道相關的活動，請幫幫我，活動名稱為臺灣文化創意設計博覽會，活動在明天，時間為當天的上午6點34分"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NOTIFY_FAILURE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_call": {
-                                   "method": "LookupEvents",
-                                   "parameters": {
-                                        "event_date": "明天",
-                                        "event_name": "臺灣文化創意設計博覽會",
-                                        "event_time": "上午6點34分"
-                                   }
-                              },
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "不好意思，在行事曆上沒辦法找到符合您要求的活動，請用其他條件查詢"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM_INTENT",
-                                        "canonical_values": [
-                                             "SendMessage"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "SendMessage"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "SendMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {}
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "請幫我寄一則訊息"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "message",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "所以這則訊息講了什麼？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "我就爛ＱＱ"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "我就爛ＱＱ"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 10,
-                                        "slot": "message",
-                                        "start": 5
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "SendMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "message": [
-                                             "我就爛ＱＱ"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "訊息內容為我就爛ＱＱ"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "group_name",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "你知道群組名稱嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "Python資料科學交流社群"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "Python資料科學交流社群"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 18,
-                                        "slot": "group_name",
-                                        "start": 4
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "SendMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "message": [
-                                             "我就爛ＱＱ"
-                                        ],
-                                        "group_name": [
-                                             "Python資料科學交流社群"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "群組叫做Python資料科學交流社群"
+                    "utterance": "這封信需要以副本寄給chiii"
                },
                {
                     "frames": [
@@ -889,42 +281,67 @@
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "我就爛ＱＱ"
+                                             " 給雍正當30年皇帝會怎樣？"
                                         ],
-                                        "slot": "message",
+                                        "slot": "subject",
                                         "values": [
-                                             "我就爛ＱＱ"
+                                             " 給雍正當30年皇帝會怎樣？"
                                         ]
                                    },
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "Python資料科學交流社群"
+                                             "婠兒"
                                         ],
-                                        "slot": "group_name",
+                                        "slot": "recipient",
                                         "values": [
-                                             "Python資料科學交流社群"
+                                             "婠兒"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "雍正才當了年皇帝，就把康熙虧空的萬兩銀子全部還清，還爽存萬兩，而且別忘了雍正頭兩年遇到羅布藏丹津，與策妄阿拉布坦聯合叛亂，大清花了幾百萬軍餉，所以保守估計雍正賺了可能超過萬，這些錢一路到他龜兒子末年被徹底花光，連打白蓮教那群廢物都差點打輸，雍正做每件事都極有遠見，要是當年皇帝，會不會連大英帝國都滅惹"
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "雍正才當了年皇帝，就把康熙虧空的萬兩銀子全部還清，還爽存萬兩，而且別忘了雍正頭兩年遇到羅布藏丹津，與策妄阿拉布坦聯合叛亂，大清花了幾百萬軍餉，所以保守估計雍正賺了可能超過萬，這些錢一路到他龜兒子末年被徹底花光，連打白蓮教那群廢物都差點打輸，雍正做每件事都極有遠見，要是當年皇帝，會不會連大英帝國都滅惹"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "chiii"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "chiii"
                                         ]
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 12,
-                                        "slot": "message",
-                                        "start": 7
+                                        "exclusive_end": 23,
+                                        "slot": "subject",
+                                        "start": 9
                                    },
                                    {
-                                        "exclusive_end": 37,
-                                        "slot": "group_name",
-                                        "start": 23
+                                        "exclusive_end": 201,
+                                        "slot": "recipient",
+                                        "start": 199
+                                   },
+                                   {
+                                        "exclusive_end": 191,
+                                        "slot": "content",
+                                        "start": 41
                                    }
                               ],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "確認要傳送訊息我就爛ＱＱ嗎？，確認要傳送訊息到Python資料科學交流社群嗎？"
+                    "utterance": "請確認要寄出主旨為 給雍正當30年皇帝會怎樣？的信件嗎？，請確認要寄出的信件內容:雍正才當了年皇帝，就把康熙虧空的萬兩銀子全部還清，還爽存萬兩，而且別忘了雍正頭兩年遇到羅布藏丹津，與策妄阿拉布坦聯合叛亂，大清花了幾百萬軍餉，所以保守估計雍正賺了可能超過萬，這些錢一路到他龜兒子末年被徹底花光，連打白蓮教那群廢物都差點打輸，雍正做每件事都極有遠見，要是當年皇帝，會不會連大英帝國都滅惹，確認要寄信件給婠兒嗎？"
                },
                {
                     "frames": [
@@ -937,24 +354,30 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "message": [
-                                             "我就爛ＱＱ"
+                                        "subject": [
+                                             " 給雍正當30年皇帝會怎樣？"
                                         ],
-                                        "group_name": [
-                                             "Python資料科學交流社群"
+                                        "recipient": [
+                                             "婠兒"
+                                        ],
+                                        "content": [
+                                             "雍正才當了年皇帝，就把康熙虧空的萬兩銀子全部還清，還爽存萬兩，而且別忘了雍正頭兩年遇到羅布藏丹津，與策妄阿拉布坦聯合叛亂，大清花了幾百萬軍餉，所以保守估計雍正賺了可能超過萬，這些錢一路到他龜兒子末年被徹底花光，連打白蓮教那群廢物都差點打輸，雍正做每件事都極有遠見，要是當年皇帝，會不會連大英帝國都滅惹"
+                                        ],
+                                        "copy_recipient": [
+                                             "chiii"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我對以上資訊沒問題"
+                    "utterance": "好的，看起來沒甚麼問題"
                },
                {
                     "frames": [
@@ -967,20 +390,22 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "service_call": {
-                                   "method": "SendMessage",
+                                   "method": "SendMail",
                                    "parameters": {
-                                        "message": "我就爛ＱＱ",
-                                        "group_name": "Python資料科學交流社群"
+                                        "subject": " 給雍正當30年皇帝會怎樣？",
+                                        "recipient": "婠兒",
+                                        "content": "雍正才當了年皇帝，就把康熙虧空的萬兩銀子全部還清，還爽存萬兩，而且別忘了雍正頭兩年遇到羅布藏丹津，與策妄阿拉布坦聯合叛亂，大清花了幾百萬軍餉，所以保守估計雍正賺了可能超過萬，這些錢一路到他龜兒子末年被徹底花光，連打白蓮教那群廢物都差點打輸，雍正做每件事都極有遠見，要是當年皇帝，會不會連大英帝國都滅惹",
+                                        "copy_recipient": "chiii"
                                    }
                               },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "多虧有您的配合，訊息已成功傳送"
+                    "utterance": "多虧有您的配合，信件已成功寄出"
                },
                {
                     "frames": [
@@ -993,79 +418,30 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "message": [
-                                             "我就爛ＱＱ"
+                                        "subject": [
+                                             " 給雍正當30年皇帝會怎樣？"
                                         ],
-                                        "group_name": [
-                                             "Python資料科學交流社群"
+                                        "recipient": [
+                                             "婠兒"
+                                        ],
+                                        "content": [
+                                             "雍正才當了年皇帝，就把康熙虧空的萬兩銀子全部還清，還爽存萬兩，而且別忘了雍正頭兩年遇到羅布藏丹津，與策妄阿拉布坦聯合叛亂，大清花了幾百萬軍餉，所以保守估計雍正賺了可能超過萬，這些錢一路到他龜兒子末年被徹底花光，連打白蓮教那群廢物都差點打輸，雍正做每件事都極有遠見，要是當年皇帝，會不會連大英帝國都滅惹"
+                                        ],
+                                        "copy_recipient": [
+                                             "chiii"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "好的，我知道了"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQ_MORE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "還有什麼需要幫助的嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NEGATE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "GOODBYE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "SendMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "message": [
-                                             "我就爛ＱＱ"
-                                        ],
-                                        "group_name": [
-                                             "Python資料科學交流社群"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "沒關係，先這樣吧，沒有問題了，再見！"
+                    "utterance": "好的"
                },
                {
                     "frames": [
@@ -1078,13 +454,22 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [],
+                              "service_call": {
+                                   "method": "SendMail",
+                                   "parameters": {
+                                        "subject": " 給雍正當30年皇帝會怎樣？",
+                                        "recipient": "婠兒",
+                                        "content": "雍正才當了年皇帝，就把康熙虧空的萬兩銀子全部還清，還爽存萬兩，而且別忘了雍正頭兩年遇到羅布藏丹津，與策妄阿拉布坦聯合叛亂，大清花了幾百萬軍餉，所以保守估計雍正賺了可能超過萬，這些錢一路到他龜兒子末年被徹底花光，連打白蓮教那群廢物都差點打輸，雍正做每件事都極有遠見，要是當年皇帝，會不會連大英帝國都滅惹",
+                                        "copy_recipient": "chiii"
+                                   }
+                              },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "好，再見"
+                    "utterance": "很榮幸為您服務，再見！"
                }
           ]
      }

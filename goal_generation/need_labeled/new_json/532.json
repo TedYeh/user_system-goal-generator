@@ -2,8 +2,7 @@
      {
           "dialogue_id": 532,
           "services": [
-               "Calendar_1",
-               "Messaging_1"
+               "Mail_1"
           ],
           "turns": [
                {
@@ -13,25 +12,25 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "LookupEvents"
+                                             "SendMail"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "LookupEvents"
+                                             "SendMail"
                                         ]
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "LookupEvents",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {}
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "請幫我找一個活動"
+                    "utterance": "我想要寫一封信，可以請你幫忙嗎？"
                },
                {
                     "frames": [
@@ -40,23 +39,17 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "event_name",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "participant",
+                                        "slot": "copy_recipient",
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "那這個活動叫甚麼呢？，這個活動有任何參加者嗎？"
+                    "utterance": "你知道這封信的副本收件者嗎？"
                },
                {
                     "frames": [
@@ -65,117 +58,112 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "Wave Dark Matter Predictions from GPU-accelerated Adaptive Mesh Refinement Simulations"
-                                        ],
-                                        "slot": "event_name",
-                                        "values": [
-                                             "Wave Dark Matter Predictions from GPU-accelerated Adaptive Mesh Refinement Simulations"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
                                              "無"
                                         ],
-                                        "slot": "participant",
+                                        "slot": "copy_recipient",
                                         "values": [
                                              "無"
                                         ]
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "copy_recipient": [
+                                             "無"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "不需設定副本收件者"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "recipient",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "subject",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道這個信件的主旨，我想知道這封信的收件者"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "TURN WANG"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "TURN WANG"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             " 免治水力開最大是什麼心態？"
+                                        ],
+                                        "slot": "subject",
+                                        "values": [
+                                             " 免治水力開最大是什麼心態？"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 91,
-                                        "slot": "event_name",
+                                        "exclusive_end": 33,
+                                        "slot": "recipient",
+                                        "start": 24
+                                   },
+                                   {
+                                        "exclusive_end": 19,
+                                        "slot": "subject",
                                         "start": 5
                                    }
                               ],
                               "state": {
-                                   "active_intent": "LookupEvents",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "event_name": [
-                                             "Wave Dark Matter Predictions from GPU-accelerated Adaptive Mesh Refinement Simulations"
-                                        ],
-                                        "participant": [
+                                        "copy_recipient": [
                                              "無"
+                                        ],
+                                        "recipient": [
+                                             "TURN WANG"
+                                        ],
+                                        "subject": [
+                                             " 免治水力開最大是什麼心態？"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "活動名稱為Wave Dark Matter Predictions from GPU-accelerated Adaptive Mesh Refinement Simulations，這個活動不需設定參加者"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM_COUNT",
-                                        "canonical_values": [
-                                             "1"
-                                        ],
-                                        "slot": "count",
-                                        "values": [
-                                             "1"
-                                        ]
-                                   },
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "Wave Dark Matter Predictions from GPU-accelerated Adaptive Mesh Refinement Simulations"
-                                        ],
-                                        "slot": "event_name",
-                                        "values": [
-                                             "Wave Dark Matter Predictions from GPU-accelerated Adaptive Mesh Refinement Simulations"
-                                        ]
-                                   },
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "無"
-                                        ],
-                                        "slot": "participant",
-                                        "values": [
-                                             "無"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 99,
-                                        "slot": "event_name",
-                                        "start": 13
-                                   }
-                              ],
-                              "service_call": {
-                                   "method": "LookupEvents",
-                                   "parameters": {
-                                        "event_name": [
-                                             "Wave Dark Matter Predictions from GPU-accelerated Adaptive Mesh Refinement Simulations"
-                                        ],
-                                        "participant": [
-                                             "無"
-                                        ]
-                                   }
-                              },
-                              "service_results": [
-                                   {
-                                        "event_name": "Wave Dark Matter Predictions from GPU-accelerated Adaptive Mesh Refinement Simulations",
-                                        "event_location": "無",
-                                        "event_content": "Special Seminar",
-                                        "participant": "無",
-                                        "event_date": "2018/3/15",
-                                        "event_time": "11:00"
-                                   }
-                              ]
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "總共有1個結果，找到名稱為Wave Dark Matter Predictions from GPU-accelerated Adaptive Mesh Refinement Simulations的活動"
+                    "utterance": "這封信叫做 免治水力開最大是什麼心態？，收件者為TURN WANG"
                },
                {
                     "frames": [
@@ -184,188 +172,17 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "event_time",
+                                        "slot": "content",
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [
-                                        "event_time"
-                                   ],
-                                   "slot_values": {
-                                        "event_name": [
-                                             "Wave Dark Matter Predictions from GPU-accelerated Adaptive Mesh Refinement Simulations"
-                                        ],
-                                        "participant": [
-                                             "無"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "我想知道活動在當天何時開始"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "09:00"
-                                        ],
-                                        "slot": "event_time",
-                                        "values": [
-                                             "09:00"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 8,
-                                        "slot": "event_time",
-                                        "start": 3
-                                   }
-                              ],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "時間為09:00"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_date",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_location",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [
-                                        "event_date",
-                                        "event_location"
-                                   ],
-                                   "slot_values": {
-                                        "event_name": [
-                                             "Wave Dark Matter Predictions from GPU-accelerated Adaptive Mesh Refinement Simulations"
-                                        ],
-                                        "participant": [
-                                             "無"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "我想知道活動在何時舉行，這個活動辦在哪裡啊？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "2018/12/4"
-                                        ],
-                                        "slot": "event_date",
-                                        "values": [
-                                             "2018/12/4"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "​中央研究院 學術活動中心"
-                                        ],
-                                        "slot": "event_location",
-                                        "values": [
-                                             "​中央研究院 學術活動中心"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 14,
-                                        "slot": "event_date",
-                                        "start": 5
-                                   },
-                                   {
-                                        "exclusive_end": 32,
-                                        "slot": "event_location",
-                                        "start": 19
-                                   }
-                              ],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "活動日期為2018/12/4，活動辦在​中央研究院 學術活動中心"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM_INTENT",
-                                        "canonical_values": [
-                                             "FindMessage"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "FindMessage"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "FindMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {}
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "請幫我找一則訊息"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "message",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "我想知道訊息內容"
+                    "utterance": "我想知道這封信的內文"
                },
                {
                     "frames": [
@@ -374,439 +191,44 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "政大也有~新設立的"
+                                             "本魯公司的廁所間，只有一個馬桶有免治，一直都是公司裡最美麗的一道風景，平常大家都相安無事，水流固定在中等強度，默默各自享受著獨處的時光，今天本魯一時不察，看也沒看就按下了按鈕，霎時間就像是有一把大寶劍無情的貫穿本魯，事後本魯只能無助的扶著廁所門喘息，請問把水流強度調到最大的人是什麼心態"
                                         ],
-                                        "slot": "message",
+                                        "slot": "content",
                                         "values": [
-                                             "政大也有~新設立的"
+                                             "本魯公司的廁所間，只有一個馬桶有免治，一直都是公司裡最美麗的一道風景，平常大家都相安無事，水流固定在中等強度，默默各自享受著獨處的時光，今天本魯一時不察，看也沒看就按下了按鈕，霎時間就像是有一把大寶劍無情的貫穿本魯，事後本魯只能無助的扶著廁所門喘息，請問把水流強度調到最大的人是什麼心態"
                                         ]
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 12,
-                                        "slot": "message",
+                                        "exclusive_end": 146,
+                                        "slot": "content",
                                         "start": 3
                                    }
                               ],
                               "state": {
-                                   "active_intent": "FindMessage",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "message": [
-                                             "政大也有~新設立的"
+                                        "copy_recipient": [
+                                             "無"
+                                        ],
+                                        "recipient": [
+                                             "TURN WANG"
+                                        ],
+                                        "subject": [
+                                             " 免治水力開最大是什麼心態？"
+                                        ],
+                                        "content": [
+                                             "本魯公司的廁所間，只有一個馬桶有免治，一直都是公司裡最美麗的一道風景，平常大家都相安無事，水流固定在中等強度，默默各自享受著獨處的時光，今天本魯一時不察，看也沒看就按下了按鈕，霎時間就像是有一把大寶劍無情的貫穿本魯，事後本魯只能無助的扶著廁所門喘息，請問把水流強度調到最大的人是什麼心態"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "跟他說政大也有~新設立的"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "contact_name",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "我想知道這則訊息是誰寄的？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "Happy699"
-                                        ],
-                                        "slot": "contact_name",
-                                        "values": [
-                                             "Happy699"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 11,
-                                        "slot": "contact_name",
-                                        "start": 3
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "FindMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "message": [
-                                             "政大也有~新設立的"
-                                        ],
-                                        "contact_name": [
-                                             "Happy699"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "用戶為Happy699"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "政大也有~新設立的"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "政大也有~新設立的"
-                                        ]
-                                   },
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "Happy699"
-                                        ],
-                                        "slot": "contact_name",
-                                        "values": [
-                                             "Happy699"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM_COUNT",
-                                        "canonical_values": [
-                                             "1"
-                                        ],
-                                        "slot": "count",
-                                        "values": [
-                                             "1"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 11,
-                                        "slot": "contact_name",
-                                        "start": 3
-                                   }
-                              ],
-                              "service_call": {
-                                   "method": "FindMessage",
-                                   "parameters": {
-                                        "message": "政大也有~新設立的",
-                                        "contact_name": "Happy699"
-                                   }
-                              },
-                              "service_results": [
-                                   {
-                                        "group_name": "AI 人工智慧",
-                                        "contact_name": "Happy699",
-                                        "message": "政大也有~新設立的"
-                                   }
-                              ]
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "找到與Happy699聊天的訊息，總共有1個結果"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "SELECT",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "FindMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "message": [
-                                             "政大也有~新設立的"
-                                        ],
-                                        "contact_name": [
-                                             "Happy699"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "好的，我知道了"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQ_MORE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "還有什麼問題嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM_INTENT",
-                                        "canonical_values": [
-                                             "AddEvent"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "AddEvent"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "AddEvent",
-                                   "requested_slots": [],
-                                   "slot_values": {}
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "請幫我在行事曆添加一個活動"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_time",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_name",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "我想知道這個活動的名稱，這個活動在幾點開始呢？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "12:15"
-                                        ],
-                                        "slot": "event_time",
-                                        "values": [
-                                             "下午12時15分"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "龍岡米干節"
-                                        ],
-                                        "slot": "event_name",
-                                        "values": [
-                                             "龍岡米干節"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 22,
-                                        "slot": "event_time",
-                                        "start": 14
-                                   },
-                                   {
-                                        "exclusive_end": 10,
-                                        "slot": "event_name",
-                                        "start": 5
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "AddEvent",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_time": [
-                                             "下午12時15分"
-                                        ],
-                                        "event_name": [
-                                             "龍岡米干節"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "活動名稱為龍岡米干節，時間為下午12時15分"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_location",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "這個活動辦在哪裡啊？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "龍岡大操場"
-                                        ],
-                                        "slot": "event_location",
-                                        "values": [
-                                             "龍岡大操場"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 9,
-                                        "slot": "event_location",
-                                        "start": 4
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "AddEvent",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_time": [
-                                             "下午12時15分"
-                                        ],
-                                        "event_name": [
-                                             "龍岡米干節"
-                                        ],
-                                        "event_location": [
-                                             "龍岡大操場"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "活動辦在龍岡大操場"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_date",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "我想知道活動在何時舉行"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "2022/4/11"
-                                        ],
-                                        "slot": "event_date",
-                                        "values": [
-                                             "今天"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 7,
-                                        "slot": "event_date",
-                                        "start": 5
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "AddEvent",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_time": [
-                                             "下午12時15分"
-                                        ],
-                                        "event_name": [
-                                             "龍岡米干節"
-                                        ],
-                                        "event_location": [
-                                             "龍岡大操場"
-                                        ],
-                                        "event_date": [
-                                             "今天"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "活動日期為今天"
+                    "utterance": "內文為本魯公司的廁所間，只有一個馬桶有免治，一直都是公司裡最美麗的一道風景，平常大家都相安無事，水流固定在中等強度，默默各自享受著獨處的時光，今天本魯一時不察，看也沒看就按下了按鈕，霎時間就像是有一把大寶劍無情的貫穿本魯，事後本魯只能無助的扶著廁所門喘息，請問把水流強度調到最大的人是什麼心態"
                },
                {
                     "frames": [
@@ -815,72 +237,82 @@
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "下午12時15分"
+                                             "無"
                                         ],
-                                        "slot": "event_time",
+                                        "slot": "copy_recipient",
                                         "values": [
-                                             "下午12時15分"
+                                             "無"
                                         ]
                                    },
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "龍岡米干節"
+                                             "TURN WANG"
                                         ],
-                                        "slot": "event_name",
+                                        "slot": "recipient",
                                         "values": [
-                                             "龍岡米干節"
+                                             "TURN WANG"
                                         ]
                                    },
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "龍岡大操場"
+                                             " 免治水力開最大是什麼心態？"
                                         ],
-                                        "slot": "event_location",
+                                        "slot": "subject",
                                         "values": [
-                                             "龍岡大操場"
+                                             " 免治水力開最大是什麼心態？"
                                         ]
                                    },
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "今天"
+                                             "本魯公司的廁所間，只有一個馬桶有免治，一直都是公司裡最美麗的一道風景，平常大家都相安無事，水流固定在中等強度，默默各自享受著獨處的時光，今天本魯一時不察，看也沒看就按下了按鈕，霎時間就像是有一把大寶劍無情的貫穿本魯，事後本魯只能無助的扶著廁所門喘息，請問把水流強度調到最大的人是什麼心態"
                                         ],
-                                        "slot": "event_date",
+                                        "slot": "content",
                                         "values": [
-                                             "今天"
+                                             "本魯公司的廁所間，只有一個馬桶有免治，一直都是公司裡最美麗的一道風景，平常大家都相安無事，水流固定在中等強度，默默各自享受著獨處的時光，今天本魯一時不察，看也沒看就按下了按鈕，霎時間就像是有一把大寶劍無情的貫穿本魯，事後本魯只能無助的扶著廁所門喘息，請問把水流強度調到最大的人是什麼心態"
                                         ]
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Mail_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 52,
-                                        "slot": "event_time",
-                                        "start": 44
+                                        "exclusive_end": 84,
+                                        "slot": "copy_recipient",
+                                        "start": 83
                                    },
                                    {
-                                        "exclusive_end": 12,
-                                        "slot": "event_name",
-                                        "start": 7
+                                        "exclusive_end": 142,
+                                        "slot": "copy_recipient",
+                                        "start": 141
                                    },
                                    {
-                                        "exclusive_end": 71,
-                                        "slot": "event_location",
-                                        "start": 66
+                                        "exclusive_end": 156,
+                                        "slot": "copy_recipient",
+                                        "start": 155
                                    },
                                    {
-                                        "exclusive_end": 28,
-                                        "slot": "event_date",
-                                        "start": 26
+                                        "exclusive_end": 201,
+                                        "slot": "recipient",
+                                        "start": 192
+                                   },
+                                   {
+                                        "exclusive_end": 23,
+                                        "slot": "subject",
+                                        "start": 9
+                                   },
+                                   {
+                                        "exclusive_end": 184,
+                                        "slot": "content",
+                                        "start": 41
                                    }
                               ],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "確認要建立名叫龍岡米干節的活動嗎？，確認要建立舉辦在今天的活動嗎？，確認要建立舉辦在當天下午12時15分的活動嗎？，確認要建立舉辦在龍岡大操場的活動嗎？"
+                    "utterance": "請確認要寄出主旨為 免治水力開最大是什麼心態？的信件嗎？，請確認要寄出的信件內容:本魯公司的廁所間，只有一個馬桶有免治，一直都是公司裡最美麗的一道風景，平常大家都相安無事，水流固定在中等強度，默默各自享受著獨處的時光，今天本魯一時不察，看也沒看就按下了按鈕，霎時間就像是有一把大寶劍無情的貫穿本魯，事後本魯只能無助的扶著廁所門喘息，請問把水流強度調到最大的人是什麼心態，確認要寄信件給TURN WANG嗎？"
                },
                {
                     "frames": [
@@ -893,23 +325,23 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "AddEvent",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "event_time": [
-                                             "下午12時15分"
+                                        "copy_recipient": [
+                                             "無"
                                         ],
-                                        "event_name": [
-                                             "龍岡米干節"
+                                        "recipient": [
+                                             "TURN WANG"
                                         ],
-                                        "event_location": [
-                                             "龍岡大操場"
+                                        "subject": [
+                                             " 免治水力開最大是什麼心態？"
                                         ],
-                                        "event_date": [
-                                             "今天"
+                                        "content": [
+                                             "本魯公司的廁所間，只有一個馬桶有免治，一直都是公司裡最美麗的一道風景，平常大家都相安無事，水流固定在中等強度，默默各自享受著獨處的時光，今天本魯一時不察，看也沒看就按下了按鈕，霎時間就像是有一把大寶劍無情的貫穿本魯，事後本魯只能無助的扶著廁所門喘息，請問把水流強度調到最大的人是什麼心態"
                                         ]
                                    }
                               }
@@ -929,58 +361,58 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "service_call": {
-                                   "method": "AddEvent",
+                                   "method": "SendMail",
                                    "parameters": {
-                                        "event_time": "下午12時15分",
-                                        "event_name": "龍岡米干節",
-                                        "event_location": "龍岡大操場",
-                                        "event_date": "今天"
+                                        "copy_recipient": "無",
+                                        "recipient": "TURN WANG",
+                                        "subject": " 免治水力開最大是什麼心態？",
+                                        "content": "本魯公司的廁所間，只有一個馬桶有免治，一直都是公司裡最美麗的一道風景，平常大家都相安無事，水流固定在中等強度，默默各自享受著獨處的時光，今天本魯一時不察，看也沒看就按下了按鈕，霎時間就像是有一把大寶劍無情的貫穿本魯，事後本魯只能無助的扶著廁所門喘息，請問把水流強度調到最大的人是什麼心態"
                                    }
                               },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "多虧有您的配合，活動已添加至行事曆"
+                    "utterance": "多虧有您的配合，信件已成功寄出"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "THANK_YOU",
+                                        "act": "SELECT",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "AddEvent",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "event_time": [
-                                             "下午12時15分"
+                                        "copy_recipient": [
+                                             "無"
                                         ],
-                                        "event_name": [
-                                             "龍岡米干節"
+                                        "recipient": [
+                                             "TURN WANG"
                                         ],
-                                        "event_location": [
-                                             "龍岡大操場"
+                                        "subject": [
+                                             " 免治水力開最大是什麼心態？"
                                         ],
-                                        "event_date": [
-                                             "今天"
+                                        "content": [
+                                             "本魯公司的廁所間，只有一個馬桶有免治，一直都是公司裡最美麗的一道風景，平常大家都相安無事，水流固定在中等強度，默默各自享受著獨處的時光，今天本魯一時不察，看也沒看就按下了按鈕，霎時間就像是有一把大寶劍無情的貫穿本魯，事後本魯只能無助的扶著廁所門喘息，請問把水流強度調到最大的人是什麼心態"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "哎呀，該怎麼感謝你好呢？"
+                    "utterance": "好的，我知道了"
                },
                {
                     "frames": [
@@ -993,13 +425,13 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "還有什麼需要幫助的嗎？"
+                    "utterance": "還需要什麼幫助嗎？"
                },
                {
                     "frames": [
@@ -1012,36 +444,36 @@
                                         "values": []
                                    },
                                    {
-                                        "act": "GOODBYE",
+                                        "act": "THANK_YOU",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "AddEvent",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "event_time": [
-                                             "下午12時15分"
+                                        "copy_recipient": [
+                                             "無"
                                         ],
-                                        "event_name": [
-                                             "龍岡米干節"
+                                        "recipient": [
+                                             "TURN WANG"
                                         ],
-                                        "event_location": [
-                                             "龍岡大操場"
+                                        "subject": [
+                                             " 免治水力開最大是什麼心態？"
                                         ],
-                                        "event_date": [
-                                             "今天"
+                                        "content": [
+                                             "本魯公司的廁所間，只有一個馬桶有免治，一直都是公司裡最美麗的一道風景，平常大家都相安無事，水流固定在中等強度，默默各自享受著獨處的時光，今天本魯一時不察，看也沒看就按下了按鈕，霎時間就像是有一把大寶劍無情的貫穿本魯，事後本魯只能無助的扶著廁所門喘息，請問把水流強度調到最大的人是什麼心態"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "沒關係，先這樣吧，沒有問題了，再見！"
+                    "utterance": "沒關係，先這樣吧，我知道了，謝謝你啊！"
                },
                {
                     "frames": [
@@ -1054,13 +486,13 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "再見！祝您生活愉快！"
+                    "utterance": "有問題可以隨時聯繫我！祝您生活愉快！再見！"
                }
           ]
      }

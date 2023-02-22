@@ -2,8 +2,7 @@
      {
           "dialogue_id": 124,
           "services": [
-               "Calendar_1",
-               "Messaging_1"
+               "Calendar_1"
           ],
           "turns": [
                {
@@ -13,36 +12,30 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "LookupEvents"
+                                             "AddEvent"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "LookupEvents"
+                                             "AddEvent"
                                         ]
                                    }
                               ],
                               "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "LookupEvents",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {}
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "請幫我找一個活動"
+                    "utterance": "我想要添加一個活動，可以請你幫忙嗎？"
                },
                {
                     "frames": [
                          {
                               "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_date",
-                                        "values": []
-                                   },
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
@@ -56,7 +49,7 @@
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "那這個活動叫甚麼呢？，我想知道活動在何時舉行"
+                    "utterance": "我想知道這個活動的名稱"
                },
                {
                     "frames": [
@@ -65,181 +58,405 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "2019/11/12"
-                                        ],
-                                        "slot": "event_date",
-                                        "values": [
-                                             "明天"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "新媒體直播技術與自媒體經營技巧講座"
+                                             "動物移動的秘密"
                                         ],
                                         "slot": "event_name",
                                         "values": [
-                                             "新媒體直播技術與自媒體經營技巧講座"
+                                             "動物移動的秘密"
                                         ]
                                    }
                               ],
                               "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 29,
+                                        "exclusive_end": 12,
+                                        "slot": "event_name",
+                                        "start": 5
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "AddEvent",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_name": [
+                                             "動物移動的秘密"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "活動名稱叫動物移動的秘密"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_location",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "這個活動辦在哪裡啊？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "臺北市文山區新光路二段54號"
+                                        ],
+                                        "slot": "event_location",
+                                        "values": [
+                                             "臺北市文山區新光路二段54號"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 18,
+                                        "slot": "event_location",
+                                        "start": 4
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "AddEvent",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_name": [
+                                             "動物移動的秘密"
+                                        ],
+                                        "event_location": [
+                                             "臺北市文山區新光路二段54號"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "活動辦在臺北市文山區新光路二段54號"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
                                         "slot": "event_date",
-                                        "start": 27
+                                        "values": []
                                    },
                                    {
-                                        "exclusive_end": 23,
-                                        "slot": "event_name",
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "participant",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道活動在何時舉行，這個活動有任何參加者嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "2022/11/20"
+                                        ],
+                                        "slot": "event_date",
+                                        "values": [
+                                             "11月20號"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "阿宏.阿伯"
+                                        ],
+                                        "slot": "participant",
+                                        "values": [
+                                             "阿宏.阿伯"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 9,
+                                        "slot": "event_date",
+                                        "start": 3
+                                   },
+                                   {
+                                        "exclusive_end": 16,
+                                        "slot": "participant",
+                                        "start": 11
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "AddEvent",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_name": [
+                                             "動物移動的秘密"
+                                        ],
+                                        "event_location": [
+                                             "臺北市文山區新光路二段54號"
+                                        ],
+                                        "event_date": [
+                                             "11月20號"
+                                        ],
+                                        "participant": [
+                                             "阿宏.阿伯"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "日期為11月20號，有阿宏.阿伯會參加"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_time",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道活動在當天何時開始"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "10:56"
+                                        ],
+                                        "slot": "event_time",
+                                        "values": [
+                                             "上午10點56分"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 14,
+                                        "slot": "event_time",
                                         "start": 6
                                    }
                               ],
                               "state": {
-                                   "active_intent": "LookupEvents",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "event_date": [
-                                             "明天"
-                                        ],
                                         "event_name": [
-                                             "新媒體直播技術與自媒體經營技巧講座"
+                                             "動物移動的秘密"
+                                        ],
+                                        "event_location": [
+                                             "臺北市文山區新光路二段54號"
+                                        ],
+                                        "event_date": [
+                                             "11月20號"
+                                        ],
+                                        "participant": [
+                                             "阿宏.阿伯"
+                                        ],
+                                        "event_time": [
+                                             "上午10點56分"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "這個活動叫做新媒體直播技術與自媒體經營技巧講座，日期為明天"
+                    "utterance": "時間為當天的上午10點56分"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_content",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "這個活動有任何內容備註嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
+                                        "act": "CONFIRM",
                                         "canonical_values": [
-                                             "演講或講座 Lectures"
+                                             "動物移動的秘密"
                                         ],
-                                        "slot": "event_content",
+                                        "slot": "event_name",
                                         "values": [
-                                             "演講或講座 Lectures"
+                                             "動物移動的秘密"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "臺北市文山區新光路二段54號"
+                                        ],
+                                        "slot": "event_location",
+                                        "values": [
+                                             "臺北市文山區新光路二段54號"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "11月20號"
+                                        ],
+                                        "slot": "event_date",
+                                        "values": [
+                                             "11月20號"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "阿宏.阿伯"
+                                        ],
+                                        "slot": "participant",
+                                        "values": [
+                                             "阿宏.阿伯"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "上午10點56分"
+                                        ],
+                                        "slot": "event_time",
+                                        "values": [
+                                             "上午10點56分"
                                         ]
                                    }
                               ],
                               "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 17,
-                                        "slot": "event_content",
-                                        "start": 3
+                                        "exclusive_end": 14,
+                                        "slot": "event_name",
+                                        "start": 7
+                                   },
+                                   {
+                                        "exclusive_end": 107,
+                                        "slot": "event_location",
+                                        "start": 93
+                                   },
+                                   {
+                                        "exclusive_end": 34,
+                                        "slot": "event_date",
+                                        "start": 28
+                                   },
+                                   {
+                                        "exclusive_end": 77,
+                                        "slot": "participant",
+                                        "start": 72
+                                   },
+                                   {
+                                        "exclusive_end": 58,
+                                        "slot": "event_time",
+                                        "start": 50
                                    }
                               ],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "確認要建立名叫動物移動的秘密的活動嗎？，確認要建立舉辦在11月20號的活動嗎？，確認要建立舉辦在當天上午10點56分的活動嗎？，確認要建立舉辦有阿宏.阿伯參加的活動嗎？，確認要建立舉辦在臺北市文山區新光路二段54號的活動嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "AFFIRM",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
                               "state": {
-                                   "active_intent": "LookupEvents",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "event_date": [
-                                             "明天"
-                                        ],
                                         "event_name": [
-                                             "新媒體直播技術與自媒體經營技巧講座"
+                                             "動物移動的秘密"
                                         ],
-                                        "event_content": [
-                                             "演講或講座 Lectures"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "內容為演講或講座 Lectures"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NOTIFY_FAILURE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_call": {
-                                   "method": "LookupEvents",
-                                   "parameters": {
-                                        "event_date": "明天",
-                                        "event_name": "新媒體直播技術與自媒體經營技巧講座",
-                                        "event_content": "演講或講座 Lectures"
-                                   }
-                              },
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "不好意思，在行事曆上沒辦法找到符合您要求的活動，請用其他條件查詢"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NEGATE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "GOODBYE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [],
-                                   "slot_values": {
+                                        "event_location": [
+                                             "臺北市文山區新光路二段54號"
+                                        ],
                                         "event_date": [
-                                             "明天"
+                                             "11月20號"
                                         ],
-                                        "event_name": [
-                                             "新媒體直播技術與自媒體經營技巧講座"
+                                        "participant": [
+                                             "阿宏.阿伯"
                                         ],
-                                        "event_content": [
-                                             "演講或講座 Lectures"
+                                        "event_time": [
+                                             "上午10點56分"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "沒關係，先這樣吧，再見"
+                    "utterance": "好的，看起來沒甚麼問題"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NOTIFY_SUCCESS",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_call": {
+                                   "method": "AddEvent",
+                                   "parameters": {
+                                        "event_name": "動物移動的秘密",
+                                        "event_location": "臺北市文山區新光路二段54號",
+                                        "event_date": "11月20號",
+                                        "participant": "阿宏.阿伯",
+                                        "event_time": "上午10點56分"
+                                   }
+                              },
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "多虧有您的配合，活動已添加至行事曆"
                },
                {
                     "frames": [
@@ -254,234 +471,31 @@
                               ],
                               "service": "Calendar_1",
                               "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "歡迎下次諮詢，再見"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM_INTENT",
-                                        "canonical_values": [
-                                             "FindMessage"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "FindMessage"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "程式語言讀書會Programming Book Club"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "程式語言讀書會Programming Book Club"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "他們只是表現得比較有自信而已。"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "他們只是表現得比較有自信而已。"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 68,
-                                        "slot": "group_name",
-                                        "start": 40
-                                   },
-                                   {
-                                        "exclusive_end": 35,
-                                        "slot": "message",
-                                        "start": 20
-                                   }
-                              ],
                               "state": {
-                                   "active_intent": "FindMessage",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "message": [
-                                             "他們只是表現得比較有自信而已。"
+                                        "event_name": [
+                                             "動物移動的秘密"
                                         ],
-                                        "group_name": [
-                                             "程式語言讀書會Programming Book Club"
+                                        "event_location": [
+                                             "臺北市文山區新光路二段54號"
+                                        ],
+                                        "event_date": [
+                                             "11月20號"
+                                        ],
+                                        "participant": [
+                                             "阿宏.阿伯"
+                                        ],
+                                        "event_time": [
+                                             "上午10點56分"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我想要找則訊息，可以請你幫忙嗎？，跟他說他們只是表現得比較有自信而已。，應該是在程式語言讀書會Programming Book Club群組中的訊息"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM_COUNT",
-                                        "canonical_values": [
-                                             "1"
-                                        ],
-                                        "slot": "count",
-                                        "values": [
-                                             "1"
-                                        ]
-                                   },
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "他們只是表現得比較有自信而已。"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "他們只是表現得比較有自信而已。"
-                                        ]
-                                   },
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "程式語言讀書會Programming Book Club"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "程式語言讀書會Programming Book Club"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 39,
-                                        "slot": "group_name",
-                                        "start": 11
-                                   }
-                              ],
-                              "service_call": {
-                                   "method": "FindMessage",
-                                   "parameters": {
-                                        "message": [
-                                             "他們只是表現得比較有自信而已。"
-                                        ],
-                                        "group_name": [
-                                             "程式語言讀書會Programming Book Club"
-                                        ]
-                                   }
-                              },
-                              "service_results": [
-                                   {
-                                        "group_name": "程式語言讀書會Programming Book Club",
-                                        "contact_name": "蘇兆民",
-                                        "message": "他們只是表現得比較有自信而已。"
-                                   }
-                              ]
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "總共有1個結果，找到在程式語言讀書會Programming Book Club群組的聊天訊息"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST_ALTS",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "FindMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "message": [
-                                             "他們只是表現得比較有自信而已。"
-                                        ],
-                                        "group_name": [
-                                             "程式語言讀書會Programming Book Club"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "能提供更多類似的訊息嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NOTIFY_FAILURE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_call": {
-                                   "method": "FindMessage",
-                                   "parameters": {
-                                        "message": "他們只是表現得比較有自信而已。",
-                                        "group_name": "程式語言讀書會Programming Book Club"
-                                   }
-                              },
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "不好意思，沒辦法找到符合您要求的訊息"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NEGATE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "GOODBYE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "FindMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "message": [
-                                             "他們只是表現得比較有自信而已。"
-                                        ],
-                                        "group_name": [
-                                             "程式語言讀書會Programming Book Club"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "沒關係，先這樣吧，沒有問題了，再見吧！"
+                    "utterance": "沒有問題了，再見吧！"
                },
                {
                     "frames": [
@@ -494,20 +508,23 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_call": {
-                                   "method": "FindMessage",
+                                   "method": "AddEvent",
                                    "parameters": {
-                                        "message": "他們只是表現得比較有自信而已。",
-                                        "group_name": "程式語言讀書會Programming Book Club"
+                                        "event_name": "動物移動的秘密",
+                                        "event_location": "臺北市文山區新光路二段54號",
+                                        "event_date": "11月20號",
+                                        "participant": "阿宏.阿伯",
+                                        "event_time": "上午10點56分"
                                    }
                               },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "好，再見"
+                    "utterance": "有問題可以隨時聯繫我！祝您生活愉快！再見！"
                }
           ]
      }

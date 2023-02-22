@@ -2,7 +2,7 @@
      {
           "dialogue_id": 295,
           "services": [
-               "Messaging_1",
+               "Calendar_1",
                "Mail_1"
           ],
           "turns": [
@@ -13,25 +13,25 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "FindMessage"
+                                             "AddEvent"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "FindMessage"
+                                             "AddEvent"
                                         ]
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "FindMessage",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {}
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "請幫我找一則訊息"
+                    "utterance": "請幫我在行事曆添加一個活動"
                },
                {
                     "frames": [
@@ -40,17 +40,23 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "group_name",
+                                        "slot": "event_time",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_name",
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "群組名稱為何？"
+                    "utterance": "那這個活動叫甚麼呢？，我想知道活動在當天何時開始"
                },
                {
                     "frames": [
@@ -59,106 +65,53 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "Python資料科學交流社群"
+                                             "12:53"
                                         ],
-                                        "slot": "group_name",
+                                        "slot": "event_time",
                                         "values": [
-                                             "Python資料科學交流社群"
+                                             "下午12點53分"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "東海岸運動觀光活動"
+                                        ],
+                                        "slot": "event_name",
+                                        "values": [
+                                             "東海岸運動觀光活動"
                                         ]
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 18,
-                                        "slot": "group_name",
-                                        "start": 4
+                                        "exclusive_end": 29,
+                                        "slot": "event_time",
+                                        "start": 21
+                                   },
+                                   {
+                                        "exclusive_end": 14,
+                                        "slot": "event_name",
+                                        "start": 5
                                    }
                               ],
                               "state": {
-                                   "active_intent": "FindMessage",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "group_name": [
-                                             "Python資料科學交流社群"
+                                        "event_time": [
+                                             "下午12點53分"
+                                        ],
+                                        "event_name": [
+                                             "東海岸運動觀光活動"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "應該是在Python資料科學交流社群群組中的訊息"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "Python資料科學交流社群"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "Python資料科學交流社群"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM_COUNT",
-                                        "canonical_values": [
-                                             "5"
-                                        ],
-                                        "slot": "count",
-                                        "values": [
-                                             "5"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 17,
-                                        "slot": "group_name",
-                                        "start": 3
-                                   }
-                              ],
-                              "service_call": {
-                                   "method": "FindMessage",
-                                   "parameters": {
-                                        "group_name": "Python資料科學交流社群"
-                                   }
-                              },
-                              "service_results": [
-                                   {
-                                        "group_name": "Python資料科學交流社群",
-                                        "contact_name": "超級BG",
-                                        "message": "coscup 唯一缺點就是平行議程軌太雜，建議先安排自己想聽的議程，到時候比較好搶位子"
-                                   },
-                                   {
-                                        "group_name": "Python資料科學交流社群",
-                                        "contact_name": "Draz",
-                                        "message": "因為都是學校教室 位子有限"
-                                   },
-                                   {
-                                        "group_name": "Python資料科學交流社群",
-                                        "contact_name": "Hong Fly",
-                                        "message": "推算回去感覺你國小就有涉獵相關討論了w"
-                                   },
-                                   {
-                                        "group_name": "Python資料科學交流社群",
-                                        "contact_name": "古青箭",
-                                        "message": "你是要平分嗎"
-                                   },
-                                   {
-                                        "group_name": "Python資料科學交流社群",
-                                        "contact_name": "zirean",
-                                        "message": "你是有寫錯嗎 不然照你分這樣有什麼問題"
-                                   }
-                              ]
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "找到在Python資料科學交流社群群組的聊天訊息，總共有5個結果"
+                    "utterance": "活動名稱叫東海岸運動觀光活動，時間為當天的下午12點53分"
                },
                {
                     "frames": [
@@ -167,27 +120,23 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "contact_name",
+                                        "slot": "event_date",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "participant",
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
-                              "state": {
-                                   "active_intent": "FindMessage",
-                                   "requested_slots": [
-                                        "contact_name"
-                                   ],
-                                   "slot_values": {
-                                        "group_name": [
-                                             "Python資料科學交流社群"
-                                        ]
-                                   }
-                              }
+                              "service_results": []
                          }
                     ],
-                    "speaker": "USER",
-                    "utterance": "我想知道這則訊息是誰寄的？"
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道活動在何時舉行，有人參加這個活動嗎？"
                },
                {
                     "frames": [
@@ -196,27 +145,59 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "cross"
+                                             "2022/5/13"
                                         ],
-                                        "slot": "contact_name",
+                                        "slot": "event_date",
                                         "values": [
-                                             "cross"
+                                             "5月13號"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "藍色小馬"
+                                        ],
+                                        "slot": "participant",
+                                        "values": [
+                                             "藍色小馬"
                                         ]
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [
                                    {
                                         "exclusive_end": 8,
-                                        "slot": "contact_name",
+                                        "slot": "event_date",
                                         "start": 3
+                                   },
+                                   {
+                                        "exclusive_end": 14,
+                                        "slot": "participant",
+                                        "start": 10
                                    }
                               ],
-                              "service_results": []
+                              "state": {
+                                   "active_intent": "AddEvent",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_time": [
+                                             "下午12點53分"
+                                        ],
+                                        "event_name": [
+                                             "東海岸運動觀光活動"
+                                        ],
+                                        "event_date": [
+                                             "5月13號"
+                                        ],
+                                        "participant": [
+                                             "藍色小馬"
+                                        ]
+                                   }
+                              }
                          }
                     ],
-                    "speaker": "SYSTEM",
-                    "utterance": "用戶為cross"
+                    "speaker": "USER",
+                    "utterance": "活動在5月13號，有藍色小馬會參加"
                },
                {
                     "frames": [
@@ -225,27 +206,17 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "message",
+                                        "slot": "event_location",
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
-                              "state": {
-                                   "active_intent": "FindMessage",
-                                   "requested_slots": [
-                                        "message"
-                                   ],
-                                   "slot_values": {
-                                        "group_name": [
-                                             "Python資料科學交流社群"
-                                        ]
-                                   }
-                              }
+                              "service_results": []
                          }
                     ],
-                    "speaker": "USER",
-                    "utterance": "我想知道他說了什麼？"
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道這個活動的地點"
                },
                {
                     "frames": [
@@ -254,251 +225,136 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "歡迎加入Python資料科學交流社群"
+                                             "秀姑巒溪遊客中心"
                                         ],
-                                        "slot": "message",
+                                        "slot": "event_location",
                                         "values": [
-                                             "歡迎加入Python資料科學交流社群"
+                                             "秀姑巒溪遊客中心"
                                         ]
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 21,
-                                        "slot": "message",
+                                        "exclusive_end": 11,
+                                        "slot": "event_location",
                                         "start": 3
                                    }
                               ],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "訊息為歡迎加入Python資料科學交流社群"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "SELECT",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
                               "state": {
-                                   "active_intent": "SendMail",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "group_name": [
-                                             "Python資料科學交流社群"
+                                        "event_time": [
+                                             "下午12點53分"
+                                        ],
+                                        "event_name": [
+                                             "東海岸運動觀光活動"
+                                        ],
+                                        "event_date": [
+                                             "5月13號"
+                                        ],
+                                        "participant": [
+                                             "藍色小馬"
+                                        ],
+                                        "event_location": [
+                                             "秀姑巒溪遊客中心"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "好的"
+                    "utterance": "地點為秀姑巒溪遊客中心"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "OFFER_INTENT",
+                                        "act": "CONFIRM",
                                         "canonical_values": [
-                                             "SendMail"
+                                             "下午12點53分"
                                         ],
-                                        "slot": "intent",
+                                        "slot": "event_time",
                                         "values": [
-                                             "SendMail"
+                                             "下午12點53分"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "東海岸運動觀光活動"
+                                        ],
+                                        "slot": "event_name",
+                                        "values": [
+                                             "東海岸運動觀光活動"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "5月13號"
+                                        ],
+                                        "slot": "event_date",
+                                        "values": [
+                                             "5月13號"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "藍色小馬"
+                                        ],
+                                        "slot": "participant",
+                                        "values": [
+                                             "藍色小馬"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "秀姑巒溪遊客中心"
+                                        ],
+                                        "slot": "event_location",
+                                        "values": [
+                                             "秀姑巒溪遊客中心"
                                         ]
                                    }
                               ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "您有寄信的需求嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "加入迷彩人生精彩"
-                                        ],
-                                        "slot": "recipient",
-                                        "values": [
-                                             "加入迷彩人生精彩"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             " 館長徒手打的贏熊的八卦？"
-                                        ],
-                                        "slot": "subject",
-                                        "values": [
-                                             " 館長徒手打的贏熊的八卦？"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "想問一下如果館長遇到有殺意的熊，打的贏嗎？徒手不帶武器，可以打的贏熊嗎，還是量級差距，有這方面的八卦嗎"
-                                        ],
-                                        "slot": "content",
-                                        "values": [
-                                             "想問一下如果館長遇到有殺意的熊，打的贏嗎？徒手不帶武器，可以打的贏熊嗎，還是量級差距，有這方面的八卦嗎"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "無"
-                                        ],
-                                        "slot": "copy_recipient",
-                                        "values": [
-                                             "無"
-                                        ]
-                                   },
-                                   {
-                                        "act": "AFFIRM_INTENT",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 86,
-                                        "slot": "recipient",
-                                        "start": 78
+                                        "exclusive_end": 59,
+                                        "slot": "event_time",
+                                        "start": 51
                                    },
                                    {
-                                        "exclusive_end": 18,
-                                        "slot": "subject",
-                                        "start": 5
+                                        "exclusive_end": 16,
+                                        "slot": "event_name",
+                                        "start": 7
                                    },
                                    {
-                                        "exclusive_end": 73,
-                                        "slot": "content",
-                                        "start": 22
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "SendMail",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "group_name": [
-                                             "Python資料科學交流社群"
-                                        ],
-                                        "recipient": [
-                                             "加入迷彩人生精彩"
-                                        ],
-                                        "subject": [
-                                             " 館長徒手打的贏熊的八卦？"
-                                        ],
-                                        "content": [
-                                             "想問一下如果館長遇到有殺意的熊，打的贏嗎？徒手不帶武器，可以打的贏熊嗎，還是量級差距，有這方面的八卦嗎"
-                                        ],
-                                        "copy_recipient": [
-                                             "無"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "信件主旨叫 館長徒手打的贏熊的八卦？，內容為想問一下如果館長遇到有殺意的熊，打的贏嗎？徒手不帶武器，可以打的贏熊嗎，還是量級差距，有這方面的八卦嗎，收件者為加入迷彩人生精彩，不需設定副本收件者，好的，麻煩你了"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "Python資料科學交流社群"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "Python資料科學交流社群"
-                                        ]
+                                        "exclusive_end": 35,
+                                        "slot": "event_date",
+                                        "start": 30
                                    },
                                    {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "加入迷彩人生精彩"
-                                        ],
-                                        "slot": "recipient",
-                                        "values": [
-                                             "加入迷彩人生精彩"
-                                        ]
+                                        "exclusive_end": 77,
+                                        "slot": "participant",
+                                        "start": 73
                                    },
                                    {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             " 館長徒手打的贏熊的八卦？"
-                                        ],
-                                        "slot": "subject",
-                                        "values": [
-                                             " 館長徒手打的贏熊的八卦？"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "想問一下如果館長遇到有殺意的熊，打的贏嗎？徒手不帶武器，可以打的贏熊嗎，還是量級差距，有這方面的八卦嗎"
-                                        ],
-                                        "slot": "content",
-                                        "values": [
-                                             "想問一下如果館長遇到有殺意的熊，打的贏嗎？徒手不帶武器，可以打的贏熊嗎，還是量級差距，有這方面的八卦嗎"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "無"
-                                        ],
-                                        "slot": "copy_recipient",
-                                        "values": [
-                                             "無"
-                                        ]
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 107,
-                                        "slot": "recipient",
-                                        "start": 99
-                                   },
-                                   {
-                                        "exclusive_end": 22,
-                                        "slot": "subject",
-                                        "start": 9
-                                   },
-                                   {
-                                        "exclusive_end": 91,
-                                        "slot": "content",
-                                        "start": 40
+                                        "exclusive_end": 101,
+                                        "slot": "event_location",
+                                        "start": 93
                                    }
                               ],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "請確認要寄出主旨為 館長徒手打的贏熊的八卦？的信件嗎？，請確認要寄出的信件內容:想問一下如果館長遇到有殺意的熊，打的贏嗎？徒手不帶武器，可以打的贏熊嗎，還是量級差距，有這方面的八卦嗎，確認要寄信件給加入迷彩人生精彩嗎？"
+                    "utterance": "確認要建立名叫東海岸運動觀光活動的活動嗎？，確認要建立舉辦在5月13號的活動嗎？，確認要建立舉辦在當天下午12點53分的活動嗎？，確認要建立舉辦有藍色小馬參加的活動嗎？，確認要建立舉辦在秀姑巒溪遊客中心的活動嗎？"
                },
                {
                     "frames": [
@@ -511,26 +367,26 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMail",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "group_name": [
-                                             "Python資料科學交流社群"
+                                        "event_time": [
+                                             "下午12點53分"
                                         ],
-                                        "recipient": [
-                                             "加入迷彩人生精彩"
+                                        "event_name": [
+                                             "東海岸運動觀光活動"
                                         ],
-                                        "subject": [
-                                             " 館長徒手打的贏熊的八卦？"
+                                        "event_date": [
+                                             "5月13號"
                                         ],
-                                        "content": [
-                                             "想問一下如果館長遇到有殺意的熊，打的贏嗎？徒手不帶武器，可以打的贏熊嗎，還是量級差距，有這方面的八卦嗎"
+                                        "participant": [
+                                             "藍色小馬"
                                         ],
-                                        "copy_recipient": [
-                                             "無"
+                                        "event_location": [
+                                             "秀姑巒溪遊客中心"
                                         ]
                                    }
                               }
@@ -550,30 +406,200 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_call": {
-                                   "method": "SendMail",
+                                   "method": "AddEvent",
                                    "parameters": {
-                                        "group_name": "Python資料科學交流社群",
-                                        "recipient": "加入迷彩人生精彩",
-                                        "subject": " 館長徒手打的贏熊的八卦？",
-                                        "content": "想問一下如果館長遇到有殺意的熊，打的贏嗎？徒手不帶武器，可以打的贏熊嗎，還是量級差距，有這方面的八卦嗎",
-                                        "copy_recipient": "無"
+                                        "event_time": "下午12點53分",
+                                        "event_name": "東海岸運動觀光活動",
+                                        "event_date": "5月13號",
+                                        "participant": "藍色小馬",
+                                        "event_location": "秀姑巒溪遊客中心"
                                    }
                               },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "多虧有您的配合，信件已成功寄出"
+                    "utterance": "多虧有您的配合，活動已添加至行事曆"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "THANK_YOU",
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "SendMail"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "SendMail"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             " 路上紅線黃線要不要乾脆塗掉算了"
+                                        ],
+                                        "slot": "subject",
+                                        "values": [
+                                             " 路上紅線黃線要不要乾脆塗掉算了"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "如題，畫那些線害停車的人還要想辦法規避，事實上是違停卸貨的還是一堆檢舉沒用也不會罰，那要不乾脆全部塗掉好了，道駕考試也都不用考相關題目了，還能感覺路變寬了，有卦嗎"
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "如題，畫那些線害停車的人還要想辦法規避，事實上是違停卸貨的還是一堆檢舉沒用也不會罰，那要不乾脆全部塗掉好了，道駕考試也都不用考相關題目了，還能感覺路變寬了，有卦嗎"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "XiaoYu"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "XiaoYu"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "鉙羊默"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "鉙羊默"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 31,
+                                        "slot": "subject",
+                                        "start": 15
+                                   },
+                                   {
+                                        "exclusive_end": 116,
+                                        "slot": "content",
+                                        "start": 35
+                                   },
+                                   {
+                                        "exclusive_end": 142,
+                                        "slot": "copy_recipient",
+                                        "start": 136
+                                   },
+                                   {
+                                        "exclusive_end": 124,
+                                        "slot": "recipient",
+                                        "start": 121
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "鉙羊默"
+                                        ],
+                                        "subject": [
+                                             " 路上紅線黃線要不要乾脆塗掉算了"
+                                        ],
+                                        "content": [
+                                             "如題，畫那些線害停車的人還要想辦法規避，事實上是違停卸貨的還是一堆檢舉沒用也不會罰，那要不乾脆全部塗掉好了，道駕考試也都不用考相關題目了，還能感覺路變寬了，有卦嗎"
+                                        ],
+                                        "copy_recipient": [
+                                             "XiaoYu"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "請幫我寄出一封信件，這封信叫做 路上紅線黃線要不要乾脆塗掉算了，內容為如題，畫那些線害停車的人還要想辦法規避，事實上是違停卸貨的還是一堆檢舉沒用也不會罰，那要不乾脆全部塗掉好了，道駕考試也都不用考相關題目了，還能感覺路變寬了，有卦嗎，這封信由鉙羊默收，這封信需要以副本寄給XiaoYu"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "鉙羊默"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "鉙羊默"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             " 路上紅線黃線要不要乾脆塗掉算了"
+                                        ],
+                                        "slot": "subject",
+                                        "values": [
+                                             " 路上紅線黃線要不要乾脆塗掉算了"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "如題，畫那些線害停車的人還要想辦法規避，事實上是違停卸貨的還是一堆檢舉沒用也不會罰，那要不乾脆全部塗掉好了，道駕考試也都不用考相關題目了，還能感覺路變寬了，有卦嗎"
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "如題，畫那些線害停車的人還要想辦法規避，事實上是違停卸貨的還是一堆檢舉沒用也不會罰，那要不乾脆全部塗掉好了，道駕考試也都不用考相關題目了，還能感覺路變寬了，有卦嗎"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "XiaoYu"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "XiaoYu"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 135,
+                                        "slot": "recipient",
+                                        "start": 132
+                                   },
+                                   {
+                                        "exclusive_end": 25,
+                                        "slot": "subject",
+                                        "start": 9
+                                   },
+                                   {
+                                        "exclusive_end": 124,
+                                        "slot": "content",
+                                        "start": 43
+                                   }
+                              ],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "請確認要寄出主旨為 路上紅線黃線要不要乾脆塗掉算了的信件嗎？，請確認要寄出的信件內容:如題，畫那些線害停車的人還要想辦法規避，事實上是違停卸貨的還是一堆檢舉沒用也不會罰，那要不乾脆全部塗掉好了，道駕考試也都不用考相關題目了，還能感覺路變寬了，有卦嗎，確認要寄信件給鉙羊默嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "AFFIRM",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
@@ -585,27 +611,24 @@
                                    "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "group_name": [
-                                             "Python資料科學交流社群"
-                                        ],
                                         "recipient": [
-                                             "加入迷彩人生精彩"
+                                             "鉙羊默"
                                         ],
                                         "subject": [
-                                             " 館長徒手打的贏熊的八卦？"
+                                             " 路上紅線黃線要不要乾脆塗掉算了"
                                         ],
                                         "content": [
-                                             "想問一下如果館長遇到有殺意的熊，打的贏嗎？徒手不帶武器，可以打的贏熊嗎，還是量級差距，有這方面的八卦嗎"
+                                             "如題，畫那些線害停車的人還要想辦法規避，事實上是違停卸貨的還是一堆檢舉沒用也不會罰，那要不乾脆全部塗掉好了，道駕考試也都不用考相關題目了，還能感覺路變寬了，有卦嗎"
                                         ],
                                         "copy_recipient": [
-                                             "無"
+                                             "XiaoYu"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "謝謝啦"
+                    "utterance": "我對以上資訊沒問題"
                },
                {
                     "frames": [
@@ -631,254 +654,42 @@
                          {
                               "actions": [
                                    {
-                                        "act": "INFORM_INTENT",
-                                        "canonical_values": [
-                                             "FindMessage"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "FindMessage"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "Amin"
-                                        ],
-                                        "slot": "contact_name",
-                                        "values": [
-                                             "Amin"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "無"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "無"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "如果想要更自由的當程式在改 可以去摸VBA "
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "如果想要更自由的當程式在改 可以去摸VBA "
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 42,
-                                        "slot": "contact_name",
-                                        "start": 38
-                                   },
-                                   {
-                                        "exclusive_end": 34,
-                                        "slot": "message",
-                                        "start": 12
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "FindMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "message": [
-                                             "如果想要更自由的當程式在改 可以去摸VBA "
-                                        ],
-                                        "contact_name": [
-                                             "Amin"
-                                        ],
-                                        "group_name": [
-                                             "無"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "請幫我找一則訊息，訊息為如果想要更自由的當程式在改 可以去摸VBA ，用戶為Amin，這則訊息應該是傳送給某個使用者的訊息"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "如果想要更自由的當程式在改 可以去摸VBA "
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "如果想要更自由的當程式在改 可以去摸VBA "
-                                        ]
-                                   },
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "Amin"
-                                        ],
-                                        "slot": "contact_name",
-                                        "values": [
-                                             "Amin"
-                                        ]
-                                   },
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "無"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "無"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM_COUNT",
-                                        "canonical_values": [
-                                             "1"
-                                        ],
-                                        "slot": "count",
-                                        "values": [
-                                             "1"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 7,
-                                        "slot": "contact_name",
-                                        "start": 3
-                                   }
-                              ],
-                              "service_call": {
-                                   "method": "FindMessage",
-                                   "parameters": {
-                                        "message": "如果想要更自由的當程式在改 可以去摸VBA ",
-                                        "contact_name": "Amin",
-                                        "group_name": "無"
-                                   }
-                              },
-                              "service_results": [
-                                   {
-                                        "group_name": "無",
-                                        "contact_name": "Amin",
-                                        "message": "如果想要更自由的當程式在改 可以去摸VBA "
-                                   }
-                              ]
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "找到與Amin聊天的訊息，總共有1個結果"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
+                                        "act": "NEGATE",
                                         "canonical_values": [],
-                                        "slot": "message",
+                                        "slot": "",
                                         "values": []
                                    },
                                    {
-                                        "act": "REQUEST",
+                                        "act": "GOODBYE",
                                         "canonical_values": [],
-                                        "slot": "contact_name",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "group_name",
+                                        "slot": "",
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "FindMessage",
-                                   "requested_slots": [
-                                        "message",
-                                        "contact_name",
-                                        "group_name"
-                                   ],
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
                                    "slot_values": {
-                                        "message": [
-                                             "如果想要更自由的當程式在改 可以去摸VBA "
+                                        "recipient": [
+                                             "鉙羊默"
                                         ],
-                                        "contact_name": [
-                                             "Amin"
+                                        "subject": [
+                                             " 路上紅線黃線要不要乾脆塗掉算了"
                                         ],
-                                        "group_name": [
-                                             "無"
+                                        "content": [
+                                             "如題，畫那些線害停車的人還要想辦法規避，事實上是違停卸貨的還是一堆檢舉沒用也不會罰，那要不乾脆全部塗掉好了，道駕考試也都不用考相關題目了，還能感覺路變寬了，有卦嗎"
+                                        ],
+                                        "copy_recipient": [
+                                             "XiaoYu"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "所以這則訊息講了什麼？，我想知道這則訊息在哪個群組？，我想知道這則訊息是誰寄的？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "開一個變數存max跟min時候的iu值"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "開一個變數存max跟min時候的iu值"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "diamonddevil"
-                                        ],
-                                        "slot": "contact_name",
-                                        "values": [
-                                             "diamonddevil"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "無"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "無"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 22,
-                                        "slot": "message",
-                                        "start": 3
-                                   },
-                                   {
-                                        "exclusive_end": 38,
-                                        "slot": "contact_name",
-                                        "start": 26
-                                   }
-                              ],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "跟他說開一個變數存max跟min時候的iu值，用戶為diamonddevil，這則訊息應該是傳送給某個使用者的訊息"
+                    "utterance": "沒關係，先這樣吧，沒有了！再見！"
                },
                {
                     "frames": [
@@ -891,46 +702,13 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "FindMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "message": [
-                                             "如果想要更自由的當程式在改 可以去摸VBA "
-                                        ],
-                                        "contact_name": [
-                                             "Amin"
-                                        ],
-                                        "group_name": [
-                                             "無"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "沒有問題了，再見！"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "GOODBYE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "有問題可以隨時聯繫我！祝您生活愉快！再見！"
+                    "utterance": "很榮幸為您服務，再見！"
                }
           ]
      }

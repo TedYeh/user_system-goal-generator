@@ -2,8 +2,7 @@
      {
           "dialogue_id": 549,
           "services": [
-               "Calendar_1",
-               "Mail_1"
+               "Calendar_1"
           ],
           "turns": [
                {
@@ -11,151 +10,27 @@
                          {
                               "actions": [
                                    {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "2018/6/4"
-                                        ],
-                                        "slot": "event_date",
-                                        "values": [
-                                             "這週的第一天"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "107年6月份知識饗宴「胡適與李敖：臺灣兩代自由主義者之間」"
-                                        ],
-                                        "slot": "event_name",
-                                        "values": [
-                                             "107年6月份知識饗宴「胡適與李敖：臺灣兩代自由主義者之間」"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "無"
-                                        ],
-                                        "slot": "participant",
-                                        "values": [
-                                             "無"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "演講或講座 Lectures"
-                                        ],
-                                        "slot": "event_content",
-                                        "values": [
-                                             "演講或講座 Lectures"
-                                        ]
-                                   },
-                                   {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "LookupEvents"
+                                             "AddEvent"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "LookupEvents"
+                                             "AddEvent"
                                         ]
                                    }
                               ],
                               "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 52,
-                                        "slot": "event_name",
-                                        "start": 22
-                                   },
-                                   {
-                                        "exclusive_end": 93,
-                                        "slot": "event_content",
-                                        "start": 79
-                                   },
-                                   {
-                                        "exclusive_end": 64,
-                                        "slot": "event_date",
-                                        "start": 58
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_date": [
-                                             "這週的第一天"
-                                        ],
-                                        "event_name": [
-                                             "107年6月份知識饗宴「胡適與李敖：臺灣兩代自由主義者之間」"
-                                        ],
-                                        "participant": [
-                                             "無"
-                                        ],
-                                        "event_content": [
-                                             "演講或講座 Lectures"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "我想要找個活動，可以請你幫忙嗎？，活動名稱叫107年6月份知識饗宴「胡適與李敖：臺灣兩代自由主義者之間」，活動日期為這週的第一天，詳細內容我不太記得了，應該是演講或講座 Lectures，不需設定參加者"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NOTIFY_FAILURE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_call": {
-                                   "method": "LookupEvents",
-                                   "parameters": {
-                                        "event_date": "這週的第一天",
-                                        "event_name": "107年6月份知識饗宴「胡適與李敖：臺灣兩代自由主義者之間」",
-                                        "participant": "無",
-                                        "event_content": "演講或講座 Lectures"
-                                   }
-                              },
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "不好意思，在行事曆上沒辦法找到符合您要求的活動，請用其他條件查詢"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM_INTENT",
-                                        "canonical_values": [
-                                             "SendMail"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "SendMail"
-                                        ]
-                                   }
-                              ],
-                              "service": "Mail_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMail",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {}
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我想要寫一封信，可以請你幫忙嗎？"
+                    "utterance": "請幫我在行事曆添加一個活動"
                },
                {
                     "frames": [
@@ -164,17 +39,17 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "subject",
+                                        "slot": "event_time",
                                         "values": []
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "我想知道這個信件的主旨"
+                    "utterance": "這個活動在幾點開始呢？"
                },
                {
                     "frames": [
@@ -183,35 +58,35 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             " 外送員薪水低  怎麼還有一堆人去外面吹風"
+                                             "12:00"
                                         ],
-                                        "slot": "subject",
+                                        "slot": "event_time",
                                         "values": [
-                                             " 外送員薪水低  怎麼還有一堆人去外面吹風"
+                                             "12點0分"
                                         ]
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 26,
-                                        "slot": "subject",
+                                        "exclusive_end": 10,
+                                        "slot": "event_time",
                                         "start": 5
                                    }
                               ],
                               "state": {
-                                   "active_intent": "SendMail",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "subject": [
-                                             " 外送員薪水低  怎麼還有一堆人去外面吹風"
+                                        "event_time": [
+                                             "12點0分"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "這封信叫做 外送員薪水低  怎麼還有一堆人去外面吹風"
+                    "utterance": "活動時間為12點0分"
                },
                {
                     "frames": [
@@ -220,23 +95,17 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "recipient",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "content",
+                                        "slot": "event_name",
                                         "values": []
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "我想知道這封信的內文，你知道這封信是寄給誰的嗎？"
+                    "utterance": "我想知道這個活動的名稱"
                },
                {
                     "frames": [
@@ -245,56 +114,38 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "Nancy Fan"
+                                             "2019南屯端午穿木屐躦鯪鯉活動"
                                         ],
-                                        "slot": "recipient",
+                                        "slot": "event_name",
                                         "values": [
-                                             "Nancy Fan"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "如題，外送員薪水低，似乎比基本工資還低，怎麼還有一堆人願意，選擇去外面吹冷風，今晚冷啊冷啊，難道是想在交餐時，摸到正妹小手心裡就暖了起來，有沒有八卦"
-                                        ],
-                                        "slot": "content",
-                                        "values": [
-                                             "如題，外送員薪水低，似乎比基本工資還低，怎麼還有一堆人願意，選擇去外面吹冷風，今晚冷啊冷啊，難道是想在交餐時，摸到正妹小手心裡就暖了起來，有沒有八卦"
+                                             "2019南屯端午穿木屐躦鯪鯉活動"
                                         ]
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 91,
-                                        "slot": "recipient",
-                                        "start": 82
-                                   },
-                                   {
-                                        "exclusive_end": 77,
-                                        "slot": "content",
-                                        "start": 3
+                                        "exclusive_end": 21,
+                                        "slot": "event_name",
+                                        "start": 5
                                    }
                               ],
                               "state": {
-                                   "active_intent": "SendMail",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "subject": [
-                                             " 外送員薪水低  怎麼還有一堆人去外面吹風"
+                                        "event_time": [
+                                             "12點0分"
                                         ],
-                                        "recipient": [
-                                             "Nancy Fan"
-                                        ],
-                                        "content": [
-                                             "如題，外送員薪水低，似乎比基本工資還低，怎麼還有一堆人願意，選擇去外面吹冷風，今晚冷啊冷啊，難道是想在交餐時，摸到正妹小手心裡就暖了起來，有沒有八卦"
+                                        "event_name": [
+                                             "2019南屯端午穿木屐躦鯪鯉活動"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "內文為如題，外送員薪水低，似乎比基本工資還低，怎麼還有一堆人願意，選擇去外面吹冷風，今晚冷啊冷啊，難道是想在交餐時，摸到正妹小手心裡就暖了起來，有沒有八卦，這封信由Nancy Fan收"
+                    "utterance": "活動名稱為2019南屯端午穿木屐躦鯪鯉活動"
                },
                {
                     "frames": [
@@ -303,17 +154,23 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "copy_recipient",
+                                        "slot": "event_location",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_content",
                                         "values": []
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "你知道這封信的副本收件者嗎？"
+                    "utterance": "這個活動有任何內容註記嗎？，我想知道這個活動的地點"
                },
                {
                     "frames": [
@@ -322,38 +179,127 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "無"
+                                             "臺中市408南屯區"
                                         ],
-                                        "slot": "copy_recipient",
+                                        "slot": "event_location",
                                         "values": [
-                                             "無"
+                                             "臺中市408南屯區"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "108年6月7日於萬和宮前廣場盛大舉辦"
+                                        ],
+                                        "slot": "event_content",
+                                        "values": [
+                                             "108年6月7日於萬和宮前廣場盛大舉辦"
                                         ]
                                    }
                               ],
-                              "service": "Mail_1",
-                              "slots": [],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 37,
+                                        "slot": "event_location",
+                                        "start": 28
+                                   },
+                                   {
+                                        "exclusive_end": 24,
+                                        "slot": "event_content",
+                                        "start": 5
+                                   }
+                              ],
                               "state": {
-                                   "active_intent": "SendMail",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "subject": [
-                                             " 外送員薪水低  怎麼還有一堆人去外面吹風"
+                                        "event_time": [
+                                             "12點0分"
                                         ],
-                                        "recipient": [
-                                             "Nancy Fan"
+                                        "event_name": [
+                                             "2019南屯端午穿木屐躦鯪鯉活動"
                                         ],
-                                        "content": [
-                                             "如題，外送員薪水低，似乎比基本工資還低，怎麼還有一堆人願意，選擇去外面吹冷風，今晚冷啊冷啊，難道是想在交餐時，摸到正妹小手心裡就暖了起來，有沒有八卦"
+                                        "event_location": [
+                                             "臺中市408南屯區"
                                         ],
-                                        "copy_recipient": [
-                                             "無"
+                                        "event_content": [
+                                             "108年6月7日於萬和宮前廣場盛大舉辦"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "不需設定副本收件者"
+                    "utterance": "活動內容為108年6月7日於萬和宮前廣場盛大舉辦，活動在臺中市408南屯區舉行"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_date",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "這個活動辦在幾月幾號呢？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "2019/6/7"
+                                        ],
+                                        "slot": "event_date",
+                                        "values": [
+                                             "今天"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 7,
+                                        "slot": "event_date",
+                                        "start": 5
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "AddEvent",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_time": [
+                                             "12點0分"
+                                        ],
+                                        "event_name": [
+                                             "2019南屯端午穿木屐躦鯪鯉活動"
+                                        ],
+                                        "event_location": [
+                                             "臺中市408南屯區"
+                                        ],
+                                        "event_content": [
+                                             "108年6月7日於萬和宮前廣場盛大舉辦"
+                                        ],
+                                        "event_date": [
+                                             "今天"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "活動日期為今天"
                },
                {
                     "frames": [
@@ -362,67 +308,82 @@
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             " 外送員薪水低  怎麼還有一堆人去外面吹風"
+                                             "12點0分"
                                         ],
-                                        "slot": "subject",
+                                        "slot": "event_time",
                                         "values": [
-                                             " 外送員薪水低  怎麼還有一堆人去外面吹風"
+                                             "12點0分"
                                         ]
                                    },
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "Nancy Fan"
+                                             "2019南屯端午穿木屐躦鯪鯉活動"
                                         ],
-                                        "slot": "recipient",
+                                        "slot": "event_name",
                                         "values": [
-                                             "Nancy Fan"
+                                             "2019南屯端午穿木屐躦鯪鯉活動"
                                         ]
                                    },
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "如題，外送員薪水低，似乎比基本工資還低，怎麼還有一堆人願意，選擇去外面吹冷風，今晚冷啊冷啊，難道是想在交餐時，摸到正妹小手心裡就暖了起來，有沒有八卦"
+                                             "臺中市408南屯區"
                                         ],
-                                        "slot": "content",
+                                        "slot": "event_location",
                                         "values": [
-                                             "如題，外送員薪水低，似乎比基本工資還低，怎麼還有一堆人願意，選擇去外面吹冷風，今晚冷啊冷啊，難道是想在交餐時，摸到正妹小手心裡就暖了起來，有沒有八卦"
+                                             "臺中市408南屯區"
                                         ]
                                    },
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "無"
+                                             "108年6月7日於萬和宮前廣場盛大舉辦"
                                         ],
-                                        "slot": "copy_recipient",
+                                        "slot": "event_content",
                                         "values": [
-                                             "無"
+                                             "108年6月7日於萬和宮前廣場盛大舉辦"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "今天"
+                                        ],
+                                        "slot": "event_date",
+                                        "values": [
+                                             "今天"
                                         ]
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 30,
-                                        "slot": "subject",
-                                        "start": 9
+                                        "exclusive_end": 60,
+                                        "slot": "event_time",
+                                        "start": 55
                                    },
                                    {
-                                        "exclusive_end": 139,
-                                        "slot": "recipient",
-                                        "start": 130
+                                        "exclusive_end": 23,
+                                        "slot": "event_name",
+                                        "start": 7
                                    },
                                    {
-                                        "exclusive_end": 122,
-                                        "slot": "content",
-                                        "start": 48
+                                        "exclusive_end": 83,
+                                        "slot": "event_location",
+                                        "start": 74
+                                   },
+                                   {
+                                        "exclusive_end": 39,
+                                        "slot": "event_date",
+                                        "start": 37
                                    }
                               ],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "請確認要寄出主旨為 外送員薪水低  怎麼還有一堆人去外面吹風的信件嗎？，請確認要寄出的信件內容:如題，外送員薪水低，似乎比基本工資還低，怎麼還有一堆人願意，選擇去外面吹冷風，今晚冷啊冷啊，難道是想在交餐時，摸到正妹小手心裡就暖了起來，有沒有八卦，確認要寄信件給Nancy Fan嗎？"
+                    "utterance": "確認要建立名叫2019南屯端午穿木屐躦鯪鯉活動的活動嗎？，確認要建立舉辦在今天的活動嗎？，確認要建立舉辦在當天12點0分的活動嗎？，確認要建立舉辦在臺中市408南屯區的活動嗎？"
                },
                {
                     "frames": [
@@ -435,23 +396,26 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMail",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "subject": [
-                                             " 外送員薪水低  怎麼還有一堆人去外面吹風"
+                                        "event_time": [
+                                             "12點0分"
                                         ],
-                                        "recipient": [
-                                             "Nancy Fan"
+                                        "event_name": [
+                                             "2019南屯端午穿木屐躦鯪鯉活動"
                                         ],
-                                        "content": [
-                                             "如題，外送員薪水低，似乎比基本工資還低，怎麼還有一堆人願意，選擇去外面吹冷風，今晚冷啊冷啊，難道是想在交餐時，摸到正妹小手心裡就暖了起來，有沒有八卦"
+                                        "event_location": [
+                                             "臺中市408南屯區"
                                         ],
-                                        "copy_recipient": [
-                                             "無"
+                                        "event_content": [
+                                             "108年6月7日於萬和宮前廣場盛大舉辦"
+                                        ],
+                                        "event_date": [
+                                             "今天"
                                         ]
                                    }
                               }
@@ -465,77 +429,13 @@
                          {
                               "actions": [
                                    {
-                                        "act": "NOTIFY_SUCCESS",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "service_call": {
-                                   "method": "SendMail",
-                                   "parameters": {
-                                        "subject": " 外送員薪水低  怎麼還有一堆人去外面吹風",
-                                        "recipient": "Nancy Fan",
-                                        "content": "如題，外送員薪水低，似乎比基本工資還低，怎麼還有一堆人願意，選擇去外面吹冷風，今晚冷啊冷啊，難道是想在交餐時，摸到正妹小手心裡就暖了起來，有沒有八卦",
-                                        "copy_recipient": "無"
-                                   }
-                              },
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "多虧有您的配合，信件已成功寄出"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "THANK_YOU",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "SendMail",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "subject": [
-                                             " 外送員薪水低  怎麼還有一堆人去外面吹風"
-                                        ],
-                                        "recipient": [
-                                             "Nancy Fan"
-                                        ],
-                                        "content": [
-                                             "如題，外送員薪水低，似乎比基本工資還低，怎麼還有一堆人願意，選擇去外面吹冷風，今晚冷啊冷啊，難道是想在交餐時，摸到正妹小手心裡就暖了起來，有沒有八卦"
-                                        ],
-                                        "copy_recipient": [
-                                             "無"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "謝謝，我沒有其他問題了"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
                                         "act": "REQ_MORE",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_results": []
                          }
@@ -560,30 +460,33 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMail",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "subject": [
-                                             " 外送員薪水低  怎麼還有一堆人去外面吹風"
+                                        "event_time": [
+                                             "12點0分"
                                         ],
-                                        "recipient": [
-                                             "Nancy Fan"
+                                        "event_name": [
+                                             "2019南屯端午穿木屐躦鯪鯉活動"
                                         ],
-                                        "content": [
-                                             "如題，外送員薪水低，似乎比基本工資還低，怎麼還有一堆人願意，選擇去外面吹冷風，今晚冷啊冷啊，難道是想在交餐時，摸到正妹小手心裡就暖了起來，有沒有八卦"
+                                        "event_location": [
+                                             "臺中市408南屯區"
                                         ],
-                                        "copy_recipient": [
-                                             "無"
+                                        "event_content": [
+                                             "108年6月7日於萬和宮前廣場盛大舉辦"
+                                        ],
+                                        "event_date": [
+                                             "今天"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "沒關係，先這樣吧，沒有問題了，再見吧！"
+                    "utterance": "沒關係，先這樣吧，沒有問題了，再見！"
                },
                {
                     "frames": [
@@ -596,13 +499,13 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "有問題您再找我哈！再見！"
+                    "utterance": "有問題可以隨時聯繫我！祝您生活愉快！再見！"
                }
           ]
      }

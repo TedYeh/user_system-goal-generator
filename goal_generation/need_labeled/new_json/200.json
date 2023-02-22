@@ -2,175 +2,10 @@
      {
           "dialogue_id": 200,
           "services": [
-               "Messaging_1",
-               "Calendar_1"
+               "Calendar_1",
+               "Messaging_1"
           ],
           "turns": [
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM_INTENT",
-                                        "canonical_values": [
-                                             "SendMessage"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "SendMessage"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "SeanWH"
-                                        ],
-                                        "slot": "contact_name",
-                                        "values": [
-                                             "SeanWH"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "他說我們資工常常把O亂用"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "他說我們資工常常把O亂用"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 34,
-                                        "slot": "contact_name",
-                                        "start": 28
-                                   },
-                                   {
-                                        "exclusive_end": 24,
-                                        "slot": "message",
-                                        "start": 12
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "SendMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "message": [
-                                             "他說我們資工常常把O亂用"
-                                        ],
-                                        "contact_name": [
-                                             "SeanWH"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "請幫我寄一則訊息，跟他說他說我們資工常常把O亂用，用戶為SeanWH"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "他說我們資工常常把O亂用"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "他說我們資工常常把O亂用"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "SeanWH"
-                                        ],
-                                        "slot": "contact_name",
-                                        "values": [
-                                             "SeanWH"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 19,
-                                        "slot": "message",
-                                        "start": 7
-                                   },
-                                   {
-                                        "exclusive_end": 36,
-                                        "slot": "contact_name",
-                                        "start": 30
-                                   }
-                              ],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "確認要傳送訊息他說我們資工常常把O亂用嗎？，確認要傳送訊息給SeanWH嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "AFFIRM",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "SendMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "message": [
-                                             "他說我們資工常常把O亂用"
-                                        ],
-                                        "contact_name": [
-                                             "SeanWH"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "好的，看起來沒甚麼問題"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NOTIFY_SUCCESS",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_call": {
-                                   "method": "SendMessage",
-                                   "parameters": {
-                                        "message": "他說我們資工常常把O亂用",
-                                        "contact_name": "SeanWH"
-                                   }
-                              },
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "多虧有您的配合，訊息已成功傳送"
-               },
                {
                     "frames": [
                          {
@@ -205,13 +40,19 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "event_time",
+                                        "slot": "event_date",
                                         "values": []
                                    },
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
                                         "slot": "event_name",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "participant",
                                         "values": []
                                    }
                               ],
@@ -221,7 +62,7 @@
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "那這個活動叫甚麼呢？，這個活動在幾點開始呢？"
+                    "utterance": "那這個活動叫甚麼呢？，我想知道活動在何時舉行，有人參加這個活動嗎？"
                },
                {
                     "frames": [
@@ -230,33 +71,43 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "10:00"
+                                             "2022/7/30"
                                         ],
-                                        "slot": "event_time",
+                                        "slot": "event_date",
                                         "values": [
-                                             "10時0分"
+                                             "這週的第六天"
                                         ]
                                    },
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "In silico Studies of Protein-DNA Interaction & Aggregation of Disease-related Proteins"
+                                             "平溪區-國際五彩祈福節"
                                         ],
                                         "slot": "event_name",
                                         "values": [
-                                             "In silico Studies of Protein-DNA Interaction & Aggregation of Disease-related Proteins"
+                                             "平溪區-國際五彩祈福節"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "participant",
+                                        "values": [
+                                             "無"
                                         ]
                                    }
                               ],
                               "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 102,
-                                        "slot": "event_time",
-                                        "start": 97
+                                        "exclusive_end": 28,
+                                        "slot": "event_date",
+                                        "start": 22
                                    },
                                    {
-                                        "exclusive_end": 91,
+                                        "exclusive_end": 16,
                                         "slot": "event_name",
                                         "start": 5
                                    }
@@ -265,18 +116,21 @@
                                    "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "event_time": [
-                                             "10時0分"
+                                        "event_date": [
+                                             "這週的第六天"
                                         ],
                                         "event_name": [
-                                             "In silico Studies of Protein-DNA Interaction & Aggregation of Disease-related Proteins"
+                                             "平溪區-國際五彩祈福節"
+                                        ],
+                                        "participant": [
+                                             "無"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "活動名稱叫In silico Studies of Protein-DNA Interaction & Aggregation of Disease-related Proteins，活動時間為10時0分"
+                    "utterance": "活動名稱為平溪區-國際五彩祈福節，活動日期為這週的第六天，這個活動不需設定參加者"
                },
                {
                     "frames": [
@@ -285,9 +139,68 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "event_date",
+                                        "slot": "event_time",
                                         "values": []
-                                   },
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "這個活動在幾點開始呢？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "10:28"
+                                        ],
+                                        "slot": "event_time",
+                                        "values": [
+                                             "10點28分"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 9,
+                                        "slot": "event_time",
+                                        "start": 3
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "AddEvent",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_date": [
+                                             "這週的第六天"
+                                        ],
+                                        "event_name": [
+                                             "平溪區-國際五彩祈福節"
+                                        ],
+                                        "participant": [
+                                             "無"
+                                        ],
+                                        "event_time": [
+                                             "10點28分"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "活動在10點28分開始"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
@@ -301,7 +214,7 @@
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "這個活動辦在幾月幾號呢？，這個活動有註記任何內容嗎？"
+                    "utterance": "這個活動有任何內容備註嗎？"
                },
                {
                     "frames": [
@@ -310,59 +223,41 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "2018/4/11"
-                                        ],
-                                        "slot": "event_date",
-                                        "values": [
-                                             "4月11日"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "IAMS Seminar"
+                                             "無"
                                         ],
                                         "slot": "event_content",
                                         "values": [
-                                             "IAMS Seminar"
+                                             "無"
                                         ]
                                    }
                               ],
                               "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 8,
-                                        "slot": "event_date",
-                                        "start": 3
-                                   },
-                                   {
-                                        "exclusive_end": 35,
-                                        "slot": "event_content",
-                                        "start": 23
-                                   }
-                              ],
+                              "slots": [],
                               "state": {
                                    "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "event_time": [
-                                             "10時0分"
+                                        "event_date": [
+                                             "這週的第六天"
                                         ],
                                         "event_name": [
-                                             "In silico Studies of Protein-DNA Interaction & Aggregation of Disease-related Proteins"
+                                             "平溪區-國際五彩祈福節"
                                         ],
-                                        "event_date": [
-                                             "4月11日"
+                                        "participant": [
+                                             "無"
+                                        ],
+                                        "event_time": [
+                                             "10點28分"
                                         ],
                                         "event_content": [
-                                             "IAMS Seminar"
+                                             "無"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "日期為4月11日，詳細內容我不太記得了，應該是IAMS Seminar"
+                    "utterance": "不需設定內容"
                },
                {
                     "frames": [
@@ -371,67 +266,77 @@
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "10時0分"
-                                        ],
-                                        "slot": "event_time",
-                                        "values": [
-                                             "10時0分"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "In silico Studies of Protein-DNA Interaction & Aggregation of Disease-related Proteins"
-                                        ],
-                                        "slot": "event_name",
-                                        "values": [
-                                             "In silico Studies of Protein-DNA Interaction & Aggregation of Disease-related Proteins"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "4月11日"
+                                             "這週的第六天"
                                         ],
                                         "slot": "event_date",
                                         "values": [
-                                             "4月11日"
+                                             "這週的第六天"
                                         ]
                                    },
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "IAMS Seminar"
+                                             "平溪區-國際五彩祈福節"
+                                        ],
+                                        "slot": "event_name",
+                                        "values": [
+                                             "平溪區-國際五彩祈福節"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "participant",
+                                        "values": [
+                                             "無"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "10點28分"
+                                        ],
+                                        "slot": "event_time",
+                                        "values": [
+                                             "10點28分"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "無"
                                         ],
                                         "slot": "event_content",
                                         "values": [
-                                             "IAMS Seminar"
+                                             "無"
                                         ]
                                    }
                               ],
                               "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 133,
-                                        "slot": "event_time",
-                                        "start": 128
+                                        "exclusive_end": 38,
+                                        "slot": "event_date",
+                                        "start": 32
                                    },
                                    {
-                                        "exclusive_end": 93,
+                                        "exclusive_end": 18,
                                         "slot": "event_name",
                                         "start": 7
                                    },
                                    {
-                                        "exclusive_end": 112,
-                                        "slot": "event_date",
-                                        "start": 107
+                                        "exclusive_end": 60,
+                                        "slot": "event_time",
+                                        "start": 54
                                    }
                               ],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "確認要建立名叫In silico Studies of Protein-DNA Interaction & Aggregation of Disease-related Proteins的活動嗎？，確認要建立舉辦在4月11日的活動嗎？，確認要建立舉辦在當天10時0分的活動嗎？"
+                    "utterance": "確認要建立名叫平溪區-國際五彩祈福節的活動嗎？，確認要建立舉辦在這週的第六天的活動嗎？，確認要建立舉辦在當天10點28分的活動嗎？"
                },
                {
                     "frames": [
@@ -450,17 +355,220 @@
                                    "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "event_time": [
-                                             "10時0分"
+                                        "event_date": [
+                                             "這週的第六天"
                                         ],
                                         "event_name": [
-                                             "In silico Studies of Protein-DNA Interaction & Aggregation of Disease-related Proteins"
+                                             "平溪區-國際五彩祈福節"
                                         ],
-                                        "event_date": [
-                                             "4月11日"
+                                        "participant": [
+                                             "無"
+                                        ],
+                                        "event_time": [
+                                             "10點28分"
                                         ],
                                         "event_content": [
-                                             "IAMS Seminar"
+                                             "無"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "好的，看起來沒甚麼問題"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQ_MORE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "還需要什麼幫助嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "SendMessage"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "SendMessage"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {}
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我想要寄則訊息，可以請你幫忙嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "message",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "group_name",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道訊息內容，我想知道這則訊息在哪個群組？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             " 還有麻煩你重發一下你之前發的書，我剛發現沒下載到，想麻煩你順便重發，謝謝"
+                                        ],
+                                        "slot": "message",
+                                        "values": [
+                                             " 還有麻煩你重發一下你之前發的書，我剛發現沒下載到，想麻煩你順便重發，謝謝"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "程式語言讀書會Programming Book Club"
+                                        ],
+                                        "slot": "group_name",
+                                        "values": [
+                                             "程式語言讀書會Programming Book Club"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 40,
+                                        "slot": "message",
+                                        "start": 3
+                                   },
+                                   {
+                                        "exclusive_end": 73,
+                                        "slot": "group_name",
+                                        "start": 45
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "SendMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "message": [
+                                             " 還有麻煩你重發一下你之前發的書，我剛發現沒下載到，想麻煩你順便重發，謝謝"
+                                        ],
+                                        "group_name": [
+                                             "程式語言讀書會Programming Book Club"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "跟他說 還有麻煩你重發一下你之前發的書，我剛發現沒下載到，想麻煩你順便重發，謝謝，群組叫做程式語言讀書會Programming Book Club"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             " 還有麻煩你重發一下你之前發的書，我剛發現沒下載到，想麻煩你順便重發，謝謝"
+                                        ],
+                                        "slot": "message",
+                                        "values": [
+                                             " 還有麻煩你重發一下你之前發的書，我剛發現沒下載到，想麻煩你順便重發，謝謝"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "程式語言讀書會Programming Book Club"
+                                        ],
+                                        "slot": "group_name",
+                                        "values": [
+                                             "程式語言讀書會Programming Book Club"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 44,
+                                        "slot": "message",
+                                        "start": 7
+                                   },
+                                   {
+                                        "exclusive_end": 83,
+                                        "slot": "group_name",
+                                        "start": 55
+                                   }
+                              ],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "確認要傳送訊息 還有麻煩你重發一下你之前發的書，我剛發現沒下載到，想麻煩你順便重發，謝謝嗎？，確認要傳送訊息到程式語言讀書會Programming Book Club嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "AFFIRM",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "message": [
+                                             " 還有麻煩你重發一下你之前發的書，我剛發現沒下載到，想麻煩你順便重發，謝謝"
+                                        ],
+                                        "group_name": [
+                                             "程式語言讀書會Programming Book Club"
                                         ]
                                    }
                               }
@@ -474,33 +582,30 @@
                          {
                               "actions": [
                                    {
-                                        "act": "NOTIFY_SUCCESS",
+                                        "act": "REQ_MORE",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Messaging_1",
                               "slots": [],
-                              "service_call": {
-                                   "method": "AddEvent",
-                                   "parameters": {
-                                        "event_time": "10時0分",
-                                        "event_name": "In silico Studies of Protein-DNA Interaction & Aggregation of Disease-related Proteins",
-                                        "event_date": "4月11日",
-                                        "event_content": "IAMS Seminar"
-                                   }
-                              },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "多虧有您的配合，活動已添加至行事曆"
+                    "utterance": "還有什麼能幫到您的嗎？"
                },
                {
                     "frames": [
                          {
                               "actions": [
+                                   {
+                                        "act": "NEGATE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   },
                                    {
                                         "act": "GOODBYE",
                                         "canonical_values": [],
@@ -508,30 +613,24 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Messaging_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "AddEvent",
+                                   "active_intent": "SendMessage",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "event_time": [
-                                             "10時0分"
+                                        "message": [
+                                             " 還有麻煩你重發一下你之前發的書，我剛發現沒下載到，想麻煩你順便重發，謝謝"
                                         ],
-                                        "event_name": [
-                                             "In silico Studies of Protein-DNA Interaction & Aggregation of Disease-related Proteins"
-                                        ],
-                                        "event_date": [
-                                             "4月11日"
-                                        ],
-                                        "event_content": [
-                                             "IAMS Seminar"
+                                        "group_name": [
+                                             "程式語言讀書會Programming Book Club"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "沒有了！再見！"
+                    "utterance": "沒關係，先這樣吧，沒有了！再見！"
                },
                {
                     "frames": [
@@ -544,22 +643,13 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Messaging_1",
                               "slots": [],
-                              "service_call": {
-                                   "method": "AddEvent",
-                                   "parameters": {
-                                        "event_time": "10時0分",
-                                        "event_name": "In silico Studies of Protein-DNA Interaction & Aggregation of Disease-related Proteins",
-                                        "event_date": "4月11日",
-                                        "event_content": "IAMS Seminar"
-                                   }
-                              },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "再見！祝您生活愉快！"
+                    "utterance": "好的，祝您生活愉快，再見"
                }
           ]
      }

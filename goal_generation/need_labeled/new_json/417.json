@@ -2,8 +2,7 @@
      {
           "dialogue_id": 417,
           "services": [
-               "Mail_1",
-               "Messaging_1"
+               "Calendar_1"
           ],
           "turns": [
                {
@@ -13,25 +12,25 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "FindMail"
+                                             "AddEvent"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "FindMail"
+                                             "AddEvent"
                                         ]
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "FindMail",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {}
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我想要知道相關的信件，請幫幫我"
+                    "utterance": "請幫我在行事曆添加一個活動"
                },
                {
                     "frames": [
@@ -40,17 +39,29 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "recipient",
+                                        "slot": "event_date",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_time",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_location",
                                         "values": []
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "你知道這封信是寄給誰的嗎？"
+                    "utterance": "我想知道活動在何時舉行，這個活動在幾點開始呢？，這個活動辦在哪裡啊？"
                },
                {
                     "frames": [
@@ -59,1017 +70,71 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "godo"
+                                             "2022/9/20"
                                         ],
-                                        "slot": "recipient",
+                                        "slot": "event_date",
                                         "values": [
-                                             "godo"
+                                             "9月20日"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "11:11"
+                                        ],
+                                        "slot": "event_time",
+                                        "values": [
+                                             "11時11分"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "高雄市823田寮區崇德里月球路36號"
+                                        ],
+                                        "slot": "event_location",
+                                        "values": [
+                                             "高雄市823田寮區崇德里月球路36號"
                                         ]
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [
                                    {
                                         "exclusive_end": 8,
-                                        "slot": "recipient",
-                                        "start": 4
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "FindMail",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "recipient": [
-                                             "godo"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "收件者為godo"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "subject",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "copy_recipient",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "那這封信叫甚麼呢？，你知道這封信的副本收件者嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             " 常常把愛台灣掛在嘴邊的人都有什麼特徵"
-                                        ],
-                                        "slot": "subject",
-                                        "values": [
-                                             " 常常把愛台灣掛在嘴邊的人都有什麼特徵"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "無"
-                                        ],
-                                        "slot": "copy_recipient",
-                                        "values": [
-                                             "無"
-                                        ]
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 24,
-                                        "slot": "subject",
-                                        "start": 5
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "FindMail",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "recipient": [
-                                             "godo"
-                                        ],
-                                        "subject": [
-                                             " 常常把愛台灣掛在嘴邊的人都有什麼特徵"
-                                        ],
-                                        "copy_recipient": [
-                                             "無"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "信件主旨叫 常常把愛台灣掛在嘴邊的人都有什麼特徵，不需設定副本收件者"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "content",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "我想知道這封信的內文"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "餓死抬頭，目前想到的有，通常都沒當兵、喜歡吊反對者路燈，對台灣內部問題視而不見，整天用梗圖嘲諷中國人，母豬的梗圖倒是一張都不敢做，然後稱呼美國為爸爸，想請問還有哪些外顯特徵可以識別，戰時才可以離這些東南亞納粹遠一點，乾五八卦"
-                                        ],
-                                        "slot": "content",
-                                        "values": [
-                                             "餓死抬頭，目前想到的有，通常都沒當兵、喜歡吊反對者路燈，對台灣內部問題視而不見，整天用梗圖嘲諷中國人，母豬的梗圖倒是一張都不敢做，然後稱呼美國為爸爸，想請問還有哪些外顯特徵可以識別，戰時才可以離這些東南亞納粹遠一點，乾五八卦"
-                                        ]
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 115,
-                                        "slot": "content",
+                                        "slot": "event_date",
                                         "start": 3
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "FindMail",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "recipient": [
-                                             "godo"
-                                        ],
-                                        "subject": [
-                                             " 常常把愛台灣掛在嘴邊的人都有什麼特徵"
-                                        ],
-                                        "copy_recipient": [
-                                             "無"
-                                        ],
-                                        "content": [
-                                             "餓死抬頭，目前想到的有，通常都沒當兵、喜歡吊反對者路燈，對台灣內部問題視而不見，整天用梗圖嘲諷中國人，母豬的梗圖倒是一張都不敢做，然後稱呼美國為爸爸，想請問還有哪些外顯特徵可以識別，戰時才可以離這些東南亞納粹遠一點，乾五八卦"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "內文為餓死抬頭，目前想到的有，通常都沒當兵、喜歡吊反對者路燈，對台灣內部問題視而不見，整天用梗圖嘲諷中國人，母豬的梗圖倒是一張都不敢做，然後稱呼美國為爸爸，想請問還有哪些外顯特徵可以識別，戰時才可以離這些東南亞納粹遠一點，乾五八卦"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "godo"
-                                        ],
-                                        "slot": "recipient",
-                                        "values": [
-                                             "godo"
-                                        ]
-                                   },
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             " 常常把愛台灣掛在嘴邊的人都有什麼特徵"
-                                        ],
-                                        "slot": "subject",
-                                        "values": [
-                                             " 常常把愛台灣掛在嘴邊的人都有什麼特徵"
-                                        ]
-                                   },
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "無"
-                                        ],
-                                        "slot": "copy_recipient",
-                                        "values": [
-                                             "無"
-                                        ]
-                                   },
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "餓死抬頭，目前想到的有，通常都沒當兵、喜歡吊反對者路燈，對台灣內部問題視而不見，整天用梗圖嘲諷中國人，母豬的梗圖倒是一張都不敢做，然後稱呼美國為爸爸，想請問還有哪些外顯特徵可以識別，戰時才可以離這些東南亞納粹遠一點，乾五八卦"
-                                        ],
-                                        "slot": "content",
-                                        "values": [
-                                             "餓死抬頭，目前想到的有，通常都沒當兵、喜歡吊反對者路燈，對台灣內部問題視而不見，整天用梗圖嘲諷中國人，母豬的梗圖倒是一張都不敢做，然後稱呼美國為爸爸，想請問還有哪些外顯特徵可以識別，戰時才可以離這些東南亞納粹遠一點，乾五八卦"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM_COUNT",
-                                        "canonical_values": [
-                                             "1"
-                                        ],
-                                        "slot": "count",
-                                        "values": [
-                                             "1"
-                                        ]
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 180,
-                                        "slot": "recipient",
-                                        "start": 176
-                                   },
-                                   {
-                                        "exclusive_end": 31,
-                                        "slot": "subject",
-                                        "start": 12
-                                   },
-                                   {
-                                        "exclusive_end": 160,
-                                        "slot": "content",
-                                        "start": 48
-                                   }
-                              ],
-                              "service_call": {
-                                   "method": "FindMail",
-                                   "parameters": {
-                                        "recipient": "godo",
-                                        "subject": " 常常把愛台灣掛在嘴邊的人都有什麼特徵",
-                                        "copy_recipient": "無",
-                                        "content": "餓死抬頭，目前想到的有，通常都沒當兵、喜歡吊反對者路燈，對台灣內部問題視而不見，整天用梗圖嘲諷中國人，母豬的梗圖倒是一張都不敢做，然後稱呼美國為爸爸，想請問還有哪些外顯特徵可以識別，戰時才可以離這些東南亞納粹遠一點，乾五八卦"
-                                   }
-                              },
-                              "service_results": [
-                                   {
-                                        "subject": " 常常把愛台灣掛在嘴邊的人都有什麼特徵",
-                                        "content": "餓死抬頭，目前想到的有，通常都沒當兵、喜歡吊反對者路燈，對台灣內部問題視而不見，整天用梗圖嘲諷中國人，母豬的梗圖倒是一張都不敢做，然後稱呼美國為爸爸，想請問還有哪些外顯特徵可以識別，戰時才可以離這些東南亞納粹遠一點，乾五八卦",
-                                        "copy_recipient": "無",
-                                        "recipient": "godo",
-                                        "sender": "Citron"
-                                   }
-                              ]
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "依據您提供的訊息，找到跟 常常把愛台灣掛在嘴邊的人都有什麼特徵有關的信件，請你看看，我找到內容跟餓死抬頭，目前想到的有，通常都沒當兵、喜歡吊反對者路燈，對台灣內部問題視而不見，整天用梗圖嘲諷中國人，母豬的梗圖倒是一張都不敢做，然後稱呼美國為爸爸，想請問還有哪些外顯特徵可以識別，戰時才可以離這些東南亞納粹遠一點，乾五八卦有關的信件，請你看看，我找到寄給godo的信件，請你看看，總共有1個結果"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "GOODBYE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "FindMail",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "recipient": [
-                                             "godo"
-                                        ],
-                                        "subject": [
-                                             " 常常把愛台灣掛在嘴邊的人都有什麼特徵"
-                                        ],
-                                        "copy_recipient": [
-                                             "無"
-                                        ],
-                                        "content": [
-                                             "餓死抬頭，目前想到的有，通常都沒當兵、喜歡吊反對者路燈，對台灣內部問題視而不見，整天用梗圖嘲諷中國人，母豬的梗圖倒是一張都不敢做，然後稱呼美國為爸爸，想請問還有哪些外顯特徵可以識別，戰時才可以離這些東南亞納粹遠一點，乾五八卦"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "沒有問題了，再見！"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "GOODBYE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "有問題可以隨時聯繫我！祝您生活愉快！再見！"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM_INTENT",
-                                        "canonical_values": [
-                                             "SendMessage"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "SendMessage"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "Deep Learning (AI)  study and discuss"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "Deep Learning (AI)  study and discuss"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "你的訓練集大小跟母體差異越大時，不平衡的資料分佈跟母體的資料分佈差異越大，就像拿張飛訓練預測岳飛"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "你的訓練集大小跟母體差異越大時，不平衡的資料分佈跟母體的資料分佈差異越大，就像拿張飛訓練預測岳飛"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 102,
-                                        "slot": "group_name",
-                                        "start": 65
-                                   },
-                                   {
-                                        "exclusive_end": 60,
-                                        "slot": "message",
-                                        "start": 12
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "SendMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "message": [
-                                             "你的訓練集大小跟母體差異越大時，不平衡的資料分佈跟母體的資料分佈差異越大，就像拿張飛訓練預測岳飛"
-                                        ],
-                                        "group_name": [
-                                             "Deep Learning (AI)  study and discuss"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "請幫我寄一則訊息，跟他說你的訓練集大小跟母體差異越大時，不平衡的資料分佈跟母體的資料分佈差異越大，就像拿張飛訓練預測岳飛，應該是在Deep Learning (AI)  study and discuss群組中的訊息"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "你的訓練集大小跟母體差異越大時，不平衡的資料分佈跟母體的資料分佈差異越大，就像拿張飛訓練預測岳飛"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "你的訓練集大小跟母體差異越大時，不平衡的資料分佈跟母體的資料分佈差異越大，就像拿張飛訓練預測岳飛"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "Deep Learning (AI)  study and discuss"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "Deep Learning (AI)  study and discuss"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 55,
-                                        "slot": "message",
-                                        "start": 7
-                                   },
-                                   {
-                                        "exclusive_end": 103,
-                                        "slot": "group_name",
-                                        "start": 66
-                                   }
-                              ],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "確認要傳送訊息你的訓練集大小跟母體差異越大時，不平衡的資料分佈跟母體的資料分佈差異越大，就像拿張飛訓練預測岳飛嗎？，確認要傳送訊息到Deep Learning (AI)  study and discuss嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "AFFIRM",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "SendMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "message": [
-                                             "你的訓練集大小跟母體差異越大時，不平衡的資料分佈跟母體的資料分佈差異越大，就像拿張飛訓練預測岳飛"
-                                        ],
-                                        "group_name": [
-                                             "Deep Learning (AI)  study and discuss"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "好的，看起來沒甚麼問題"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NOTIFY_SUCCESS",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_call": {
-                                   "method": "SendMessage",
-                                   "parameters": {
-                                        "message": "你的訓練集大小跟母體差異越大時，不平衡的資料分佈跟母體的資料分佈差異越大，就像拿張飛訓練預測岳飛",
-                                        "group_name": "Deep Learning (AI)  study and discuss"
-                                   }
-                              },
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "多虧有您的配合，訊息已成功傳送"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "THANK_YOU",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "SendMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "message": [
-                                             "你的訓練集大小跟母體差異越大時，不平衡的資料分佈跟母體的資料分佈差異越大，就像拿張飛訓練預測岳飛"
-                                        ],
-                                        "group_name": [
-                                             "Deep Learning (AI)  study and discuss"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "謝謝"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQ_MORE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "還需要什麼幫助嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM_INTENT",
-                                        "canonical_values": [
-                                             "SendMail"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "SendMail"
-                                        ]
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "SendMail",
-                                   "requested_slots": [],
-                                   "slot_values": {}
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "請幫我寄出一封信件"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "content",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "copy_recipient",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "這封信有任何內容嗎？，我想知道這封信的副本收件者"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "覺青大學生耳機裡最愛聽的獨立樂團很有品味耶，不知道些獨立樂團接的到尾牙嗎?，公司老闆會聽獨立樂團嗎?，我怎麼看新聞尾牙幾乎都是主流歌手在接啊?，是不是這些上市櫃老闆沒品味啊?有掛嗎?"
-                                        ],
-                                        "slot": "content",
-                                        "values": [
-                                             "覺青大學生耳機裡最愛聽的獨立樂團很有品味耶，不知道些獨立樂團接的到尾牙嗎?，公司老闆會聽獨立樂團嗎?，我怎麼看新聞尾牙幾乎都是主流歌手在接啊?，是不是這些上市櫃老闆沒品味啊?有掛嗎?"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "Eeeva"
-                                        ],
-                                        "slot": "copy_recipient",
-                                        "values": [
-                                             "Eeeva"
-                                        ]
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 94,
-                                        "slot": "content",
-                                        "start": 3
-                                   },
-                                   {
-                                        "exclusive_end": 110,
-                                        "slot": "copy_recipient",
-                                        "start": 105
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "SendMail",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "content": [
-                                             "覺青大學生耳機裡最愛聽的獨立樂團很有品味耶，不知道些獨立樂團接的到尾牙嗎?，公司老闆會聽獨立樂團嗎?，我怎麼看新聞尾牙幾乎都是主流歌手在接啊?，是不是這些上市櫃老闆沒品味啊?有掛嗎?"
-                                        ],
-                                        "copy_recipient": [
-                                             "Eeeva"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "內容為覺青大學生耳機裡最愛聽的獨立樂團很有品味耶，不知道些獨立樂團接的到尾牙嗎?，公司老闆會聽獨立樂團嗎?，我怎麼看新聞尾牙幾乎都是主流歌手在接啊?，是不是這些上市櫃老闆沒品味啊?有掛嗎?，這封信需要以副本寄給Eeeva"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "recipient",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "你知道這封信是寄給誰的嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "Jo San"
-                                        ],
-                                        "slot": "recipient",
-                                        "values": [
-                                             "Jo San"
-                                        ]
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 12,
-                                        "slot": "recipient",
-                                        "start": 6
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "SendMail",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "content": [
-                                             "覺青大學生耳機裡最愛聽的獨立樂團很有品味耶，不知道些獨立樂團接的到尾牙嗎?，公司老闆會聽獨立樂團嗎?，我怎麼看新聞尾牙幾乎都是主流歌手在接啊?，是不是這些上市櫃老闆沒品味啊?有掛嗎?"
-                                        ],
-                                        "copy_recipient": [
-                                             "Eeeva"
-                                        ],
-                                        "recipient": [
-                                             "Jo San"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "這封信要寄給Jo San"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "subject",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "我想知道這個信件的主旨"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             " 獨立樂團 接的到尾牙嗎??"
-                                        ],
-                                        "slot": "subject",
-                                        "values": [
-                                             " 獨立樂團 接的到尾牙嗎??"
-                                        ]
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 19,
-                                        "slot": "subject",
-                                        "start": 5
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "SendMail",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "content": [
-                                             "覺青大學生耳機裡最愛聽的獨立樂團很有品味耶，不知道些獨立樂團接的到尾牙嗎?，公司老闆會聽獨立樂團嗎?，我怎麼看新聞尾牙幾乎都是主流歌手在接啊?，是不是這些上市櫃老闆沒品味啊?有掛嗎?"
-                                        ],
-                                        "copy_recipient": [
-                                             "Eeeva"
-                                        ],
-                                        "recipient": [
-                                             "Jo San"
-                                        ],
-                                        "subject": [
-                                             " 獨立樂團 接的到尾牙嗎??"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "信件主旨叫 獨立樂團 接的到尾牙嗎??"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "覺青大學生耳機裡最愛聽的獨立樂團很有品味耶，不知道些獨立樂團接的到尾牙嗎?，公司老闆會聽獨立樂團嗎?，我怎麼看新聞尾牙幾乎都是主流歌手在接啊?，是不是這些上市櫃老闆沒品味啊?有掛嗎?"
-                                        ],
-                                        "slot": "content",
-                                        "values": [
-                                             "覺青大學生耳機裡最愛聽的獨立樂團很有品味耶，不知道些獨立樂團接的到尾牙嗎?，公司老闆會聽獨立樂團嗎?，我怎麼看新聞尾牙幾乎都是主流歌手在接啊?，是不是這些上市櫃老闆沒品味啊?有掛嗎?"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "Eeeva"
-                                        ],
-                                        "slot": "copy_recipient",
-                                        "values": [
-                                             "Eeeva"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "Jo San"
-                                        ],
-                                        "slot": "recipient",
-                                        "values": [
-                                             "Jo San"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             " 獨立樂團 接的到尾牙嗎??"
-                                        ],
-                                        "slot": "subject",
-                                        "values": [
-                                             " 獨立樂團 接的到尾牙嗎??"
-                                        ]
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 132,
-                                        "slot": "content",
-                                        "start": 41
-                                   },
-                                   {
-                                        "exclusive_end": 146,
-                                        "slot": "recipient",
-                                        "start": 140
-                                   },
-                                   {
-                                        "exclusive_end": 23,
-                                        "slot": "subject",
-                                        "start": 9
-                                   }
-                              ],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "請確認要寄出主旨為 獨立樂團 接的到尾牙嗎??的信件嗎？，請確認要寄出的信件內容:覺青大學生耳機裡最愛聽的獨立樂團很有品味耶，不知道些獨立樂團接的到尾牙嗎?，公司老闆會聽獨立樂團嗎?，我怎麼看新聞尾牙幾乎都是主流歌手在接啊?，是不是這些上市櫃老闆沒品味啊?有掛嗎?，確認要寄信件給Jo San嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "AFFIRM",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "SendMail",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "content": [
-                                             "覺青大學生耳機裡最愛聽的獨立樂團很有品味耶，不知道些獨立樂團接的到尾牙嗎?，公司老闆會聽獨立樂團嗎?，我怎麼看新聞尾牙幾乎都是主流歌手在接啊?，是不是這些上市櫃老闆沒品味啊?有掛嗎?"
-                                        ],
-                                        "copy_recipient": [
-                                             "Eeeva"
-                                        ],
-                                        "recipient": [
-                                             "Jo San"
-                                        ],
-                                        "subject": [
-                                             " 獨立樂團 接的到尾牙嗎??"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "好的，看起來沒甚麼問題"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NOTIFY_SUCCESS",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "service_call": {
-                                   "method": "SendMail",
-                                   "parameters": {
-                                        "content": "覺青大學生耳機裡最愛聽的獨立樂團很有品味耶，不知道些獨立樂團接的到尾牙嗎?，公司老闆會聽獨立樂團嗎?，我怎麼看新聞尾牙幾乎都是主流歌手在接啊?，是不是這些上市櫃老闆沒品味啊?有掛嗎?",
-                                        "copy_recipient": "Eeeva",
-                                        "recipient": "Jo San",
-                                        "subject": " 獨立樂團 接的到尾牙嗎??"
-                                   }
-                              },
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "多虧有您的配合，信件已成功寄出"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM_INTENT",
-                                        "canonical_values": [
-                                             "SendMessage"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "SendMessage"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "SendMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {}
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "我想要寄則訊息，可以請你幫忙嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "contact_name",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "group_name",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "你知道群組名稱嗎？，我想知道這則訊息是誰寄的？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "Hsin Yen Hsieh"
-                                        ],
-                                        "slot": "contact_name",
-                                        "values": [
-                                             "Hsin Yen Hsieh"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "Python資料科學交流社群"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "Python資料科學交流社群"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 42,
-                                        "slot": "contact_name",
-                                        "start": 28
                                    },
                                    {
                                         "exclusive_end": 18,
-                                        "slot": "group_name",
-                                        "start": 4
+                                        "slot": "event_time",
+                                        "start": 12
+                                   },
+                                   {
+                                        "exclusive_end": 40,
+                                        "slot": "event_location",
+                                        "start": 22
                                    }
                               ],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "contact_name": [
-                                             "Hsin Yen Hsieh"
+                                        "event_date": [
+                                             "9月20日"
                                         ],
-                                        "group_name": [
-                                             "Python資料科學交流社群"
+                                        "event_time": [
+                                             "11時11分"
+                                        ],
+                                        "event_location": [
+                                             "高雄市823田寮區崇德里月球路36號"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "應該是在Python資料科學交流社群群組中的訊息，用戶為Hsin Yen Hsieh"
+                    "utterance": "活動在9月20日，時間為11時11分，地點為高雄市823田寮區崇德里月球路36號"
                },
                {
                     "frames": [
@@ -1078,17 +143,17 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "message",
+                                        "slot": "event_name",
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "我想知道訊息內容"
+                    "utterance": "那這個活動叫甚麼呢？"
                },
                {
                     "frames": [
@@ -1097,41 +162,44 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "對 total是list"
+                                             "高雄愛．月熱氣球"
                                         ],
-                                        "slot": "message",
+                                        "slot": "event_name",
                                         "values": [
-                                             "對 total是list"
+                                             "高雄愛．月熱氣球"
                                         ]
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 17,
-                                        "slot": "message",
+                                        "exclusive_end": 13,
+                                        "slot": "event_name",
                                         "start": 5
                                    }
                               ],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "contact_name": [
-                                             "Hsin Yen Hsieh"
+                                        "event_date": [
+                                             "9月20日"
                                         ],
-                                        "group_name": [
-                                             "Python資料科學交流社群"
+                                        "event_time": [
+                                             "11時11分"
                                         ],
-                                        "message": [
-                                             "對 total是list"
+                                        "event_location": [
+                                             "高雄市823田寮區崇德里月球路36號"
+                                        ],
+                                        "event_name": [
+                                             "高雄愛．月熱氣球"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "訊息內容為對 total是list"
+                    "utterance": "活動名稱叫高雄愛．月熱氣球"
                },
                {
                     "frames": [
@@ -1140,49 +208,64 @@
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "Hsin Yen Hsieh"
+                                             "9月20日"
                                         ],
-                                        "slot": "contact_name",
+                                        "slot": "event_date",
                                         "values": [
-                                             "Hsin Yen Hsieh"
+                                             "9月20日"
                                         ]
                                    },
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "Python資料科學交流社群"
+                                             "11時11分"
                                         ],
-                                        "slot": "group_name",
+                                        "slot": "event_time",
                                         "values": [
-                                             "Python資料科學交流社群"
+                                             "11時11分"
                                         ]
                                    },
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "對 total是list"
+                                             "高雄市823田寮區崇德里月球路36號"
                                         ],
-                                        "slot": "message",
+                                        "slot": "event_location",
                                         "values": [
-                                             "對 total是list"
+                                             "高雄市823田寮區崇德里月球路36號"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "高雄愛．月熱氣球"
+                                        ],
+                                        "slot": "event_name",
+                                        "values": [
+                                             "高雄愛．月熱氣球"
                                         ]
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 69,
-                                        "slot": "contact_name",
-                                        "start": 55
+                                        "exclusive_end": 34,
+                                        "slot": "event_date",
+                                        "start": 29
                                    },
                                    {
-                                        "exclusive_end": 44,
-                                        "slot": "group_name",
-                                        "start": 30
+                                        "exclusive_end": 56,
+                                        "slot": "event_time",
+                                        "start": 50
                                    },
                                    {
-                                        "exclusive_end": 19,
-                                        "slot": "message",
+                                        "exclusive_end": 88,
+                                        "slot": "event_location",
+                                        "start": 70
+                                   },
+                                   {
+                                        "exclusive_end": 15,
+                                        "slot": "event_name",
                                         "start": 7
                                    }
                               ],
@@ -1190,7 +273,7 @@
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "確認要傳送訊息對 total是list嗎？，確認要傳送訊息到Python資料科學交流社群嗎？，確認要傳送訊息給Hsin Yen Hsieh嗎？"
+                    "utterance": "確認要建立名叫高雄愛．月熱氣球的活動嗎？，確認要建立舉辦在9月20日的活動嗎？，確認要建立舉辦在當天11時11分的活動嗎？，確認要建立舉辦在高雄市823田寮區崇德里月球路36號的活動嗎？"
                },
                {
                     "frames": [
@@ -1203,27 +286,30 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "contact_name": [
-                                             "Hsin Yen Hsieh"
+                                        "event_date": [
+                                             "9月20日"
                                         ],
-                                        "group_name": [
-                                             "Python資料科學交流社群"
+                                        "event_time": [
+                                             "11時11分"
                                         ],
-                                        "message": [
-                                             "對 total是list"
+                                        "event_location": [
+                                             "高雄市823田寮區崇德里月球路36號"
+                                        ],
+                                        "event_name": [
+                                             "高雄愛．月熱氣球"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我對以上資訊沒問題"
+                    "utterance": "好的，看起來沒甚麼問題"
                },
                {
                     "frames": [
@@ -1236,54 +322,58 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_call": {
-                                   "method": "SendMessage",
+                                   "method": "AddEvent",
                                    "parameters": {
-                                        "contact_name": "Hsin Yen Hsieh",
-                                        "group_name": "Python資料科學交流社群",
-                                        "message": "對 total是list"
+                                        "event_date": "9月20日",
+                                        "event_time": "11時11分",
+                                        "event_location": "高雄市823田寮區崇德里月球路36號",
+                                        "event_name": "高雄愛．月熱氣球"
                                    }
                               },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "多虧有您的配合，訊息已成功傳送"
+                    "utterance": "多虧有您的配合，活動已添加至行事曆"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "GOODBYE",
+                                        "act": "SELECT",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "contact_name": [
-                                             "Hsin Yen Hsieh"
+                                        "event_date": [
+                                             "9月20日"
                                         ],
-                                        "group_name": [
-                                             "Python資料科學交流社群"
+                                        "event_time": [
+                                             "11時11分"
                                         ],
-                                        "message": [
-                                             "對 total是list"
+                                        "event_location": [
+                                             "高雄市823田寮區崇德里月球路36號"
+                                        ],
+                                        "event_name": [
+                                             "高雄愛．月熱氣球"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "再見"
+                    "utterance": "我知道了"
                },
                {
                     "frames": [
@@ -1296,21 +386,22 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_call": {
-                                   "method": "SendMessage",
+                                   "method": "AddEvent",
                                    "parameters": {
-                                        "contact_name": "Hsin Yen Hsieh",
-                                        "group_name": "Python資料科學交流社群",
-                                        "message": "對 total是list"
+                                        "event_date": "9月20日",
+                                        "event_time": "11時11分",
+                                        "event_location": "高雄市823田寮區崇德里月球路36號",
+                                        "event_name": "高雄愛．月熱氣球"
                                    }
                               },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "應該做的，再見！"
+                    "utterance": "嗯，再見"
                }
           ]
      }

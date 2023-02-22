@@ -3,8 +3,7 @@
           "dialogue_id": 446,
           "services": [
                "Calendar_1",
-               "Messaging_1",
-               "Mail_1"
+               "Messaging_1"
           ],
           "turns": [
                {
@@ -14,25 +13,25 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "AddEvent"
+                                             "LookupEvents"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "AddEvent"
+                                             "LookupEvents"
                                         ]
                                    }
                               ],
                               "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "AddEvent",
+                                   "active_intent": "LookupEvents",
                                    "requested_slots": [],
                                    "slot_values": {}
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我想要添加一個活動，可以請你幫忙嗎？"
+                    "utterance": "我想要知道相關的活動，請幫幫我"
                },
                {
                     "frames": [
@@ -42,6 +41,12 @@
                                         "act": "REQUEST",
                                         "canonical_values": [],
                                         "slot": "event_time",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_name",
                                         "values": []
                                    }
                               ],
@@ -51,7 +56,7 @@
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "我想知道活動在當天何時開始"
+                    "utterance": "那這個活動叫甚麼呢？，這個活動在幾點開始呢？"
                },
                {
                     "frames": [
@@ -60,113 +65,53 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "10:30"
+                                             "11:09"
                                         ],
                                         "slot": "event_time",
                                         "values": [
-                                             "上午10時30分"
+                                             "11點9分"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "龍岡米干節"
+                                        ],
+                                        "slot": "event_name",
+                                        "values": [
+                                             "龍岡米干節"
                                         ]
                                    }
                               ],
                               "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 11,
+                                        "exclusive_end": 19,
                                         "slot": "event_time",
-                                        "start": 3
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "AddEvent",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_time": [
-                                             "上午10時30分"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "活動在上午10時30分開始"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_name",
-                                        "values": []
+                                        "start": 14
                                    },
                                    {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_content",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "那這個活動叫甚麼呢？，這個活動有任何內容註記嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "To be announced."
-                                        ],
-                                        "slot": "event_name",
-                                        "values": [
-                                             "To be announced."
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "無"
-                                        ],
-                                        "slot": "event_content",
-                                        "values": [
-                                             "無"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 21,
+                                        "exclusive_end": 10,
                                         "slot": "event_name",
                                         "start": 5
                                    }
                               ],
                               "state": {
-                                   "active_intent": "AddEvent",
+                                   "active_intent": "LookupEvents",
                                    "requested_slots": [],
                                    "slot_values": {
                                         "event_time": [
-                                             "上午10時30分"
+                                             "11點9分"
                                         ],
                                         "event_name": [
-                                             "To be announced."
-                                        ],
-                                        "event_content": [
-                                             "無"
+                                             "龍岡米干節"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "活動名稱叫To be announced.，不需設定內容"
+                    "utterance": "活動名稱叫龍岡米干節，時間為11點9分"
                },
                {
                     "frames": [
@@ -175,13 +120,7 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "event_date",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "participant",
+                                        "slot": "event_location",
                                         "values": []
                                    }
                               ],
@@ -191,7 +130,7 @@
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "我想知道活動在何時舉行，這個活動有任何參加者嗎？"
+                    "utterance": "我想知道這個活動的地點"
                },
                {
                     "frames": [
@@ -200,418 +139,176 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "2018/10/26"
+                                             "桃園市320中壢區龍岡大操場"
                                         ],
-                                        "slot": "event_date",
+                                        "slot": "event_location",
                                         "values": [
-                                             "下週五"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "海陽"
-                                        ],
-                                        "slot": "participant",
-                                        "values": [
-                                             "海陽"
+                                             "桃園市320中壢區龍岡大操場"
                                         ]
                                    }
                               ],
                               "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 8,
-                                        "slot": "event_date",
-                                        "start": 5
-                                   },
-                                   {
-                                        "exclusive_end": 12,
-                                        "slot": "participant",
-                                        "start": 10
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "AddEvent",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_time": [
-                                             "上午10時30分"
-                                        ],
-                                        "event_name": [
-                                             "To be announced."
-                                        ],
-                                        "event_content": [
-                                             "無"
-                                        ],
-                                        "event_date": [
-                                             "下週五"
-                                        ],
-                                        "participant": [
-                                             "海陽"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "活動日期為下週五，有海陽會參加"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "上午10時30分"
-                                        ],
-                                        "slot": "event_time",
-                                        "values": [
-                                             "上午10時30分"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "To be announced."
-                                        ],
-                                        "slot": "event_name",
-                                        "values": [
-                                             "To be announced."
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "無"
-                                        ],
-                                        "slot": "event_content",
-                                        "values": [
-                                             "無"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "下週五"
-                                        ],
-                                        "slot": "event_date",
-                                        "values": [
-                                             "下週五"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "海陽"
-                                        ],
-                                        "slot": "participant",
-                                        "values": [
-                                             "海陽"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 64,
-                                        "slot": "event_time",
-                                        "start": 56
-                                   },
-                                   {
-                                        "exclusive_end": 23,
-                                        "slot": "event_name",
-                                        "start": 7
-                                   },
-                                   {
-                                        "exclusive_end": 40,
-                                        "slot": "event_date",
-                                        "start": 37
-                                   },
-                                   {
-                                        "exclusive_end": 80,
-                                        "slot": "participant",
-                                        "start": 78
-                                   }
-                              ],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "確認要建立名叫To be announced.的活動嗎？，確認要建立舉辦在下週五的活動嗎？，確認要建立舉辦在當天上午10時30分的活動嗎？，確認要建立舉辦有海陽參加的活動嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "AFFIRM",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "AddEvent",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_time": [
-                                             "上午10時30分"
-                                        ],
-                                        "event_name": [
-                                             "To be announced."
-                                        ],
-                                        "event_content": [
-                                             "無"
-                                        ],
-                                        "event_date": [
-                                             "下週五"
-                                        ],
-                                        "participant": [
-                                             "海陽"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "好的，看起來沒甚麼問題"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NOTIFY_SUCCESS",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_call": {
-                                   "method": "AddEvent",
-                                   "parameters": {
-                                        "event_time": "上午10時30分",
-                                        "event_name": "To be announced.",
-                                        "event_content": "無",
-                                        "event_date": "下週五",
-                                        "participant": "海陽"
-                                   }
-                              },
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "多虧有您的配合，活動已添加至行事曆"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM_INTENT",
-                                        "canonical_values": [
-                                             "FindMessage"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "FindMessage"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "FindMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {}
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "請幫我找一則訊息"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "message",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "我想知道訊息內容"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "是 import 的時候確保沒有髒東西偷跑"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "是 import 的時候確保沒有髒東西偷跑"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 26,
-                                        "slot": "message",
-                                        "start": 5
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "FindMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "message": [
-                                             "是 import 的時候確保沒有髒東西偷跑"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "訊息內容為是 import 的時候確保沒有髒東西偷跑"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "group_name",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "我想知道這則訊息在哪個群組？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "Python資料科學交流社群"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "Python資料科學交流社群"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
                               "slots": [
                                    {
                                         "exclusive_end": 18,
-                                        "slot": "group_name",
+                                        "slot": "event_location",
                                         "start": 4
                                    }
                               ],
                               "state": {
-                                   "active_intent": "FindMessage",
+                                   "active_intent": "LookupEvents",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "message": [
-                                             "是 import 的時候確保沒有髒東西偷跑"
+                                        "event_time": [
+                                             "11點9分"
                                         ],
-                                        "group_name": [
-                                             "Python資料科學交流社群"
+                                        "event_name": [
+                                             "龍岡米干節"
+                                        ],
+                                        "event_location": [
+                                             "桃園市320中壢區龍岡大操場"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "群組叫做Python資料科學交流社群"
+                    "utterance": "活動辦在桃園市320中壢區龍岡大操場"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "是 import 的時候確保沒有髒東西偷跑"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "是 import 的時候確保沒有髒東西偷跑"
-                                        ]
-                                   },
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_content",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "這個活動有任何內容備註嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
                                    {
-                                        "act": "OFFER",
+                                        "act": "INFORM",
                                         "canonical_values": [
-                                             "Python資料科學交流社群"
+                                             "經過了10年的米干節，團結了地方產業、創造了商圈的繁榮"
                                         ],
-                                        "slot": "group_name",
+                                        "slot": "event_content",
                                         "values": [
-                                             "Python資料科學交流社群"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM_COUNT",
-                                        "canonical_values": [
-                                             "1"
-                                        ],
-                                        "slot": "count",
-                                        "values": [
-                                             "1"
+                                             "經過了10年的米干節，團結了地方產業、創造了商圈的繁榮"
                                         ]
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 17,
-                                        "slot": "group_name",
+                                        "exclusive_end": 30,
+                                        "slot": "event_content",
                                         "start": 3
                                    }
                               ],
+                              "state": {
+                                   "active_intent": "LookupEvents",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_time": [
+                                             "11點9分"
+                                        ],
+                                        "event_name": [
+                                             "龍岡米干節"
+                                        ],
+                                        "event_location": [
+                                             "桃園市320中壢區龍岡大操場"
+                                        ],
+                                        "event_content": [
+                                             "經過了10年的米干節，團結了地方產業、創造了商圈的繁榮"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "內容為經過了10年的米干節，團結了地方產業、創造了商圈的繁榮"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NOTIFY_FAILURE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
                               "service_call": {
-                                   "method": "FindMessage",
+                                   "method": "LookupEvents",
                                    "parameters": {
-                                        "message": "是 import 的時候確保沒有髒東西偷跑",
-                                        "group_name": "Python資料科學交流社群"
+                                        "event_time": "11點9分",
+                                        "event_name": "龍岡米干節",
+                                        "event_location": "桃園市320中壢區龍岡大操場",
+                                        "event_content": "經過了10年的米干節，團結了地方產業、創造了商圈的繁榮"
                                    }
                               },
-                              "service_results": [
-                                   {
-                                        "group_name": "Python資料科學交流社群",
-                                        "contact_name": "LoveAI",
-                                        "message": "是 import 的時候確保沒有髒東西偷跑"
-                                   }
-                              ]
+                              "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "找到在Python資料科學交流社群群組的聊天訊息，總共有1個結果"
+                    "utterance": "不好意思，在行事曆上沒辦法找到符合您要求的活動，請用其他條件查詢"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NEGATE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "GOODBYE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "LookupEvents",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_time": [
+                                             "11點9分"
+                                        ],
+                                        "event_name": [
+                                             "龍岡米干節"
+                                        ],
+                                        "event_location": [
+                                             "桃園市320中壢區龍岡大操場"
+                                        ],
+                                        "event_content": [
+                                             "經過了10年的米干節，團結了地方產業、創造了商圈的繁榮"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "沒關係，先這樣吧，再見"
                },
                {
                     "frames": [
@@ -624,394 +321,13 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "FindMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "message": [
-                                             "是 import 的時候確保沒有髒東西偷跑"
-                                        ],
-                                        "group_name": [
-                                             "Python資料科學交流社群"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "沒有了！再見！"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "GOODBYE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "歡迎下次諮詢，再見"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM_INTENT",
-                                        "canonical_values": [
-                                             "FindMail"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "FindMail"
-                                        ]
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "FindMail",
-                                   "requested_slots": [],
-                                   "slot_values": {}
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "我想要知道相關的信件，請幫幫我"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "subject",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "content",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "那這封信叫甚麼呢？，這封信有任何內容嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             " 欸 應徵工作要怎麼預防自己不被打死"
-                                        ],
-                                        "slot": "subject",
-                                        "values": [
-                                             " 欸 應徵工作要怎麼預防自己不被打死"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "是這樣啦剛剛在看歲大叔去討個工作，只是想要討個生活也不是什麼米蟲，去面試一下就被打個半死的影片，真的是往死裡打耶打到槍都拿出來了，要怎麼預防這種事情發生啊，現在不是台灣經濟最好的一年嗎，我怎麼覺得自己像在柬埔寨"
-                                        ],
-                                        "slot": "content",
-                                        "values": [
-                                             "是這樣啦剛剛在看歲大叔去討個工作，只是想要討個生活也不是什麼米蟲，去面試一下就被打個半死的影片，真的是往死裡打耶打到槍都拿出來了，要怎麼預防這種事情發生啊，現在不是台灣經濟最好的一年嗎，我怎麼覺得自己像在柬埔寨"
-                                        ]
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 23,
-                                        "slot": "subject",
-                                        "start": 5
-                                   },
-                                   {
-                                        "exclusive_end": 132,
-                                        "slot": "content",
-                                        "start": 27
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "FindMail",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "subject": [
-                                             " 欸 應徵工作要怎麼預防自己不被打死"
-                                        ],
-                                        "content": [
-                                             "是這樣啦剛剛在看歲大叔去討個工作，只是想要討個生活也不是什麼米蟲，去面試一下就被打個半死的影片，真的是往死裡打耶打到槍都拿出來了，要怎麼預防這種事情發生啊，現在不是台灣經濟最好的一年嗎，我怎麼覺得自己像在柬埔寨"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "這封信叫做 欸 應徵工作要怎麼預防自己不被打死，內容為是這樣啦剛剛在看歲大叔去討個工作，只是想要討個生活也不是什麼米蟲，去面試一下就被打個半死的影片，真的是往死裡打耶打到槍都拿出來了，要怎麼預防這種事情發生啊，現在不是台灣經濟最好的一年嗎，我怎麼覺得自己像在柬埔寨"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "sender",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "copy_recipient",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "你知道這封信是誰寄的嗎？，你知道這封信的副本收件者嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "Flash"
-                                        ],
-                                        "slot": "sender",
-                                        "values": [
-                                             "Flash"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "無"
-                                        ],
-                                        "slot": "copy_recipient",
-                                        "values": [
-                                             "無"
-                                        ]
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 9,
-                                        "slot": "sender",
-                                        "start": 4
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "FindMail",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "subject": [
-                                             " 欸 應徵工作要怎麼預防自己不被打死"
-                                        ],
-                                        "content": [
-                                             "是這樣啦剛剛在看歲大叔去討個工作，只是想要討個生活也不是什麼米蟲，去面試一下就被打個半死的影片，真的是往死裡打耶打到槍都拿出來了，要怎麼預防這種事情發生啊，現在不是台灣經濟最好的一年嗎，我怎麼覺得自己像在柬埔寨"
-                                        ],
-                                        "sender": [
-                                             "Flash"
-                                        ],
-                                        "copy_recipient": [
-                                             "無"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "這封信是Flash寄的，這封信不用副本收件者"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             " 欸 應徵工作要怎麼預防自己不被打死"
-                                        ],
-                                        "slot": "subject",
-                                        "values": [
-                                             " 欸 應徵工作要怎麼預防自己不被打死"
-                                        ]
-                                   },
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "是這樣啦剛剛在看歲大叔去討個工作，只是想要討個生活也不是什麼米蟲，去面試一下就被打個半死的影片，真的是往死裡打耶打到槍都拿出來了，要怎麼預防這種事情發生啊，現在不是台灣經濟最好的一年嗎，我怎麼覺得自己像在柬埔寨"
-                                        ],
-                                        "slot": "content",
-                                        "values": [
-                                             "是這樣啦剛剛在看歲大叔去討個工作，只是想要討個生活也不是什麼米蟲，去面試一下就被打個半死的影片，真的是往死裡打耶打到槍都拿出來了，要怎麼預防這種事情發生啊，現在不是台灣經濟最好的一年嗎，我怎麼覺得自己像在柬埔寨"
-                                        ]
-                                   },
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "Flash"
-                                        ],
-                                        "slot": "sender",
-                                        "values": [
-                                             "Flash"
-                                        ]
-                                   },
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "無"
-                                        ],
-                                        "slot": "copy_recipient",
-                                        "values": [
-                                             "無"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM_COUNT",
-                                        "canonical_values": [
-                                             "1"
-                                        ],
-                                        "slot": "count",
-                                        "values": [
-                                             "1"
-                                        ]
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 50,
-                                        "slot": "subject",
-                                        "start": 32
-                                   },
-                                   {
-                                        "exclusive_end": 172,
-                                        "slot": "content",
-                                        "start": 67
-                                   },
-                                   {
-                                        "exclusive_end": 9,
-                                        "slot": "sender",
-                                        "start": 4
-                                   }
-                              ],
-                              "service_call": {
-                                   "method": "FindMail",
-                                   "parameters": {
-                                        "subject": " 欸 應徵工作要怎麼預防自己不被打死",
-                                        "content": "是這樣啦剛剛在看歲大叔去討個工作，只是想要討個生活也不是什麼米蟲，去面試一下就被打個半死的影片，真的是往死裡打耶打到槍都拿出來了，要怎麼預防這種事情發生啊，現在不是台灣經濟最好的一年嗎，我怎麼覺得自己像在柬埔寨",
-                                        "sender": "Flash",
-                                        "copy_recipient": "無"
-                                   }
-                              },
-                              "service_results": [
-                                   {
-                                        "subject": " 欸 應徵工作要怎麼預防自己不被打死",
-                                        "content": "是這樣啦剛剛在看歲大叔去討個工作，只是想要討個生活也不是什麼米蟲，去面試一下就被打個半死的影片，真的是往死裡打耶打到槍都拿出來了，要怎麼預防這種事情發生啊，現在不是台灣經濟最好的一年嗎，我怎麼覺得自己像在柬埔寨",
-                                        "copy_recipient": "無",
-                                        "recipient": "Draz",
-                                        "sender": "Flash"
-                                   }
-                              ]
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "我找到由Flash寄發的信件，請你看看，依據您提供的訊息，找到跟 欸 應徵工作要怎麼預防自己不被打死有關的信件，請你看看，我找到內容跟是這樣啦剛剛在看歲大叔去討個工作，只是想要討個生活也不是什麼米蟲，去面試一下就被打個半死的影片，真的是往死裡打耶打到槍都拿出來了，要怎麼預防這種事情發生啊，現在不是台灣經濟最好的一年嗎，我怎麼覺得自己像在柬埔寨有關的信件，請你看看，總共有1個結果"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "recipient",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "FindMail",
-                                   "requested_slots": [
-                                        "recipient"
-                                   ],
-                                   "slot_values": {
-                                        "subject": [
-                                             " 欸 應徵工作要怎麼預防自己不被打死"
-                                        ],
-                                        "content": [
-                                             "是這樣啦剛剛在看歲大叔去討個工作，只是想要討個生活也不是什麼米蟲，去面試一下就被打個半死的影片，真的是往死裡打耶打到槍都拿出來了，要怎麼預防這種事情發生啊，現在不是台灣經濟最好的一年嗎，我怎麼覺得自己像在柬埔寨"
-                                        ],
-                                        "sender": [
-                                             "Flash"
-                                        ],
-                                        "copy_recipient": [
-                                             "無"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "我想知道這封信的收件者"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "小野原"
-                                        ],
-                                        "slot": "recipient",
-                                        "values": [
-                                             "小野原"
-                                        ]
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 7,
-                                        "slot": "recipient",
-                                        "start": 4
-                                   }
-                              ],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "收件者為小野原"
+                    "utterance": "再見！祝您生活愉快！"
                },
                {
                     "frames": [
@@ -1049,7 +365,110 @@
                                         "canonical_values": [],
                                         "slot": "message",
                                         "values": []
-                                   },
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道訊息內容"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "很多都只是網路教學刻過一遍ㄉ程度"
+                                        ],
+                                        "slot": "message",
+                                        "values": [
+                                             "很多都只是網路教學刻過一遍ㄉ程度"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 21,
+                                        "slot": "message",
+                                        "start": 5
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "SendMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "message": [
+                                             "很多都只是網路教學刻過一遍ㄉ程度"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "訊息內容為很多都只是網路教學刻過一遍ㄉ程度"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "group_name",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "你知道群組名稱嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "group_name",
+                                        "values": [
+                                             "無"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "message": [
+                                             "很多都只是網路教學刻過一遍ㄉ程度"
+                                        ],
+                                        "group_name": [
+                                             "無"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "這則訊息應該是傳送給某個使用者的訊息"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
@@ -1063,7 +482,7 @@
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "我想知道訊息內容，我想知道這則訊息是誰寄的？"
+                    "utterance": "我想知道這則訊息是誰寄的？"
                },
                {
                     "frames": [
@@ -1072,21 +491,11 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "聯邦學習"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "聯邦學習"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "寧波雙六"
+                                             "Iann"
                                         ],
                                         "slot": "contact_name",
                                         "values": [
-                                             "寧波雙六"
+                                             "Iann"
                                         ]
                                    }
                               ],
@@ -1094,13 +503,8 @@
                               "slots": [
                                    {
                                         "exclusive_end": 7,
-                                        "slot": "message",
-                                        "start": 3
-                                   },
-                                   {
-                                        "exclusive_end": 15,
                                         "slot": "contact_name",
-                                        "start": 11
+                                        "start": 3
                                    }
                               ],
                               "state": {
@@ -1108,17 +512,20 @@
                                    "requested_slots": [],
                                    "slot_values": {
                                         "message": [
-                                             "聯邦學習"
+                                             "很多都只是網路教學刻過一遍ㄉ程度"
+                                        ],
+                                        "group_name": [
+                                             "無"
                                         ],
                                         "contact_name": [
-                                             "寧波雙六"
+                                             "Iann"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "跟他說聯邦學習，用戶為寧波雙六"
+                    "utterance": "用戶為Iann"
                },
                {
                     "frames": [
@@ -1127,42 +534,52 @@
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "聯邦學習"
+                                             "很多都只是網路教學刻過一遍ㄉ程度"
                                         ],
                                         "slot": "message",
                                         "values": [
-                                             "聯邦學習"
+                                             "很多都只是網路教學刻過一遍ㄉ程度"
                                         ]
                                    },
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "寧波雙六"
+                                             "無"
+                                        ],
+                                        "slot": "group_name",
+                                        "values": [
+                                             "無"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "Iann"
                                         ],
                                         "slot": "contact_name",
                                         "values": [
-                                             "寧波雙六"
+                                             "Iann"
                                         ]
                                    }
                               ],
                               "service": "Messaging_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 11,
+                                        "exclusive_end": 23,
                                         "slot": "message",
                                         "start": 7
                                    },
                                    {
-                                        "exclusive_end": 26,
+                                        "exclusive_end": 38,
                                         "slot": "contact_name",
-                                        "start": 22
+                                        "start": 34
                                    }
                               ],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "確認要傳送訊息聯邦學習嗎？，確認要傳送訊息給寧波雙六嗎？"
+                    "utterance": "確認要傳送訊息很多都只是網路教學刻過一遍ㄉ程度嗎？，確認要傳送訊息給Iann嗎？"
                },
                {
                     "frames": [
@@ -1182,10 +599,13 @@
                                    "requested_slots": [],
                                    "slot_values": {
                                         "message": [
-                                             "聯邦學習"
+                                             "很多都只是網路教學刻過一遍ㄉ程度"
+                                        ],
+                                        "group_name": [
+                                             "無"
                                         ],
                                         "contact_name": [
-                                             "寧波雙六"
+                                             "Iann"
                                         ]
                                    }
                               }
@@ -1210,8 +630,9 @@
                               "service_call": {
                                    "method": "SendMessage",
                                    "parameters": {
-                                        "message": "聯邦學習",
-                                        "contact_name": "寧波雙六"
+                                        "message": "很多都只是網路教學刻過一遍ㄉ程度",
+                                        "group_name": "無",
+                                        "contact_name": "Iann"
                                    }
                               },
                               "service_results": []
@@ -1238,17 +659,20 @@
                                    "requested_slots": [],
                                    "slot_values": {
                                         "message": [
-                                             "聯邦學習"
+                                             "很多都只是網路教學刻過一遍ㄉ程度"
+                                        ],
+                                        "group_name": [
+                                             "無"
                                         ],
                                         "contact_name": [
-                                             "寧波雙六"
+                                             "Iann"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "沒有問題了，再見吧！"
+                    "utterance": "沒有問題了，再見！"
                },
                {
                     "frames": [
@@ -1266,15 +690,16 @@
                               "service_call": {
                                    "method": "SendMessage",
                                    "parameters": {
-                                        "message": "聯邦學習",
-                                        "contact_name": "寧波雙六"
+                                        "message": "很多都只是網路教學刻過一遍ㄉ程度",
+                                        "group_name": "無",
+                                        "contact_name": "Iann"
                                    }
                               },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "嗯，再見"
+                    "utterance": "再見"
                }
           ]
      }

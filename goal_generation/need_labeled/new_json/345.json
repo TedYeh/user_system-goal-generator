@@ -2,8 +2,7 @@
      {
           "dialogue_id": 345,
           "services": [
-               "Messaging_1",
-               "Mail_1"
+               "Calendar_1"
           ],
           "turns": [
                {
@@ -13,190 +12,25 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "SendMessage"
+                                             "AddEvent"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "SendMessage"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "Python資料科學交流社群"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "Python資料科學交流社群"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "雖然準確度可能不優"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "雖然準確度可能不優"
+                                             "AddEvent"
                                         ]
                                    }
                               ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 42,
-                                        "slot": "group_name",
-                                        "start": 28
-                                   },
-                                   {
-                                        "exclusive_end": 23,
-                                        "slot": "message",
-                                        "start": 14
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "SendMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "message": [
-                                             "雖然準確度可能不優"
-                                        ],
-                                        "group_name": [
-                                             "Python資料科學交流社群"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "請幫我寄一則訊息，訊息內容為雖然準確度可能不優，群組叫做Python資料科學交流社群"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "雖然準確度可能不優"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "雖然準確度可能不優"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "Python資料科學交流社群"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "Python資料科學交流社群"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 16,
-                                        "slot": "message",
-                                        "start": 7
-                                   },
-                                   {
-                                        "exclusive_end": 41,
-                                        "slot": "group_name",
-                                        "start": 27
-                                   }
-                              ],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "確認要傳送訊息雖然準確度可能不優嗎？，確認要傳送訊息到Python資料科學交流社群嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "AFFIRM",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "message": [
-                                             "雖然準確度可能不優"
-                                        ],
-                                        "group_name": [
-                                             "Python資料科學交流社群"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "好的，看起來沒甚麼問題"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NOTIFY_SUCCESS",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_call": {
-                                   "method": "SendMessage",
-                                   "parameters": {
-                                        "message": "雖然準確度可能不優",
-                                        "group_name": "Python資料科學交流社群"
-                                   }
-                              },
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "多虧有您的配合，訊息已成功傳送"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM_INTENT",
-                                        "canonical_values": [
-                                             "SendMail"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "SendMail"
-                                        ]
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "SendMail",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {}
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我想要寫一封信，可以請你幫忙嗎？"
+                    "utterance": "我想要添加一個活動，可以請你幫忙嗎？"
                },
                {
                     "frames": [
@@ -205,17 +39,17 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "copy_recipient",
+                                        "slot": "event_date",
                                         "values": []
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "我想知道這封信的副本收件者"
+                    "utterance": "我想知道活動在何時舉行"
                },
                {
                     "frames": [
@@ -224,221 +58,178 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "東海大學數位創新學程"
+                                             "2022/7/1"
                                         ],
-                                        "slot": "copy_recipient",
+                                        "slot": "event_date",
                                         "values": [
-                                             "東海大學數位創新學程"
+                                             "2022年7月1日"
                                         ]
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 20,
-                                        "slot": "copy_recipient",
-                                        "start": 10
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "SendMail",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "copy_recipient": [
-                                             "東海大學數位創新學程"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "這封信需要以副本寄給東海大學數位創新學程"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "recipient",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "我想知道這封信的收件者"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "Draz"
-                                        ],
-                                        "slot": "recipient",
-                                        "values": [
-                                             "Draz"
-                                        ]
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 10,
-                                        "slot": "recipient",
-                                        "start": 6
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "SendMail",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "copy_recipient": [
-                                             "東海大學數位創新學程"
-                                        ],
-                                        "recipient": [
-                                             "Draz"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "這封信要寄給Draz"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "subject",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "我想知道這個信件的主旨"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             " 袁崇煥不死，大明會滅亡嗎？"
-                                        ],
-                                        "slot": "subject",
-                                        "values": [
-                                             " 袁崇煥不死，大明會滅亡嗎？"
-                                        ]
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 19,
-                                        "slot": "subject",
-                                        "start": 5
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "SendMail",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "copy_recipient": [
-                                             "東海大學數位創新學程"
-                                        ],
-                                        "recipient": [
-                                             "Draz"
-                                        ],
-                                        "subject": [
-                                             " 袁崇煥不死，大明會滅亡嗎？"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "信件主旨叫 袁崇煥不死，大明會滅亡嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "content",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "我想知道這封信的內文"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "袁崇煥不死，大明會滅亡嗎，假如當時，袁崇煥不死，此時，大明會滅亡嗎，有這方面的八卦嗎"
-                                        ],
-                                        "slot": "content",
-                                        "values": [
-                                             "袁崇煥不死，大明會滅亡嗎，假如當時，袁崇煥不死，此時，大明會滅亡嗎，有這方面的八卦嗎"
-                                        ]
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 45,
-                                        "slot": "content",
+                                        "exclusive_end": 12,
+                                        "slot": "event_date",
                                         "start": 3
                                    }
                               ],
                               "state": {
-                                   "active_intent": "SendMail",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "copy_recipient": [
-                                             "東海大學數位創新學程"
-                                        ],
-                                        "recipient": [
-                                             "Draz"
-                                        ],
-                                        "subject": [
-                                             " 袁崇煥不死，大明會滅亡嗎？"
-                                        ],
-                                        "content": [
-                                             "袁崇煥不死，大明會滅亡嗎，假如當時，袁崇煥不死，此時，大明會滅亡嗎，有這方面的八卦嗎"
+                                        "event_date": [
+                                             "2022年7月1日"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "內文為袁崇煥不死，大明會滅亡嗎，假如當時，袁崇煥不死，此時，大明會滅亡嗎，有這方面的八卦嗎"
+                    "utterance": "活動在2022年7月1日"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_time",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "participant",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道活動在當天何時開始，想知道這個活動的參加者"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "10:00"
+                                        ],
+                                        "slot": "event_time",
+                                        "values": [
+                                             "上午10點0分"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "participant",
+                                        "values": [
+                                             "無"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 10,
+                                        "slot": "event_time",
+                                        "start": 3
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "AddEvent",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_date": [
+                                             "2022年7月1日"
+                                        ],
+                                        "event_time": [
+                                             "上午10點0分"
+                                        ],
+                                        "participant": [
+                                             "無"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "活動在上午10點0分開始，不需設定參加者"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_name",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道這個活動的名稱"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "金山甘藷萬里地瓜季"
+                                        ],
+                                        "slot": "event_name",
+                                        "values": [
+                                             "金山甘藷萬里地瓜季"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 14,
+                                        "slot": "event_name",
+                                        "start": 5
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "AddEvent",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_date": [
+                                             "2022年7月1日"
+                                        ],
+                                        "event_time": [
+                                             "上午10點0分"
+                                        ],
+                                        "participant": [
+                                             "無"
+                                        ],
+                                        "event_name": [
+                                             "金山甘藷萬里地瓜季"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "活動名稱叫金山甘藷萬里地瓜季"
                },
                {
                     "frames": [
@@ -447,67 +238,67 @@
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "東海大學數位創新學程"
+                                             "2022年7月1日"
                                         ],
-                                        "slot": "copy_recipient",
+                                        "slot": "event_date",
                                         "values": [
-                                             "東海大學數位創新學程"
+                                             "2022年7月1日"
                                         ]
                                    },
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "Draz"
+                                             "上午10點0分"
                                         ],
-                                        "slot": "recipient",
+                                        "slot": "event_time",
                                         "values": [
-                                             "Draz"
+                                             "上午10點0分"
                                         ]
                                    },
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             " 袁崇煥不死，大明會滅亡嗎？"
+                                             "無"
                                         ],
-                                        "slot": "subject",
+                                        "slot": "participant",
                                         "values": [
-                                             " 袁崇煥不死，大明會滅亡嗎？"
+                                             "無"
                                         ]
                                    },
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "袁崇煥不死，大明會滅亡嗎，假如當時，袁崇煥不死，此時，大明會滅亡嗎，有這方面的八卦嗎"
+                                             "金山甘藷萬里地瓜季"
                                         ],
-                                        "slot": "content",
+                                        "slot": "event_name",
                                         "values": [
-                                             "袁崇煥不死，大明會滅亡嗎，假如當時，袁崇煥不死，此時，大明會滅亡嗎，有這方面的八卦嗎"
+                                             "金山甘藷萬里地瓜季"
                                         ]
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 95,
-                                        "slot": "recipient",
-                                        "start": 91
+                                        "exclusive_end": 39,
+                                        "slot": "event_date",
+                                        "start": 30
                                    },
                                    {
-                                        "exclusive_end": 23,
-                                        "slot": "subject",
-                                        "start": 9
+                                        "exclusive_end": 62,
+                                        "slot": "event_time",
+                                        "start": 55
                                    },
                                    {
-                                        "exclusive_end": 83,
-                                        "slot": "content",
-                                        "start": 41
+                                        "exclusive_end": 16,
+                                        "slot": "event_name",
+                                        "start": 7
                                    }
                               ],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "請確認要寄出主旨為 袁崇煥不死，大明會滅亡嗎？的信件嗎？，請確認要寄出的信件內容:袁崇煥不死，大明會滅亡嗎，假如當時，袁崇煥不死，此時，大明會滅亡嗎，有這方面的八卦嗎，確認要寄信件給Draz嗎？"
+                    "utterance": "確認要建立名叫金山甘藷萬里地瓜季的活動嗎？，確認要建立舉辦在2022年7月1日的活動嗎？，確認要建立舉辦在當天上午10點0分的活動嗎？"
                },
                {
                     "frames": [
@@ -520,30 +311,30 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMail",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "copy_recipient": [
-                                             "東海大學數位創新學程"
+                                        "event_date": [
+                                             "2022年7月1日"
                                         ],
-                                        "recipient": [
-                                             "Draz"
+                                        "event_time": [
+                                             "上午10點0分"
                                         ],
-                                        "subject": [
-                                             " 袁崇煥不死，大明會滅亡嗎？"
+                                        "participant": [
+                                             "無"
                                         ],
-                                        "content": [
-                                             "袁崇煥不死，大明會滅亡嗎，假如當時，袁崇煥不死，此時，大明會滅亡嗎，有這方面的八卦嗎"
+                                        "event_name": [
+                                             "金山甘藷萬里地瓜季"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "好的，看起來沒甚麼問題"
+                    "utterance": "我對以上資訊沒問題"
                },
                {
                     "frames": [
@@ -556,58 +347,58 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_call": {
-                                   "method": "SendMail",
+                                   "method": "AddEvent",
                                    "parameters": {
-                                        "copy_recipient": "東海大學數位創新學程",
-                                        "recipient": "Draz",
-                                        "subject": " 袁崇煥不死，大明會滅亡嗎？",
-                                        "content": "袁崇煥不死，大明會滅亡嗎，假如當時，袁崇煥不死，此時，大明會滅亡嗎，有這方面的八卦嗎"
+                                        "event_date": "2022年7月1日",
+                                        "event_time": "上午10點0分",
+                                        "participant": "無",
+                                        "event_name": "金山甘藷萬里地瓜季"
                                    }
                               },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "多虧有您的配合，信件已成功寄出"
+                    "utterance": "多虧有您的配合，活動已添加至行事曆"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "THANK_YOU",
+                                        "act": "SELECT",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMail",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "copy_recipient": [
-                                             "東海大學數位創新學程"
+                                        "event_date": [
+                                             "2022年7月1日"
                                         ],
-                                        "recipient": [
-                                             "Draz"
+                                        "event_time": [
+                                             "上午10點0分"
                                         ],
-                                        "subject": [
-                                             " 袁崇煥不死，大明會滅亡嗎？"
+                                        "participant": [
+                                             "無"
                                         ],
-                                        "content": [
-                                             "袁崇煥不死，大明會滅亡嗎，假如當時，袁崇煥不死，此時，大明會滅亡嗎，有這方面的八卦嗎"
+                                        "event_name": [
+                                             "金山甘藷萬里地瓜季"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "謝謝啦"
+                    "utterance": "我知道了"
                },
                {
                     "frames": [
@@ -620,13 +411,13 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "還有什麼問題嗎？"
+                    "utterance": "還需要什麼幫助嗎？"
                },
                {
                     "frames": [
@@ -645,23 +436,23 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMail",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "copy_recipient": [
-                                             "東海大學數位創新學程"
+                                        "event_date": [
+                                             "2022年7月1日"
                                         ],
-                                        "recipient": [
-                                             "Draz"
+                                        "event_time": [
+                                             "上午10點0分"
                                         ],
-                                        "subject": [
-                                             " 袁崇煥不死，大明會滅亡嗎？"
+                                        "participant": [
+                                             "無"
                                         ],
-                                        "content": [
-                                             "袁崇煥不死，大明會滅亡嗎，假如當時，袁崇煥不死，此時，大明會滅亡嗎，有這方面的八卦嗎"
+                                        "event_name": [
+                                             "金山甘藷萬里地瓜季"
                                         ]
                                    }
                               }
@@ -681,13 +472,13 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "歡迎下次諮詢，再見"
+                    "utterance": "很高興為您服務，下次再見"
                }
           ]
      }

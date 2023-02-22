@@ -2,7 +2,7 @@
      {
           "dialogue_id": 459,
           "services": [
-               "Mail_1",
+               "Calendar_1",
                "Messaging_1"
           ],
           "turns": [
@@ -13,25 +13,25 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "FindMail"
+                                             "AddEvent"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "FindMail"
+                                             "AddEvent"
                                         ]
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "FindMail",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {}
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我想要知道相關的信件，請幫幫我"
+                    "utterance": "我想要添加一個活動，可以請你幫忙嗎？"
                },
                {
                     "frames": [
@@ -40,17 +40,17 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "subject",
+                                        "slot": "event_name",
                                         "values": []
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "那這封信叫甚麼呢？"
+                    "utterance": "我想知道這個活動的名稱"
                },
                {
                     "frames": [
@@ -59,35 +59,35 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             " 徐國勇曝「放砂畫」畫面　何志偉：將究責"
+                                             "2018新社花海行-樂遊台三線"
                                         ],
-                                        "slot": "subject",
+                                        "slot": "event_name",
                                         "values": [
-                                             " 徐國勇曝「放砂畫」畫面　何志偉：將究責"
+                                             "2018新社花海行-樂遊台三線"
                                         ]
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 25,
-                                        "slot": "subject",
-                                        "start": 5
+                                        "exclusive_end": 21,
+                                        "slot": "event_name",
+                                        "start": 6
                                    }
                               ],
                               "state": {
-                                   "active_intent": "FindMail",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "subject": [
-                                             " 徐國勇曝「放砂畫」畫面　何志偉：將究責"
+                                        "event_name": [
+                                             "2018新社花海行-樂遊台三線"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "這封信叫做 徐國勇曝「放砂畫」畫面　何志偉：將究責"
+                    "utterance": "這個活動叫做2018新社花海行-樂遊台三線"
                },
                {
                     "frames": [
@@ -96,17 +96,17 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "content",
+                                        "slot": "participant",
                                         "values": []
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "我想知道這封信的內文"
+                    "utterance": "這個活動有任何參加者嗎？"
                },
                {
                     "frames": [
@@ -115,174 +115,398 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "備註請放最後面違者新聞文章刪除，媒體來源:"
+                                             "無"
                                         ],
-                                        "slot": "content",
+                                        "slot": "participant",
                                         "values": [
-                                             "備註請放最後面違者新聞文章刪除，媒體來源:"
+                                             "無"
                                         ]
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "AddEvent",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_name": [
+                                             "2018新社花海行-樂遊台三線"
+                                        ],
+                                        "participant": [
+                                             "無"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "這個活動不需設定參加者"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_date",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_time",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "這個活動辦在幾月幾號呢？，我想知道活動在當天何時開始"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "2018/12/1"
+                                        ],
+                                        "slot": "event_date",
+                                        "values": [
+                                             "明天"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "07:49"
+                                        ],
+                                        "slot": "event_time",
+                                        "values": [
+                                             "7時49分"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 28,
-                                        "slot": "content",
+                                        "exclusive_end": 5,
+                                        "slot": "event_date",
+                                        "start": 3
+                                   },
+                                   {
+                                        "exclusive_end": 17,
+                                        "slot": "event_time",
+                                        "start": 12
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "AddEvent",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_name": [
+                                             "2018新社花海行-樂遊台三線"
+                                        ],
+                                        "participant": [
+                                             "無"
+                                        ],
+                                        "event_date": [
+                                             "明天"
+                                        ],
+                                        "event_time": [
+                                             "7時49分"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "日期為明天，時間為當天的7時49分"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "2018新社花海行-樂遊台三線"
+                                        ],
+                                        "slot": "event_name",
+                                        "values": [
+                                             "2018新社花海行-樂遊台三線"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "participant",
+                                        "values": [
+                                             "無"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "明天"
+                                        ],
+                                        "slot": "event_date",
+                                        "values": [
+                                             "明天"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "7時49分"
+                                        ],
+                                        "slot": "event_time",
+                                        "values": [
+                                             "7時49分"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 22,
+                                        "slot": "event_name",
                                         "start": 7
+                                   },
+                                   {
+                                        "exclusive_end": 38,
+                                        "slot": "event_date",
+                                        "start": 36
+                                   },
+                                   {
+                                        "exclusive_end": 59,
+                                        "slot": "event_time",
+                                        "start": 54
                                    }
                               ],
-                              "state": {
-                                   "active_intent": "FindMail",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "subject": [
-                                             " 徐國勇曝「放砂畫」畫面　何志偉：將究責"
-                                        ],
-                                        "content": [
-                                             "備註請放最後面違者新聞文章刪除，媒體來源:"
-                                        ]
-                                   }
-                              }
+                              "service_results": []
                          }
                     ],
-                    "speaker": "USER",
-                    "utterance": "這封信的內文為備註請放最後面違者新聞文章刪除，媒體來源:"
+                    "speaker": "SYSTEM",
+                    "utterance": "確認要建立名叫2018新社花海行-樂遊台三線的活動嗎？，確認要建立舉辦在明天的活動嗎？，確認要建立舉辦在當天7時49分的活動嗎？"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "REQUEST",
+                                        "act": "AFFIRM",
                                         "canonical_values": [],
-                                        "slot": "copy_recipient",
+                                        "slot": "",
                                         "values": []
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "AddEvent",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_name": [
+                                             "2018新社花海行-樂遊台三線"
+                                        ],
+                                        "participant": [
+                                             "無"
+                                        ],
+                                        "event_date": [
+                                             "明天"
+                                        ],
+                                        "event_time": [
+                                             "7時49分"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我對以上資訊沒問題"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQ_MORE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "我想知道這封信的副本收件者"
+                    "utterance": "還有什麼需要幫助的嗎？"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "FindMessage"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "FindMessage"
+                                        ]
+                                   },
+                                   {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "無"
+                                             "Python資料科學交流社群"
                                         ],
-                                        "slot": "copy_recipient",
+                                        "slot": "group_name",
                                         "values": [
-                                             "無"
+                                             "Python資料科學交流社群"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "Slim Paint"
+                                        ],
+                                        "slot": "contact_name",
+                                        "values": [
+                                             "Slim Paint"
                                         ]
                                    }
                               ],
-                              "service": "Mail_1",
-                              "slots": [],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 35,
+                                        "slot": "group_name",
+                                        "start": 21
+                                   },
+                                   {
+                                        "exclusive_end": 55,
+                                        "slot": "contact_name",
+                                        "start": 45
+                                   }
+                              ],
                               "state": {
-                                   "active_intent": "FindMail",
+                                   "active_intent": "FindMessage",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "subject": [
-                                             " 徐國勇曝「放砂畫」畫面　何志偉：將究責"
+                                        "contact_name": [
+                                             "Slim Paint"
                                         ],
-                                        "content": [
-                                             "備註請放最後面違者新聞文章刪除，媒體來源:"
-                                        ],
-                                        "copy_recipient": [
-                                             "無"
+                                        "group_name": [
+                                             "Python資料科學交流社群"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "這封信不用副本收件者"
+                    "utterance": "我想要找則訊息，可以請你幫忙嗎？，應該是在Python資料科學交流社群群組中的訊息，用戶為Slim Paint"
                },
                {
                     "frames": [
                          {
                               "actions": [
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             " 徐國勇曝「放砂畫」畫面　何志偉：將究責"
-                                        ],
-                                        "slot": "subject",
-                                        "values": [
-                                             " 徐國勇曝「放砂畫」畫面　何志偉：將究責"
-                                        ]
-                                   },
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "備註請放最後面違者新聞文章刪除，媒體來源:"
-                                        ],
-                                        "slot": "content",
-                                        "values": [
-                                             "備註請放最後面違者新聞文章刪除，媒體來源:"
-                                        ]
-                                   },
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "無"
-                                        ],
-                                        "slot": "copy_recipient",
-                                        "values": [
-                                             "無"
-                                        ]
-                                   },
                                    {
                                         "act": "INFORM_COUNT",
                                         "canonical_values": [
-                                             "1"
+                                             "5"
                                         ],
                                         "slot": "count",
                                         "values": [
-                                             "1"
+                                             "5"
+                                        ]
+                                   },
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "Slim Paint"
+                                        ],
+                                        "slot": "contact_name",
+                                        "values": [
+                                             "Slim Paint"
+                                        ]
+                                   },
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "Python資料科學交流社群"
+                                        ],
+                                        "slot": "group_name",
+                                        "values": [
+                                             "Python資料科學交流社群"
                                         ]
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Messaging_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 32,
-                                        "slot": "subject",
-                                        "start": 12
+                                        "exclusive_end": 46,
+                                        "slot": "contact_name",
+                                        "start": 36
                                    },
                                    {
-                                        "exclusive_end": 70,
-                                        "slot": "content",
-                                        "start": 49
+                                        "exclusive_end": 25,
+                                        "slot": "group_name",
+                                        "start": 11
                                    }
                               ],
                               "service_call": {
-                                   "method": "FindMail",
+                                   "method": "FindMessage",
                                    "parameters": {
-                                        "subject": " 徐國勇曝「放砂畫」畫面　何志偉：將究責",
-                                        "content": "備註請放最後面違者新聞文章刪除，媒體來源:",
-                                        "copy_recipient": "無"
+                                        "contact_name": [
+                                             "Slim Paint"
+                                        ],
+                                        "group_name": [
+                                             "Python資料科學交流社群"
+                                        ]
                                    }
                               },
                               "service_results": [
                                    {
-                                        "subject": " 徐國勇曝「放砂畫」畫面　何志偉：將究責",
-                                        "content": "備註請放最後面違者新聞文章刪除，媒體來源:",
-                                        "copy_recipient": "無",
-                                        "recipient": "godo",
-                                        "sender": "Tinababy"
+                                        "group_name": "Python資料科學交流社群",
+                                        "contact_name": "Slim Paint",
+                                        "message": "不至于落差很大"
+                                   },
+                                   {
+                                        "group_name": "Python資料科學交流社群",
+                                        "contact_name": "Slim Paint",
+                                        "message": "Zen of python裡都說越乾淨越好 結果題目考很多boilerplate "
+                                   },
+                                   {
+                                        "group_name": "Python資料科學交流社群",
+                                        "contact_name": "Slim Paint",
+                                        "message": "100天就500題了"
+                                   },
+                                   {
+                                        "group_name": "Python資料科學交流社群",
+                                        "contact_name": "Slim Paint",
+                                        "message": "如果是台中廠，那缺還開著"
+                                   },
+                                   {
+                                        "group_name": "Python資料科學交流社群",
+                                        "contact_name": "Slim Paint",
+                                        "message": "可是公衛出來的統計學感覺很強"
                                    }
                               ]
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "依據您提供的訊息，找到跟 徐國勇曝「放砂畫」畫面　何志偉：將究責有關的信件，請你看看，我找到內容跟備註請放最後面違者新聞文章刪除，媒體來源:有關的信件，請你看看，總共有1個結果"
+                    "utterance": "總共有5個結果，找到在Python資料科學交流社群群組的聊天訊息，找到與Slim Paint聊天的訊息"
                },
                {
                     "frames": [
@@ -291,195 +515,135 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "recipient",
+                                        "slot": "message",
                                         "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "FindMail",
-                                   "requested_slots": [
-                                        "recipient"
-                                   ],
-                                   "slot_values": {
-                                        "subject": [
-                                             " 徐國勇曝「放砂畫」畫面　何志偉：將究責"
-                                        ],
-                                        "content": [
-                                             "備註請放最後面違者新聞文章刪除，媒體來源:"
-                                        ],
-                                        "copy_recipient": [
-                                             "無"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "你知道這封信是寄給誰的嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "小野原"
-                                        ],
-                                        "slot": "recipient",
-                                        "values": [
-                                             "小野原"
-                                        ]
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 9,
-                                        "slot": "recipient",
-                                        "start": 6
-                                   }
-                              ],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "這封信要寄給小野原"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST_ALTS",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "昨天去吃火鍋看了上面其他人的菜單，這一年菜單上面價格換了三次這會不會太頻繁，速食業者好像也是漲了次?，之前馬英九的時代，漲元就有公權力介入調查新聞報好幾天，現在一次漲都沒有人管?"
-                                        ],
-                                        "slot": "content",
-                                        "values": [
-                                             "昨天去吃火鍋看了上面其他人的菜單，這一年菜單上面價格換了三次這會不會太頻繁，速食業者好像也是漲了次?，之前馬英九的時代，漲元就有公權力介入調查新聞報好幾天，現在一次漲都沒有人管?"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "黑色睡蓮"
-                                        ],
-                                        "slot": "copy_recipient",
-                                        "values": [
-                                             "黑色睡蓮"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             " 1年內漲3次都沒差?"
-                                        ],
-                                        "slot": "subject",
-                                        "values": [
-                                             " 1年內漲3次都沒差?"
-                                        ]
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 16,
-                                        "slot": "subject",
-                                        "start": 5
-                                   },
-                                   {
-                                        "exclusive_end": 109,
-                                        "slot": "content",
-                                        "start": 20
-                                   },
-                                   {
-                                        "exclusive_end": 124,
-                                        "slot": "copy_recipient",
-                                        "start": 120
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "FindMail",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "subject": [
-                                             " 1年內漲3次都沒差?"
-                                        ],
-                                        "content": [
-                                             "昨天去吃火鍋看了上面其他人的菜單，這一年菜單上面價格換了三次這會不會太頻繁，速食業者好像也是漲了次?，之前馬英九的時代，漲元就有公權力介入調查新聞報好幾天，現在一次漲都沒有人管?"
-                                        ],
-                                        "copy_recipient": [
-                                             "黑色睡蓮"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "這封信叫做 1年內漲3次都沒差?，內容為昨天去吃火鍋看了上面其他人的菜單，這一年菜單上面價格換了三次這會不會太頻繁，速食業者好像也是漲了次?，之前馬英九的時代，漲元就有公權力介入調查新聞報好幾天，現在一次漲都沒有人管?，這封信需要以副本寄給黑色睡蓮，能提供更多類似的訊息嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NOTIFY_FAILURE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "service_call": {
-                                   "method": "FindMail",
-                                   "parameters": {
-                                        "subject": " 1年內漲3次都沒差?",
-                                        "content": "昨天去吃火鍋看了上面其他人的菜單，這一年菜單上面價格換了三次這會不會太頻繁，速食業者好像也是漲了次?，之前馬英九的時代，漲元就有公權力介入調查新聞報好幾天，現在一次漲都沒有人管?",
-                                        "copy_recipient": "黑色睡蓮"
-                                   }
-                              },
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "不好意思，沒辦法找到符合您要求的信件，請用其他條件查詢"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM_INTENT",
-                                        "canonical_values": [
-                                             "FindMessage"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "FindMessage"
-                                        ]
                                    }
                               ],
                               "service": "Messaging_1",
                               "slots": [],
                               "state": {
                                    "active_intent": "FindMessage",
+                                   "requested_slots": [
+                                        "message"
+                                   ],
+                                   "slot_values": {
+                                        "contact_name": [
+                                             "Slim Paint"
+                                        ],
+                                        "group_name": [
+                                             "Python資料科學交流社群"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "所以這則訊息講了什麼？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "我有試著設定自訂變數，但一樣蒐集不到網站的價值數據"
+                                        ],
+                                        "slot": "message",
+                                        "values": [
+                                             "我有試著設定自訂變數，但一樣蒐集不到網站的價值數據"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 30,
+                                        "slot": "message",
+                                        "start": 5
+                                   }
+                              ],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "訊息內容為我有試著設定自訂變數，但一樣蒐集不到網站的價值數據"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "SELECT",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "LookupEvents",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "contact_name": [
+                                             "Slim Paint"
+                                        ],
+                                        "group_name": [
+                                             "Python資料科學交流社群"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "好的"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "OFFER_INTENT",
+                                        "canonical_values": [
+                                             "LookupEvents"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "LookupEvents"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "您想要藉此機會順便檢查行事曆中的活動嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "AFFIRM_INTENT",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "LookupEvents",
                                    "requested_slots": [],
                                    "slot_values": {}
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我想要找則訊息，可以請你幫忙嗎？"
+                    "utterance": "好的，麻煩你了"
                },
                {
                     "frames": [
@@ -488,17 +652,17 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "group_name",
+                                        "slot": "event_name",
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "你知道群組名稱嗎？"
+                    "utterance": "那這個活動叫甚麼呢？"
                },
                {
                     "frames": [
@@ -507,118 +671,106 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "程式語言讀書會Programming Book Club"
+                                             "《大雅之風─雲林文化藝術獎貢獻獎得主作品暨典藏藝術展》"
                                         ],
-                                        "slot": "group_name",
+                                        "slot": "event_name",
                                         "values": [
-                                             "程式語言讀書會Programming Book Club"
+                                             "《大雅之風─雲林文化藝術獎貢獻獎得主作品暨典藏藝術展》"
                                         ]
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 32,
-                                        "slot": "group_name",
-                                        "start": 4
+                                        "exclusive_end": 33,
+                                        "slot": "event_name",
+                                        "start": 6
                                    }
                               ],
                               "state": {
-                                   "active_intent": "FindMessage",
+                                   "active_intent": "LookupEvents",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "group_name": [
-                                             "程式語言讀書會Programming Book Club"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "應該是在程式語言讀書會Programming Book Club群組中的訊息"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "message",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "contact_name",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "所以這則訊息講了什麼？，我想知道這則訊息是誰寄的？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "早期是有在電腦業界工作"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "早期是有在電腦業界工作"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "Jeff"
-                                        ],
-                                        "slot": "contact_name",
-                                        "values": [
-                                             "Jeff"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 14,
-                                        "slot": "message",
-                                        "start": 3
-                                   },
-                                   {
-                                        "exclusive_end": 22,
-                                        "slot": "contact_name",
-                                        "start": 18
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "FindMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "group_name": [
-                                             "程式語言讀書會Programming Book Club"
-                                        ],
-                                        "message": [
-                                             "早期是有在電腦業界工作"
-                                        ],
                                         "contact_name": [
-                                             "Jeff"
+                                             "Slim Paint"
+                                        ],
+                                        "group_name": [
+                                             "Python資料科學交流社群"
+                                        ],
+                                        "event_name": [
+                                             "《大雅之風─雲林文化藝術獎貢獻獎得主作品暨典藏藝術展》"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "跟他說早期是有在電腦業界工作，用戶為Jeff"
+                    "utterance": "這個活動叫做《大雅之風─雲林文化藝術獎貢獻獎得主作品暨典藏藝術展》"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_date",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道活動在何時舉行"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "2023/1/17"
+                                        ],
+                                        "slot": "event_date",
+                                        "values": [
+                                             "下週二"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 8,
+                                        "slot": "event_date",
+                                        "start": 5
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "LookupEvents",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "contact_name": [
+                                             "Slim Paint"
+                                        ],
+                                        "group_name": [
+                                             "Python資料科學交流社群"
+                                        ],
+                                        "event_name": [
+                                             "《大雅之風─雲林文化藝術獎貢獻獎得主作品暨典藏藝術展》"
+                                        ],
+                                        "event_date": [
+                                             "下週二"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "活動日期為下週二"
                },
                {
                     "frames": [
@@ -631,162 +783,93 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_call": {
-                                   "method": "FindMessage",
+                                   "method": "LookupEvents",
                                    "parameters": {
-                                        "group_name": "程式語言讀書會Programming Book Club",
-                                        "message": "早期是有在電腦業界工作",
-                                        "contact_name": "Jeff"
+                                        "contact_name": "Slim Paint",
+                                        "group_name": "Python資料科學交流社群",
+                                        "event_name": "《大雅之風─雲林文化藝術獎貢獻獎得主作品暨典藏藝術展》",
+                                        "event_date": "下週二"
                                    }
                               },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "不好意思，沒辦法找到符合您要求的訊息"
+                    "utterance": "不好意思，在行事曆上沒辦法找到符合您要求的活動，請用其他條件查詢"
                },
                {
                     "frames": [
                          {
                               "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "2023/1/17"
+                                        ],
+                                        "slot": "event_date",
+                                        "values": [
+                                             "1月17日"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "《大雅之風─雲林文化藝術獎貢獻獎得主作品暨典藏藝術展》"
+                                        ],
+                                        "slot": "event_name",
+                                        "values": [
+                                             "《大雅之風─雲林文化藝術獎貢獻獎得主作品暨典藏藝術展》"
+                                        ]
+                                   },
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "FindMessage"
+                                             "LookupEvents"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "FindMessage"
+                                             "LookupEvents"
                                         ]
                                    }
                               ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "FindMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "group_name": [
-                                             "程式語言讀書會Programming Book Club"
-                                        ],
-                                        "message": [
-                                             "早期是有在電腦業界工作"
-                                        ],
-                                        "contact_name": [
-                                             "Jeff"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "我想要找則訊息，可以請你幫忙嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "message",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "contact_name",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "group_name",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "所以這則訊息講了什麼？，我想知道這則訊息在哪個群組？，我想知道這則訊息是誰寄的？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "程式語言讀書會Programming Book Club"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "程式語言讀書會Programming Book Club"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "Jeff"
-                                        ],
-                                        "slot": "contact_name",
-                                        "values": [
-                                             "Jeff"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "早期是有在電腦業界工作"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "早期是有在電腦業界工作"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 14,
-                                        "slot": "message",
-                                        "start": 3
+                                        "exclusive_end": 42,
+                                        "slot": "event_name",
+                                        "start": 15
                                    },
                                    {
-                                        "exclusive_end": 61,
-                                        "slot": "contact_name",
-                                        "start": 57
-                                   },
-                                   {
-                                        "exclusive_end": 47,
-                                        "slot": "group_name",
-                                        "start": 19
+                                        "exclusive_end": 51,
+                                        "slot": "event_date",
+                                        "start": 46
                                    }
                               ],
                               "state": {
-                                   "active_intent": "FindMessage",
+                                   "active_intent": "LookupEvents",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "group_name": [
-                                             "程式語言讀書會Programming Book Club"
-                                        ],
-                                        "message": [
-                                             "早期是有在電腦業界工作"
-                                        ],
                                         "contact_name": [
-                                             "Jeff"
+                                             "Slim Paint"
+                                        ],
+                                        "group_name": [
+                                             "Python資料科學交流社群"
+                                        ],
+                                        "event_name": [
+                                             "《大雅之風─雲林文化藝術獎貢獻獎得主作品暨典藏藝術展》"
+                                        ],
+                                        "event_date": [
+                                             "1月17日"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "跟他說早期是有在電腦業界工作，應該是在程式語言讀書會Programming Book Club群組中的訊息，用戶為Jeff"
+                    "utterance": "請幫我找一個活動，這個活動叫做《大雅之風─雲林文化藝術獎貢獻獎得主作品暨典藏藝術展》，日期為1月17日"
                },
                {
                     "frames": [
@@ -799,21 +882,22 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_call": {
-                                   "method": "FindMessage",
+                                   "method": "LookupEvents",
                                    "parameters": {
-                                        "group_name": "程式語言讀書會Programming Book Club",
-                                        "message": "早期是有在電腦業界工作",
-                                        "contact_name": "Jeff"
+                                        "contact_name": "Slim Paint",
+                                        "group_name": "Python資料科學交流社群",
+                                        "event_name": "《大雅之風─雲林文化藝術獎貢獻獎得主作品暨典藏藝術展》",
+                                        "event_date": "1月17日"
                                    }
                               },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "不好意思，沒辦法找到符合您要求的訊息"
+                    "utterance": "不好意思，在行事曆上沒辦法找到符合您要求的活動，請用其他條件查詢"
                },
                {
                     "frames": [
@@ -832,27 +916,30 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "FindMessage",
+                                   "active_intent": "LookupEvents",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "group_name": [
-                                             "程式語言讀書會Programming Book Club"
-                                        ],
-                                        "message": [
-                                             "早期是有在電腦業界工作"
-                                        ],
                                         "contact_name": [
-                                             "Jeff"
+                                             "Slim Paint"
+                                        ],
+                                        "group_name": [
+                                             "Python資料科學交流社群"
+                                        ],
+                                        "event_name": [
+                                             "《大雅之風─雲林文化藝術獎貢獻獎得主作品暨典藏藝術展》"
+                                        ],
+                                        "event_date": [
+                                             "1月17日"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "沒關係，先這樣吧，再見"
+                    "utterance": "沒關係，先這樣吧，沒有問題了，再見！"
                },
                {
                     "frames": [
@@ -865,21 +952,22 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_call": {
-                                   "method": "FindMessage",
+                                   "method": "LookupEvents",
                                    "parameters": {
-                                        "group_name": "程式語言讀書會Programming Book Club",
-                                        "message": "早期是有在電腦業界工作",
-                                        "contact_name": "Jeff"
+                                        "contact_name": "Slim Paint",
+                                        "group_name": "Python資料科學交流社群",
+                                        "event_name": "《大雅之風─雲林文化藝術獎貢獻獎得主作品暨典藏藝術展》",
+                                        "event_date": "1月17日"
                                    }
                               },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "嗯，再見"
+                    "utterance": "好的，祝您生活愉快，再見"
                }
           ]
      }

@@ -3,8 +3,7 @@
           "dialogue_id": 440,
           "services": [
                "Mail_1",
-               "Messaging_1",
-               "Calendar_1"
+               "Messaging_1"
           ],
           "turns": [
                {
@@ -14,25 +13,25 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "FindMail"
+                                             "SendMail"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "FindMail"
+                                             "SendMail"
                                         ]
                                    }
                               ],
                               "service": "Mail_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "FindMail",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {}
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我想要知道相關的信件，請幫幫我"
+                    "utterance": "請幫我寄出一封信件"
                },
                {
                     "frames": [
@@ -41,7 +40,19 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
+                                        "slot": "recipient",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
                                         "slot": "subject",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "copy_recipient",
                                         "values": []
                                    }
                               ],
@@ -51,7 +62,7 @@
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "我想知道這個信件的主旨"
+                    "utterance": "我想知道這個信件的主旨，我想知道這封信的收件者，你知道這封信的副本收件者嗎？"
                },
                {
                     "frames": [
@@ -60,209 +71,71 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             " 台男是不是常常被白嫖"
+                                             "嚴威"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "嚴威"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             " 五府千歲很多人拜嗎？"
                                         ],
                                         "slot": "subject",
                                         "values": [
-                                             " 台男是不是常常被白嫖"
+                                             " 五府千歲很多人拜嗎？"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "金宇彬"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "金宇彬"
                                         ]
                                    }
                               ],
                               "service": "Mail_1",
                               "slots": [
+                                   {
+                                        "exclusive_end": 23,
+                                        "slot": "recipient",
+                                        "start": 21
+                                   },
                                    {
                                         "exclusive_end": 16,
                                         "slot": "subject",
                                         "start": 5
+                                   },
+                                   {
+                                        "exclusive_end": 37,
+                                        "slot": "copy_recipient",
+                                        "start": 34
                                    }
                               ],
                               "state": {
-                                   "active_intent": "FindMail",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {
+                                        "recipient": [
+                                             "嚴威"
+                                        ],
                                         "subject": [
-                                             " 台男是不是常常被白嫖"
+                                             " 五府千歲很多人拜嗎？"
+                                        ],
+                                        "copy_recipient": [
+                                             "金宇彬"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "這封信叫做 台男是不是常常被白嫖"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "recipient",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "copy_recipient",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "你知道這封信是寄給誰的嗎？，你知道這封信的副本收件者嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "Leo T"
-                                        ],
-                                        "slot": "recipient",
-                                        "values": [
-                                             "Leo T"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "仴仴"
-                                        ],
-                                        "slot": "copy_recipient",
-                                        "values": [
-                                             "仴仴"
-                                        ]
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 9,
-                                        "slot": "recipient",
-                                        "start": 4
-                                   },
-                                   {
-                                        "exclusive_end": 23,
-                                        "slot": "copy_recipient",
-                                        "start": 21
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "FindMail",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "subject": [
-                                             " 台男是不是常常被白嫖"
-                                        ],
-                                        "recipient": [
-                                             "Leo T"
-                                        ],
-                                        "copy_recipient": [
-                                             "仴仴"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "這封信由Leo T收，這封信需要以副本寄給仴仴"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM_COUNT",
-                                        "canonical_values": [
-                                             "1"
-                                        ],
-                                        "slot": "count",
-                                        "values": [
-                                             "1"
-                                        ]
-                                   },
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             " 台男是不是常常被白嫖"
-                                        ],
-                                        "slot": "subject",
-                                        "values": [
-                                             " 台男是不是常常被白嫖"
-                                        ]
-                                   },
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "Leo T"
-                                        ],
-                                        "slot": "recipient",
-                                        "values": [
-                                             "Leo T"
-                                        ]
-                                   },
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "仴仴"
-                                        ],
-                                        "slot": "copy_recipient",
-                                        "values": [
-                                             "仴仴"
-                                        ]
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 31,
-                                        "slot": "subject",
-                                        "start": 20
-                                   },
-                                   {
-                                        "exclusive_end": 52,
-                                        "slot": "recipient",
-                                        "start": 47
-                                   },
-                                   {
-                                        "exclusive_end": 71,
-                                        "slot": "copy_recipient",
-                                        "start": 69
-                                   }
-                              ],
-                              "service_call": {
-                                   "method": "FindMail",
-                                   "parameters": {
-                                        "subject": [
-                                             " 台男是不是常常被白嫖"
-                                        ],
-                                        "recipient": [
-                                             "Leo T"
-                                        ],
-                                        "copy_recipient": [
-                                             "仴仴"
-                                        ]
-                                   }
-                              },
-                              "service_results": [
-                                   {
-                                        "subject": " 台男是不是常常被白嫖",
-                                        "content": "如題啊，現今這個世代，每個團體都要求自己的權利，避免自己的義務，這就讓本肥想到啊，台男是不是生來就被人白嫖了，例如，慣老闆白嫖台男，或是加班不給錢就不算嫖了，台女白嫖台男，小到家事工具人，大到台女父母台女錢庫，只要用完了事情做完，不給錢就不算嫖了，然後到中年，有沒有小孩都是最孤獨的那個，有小孩：爸爸相較媽媽關係疏遠，沒小孩：到六十幾歲還在女朋友，把你當工具人，你各位被白嫖的人怎麼看，來寶傑",
-                                        "copy_recipient": "仴仴",
-                                        "recipient": "Leo T",
-                                        "sender": "香酥派"
-                                   }
-                              ]
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "總共有1個結果，依據您提供的訊息，找到跟 台男是不是常常被白嫖有關的信件，請你看看，我找到寄給Leo T的信件，請你看看，我找到以副本寄給仴仴的信件，請你看看"
+                    "utterance": "信件主旨叫 五府千歲很多人拜嗎？，收件者為嚴威，這封信需要以副本寄給金宇彬"
                },
                {
                     "frames": [
@@ -277,26 +150,10 @@
                               ],
                               "service": "Mail_1",
                               "slots": [],
-                              "state": {
-                                   "active_intent": "FindMail",
-                                   "requested_slots": [
-                                        "content"
-                                   ],
-                                   "slot_values": {
-                                        "subject": [
-                                             " 台男是不是常常被白嫖"
-                                        ],
-                                        "recipient": [
-                                             "Leo T"
-                                        ],
-                                        "copy_recipient": [
-                                             "仴仴"
-                                        ]
-                                   }
-                              }
+                              "service_results": []
                          }
                     ],
-                    "speaker": "USER",
+                    "speaker": "SYSTEM",
                     "utterance": "我想知道這封信的內文"
                },
                {
@@ -306,34 +163,120 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "聽說除夕夜除了傳統守歲的習俗，在除夕夜這天的::打手槍並且射出，今年就能夠交到女友，這麼說我今年應該能交到女友了吧?"
+                                             "之前只在台語教室看到這個詞，主要是這邊的五是文讀，所以音跟平常的五不同，結果那天在女友阿公家，看到五府千歲還上去拜了一下，請問五府千歲是很常見的神嗎"
                                         ],
                                         "slot": "content",
                                         "values": [
-                                             "聽說除夕夜除了傳統守歲的習俗，在除夕夜這天的::打手槍並且射出，今年就能夠交到女友，這麼說我今年應該能交到女友了吧?"
+                                             "之前只在台語教室看到這個詞，主要是這邊的五是文讀，所以音跟平常的五不同，結果那天在女友阿公家，看到五府千歲還上去拜了一下，請問五府千歲是很常見的神嗎"
                                         ]
                                    }
                               ],
                               "service": "Mail_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 65,
+                                        "exclusive_end": 77,
                                         "slot": "content",
-                                        "start": 7
+                                        "start": 3
                                    }
                               ],
-                              "service_results": []
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "嚴威"
+                                        ],
+                                        "subject": [
+                                             " 五府千歲很多人拜嗎？"
+                                        ],
+                                        "copy_recipient": [
+                                             "金宇彬"
+                                        ],
+                                        "content": [
+                                             "之前只在台語教室看到這個詞，主要是這邊的五是文讀，所以音跟平常的五不同，結果那天在女友阿公家，看到五府千歲還上去拜了一下，請問五府千歲是很常見的神嗎"
+                                        ]
+                                   }
+                              }
                          }
                     ],
-                    "speaker": "SYSTEM",
-                    "utterance": "這封信的內文為聽說除夕夜除了傳統守歲的習俗，在除夕夜這天的::打手槍並且射出，今年就能夠交到女友，這麼說我今年應該能交到女友了吧?"
+                    "speaker": "USER",
+                    "utterance": "內容為之前只在台語教室看到這個詞，主要是這邊的五是文讀，所以音跟平常的五不同，結果那天在女友阿公家，看到五府千歲還上去拜了一下，請問五府千歲是很常見的神嗎"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "SELECT",
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "嚴威"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "嚴威"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             " 五府千歲很多人拜嗎？"
+                                        ],
+                                        "slot": "subject",
+                                        "values": [
+                                             " 五府千歲很多人拜嗎？"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "金宇彬"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "金宇彬"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "之前只在台語教室看到這個詞，主要是這邊的五是文讀，所以音跟平常的五不同，結果那天在女友阿公家，看到五府千歲還上去拜了一下，請問五府千歲是很常見的神嗎"
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "之前只在台語教室看到這個詞，主要是這邊的五是文讀，所以音跟平常的五不同，結果那天在女友阿公家，看到五府千歲還上去拜了一下，請問五府千歲是很常見的神嗎"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 122,
+                                        "slot": "recipient",
+                                        "start": 120
+                                   },
+                                   {
+                                        "exclusive_end": 20,
+                                        "slot": "subject",
+                                        "start": 9
+                                   },
+                                   {
+                                        "exclusive_end": 112,
+                                        "slot": "content",
+                                        "start": 38
+                                   }
+                              ],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "請確認要寄出主旨為 五府千歲很多人拜嗎？的信件嗎？，請確認要寄出的信件內容:之前只在台語教室看到這個詞，主要是這邊的五是文讀，所以音跟平常的五不同，結果那天在女友阿公家，看到五府千歲還上去拜了一下，請問五府千歲是很常見的神嗎，確認要寄信件給嚴威嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "AFFIRM",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
@@ -342,24 +285,292 @@
                               "service": "Mail_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "FindMail",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "subject": [
-                                             " 台男是不是常常被白嫖"
-                                        ],
                                         "recipient": [
-                                             "Leo T"
+                                             "嚴威"
+                                        ],
+                                        "subject": [
+                                             " 五府千歲很多人拜嗎？"
                                         ],
                                         "copy_recipient": [
-                                             "仴仴"
+                                             "金宇彬"
+                                        ],
+                                        "content": [
+                                             "之前只在台語教室看到這個詞，主要是這邊的五是文讀，所以音跟平常的五不同，結果那天在女友阿公家，看到五府千歲還上去拜了一下，請問五府千歲是很常見的神嗎"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我知道了"
+                    "utterance": "我對以上資訊沒問題"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NOTIFY_SUCCESS",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_call": {
+                                   "method": "SendMail",
+                                   "parameters": {
+                                        "recipient": "嚴威",
+                                        "subject": " 五府千歲很多人拜嗎？",
+                                        "copy_recipient": "金宇彬",
+                                        "content": "之前只在台語教室看到這個詞，主要是這邊的五是文讀，所以音跟平常的五不同，結果那天在女友阿公家，看到五府千歲還上去拜了一下，請問五府千歲是很常見的神嗎"
+                                   }
+                              },
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "多虧有您的配合，信件已成功寄出"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "SendMessage"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "SendMessage"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {}
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "請幫我寄一則訊息"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "message",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "group_name",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "所以這則訊息講了什麼？，我想知道這則訊息在哪個群組？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "沒事啦 我是套件仔"
+                                        ],
+                                        "slot": "message",
+                                        "values": [
+                                             "沒事啦 我是套件仔"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "Python資料科學交流社群"
+                                        ],
+                                        "slot": "group_name",
+                                        "values": [
+                                             "Python資料科學交流社群"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 12,
+                                        "slot": "message",
+                                        "start": 3
+                                   },
+                                   {
+                                        "exclusive_end": 31,
+                                        "slot": "group_name",
+                                        "start": 17
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "SendMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "message": [
+                                             "沒事啦 我是套件仔"
+                                        ],
+                                        "group_name": [
+                                             "Python資料科學交流社群"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "跟他說沒事啦 我是套件仔，群組叫做Python資料科學交流社群"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "沒事啦 我是套件仔"
+                                        ],
+                                        "slot": "message",
+                                        "values": [
+                                             "沒事啦 我是套件仔"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "Python資料科學交流社群"
+                                        ],
+                                        "slot": "group_name",
+                                        "values": [
+                                             "Python資料科學交流社群"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 16,
+                                        "slot": "message",
+                                        "start": 7
+                                   },
+                                   {
+                                        "exclusive_end": 41,
+                                        "slot": "group_name",
+                                        "start": 27
+                                   }
+                              ],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "確認要傳送訊息沒事啦 我是套件仔嗎？，確認要傳送訊息到Python資料科學交流社群嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "AFFIRM",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "message": [
+                                             "沒事啦 我是套件仔"
+                                        ],
+                                        "group_name": [
+                                             "Python資料科學交流社群"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "好的，看起來沒甚麼問題"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NOTIFY_SUCCESS",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_call": {
+                                   "method": "SendMessage",
+                                   "parameters": {
+                                        "message": "沒事啦 我是套件仔",
+                                        "group_name": "Python資料科學交流社群"
+                                   }
+                              },
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "多虧有您的配合，訊息已成功傳送"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "THANK_YOU",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "message": [
+                                             "沒事啦 我是套件仔"
+                                        ],
+                                        "group_name": [
+                                             "Python資料科學交流社群"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "謝謝你"
                },
                {
                     "frames": [
@@ -372,312 +583,13 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "還有什麼能幫到您的嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM_INTENT",
-                                        "canonical_values": [
-                                             "FindMessage"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "FindMessage"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "Eddie_181"
-                                        ],
-                                        "slot": "contact_name",
-                                        "values": [
-                                             "Eddie_181"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "頭好痛，這個為什麼是log(n)?"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "頭好痛，這個為什麼是log(n)?"
-                                        ]
-                                   }
-                              ],
                               "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 49,
-                                        "slot": "contact_name",
-                                        "start": 40
-                                   },
-                                   {
-                                        "exclusive_end": 36,
-                                        "slot": "message",
-                                        "start": 19
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "FindMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "message": [
-                                             "頭好痛，這個為什麼是log(n)?"
-                                        ],
-                                        "contact_name": [
-                                             "Eddie_181"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "我想要知道相關的訊息，請幫幫我，跟他說頭好痛，這個為什麼是log(n)?，用戶為Eddie_181"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "頭好痛，這個為什麼是log(n)?"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "頭好痛，這個為什麼是log(n)?"
-                                        ]
-                                   },
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "Eddie_181"
-                                        ],
-                                        "slot": "contact_name",
-                                        "values": [
-                                             "Eddie_181"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM_COUNT",
-                                        "canonical_values": [
-                                             "1"
-                                        ],
-                                        "slot": "count",
-                                        "values": [
-                                             "1"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 12,
-                                        "slot": "contact_name",
-                                        "start": 3
-                                   }
-                              ],
-                              "service_call": {
-                                   "method": "FindMessage",
-                                   "parameters": {
-                                        "message": "頭好痛，這個為什麼是log(n)?",
-                                        "contact_name": "Eddie_181"
-                                   }
-                              },
-                              "service_results": [
-                                   {
-                                        "group_name": "無",
-                                        "contact_name": "Eddie_181",
-                                        "message": "頭好痛，這個為什麼是log(n)?"
-                                   }
-                              ]
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "找到與Eddie_181聊天的訊息，總共有1個結果"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "SELECT",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "message": [
-                                             "頭好痛，這個為什麼是log(n)?"
-                                        ],
-                                        "contact_name": [
-                                             "Eddie_181"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "我知道了"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "OFFER_INTENT",
-                                        "canonical_values": [
-                                             "LookupEvents"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "LookupEvents"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "您想要藉此機會順便檢查行事曆中的活動嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "AFFIRM_INTENT",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "新北市林口區東華路99號"
-                                        ],
-                                        "slot": "event_location",
-                                        "values": [
-                                             "新北市林口區東華路99號"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "台灣大哥大女子公開賽將於12月21～23日於東華球場舉行，也是台巡賽的封關站"
-                                        ],
-                                        "slot": "event_content",
-                                        "values": [
-                                             "台灣大哥大女子公開賽將於12月21～23日於東華球場舉行，也是台巡賽的封關站"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "台灣大哥大女子公開賽"
-                                        ],
-                                        "slot": "event_name",
-                                        "values": [
-                                             "台灣大哥大女子公開賽"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 15,
-                                        "slot": "event_name",
-                                        "start": 5
-                                   },
-                                   {
-                                        "exclusive_end": 40,
-                                        "slot": "event_name",
-                                        "start": 30
-                                   },
-                                   {
-                                        "exclusive_end": 84,
-                                        "slot": "event_location",
-                                        "start": 72
-                                   },
-                                   {
-                                        "exclusive_end": 68,
-                                        "slot": "event_content",
-                                        "start": 30
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "message": [
-                                             "頭好痛，這個為什麼是log(n)?"
-                                        ],
-                                        "contact_name": [
-                                             "Eddie_181"
-                                        ],
-                                        "event_name": [
-                                             "台灣大哥大女子公開賽"
-                                        ],
-                                        "event_location": [
-                                             "新北市林口區東華路99號"
-                                        ],
-                                        "event_content": [
-                                             "台灣大哥大女子公開賽將於12月21～23日於東華球場舉行，也是台巡賽的封關站"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "活動名稱為台灣大哥大女子公開賽，詳細內容我不太記得了，應該是台灣大哥大女子公開賽將於12月21～23日於東華球場舉行，也是台巡賽的封關站，活動在新北市林口區東華路99號舉行，好的，麻煩你了"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NOTIFY_FAILURE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_call": {
-                                   "method": "LookupEvents",
-                                   "parameters": {
-                                        "message": "頭好痛，這個為什麼是log(n)?",
-                                        "contact_name": "Eddie_181",
-                                        "event_name": "台灣大哥大女子公開賽",
-                                        "event_location": "新北市林口區東華路99號",
-                                        "event_content": "台灣大哥大女子公開賽將於12月21～23日於東華球場舉行，也是台巡賽的封關站"
-                                   }
-                              },
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "不好意思，在行事曆上沒辦法找到符合您要求的活動，請用其他條件查詢"
+                    "utterance": "還需要什麼幫助嗎？"
                },
                {
                     "frames": [
@@ -696,33 +608,24 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Messaging_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "LookupEvents",
+                                   "active_intent": "SendMessage",
                                    "requested_slots": [],
                                    "slot_values": {
                                         "message": [
-                                             "頭好痛，這個為什麼是log(n)?"
+                                             "沒事啦 我是套件仔"
                                         ],
-                                        "contact_name": [
-                                             "Eddie_181"
-                                        ],
-                                        "event_name": [
-                                             "台灣大哥大女子公開賽"
-                                        ],
-                                        "event_location": [
-                                             "新北市林口區東華路99號"
-                                        ],
-                                        "event_content": [
-                                             "台灣大哥大女子公開賽將於12月21～23日於東華球場舉行，也是台巡賽的封關站"
+                                        "group_name": [
+                                             "Python資料科學交流社群"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "沒關係，先這樣吧，沒有問題了，再見！"
+                    "utterance": "沒關係，先這樣吧，沒有了！再見！"
                },
                {
                     "frames": [
@@ -735,18 +638,8 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Messaging_1",
                               "slots": [],
-                              "service_call": {
-                                   "method": "LookupEvents",
-                                   "parameters": {
-                                        "message": "頭好痛，這個為什麼是log(n)?",
-                                        "contact_name": "Eddie_181",
-                                        "event_name": "台灣大哥大女子公開賽",
-                                        "event_location": "新北市林口區東華路99號",
-                                        "event_content": "台灣大哥大女子公開賽將於12月21～23日於東華球場舉行，也是台巡賽的封關站"
-                                   }
-                              },
                               "service_results": []
                          }
                     ],

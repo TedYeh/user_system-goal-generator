@@ -2,7 +2,6 @@
      {
           "dialogue_id": 68,
           "services": [
-               "Mail_1",
                "Messaging_1",
                "Calendar_1"
           ],
@@ -14,208 +13,402 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "FindMail"
+                                             "SendMessage"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "FindMail"
+                                             "SendMessage"
                                         ]
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "FindMail",
-                                   "requested_slots": [],
-                                   "slot_values": {}
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "我想要知道相關的信件，請幫幫我"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "sender",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "我想知道這封信是誰寄的"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
+                                   },
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "Boris"
+                                             "程式資訊討論群"
                                         ],
-                                        "slot": "sender",
+                                        "slot": "group_name",
                                         "values": [
-                                             "Boris"
+                                             "程式資訊討論群"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "我是邊看影片邊寫"
+                                        ],
+                                        "slot": "message",
+                                        "values": [
+                                             "我是邊看影片邊寫"
                                         ]
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Messaging_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 13,
-                                        "slot": "sender",
-                                        "start": 8
+                                        "exclusive_end": 42,
+                                        "slot": "group_name",
+                                        "start": 35
+                                   },
+                                   {
+                                        "exclusive_end": 30,
+                                        "slot": "message",
+                                        "start": 22
                                    }
                               ],
                               "state": {
-                                   "active_intent": "FindMail",
+                                   "active_intent": "SendMessage",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "sender": [
-                                             "Boris"
+                                        "message": [
+                                             "我是邊看影片邊寫"
+                                        ],
+                                        "group_name": [
+                                             "程式資訊討論群"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "這封信的寄件者為Boris"
+                    "utterance": "我想要寄則訊息，可以請你幫忙嗎？，訊息內容為我是邊看影片邊寫，群組叫做程式資訊討論群"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "OFFER",
+                                        "act": "CONFIRM",
                                         "canonical_values": [
-                                             "Boris"
+                                             "我是邊看影片邊寫"
                                         ],
-                                        "slot": "sender",
+                                        "slot": "message",
                                         "values": [
-                                             "Boris"
+                                             "我是邊看影片邊寫"
                                         ]
                                    },
                                    {
-                                        "act": "INFORM_COUNT",
+                                        "act": "CONFIRM",
                                         "canonical_values": [
-                                             "5"
+                                             "程式資訊討論群"
                                         ],
-                                        "slot": "count",
+                                        "slot": "group_name",
                                         "values": [
-                                             "5"
+                                             "程式資訊討論群"
                                         ]
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Messaging_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 9,
-                                        "slot": "sender",
-                                        "start": 4
+                                        "exclusive_end": 15,
+                                        "slot": "message",
+                                        "start": 7
+                                   },
+                                   {
+                                        "exclusive_end": 33,
+                                        "slot": "group_name",
+                                        "start": 26
                                    }
                               ],
-                              "service_call": {
-                                   "method": "FindMail",
-                                   "parameters": {
-                                        "sender": "Boris"
-                                   }
-                              },
-                              "service_results": [
-                                   {
-                                        "subject": "中國意圖從內部癱瘓台灣 曹興誠籲內除台奸",
-                                        "content": "備註請放最後面違者新聞文章刪除，媒體來源:",
-                                        "copy_recipient": "無",
-                                        "recipient": "林資堯",
-                                        "sender": "Boris"
-                                   },
-                                   {
-                                        "subject": " 為何按摩店美女八點才上班",
-                                        "content": "為何按摩店美女八點才上班，台灣女生太難追，想要快速解決需求，只能去按摩店啦，結果去都是不優的，老闆說要優的請晚上八點後在來，有沒有為何美女都晚上班的八卦",
-                                        "copy_recipient": "余余",
-                                        "recipient": "古青箭",
-                                        "sender": "Boris"
-                                   },
-                                   {
-                                        "subject": " 揪出39噸過期貨 黑心火鍋店速停業",
-                                        "content": "媒體來源:，中時，記者署名:，潘虹恩，完整新聞標題:，揪出噸過期貨黑心火鍋店速停業，完整新聞內文:，台中市知名連鎖餐廳「江小漁鴛鴦酸菜鍋」、「水貨烤魚火鍋」遭檢舉儲存過期巴沙魚並，持續販售。台中市政府衛生局日聯合南投縣、彰化縣衛生局前往該公司總部、家分店，及倉儲等地稽查，共查獲過期的巴沙魚萬公斤、芙蓉魚公斤及醬（配）料，公斤，全數封存，依詐欺、違反食安法等罪嫌函送法辦戴姓業者",
-                                        "copy_recipient": "無",
-                                        "recipient": "hao chang",
-                                        "sender": "Boris"
-                                   },
-                                   {
-                                        "subject": " 原來美國人喜歡輪班工作?",
-                                        "content": "本來就有些工作需要二十四小時有員工在實體店面像是或是駐點加油站等等，現在三五奈米廠過去亞利桑那除非美國人願意上下班開機關機浪費時間測機啟動，加蛋人說啥自己套皮阿爸不喜歡那也還是得做久了就喜歡惹吧，請問有沒有原來美國人喜歡輪班工作的八卦?",
-                                        "copy_recipient": "Bman",
-                                        "recipient": "謝恵琪",
-                                        "sender": "Boris"
-                                   },
-                                   {
-                                        "subject": " 老闆發瘋怎麼辦",
-                                        "content": "昨晚學弟突然開車跑到我家叫我上車，結果老闆拿著槍躲在後座，我們被他押到荒郊野外跟一個輪椅老人關在一起，他剛剛懷疑我出賣他他現在在做菜，我趁機偷偷用手機我跟學弟要怎麼辦，不要吸毒的話就是超級好老婆吧",
-                                        "copy_recipient": "Lai Jim",
-                                        "recipient": "金宇彬",
-                                        "sender": "Boris"
-                                   }
-                              ]
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "我找到由Boris寄發的信件，請你看看，總共有5個結果"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "GOODBYE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "FindMail",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "sender": [
-                                             "Boris"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "沒有問題了，再見吧！"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "GOODBYE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "好的，再見！"
+                    "utterance": "確認要傳送訊息我是邊看影片邊寫嗎？，確認要傳送訊息到程式資訊討論群嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "AFFIRM",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "message": [
+                                             "我是邊看影片邊寫"
+                                        ],
+                                        "group_name": [
+                                             "程式資訊討論群"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "好的，看起來沒甚麼問題"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NOTIFY_SUCCESS",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_call": {
+                                   "method": "SendMessage",
+                                   "parameters": {
+                                        "message": "我是邊看影片邊寫",
+                                        "group_name": "程式資訊討論群"
+                                   }
+                              },
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "多虧有您的配合，訊息已成功傳送"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "AddEvent"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "AddEvent"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "04:35"
+                                        ],
+                                        "slot": "event_time",
+                                        "values": [
+                                             "4點35分"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "大古山野百合花季"
+                                        ],
+                                        "slot": "event_name",
+                                        "values": [
+                                             "大古山野百合花季"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "Qiu"
+                                        ],
+                                        "slot": "participant",
+                                        "values": [
+                                             "Qiu"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "2022/5/20"
+                                        ],
+                                        "slot": "event_date",
+                                        "values": [
+                                             "2022年5月20號"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 59,
+                                        "slot": "event_time",
+                                        "start": 54
+                                   },
+                                   {
+                                        "exclusive_end": 32,
+                                        "slot": "event_name",
+                                        "start": 24
+                                   },
+                                   {
+                                        "exclusive_end": 64,
+                                        "slot": "participant",
+                                        "start": 61
+                                   },
+                                   {
+                                        "exclusive_end": 48,
+                                        "slot": "event_date",
+                                        "start": 38
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "AddEvent",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_date": [
+                                             "2022年5月20號"
+                                        ],
+                                        "event_time": [
+                                             "4點35分"
+                                        ],
+                                        "event_name": [
+                                             "大古山野百合花季"
+                                        ],
+                                        "participant": [
+                                             "Qiu"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我想要添加一個活動，可以請你幫忙嗎？，活動名稱為大古山野百合花季，活動日期為2022年5月20號，活動時間為4點35分，有Qiu會參加"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "2022年5月20號"
+                                        ],
+                                        "slot": "event_date",
+                                        "values": [
+                                             "2022年5月20號"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "4點35分"
+                                        ],
+                                        "slot": "event_time",
+                                        "values": [
+                                             "4點35分"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "大古山野百合花季"
+                                        ],
+                                        "slot": "event_name",
+                                        "values": [
+                                             "大古山野百合花季"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "Qiu"
+                                        ],
+                                        "slot": "participant",
+                                        "values": [
+                                             "Qiu"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 39,
+                                        "slot": "event_date",
+                                        "start": 29
+                                   },
+                                   {
+                                        "exclusive_end": 60,
+                                        "slot": "event_time",
+                                        "start": 55
+                                   },
+                                   {
+                                        "exclusive_end": 15,
+                                        "slot": "event_name",
+                                        "start": 7
+                                   },
+                                   {
+                                        "exclusive_end": 77,
+                                        "slot": "participant",
+                                        "start": 74
+                                   }
+                              ],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "確認要建立名叫大古山野百合花季的活動嗎？，確認要建立舉辦在2022年5月20號的活動嗎？，確認要建立舉辦在當天4點35分的活動嗎？，確認要建立舉辦有Qiu參加的活動嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "AFFIRM",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "AddEvent",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_date": [
+                                             "2022年5月20號"
+                                        ],
+                                        "event_time": [
+                                             "4點35分"
+                                        ],
+                                        "event_name": [
+                                             "大古山野百合花季"
+                                        ],
+                                        "participant": [
+                                             "Qiu"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我對以上資訊沒問題"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NOTIFY_SUCCESS",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_call": {
+                                   "method": "AddEvent",
+                                   "parameters": {
+                                        "event_date": "2022年5月20號",
+                                        "event_time": "4點35分",
+                                        "event_name": "大古山野百合花季",
+                                        "participant": "Qiu"
+                                   }
+                              },
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "多虧有您的配合，活動已添加至行事曆"
                },
                {
                     "frames": [
@@ -242,7 +435,7 @@
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "請幫我找一則訊息"
+                    "utterance": "我想要知道相關的訊息，請幫幫我"
                },
                {
                     "frames": [
@@ -270,18 +463,18 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "什麼是三大步驟"
+                                             "看一下官方有說明，你沒給Python engine會自動幫你parsing，不過如果你的格式有問題肯定要自己檢查的"
                                         ],
                                         "slot": "message",
                                         "values": [
-                                             "什麼是三大步驟"
+                                             "看一下官方有說明，你沒給Python engine會自動幫你parsing，不過如果你的格式有問題肯定要自己檢查的"
                                         ]
                                    }
                               ],
                               "service": "Messaging_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 10,
+                                        "exclusive_end": 60,
                                         "slot": "message",
                                         "start": 3
                                    }
@@ -291,14 +484,14 @@
                                    "requested_slots": [],
                                    "slot_values": {
                                         "message": [
-                                             "什麼是三大步驟"
+                                             "看一下官方有說明，你沒給Python engine會自動幫你parsing，不過如果你的格式有問題肯定要自己檢查的"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "訊息為什麼是三大步驟"
+                    "utterance": "訊息為看一下官方有說明，你沒給Python engine會自動幫你parsing，不過如果你的格式有問題肯定要自己檢查的"
                },
                {
                     "frames": [
@@ -317,11 +510,11 @@
                                    {
                                         "act": "OFFER",
                                         "canonical_values": [
-                                             "什麼是三大步驟"
+                                             "看一下官方有說明，你沒給Python engine會自動幫你parsing，不過如果你的格式有問題肯定要自己檢查的"
                                         ],
                                         "slot": "message",
                                         "values": [
-                                             "什麼是三大步驟"
+                                             "看一下官方有說明，你沒給Python engine會自動幫你parsing，不過如果你的格式有問題肯定要自己檢查的"
                                         ]
                                    }
                               ],
@@ -331,15 +524,15 @@
                                    "method": "FindMessage",
                                    "parameters": {
                                         "message": [
-                                             "什麼是三大步驟"
+                                             "看一下官方有說明，你沒給Python engine會自動幫你parsing，不過如果你的格式有問題肯定要自己檢查的"
                                         ]
                                    }
                               },
                               "service_results": [
                                    {
-                                        "group_name": "無",
-                                        "contact_name": "timwu",
-                                        "message": "什麼是三大步驟"
+                                        "group_name": "Python資料科學交流社群",
+                                        "contact_name": "人類惡",
+                                        "message": "看一下官方有說明，你沒給Python engine會自動幫你parsing，不過如果你的格式有問題肯定要自己檢查的"
                                    }
                               ]
                          }
@@ -352,60 +545,34 @@
                          {
                               "actions": [
                                    {
-                                        "act": "REQUEST_ALTS",
+                                        "act": "SELECT",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "什麼是三大步驟"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "什麼是三大步驟"
-                                        ]
                                    }
                               ],
                               "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 12,
-                                        "slot": "message",
-                                        "start": 5
-                                   }
-                              ],
+                              "slots": [],
                               "state": {
                                    "active_intent": "FindMessage",
                                    "requested_slots": [],
                                    "slot_values": {
                                         "message": [
-                                             "什麼是三大步驟"
+                                             "看一下官方有說明，你沒給Python engine會自動幫你parsing，不過如果你的格式有問題肯定要自己檢查的"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "訊息內容為什麼是三大步驟，能提供更多類似的訊息嗎？"
+                    "utterance": "我知道了"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "INFORM_COUNT",
-                                        "canonical_values": [
-                                             "1"
-                                        ],
-                                        "slot": "count",
-                                        "values": [
-                                             "1"
-                                        ]
-                                   },
-                                   {
-                                        "act": "NOTIFY_FAILURE",
+                                        "act": "REQ_MORE",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
@@ -413,698 +580,11 @@
                               ],
                               "service": "Messaging_1",
                               "slots": [],
-                              "service_call": {
-                                   "method": "FindMessage",
-                                   "parameters": {
-                                        "message": "什麼是三大步驟"
-                                   }
-                              },
-                              "service_results": [
-                                   {
-                                        "group_name": "無",
-                                        "contact_name": "timwu",
-                                        "message": "什麼是三大步驟"
-                                   }
-                              ]
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "總共有1個結果，不好意思，沒辦法找到符合您要求的訊息"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM_INTENT",
-                                        "canonical_values": [
-                                             "LookupEvents"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "LookupEvents"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [],
-                                   "slot_values": {}
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "請幫我找一個活動"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_name",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "那這個活動叫甚麼呢？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "2023金門跨年晚會特色市集"
-                                        ],
-                                        "slot": "event_name",
-                                        "values": [
-                                             "2023金門跨年晚會特色市集"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 19,
-                                        "slot": "event_name",
-                                        "start": 5
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_name": [
-                                             "2023金門跨年晚會特色市集"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "活動名稱為2023金門跨年晚會特色市集"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_time",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "這個活動在幾點開始呢？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "08:48"
-                                        ],
-                                        "slot": "event_time",
-                                        "values": [
-                                             "上午8時48分"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 10,
-                                        "slot": "event_time",
-                                        "start": 3
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_name": [
-                                             "2023金門跨年晚會特色市集"
-                                        ],
-                                        "event_time": [
-                                             "上午8時48分"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "活動在上午8時48分開始"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_date",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "participant",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "我想知道活動在何時舉行，想知道這個活動的參加者"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "2022/11/17"
-                                        ],
-                                        "slot": "event_date",
-                                        "values": [
-                                             "下週四"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "楊梓民"
-                                        ],
-                                        "slot": "participant",
-                                        "values": [
-                                             "楊梓民"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 8,
-                                        "slot": "event_date",
-                                        "start": 5
-                                   },
-                                   {
-                                        "exclusive_end": 13,
-                                        "slot": "participant",
-                                        "start": 10
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_name": [
-                                             "2023金門跨年晚會特色市集"
-                                        ],
-                                        "event_time": [
-                                             "上午8時48分"
-                                        ],
-                                        "event_date": [
-                                             "下週四"
-                                        ],
-                                        "participant": [
-                                             "楊梓民"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "活動日期為下週四，有楊梓民會參加"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NOTIFY_FAILURE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_call": {
-                                   "method": "LookupEvents",
-                                   "parameters": {
-                                        "event_name": "2023金門跨年晚會特色市集",
-                                        "event_time": "上午8時48分",
-                                        "event_date": "下週四",
-                                        "participant": "楊梓民"
-                                   }
-                              },
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "不好意思，在行事曆上沒辦法找到符合您要求的活動，請用其他條件查詢"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NEGATE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "GOODBYE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_name": [
-                                             "2023金門跨年晚會特色市集"
-                                        ],
-                                        "event_time": [
-                                             "上午8時48分"
-                                        ],
-                                        "event_date": [
-                                             "下週四"
-                                        ],
-                                        "participant": [
-                                             "楊梓民"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "沒關係，先這樣吧，沒有問題了，再見吧！"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "GOODBYE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "嗯，再見"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM_INTENT",
-                                        "canonical_values": [
-                                             "FindMessage"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "FindMessage"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "FindMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {}
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "我想要找則訊息，可以請你幫忙嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "contact_name",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "我想知道這則訊息是誰寄的？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "龍王剡"
-                                        ],
-                                        "slot": "contact_name",
-                                        "values": [
-                                             "龍王剡"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 6,
-                                        "slot": "contact_name",
-                                        "start": 3
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "FindMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "contact_name": [
-                                             "龍王剡"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "用戶為龍王剡"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "group_name",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "你知道群組名稱嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "Python資料科學交流社群"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "Python資料科學交流社群"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 18,
-                                        "slot": "group_name",
-                                        "start": 4
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "FindMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "contact_name": [
-                                             "龍王剡"
-                                        ],
-                                        "group_name": [
-                                             "Python資料科學交流社群"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "應該是在Python資料科學交流社群群組中的訊息"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "message",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "我想知道訊息內容"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "因為人家當初設計就是萬 py 皆可 import"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "因為人家當初設計就是萬 py 皆可 import"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 27,
-                                        "slot": "message",
-                                        "start": 3
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "FindMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "contact_name": [
-                                             "龍王剡"
-                                        ],
-                                        "group_name": [
-                                             "Python資料科學交流社群"
-                                        ],
-                                        "message": [
-                                             "因為人家當初設計就是萬 py 皆可 import"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "訊息為因為人家當初設計就是萬 py 皆可 import"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "龍王剡"
-                                        ],
-                                        "slot": "contact_name",
-                                        "values": [
-                                             "龍王剡"
-                                        ]
-                                   },
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "Python資料科學交流社群"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "Python資料科學交流社群"
-                                        ]
-                                   },
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "因為人家當初設計就是萬 py 皆可 import"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "因為人家當初設計就是萬 py 皆可 import"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM_COUNT",
-                                        "canonical_values": [
-                                             "1"
-                                        ],
-                                        "slot": "count",
-                                        "values": [
-                                             "1"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 31,
-                                        "slot": "contact_name",
-                                        "start": 28
-                                   },
-                                   {
-                                        "exclusive_end": 17,
-                                        "slot": "group_name",
-                                        "start": 3
-                                   }
-                              ],
-                              "service_call": {
-                                   "method": "FindMessage",
-                                   "parameters": {
-                                        "contact_name": "龍王剡",
-                                        "group_name": "Python資料科學交流社群",
-                                        "message": "因為人家當初設計就是萬 py 皆可 import"
-                                   }
-                              },
-                              "service_results": [
-                                   {
-                                        "group_name": "Python資料科學交流社群",
-                                        "contact_name": "龍王剡",
-                                        "message": "因為人家當初設計就是萬 py 皆可 import"
-                                   }
-                              ]
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "找到在Python資料科學交流社群群組的聊天訊息，找到與龍王剡聊天的訊息，總共有1個結果"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST_ALTS",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "FindMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "contact_name": [
-                                             "龍王剡"
-                                        ],
-                                        "group_name": [
-                                             "Python資料科學交流社群"
-                                        ],
-                                        "message": [
-                                             "因為人家當初設計就是萬 py 皆可 import"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "能提供更多類似的訊息嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NOTIFY_FAILURE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "INFORM_COUNT",
-                                        "canonical_values": [
-                                             "1"
-                                        ],
-                                        "slot": "count",
-                                        "values": [
-                                             "1"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_call": {
-                                   "method": "FindMessage",
-                                   "parameters": {
-                                        "contact_name": "龍王剡",
-                                        "group_name": "Python資料科學交流社群",
-                                        "message": "因為人家當初設計就是萬 py 皆可 import"
-                                   }
-                              },
-                              "service_results": [
-                                   {
-                                        "group_name": "Python資料科學交流社群",
-                                        "contact_name": "龍王剡",
-                                        "message": "因為人家當初設計就是萬 py 皆可 import"
-                                   }
-                              ]
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "不好意思，沒辦法找到符合您要求的訊息，總共有1個結果"
+                    "utterance": "還有什麼能幫到您的嗎？"
                },
                {
                     "frames": [
@@ -1129,14 +609,8 @@
                                    "active_intent": "FindMessage",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "contact_name": [
-                                             "龍王剡"
-                                        ],
-                                        "group_name": [
-                                             "Python資料科學交流社群"
-                                        ],
                                         "message": [
-                                             "因為人家當初設計就是萬 py 皆可 import"
+                                             "看一下官方有說明，你沒給Python engine會自動幫你parsing，不過如果你的格式有問題肯定要自己檢查的"
                                         ]
                                    }
                               }
@@ -1158,19 +632,11 @@
                               ],
                               "service": "Messaging_1",
                               "slots": [],
-                              "service_call": {
-                                   "method": "FindMessage",
-                                   "parameters": {
-                                        "contact_name": "龍王剡",
-                                        "group_name": "Python資料科學交流社群",
-                                        "message": "因為人家當初設計就是萬 py 皆可 import"
-                                   }
-                              },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "應該做的，再見！"
+                    "utterance": "嗯，再見"
                }
           ]
      }

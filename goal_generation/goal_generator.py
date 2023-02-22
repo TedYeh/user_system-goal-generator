@@ -559,6 +559,7 @@ class messageSGD(object):
                 break  
     
     def run(self):
+        '''
         file_count = 0
         while True:
             if file_count >= 650:break
@@ -578,7 +579,7 @@ class messageSGD(object):
             #self.slot_values = {}    
             print()
         print(self.dialog_type)
-        '''
+        
 
 if __name__ == "__main__":
     goal_agent = messageSGD("./schema/messagewoz_schema.json")

@@ -2,8 +2,7 @@
      {
           "dialogue_id": 478,
           "services": [
-               "Calendar_1",
-               "Messaging_1"
+               "Mail_1"
           ],
           "turns": [
                {
@@ -13,25 +12,25 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "LookupEvents"
+                                             "SendMail"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "LookupEvents"
+                                             "SendMail"
                                         ]
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "LookupEvents",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {}
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我想要找個活動，可以請你幫忙嗎？"
+                    "utterance": "我想要寫一封信，可以請你幫忙嗎？"
                },
                {
                     "frames": [
@@ -40,23 +39,29 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "event_time",
+                                        "slot": "recipient",
                                         "values": []
                                    },
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "event_name",
+                                        "slot": "subject",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "copy_recipient",
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "那這個活動叫甚麼呢？，我想知道活動在當天何時開始"
+                    "utterance": "我想知道這個信件的主旨，我想知道這封信的收件者，我想知道這封信的副本收件者"
                },
                {
                     "frames": [
@@ -65,390 +70,205 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "07:17"
+                                             "謝恵琪"
                                         ],
-                                        "slot": "event_time",
+                                        "slot": "recipient",
                                         "values": [
-                                             "7點17分"
+                                             "謝恵琪"
                                         ]
                                    },
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "『光之聖誕-愛無限』臺南聖誕燈節系列活動"
+                                             " 原來美國人喜歡輪班工作?"
                                         ],
-                                        "slot": "event_name",
+                                        "slot": "subject",
                                         "values": [
-                                             "『光之聖誕-愛無限』臺南聖誕燈節系列活動"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 34,
-                                        "slot": "event_time",
-                                        "start": 29
-                                   },
-                                   {
-                                        "exclusive_end": 25,
-                                        "slot": "event_name",
-                                        "start": 5
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_time": [
-                                             "7點17分"
-                                        ],
-                                        "event_name": [
-                                             "『光之聖誕-愛無限』臺南聖誕燈節系列活動"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "活動名稱為『光之聖誕-愛無限』臺南聖誕燈節系列活動，活動在7點17分開始"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "participant",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "這個活動有任何參加者嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "Jasper"
-                                        ],
-                                        "slot": "participant",
-                                        "values": [
-                                             "Jasper"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 7,
-                                        "slot": "participant",
-                                        "start": 1
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_time": [
-                                             "7點17分"
-                                        ],
-                                        "event_name": [
-                                             "『光之聖誕-愛無限』臺南聖誕燈節系列活動"
-                                        ],
-                                        "participant": [
-                                             "Jasper"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "有Jasper會參加"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NOTIFY_FAILURE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_call": {
-                                   "method": "LookupEvents",
-                                   "parameters": {
-                                        "event_time": "7點17分",
-                                        "event_name": "『光之聖誕-愛無限』臺南聖誕燈節系列活動",
-                                        "participant": "Jasper"
-                                   }
-                              },
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "不好意思，在行事曆上沒辦法找到符合您要求的活動，請用其他條件查詢"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NEGATE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "GOODBYE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "LookupEvents",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_time": [
-                                             "7點17分"
-                                        ],
-                                        "event_name": [
-                                             "『光之聖誕-愛無限』臺南聖誕燈節系列活動"
-                                        ],
-                                        "participant": [
-                                             "Jasper"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "沒關係，先這樣吧，沒有問題了，再見吧！"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "GOODBYE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "很榮幸為您服務，再見！"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM_INTENT",
-                                        "canonical_values": [
-                                             "SendMessage"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "SendMessage"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "SendMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {}
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "請幫我寄一則訊息"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "message",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "contact_name",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "group_name",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "我想知道訊息內容，你知道群組名稱嗎？，我想知道這則訊息是誰寄的？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "然後把script留下來 以後就不用重新幹"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "然後把script留下來 以後就不用重新幹"
+                                             " 原來美國人喜歡輪班工作?"
                                         ]
                                    },
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "南方工人"
+                                             "Bman"
                                         ],
-                                        "slot": "contact_name",
+                                        "slot": "copy_recipient",
                                         "values": [
-                                             "南方工人"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "Python資料科學交流社群"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "Python資料科學交流社群"
+                                             "Bman"
                                         ]
                                    }
                               ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 24,
-                                        "slot": "message",
-                                        "start": 3
-                                   },
-                                   {
-                                        "exclusive_end": 51,
-                                        "slot": "contact_name",
-                                        "start": 47
-                                   },
-                                   {
-                                        "exclusive_end": 43,
-                                        "slot": "group_name",
-                                        "start": 29
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "SendMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "message": [
-                                             "然後把script留下來 以後就不用重新幹"
-                                        ],
-                                        "contact_name": [
-                                             "南方工人"
-                                        ],
-                                        "group_name": [
-                                             "Python資料科學交流社群"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "跟他說然後把script留下來 以後就不用重新幹，群組叫做Python資料科學交流社群，用戶為南方工人"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "然後把script留下來 以後就不用重新幹"
-                                        ],
-                                        "slot": "message",
-                                        "values": [
-                                             "然後把script留下來 以後就不用重新幹"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "南方工人"
-                                        ],
-                                        "slot": "contact_name",
-                                        "values": [
-                                             "南方工人"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "Python資料科學交流社群"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "Python資料科學交流社群"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [
                                    {
                                         "exclusive_end": 28,
-                                        "slot": "message",
-                                        "start": 7
+                                        "slot": "recipient",
+                                        "start": 25
                                    },
                                    {
-                                        "exclusive_end": 68,
-                                        "slot": "contact_name",
-                                        "start": 64
+                                        "exclusive_end": 18,
+                                        "slot": "subject",
+                                        "start": 5
                                    },
                                    {
-                                        "exclusive_end": 53,
-                                        "slot": "group_name",
-                                        "start": 39
+                                        "exclusive_end": 39,
+                                        "slot": "copy_recipient",
+                                        "start": 35
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "謝恵琪"
+                                        ],
+                                        "subject": [
+                                             " 原來美國人喜歡輪班工作?"
+                                        ],
+                                        "copy_recipient": [
+                                             "Bman"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "這封信叫做 原來美國人喜歡輪班工作?，這封信要寄給謝恵琪，副本收件者為Bman"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "content",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "這封信有任何內容嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "本來就有些工作需要二十四小時有員工在實體店面像是或是駐點加油站等等，現在三五奈米廠過去亞利桑那除非美國人願意上下班開機關機浪費時間測機啟動，加蛋人說啥自己套皮阿爸不喜歡那也還是得做久了就喜歡惹吧，請問有沒有原來美國人喜歡輪班工作的八卦?"
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "本來就有些工作需要二十四小時有員工在實體店面像是或是駐點加油站等等，現在三五奈米廠過去亞利桑那除非美國人願意上下班開機關機浪費時間測機啟動，加蛋人說啥自己套皮阿爸不喜歡那也還是得做久了就喜歡惹吧，請問有沒有原來美國人喜歡輪班工作的八卦?"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 121,
+                                        "slot": "content",
+                                        "start": 3
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "謝恵琪"
+                                        ],
+                                        "subject": [
+                                             " 原來美國人喜歡輪班工作?"
+                                        ],
+                                        "copy_recipient": [
+                                             "Bman"
+                                        ],
+                                        "content": [
+                                             "本來就有些工作需要二十四小時有員工在實體店面像是或是駐點加油站等等，現在三五奈米廠過去亞利桑那除非美國人願意上下班開機關機浪費時間測機啟動，加蛋人說啥自己套皮阿爸不喜歡那也還是得做久了就喜歡惹吧，請問有沒有原來美國人喜歡輪班工作的八卦?"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "內文為本來就有些工作需要二十四小時有員工在實體店面像是或是駐點加油站等等，現在三五奈米廠過去亞利桑那除非美國人願意上下班開機關機浪費時間測機啟動，加蛋人說啥自己套皮阿爸不喜歡那也還是得做久了就喜歡惹吧，請問有沒有原來美國人喜歡輪班工作的八卦?"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "謝恵琪"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "謝恵琪"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             " 原來美國人喜歡輪班工作?"
+                                        ],
+                                        "slot": "subject",
+                                        "values": [
+                                             " 原來美國人喜歡輪班工作?"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "Bman"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "Bman"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "本來就有些工作需要二十四小時有員工在實體店面像是或是駐點加油站等等，現在三五奈米廠過去亞利桑那除非美國人願意上下班開機關機浪費時間測機啟動，加蛋人說啥自己套皮阿爸不喜歡那也還是得做久了就喜歡惹吧，請問有沒有原來美國人喜歡輪班工作的八卦?"
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "本來就有些工作需要二十四小時有員工在實體店面像是或是駐點加油站等等，現在三五奈米廠過去亞利桑那除非美國人願意上下班開機關機浪費時間測機啟動，加蛋人說啥自己套皮阿爸不喜歡那也還是得做久了就喜歡惹吧，請問有沒有原來美國人喜歡輪班工作的八卦?"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 169,
+                                        "slot": "recipient",
+                                        "start": 166
+                                   },
+                                   {
+                                        "exclusive_end": 22,
+                                        "slot": "subject",
+                                        "start": 9
+                                   },
+                                   {
+                                        "exclusive_end": 158,
+                                        "slot": "content",
+                                        "start": 40
                                    }
                               ],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "確認要傳送訊息然後把script留下來 以後就不用重新幹嗎？，確認要傳送訊息到Python資料科學交流社群嗎？，確認要傳送訊息給南方工人嗎？"
+                    "utterance": "請確認要寄出主旨為 原來美國人喜歡輪班工作?的信件嗎？，請確認要寄出的信件內容:本來就有些工作需要二十四小時有員工在實體店面像是或是駐點加油站等等，現在三五奈米廠過去亞利桑那除非美國人願意上下班開機關機浪費時間測機啟動，加蛋人說啥自己套皮阿爸不喜歡那也還是得做久了就喜歡惹吧，請問有沒有原來美國人喜歡輪班工作的八卦?，確認要寄信件給謝恵琪嗎？"
                },
                {
                     "frames": [
@@ -461,20 +281,23 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "message": [
-                                             "然後把script留下來 以後就不用重新幹"
+                                        "recipient": [
+                                             "謝恵琪"
                                         ],
-                                        "contact_name": [
-                                             "南方工人"
+                                        "subject": [
+                                             " 原來美國人喜歡輪班工作?"
                                         ],
-                                        "group_name": [
-                                             "Python資料科學交流社群"
+                                        "copy_recipient": [
+                                             "Bman"
+                                        ],
+                                        "content": [
+                                             "本來就有些工作需要二十四小時有員工在實體店面像是或是駐點加油站等等，現在三五奈米廠過去亞利桑那除非美國人願意上下班開機關機浪費時間測機啟動，加蛋人說啥自己套皮阿爸不喜歡那也還是得做久了就喜歡惹吧，請問有沒有原來美國人喜歡輪班工作的八卦?"
                                         ]
                                    }
                               }
@@ -494,54 +317,119 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "service_call": {
-                                   "method": "SendMessage",
+                                   "method": "SendMail",
                                    "parameters": {
-                                        "message": "然後把script留下來 以後就不用重新幹",
-                                        "contact_name": "南方工人",
-                                        "group_name": "Python資料科學交流社群"
+                                        "recipient": "謝恵琪",
+                                        "subject": " 原來美國人喜歡輪班工作?",
+                                        "copy_recipient": "Bman",
+                                        "content": "本來就有些工作需要二十四小時有員工在實體店面像是或是駐點加油站等等，現在三五奈米廠過去亞利桑那除非美國人願意上下班開機關機浪費時間測機啟動，加蛋人說啥自己套皮阿爸不喜歡那也還是得做久了就喜歡惹吧，請問有沒有原來美國人喜歡輪班工作的八卦?"
                                    }
                               },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "多虧有您的配合，訊息已成功傳送"
+                    "utterance": "多虧有您的配合，信件已成功寄出"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "GOODBYE",
+                                        "act": "THANK_YOU",
                                         "canonical_values": [],
                                         "slot": "",
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMessage",
+                                   "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "message": [
-                                             "然後把script留下來 以後就不用重新幹"
+                                        "recipient": [
+                                             "謝恵琪"
                                         ],
-                                        "contact_name": [
-                                             "南方工人"
+                                        "subject": [
+                                             " 原來美國人喜歡輪班工作?"
                                         ],
-                                        "group_name": [
-                                             "Python資料科學交流社群"
+                                        "copy_recipient": [
+                                             "Bman"
+                                        ],
+                                        "content": [
+                                             "本來就有些工作需要二十四小時有員工在實體店面像是或是駐點加油站等等，現在三五奈米廠過去亞利桑那除非美國人願意上下班開機關機浪費時間測機啟動，加蛋人說啥自己套皮阿爸不喜歡那也還是得做久了就喜歡惹吧，請問有沒有原來美國人喜歡輪班工作的八卦?"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "沒有問題了，再見！"
+                    "utterance": "真是太謝謝你了！"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQ_MORE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "還需要什麼幫助嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NEGATE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "GOODBYE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "謝恵琪"
+                                        ],
+                                        "subject": [
+                                             " 原來美國人喜歡輪班工作?"
+                                        ],
+                                        "copy_recipient": [
+                                             "Bman"
+                                        ],
+                                        "content": [
+                                             "本來就有些工作需要二十四小時有員工在實體店面像是或是駐點加油站等等，現在三五奈米廠過去亞利桑那除非美國人願意上下班開機關機浪費時間測機啟動，加蛋人說啥自己套皮阿爸不喜歡那也還是得做久了就喜歡惹吧，請問有沒有原來美國人喜歡輪班工作的八卦?"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "沒關係，先這樣吧，沒有問題了，再見吧！"
                },
                {
                     "frames": [
@@ -554,21 +442,13 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Mail_1",
                               "slots": [],
-                              "service_call": {
-                                   "method": "SendMessage",
-                                   "parameters": {
-                                        "message": "然後把script留下來 以後就不用重新幹",
-                                        "contact_name": "南方工人",
-                                        "group_name": "Python資料科學交流社群"
-                                   }
-                              },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "很高興為您服務，下次再見"
+                    "utterance": "再見"
                }
           ]
      }

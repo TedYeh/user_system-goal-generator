@@ -2,8 +2,7 @@
      {
           "dialogue_id": 118,
           "services": [
-               "Mail_1",
-               "Calendar_1"
+               "Messaging_1"
           ],
           "turns": [
                {
@@ -13,25 +12,25 @@
                                    {
                                         "act": "INFORM_INTENT",
                                         "canonical_values": [
-                                             "SendMail"
+                                             "FindMessage"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "SendMail"
+                                             "FindMessage"
                                         ]
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Messaging_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMail",
+                                   "active_intent": "FindMessage",
                                    "requested_slots": [],
                                    "slot_values": {}
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "請幫我寄出一封信件"
+                    "utterance": "請幫我找一則訊息"
                },
                {
                     "frames": [
@@ -40,23 +39,17 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "subject",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "content",
+                                        "slot": "message",
                                         "values": []
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Messaging_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "我想知道這個信件的主旨，我想知道這封信的內文"
+                    "utterance": "所以這則訊息講了什麼？"
                },
                {
                     "frames": [
@@ -65,350 +58,214 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             " 電動車會不會是世紀大騙局啊？"
+                                             "因為有些欄位的類別種類很多 怕做成dummy後會讓整體維度太大 另外就是有試跑模型比對後 做target encoding的也確實比較好 "
                                         ],
-                                        "slot": "subject",
+                                        "slot": "message",
                                         "values": [
-                                             " 電動車會不會是世紀大騙局啊？"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "拜託這麼簡單的解法都沒人想到，學狗肉做換電站不就好了，你騎狗肉去換電需要一分鐘，馬斯克麻煩找我去做執行長好嗎"
-                                        ],
-                                        "slot": "content",
-                                        "values": [
-                                             "拜託這麼簡單的解法都沒人想到，學狗肉做換電站不就好了，你騎狗肉去換電需要一分鐘，馬斯克麻煩找我去做執行長好嗎"
+                                             "因為有些欄位的類別種類很多 怕做成dummy後會讓整體維度太大 另外就是有試跑模型比對後 做target encoding的也確實比較好 "
                                         ]
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Messaging_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 20,
-                                        "slot": "subject",
-                                        "start": 5
-                                   },
-                                   {
-                                        "exclusive_end": 78,
-                                        "slot": "content",
-                                        "start": 24
+                                        "exclusive_end": 72,
+                                        "slot": "message",
+                                        "start": 3
                                    }
                               ],
                               "state": {
-                                   "active_intent": "SendMail",
+                                   "active_intent": "FindMessage",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "subject": [
-                                             " 電動車會不會是世紀大騙局啊？"
-                                        ],
-                                        "content": [
-                                             "拜託這麼簡單的解法都沒人想到，學狗肉做換電站不就好了，你騎狗肉去換電需要一分鐘，馬斯克麻煩找我去做執行長好嗎"
+                                        "message": [
+                                             "因為有些欄位的類別種類很多 怕做成dummy後會讓整體維度太大 另外就是有試跑模型比對後 做target encoding的也確實比較好 "
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "信件主旨叫 電動車會不會是世紀大騙局啊？，內文為拜託這麼簡單的解法都沒人想到，學狗肉做換電站不就好了，你騎狗肉去換電需要一分鐘，馬斯克麻煩找我去做執行長好嗎"
+                    "utterance": "跟他說因為有些欄位的類別種類很多 怕做成dummy後會讓整體維度太大 另外就是有試跑模型比對後 做target encoding的也確實比較好 "
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "recipient",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "copy_recipient",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "你知道這封信是寄給誰的嗎？，你知道這封信的副本收件者嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
+                                        "act": "INFORM_COUNT",
                                         "canonical_values": [
-                                             "Alex-志"
+                                             "1"
                                         ],
-                                        "slot": "recipient",
+                                        "slot": "count",
                                         "values": [
-                                             "Alex-志"
+                                             "1"
                                         ]
                                    },
                                    {
-                                        "act": "INFORM",
+                                        "act": "OFFER",
                                         "canonical_values": [
-                                             "無"
+                                             "因為有些欄位的類別種類很多 怕做成dummy後會讓整體維度太大 另外就是有試跑模型比對後 做target encoding的也確實比較好 "
                                         ],
-                                        "slot": "copy_recipient",
+                                        "slot": "message",
                                         "values": [
-                                             "無"
+                                             "因為有些欄位的類別種類很多 怕做成dummy後會讓整體維度太大 另外就是有試跑模型比對後 做target encoding的也確實比較好 "
                                         ]
                                    }
                               ],
-                              "service": "Mail_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 10,
-                                        "slot": "recipient",
-                                        "start": 4
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "SendMail",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "subject": [
-                                             " 電動車會不會是世紀大騙局啊？"
-                                        ],
-                                        "content": [
-                                             "拜託這麼簡單的解法都沒人想到，學狗肉做換電站不就好了，你騎狗肉去換電需要一分鐘，馬斯克麻煩找我去做執行長好嗎"
-                                        ],
-                                        "recipient": [
-                                             "Alex-志"
-                                        ],
-                                        "copy_recipient": [
-                                             "無"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "這封信由Alex-志收，不需設定副本收件者"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             " 電動車會不會是世紀大騙局啊？"
-                                        ],
-                                        "slot": "subject",
-                                        "values": [
-                                             " 電動車會不會是世紀大騙局啊？"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "拜託這麼簡單的解法都沒人想到，學狗肉做換電站不就好了，你騎狗肉去換電需要一分鐘，馬斯克麻煩找我去做執行長好嗎"
-                                        ],
-                                        "slot": "content",
-                                        "values": [
-                                             "拜託這麼簡單的解法都沒人想到，學狗肉做換電站不就好了，你騎狗肉去換電需要一分鐘，馬斯克麻煩找我去做執行長好嗎"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "Alex-志"
-                                        ],
-                                        "slot": "recipient",
-                                        "values": [
-                                             "Alex-志"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "無"
-                                        ],
-                                        "slot": "copy_recipient",
-                                        "values": [
-                                             "無"
-                                        ]
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 24,
-                                        "slot": "subject",
-                                        "start": 9
-                                   },
-                                   {
-                                        "exclusive_end": 96,
-                                        "slot": "content",
-                                        "start": 42
-                                   },
-                                   {
-                                        "exclusive_end": 110,
-                                        "slot": "recipient",
-                                        "start": 104
-                                   }
-                              ],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "請確認要寄出主旨為 電動車會不會是世紀大騙局啊？的信件嗎？，請確認要寄出的信件內容:拜託這麼簡單的解法都沒人想到，學狗肉做換電站不就好了，你騎狗肉去換電需要一分鐘，馬斯克麻煩找我去做執行長好嗎，確認要寄信件給Alex-志嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "AFFIRM",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "SendMail",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "subject": [
-                                             " 電動車會不會是世紀大騙局啊？"
-                                        ],
-                                        "content": [
-                                             "拜託這麼簡單的解法都沒人想到，學狗肉做換電站不就好了，你騎狗肉去換電需要一分鐘，馬斯克麻煩找我去做執行長好嗎"
-                                        ],
-                                        "recipient": [
-                                             "Alex-志"
-                                        ],
-                                        "copy_recipient": [
-                                             "無"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "我對以上資訊沒問題"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "NOTIFY_SUCCESS",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
+                              "service": "Messaging_1",
                               "slots": [],
                               "service_call": {
-                                   "method": "SendMail",
+                                   "method": "FindMessage",
                                    "parameters": {
-                                        "subject": " 電動車會不會是世紀大騙局啊？",
-                                        "content": "拜託這麼簡單的解法都沒人想到，學狗肉做換電站不就好了，你騎狗肉去換電需要一分鐘，馬斯克麻煩找我去做執行長好嗎",
-                                        "recipient": "Alex-志",
-                                        "copy_recipient": "無"
+                                        "message": [
+                                             "因為有些欄位的類別種類很多 怕做成dummy後會讓整體維度太大 另外就是有試跑模型比對後 做target encoding的也確實比較好 "
+                                        ]
                                    }
                               },
-                              "service_results": []
+                              "service_results": [
+                                   {
+                                        "group_name": "Python資料科學交流社群",
+                                        "contact_name": "plain",
+                                        "message": "因為有些欄位的類別種類很多 怕做成dummy後會讓整體維度太大 另外就是有試跑模型比對後 做target encoding的也確實比較好 "
+                                   }
+                              ]
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "多虧有您的配合，信件已成功寄出"
+                    "utterance": "總共有1個結果"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "2022/8/14"
-                                        ],
-                                        "slot": "event_date",
-                                        "values": [
-                                             "8月14號"
+                                        "act": "SELECT",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "message": [
+                                             "因為有些欄位的類別種類很多 怕做成dummy後會讓整體維度太大 另外就是有試跑模型比對後 做target encoding的也確實比較好 "
                                         ]
-                                   },
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我知道了"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
                                    {
-                                        "act": "INFORM",
+                                        "act": "OFFER_INTENT",
                                         "canonical_values": [
-                                             "義魄千秋-全國義民祭在新竹縣"
-                                        ],
-                                        "slot": "event_name",
-                                        "values": [
-                                             "義魄千秋-全國義民祭在新竹縣"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "Lai Jim"
-                                        ],
-                                        "slot": "participant",
-                                        "values": [
-                                             "Lai Jim"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM_INTENT",
-                                        "canonical_values": [
-                                             "LookupEvents"
+                                             "FindMessage"
                                         ],
                                         "slot": "intent",
                                         "values": [
-                                             "LookupEvents"
+                                             "FindMessage"
                                         ]
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "需要幫您找一則訊息嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "AFFIRM_INTENT",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {}
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "好的，麻煩你了"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "contact_name",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道這則訊息是誰寄的？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "陳韋作"
+                                        ],
+                                        "slot": "contact_name",
+                                        "values": [
+                                             "陳韋作"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 28,
-                                        "slot": "event_name",
-                                        "start": 14
-                                   },
-                                   {
-                                        "exclusive_end": 46,
-                                        "slot": "participant",
-                                        "start": 39
-                                   },
-                                   {
-                                        "exclusive_end": 37,
-                                        "slot": "event_date",
-                                        "start": 32
+                                        "exclusive_end": 6,
+                                        "slot": "contact_name",
+                                        "start": 3
                                    }
                               ],
                               "state": {
-                                   "active_intent": "LookupEvents",
+                                   "active_intent": "FindMessage",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "event_date": [
-                                             "8月14號"
+                                        "message": [
+                                             "因為有些欄位的類別種類很多 怕做成dummy後會讓整體維度太大 另外就是有試跑模型比對後 做target encoding的也確實比較好 "
                                         ],
-                                        "event_name": [
-                                             "義魄千秋-全國義民祭在新竹縣"
-                                        ],
-                                        "participant": [
-                                             "Lai Jim"
+                                        "contact_name": [
+                                             "陳韋作"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "請幫我找一個活動，活動名稱叫義魄千秋-全國義民祭在新竹縣，日期為8月14號，有Lai Jim會參加"
+                    "utterance": "用戶為陳韋作"
                },
                {
                     "frames": [
@@ -421,21 +278,139 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Messaging_1",
                               "slots": [],
                               "service_call": {
-                                   "method": "LookupEvents",
+                                   "method": "FindMessage",
                                    "parameters": {
-                                        "event_date": "8月14號",
-                                        "event_name": "義魄千秋-全國義民祭在新竹縣",
-                                        "participant": "Lai Jim"
+                                        "message": "因為有些欄位的類別種類很多 怕做成dummy後會讓整體維度太大 另外就是有試跑模型比對後 做target encoding的也確實比較好 ",
+                                        "contact_name": "陳韋作"
                                    }
                               },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "不好意思，在行事曆上沒辦法找到符合您要求的活動，請用其他條件查詢"
+                    "utterance": "不好意思，沒辦法找到符合您要求的訊息"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "FindMessage"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "FindMessage"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "message": [
+                                             "因為有些欄位的類別種類很多 怕做成dummy後會讓整體維度太大 另外就是有試跑模型比對後 做target encoding的也確實比較好 "
+                                        ],
+                                        "contact_name": [
+                                             "陳韋作"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我想要知道相關的訊息，請幫幫我"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "contact_name",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道這則訊息是誰寄的？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "陳韋作"
+                                        ],
+                                        "slot": "contact_name",
+                                        "values": [
+                                             "陳韋作"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 6,
+                                        "slot": "contact_name",
+                                        "start": 3
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "message": [
+                                             "因為有些欄位的類別種類很多 怕做成dummy後會讓整體維度太大 另外就是有試跑模型比對後 做target encoding的也確實比較好 "
+                                        ],
+                                        "contact_name": [
+                                             "陳韋作"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "用戶為陳韋作"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NOTIFY_FAILURE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_call": {
+                                   "method": "FindMessage",
+                                   "parameters": {
+                                        "message": "因為有些欄位的類別種類很多 怕做成dummy後會讓整體維度太大 另外就是有試跑模型比對後 做target encoding的也確實比較好 ",
+                                        "contact_name": "陳韋作"
+                                   }
+                              },
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "不好意思，沒辦法找到符合您要求的訊息"
                },
                {
                     "frames": [
@@ -454,27 +429,24 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Messaging_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "LookupEvents",
+                                   "active_intent": "FindMessage",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "event_date": [
-                                             "8月14號"
+                                        "message": [
+                                             "因為有些欄位的類別種類很多 怕做成dummy後會讓整體維度太大 另外就是有試跑模型比對後 做target encoding的也確實比較好 "
                                         ],
-                                        "event_name": [
-                                             "義魄千秋-全國義民祭在新竹縣"
-                                        ],
-                                        "participant": [
-                                             "Lai Jim"
+                                        "contact_name": [
+                                             "陳韋作"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "沒關係，先這樣吧，沒有問題了，再見！"
+                    "utterance": "沒關係，先這樣吧，沒有了！再見！"
                },
                {
                     "frames": [
@@ -487,21 +459,20 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Calendar_1",
+                              "service": "Messaging_1",
                               "slots": [],
                               "service_call": {
-                                   "method": "LookupEvents",
+                                   "method": "FindMessage",
                                    "parameters": {
-                                        "event_date": "8月14號",
-                                        "event_name": "義魄千秋-全國義民祭在新竹縣",
-                                        "participant": "Lai Jim"
+                                        "message": "因為有些欄位的類別種類很多 怕做成dummy後會讓整體維度太大 另外就是有試跑模型比對後 做target encoding的也確實比較好 ",
+                                        "contact_name": "陳韋作"
                                    }
                               },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "好的，祝您生活愉快，再見"
+                    "utterance": "祝您生活愉快！再見！"
                }
           ]
      }

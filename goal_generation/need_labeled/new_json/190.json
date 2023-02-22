@@ -2,8 +2,7 @@
      {
           "dialogue_id": 190,
           "services": [
-               "Calendar_1",
-               "Messaging_1"
+               "Calendar_1"
           ],
           "turns": [
                {
@@ -31,7 +30,7 @@
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我想要添加一個活動，可以請你幫忙嗎？"
+                    "utterance": "請幫我在行事曆添加一個活動"
                },
                {
                     "frames": [
@@ -40,7 +39,7 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "event_time",
+                                        "slot": "event_location",
                                         "values": []
                                    }
                               ],
@@ -50,7 +49,7 @@
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "這個活動在幾點開始呢？"
+                    "utterance": "這個活動辦在哪裡啊？"
                },
                {
                     "frames": [
@@ -59,19 +58,69 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "12:11"
+                                             "無"
                                         ],
-                                        "slot": "event_time",
+                                        "slot": "event_location",
                                         "values": [
-                                             "12時11分"
+                                             "無"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "AddEvent",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_location": [
+                                             "無"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "不需設定地點"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_date",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "這個活動辦在幾月幾號呢？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "2018/6/6"
+                                        ],
+                                        "slot": "event_date",
+                                        "values": [
+                                             "6月6號"
                                         ]
                                    }
                               ],
                               "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 9,
-                                        "slot": "event_time",
+                                        "exclusive_end": 7,
+                                        "slot": "event_date",
                                         "start": 3
                                    }
                               ],
@@ -79,15 +128,18 @@
                                    "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "event_time": [
-                                             "12時11分"
+                                        "event_location": [
+                                             "無"
+                                        ],
+                                        "event_date": [
+                                             "6月6號"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "活動在12時11分開始"
+                    "utterance": "日期為6月6號"
                },
                {
                     "frames": [
@@ -96,13 +148,7 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
-                                        "slot": "event_date",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_location",
+                                        "slot": "participant",
                                         "values": []
                                    }
                               ],
@@ -112,7 +158,7 @@
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "我想知道活動在何時舉行，我想知道這個活動的地點"
+                    "utterance": "想知道這個活動的參加者"
                },
                {
                     "frames": [
@@ -121,140 +167,124 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "2022/8/10"
+                                             "無"
                                         ],
-                                        "slot": "event_date",
+                                        "slot": "participant",
                                         "values": [
-                                             "8月10日"
+                                             "無"
+                                        ]
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "AddEvent",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "event_location": [
+                                             "無"
+                                        ],
+                                        "event_date": [
+                                             "6月6號"
+                                        ],
+                                        "participant": [
+                                             "無"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "不需設定參加者"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_time",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "event_name",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Calendar_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "那這個活動叫甚麼呢？，我想知道活動在當天何時開始"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "14:00"
+                                        ],
+                                        "slot": "event_time",
+                                        "values": [
+                                             "下午2點0分"
                                         ]
                                    },
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "花蓮縣970花蓮市國慶里保民宮"
+                                             "Filamentary Accretion Flows in the IRDC M17 SWex"
                                         ],
-                                        "slot": "event_location",
+                                        "slot": "event_name",
                                         "values": [
-                                             "花蓮縣970花蓮市國慶里保民宮"
+                                             "Filamentary Accretion Flows in the IRDC M17 SWex"
                                         ]
                                    }
                               ],
                               "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 10,
-                                        "slot": "event_date",
+                                        "exclusive_end": 65,
+                                        "slot": "event_time",
+                                        "start": 59
+                                   },
+                                   {
+                                        "exclusive_end": 53,
+                                        "slot": "event_name",
                                         "start": 5
-                                   },
-                                   {
-                                        "exclusive_end": 29,
-                                        "slot": "event_location",
-                                        "start": 14
                                    }
                               ],
                               "state": {
                                    "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "event_time": [
-                                             "12時11分"
-                                        ],
-                                        "event_date": [
-                                             "8月10日"
-                                        ],
                                         "event_location": [
-                                             "花蓮縣970花蓮市國慶里保民宮"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "活動日期為8月10日，地點為花蓮縣970花蓮市國慶里保民宮"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_name",
-                                        "values": []
-                                   },
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "event_content",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "我想知道這個活動的名稱，這個活動有任何內容註記嗎？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "花蓮客家竹筍節"
-                                        ],
-                                        "slot": "event_name",
-                                        "values": [
-                                             "花蓮客家竹筍節"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
                                              "無"
                                         ],
-                                        "slot": "event_content",
-                                        "values": [
-                                             "無"
-                                        ]
-                                   }
-                              ],
-                              "service": "Calendar_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 13,
-                                        "slot": "event_name",
-                                        "start": 6
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "AddEvent",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "event_time": [
-                                             "12時11分"
-                                        ],
                                         "event_date": [
-                                             "8月10日"
+                                             "6月6號"
                                         ],
-                                        "event_location": [
-                                             "花蓮縣970花蓮市國慶里保民宮"
+                                        "participant": [
+                                             "無"
+                                        ],
+                                        "event_time": [
+                                             "下午2點0分"
                                         ],
                                         "event_name": [
-                                             "花蓮客家竹筍節"
-                                        ],
-                                        "event_content": [
-                                             "無"
+                                             "Filamentary Accretion Flows in the IRDC M17 SWex"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "這個活動叫做花蓮客家竹筍節，不需設定內容"
+                    "utterance": "活動名稱叫Filamentary Accretion Flows in the IRDC M17 SWex，活動時間為下午2點0分"
                },
                {
                     "frames": [
@@ -263,73 +293,68 @@
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "12時11分"
-                                        ],
-                                        "slot": "event_time",
-                                        "values": [
-                                             "12時11分"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "8月10日"
-                                        ],
-                                        "slot": "event_date",
-                                        "values": [
-                                             "8月10日"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "花蓮縣970花蓮市國慶里保民宮"
+                                             "無"
                                         ],
                                         "slot": "event_location",
                                         "values": [
-                                             "花蓮縣970花蓮市國慶里保民宮"
+                                             "無"
                                         ]
                                    },
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             "花蓮客家竹筍節"
+                                             "6月6號"
+                                        ],
+                                        "slot": "event_date",
+                                        "values": [
+                                             "6月6號"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "participant",
+                                        "values": [
+                                             "無"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "下午2點0分"
+                                        ],
+                                        "slot": "event_time",
+                                        "values": [
+                                             "下午2點0分"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "Filamentary Accretion Flows in the IRDC M17 SWex"
                                         ],
                                         "slot": "event_name",
                                         "values": [
-                                             "花蓮客家竹筍節"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "無"
-                                        ],
-                                        "slot": "event_content",
-                                        "values": [
-                                             "無"
+                                             "Filamentary Accretion Flows in the IRDC M17 SWex"
                                         ]
                                    }
                               ],
                               "service": "Calendar_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 55,
-                                        "slot": "event_time",
-                                        "start": 49
-                                   },
-                                   {
-                                        "exclusive_end": 33,
+                                        "exclusive_end": 73,
                                         "slot": "event_date",
-                                        "start": 28
-                                   },
-                                   {
-                                        "exclusive_end": 84,
-                                        "slot": "event_location",
                                         "start": 69
                                    },
                                    {
-                                        "exclusive_end": 14,
+                                        "exclusive_end": 95,
+                                        "slot": "event_time",
+                                        "start": 89
+                                   },
+                                   {
+                                        "exclusive_end": 55,
                                         "slot": "event_name",
                                         "start": 7
                                    }
@@ -338,7 +363,7 @@
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "確認要建立名叫花蓮客家竹筍節的活動嗎？，確認要建立舉辦在8月10日的活動嗎？，確認要建立舉辦在當天12時11分的活動嗎？，確認要建立舉辦在花蓮縣970花蓮市國慶里保民宮的活動嗎？"
+                    "utterance": "確認要建立名叫Filamentary Accretion Flows in the IRDC M17 SWex的活動嗎？，確認要建立舉辦在6月6號的活動嗎？，確認要建立舉辦在當天下午2點0分的活動嗎？"
                },
                {
                     "frames": [
@@ -357,20 +382,20 @@
                                    "active_intent": "AddEvent",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "event_time": [
-                                             "12時11分"
+                                        "event_location": [
+                                             "無"
                                         ],
                                         "event_date": [
-                                             "8月10日"
+                                             "6月6號"
                                         ],
-                                        "event_location": [
-                                             "花蓮縣970花蓮市國慶里保民宮"
+                                        "participant": [
+                                             "無"
+                                        ],
+                                        "event_time": [
+                                             "下午2點0分"
                                         ],
                                         "event_name": [
-                                             "花蓮客家竹筍節"
-                                        ],
-                                        "event_content": [
-                                             "無"
+                                             "Filamentary Accretion Flows in the IRDC M17 SWex"
                                         ]
                                    }
                               }
@@ -395,11 +420,11 @@
                               "service_call": {
                                    "method": "AddEvent",
                                    "parameters": {
-                                        "event_time": "12時11分",
-                                        "event_date": "8月10日",
-                                        "event_location": "花蓮縣970花蓮市國慶里保民宮",
-                                        "event_name": "花蓮客家竹筍節",
-                                        "event_content": "無"
+                                        "event_location": "無",
+                                        "event_date": "6月6號",
+                                        "participant": "無",
+                                        "event_time": "下午2點0分",
+                                        "event_name": "Filamentary Accretion Flows in the IRDC M17 SWex"
                                    }
                               },
                               "service_results": []
@@ -413,214 +438,103 @@
                          {
                               "actions": [
                                    {
-                                        "act": "INFORM_INTENT",
-                                        "canonical_values": [
-                                             "FindMessage"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "FindMessage"
-                                        ]
+                                        "act": "SELECT",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "FindMessage",
+                                   "active_intent": "AddEvent",
                                    "requested_slots": [],
-                                   "slot_values": {}
+                                   "slot_values": {
+                                        "event_location": [
+                                             "無"
+                                        ],
+                                        "event_date": [
+                                             "6月6號"
+                                        ],
+                                        "participant": [
+                                             "無"
+                                        ],
+                                        "event_time": [
+                                             "下午2點0分"
+                                        ],
+                                        "event_name": [
+                                             "Filamentary Accretion Flows in the IRDC M17 SWex"
+                                        ]
+                                   }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "請幫我找一則訊息"
+                    "utterance": "好的"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "REQUEST",
+                                        "act": "REQ_MORE",
                                         "canonical_values": [],
-                                        "slot": "group_name",
+                                        "slot": "",
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "你知道群組名稱嗎？"
+                    "utterance": "還有什麼需要幫助的嗎？"
                },
                {
                     "frames": [
                          {
                               "actions": [
                                    {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "AI 人工智慧"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "AI 人工智慧"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 11,
-                                        "slot": "group_name",
-                                        "start": 4
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "FindMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "group_name": [
-                                             "AI 人工智慧"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "群組叫做AI 人工智慧"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM_COUNT",
-                                        "canonical_values": [
-                                             "5"
-                                        ],
-                                        "slot": "count",
-                                        "values": [
-                                             "5"
-                                        ]
-                                   },
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "AI 人工智慧"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "AI 人工智慧"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 18,
-                                        "slot": "group_name",
-                                        "start": 11
-                                   }
-                              ],
-                              "service_call": {
-                                   "method": "FindMessage",
-                                   "parameters": {
-                                        "group_name": [
-                                             "AI 人工智慧"
-                                        ]
-                                   }
-                              },
-                              "service_results": [
-                                   {
-                                        "group_name": "AI 人工智慧",
-                                        "contact_name": "Immortal",
-                                        "message": "我想請問，這個可以拿來做regression嗎？我做的領域是視線追蹤"
-                                   },
-                                   {
-                                        "group_name": "AI 人工智慧",
-                                        "contact_name": "Seal",
-                                        "message": "我不是做這個領域"
-                                   },
-                                   {
-                                        "group_name": "AI 人工智慧",
-                                        "contact_name": "人類惡",
-                                        "message": "Learning Spatio-Temporal Transformer for Visual Tracking (ICCV2021)  你可以查查看"
-                                   },
-                                   {
-                                        "group_name": "AI 人工智慧",
-                                        "contact_name": "Kris",
-                                        "message": "算力要夠"
-                                   },
-                                   {
-                                        "group_name": "AI 人工智慧",
-                                        "contact_name": "只會寫程式的蛋",
-                                        "message": "因為我現在看到的都是做NLP或是做影響分類的"
-                                   }
-                              ]
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "總共有5個結果，找到在AI 人工智慧群組的聊天訊息"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
+                                        "act": "NEGATE",
                                         "canonical_values": [],
-                                        "slot": "contact_name",
+                                        "slot": "",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "GOODBYE",
+                                        "canonical_values": [],
+                                        "slot": "",
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "FindMessage",
-                                   "requested_slots": [
-                                        "contact_name"
-                                   ],
+                                   "active_intent": "AddEvent",
+                                   "requested_slots": [],
                                    "slot_values": {
-                                        "group_name": [
-                                             "AI 人工智慧"
+                                        "event_location": [
+                                             "無"
+                                        ],
+                                        "event_date": [
+                                             "6月6號"
+                                        ],
+                                        "participant": [
+                                             "無"
+                                        ],
+                                        "event_time": [
+                                             "下午2點0分"
+                                        ],
+                                        "event_name": [
+                                             "Filamentary Accretion Flows in the IRDC M17 SWex"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "我想知道這則訊息是誰寄的？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "Re Re"
-                                        ],
-                                        "slot": "contact_name",
-                                        "values": [
-                                             "Re Re"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 8,
-                                        "slot": "contact_name",
-                                        "start": 3
-                                   }
-                              ],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "用戶為Re Re"
+                    "utterance": "沒關係，先這樣吧，再見"
                },
                {
                     "frames": [
@@ -633,40 +547,13 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "FindMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "group_name": [
-                                             "AI 人工智慧"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "沒有了！再見！"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "GOODBYE",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
+                              "service": "Calendar_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "很榮幸為您服務，再見！"
+                    "utterance": "應該做的，再見！"
                }
           ]
      }

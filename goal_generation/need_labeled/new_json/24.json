@@ -2,180 +2,10 @@
      {
           "dialogue_id": 24,
           "services": [
-               "Messaging_1",
-               "Mail_1"
+               "Mail_1",
+               "Messaging_1"
           ],
           "turns": [
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM_INTENT",
-                                        "canonical_values": [
-                                             "FindMessage"
-                                        ],
-                                        "slot": "intent",
-                                        "values": [
-                                             "FindMessage"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "喵一個寶"
-                                        ],
-                                        "slot": "contact_name",
-                                        "values": [
-                                             "喵一個寶"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 23,
-                                        "slot": "contact_name",
-                                        "start": 19
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "FindMessage",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "contact_name": [
-                                             "喵一個寶"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "我想要知道相關的訊息，請幫幫我，用戶為喵一個寶"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "OFFER",
-                                        "canonical_values": [
-                                             "喵一個寶"
-                                        ],
-                                        "slot": "contact_name",
-                                        "values": [
-                                             "喵一個寶"
-                                        ]
-                                   },
-                                   {
-                                        "act": "INFORM_COUNT",
-                                        "canonical_values": [
-                                             "5"
-                                        ],
-                                        "slot": "count",
-                                        "values": [
-                                             "5"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 7,
-                                        "slot": "contact_name",
-                                        "start": 3
-                                   }
-                              ],
-                              "service_call": {
-                                   "method": "FindMessage",
-                                   "parameters": {
-                                        "contact_name": "喵一個寶"
-                                   }
-                              },
-                              "service_results": [
-                                   {
-                                        "group_name": "AI 人工智慧",
-                                        "contact_name": "喵一個寶",
-                                        "message": "現在第二個error是說你的commit跟remote origin的master內容不match"
-                                   },
-                                   {
-                                        "group_name": "無",
-                                        "contact_name": "喵一個寶",
-                                        "message": "reshape"
-                                   },
-                                   {
-                                        "group_name": "AI 人工智慧",
-                                        "contact_name": "喵一個寶",
-                                        "message": "Windows小問題很多，但好處是很難完全死掉"
-                                   },
-                                   {
-                                        "group_name": "無",
-                                        "contact_name": "喵一個寶",
-                                        "message": "台北捷運南京復興站AR 元宇宙體驗…"
-                                   },
-                                   {
-                                        "group_name": "AI 人工智慧",
-                                        "contact_name": "喵一個寶",
-                                        "message": "特斯拉的AI 團隊把最新的技術應用到FSD 的速度真的很快"
-                                   }
-                              ]
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "找到與喵一個寶聊天的訊息，總共有5個結果"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "group_name",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "state": {
-                                   "active_intent": "FindMessage",
-                                   "requested_slots": [
-                                        "group_name"
-                                   ],
-                                   "slot_values": {
-                                        "contact_name": [
-                                             "喵一個寶"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "我想知道這則訊息在哪個群組？"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "無"
-                                        ],
-                                        "slot": "group_name",
-                                        "values": [
-                                             "無"
-                                        ]
-                                   }
-                              ],
-                              "service": "Messaging_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "這則訊息應該是傳送給某個使用者的訊息"
-               },
                {
                     "frames": [
                          {
@@ -210,6 +40,86 @@
                                    {
                                         "act": "REQUEST",
                                         "canonical_values": [],
+                                        "slot": "recipient",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "content",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "這封信有任何內容嗎？，我想知道這封信的收件者"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "Flash"
+                                        ],
+                                        "slot": "recipient",
+                                        "values": [
+                                             "Flash"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "每場比賽都是先發人打滿，真有什麼意外發生，不管哪個位置要換人，都是換眼鏡哥上來代打，所以湘北最多只會用到個人，那剩下那些板凳是幹麻用的，整季連球都沒摸過，幹麻不退社就好了"
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "每場比賽都是先發人打滿，真有什麼意外發生，不管哪個位置要換人，都是換眼鏡哥上來代打，所以湘北最多只會用到個人，那剩下那些板凳是幹麻用的，整季連球都沒摸過，幹麻不退社就好了"
+                                        ]
+                                   }
+                              ],
+                              "service": "Mail_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 98,
+                                        "slot": "recipient",
+                                        "start": 93
+                                   },
+                                   {
+                                        "exclusive_end": 88,
+                                        "slot": "content",
+                                        "start": 3
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "SendMail",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "recipient": [
+                                             "Flash"
+                                        ],
+                                        "content": [
+                                             "每場比賽都是先發人打滿，真有什麼意外發生，不管哪個位置要換人，都是換眼鏡哥上來代打，所以湘北最多只會用到個人，那剩下那些板凳是幹麻用的，整季連球都沒摸過，幹麻不退社就好了"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "內文為每場比賽都是先發人打滿，真有什麼意外發生，不管哪個位置要換人，都是換眼鏡哥上來代打，所以湘北最多只會用到個人，那剩下那些板凳是幹麻用的，整季連球都沒摸過，幹麻不退社就好了，收件者為Flash"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
                                         "slot": "subject",
                                         "values": []
                                    },
@@ -235,21 +145,21 @@
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             " 加洛林王朝是不是過譽了？"
+                                             " 湘北那些板凳幹麻不退社？"
                                         ],
                                         "slot": "subject",
                                         "values": [
-                                             " 加洛林王朝是不是過譽了？"
+                                             " 湘北那些板凳幹麻不退社？"
                                         ]
                                    },
                                    {
                                         "act": "INFORM",
                                         "canonical_values": [
-                                             "Hao He"
+                                             "無"
                                         ],
                                         "slot": "copy_recipient",
                                         "values": [
-                                             "Hao He"
+                                             "無"
                                         ]
                                    }
                               ],
@@ -259,156 +169,30 @@
                                         "exclusive_end": 18,
                                         "slot": "subject",
                                         "start": 5
-                                   },
-                                   {
-                                        "exclusive_end": 35,
-                                        "slot": "copy_recipient",
-                                        "start": 29
                                    }
                               ],
                               "state": {
                                    "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "subject": [
-                                             " 加洛林王朝是不是過譽了？"
-                                        ],
-                                        "copy_recipient": [
-                                             "Hao He"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "信件主旨叫 加洛林王朝是不是過譽了？，這封信需要以副本寄給Hao He"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "content",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "我想知道這封信的內文"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "查理曼的加洛林王朝統一西歐恢復當地的經濟文化及秩序擺脫黑暗時代的陰霾，並且拯救歐，洲基督教文明，加洛林為人稱道的成就有：鐵錘查理擊退穆斯林軍隊、替教皇趕走野蠻的倫，巴底人、推動加洛林文藝復興、將正統基督教傳入日耳曼、降伏阿瓦爾人等等，以上是，高中歷史課本所教授的知識。我們不置可否加洛林對於西歐的貢獻，但要論整個歐洲與基，督教世界加洛林的貢獻顯得僥倖與微不足道，加洛林王朝不過是運氣好有個好玄孫，其後繼，者法蘭克人、德意志人恰好都是近代歐洲發達國家故而拔高其祖先的威望，真拋開當代民族，主義加持的史觀，加洛林王朝的貢獻簡直不值一提"
-                                        ],
-                                        "slot": "content",
-                                        "values": [
-                                             "查理曼的加洛林王朝統一西歐恢復當地的經濟文化及秩序擺脫黑暗時代的陰霾，並且拯救歐，洲基督教文明，加洛林為人稱道的成就有：鐵錘查理擊退穆斯林軍隊、替教皇趕走野蠻的倫，巴底人、推動加洛林文藝復興、將正統基督教傳入日耳曼、降伏阿瓦爾人等等，以上是，高中歷史課本所教授的知識。我們不置可否加洛林對於西歐的貢獻，但要論整個歐洲與基，督教世界加洛林的貢獻顯得僥倖與微不足道，加洛林王朝不過是運氣好有個好玄孫，其後繼，者法蘭克人、德意志人恰好都是近代歐洲發達國家故而拔高其祖先的威望，真拋開當代民族，主義加持的史觀，加洛林王朝的貢獻簡直不值一提"
-                                        ]
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 272,
-                                        "slot": "content",
-                                        "start": 7
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "SendMail",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "subject": [
-                                             " 加洛林王朝是不是過譽了？"
-                                        ],
-                                        "copy_recipient": [
-                                             "Hao He"
-                                        ],
-                                        "content": [
-                                             "查理曼的加洛林王朝統一西歐恢復當地的經濟文化及秩序擺脫黑暗時代的陰霾，並且拯救歐，洲基督教文明，加洛林為人稱道的成就有：鐵錘查理擊退穆斯林軍隊、替教皇趕走野蠻的倫，巴底人、推動加洛林文藝復興、將正統基督教傳入日耳曼、降伏阿瓦爾人等等，以上是，高中歷史課本所教授的知識。我們不置可否加洛林對於西歐的貢獻，但要論整個歐洲與基，督教世界加洛林的貢獻顯得僥倖與微不足道，加洛林王朝不過是運氣好有個好玄孫，其後繼，者法蘭克人、德意志人恰好都是近代歐洲發達國家故而拔高其祖先的威望，真拋開當代民族，主義加持的史觀，加洛林王朝的貢獻簡直不值一提"
-                                        ]
-                                   }
-                              }
-                         }
-                    ],
-                    "speaker": "USER",
-                    "utterance": "這封信的內文為查理曼的加洛林王朝統一西歐恢復當地的經濟文化及秩序擺脫黑暗時代的陰霾，並且拯救歐，洲基督教文明，加洛林為人稱道的成就有：鐵錘查理擊退穆斯林軍隊、替教皇趕走野蠻的倫，巴底人、推動加洛林文藝復興、將正統基督教傳入日耳曼、降伏阿瓦爾人等等，以上是，高中歷史課本所教授的知識。我們不置可否加洛林對於西歐的貢獻，但要論整個歐洲與基，督教世界加洛林的貢獻顯得僥倖與微不足道，加洛林王朝不過是運氣好有個好玄孫，其後繼，者法蘭克人、德意志人恰好都是近代歐洲發達國家故而拔高其祖先的威望，真拋開當代民族，主義加持的史觀，加洛林王朝的貢獻簡直不值一提"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "REQUEST",
-                                        "canonical_values": [],
-                                        "slot": "recipient",
-                                        "values": []
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [],
-                              "service_results": []
-                         }
-                    ],
-                    "speaker": "SYSTEM",
-                    "utterance": "我想知道這封信的收件者"
-               },
-               {
-                    "frames": [
-                         {
-                              "actions": [
-                                   {
-                                        "act": "INFORM",
-                                        "canonical_values": [
-                                             "嚴威"
-                                        ],
-                                        "slot": "recipient",
-                                        "values": [
-                                             "嚴威"
-                                        ]
-                                   }
-                              ],
-                              "service": "Mail_1",
-                              "slots": [
-                                   {
-                                        "exclusive_end": 6,
-                                        "slot": "recipient",
-                                        "start": 4
-                                   }
-                              ],
-                              "state": {
-                                   "active_intent": "SendMail",
-                                   "requested_slots": [],
-                                   "slot_values": {
-                                        "subject": [
-                                             " 加洛林王朝是不是過譽了？"
-                                        ],
-                                        "copy_recipient": [
-                                             "Hao He"
-                                        ],
-                                        "content": [
-                                             "查理曼的加洛林王朝統一西歐恢復當地的經濟文化及秩序擺脫黑暗時代的陰霾，並且拯救歐，洲基督教文明，加洛林為人稱道的成就有：鐵錘查理擊退穆斯林軍隊、替教皇趕走野蠻的倫，巴底人、推動加洛林文藝復興、將正統基督教傳入日耳曼、降伏阿瓦爾人等等，以上是，高中歷史課本所教授的知識。我們不置可否加洛林對於西歐的貢獻，但要論整個歐洲與基，督教世界加洛林的貢獻顯得僥倖與微不足道，加洛林王朝不過是運氣好有個好玄孫，其後繼，者法蘭克人、德意志人恰好都是近代歐洲發達國家故而拔高其祖先的威望，真拋開當代民族，主義加持的史觀，加洛林王朝的貢獻簡直不值一提"
-                                        ],
                                         "recipient": [
-                                             "嚴威"
+                                             "Flash"
+                                        ],
+                                        "content": [
+                                             "每場比賽都是先發人打滿，真有什麼意外發生，不管哪個位置要換人，都是換眼鏡哥上來代打，所以湘北最多只會用到個人，那剩下那些板凳是幹麻用的，整季連球都沒摸過，幹麻不退社就好了"
+                                        ],
+                                        "subject": [
+                                             " 湘北那些板凳幹麻不退社？"
+                                        ],
+                                        "copy_recipient": [
+                                             "無"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "收件者為嚴威"
+                    "utterance": "信件主旨叫 湘北那些板凳幹麻不退社？，這封信不用副本收件者"
                },
                {
                     "frames": [
@@ -417,67 +201,67 @@
                                    {
                                         "act": "CONFIRM",
                                         "canonical_values": [
-                                             " 加洛林王朝是不是過譽了？"
-                                        ],
-                                        "slot": "subject",
-                                        "values": [
-                                             " 加洛林王朝是不是過譽了？"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "Hao He"
-                                        ],
-                                        "slot": "copy_recipient",
-                                        "values": [
-                                             "Hao He"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "查理曼的加洛林王朝統一西歐恢復當地的經濟文化及秩序擺脫黑暗時代的陰霾，並且拯救歐，洲基督教文明，加洛林為人稱道的成就有：鐵錘查理擊退穆斯林軍隊、替教皇趕走野蠻的倫，巴底人、推動加洛林文藝復興、將正統基督教傳入日耳曼、降伏阿瓦爾人等等，以上是，高中歷史課本所教授的知識。我們不置可否加洛林對於西歐的貢獻，但要論整個歐洲與基，督教世界加洛林的貢獻顯得僥倖與微不足道，加洛林王朝不過是運氣好有個好玄孫，其後繼，者法蘭克人、德意志人恰好都是近代歐洲發達國家故而拔高其祖先的威望，真拋開當代民族，主義加持的史觀，加洛林王朝的貢獻簡直不值一提"
-                                        ],
-                                        "slot": "content",
-                                        "values": [
-                                             "查理曼的加洛林王朝統一西歐恢復當地的經濟文化及秩序擺脫黑暗時代的陰霾，並且拯救歐，洲基督教文明，加洛林為人稱道的成就有：鐵錘查理擊退穆斯林軍隊、替教皇趕走野蠻的倫，巴底人、推動加洛林文藝復興、將正統基督教傳入日耳曼、降伏阿瓦爾人等等，以上是，高中歷史課本所教授的知識。我們不置可否加洛林對於西歐的貢獻，但要論整個歐洲與基，督教世界加洛林的貢獻顯得僥倖與微不足道，加洛林王朝不過是運氣好有個好玄孫，其後繼，者法蘭克人、德意志人恰好都是近代歐洲發達國家故而拔高其祖先的威望，真拋開當代民族，主義加持的史觀，加洛林王朝的貢獻簡直不值一提"
-                                        ]
-                                   },
-                                   {
-                                        "act": "CONFIRM",
-                                        "canonical_values": [
-                                             "嚴威"
+                                             "Flash"
                                         ],
                                         "slot": "recipient",
                                         "values": [
-                                             "嚴威"
+                                             "Flash"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "每場比賽都是先發人打滿，真有什麼意外發生，不管哪個位置要換人，都是換眼鏡哥上來代打，所以湘北最多只會用到個人，那剩下那些板凳是幹麻用的，整季連球都沒摸過，幹麻不退社就好了"
+                                        ],
+                                        "slot": "content",
+                                        "values": [
+                                             "每場比賽都是先發人打滿，真有什麼意外發生，不管哪個位置要換人，都是換眼鏡哥上來代打，所以湘北最多只會用到個人，那剩下那些板凳是幹麻用的，整季連球都沒摸過，幹麻不退社就好了"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             " 湘北那些板凳幹麻不退社？"
+                                        ],
+                                        "slot": "subject",
+                                        "values": [
+                                             " 湘北那些板凳幹麻不退社？"
+                                        ]
+                                   },
+                                   {
+                                        "act": "CONFIRM",
+                                        "canonical_values": [
+                                             "無"
+                                        ],
+                                        "slot": "copy_recipient",
+                                        "values": [
+                                             "無"
                                         ]
                                    }
                               ],
                               "service": "Mail_1",
                               "slots": [
                                    {
-                                        "exclusive_end": 22,
-                                        "slot": "subject",
-                                        "start": 9
+                                        "exclusive_end": 138,
+                                        "slot": "recipient",
+                                        "start": 133
                                    },
                                    {
-                                        "exclusive_end": 305,
+                                        "exclusive_end": 125,
                                         "slot": "content",
                                         "start": 40
                                    },
                                    {
-                                        "exclusive_end": 315,
-                                        "slot": "recipient",
-                                        "start": 313
+                                        "exclusive_end": 22,
+                                        "slot": "subject",
+                                        "start": 9
                                    }
                               ],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "請確認要寄出主旨為 加洛林王朝是不是過譽了？的信件嗎？，請確認要寄出的信件內容:查理曼的加洛林王朝統一西歐恢復當地的經濟文化及秩序擺脫黑暗時代的陰霾，並且拯救歐，洲基督教文明，加洛林為人稱道的成就有：鐵錘查理擊退穆斯林軍隊、替教皇趕走野蠻的倫，巴底人、推動加洛林文藝復興、將正統基督教傳入日耳曼、降伏阿瓦爾人等等，以上是，高中歷史課本所教授的知識。我們不置可否加洛林對於西歐的貢獻，但要論整個歐洲與基，督教世界加洛林的貢獻顯得僥倖與微不足道，加洛林王朝不過是運氣好有個好玄孫，其後繼，者法蘭克人、德意志人恰好都是近代歐洲發達國家故而拔高其祖先的威望，真拋開當代民族，主義加持的史觀，加洛林王朝的貢獻簡直不值一提，確認要寄信件給嚴威嗎？"
+                    "utterance": "請確認要寄出主旨為 湘北那些板凳幹麻不退社？的信件嗎？，請確認要寄出的信件內容:每場比賽都是先發人打滿，真有什麼意外發生，不管哪個位置要換人，都是換眼鏡哥上來代打，所以湘北最多只會用到個人，那剩下那些板凳是幹麻用的，整季連球都沒摸過，幹麻不退社就好了，確認要寄信件給Flash嗎？"
                },
                {
                     "frames": [
@@ -496,24 +280,24 @@
                                    "active_intent": "SendMail",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "subject": [
-                                             " 加洛林王朝是不是過譽了？"
-                                        ],
-                                        "copy_recipient": [
-                                             "Hao He"
+                                        "recipient": [
+                                             "Flash"
                                         ],
                                         "content": [
-                                             "查理曼的加洛林王朝統一西歐恢復當地的經濟文化及秩序擺脫黑暗時代的陰霾，並且拯救歐，洲基督教文明，加洛林為人稱道的成就有：鐵錘查理擊退穆斯林軍隊、替教皇趕走野蠻的倫，巴底人、推動加洛林文藝復興、將正統基督教傳入日耳曼、降伏阿瓦爾人等等，以上是，高中歷史課本所教授的知識。我們不置可否加洛林對於西歐的貢獻，但要論整個歐洲與基，督教世界加洛林的貢獻顯得僥倖與微不足道，加洛林王朝不過是運氣好有個好玄孫，其後繼，者法蘭克人、德意志人恰好都是近代歐洲發達國家故而拔高其祖先的威望，真拋開當代民族，主義加持的史觀，加洛林王朝的貢獻簡直不值一提"
+                                             "每場比賽都是先發人打滿，真有什麼意外發生，不管哪個位置要換人，都是換眼鏡哥上來代打，所以湘北最多只會用到個人，那剩下那些板凳是幹麻用的，整季連球都沒摸過，幹麻不退社就好了"
                                         ],
-                                        "recipient": [
-                                             "嚴威"
+                                        "subject": [
+                                             " 湘北那些板凳幹麻不退社？"
+                                        ],
+                                        "copy_recipient": [
+                                             "無"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "好的，看起來沒甚麼問題"
+                    "utterance": "我對以上資訊沒問題"
                },
                {
                     "frames": [
@@ -531,10 +315,10 @@
                               "service_call": {
                                    "method": "SendMail",
                                    "parameters": {
-                                        "subject": " 加洛林王朝是不是過譽了？",
-                                        "copy_recipient": "Hao He",
-                                        "content": "查理曼的加洛林王朝統一西歐恢復當地的經濟文化及秩序擺脫黑暗時代的陰霾，並且拯救歐，洲基督教文明，加洛林為人稱道的成就有：鐵錘查理擊退穆斯林軍隊、替教皇趕走野蠻的倫，巴底人、推動加洛林文藝復興、將正統基督教傳入日耳曼、降伏阿瓦爾人等等，以上是，高中歷史課本所教授的知識。我們不置可否加洛林對於西歐的貢獻，但要論整個歐洲與基，督教世界加洛林的貢獻顯得僥倖與微不足道，加洛林王朝不過是運氣好有個好玄孫，其後繼，者法蘭克人、德意志人恰好都是近代歐洲發達國家故而拔高其祖先的威望，真拋開當代民族，主義加持的史觀，加洛林王朝的貢獻簡直不值一提",
-                                        "recipient": "嚴威"
+                                        "recipient": "Flash",
+                                        "content": "每場比賽都是先發人打滿，真有什麼意外發生，不管哪個位置要換人，都是換眼鏡哥上來代打，所以湘北最多只會用到個人，那剩下那些板凳是幹麻用的，整季連球都沒摸過，幹麻不退社就好了",
+                                        "subject": " 湘北那些板凳幹麻不退社？",
+                                        "copy_recipient": "無"
                                    }
                               },
                               "service_results": []
@@ -548,36 +332,227 @@
                          {
                               "actions": [
                                    {
-                                        "act": "THANK_YOU",
-                                        "canonical_values": [],
-                                        "slot": "",
-                                        "values": []
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "FindMessage"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "FindMessage"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "Python資料科學交流社群"
+                                        ],
+                                        "slot": "group_name",
+                                        "values": [
+                                             "Python資料科學交流社群"
+                                        ]
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "青眼白龍"
+                                        ],
+                                        "slot": "contact_name",
+                                        "values": [
+                                             "青眼白龍"
+                                        ]
                                    }
                               ],
-                              "service": "Mail_1",
-                              "slots": [],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 34,
+                                        "slot": "group_name",
+                                        "start": 20
+                                   },
+                                   {
+                                        "exclusive_end": 42,
+                                        "slot": "contact_name",
+                                        "start": 38
+                                   }
+                              ],
                               "state": {
-                                   "active_intent": "SendMail",
+                                   "active_intent": "FindMessage",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "subject": [
-                                             " 加洛林王朝是不是過譽了？"
+                                        "contact_name": [
+                                             "青眼白龍"
                                         ],
-                                        "copy_recipient": [
-                                             "Hao He"
-                                        ],
-                                        "content": [
-                                             "查理曼的加洛林王朝統一西歐恢復當地的經濟文化及秩序擺脫黑暗時代的陰霾，並且拯救歐，洲基督教文明，加洛林為人稱道的成就有：鐵錘查理擊退穆斯林軍隊、替教皇趕走野蠻的倫，巴底人、推動加洛林文藝復興、將正統基督教傳入日耳曼、降伏阿瓦爾人等等，以上是，高中歷史課本所教授的知識。我們不置可否加洛林對於西歐的貢獻，但要論整個歐洲與基，督教世界加洛林的貢獻顯得僥倖與微不足道，加洛林王朝不過是運氣好有個好玄孫，其後繼，者法蘭克人、德意志人恰好都是近代歐洲發達國家故而拔高其祖先的威望，真拋開當代民族，主義加持的史觀，加洛林王朝的貢獻簡直不值一提"
-                                        ],
-                                        "recipient": [
-                                             "嚴威"
+                                        "group_name": [
+                                             "Python資料科學交流社群"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "謝謝，我沒有其他問題了"
+                    "utterance": "我想要知道相關的訊息，請幫幫我，群組叫做Python資料科學交流社群，用戶為青眼白龍"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_COUNT",
+                                        "canonical_values": [
+                                             "1"
+                                        ],
+                                        "slot": "count",
+                                        "values": [
+                                             "1"
+                                        ]
+                                   },
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "青眼白龍"
+                                        ],
+                                        "slot": "contact_name",
+                                        "values": [
+                                             "青眼白龍"
+                                        ]
+                                   },
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "Python資料科學交流社群"
+                                        ],
+                                        "slot": "group_name",
+                                        "values": [
+                                             "Python資料科學交流社群"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 40,
+                                        "slot": "contact_name",
+                                        "start": 36
+                                   },
+                                   {
+                                        "exclusive_end": 25,
+                                        "slot": "group_name",
+                                        "start": 11
+                                   }
+                              ],
+                              "service_call": {
+                                   "method": "FindMessage",
+                                   "parameters": {
+                                        "contact_name": [
+                                             "青眼白龍"
+                                        ],
+                                        "group_name": [
+                                             "Python資料科學交流社群"
+                                        ]
+                                   }
+                              },
+                              "service_results": [
+                                   {
+                                        "group_name": "Python資料科學交流社群",
+                                        "contact_name": "青眼白龍",
+                                        "message": "哈哈 對啊"
+                                   }
+                              ]
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "總共有1個結果，找到在Python資料科學交流社群群組的聊天訊息，找到與青眼白龍聊天的訊息"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "message",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [
+                                        "message"
+                                   ],
+                                   "slot_values": {
+                                        "contact_name": [
+                                             "青眼白龍"
+                                        ],
+                                        "group_name": [
+                                             "Python資料科學交流社群"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我想知道他說了什麼？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "只是剛好出 這樣吧"
+                                        ],
+                                        "slot": "message",
+                                        "values": [
+                                             "只是剛好出 這樣吧"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 12,
+                                        "slot": "message",
+                                        "start": 3
+                                   }
+                              ],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "跟他說只是剛好出 這樣吧"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "SELECT",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "contact_name": [
+                                             "青眼白龍"
+                                        ],
+                                        "group_name": [
+                                             "Python資料科學交流社群"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "好的"
                },
                {
                     "frames": [
@@ -590,13 +565,291 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Messaging_1",
                               "slots": [],
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
                     "utterance": "還有什麼需要幫助的嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_INTENT",
+                                        "canonical_values": [
+                                             "FindMessage"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "FindMessage"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {}
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "我想要知道相關的訊息，請幫幫我"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "REQUEST",
+                                        "canonical_values": [],
+                                        "slot": "contact_name",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "我想知道這則訊息是誰寄的？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "Leonardo"
+                                        ],
+                                        "slot": "contact_name",
+                                        "values": [
+                                             "Leonardo"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 11,
+                                        "slot": "contact_name",
+                                        "start": 3
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "contact_name": [
+                                             "Leonardo"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "用戶為Leonardo"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "INFORM_COUNT",
+                                        "canonical_values": [
+                                             "5"
+                                        ],
+                                        "slot": "count",
+                                        "values": [
+                                             "5"
+                                        ]
+                                   },
+                                   {
+                                        "act": "OFFER",
+                                        "canonical_values": [
+                                             "Leonardo"
+                                        ],
+                                        "slot": "contact_name",
+                                        "values": [
+                                             "Leonardo"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 19,
+                                        "slot": "contact_name",
+                                        "start": 11
+                                   }
+                              ],
+                              "service_call": {
+                                   "method": "FindMessage",
+                                   "parameters": {
+                                        "contact_name": [
+                                             "Leonardo"
+                                        ]
+                                   }
+                              },
+                              "service_results": [
+                                   {
+                                        "group_name": "無",
+                                        "contact_name": "Leonardo",
+                                        "message": "只是當時硬體沒˙跟上所以不留行"
+                                   },
+                                   {
+                                        "group_name": "Python資料科學交流社群",
+                                        "contact_name": "Leonardo",
+                                        "message": "歡迎加入Python資料科學交流社群"
+                                   },
+                                   {
+                                        "group_name": "Python資料科學交流社群",
+                                        "contact_name": "Leonardo",
+                                        "message": "比IPhone更新還快"
+                                   },
+                                   {
+                                        "group_name": "無",
+                                        "contact_name": "Leonardo",
+                                        "message": "或是看看rasterio"
+                                   },
+                                   {
+                                        "group_name": "Python資料科學交流社群",
+                                        "contact_name": "Leonardo",
+                                        "message": "請再幫我測一下："
+                                   }
+                              ]
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "總共有5個結果，找到與Leonardo聊天的訊息"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "SELECT",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "contact_name": [
+                                             "Leonardo"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "好的，我知道了"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "OFFER_INTENT",
+                                        "canonical_values": [
+                                             "FindMessage"
+                                        ],
+                                        "slot": "intent",
+                                        "values": [
+                                             "FindMessage"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "需要幫您找一則訊息嗎？"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "AFFIRM_INTENT",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   },
+                                   {
+                                        "act": "INFORM",
+                                        "canonical_values": [
+                                             "好的，謝謝各位大神的幫忙，可能當時我查關鍵字的時候沒打好，跑出來的清一色都是補習廣告，所以才會想說直接到書局找"
+                                        ],
+                                        "slot": "message",
+                                        "values": [
+                                             "好的，謝謝各位大神的幫忙，可能當時我查關鍵字的時候沒打好，跑出來的清一色都是補習廣告，所以才會想說直接到書局找"
+                                        ]
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [
+                                   {
+                                        "exclusive_end": 60,
+                                        "slot": "message",
+                                        "start": 5
+                                   }
+                              ],
+                              "state": {
+                                   "active_intent": "FindMessage",
+                                   "requested_slots": [],
+                                   "slot_values": {
+                                        "contact_name": [
+                                             "Leonardo"
+                                        ],
+                                        "message": [
+                                             "好的，謝謝各位大神的幫忙，可能當時我查關鍵字的時候沒打好，跑出來的清一色都是補習廣告，所以才會想說直接到書局找"
+                                        ]
+                                   }
+                              }
+                         }
+                    ],
+                    "speaker": "USER",
+                    "utterance": "訊息內容為好的，謝謝各位大神的幫忙，可能當時我查關鍵字的時候沒打好，跑出來的清一色都是補習廣告，所以才會想說直接到書局找，好的，麻煩你了"
+               },
+               {
+                    "frames": [
+                         {
+                              "actions": [
+                                   {
+                                        "act": "NOTIFY_FAILURE",
+                                        "canonical_values": [],
+                                        "slot": "",
+                                        "values": []
+                                   }
+                              ],
+                              "service": "Messaging_1",
+                              "slots": [],
+                              "service_call": {
+                                   "method": "FindMessage",
+                                   "parameters": {
+                                        "contact_name": "Leonardo",
+                                        "message": "好的，謝謝各位大神的幫忙，可能當時我查關鍵字的時候沒打好，跑出來的清一色都是補習廣告，所以才會想說直接到書局找"
+                                   }
+                              },
+                              "service_results": []
+                         }
+                    ],
+                    "speaker": "SYSTEM",
+                    "utterance": "不好意思，沒辦法找到符合您要求的訊息"
                },
                {
                     "frames": [
@@ -615,30 +868,24 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Messaging_1",
                               "slots": [],
                               "state": {
-                                   "active_intent": "SendMail",
+                                   "active_intent": "FindMessage",
                                    "requested_slots": [],
                                    "slot_values": {
-                                        "subject": [
-                                             " 加洛林王朝是不是過譽了？"
+                                        "contact_name": [
+                                             "Leonardo"
                                         ],
-                                        "copy_recipient": [
-                                             "Hao He"
-                                        ],
-                                        "content": [
-                                             "查理曼的加洛林王朝統一西歐恢復當地的經濟文化及秩序擺脫黑暗時代的陰霾，並且拯救歐，洲基督教文明，加洛林為人稱道的成就有：鐵錘查理擊退穆斯林軍隊、替教皇趕走野蠻的倫，巴底人、推動加洛林文藝復興、將正統基督教傳入日耳曼、降伏阿瓦爾人等等，以上是，高中歷史課本所教授的知識。我們不置可否加洛林對於西歐的貢獻，但要論整個歐洲與基，督教世界加洛林的貢獻顯得僥倖與微不足道，加洛林王朝不過是運氣好有個好玄孫，其後繼，者法蘭克人、德意志人恰好都是近代歐洲發達國家故而拔高其祖先的威望，真拋開當代民族，主義加持的史觀，加洛林王朝的貢獻簡直不值一提"
-                                        ],
-                                        "recipient": [
-                                             "嚴威"
+                                        "message": [
+                                             "好的，謝謝各位大神的幫忙，可能當時我查關鍵字的時候沒打好，跑出來的清一色都是補習廣告，所以才會想說直接到書局找"
                                         ]
                                    }
                               }
                          }
                     ],
                     "speaker": "USER",
-                    "utterance": "沒關係，先這樣吧，沒有問題了，再見！"
+                    "utterance": "沒關係，先這樣吧，再見"
                },
                {
                     "frames": [
@@ -651,13 +898,20 @@
                                         "values": []
                                    }
                               ],
-                              "service": "Mail_1",
+                              "service": "Messaging_1",
                               "slots": [],
+                              "service_call": {
+                                   "method": "FindMessage",
+                                   "parameters": {
+                                        "contact_name": "Leonardo",
+                                        "message": "好的，謝謝各位大神的幫忙，可能當時我查關鍵字的時候沒打好，跑出來的清一色都是補習廣告，所以才會想說直接到書局找"
+                                   }
+                              },
                               "service_results": []
                          }
                     ],
                     "speaker": "SYSTEM",
-                    "utterance": "歡迎下次諮詢，再見"
+                    "utterance": "再見！祝您生活愉快！"
                }
           ]
      }
