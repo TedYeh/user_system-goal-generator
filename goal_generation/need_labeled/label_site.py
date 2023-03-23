@@ -90,7 +90,7 @@ def rewrite(std_id):
 @app.route('/history/<std_id>')
 def history(std_id):
     items = []
-    for label_dialog in os.listdir(f'labeled_dialog_{std_id}'):
+    for label_dialog in sorted(os.listdir(f'labeled_dialog_{std_id}')):
         an_item = dict(d_id=label_dialog.replace('.json', ''))
         items.append(an_item)
     return render_template('history.html', items=items, std_id=std_id)

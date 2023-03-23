@@ -31,7 +31,7 @@
                     }
                 ],
                 "speaker": "USER",
-                "utterance": "嗨能幫我找訊息嗎?"
+                "utterance": "嗨能幫我找信件嗎?"
             },
             {
                 "frames": [
@@ -50,7 +50,7 @@
                     }
                 ],
                 "speaker": "SYSTEM",
-                "utterance": "好呀你記得內容說些甚麼嗎?"
+                "utterance": "副本收件者是誰?"
             },
             {
                 "frames": [
@@ -68,7 +68,13 @@
                             }
                         ],
                         "service": "Mail_1",
-                        "slots": [],
+                        "slots": [
+                            {
+                                "exclusive_end": 10,
+                                "slot": "copy_recipient",
+                                "start": 6
+                            }
+                        ],
                         "state": {
                             "active_intent": "FindMail",
                             "requested_slots": [],
@@ -81,7 +87,7 @@
                     }
                 ],
                 "speaker": "USER",
-                "utterance": "內容是欸 不能貼欸"
+                "utterance": "副本收件者為AI知道"
             },
             {
                 "frames": [
@@ -109,7 +115,13 @@
                             }
                         ],
                         "service": "Mail_1",
-                        "slots": [],
+                        "slots": [
+                            {
+                                "exclusive_end": 16,
+                                "slot": "copy_recipient",
+                                "start": 12
+                            }
+                        ],
                         "service_call": {
                             "method": "FindMail",
                             "parameters": {
@@ -137,7 +149,7 @@
                     }
                 ],
                 "speaker": "SYSTEM",
-                "utterance": "我有找到一則相關訊息歐"
+                "utterance": "我有找到二則副本收件者為AI知道的信件"
             },
             {
                 "frames": [
@@ -173,7 +185,7 @@
                     }
                 ],
                 "speaker": "USER",
-                "utterance": "那你知道訊息在哪個群組裡嗎?"
+                "utterance": "那你知道收件者及計件者嗎?"
             },
             {
                 "frames": [
@@ -201,12 +213,23 @@
                             }
                         ],
                         "service": "Mail_1",
-                        "slots": [],
+                        "slots": [
+                            {
+                                "exclusive_end": 7,
+                                "slot": "recipient",
+                                "start": 4
+                            },
+                            {
+                                "exclusive_end": 17,
+                                "slot": "sender",
+                                "start": 12
+                            }
+                        ],
                         "service_results": []
                     }
                 ],
                 "speaker": "SYSTEM",
-                "utterance": "應該是傳給某個人的，不是傳到群組歐"
+                "utterance": "收件者為中林紫，計件者為Pa Pu"
             },
             {
                 "frames": [
@@ -233,7 +256,7 @@
                     }
                 ],
                 "speaker": "USER",
-                "utterance": "了解，那你能幫我新增個活動嗎?活動是退休法制專題演講，時間是2018年1月3日的4點11分，內容是演講或講座 Lectures，地點在活動中心第1會議室"
+                "utterance": "那另外再幫我添加一個活動"
             },
             {
                 "frames": [
@@ -252,7 +275,7 @@
                     }
                 ],
                 "speaker": "SYSTEM",
-                "utterance": "確認一下歐，活動是退休法制專題演講，時間是在2018年1月3日的4點11分，內容是演講或講座 Lectures"
+                "utterance": "參加者是誰"
             },
             {
                 "frames": [
@@ -283,7 +306,7 @@
                     }
                 ],
                 "speaker": "USER",
-                "utterance": "對的沒錯歐"
+                "utterance": "不用設定參加者"
             },
             {
                 "frames": [
@@ -302,7 +325,7 @@
                     }
                 ],
                 "speaker": "SYSTEM",
-                "utterance": "好的我已經幫你把活動新增到行事曆裡囉"
+                "utterance": "活動時間為何"
             },
             {
                 "frames": [
@@ -320,7 +343,13 @@
                             }
                         ],
                         "service": "Calendar_1",
-                        "slots": [],
+                        "slots": [
+                            {
+                                "exclusive_end": 10,
+                                "slot": "event_time",
+                                "start": 3
+                            }
+                        ],
                         "state": {
                             "active_intent": "AddEvent",
                             "requested_slots": [],
@@ -336,7 +365,7 @@
                     }
                 ],
                 "speaker": "USER",
-                "utterance": "好歐我知道了~"
+                "utterance": "時間在下午3點30分"
             },
             {
                 "frames": [
@@ -361,7 +390,7 @@
                     }
                 ],
                 "speaker": "SYSTEM",
-                "utterance": "那我還能為你做些甚麼呢?"
+                "utterance": "那活動名稱和地點呢?"
             },
             {
                 "frames": [
@@ -389,7 +418,13 @@
                             }
                         ],
                         "service": "Calendar_1",
-                        "slots": [],
+                        "slots": [
+                            {
+                                "exclusive_end": 102,
+                                "slot": "event_name",
+                                "start": 3
+                            }
+                        ],
                         "state": {
                             "active_intent": "AddEvent",
                             "requested_slots": [],
@@ -411,7 +446,7 @@
                     }
                 ],
                 "speaker": "USER",
-                "utterance": "沒關係那我知道了 謝謝你歐"
+                "utterance": "名稱叫Buckyball Maracas: New Endohedral Fullerene Structures, Reactivity and Supramolecular Interactions.，地點在化學所A108會議室;"
             },
             {
                 "frames": [
@@ -430,7 +465,7 @@
                     }
                 ],
                 "speaker": "SYSTEM",
-                "utterance": "那我還能為你做些甚麼呢?"
+                "utterance": "那活動辦在幾月幾號?"
             },
             {
                 "frames": [
@@ -448,7 +483,13 @@
                             }
                         ],
                         "service": "Calendar_1",
-                        "slots": [],
+                        "slots": [
+                            {
+                                "exclusive_end": 7,
+                                "slot": "event_date",
+                                "start": 4
+                            }
+                        ],
                         "state": {
                             "active_intent": "AddEvent",
                             "requested_slots": [],
@@ -473,7 +514,7 @@
                     }
                 ],
                 "speaker": "USER",
-                "utterance": "目前先不用了謝謝你歐"
+                "utterance": "活動辦在下週四"
             },
             {
                 "frames": [
@@ -531,12 +572,28 @@
                             }
                         ],
                         "service": "Calendar_1",
-                        "slots": [],
+                        "slots": [
+                            {
+                                "exclusive_end": 124,
+                                "slot": "event_time",
+                                "start": 117
+                            },
+                            {
+                                "exclusive_end": 108,
+                                "slot": "event_name",
+                                "start": 9
+                            },
+                            {
+                                "exclusive_end": 116,
+                                "slot": "event_date",
+                                "start": 113
+                            }
+                        ],
                         "service_results": []
                     }
                 ],
                 "speaker": "SYSTEM",
-                "utterance": "不會!那就下次見囉掰掰~"
+                "utterance": "確認一下歐，活動是Buckyball Maracas: New Endohedral Fullerene Structures, Reactivity and Supramolecular Interactions.，時間是在下週四的下午3點30分，地點是在化學所A108會議室;且不需設定參加者"
             },
             {
                 "frames": [
@@ -1038,7 +1095,7 @@
                     }
                 ],
                 "speaker": "SYSTEM",
-                "utterance": "你知道這封信的副本收件者嗎？"
+                "utterance": "這封信有副本收件者嗎"
             },
             {
                 "frames": [
