@@ -1,0 +1,273 @@
+[
+    {
+        "service_name": "Messaging_1",
+        "description": "Connect and send message to your contacts",
+        "description_cn": "連接並傳送訊息給聯絡人",
+        "slots": [
+            {
+                "name": "contact_name",
+                "type": "nominal",
+                "description": "Name of contact to send to",
+                "description_cn": "傳送訊息的使用者",
+                "is_categorical": false,
+                "possible_values": [],
+                "weight": 2
+            },  
+            {
+                "name": "group_name",
+                "type": "nominal",
+                "description": "name of group to send to",
+                "description_cn": "社團名稱",
+                "is_categorical": false,
+                "possible_values": [],
+                "weight": 1
+            },
+            {
+                "name": "message",
+                "type": "keyword",
+                "description": "Message to send to contact or group",
+                "description_cn": "需要傳送的訊息",
+                "is_categorical": false,
+                "possible_values": [],
+                "weight": 3
+            }
+        ],
+        "intents": [
+          {
+            "name": "SendMessage",
+            "description": "Send a message to a contact",            
+            "is_transactional": true,
+            "description_cn": "傳送訊息給聯絡人",
+            "required_slots": [
+              "message"
+            ],
+            "optional_slots": {
+              "group_name": "dontcare",
+              "contact_name": "dontcare"
+            },
+            "result_slots": [
+              "contact_name",
+              "group_name", 
+              "message"
+            ]
+          },
+          {
+            "name": "FindMessage",
+            "description": "Get list of message",
+            "is_transactional": false ,
+            "description_cn": "尋找訊息",
+            "required_slots": [],
+            "optional_slots": {
+              "contact_name": "dontcare", 
+              "group_name": "dontcare", 
+              "message": "dontcare"
+            },
+            "result_slots": [
+              "contact_name",
+              "group_name",
+              "message"
+            ]
+          }
+        ]
+    },
+    {
+        "service_name": "Calendar_1",
+        "description": "Calendar service to manage personal events and reservations",
+        "description_cn": "添加或管理用戶之行事曆活動",
+        "slots": [
+            {
+                "name": "event_date",
+                "type": "time",
+                "description": "Date of event or for checking availability",
+                "description_cn": "活動日期",
+                "is_categorical": false,
+                "possible_values": [],
+                "weight": 6
+            },
+            {
+                "name": "event_time",
+                "type": "time",
+                "description": "Start time of event",
+                "description_cn": "活動時間",
+                "is_categorical": false,
+                "possible_values": [],
+                "weight": 5
+            },
+            {
+                "name": "event_location",
+                "type": "nominal",
+                "description": "Location of event",
+                "description_cn": "活動地點",
+                "is_categorical": false,
+                "possible_values": [],
+                "weight": 2
+            },
+            {
+                "name": "event_name",
+                "type": "keyword",
+                "description": "Title of event",
+                "description_cn": "活動名稱",
+                "is_categorical": false,
+                "possible_values": [],
+                "weight": 4
+            },
+            {
+                "name": "event_content",
+                "type": "keyword",
+                "description": "Content of event",
+                "description_cn": "活動內容",
+                "is_categorical": false,
+                "possible_values": [],
+                "weight": 1
+            },
+            {
+                "name": "participant",
+                "type": "nominal",
+                "description": "Participant of event",
+                "description_cn": "參與活動的參加者",
+                "is_categorical": false,
+                "possible_values": [],
+                "weight": 3
+            }
+        ],
+        "intents": [            
+            {
+              "name": "LookupEvents",
+              "description": "Search for a event",
+              "is_transactional": false,
+              "required_slots": ["event_name"],
+              "optional_slots": {
+                "event_time": "dontcare",
+                "event_date": "dontcare",
+                "event_content": "dontcare",
+                "event_location": "dontcare",
+                "participant": "dontcare"
+              },
+              "result_slots": [
+                "event_date",
+                "event_time",
+                "event_location",
+                "event_name"
+              ]
+            },
+            {
+              "name": "AddEvent",
+              "description": "Add event to the user's calendar",
+              "is_transactional": true,
+              "required_slots": [
+                "event_name",
+                "event_date",
+                "event_time"
+              ],
+              "optional_slots": {
+                "event_content": "dontcare",
+                "event_location": "dontcare",
+                "participant": "dontcare"
+              },
+              "result_slots": [
+                "event_date",
+                "event_time",
+                "event_name",
+                "event_content",
+                "event_location",
+                "participant"
+              ]
+            }
+        ]
+    },
+    {
+        "service_name": "Mail_1",
+        "description": "Email service to write or search mail",
+        "description_cn": "撰寫或查詢電子郵件",
+        "slots": [
+            {
+                "name": "recipient",
+                "type": "nominal",
+                "description": "",
+                "description_cn": "收件者",
+                "is_categorical": false,
+                "possible_values": [],
+                "weight": 5
+            },  
+            {
+                "name": "sender",
+                "type": "nominal",
+                "description": "",
+                "description_cn": "寄件者",
+                "is_categorical": false,
+                "possible_values": [],
+                "weight": 2
+            }, 
+            {
+                "name": "subject",
+                "type": "keyword",
+                "description": "",
+                "description_cn": "郵件主旨",
+                "is_categorical": false,
+                "possible_values": [],
+                "weight": 4
+            }, 
+            {
+                "name": "content",
+                "type": "keyword",
+                "description": "",
+                "description_cn": "郵件內容",
+                "is_categorical": false,
+                "possible_values": [],
+                "weight": 3
+            }, 
+            {
+                "name": "copy_recipient",
+                "type": "nominal",
+                "description": "",
+                "description_cn": "副本收件者",
+                "is_categorical": false,
+                "possible_values": [],
+                "weight": 1
+            }
+        ],
+        "intents": [         
+          {
+            "name": "SendMail",
+            "description": "Send a mail",
+            "is_transactional": true,
+            "description_cn": "寄一封信",
+            "required_slots": [
+              "recipient",
+              "subject",
+              "content"
+            ],
+            "optional_slots": {
+              "copy_recipient": "dontcare"
+            },
+            "result_slots": [
+              "recipient",
+              "copy_recipient",
+              "subject",
+              "content"
+            ]
+          },
+          {
+            "name": "FindMail",
+            "description": "Search for a mail",
+            "is_transactional": false,
+            "description_cn": "依據所給條件找一封信",
+            "required_slots": [],
+            "optional_slots": {
+              "subject":"dontcare",
+              "recipient": "dontcare",
+              "sender": "dontcare",
+              "content": "dontcare",
+              "copy_recipient": "dontcare"
+            },
+            "result_slots": [
+              "sender",
+              "recipient",
+              "subject",
+              "content",
+              "copy_recipient"
+            ]
+          }
+        ]
+    }
+]
