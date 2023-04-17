@@ -3,6 +3,7 @@ import requests, json, random
 import os, time, re
 from copy import deepcopy
 from datetime import datetime
+from analysis_dialogue import get_action_times
 from pprint import pprint
 from flask import Flask, flash, request, redirect, url_for, render_template, session
 
@@ -90,7 +91,7 @@ def rewrite(std_id):
 @app.route('/history/<std_id>')
 def history(std_id):
     items = []
-    for label_dialog in sorted(os.listdir(f'labeled_dialog_{std_id}')):
+    for label_dialog in sorted(list(set(get_action_times(f"labeled_dialog_{std_id}")))):#sorted(os.listdir(f'labeled_dialog_{std_id}')):
         an_item = dict(d_id=label_dialog.replace('.json', ''))
         items.append(an_item)
     return render_template('history.html', items=items, std_id=std_id)

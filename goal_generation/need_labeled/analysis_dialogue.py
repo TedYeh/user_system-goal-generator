@@ -20,15 +20,15 @@ def get_action_times(path, need_trans=True):
                     for a in frame["actions"]:
                         if a['act'] in ["INFORM", "CONFIRM", "OFFER"]:
                             for v in a['values']:
-                                if v!='無' and v.strip() not in turn["utterance"]:
+                                if v!='無' and (not v.strip() in turn["utterance"]):
                                     error_files.append(d_file)
-    pprint(sorted(list(set(error_files))))  
-    print(len(list(set(error_files))))             
+              
     with open(f'{path}_error.txt', 'w') as f:
         for line in sorted(list(set(error_files))):
             f.write(f"{line}\n")
+    return error_files
 
 if __name__=="__main__":
-    path = "labeled_dialog_110801006"
+    path = "labeled_dialog_110801002"
     get_action_times(path, need_trans=False)    
     

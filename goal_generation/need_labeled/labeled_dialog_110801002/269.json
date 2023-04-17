@@ -1,8 +1,8 @@
 [
     {
-        "dialogue_id": 459,
+        "dialogue_id": 269,
         "services": [
-            "Messaging_1"
+            "Mail_1"
         ],
         "turns": [
             {
@@ -12,25 +12,25 @@
                             {
                                 "act": "INFORM_INTENT",
                                 "canonical_values": [
-                                    "SendMessage"
+                                    "FindMail"
                                 ],
                                 "slot": "intent",
                                 "values": [
-                                    "SendMessage"
+                                    "FindMail"
                                 ]
                             }
                         ],
-                        "service": "Messaging_1",
+                        "service": "Mail_1",
                         "slots": [],
                         "state": {
-                            "active_intent": "SendMessage",
+                            "active_intent": "FindMail",
                             "requested_slots": [],
                             "slot_values": {}
                         }
                     }
                 ],
                 "speaker": "USER",
-                "utterance": "嗨嗨，我想要記一則訊息，可以請你幫我個忙嗎？"
+                "utterance": "欸欸，我想要找個信，可嗎？"
             },
             {
                 "frames": [
@@ -39,23 +39,17 @@
                             {
                                 "act": "REQUEST",
                                 "canonical_values": [],
-                                "slot": "message",
-                                "values": []
-                            },
-                            {
-                                "act": "REQUEST",
-                                "canonical_values": [],
-                                "slot": "group_name",
+                                "slot": "sender",
                                 "values": []
                             }
                         ],
-                        "service": "Messaging_1",
+                        "service": "Mail_1",
                         "slots": [],
                         "service_results": []
                     }
                 ],
                 "speaker": "SYSTEM",
-                "utterance": "好的!那我想知道訊息內容，還有這則訊息是寄到群組的訊息嗎？"
+                "utterance": "好啊，信是誰寄過來的？"
             },
             {
                 "frames": [
@@ -64,183 +58,250 @@
                             {
                                 "act": "INFORM",
                                 "canonical_values": [
-                                    "蹲完繼續找我家附近的工作"
+                                    "Zoe️"
                                 ],
-                                "slot": "message",
+                                "slot": "sender",
                                 "values": [
-                                    "蹲完繼續找我家附近的工作"
-                                ]
-                            },
-                            {
-                                "act": "INFORM",
-                                "canonical_values": [
-                                    "Python資料科學交流社群"
-                                ],
-                                "slot": "group_name",
-                                "values": [
-                                    "Python資料科學交流社群"
+                                    "Zoe️"
                                 ]
                             }
                         ],
-                        "service": "Messaging_1",
+                        "service": "Mail_1",
                         "slots": [
                             {
-                                "exclusive_end": 18,
-                                "slot": "message",
+                                "exclusive_end": 7,
+                                "slot": "sender",
+                                "start": 3
+                            }
+                        ],
+                        "state": {
+                            "active_intent": "FindMail",
+                            "requested_slots": [],
+                            "slot_values": {
+                                "sender": [
+                                    "Zoe️"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "speaker": "USER",
+                "utterance": "好像是Zoe️寄的吧？我也有點忘了。"
+            },
+            {
+                "frames": [
+                    {
+                        "actions": [
+                            {
+                                "act": "REQUEST",
+                                "canonical_values": [],
+                                "slot": "recipient",
+                                "values": []
+                            }
+                        ],
+                        "service": "Mail_1",
+                        "slots": [],
+                        "service_results": []
+                    }
+                ],
+                "speaker": "SYSTEM",
+                "utterance": "好吧，那你記得是要寄給誰的嗎？"
+            },
+            {
+                "frames": [
+                    {
+                        "actions": [
+                            {
+                                "act": "INFORM",
+                                "canonical_values": [
+                                    "airme"
+                                ],
+                                "slot": "recipient",
+                                "values": [
+                                    "airme"
+                                ]
+                            }
+                        ],
+                        "service": "Mail_1",
+                        "slots": [
+                            {
+                                "exclusive_end": 11,
+                                "slot": "recipient",
                                 "start": 6
-                            },
-                            {
-                                "exclusive_end": 38,
-                                "slot": "group_name",
-                                "start": 24
                             }
                         ],
                         "state": {
-                            "active_intent": "SendMessage",
+                            "active_intent": "FindMail",
                             "requested_slots": [],
                             "slot_values": {
-                                "message": [
-                                    "蹲完繼續找我家附近的工作"
+                                "sender": [
+                                    "Zoe️"
                                 ],
-                                "group_name": [
-                                    "Python資料科學交流社群"
+                                "recipient": [
+                                    "airme"
                                 ]
                             }
                         }
                     }
                 ],
                 "speaker": "USER",
-                "utterance": "我記得訊息叫蹲完繼續找我家附近的工作，然後是傳到Python資料科學交流社群的群組"
+                "utterance": "恩，我記得是airme。"
             },
             {
                 "frames": [
                     {
                         "actions": [
                             {
-                                "act": "CONFIRM",
+                                "act": "INFORM_COUNT",
                                 "canonical_values": [
-                                    "蹲完繼續找我家附近的工作"
+                                    "1"
                                 ],
-                                "slot": "message",
+                                "slot": "count",
                                 "values": [
-                                    "蹲完繼續找我家附近的工作"
+                                    "1"
                                 ]
                             },
                             {
-                                "act": "CONFIRM",
+                                "act": "OFFER",
                                 "canonical_values": [
-                                    "Python資料科學交流社群"
+                                    "Zoe️"
                                 ],
-                                "slot": "group_name",
+                                "slot": "sender",
                                 "values": [
-                                    "Python資料科學交流社群"
+                                    "Zoe️"
+                                ]
+                            },
+                            {
+                                "act": "OFFER",
+                                "canonical_values": [
+                                    "airme"
+                                ],
+                                "slot": "recipient",
+                                "values": [
+                                    "airme"
                                 ]
                             }
                         ],
-                        "service": "Messaging_1",
+                        "service": "Mail_1",
                         "slots": [
                             {
-                                "exclusive_end": 38,
-                                "slot": "message",
-                                "start": 26
+                                "exclusive_end": 29,
+                                "slot": "sender",
+                                "start": 25
                             },
                             {
-                                "exclusive_end": 21,
-                                "slot": "group_name",
-                                "start": 7
+                                "exclusive_end": 23,
+                                "slot": "recipient",
+                                "start": 18
                             }
                         ],
-                        "service_results": []
-                    }
-                ],
-                "speaker": "SYSTEM",
-                "utterance": "好，你確認要在Python資料科學交流社群里根他們說蹲完繼續找我家附近的工作嗎？"
-            },
-            {
-                "frames": [
-                    {
-                        "actions": [
-                            {
-                                "act": "AFFIRM",
-                                "canonical_values": [],
-                                "slot": "",
-                                "values": []
-                            }
-                        ],
-                        "service": "Messaging_1",
-                        "slots": [],
-                        "state": {
-                            "active_intent": "SendMessage",
-                            "requested_slots": [],
-                            "slot_values": {
-                                "message": [
-                                    "蹲完繼續找我家附近的工作"
-                                ],
-                                "group_name": [
-                                    "Python資料科學交流社群"
-                                ]
-                            }
-                        }
-                    }
-                ],
-                "speaker": "USER",
-                "utterance": "對的！麻煩傳給他們"
-            },
-            {
-                "frames": [
-                    {
-                        "actions": [
-                            {
-                                "act": "NOTIFY_SUCCESS",
-                                "canonical_values": [],
-                                "slot": "",
-                                "values": []
-                            }
-                        ],
-                        "service": "Messaging_1",
-                        "slots": [],
                         "service_call": {
-                            "method": "SendMessage",
+                            "method": "FindMail",
                             "parameters": {
-                                "message": "蹲完繼續找我家附近的工作",
-                                "group_name": "Python資料科學交流社群"
+                                "sender": [
+                                    "Zoe️"
+                                ],
+                                "recipient": [
+                                    "airme"
+                                ]
                             }
                         },
-                        "service_results": []
+                        "service_results": [
+                            {
+                                "subject": " 為什麼台灣藝人去大陸要換口音？",
+                                "content": "其實啊，是因為環境問題==，撇除舔到換口音的不說，像我主要接洽的是中國同事跟中國廠商，聽久了我的口音跟用語也會變，我也不是故意的==，我的英文也變的有泰國腔啊，嗚嗚",
+                                "copy_recipient": "南方工人",
+                                "recipient": "airme",
+                                "sender": "Zoe️"
+                            }
+                        ]
                     }
                 ],
                 "speaker": "SYSTEM",
-                "utterance": "讚！訊息已傳出去囉！"
+                "utterance": "收到，那有找到一個符合條件的信，是由airme收，Zoe️寄出的信件，你可以看看。"
             },
             {
                 "frames": [
                     {
                         "actions": [
                             {
-                                "act": "THANK_YOU",
+                                "act": "SELECT",
                                 "canonical_values": [],
                                 "slot": "",
                                 "values": []
                             }
                         ],
-                        "service": "Messaging_1",
+                        "service": "Mail_1",
                         "slots": [],
                         "state": {
-                            "active_intent": "SendMessage",
+                            "active_intent": "FindMail",
                             "requested_slots": [],
                             "slot_values": {
-                                "message": [
-                                    "蹲完繼續找我家附近的工作"
+                                "sender": [
+                                    "Zoe️"
                                 ],
-                                "group_name": [
-                                    "Python資料科學交流社群"
+                                "recipient": [
+                                    "airme"
                                 ]
                             }
                         }
                     }
                 ],
                 "speaker": "USER",
-                "utterance": "棒棒！感謝你的協助啦！"
+                "utterance": "好哇，你真是會找，這麼快就被你找到了～"
+            },
+            {
+                "frames": [
+                    {
+                        "actions": [
+                            {
+                                "act": "OFFER_INTENT",
+                                "canonical_values": [
+                                    "FindMail"
+                                ],
+                                "slot": "intent",
+                                "values": [
+                                    "FindMail"
+                                ]
+                            }
+                        ],
+                        "service": "Mail_1",
+                        "slots": [],
+                        "service_results": []
+                    }
+                ],
+                "speaker": "SYSTEM",
+                "utterance": "呵呵，多謝讚美，那你還有再找個信嗎？"
+            },
+            {
+                "frames": [
+                    {
+                        "actions": [
+                            {
+                                "act": "NEGATE_INTENT",
+                                "canonical_values": [],
+                                "slot": "",
+                                "values": []
+                            }
+                        ],
+                        "service": "Mail_1",
+                        "slots": [],
+                        "state": {
+                            "active_intent": "FindMail",
+                            "requested_slots": [],
+                            "slot_values": {
+                                "sender": [
+                                    "Zoe️"
+                                ],
+                                "recipient": [
+                                    "airme"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "speaker": "USER",
+                "utterance": "歐歐，我目前應該是不用了喔，下次吧～"
             },
             {
                 "frames": [
@@ -253,13 +314,13 @@
                                 "values": []
                             }
                         ],
-                        "service": "Messaging_1",
+                        "service": "Mail_1",
                         "slots": [],
                         "service_results": []
                     }
                 ],
                 "speaker": "SYSTEM",
-                "utterance": "不會！那你還需要什麼幫助嗎？"
+                "utterance": "好吧，那你還需要其他的幫助嗎？"
             },
             {
                 "frames": [
@@ -278,24 +339,24 @@
                                 "values": []
                             }
                         ],
-                        "service": "Messaging_1",
+                        "service": "Mail_1",
                         "slots": [],
                         "state": {
-                            "active_intent": "SendMessage",
+                            "active_intent": "FindMail",
                             "requested_slots": [],
                             "slot_values": {
-                                "message": [
-                                    "蹲完繼續找我家附近的工作"
+                                "sender": [
+                                    "Zoe️"
                                 ],
-                                "group_name": [
-                                    "Python資料科學交流社群"
+                                "recipient": [
+                                    "airme"
                                 ]
                             }
                         }
                     }
                 ],
                 "speaker": "USER",
-                "utterance": "嗯...不用了，先這樣，掰掰！"
+                "utterance": "不用了喔～天色也不早了，你早點休息，再見。"
             },
             {
                 "frames": [
@@ -308,13 +369,13 @@
                                 "values": []
                             }
                         ],
-                        "service": "Messaging_1",
+                        "service": "Mail_1",
                         "slots": [],
                         "service_results": []
                     }
                 ],
                 "speaker": "SYSTEM",
-                "utterance": "好，下次見了！"
+                "utterance": "好～你也是早點休息吧，今天辛苦了，掰～"
             }
         ]
     }
