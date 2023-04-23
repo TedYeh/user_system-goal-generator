@@ -59,15 +59,17 @@ def get_action_times(paths, out_file, need_trans=True):
                      is_transactional(value_list, dialog["turns"][0]["frames"][0]["actions"][-1]["values"][-1])
                 if tran_bool ==(not need_trans): continue      
                 for turn in dialog["turns"]:
-                    acts = []
+                    acts, slots = [], []
                     for frame in turn["frames"]:  
                         for a in frame["actions"]:
-                            if not a in acts:acts.append(a["act"])
+                            acts.append(a["act"])
+                            slots.append(a["slot"])
                             #if a["act"] == "INFORM_INTENT":
                             #    tran_bool = is_transactional(value_list, a["values"][-1])
                             #    if tran_bool == need_trans: break 
-                        #print(acts) 
-                        #input()
+                        print('|'.join(acts)) 
+                        print('|'.join(slots)) 
+                        input()
                         act = dict(a)
                         if tran_bool ==(not need_trans): continue
                         #print(act['act'], act["values"])  
@@ -282,11 +284,11 @@ if __name__=="__main__":
     paths = ['train', 'test', 'dev']
     value_list = analysis_schema('schema.json')
     time_matrix = '../matrix/non_matrix.npy'
-    time_inner_matrix = '../matrix/non_inner_matrix.npy'
+    #time_inner_matrix = '../matrix/non_inner_matrix.npy'
     get_action_times(paths, time_matrix, need_trans=False)    
     get_weighted_matrix(time_matrix, '../matrix/non_matrix_weighted.npy')
-    print('inner')
-    get_inner_action_times(paths)
+    #print('inner')
+    #get_inner_action_times(paths)
     #path = 'ptt\\data\\source_replies\\reply'
     #analysis_ptt(path)
     '''
@@ -297,7 +299,7 @@ if __name__=="__main__":
                 pprint(frames)
                 print(len(frames))
                 input()
-    '''
+    
     matrix_file = './matrix/matrix_weighted.npy'
     with open(matrix_file, 'rb') as f:
         usr_matrix, sys_matrix, usr_inner_matrix, sys_inner_matrix = [np.load(f) for _ in range(4)]
@@ -317,6 +319,7 @@ if __name__=="__main__":
 
     non_sys_matrix = np.around(non_sys_matrix, decimals=2)
     draw_matrix(non_sys_matrix, usr_acts[:-1], sys_acts[:-1], ['Assistant', 'Client'], 'Decide Assistant (non-transactional)')
+    '''
     '''
     usr_inner_matrix = np.around(usr_inner_matrix, decimals=2)
     draw_matrix(usr_inner_matrix, usr_acts, usr_acts, ['Client', 'Client'], 'Continue Decide Client')
