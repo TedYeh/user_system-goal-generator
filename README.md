@@ -35,6 +35,13 @@
 └─transistion matrix     #存放轉移矩陣的圖片
 ```
 
+## Dialogue Outline Generation
+Place schema.json in schema dir
+```bash
+cd goal_generation/
+python goal_generator.py
+```
+
 ## Training TOD System
 
 ### Data Preprocessing
