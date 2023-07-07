@@ -45,29 +45,32 @@ python preprocess.py
 ```
 
 ### Train Model
+以messagesgd語料作為範例，context_size為5<br/>
+corpus_name=messagesgd <br/>
+context_size=5
 
 #### Train NLU
 ```bash
 cd tod_system/convlab/base_models/t5/nlu/
-bash run_nlu.sh [corpus_name] [context_size]
+bash run_nlu.sh messagesgd 5
 ```
 
 #### Train DST
 ```bash
 cd tod_system/convlab/base_models/t5/dst/
-bash run_dst.sh [corpus_name] [context_size]
+bash run_dst.sh messagesgd 5
 ```
 
 #### Train Policy
 ```bash
 cd tod_system/convlab/base_models/t5/policy/
-bash run_policy.sh [corpus_name] [context_size]
+bash run_policy.sh messagesgd 5
 ```
 
 #### Train NLG
 ```bash
 cd tod_system/convlab/base_models/t5/nlg/
-bash run_nlg.sh [corpus_name] [context_size]
+bash run_nlg.sh messagesgd 5
 ```
 
 ### Deploy Model
