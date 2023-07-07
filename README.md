@@ -45,21 +45,26 @@ python preprocess.py
 ```
 
 ### Train Model
+
+#### Train NLU
 ```bash
 cd tod_system/convlab/base_models/t5/nlu/
 bash run_nlu.sh [corpus_name] [context_size]
 ```
 
+#### Train DST
 ```bash
 cd tod_system/convlab/base_models/t5/dst/
 bash run_dst.sh [corpus_name] [context_size]
 ```
 
+#### Train Policy
 ```bash
 cd tod_system/convlab/base_models/t5/policy/
 bash run_policy.sh [corpus_name] [context_size]
 ```
 
+#### Train NLG
 ```bash
 cd tod_system/convlab/base_models/t5/nlg/
 bash run_nlg.sh [corpus_name] [context_size]
